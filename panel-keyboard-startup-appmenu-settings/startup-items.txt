@@ -1,4 +1,4 @@
 /opt/discord-canary/DiscordCanary
 gwe --hide-window
 ksuperkey -e 'Super_L=Control_R|F3'
-redshift-gtk
+setxkbmap -option ctrl:nocaps
