@@ -1,0 +1,19 @@
+source ~/.promptline.sh
+unsetopt PROMPT_SP
+
+plugins+=
+(
+  archlinux
+  npm
+  sudo
+  systemd
+  zsh-better-npm-completion
+  zsh-syntax-highlighting
+  zsh-autosuggestions
+  gcloud
+)
+
+alias update="bash -c 'yay -Syu --noconfirm ; flatpak upgrade'"
+alias vpn-on="ssh icedborn@192.168.1.2 -t 'mullvad connect'"
+alias vpn-off="ssh icedborn@192.168.1.2 -t 'mullvad disconnect'"
+alias vpn="ssh icedborn@192.168.1.2 -t 'mullvad status'"

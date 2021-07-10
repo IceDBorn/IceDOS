@@ -1,0 +1,14 @@
+com.github.Eloston.UngoogledChromium | Super + B
+exo-open --launch TerminalEmulator | Super + X
+kitty zsh -c "bpytop" | Super + T
+qalculate-gtk | Super + `
+ssh icedborn@192.168.1.2 -t 'mullvad connect' | Super + M
+ssh icedborn@192.168.1.2 -t 'mullvad disconnect' | CTRL + ALT + M
+subl | Super + S
+virsh -c qemu:///system start win10 | Super + W
+virt-manager | Super + Z
+xfce4-popup-clipman | Super + V
+xfce4-popup-whiskermenu | CTRL + F3
+xfce4-screenshooter -r | Print
+/usr/local/bin/movescreen.py left | Super + Shift + Left
+/usr/local/bin/movescreen.py right | Super + Shift + Right
