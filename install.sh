@@ -49,6 +49,75 @@ do
  	esac
 done
 
+# Startup items
+while true
+do
+	read -r -p "Do you want to add GreenWithEnvy to startup? [y/n] " input
+
+ 	case $input in [yY][eE][sS]|[yY])
+		mv panel-keyboard-startup-appmenu-settings/GreenWithEnvy.desktop /home/"$username"/.config/autostart/
+ 		break
+ 		;;
+ 	[nN][oO]|[nN])
+ 		break
+        ;;
+    *)
+ 		echo "Invalid input..."
+ 		;;
+ 	esac
+done
+
+while true
+do
+	read -r -p "Do you want to add ksuperkey to startup? [y/n] " input
+
+ 	case $input in [yY][eE][sS]|[yY])
+		mv panel-keyboard-startup-appmenu-settings/ksuperkey.desktop /home/"$username"/.config/autostart/
+ 		break
+ 		;;
+ 	[nN][oO]|[nN])
+ 		break
+        ;;
+    *)
+ 		echo "Invalid input..."
+ 		;;
+ 	esac
+done
+
+while true
+do
+	read -r -p "Do you want to add Discord Canary to startup? [y/n] " input
+
+ 	case $input in [yY][eE][sS]|[yY])
+		mv panel-keyboard-startup-appmenu-settings/Powercord.desktop /home/"$username"/.config/autostart/
+ 		break
+ 		;;
+ 	[nN][oO]|[nN])
+ 		break
+        ;;
+    *)
+ 		echo "Invalid input..."
+ 		;;
+ 	esac
+done
+
+while true
+do
+	read -r -p "Do you want to disable caps lock? [y/n] " input
+
+ 	case $input in [yY][eE][sS]|[yY])
+		mv panel-keyboard-startup-appmenu-settings/NoCapsLock.desktop /home/"$username"/.config/autostart/
+ 		break
+ 		;;
+ 	[nN][oO]|[nN])
+ 		break
+        ;;
+    *)
+ 		echo "Invalid input..."
+ 		;;
+ 	esac
+done
+
 # Zsh installer
 while true
 do
