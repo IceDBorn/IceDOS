@@ -119,7 +119,7 @@ do
 			read -r -p "Make zsh the default shell for $username? [y/n] " input
  
  			case $input in [yY][eE][sS]|[yY])
-				sudo chsh -s /bin/zsh $username
+				sudo chsh -s /bin/zsh "$username"
  				break
  				;;
  			[nN][oO]|[nN])
@@ -173,7 +173,7 @@ do
 				done
 
 				echo Press any button when you have finished editing the zsh config...
-				subl /home/$username/.zshrc
+				subl /home/"$username"/.zshrc
 				read -r -n 1 -s
  				break
  				;;
@@ -289,7 +289,7 @@ do
 				echo Press any button when you have finished editing the samba config...
 				sudo subl /etc/samba/smb.conf
 				read -r -n 1 -s
-				sudo smbpasswd -a $username
+				sudo smbpasswd -a "$username"
 				sudo systemctl disable samba
 				sudo systemctl stop samba
 				sudo systemctl enable smb

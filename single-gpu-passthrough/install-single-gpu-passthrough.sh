@@ -1,3 +1,6 @@
+# Variables
+username=$(whoami)
+
 # Necessary applications
 sudo pacman -S qemu
 sudo pacman -S libvirt
@@ -62,23 +65,23 @@ do
  	esac
 done
 
-sudo mkdir -p /etc/libvirt/hooks/qemu.d/$input/prepare/begin
-sudo mkdir -p /etc/libvirt/hooks/qemu.d/$input/release/end
-sudo mv start.sh /etc/libvirt/hooks/qemu.d/$input/prepare/begin/
-sudo mv revert.sh /etc/libvirt/hooks/qemu.d/$input/release/end
-sudo chmod +x /etc/libvirt/hooks/qemu.d/$input/prepare/begin/start.sh
-sudo chmod +x /etc/libvirt/hooks/qemu.d/$input/release/end/revert.sh
+sudo mkdir -p /etc/libvirt/hooks/qemu.d/"$input"/prepare/begin
+sudo mkdir -p /etc/libvirt/hooks/qemu.d/"$input"/release/end
+sudo mv start.sh /etc/libvirt/hooks/qemu.d/"$input"/prepare/begin/
+sudo mv revert.sh /etc/libvirt/hooks/qemu.d/"$input"/release/end
+sudo chmod +x /etc/libvirt/hooks/qemu.d/"$input"/prepare/begin/start.sh
+sudo chmod +x /etc/libvirt/hooks/qemu.d/"$input"/release/end/revert.sh
 echo Edit scripts to your liking
 echo Press any button when you have finished editing the scripts...
-sudo subl /etc/libvirt/hooks/qemu.d/$input/prepare/begin/start.sh
-sudo subl /etc/libvirt/hooks/qemu.d/$input/release/end/revert.sh
+sudo subl /etc/libvirt/hooks/qemu.d/"$input"/prepare/begin/start.sh
+sudo subl /etc/libvirt/hooks/qemu.d/"$input"/release/end/revert.sh
 
 while true
 do
 	read -r -p "Do you want to add kvm and libvirt to the group? [y/n] " input
 
 	case $input in [yY][eE][sS]|[yY])
- 		sudo usermod -a -G kvm,libvirt $username
+ 		sudo usermod -a -G kvm,libvirt "$username"
  		break
  		;;
  	[nN][oO]|[nN])
