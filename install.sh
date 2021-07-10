@@ -4,7 +4,7 @@
 username=$(whoami)
 
 # Make child scripts executable
-sudo chmod +x apps-configs/install-apps.sh zsh/install-zsh-plugins.sh  single-gpu-passthrough/install-single-gpu-passthrough.sh
+sudo chmod +x apps/apps.sh zsh/install-zsh-plugins.sh  single-gpu-passthrough/install-single-gpu-passthrough.sh
 
 # Install needed applications
 if ! command -v git &> /dev/null
@@ -41,15 +41,15 @@ do
  
  			case $input in [yY][eE][sS]|[yY])
 				echo Press any button when you have finished editing the applications script...
-				subl apps-configs/install-apps.sh
+				subl apps/apps.sh
 				read -r -n 1 -s
 				echo Installing applications...
- 				./apps-configs/install-apps.sh
+ 				./apps/apps.sh
  				break
  				;;
  			[nN][oO]|[nN])
 				echo Installing applications...
- 				./apps-configs/install-apps.sh
+ 				./apps/apps.sh
  				break
         		;;
     		*)
@@ -176,7 +176,7 @@ then
               case $input in [yY][eE][sS]|[yY])
                 echo Press any button when you have finished editing the zsh plugins script...
                 read -r -n 1 -s
-                subl /zsh/install-apps.sh
+                subl zsh/install-zsh-plugins.sh
                 echo Installing zsh plugins...
                 ./zsh/install-zsh-plugins.sh
                 break
@@ -328,7 +328,7 @@ do
 done
 
 # Kitty config installer
-if ! command -v git &> /dev/null
+if ! command -v kitty &> /dev/null
 then
     while true
     do
@@ -342,7 +342,7 @@ then
           read -r -p "Do you want to install kitty's provided config? [y/n] " input
 
           case $input in [yY][eE][sS]|[yY])
-            mv apps-configs/kitty.conf ~/.config/kitty
+            mv apps/kitty.conf ~/.config/kitty
             break
             ;;
           [nN][oO]|[nN])
@@ -394,7 +394,7 @@ then
 fi
 
 # Samba installer
-if ! command -v git &> /dev/null
+if ! command -v samba &> /dev/null
 then
     while true
     do
