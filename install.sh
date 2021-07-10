@@ -23,7 +23,7 @@ do
  			case $input in [yY][eE][sS]|[yY])
 				echo Press any button when you have finished editing the applications script...
 				subl apps-configs/install-apps.sh
-				read -n 1 -s 
+				read -r -n 1 -s
 				echo Installing applications...
  				./apps-configs/install-apps.sh
  				break
@@ -69,7 +69,7 @@ do
  
  					case $input in [yY][eE][sS]|[yY])
 						echo Press any button when you have finished editing the zsh plugins script...
-						read -n 1 -s 
+						read -r -n 1 -s
 						subl /zsh/install-apps.sh
 						echo Installing zsh plugins...
  						./zsh/install-zsh-plugins.sh
@@ -174,7 +174,7 @@ do
 
 				echo Press any button when you have finished editing the zsh config...
 				subl /home/$username/.zshrc
-				read -n 1 -s 
+				read -r -n 1 -s
  				break
  				;;
  			[nN][oO]|[nN])
@@ -288,7 +288,7 @@ do
 
 				echo Press any button when you have finished editing the samba config...
 				sudo subl /etc/samba/smb.conf
-				read -n 1 -s 
+				read -r -n 1 -s
 				sudo smbpasswd -a $username
 				sudo systemctl disable samba
 				sudo systemctl stop samba
