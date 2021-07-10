@@ -47,24 +47,6 @@ do
  	esac
 done
 
-while true
-do
-	read -r -p "Do you want to move gdm configs for autologin after shutting down the vm to home folder? [y/n] " input
-
-	case $input in [yY][eE][sS]|[yY])
- 		mv single-gpu-passthrough/.autologin.conf ~/
- 		mv single-gpu-passthrough/.password.conf ~/
- 		break
- 		;;
- 	[nN][oO]|[nN])
- 		break
-        ;;
-    *)
- 		echo "Invalid input..."
- 		;;
- 	esac
-done
-
 sudo mkdir -p /etc/libvirt/hooks/qemu.d/"$input"/prepare/begin
 sudo mkdir -p /etc/libvirt/hooks/qemu.d/"$input"/release/end
 sudo mv start.sh /etc/libvirt/hooks/qemu.d/"$input"/prepare/begin/

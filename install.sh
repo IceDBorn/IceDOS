@@ -136,7 +136,7 @@ do
 			read -r -p "Do you want to install provided zsh's theme? [y/n] " input
  
  			case $input in [yY][eE][sS]|[yY])
-				mv zsh/.promptline.sh ~/
+				mv zsh/promptline.sh ~/.promptline.sh
  				echo Do not forget to add "'source ~/.promptline.sh'" and "'unsetopt PROMPT_SP'" into the zsh config file!
  				break
  				;;
@@ -326,9 +326,9 @@ do
 	read -r -p "Do you want to move provided pictures to the pictures folder? [y/n] " input
 
 	case $input in [yY][eE][sS]|[yY])
- 		mv pictures/.arcolinux-hello.png ~/Pictures
- 		mv pictures/.panel.png ~/Pictures
- 		mv pictures/.wallpaper.png ~/Pictures
+ 		mv pictures/arcolinux-hello.png ~/Pictures/.arcolinux-hello.png
+ 		mv pictures/panel.png ~/Pictures/.panel.png
+ 		mv pictures/wallpaper.png ~/Pictures/.wallpaper.png
  		break
  		;;
  	[nN][oO]|[nN])
