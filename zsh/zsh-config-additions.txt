@@ -1,6 +1,8 @@
+# Enables provided zsh script
 source ~/.promptline.sh
 unsetopt PROMPT_SP
 
+# Enables installed plugins
 plugins+=
 (
   archlinux
@@ -14,9 +16,12 @@ plugins+=
 )
 
 alias update="bash -c 'yay -Syu --noconfirm ; flatpak upgrade'"
+
+# Change "icedborn" to your username if mullvad is installed
 alias vpn-on="ssh icedborn@192.168.1.2 -t 'mullvad connect'"
 alias vpn-off="ssh icedborn@192.168.1.2 -t 'mullvad disconnect'"
 alias vpn="ssh icedborn@192.168.1.2 -t 'mullvad status'"
 
+# Enables zsh history up to 100 entries
 SAVEHIST=100
 HISTFILE=~/.zsh_history

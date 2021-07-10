@@ -4,7 +4,7 @@
 username=$(whoami)
 
 # Make child scripts executable
-sudo chmod +x apps/apps.sh zsh/install-zsh-plugins.sh  single-gpu-passthrough/install-single-gpu-passthrough.sh
+sudo chmod +x apps/apps.sh zsh/zsh-plugins.sh  single-gpu-passthrough/single-gpu-passthrough.sh
 
 # Install needed applications
 if ! command -v git &> /dev/null
@@ -77,7 +77,7 @@ then
       read -r -p "Do you want to add GreenWithEnvy to startup? [y/n] " input
 
       case $input in [yY][eE][sS]|[yY])
-        mv panel-keyboard-startup-appmenu-settings/GreenWithEnvy.desktop /home/"$username"/.config/autostart/
+        mv apps/GreenWithEnvy.desktop /home/"$username"/.config/autostart/
         break
         ;;
       [nN][oO]|[nN])
@@ -99,7 +99,7 @@ then
       read -r -p "Do you want to add ksuperkey to startup? [y/n] " input
 
       case $input in [yY][eE][sS]|[yY])
-        mv panel-keyboard-startup-appmenu-settings/ksuperkey.desktop /home/"$username"/.config/autostart/
+        mv apps/ksuperkey.desktop /home/"$username"/.config/autostart/
         break
         ;;
       [nN][oO]|[nN])
@@ -121,7 +121,7 @@ then
       read -r -p "Do you want to add Discord Canary to startup? [y/n] " input
 
       case $input in [yY][eE][sS]|[yY])
-        mv panel-keyboard-startup-appmenu-settings/Powercord.desktop /home/"$username"/.config/autostart/
+        mv apps/Powercord.desktop /home/"$username"/.config/autostart/
         break
         ;;
       [nN][oO]|[nN])
@@ -140,7 +140,7 @@ do
 	read -r -p "Do you want to disable caps lock? [y/n] " input
 
  	case $input in [yY][eE][sS]|[yY])
-		mv panel-keyboard-startup-appmenu-settings/NoCapsLock.desktop /home/"$username"/.config/autostart/
+		mv apps/NoCapsLock.desktop /home/"$username"/.config/autostart/
  		break
  		;;
  	[nN][oO]|[nN])
@@ -176,14 +176,14 @@ then
               case $input in [yY][eE][sS]|[yY])
                 echo Press any button when you have finished editing the zsh plugins script...
                 read -r -n 1 -s
-                subl zsh/install-zsh-plugins.sh
+                subl zsh/zsh-plugins.sh
                 echo Installing zsh plugins...
-                ./zsh/install-zsh-plugins.sh
+                ./zsh/zsh-plugins.sh
                 break
                 ;;
               [nN][oO]|[nN])
                 echo Installing zsh plugins...
-                ./zsh/install-zsh-plugins.sh
+                ./zsh/zsh-plugins.sh
                 break
                     ;;
                 *)
@@ -493,7 +493,7 @@ do
 	read -r -p "Do you want to setup single gpu passthrough? [y/n] " input
 
 	case $input in [yY][eE][sS]|[yY])
- 		./single-gpu-passthrough/install-single-gpu-passthrough.sh
+ 		./single-gpu-passthrough/single-gpu-passthrough.sh
  		break
  		;;
  	[nN][oO]|[nN])
