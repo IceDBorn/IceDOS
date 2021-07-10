@@ -17,7 +17,7 @@ echo Editing grub configuration file
 echo Add "'amd_iommu=on video=efifb:off'" for AMD or "'intel_iommu=on video=efifb:off'" for Intel to "'GRUB_CMDLINE_LINUX_DEFAULT='"
 echo Press any button when you have finished editing the grub configuration file
 sudo subl /etc/default/grub
-read -n 1 -s
+read -r -n 1 -s
 sudo grub-mkconfig -o /boot/grub/grub.cfg
 
 # Hooks
@@ -92,5 +92,5 @@ done
 
 echo Do not forget to add above tweaks to the VM xml through Virtual Machine Manager
 echo Press any button to view the xml tweaks...
-read -n 1 -s
+read -r -n 1 -s
 subl single-gpu-passthrough/xml-editing.txt

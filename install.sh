@@ -15,7 +15,7 @@ while true
 do
 	read -r -p "Do you want to install applications? [y/n] " input
  
- 	case $input in [yY][eE][sS]|[yY]|[/\A\z/])
+ 	case $input in [yY][eE][sS]|[yY])
 		while true
 		do
 			read -r -p "Do you want to edit the applications script? [y/n] " input
