@@ -1,19 +1,26 @@
 # Variables
 username=$(whoami)
 
-# Necessary applications
-sudo pacman -S qemu
-sudo pacman -S libvirt
-sudo pacman -S edk2-ovmf
-sudo pacman -S virt-manager
-sudo pacman -S ebtables
-sudo pacman -S dnsmasq
-sudo systemctl enable libvirtd.service
-sudo systemctl start libvirtd.service
-sudo systemctl enable virtlogd.socket
-sudo systemctl start virtlogd.socket
-sudo virsh net-autostart default
-sudo virsh net-start default
+# Install necessary applications
+apps=(
+"sudo pacman -S qemu"
+"sudo pacman -S libvirt"
+"sudo pacman -S edk2-ovmf"
+"sudo pacman -S virt-manager"
+"sudo pacman -S ebtables"
+"sudo pacman -S dnsmasq"
+"sudo systemctl enable libvirtd.service"
+"sudo systemctl start libvirtd.service"
+"sudo systemctl enable virtlogd.socket"
+"sudo systemctl start virtlogd.socket"
+"sudo virsh net-autostart default"
+"sudo virsh net-start default"
+)
+
+for command in "${!apps[@]}"
+do
+  eval "${apps[command]}"
+done
 
 # Grub editing
 echo Editing grub configuration file
