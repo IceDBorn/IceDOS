@@ -24,11 +24,23 @@ apps=(
 "yay -S discord-canary"
 "yay -S stremio"
 "yay -S oh-my-zsh-git"
+"yay -S tutanota-desktop"
 "flatpak install flathub com.github.Eloston.UngoogledChromium"
 )
 
 # Install every app using commands inside of array
 for command in "${!apps[@]}"
 do
-  eval "${apps[command]}"
+  app=$("${apps[command]}" | sed 's/.* //')
+  if ! command -v "$app" &> /dev/null
+    then
+        echo "$app is not installed"
+        echo "Installing $app"
+        eval "${apps[command]}"
+        exit
+    else
+      echo "$app is installed"
+      echo "Skipping..."
+  fi
+
 done
