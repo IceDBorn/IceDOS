@@ -14,6 +14,7 @@ apps=(
 "sudo pacman -S papirus-icon-theme"
 "sudo pacman -S npm"
 "sudo pacman -S tree"
+"sudo pacman -S flameshot"
 "yay -S jetbrains-toolbox"
 "yay -S noto-fonts-emoji"
 "yay -S balena-etcher"
