@@ -29,6 +29,45 @@ else
   echo "Skipping..."
 fi
 
+# Default applications uninstaller
+while true
+do
+	read -r -p "Do you want to uninstall default applications? [y/n] " input
+
+ 	case $input in [yY][eE][sS]|[yY])
+		while true
+		do
+			read -r -p "Do you want to edit the default applications uninstall script? [y/n] " input
+
+ 			case $input in [yY][eE][sS]|[yY])
+				echo Press any button when you have finished editing the applications script...
+				subl apps/uninstall.sh
+				read -r -n 1 -s
+				echo Uninstalling applications...
+ 				./apps/uninstall.sh
+ 				break
+ 				;;
+ 			[nN][oO]|[nN])
+				echo Uninstalling applications...
+ 				./apps/uninstall.sh
+ 				break
+        		;;
+    		*)
+ 				echo "Invalid input..."
+ 				;;
+ 			esac
+		done
+ 		break
+ 		;;
+ 	[nN][oO]|[nN])
+ 		break
+        ;;
+    *)
+ 		echo "Invalid input..."
+ 		;;
+ 	esac
+done
+
 # Generic applications installer
 while true
 do
