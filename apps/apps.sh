@@ -31,16 +31,5 @@ apps=(
 # Install every app using commands inside of array
 for command in "${!apps[@]}"
 do
-  app=$("${apps[command]}" | sed 's/.* //')
-  if ! command -v "$app" &> /dev/null
-    then
-        echo "$app is not installed"
-        echo "Installing $app"
-        eval "${apps[command]}"
-        exit
-    else
-      echo "$app is installed"
-      echo "Skipping..."
-  fi
-
+  eval "${apps[command]}"
 done
