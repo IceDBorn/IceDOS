@@ -174,6 +174,28 @@ then
     exit
 fi
 
+if command -v cadmus &> /dev/null
+then
+    echo "Cadmus is installed..."
+    while true
+    do
+      read -r -p "Do you want to add Cadmus to startup? [y/n] " input
+
+      case $input in [yY][eE][sS]|[yY])
+        mv apps/Cadmus.desktop /home/"$username"/.config/autostart/
+        break
+        ;;
+      [nN][oO]|[nN])
+        break
+            ;;
+        *)
+        echo "Invalid input..."
+        ;;
+      esac
+    done
+    exit
+fi
+
 while true
 do
 	read -r -p "Do you want to disable caps lock? [y/n] " input

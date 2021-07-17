@@ -10,6 +10,7 @@ apps=(
 "sudo pacman -Rd xfburn"
 "sudo pacman -Rd xfce4-screenshooter"
 "sudo pacman -Rd xfce4-notes-plugin"
+"sudo pacman -Rd xfce4-sensors-plugin"
 )
 
 # Uninstall every app using commands inside of array
