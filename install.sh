@@ -4,7 +4,7 @@
 username=$(whoami)
 
 # Make child scripts executable
-sudo chmod +x apps/apps.sh zsh/zsh-plugins.sh  single-gpu-passthrough/single-gpu-passthrough.sh
+sudo chmod +x apps/apps.sh apps/uninstall.sh zsh/zsh-plugins.sh  single-gpu-passthrough/single-gpu-passthrough.sh
 
 # Install needed applications
 if ! command -v git &> /dev/null
