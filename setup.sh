@@ -4,7 +4,7 @@
 username=$(whoami)
 
 # Make child scripts executable
-sudo chmod +x apps/apps.sh apps/uninstall.sh zsh/zsh-plugins.sh  single-gpu-passthrough/single-gpu-passthrough.sh
+sudo chmod +x apps/install.sh apps/uninstall.sh zsh/zsh-plugins.sh  single-gpu-passthrough/single-gpu-passthrough.sh
 
 # Install needed applications
 if ! command -v git &> /dev/null
@@ -78,15 +78,15 @@ do
  
  			case $input in [yY][eE][sS]|[yY])
 				echo Press any button when you have finished editing the applications script...
-				subl apps/apps.sh
+				subl apps/install.sh
 				read -r -n 1 -s
 				echo Installing applications...
- 				./apps/apps.sh
+ 				./apps/install.sh
  				break
  				;;
  			[nN][oO]|[nN])
 				echo Installing applications...
- 				./apps/apps.sh
+ 				./apps/install.sh
  				break
         		;;
     		*)

@@ -1,7 +1,7 @@
 # Add your apps install commands into this array
 apps=(
 "sudo pacman -S gimp"
-"sudo pacman -S libreoffice"
+"sudo pacman -S libreoffice-fresh"
 "sudo pacman -S flatpak"
 "sudo pacman -S qbittorrent"
 "sudo pacman -S signal-desktop"
@@ -15,17 +15,13 @@ apps=(
 "sudo pacman -S npm"
 "sudo pacman -S tree"
 "sudo pacman -S flameshot"
+"sudo pacman -S noto-fonts-emoji"
 "yay -S jetbrains-toolbox"
-"yay -S noto-fonts-emoji"
-"yay -S balena-etcher"
+"yay -S etcher-bin"
 "yay -S gwe"
-"yay -S qalculate-gtk-nognome"
-"yay -S anydesk-bin"
-"yay -S persepolis"
 "yay -S discord-canary"
 "yay -S stremio"
-"yay -S oh-my-zsh-git"
-"yay -S tutanota-desktop"
+"yay -S tutanota-desktop-bin"
 "flatpak install flathub com.github.Eloston.UngoogledChromium"
 )
 
