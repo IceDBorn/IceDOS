@@ -2,6 +2,7 @@
 apps=(
 "sudo pacman -Rd vim"
 "sudo pacman -Rd termite"
+"sudo pacman -Rd alacritty"
 )
 
 # Uninstall every app using commands inside of array

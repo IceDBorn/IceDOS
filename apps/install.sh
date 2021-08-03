@@ -22,6 +22,7 @@ apps=(
 "yay -S discord-canary"
 "yay -S stremio"
 "yay -S tutanota-desktop-bin"
+"yay -S cadmus-appimage"
 "flatpak install flathub com.github.Eloston.UngoogledChromium"
 )
 
