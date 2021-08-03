@@ -12,7 +12,6 @@ then
     echo "Git is not installed"
     echo "Installing..."
     sudo pacman -S git
-    exit
 else
   echo "Git is installed"
   echo "Skipping..."
@@ -23,7 +22,6 @@ then
     echo "Sublime Text is not installed"
     echo "Installing..."
     yay -S sublime-text-4
-    exit
 else
   echo "Sublime Text is installed"
   echo "Skipping..."
@@ -127,7 +125,6 @@ then
         ;;
       esac
     done
-    exit
 fi
 
 if command -v ksuperkey &> /dev/null
@@ -149,7 +146,6 @@ then
         ;;
       esac
     done
-    exit
 fi
 
 if command -v discord-canary &> /dev/null
@@ -171,7 +167,6 @@ then
         ;;
       esac
     done
-    exit
 fi
 
 if command -v cadmus &> /dev/null
@@ -193,25 +188,7 @@ then
         ;;
       esac
     done
-    exit
 fi
-
-while true
-do
-	read -r -p "Do you want to disable caps lock? [y/n] " input
-
- 	case $input in [yY][eE][sS]|[yY])
-		mv apps/NoCapsLock.desktop /home/"$username"/.config/autostart/
- 		break
- 		;;
- 	[nN][oO]|[nN])
- 		break
-        ;;
-    *)
- 		echo "Invalid input..."
- 		;;
- 	esac
-done
 
 # Zsh installer
 if ! command -v zsh &> /dev/null
@@ -363,30 +340,10 @@ then
         ;;
       esac
     done
-    exit
 else
   echo "Zsh is installed"
   echo "Skipping..."
 fi
-
-# Movescreen python script installer
-while true
-do
-	read -r -p "Do you want to install movescreen python script to /usr/local/bin? [y/n] " input
-
-	case $input in [yY][eE][sS]|[yY])
-		wget https://github.com/calandoa/movescreen/raw/master/movescreen.py
-		sudo mv movescreen.py /usr/local/bin
- 		break
- 		;;
- 	[nN][oO]|[nN])
- 		break
-        ;;
-    *)
- 		echo "Invalid input..."
- 		;;
- 	esac
-done
 
 # Kitty config installer
 if ! command -v kitty &> /dev/null
@@ -403,7 +360,7 @@ then
           read -r -p "Do you want to install kitty's provided config? [y/n] " input
 
           case $input in [yY][eE][sS]|[yY])
-            mv apps/kitty.conf ~/.config/kitty
+            mv apps/kitty.conf ~/.config/kitty.conf
             break
             ;;
           [nN][oO]|[nN])
@@ -424,7 +381,6 @@ then
         ;;
       esac
     done
-    exit
 else
   echo "Kitty is installed"
   echo "Skipping..."
@@ -452,62 +408,6 @@ then
       ;;
     esac
   done
-fi
-
-# Samba installer
-if ! command -v samba &> /dev/null
-then
-    while true
-    do
-      read -r -p "Do you want to install samba? [y/n] " input
-
-      case $input in [yY][eE][sS]|[yY])
-        sudo pacman -S samba
-        sudo mv /etc/samba/smb.conf.arcolinux /etc/samba/smb.conf
-
-        while true
-        do
-          read -r -p "Do you want to edit samba's config? [y/n] " input
-
-          case $input in [yY][eE][sS]|[yY])
-
-            echo Press any button when you have finished editing the samba config...
-            sudo subl /etc/samba/smb.conf
-            read -r -n 1 -s
-            sudo smbpasswd -a "$username"
-            sudo systemctl disable samba
-            sudo systemctl stop samba
-            sudo systemctl enable smb
-            sudo systemctl start smb
-            sudo systemctl status smb
-            sudo systemctl enable nmb
-            sudo systemctl start nmb
-            sudo systemctl status nmb
-            break
-            ;;
-          [nN][oO]|[nN])
-            break
-                ;;
-            *)
-            echo "Invalid input..."
-            ;;
-          esac
-        done
-
-        break
-        ;;
-      [nN][oO]|[nN])
-        break
-            ;;
-        *)
-        echo "Invalid input..."
-        ;;
-      esac
-    done
-    exit
-else
-  echo "Samba is installed"
-  echo "Skipping..."
 fi
 
 # Pictures mover
