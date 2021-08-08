@@ -22,6 +22,11 @@ alias vpn-on="ssh icedborn@192.168.1.2 -t 'mullvad connect'"
 alias vpn-off="ssh icedborn@192.168.1.2 -t 'mullvad disconnect'"
 alias vpn="ssh icedborn@192.168.1.2 -t 'mullvad status'"
 
+# Aliases for sudo commands
+alias pacman="sudo pacman"
+alias systemctl="sudo systemctl"
+alias chmod="sudo chmod"
+
 # Enable zsh history up to 100 entries
 SAVEHIST=100
 HISTFILE=~/.zsh_history
