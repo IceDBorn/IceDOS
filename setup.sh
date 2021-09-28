@@ -61,7 +61,7 @@ cd ..
 
 # Rebooting sequence
 echo "\nRebooting, abort by pressing 'CTRL + C'"
-for i in {5..1}
+for i in {10..1}
 do
   if [ "$i" -eq "1" ]; then
     echo -en "\rRebooting in $i second... "
