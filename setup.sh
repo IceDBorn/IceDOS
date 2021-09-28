@@ -48,11 +48,16 @@ sudo systemctl enable sshd
 echo "Setting up Single GPU Passthrough..."
 ./single-gpu-passthrough/setup.sh
 
-# NVM installer
+# nvm installer
 .nvm/setup.sh
 
 # Theme installer
 .kde-theme/setup.sh
+cd ..
+
+# Photoshop installer
+.photoshop/setup.sh
+cd ..
 
 # Rebooting sequence
 echo "\nRebooting, abort by pressing 'CTRL + C'"
