@@ -4,6 +4,7 @@ apps=(
 "sudo pacman -S bpytop"
 "sudo pacman -S etcher"
 "sudo pacman -S flameshot"
+"sudo pacman -S godot"
 "sudo pacman -S gwe"
 "sudo pacman -S jetbrains-toolbox"
 "sudo pacman -S kcalc"
