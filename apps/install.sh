@@ -21,6 +21,7 @@ apps=(
 "sudo pacman -S signal-desktop"
 "sudo pacman -S stremio"
 "sudo pacman -S sublime-text-4"
+"sudo pacman -S sunshine"
 "sudo pacman -S tree"
 "sudo pacman -S tutanota-desktop"
 "sudo pacman -S ungoogled-chromium"
