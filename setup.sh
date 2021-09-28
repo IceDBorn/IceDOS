@@ -6,10 +6,7 @@ echo "Hello $username!"
 
 # Make child scripts executable
 echo "Marking child scripts as executables..."
-sudo chmod +x apps/install.sh zsh/plugins.sh  single-gpu-passthrough/setup.sh kde-theme/setup.sh
-
-# Theme installer
-.kde-theme/setup.sh
+sudo chmod +x apps/install.sh kde-theme/setup.sh nvm/setup.sh single-gpu-passthrough/setup.sh zsh/plugins.sh
 
 # Applications installer
 echo "Installing applications..."
@@ -50,6 +47,12 @@ sudo systemctl enable sshd
 # Single gpu passthrough setup
 echo "Setting up Single GPU Passthrough..."
 ./single-gpu-passthrough/setup.sh
+
+# NVM installer
+.nvm/setup.sh
+
+# Theme installer
+.kde-theme/setup.sh
 
 # Rebooting sequence
 echo "\nRebooting, abort by pressing 'CTRL + C'"
