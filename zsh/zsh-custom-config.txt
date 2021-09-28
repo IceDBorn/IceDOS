@@ -1,0 +1,24 @@
+# Enable provided zsh script
+source ~/.promptline.sh
+unsetopt PROMPT_SP
+
+# Enable installed plugins
+plugins+=
+(
+  archlinux
+  npm
+  sudo
+  systemd
+  zsh-better-npm-completion
+  zsh-syntax-highlighting
+  zsh-autosuggestions
+  gcloud
+)
+
+alias update="bash -c 'pacman -Syu'"
+alias vpn-on="mullvad connect"
+alias vpn-off="mullvad disconnect"
+alias vpn="mullvad status"
+alias pacman="sudo pacman"
+alias systemctl="sudo systemctl"
+alias chmod="sudo chmod"
