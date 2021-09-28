@@ -46,7 +46,7 @@ sudo systemctl enable sshd
 
 # Single gpu passthrough setup
 echo "Setting up Single GPU Passthrough..."
-./single-gpu-passthrough/single-gpu-passthrough.sh
+./single-gpu-passthrough/setup.sh
 
 # Rebooting sequence
 echo "\nRebooting, abort by pressing 'CTRL + C'"
