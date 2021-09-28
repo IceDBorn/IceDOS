@@ -4,12 +4,12 @@ username=$(whoami)
 # Install necessary applications
 echo "Installing necessary applications..."
 apps=(
-"sudo pacman -S qemu"
-"sudo pacman -S libvirt"
-"sudo pacman -S edk2-ovmf"
-"sudo pacman -S virt-manager"
-"sudo pacman -S ebtables"
-"sudo pacman -S dnsmasq"
+"sudo pacman -S qemu --noconfirm"
+"sudo pacman -S libvirt --noconfirm"
+"sudo pacman -S edk2-ovmf --noconfirm"
+"sudo pacman -S virt-manager --noconfirm"
+"sudo pacman -S ebtables --noconfirm"
+"sudo pacman -S dnsmasq --noconfirm"
 "sudo systemctl enable libvirtd.service"
 "sudo systemctl start libvirtd.service"
 "sudo systemctl enable virtlogd.socket"
