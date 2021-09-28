@@ -49,15 +49,13 @@ echo "Setting up Single GPU Passthrough..."
 ./single-gpu-passthrough/setup.sh
 
 # nvm installer
-.nvm/setup.sh
+./nvm/setup.sh
 
 # Theme installer
-.kde-theme/setup.sh
-cd ..
+./kde-theme/setup.sh
 
 # Photoshop installer
-.photoshop/setup.sh
-cd ..
+./photoshop/setup.sh
 
 # Rebooting sequence
 echo "\nRebooting, abort by pressing 'CTRL + C'"
