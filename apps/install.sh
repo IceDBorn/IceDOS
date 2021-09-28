@@ -11,6 +11,7 @@ apps=(
 "sudo pacman -S libreoffice-fresh"
 "sudo pacman -S linux-zen"
 "sudo pacman -S linux-zen-headers"
+"sudo pacman -S mullvad-vpn"
 "sudo pacman -S noto-fonts-emoji"
 "sudo pacman -S npm"
 "sudo pacman -S nvidia-dkms"
