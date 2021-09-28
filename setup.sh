@@ -6,9 +6,12 @@ echo "Hello $username!"
 
 # Make child scripts executable
 echo "Marking child scripts as executables..."
-sudo chmod +x apps/install.sh zsh/plugins.sh  single-gpu-passthrough/setup.sh
+sudo chmod +x apps/install.sh zsh/plugins.sh  single-gpu-passthrough/setup.sh kde-theme/setup.sh
 
-# Generic applications installer
+# Theme installer
+.kde-theme/setup.sh
+
+# Applications installer
 echo "Installing applications..."
 ./apps/install.sh
 
@@ -21,7 +24,7 @@ sudo chsh -s /bin/zsh root
 sudo chsh -s /bin/zsh "$username"
 
 echo "Installing zsh theme..."
-mv zsh/promptline.sh ~/.promptline.sh
+cp zsh/promptline.sh ~/.promptline.sh
 
 echo "Running zsh for the first time..."
 zsh
@@ -33,12 +36,12 @@ mv ~/.zshrc.new ~/.zshrc
 
 # Kitty config installer
 echo "Installing kitty config..."
-mv apps/kitty.conf ~/.config/kitty.conf
+cp apps/kitty.conf ~/.config/kitty.conf
 
 # Pictures mover
-echo "Moving pictures to the Pictures directory..."
-mv pictures/arcolinux-hello.png ~/Pictures/.arcolinux-hello.png
-mv pictures/wallpaper.png ~/Pictures/.wallpaper.png
+echo "Adding pictures to the Pictures directory..."
+cp pictures/arcolinux-hello.png ~/Pictures/.arcolinux-hello.png
+cp pictures/wallpaper.png ~/Pictures/.wallpaper.png
 
 # Enable ssh
 echo "Enabling SSH..."
