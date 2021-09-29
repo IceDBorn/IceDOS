@@ -33,6 +33,7 @@ echo "Adding custom config to '~/.zshrc'..."
 cat ~/.zshrc zsh/zsh-custom-config.txt > ~/.zshrc.new
 mv ~/.zshrc ~/.zshrc.old
 mv ~/.zshrc.new ~/.zshrc
+sed -i 's/^plugins=(\(.*\)/plugins=(archlinux npm nvm sudo systemd zsh-autosuggestions zsh-better-npm-completion zsh-syntax-highlighting \1/' ~/.zshrc
 
 # Kitty config installer
 echo "\nInstalling kitty config..."

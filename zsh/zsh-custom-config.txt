@@ -3,7 +3,7 @@ source ~/.promptline.sh
 unsetopt PROMPT_SP
 
 # Enable installed plugins
-plugins=(archlinux git npm nvm sudo systemd zsh-autosuggestions zsh-better-npm-completion zsh-syntax-highlighting)
+plugins=(archlinux npm nvm sudo systemd zsh-autosuggestions zsh-better-npm-completion zsh-syntax-highlighting)
 
 alias chmod="sudo chmod"
 alias pacman="sudo pacman"
