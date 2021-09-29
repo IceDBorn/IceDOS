@@ -29,9 +29,36 @@ cpu=$(cat /proc/cpuinfo | grep vendor_id | sed 's/^.*: //' | sort -u)
 if [[ $cpu == *"AMD"* ]]; then
   echo "AMD CPU..."
   sudo sed -i 's/GRUB_CMDLINE_LINUX_DEFAULT="\(.*\)"/GRUB_CMDLINE_LINUX_DEFAULT="\1 amd_iommu=on video=efifb:off"/' /etc/default/grub
-else
+elif [[ $cpu == *"Intel"* ]]; then
   echo "INTEL CPU..."
   sudo sed -i 's/GRUB_CMDLINE_LINUX_DEFAULT="\(.*\)"/GRUB_CMDLINE_LINUX_DEFAULT="\1 intel_iommu=on video=efifb:off"/' /etc/default/grub
+else
+  HEIGHT=10
+  WIDTH=30
+  CHOICE_HEIGHT=1
+  BACKTITLE="Grub configuration"
+  TITLE="Could not identify CPU model"
+  MENU="Choose your CPU model:"
+
+  OPTIONS=(1 "AMD" 2 "Intel")
+
+  CHOICE=$(dialog --clear \
+                  --backtitle "$BACKTITLE" \
+                  --title "$TITLE" \
+                  --menu "$MENU" \
+                  $HEIGHT $WIDTH $CHOICE_HEIGHT \
+                  "${OPTIONS[@]}" \
+                  2>&1 >/dev/tty)
+
+  clear
+  case $CHOICE in
+          1)
+              sudo sed -i 's/GRUB_CMDLINE_LINUX_DEFAULT="\(.*\)"/GRUB_CMDLINE_LINUX_DEFAULT="\1 amd_iommu=on video=efifb:off"/' /etc/default/grub
+              ;;
+          2)
+              sudo sed -i 's/GRUB_CMDLINE_LINUX_DEFAULT="\(.*\)"/GRUB_CMDLINE_LINUX_DEFAULT="\1 intel_iommu=on video=efifb:off"/' /etc/default/grub
+              ;;
+  esac
 fi
 sudo grub-mkconfig -o /boot/grub/grub.cfg
 
