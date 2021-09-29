@@ -29,6 +29,9 @@ zsh
 echo "Installing Oh My Zsh..."
 sh -c "$(curl -fsSL https://raw.githubusercontent.com/ohmyzsh/ohmyzsh/master/tools/install.sh)"
 
+echo "Installing Oh My Zsh plugins..."
+./zsh/plugins.sh
+
 echo "Adding custom config to '~/.zshrc'..."
 cat ~/.zshrc zsh/zsh-custom-config.txt > ~/.zshrc.new
 mv ~/.zshrc ~/.zshrc.old
