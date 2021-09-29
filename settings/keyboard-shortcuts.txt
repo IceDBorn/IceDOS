@@ -1,9 +1,0 @@
-kitty | Super + X
-dolphin | Super + E
-kitty zsh -c "bpytop" | Super + T
-qalculate-gtk | Super + `
-mullvad connect | Super + M
-mullvad disconnect | CTRL + ALT + M
-subl | Super + S
-virsh -c qemu:///system start win10 | Super + W
-flameshot gui | Print
