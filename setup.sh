@@ -26,6 +26,9 @@ cp zsh/promptline.sh ~/.promptline.sh
 echo "Running zsh for the first time..."
 zsh
 
+echo "Installing Oh My Zsh..."
+sh -c "$(curl -fsSL https://raw.githubusercontent.com/ohmyzsh/ohmyzsh/master/tools/install.sh)"
+
 echo "Adding custom config to '~/.zshrc'..."
 cat ~/.zshrc zsh/zsh-custom-config.txt > ~/.zshrc.new
 mv ~/.zshrc ~/.zshrc.old
@@ -49,7 +52,8 @@ echo "Setting up Single GPU Passthrough..."
 ./single-gpu-passthrough/setup.sh
 
 # nvm installer
-./nvm/setup.sh
+echo "Installing nvm"
+curl -o- https://raw.githubusercontent.com/nvm-sh/nvm/v0.38.0/install.sh | bash
 
 # Theme installer
 ./kde-theme/setup.sh
