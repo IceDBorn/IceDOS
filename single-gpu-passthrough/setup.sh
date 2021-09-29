@@ -24,33 +24,15 @@ do
 done
 
 # Edit grub
-HEIGHT=10
-WIDTH=30
-CHOICE_HEIGHT=1
-BACKTITLE="Grub configuration"
-TITLE="CPU"
-MENU="Choose your cpu model:"
-
-OPTIONS=(1 "AMD" 2 "Intel")
-
-CHOICE=$(dialog --clear \
-                --backtitle "$BACKTITLE" \
-                --title "$TITLE" \
-                --menu "$MENU" \
-                $HEIGHT $WIDTH $CHOICE_HEIGHT \
-                "${OPTIONS[@]}" \
-                2>&1 >/dev/tty)
-
-clear
-case $CHOICE in
-        1)
-            sudo sed -i 's/GRUB_CMDLINE_LINUX_DEFAULT="\(.*\)"/GRUB_CMDLINE_LINUX_DEFAULT="\1 amd_iommu=on video=efifb:off"/' /etc/default/grub
-            ;;
-        2)
-            sudo sed -i 's/GRUB_CMDLINE_LINUX_DEFAULT="\(.*\)"/GRUB_CMDLINE_LINUX_DEFAULT="\1 intel_iommu=on video=efifb:off"/' /etc/default/grub
-            ;;
-esac
-
+echo "Editing grub..."
+cpu=$(cat /proc/cpuinfo | grep vendor_id | sed 's/^.*: //' | sort -u)
+if [[ $cpu == *"AMD"* ]]; then
+  echo "AMD CPU..."
+  sudo sed -i 's/GRUB_CMDLINE_LINUX_DEFAULT="\(.*\)"/GRUB_CMDLINE_LINUX_DEFAULT="\1 amd_iommu=on video=efifb:off"/' /etc/default/grub
+else
+  echo "INTEL CPU..."
+  sudo sed -i 's/GRUB_CMDLINE_LINUX_DEFAULT="\(.*\)"/GRUB_CMDLINE_LINUX_DEFAULT="\1 intel_iommu=on video=efifb:off"/' /etc/default/grub
+fi
 sudo grub-mkconfig -o /boot/grub/grub.cfg
 
 # Install hooks
@@ -72,7 +54,7 @@ sudo chmod +x /etc/libvirt/hooks/qemu.d/"$input"/release/end/revert.sh
 echo "Adding $username to the kvm and libvirt groups..."
 sudo usermod -a -G kvm,libvirt "$username"
 
-echo "Do not forget to add above tweaks to the VM xml through Virtual Machine Manager..."
+echo "Do not forget to add above tweaks to the VM xml after installing it, using Virtual Machine Manager..."
 echo "Press any button to view the xml tweaks..."
 read -r -n 1 -s
 subl single-gpu-passthrough/xml-editing.txt
