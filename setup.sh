@@ -8,13 +8,13 @@ echo "Hello $username!"
 echo "Marking child scripts as executables..."
 sudo chmod +x apps/install.sh kde-theme/setup.sh photoshop/setup.sh settings/settings.sh single-gpu-passthrough/setup.sh zsh/plugins.sh
 
-# Settings changer
-echo "Changing settings..."
-./settings/settings.sh
-
 # Applications installer
 echo "Installing applications..."
 ./apps/install.sh
+
+# Settings changer
+echo "Changing settings..."
+./settings/settings.sh
 
 # Zsh installer
 echo "Setting zsh as the default shell..."
