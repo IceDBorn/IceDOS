@@ -41,6 +41,7 @@ sed -i 's/^plugins=(\(.*\)/plugins=(archlinux npm nvm sudo systemd zsh-autosugge
 
 # Kitty config installer
 echo "Installing kitty config..."
+mkdir -p ~/.config/kitty/
 cp apps/kitty.conf ~/.config/kitty/kitty.conf
 
 # Pictures mover
