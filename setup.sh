@@ -6,7 +6,7 @@ echo "Hello $username!"
 
 # Make child scripts executable
 echo "Marking child scripts as executables..."
-sudo chmod +x apps/install.sh kde-theme/setup.sh nvm/setup.sh single-gpu-passthrough/setup.sh zsh/plugins.sh
+sudo chmod +x apps/install.sh kde-theme/setup.sh photoshop/setup.sh single-gpu-passthrough/setup.sh zsh/plugins.sh
 
 # Applications installer
 echo "Installing applications..."

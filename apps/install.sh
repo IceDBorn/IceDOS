@@ -27,6 +27,7 @@ apps=(
 "sudo pacman -S ungoogled-chromium --noconfirm"
 "sudo pacman -S vlc --noconfirm"
 "sudo pacman -S wine --noconfirm"
+"sudo pacman -S winetricks --noconfirm"
 "sudo pacman -S zsh --noconfirm"
 "yay -S cadmus-appimage --noconfirm"
 )
