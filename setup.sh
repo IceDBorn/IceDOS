@@ -13,9 +13,6 @@ echo "Installing applications..."
 ./apps/install.sh
 
 # Zsh installer
-echo "Installing zsh plugins..."
-./zsh/zsh-plugins.sh
-
 echo "Setting zsh as the default shell..."
 sudo chsh -s /bin/zsh root
 sudo chsh -s /bin/zsh "$username"
