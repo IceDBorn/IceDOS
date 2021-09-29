@@ -36,7 +36,7 @@ mv ~/.zshrc.new ~/.zshrc
 
 # Kitty config installer
 echo "\nInstalling kitty config..."
-cp apps/kitty.conf ~/.config/kitty/kitty.conf
+cp apps/kitty.conf ~/.config/kitty
 
 # Pictures mover
 echo "\nAdding pictures to the Pictures directory..."
