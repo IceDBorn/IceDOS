@@ -38,10 +38,10 @@ apps=(
 "sudo pacman -S winetricks --noconfirm"
 "sudo pacman -S zsh --noconfirm"
 "yay -S cadmus-appimage --noconfirm"
-"sudo pacman -Rd garuda-welcome"
-"sudo pacman -Rd htop"
-"sudo pacman -Rd konsole"
-"sudo pacman -Rd micro"
+"sudo pacman -Rd garuda-welcome --noconfirm"
+"sudo pacman -Rd htop --noconfirm"
+"sudo pacman -Rd konsole --noconfirm"
+"sudo pacman -Rd micro --noconfirm"
 )
 
 # Install every app using commands inside of array

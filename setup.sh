@@ -63,6 +63,7 @@ curl -o- https://raw.githubusercontent.com/nvm-sh/nvm/v0.38.0/install.sh | bash
 
 # Theme installer
 ./kde-theme/setup.sh
+sudo mkdir -p /etc/sddm.conf.d/
 sudo cp kde-theme/kde_settings.conf /etc/sddm.conf.d/kde_settings.conf
 
 # Photoshop installer
