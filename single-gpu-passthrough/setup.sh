@@ -24,11 +24,33 @@ do
 done
 
 # Edit grub
-echo "Editing grub configuration file..."
-echo "Add 'amd_iommu=on video=efifb:off' for AMD or 'intel_iommu=on video=efifb:off' for Intel to 'GRUB_CMDLINE_LINUX_DEFAULT='..."
-echo "Press any button when you have finished editing the grub configuration file..."
-sudo subl /etc/default/grub
-read -r -n 1 -s
+HEIGHT=10
+WIDTH=30
+CHOICE_HEIGHT=1
+BACKTITLE="Grub configuration"
+TITLE="CPU"
+MENU="Choose your cpu model:"
+
+OPTIONS=(1 "AMD" 2 "Intel")
+
+CHOICE=$(dialog --clear \
+                --backtitle "$BACKTITLE" \
+                --title "$TITLE" \
+                --menu "$MENU" \
+                $HEIGHT $WIDTH $CHOICE_HEIGHT \
+                "${OPTIONS[@]}" \
+                2>&1 >/dev/tty)
+
+clear
+case $CHOICE in
+        1)
+            sudo sed -i 's/GRUB_CMDLINE_LINUX_DEFAULT="\(.*\)"/GRUB_CMDLINE_LINUX_DEFAULT="\1 amd_iommu=on video=efifb:off"/' /etc/default/grub
+            ;;
+        2)
+            sudo sed -i 's/GRUB_CMDLINE_LINUX_DEFAULT="\(.*\)"/GRUB_CMDLINE_LINUX_DEFAULT="\1 intel_iommu=on video=efifb:off"/' /etc/default/grub
+            ;;
+esac
+
 sudo grub-mkconfig -o /boot/grub/grub.cfg
 
 # Install hooks
