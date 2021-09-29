@@ -1,0 +1,10 @@
+[Desktop Entry]
+Categories=Utility;
+Exec=cadmus
+Icon=cadmus
+Name=cadmus
+NoDisplay=false
+Terminal=false
+Type=Application
+Version=1.0
+X-AppImage-Version=.glibc2.3.4

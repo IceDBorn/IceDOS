@@ -1,0 +1,8 @@
+[Desktop Entry]
+	Type=Application
+	Version=3.85.6
+	Name=tutanota-desktop
+	Comment=tutanota-desktop startup script
+	Exec=/opt/tutanota-desktop/tutanota-desktop -a
+	StartupNotify=false
+	Terminal=false
