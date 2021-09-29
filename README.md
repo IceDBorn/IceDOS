@@ -3,7 +3,7 @@
 # Install
 
 ```bash 
-git clone https://github.com/IceDBorn/garuda-linux-optimal-setup.git && cd garuda-linux-optimal-setup && ./install.sh
+git clone https://github.com/IceDBorn/garuda-linux-optimal-setup.git && cd garuda-linux-optimal-setup && ./setup.sh
 ```
 
 # Edit
