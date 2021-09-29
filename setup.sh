@@ -41,7 +41,7 @@ sed -i 's/^plugins=(\(.*\)/plugins=(archlinux npm nvm sudo systemd zsh-autosugge
 
 # Kitty config installer
 echo "Installing kitty config..."
-cp apps/kitty.conf ~/.config/kitty
+cp apps/kitty.conf ~/.config/kitty/kitty.conf
 
 # Pictures mover
 echo "Adding pictures to the Pictures directory..."
@@ -62,6 +62,7 @@ curl -o- https://raw.githubusercontent.com/nvm-sh/nvm/v0.38.0/install.sh | bash
 
 # Theme installer
 ./kde-theme/setup.sh
+sudo cp kde-theme/kde_settings.conf /etc/sddm.conf.d/kde_settings.conf
 
 # Photoshop installer
 ./photoshop/setup.sh
