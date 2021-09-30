@@ -44,6 +44,11 @@ echo "Installing kitty config..."
 mkdir -p ~/.config/kitty/
 cp apps/kitty.conf ~/.config/kitty/kitty.conf
 
+# Flameshot config installer
+echo "Installing flameshot config..."
+mkdir -p ~/.config/flameshot/
+cp apps/flameshot.ini ~/.config/kitty/flameshot.ini
+
 # Pictures mover
 echo "Adding pictures to the Pictures directory..."
 cp pictures/arcolinux-hello.png ~/Pictures/.arcolinux-hello.png
