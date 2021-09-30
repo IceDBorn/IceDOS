@@ -5,7 +5,7 @@ sed -i '/KDE/a SingleClick=false' ~/.config/kdeglobals
 
 # Add autostart items
 sudo rm -rfv ~/.config/autostart/*
-cp -a settings/autostart ~/.config/autostart
+cp -a settings/autostart ~/.config/
 
 # Remove guest account
 sudo pacman -Rd systemd-guest-user
