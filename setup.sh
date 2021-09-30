@@ -6,7 +6,7 @@ echo "Hello $username!"
 
 # Make child scripts executable
 echo "Marking child scripts as executables..."
-sudo chmod +x apps/apps.sh kde-theme/setup.sh photoshop/setup.sh settings/settings.sh single-gpu-passthrough/setup.sh zsh/plugins.sh
+sudo chmod +x apps/apps.sh apps/configs.sh kde-theme/setup.sh photoshop/setup.sh settings/settings.sh single-gpu-passthrough/setup.sh zsh/plugins.sh
 
 # Applications installer
 echo "Installing applications..."
@@ -39,15 +39,8 @@ mv ~/.zshrc ~/.zshrc.old
 mv ~/.zshrc.new ~/.zshrc
 sed -i 's/^plugins=(\(.*\)/plugins=(archlinux npm nvm sudo systemd zsh-autosuggestions zsh-better-npm-completion zsh-syntax-highlighting \1/' ~/.zshrc
 
-# Kitty config installer
-echo "Installing kitty config..."
-mkdir -p ~/.config/kitty/
-cp apps/kitty.conf ~/.config/kitty/kitty.conf
-
-# Flameshot config installer
-echo "Installing flameshot config..."
-mkdir -p ~/.config/flameshot/
-cp apps/flameshot.ini ~/.config/kitty/flameshot.ini
+echo "Installing app configs..."
+./apps/configs.sh
 
 # Pictures mover
 echo "Adding pictures to the Pictures directory..."

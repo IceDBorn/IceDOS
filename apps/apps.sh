@@ -8,7 +8,6 @@ apps=(
 "sudo pacman -S garuda-assistant --noconfirm"
 "sudo pacman -S garuda-boot-options --noconfirm"
 "sudo pacman -S godot-mono --noconfirm"
-"sudo pacman -S goverlay --noconfirm"
 "sudo pacman -S gparted --noconfirm"
 "sudo pacman -S gwe --noconfirm"
 "sudo pacman -S jetbrains-toolbox --noconfirm"
