@@ -61,17 +61,29 @@ uninstall=(
 # Install pacman packages
 for command in "${!pacman[@]}"
 do
-  eval sudo pacman -S "${pacman[command]}" --noconfirm
+  echo "${pacman[command]}" | tee -a temp >/dev/null
 done
+tr '\n' ' ' < temp > temp2
+packagesList=$(cat temp2)
+eval sudo pacman -S "$packagesList" --noconfirm
+rm -rf temp temp2
 
 # Install yay packages
 for command in "${!yay[@]}"
 do
-  eval yay -S "${yay[command]}" --noconfirm
+  echo "${yay[command]}" | tee -a temp >/dev/null
 done
+tr '\n' ' ' < temp > temp2
+packagesList=$(cat temp2)
+eval yay -S "$packagesList" --noconfirm
+rm -rf temp temp2
 
 # Uninstall packages
 for command in "${!uninstall[@]}"
 do
-  eval sudo pacman -Rd "${uninstall[command]}" --noconfirm
+  echo "${uninstall[command]}" | tee -a temp >/dev/null
 done
+tr '\n' ' ' < temp > temp2
+packagesList=$(cat temp2)
+eval sudo pacman -Rd "$packagesList" --noconfirm
+rm -rf temp temp2
