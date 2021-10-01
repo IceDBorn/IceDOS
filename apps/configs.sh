@@ -1,3 +1,5 @@
+#!/bin/bash
+
 # Kitty config installer
 echo "Installing kitty config..."
 mkdir -p ~/.config/kitty/

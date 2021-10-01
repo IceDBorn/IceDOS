@@ -1,54 +1,74 @@
-# Add your apps install commands into this array
-apps=(
-"sudo pacman -S --needed git base-devel yay --noconfirm"
-"sudo pacman -S bpytop --noconfirm"
-"sudo pacman -S etcher --noconfirm"
-"sudo pacman -S flameshot --noconfirm"
-"sudo pacman -S gamemode --noconfirm"
-"sudo pacman -S garuda-assistant --noconfirm"
-"sudo pacman -S garuda-boot-options --noconfirm"
-"sudo pacman -S godot-mono --noconfirm"
-"sudo pacman -S gparted --noconfirm"
-"sudo pacman -S gwe --noconfirm"
-"sudo pacman -S jetbrains-toolbox --noconfirm"
-"sudo pacman -S kcalc --noconfirm"
-"sudo pacman -S kdeconnect --noconfirm"
-"sudo pacman -S kitty --noconfirm"
-"sudo pacman -S lib32-mangohud --noconfirm"
-"sudo pacman -S libreoffice-fresh --noconfirm"
-"sudo pacman -S linux-zen --noconfirm"
-"sudo pacman -S linux-zen-headers --noconfirm"
-"sudo pacman -S lutris --noconfirm"
-"sudo pacman -S mangohud --noconfirm"
-"sudo pacman -S mullvad-vpn --noconfirm"
-"sudo pacman -S noto-fonts-emoji --noconfirm"
-"sudo pacman -S npm --noconfirm"
-"sudo pacman -S nvidia-dkms --noconfirm"
-"sudo pacman -S papirus-icon-theme --noconfirm"
-"sudo pacman -S protontricks --noconfirm"
-"sudo pacman -S qbittorrent --noconfirm"
-"sudo pacman -S signal-desktop --noconfirm"
-"sudo pacman -S steam --noconfirm"
-"sudo pacman -S steamtinkerlaunch --noconfirm"
-"sudo pacman -S stremio --noconfirm"
-"sudo pacman -S sublime-text-4 --noconfirm"
-"sudo pacman -S tree --noconfirm"
-"sudo pacman -S tutanota-desktop --noconfirm"
-"sudo pacman -S ungoogled-chromium --noconfirm"
-"sudo pacman -S vlc --noconfirm"
-"sudo pacman -S wine --noconfirm"
-"sudo pacman -S winetricks --noconfirm"
-"sudo pacman -S zsh --noconfirm"
-"yay -S cadmus-appimage --noconfirm"
-"yay -S sunshine-git --noconfirm"
-"sudo pacman -Rd garuda-welcome --noconfirm"
-"sudo pacman -Rd htop --noconfirm"
-"sudo pacman -Rd konsole --noconfirm"
-"sudo pacman -Rd micro --noconfirm"
+#!/bin/bash
+
+# Add packages to their corresponding array
+pacman=(
+"--needed git base-devel yay"
+"bpytop"
+"etcher"
+"flameshot"
+"gamemode"
+"garuda-assistant"
+"garuda-boot-options"
+"godot-mono"
+"gparted"
+"gwe"
+"jetbrains-toolbox"
+"kcalc"
+"kdeconnect"
+"kitty"
+"lib32-mangohud"
+"libreoffice-fresh"
+"linux-zen"
+"linux-zen-headers"
+"lutris"
+"mangohud"
+"mullvad-vpn"
+"noto-fonts-emoji"
+"npm"
+"nvidia-dkms"
+"papirus-icon-theme"
+"protontricks"
+"qbittorrent"
+"signal-desktop"
+"steam"
+"steamtinkerlaunch"
+"stremio"
+"sublime-text-4"
+"tree"
+"tutanota-desktop"
+"ungoogled-chromium"
+"vlc"
+"wine"
+"winetricks"
+"zsh"
 )
 
-# Install every app using commands inside of array
-for command in "${!apps[@]}"
+yay=(
+"cadmus-appimage"
+"sunshine-git"
+)
+
+uninstall=(
+"garuda-welcome"
+"htop"
+"konsole"
+"micro"
+)
+
+# Install pacman packages
+for command in "${!pacman[@]}"
 do
-  eval "${apps[command]}"
+  eval sudo pacman -S "${pacman[command]}" --noconfirm
+done
+
+# Install yay packages
+for command in "${!yay[@]}"
+do
+  eval yay -S "${yay[command]}" --noconfirm
+done
+
+# Uninstall packages
+for command in "${!uninstall[@]}"
+do
+  eval sudo pacman -Rd "${uninstall[command]}" --noconfirm
 done

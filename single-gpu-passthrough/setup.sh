@@ -1,3 +1,5 @@
+#!/bin/bash
+
 # Variables
 username=$(whoami)
 
