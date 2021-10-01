@@ -1,0 +1,5 @@
+
+# My mounts
+UUID=4a8bd4b6-e5c9-4e98-a7ca-31c907967461 /home/icedborn/Games	btrfs	defaults,noatime,space_cache,autodefrag,compress=zstd 0 0
+UUID=4b2d6cf0-f73a-4b4a-820a-db5b5aa17efa /home/icedborn/Storage	btrfs	defaults,noatime,space_cache,autodefrag,compress=zstd 0 0
+UUID=52940AE4940ACB05 /home/icedborn/Windows	ntfs	defaults,noatime 0 0

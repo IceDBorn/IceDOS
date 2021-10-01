@@ -14,3 +14,8 @@ sudo pacman -Rd systemd-guest-user
 
 # Enable sunshine service
 systemctl --machine="$username"@.host --user enable sunshine
+
+# Auto mount disks on startup
+cat /etc/fstab settings/fstab > ~/.fstab.new
+sudo mv /etc/fstab /etc/fstab.old
+sudo mv ~/.fstab.new /etc/fstab
