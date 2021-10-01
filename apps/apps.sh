@@ -74,27 +74,24 @@ for command in "${!pacman[@]}"
 do
   echo "${pacman[command]}" | tee -a temp >/dev/null
 done
-tr '\n' ' ' < temp > temp2
-packagesList=$(cat temp2)
-eval sudo pacman -S "$packagesList" --noconfirm
-rm -rf temp temp2
+packagesList=$(cat temp)
+sudo pacman -S $packagesList --noconfirm
+rm -rf temp
 
 # Install yay packages
 for command in "${!yay[@]}"
 do
   echo "${yay[command]}" | tee -a temp >/dev/null
 done
-tr '\n' ' ' < temp > temp2
-packagesList=$(cat temp2)
-eval yay -S "$packagesList" --noconfirm
-rm -rf temp temp2
+packagesList=$(cat temp)
+yay -S $packagesList --noconfirm
+rm -rf temp
 
 # Uninstall packages
 for command in "${!uninstall[@]}"
 do
   echo "${uninstall[command]}" | tee -a temp >/dev/null
 done
-tr '\n' ' ' < temp > temp2
-packagesList=$(cat temp2)
-eval sudo pacman -Rd "$packagesList" --noconfirm
+packagesList=$(cat temp)
+sudo pacman -Rd $packagesList --noconfirm
 rm -rf temp temp2
