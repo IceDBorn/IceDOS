@@ -40,7 +40,7 @@ apps=(
 "sudo pacman -S winetricks --noconfirm"
 "sudo pacman -S zsh --noconfirm"
 "yay -S cadmus-appimage --noconfirm"
-"yay -S sunshine --noconfirm"
+"yay -S sunshine-git --noconfirm"
 "sudo pacman -Rd garuda-welcome --noconfirm"
 "sudo pacman -Rd htop --noconfirm"
 "sudo pacman -Rd konsole --noconfirm"
