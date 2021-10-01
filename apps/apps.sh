@@ -3,6 +3,8 @@
 # Add packages to their corresponding array
 pacman=(
 "--needed git base-devel yay"
+"bluedevil"
+"bluez-utils"
 "bpytop"
 "etcher"
 "flameshot"
