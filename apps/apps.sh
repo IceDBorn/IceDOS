@@ -30,6 +30,7 @@ pacman=(
 "nvidia-dkms"
 "papirus-icon-theme"
 "protontricks"
+"pulseaudio-bluetooth"
 "qbittorrent"
 "signal-desktop"
 "steam"

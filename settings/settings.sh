@@ -5,6 +5,9 @@ username=$(whoami)
 # Clicking on files or folders selects them instead of opening them
 sed -i '/KDE/a SingleClick=false' ~/.config/kdeglobals
 
+# Enables bluetooth headphones
+sed -i '/General/a Enable=Source,Sink,Media,Socket' /etc/bluetooth/main.conf
+
 # Add autostart items
 cp -a settings/autostart ~/.config/
 
