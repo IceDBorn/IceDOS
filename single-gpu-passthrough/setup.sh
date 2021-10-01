@@ -4,18 +4,11 @@
 username=$(whoami)
 
 # Install necessary applications
-echo "Installing necessary applications..."
+echo "Installing necessary applications for single GPU passthrough..."
 apps=(
-"sudo pacman -S qemu --noconfirm"
-"sudo pacman -S libvirt --noconfirm"
-"sudo pacman -S edk2-ovmf --noconfirm"
-"sudo pacman -S virt-manager --noconfirm"
-"sudo pacman -S ebtables --noconfirm"
-"sudo pacman -S dnsmasq --noconfirm"
-"sudo systemctl enable libvirtd.service"
-"sudo systemctl start libvirtd.service"
-"sudo systemctl enable virtlogd.socket"
-"sudo systemctl start virtlogd.socket"
+"sudo pacman -S qemu libvirt edk2-ovmf virt-manager ebtables dnsmasq --noconfirm"
+"sudo systemctl enable libvirtd.service virtlogd.socket"
+"sudo systemctl start libvirtd.service virtlogd.socket"
 "sudo virsh net-autostart default"
 "sudo virsh net-start default"
 )
