@@ -3,11 +3,11 @@
 # Install
 
 ```bash 
-git clone https://github.com/IceDBorn/garuda-linux-optimal-setup.git && cd garuda-linux-optimal-setup && ./setup.sh
+git clone https://github.com/IceDBorn/garuda-linux-setup.git && cd garuda-linux-setup && ./setup.sh
 ```
 
 # Edit
 
 ```bash
-git clone https://github.com/IceDBorn/garuda-linux-optimal-setup.git && cd garuda-linux-optimal-setup && dolphin .
+git clone https://github.com/IceDBorn/garuda-linux-setup.git && cd garuda-linux-setup && dolphin .
 ```
