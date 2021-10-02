@@ -59,6 +59,7 @@ pacman=(
 
 yay=(
 "cadmus-appimage"
+"rar"
 "sunshine-git"
 )
 
