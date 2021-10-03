@@ -44,6 +44,7 @@ pacman=(
 "pulseaudio-bluetooth"
 "python-pip"
 "qbittorrent"
+"rocketchat-desktop"
 "signal-desktop"
 "steam"
 "steamtinkerlaunch"
