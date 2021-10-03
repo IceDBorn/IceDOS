@@ -55,6 +55,7 @@ pacman=(
 "vlc"
 "wine"
 "winetricks"
+"xpadneo-dkms"
 "zsh"
 )
 
@@ -98,3 +99,14 @@ done
 packagesList=$(cat temp)
 sudo pacman -Rd $packagesList --noconfirm
 rm -rf temp temp2
+
+# Install proton ge
+echo "Installing Proton GE..."
+sudo pip3 install protonup
+protonup -d ~/.steam/root/compatibilitytools.d/
+protonup -y
+
+# Installing RPCS3
+echo "Installing RPCS3..."
+curl -JLO --create-dirs --output-dir ~/.local/share/rpcs3 https://rpcs3.net/latest-appimage
+chmod a+x ~/.local/share/rpcs3/rpcs3-*_linux64.AppImage

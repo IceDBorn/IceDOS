@@ -22,12 +22,6 @@ cat /etc/fstab settings/fstab > ~/.fstab.new
 sudo mv /etc/fstab /etc/fstab.old
 sudo mv ~/.fstab.new /etc/fstab
 
-# Install proton ge
-echo "Installing Proton GE..."
-sudo pip3 install protonup
-protonup -d ~/.steam/root/compatibilitytools.d/
-protonup -y
-
 # Maximize nvidia GPU power limit on startup
 echo "Maximizing GPU power limit..."
 sudo cp settings/nv-power-limit.sh /usr/local/sbin/nv-power-limit.sh
@@ -38,3 +32,6 @@ sudo chmod 644 /usr/local/etc/systemd/nv-power-limit.service
 sudo ln -s /usr/local/etc/systemd/nv-power-limit.service /etc/systemd/system/nv-power-limit.service
 sudo systemctl start nv-power-limit.service
 sudo systemctl enable nv-power-limit.service
+
+# Enable Signal's tray icon
+cp settings/autostart/signal-desktop.desktop ~/.local/share/applications/signal-desktop.desktop
