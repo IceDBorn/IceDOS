@@ -42,6 +42,7 @@ pacman=(
 "npm"
 "nvidia-dkms"
 "papirus-icon-theme"
+"pcsx2"
 "protontricks"
 "pulseaudio-bluetooth"
 "python-pip"
