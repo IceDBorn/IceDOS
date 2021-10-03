@@ -1,0 +1,10 @@
+[Desktop Entry]
+Categories=Audio;Music;Player;AudioVideo;
+Comment=A universal soundboard that uses PulseAudio modules or PipeWire linking
+Exec=/opt/soundux/soundux
+GenericName=Soundboard
+Icon=soundux
+Name=Soundux
+Terminal=false
+Type=Application
+Version=1.0

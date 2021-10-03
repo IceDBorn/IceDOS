@@ -46,6 +46,7 @@ pacman=(
 "qbittorrent"
 "rocketchat-desktop"
 "signal-desktop"
+"soundux"
 "steam"
 "steamtinkerlaunch"
 "stremio"
