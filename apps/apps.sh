@@ -42,6 +42,7 @@ pacman=(
 "papirus-icon-theme"
 "protontricks"
 "pulseaudio-bluetooth"
+"python-pip"
 "qbittorrent"
 "signal-desktop"
 "steam"
@@ -59,6 +60,7 @@ pacman=(
 
 yay=(
 "cadmus-appimage"
+"moonlight-qt"
 "rar"
 "sunshine-git"
 )

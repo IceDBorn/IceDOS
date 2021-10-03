@@ -21,3 +21,8 @@ systemctl --machine="$username"@.host --user enable sunshine
 cat /etc/fstab settings/fstab > ~/.fstab.new
 sudo mv /etc/fstab /etc/fstab.old
 sudo mv ~/.fstab.new /etc/fstab
+
+# Install proton ge
+sudo pip3 install protonup
+protonup -d ~/.steam/root/compatibilitytools.d/
+protonup -y
