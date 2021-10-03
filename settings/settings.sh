@@ -37,7 +37,7 @@ sudo systemctl enable nv-power-limit.service
 
 # Enable Signal's tray icon
 echo "Enabling signal's tray icon..."
-cp settings/autostart/signal-desktop.desktop ~/.local/share/applications/signal-desktop.desktop
+sudo cp settings/autostart/signal-desktop.desktop ~/.local/share/applications/signal-desktop.desktop
 
 # Set hard/soft memlock limits to 2 GBs (required by RPCS3)
 echo "Setting hard/soft memlock limits to 2 GBs..."
@@ -64,5 +64,9 @@ echo "Enabling ssh..."
 sudo systemctl enable sshd
 
 # Default steam to start to tray
-echo "Defaulting steam to star to tray..."
+echo "Defaulting steam to start to tray..."
 sudo cp settings/autostart/steam.desktop ~/.local/share/applications/steam.desktop
+
+# Default soundux to start to tray
+echo "Defaulting soundux to start to tray..."
+sudo cp settings/autostart/soundux.desktop ~/.local/share/applications/soundux.desktop

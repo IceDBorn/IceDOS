@@ -1,7 +1,7 @@
 [Desktop Entry]
 Categories=Audio;Music;Player;AudioVideo;
 Comment=A universal soundboard that uses PulseAudio modules or PipeWire linking
-Exec=/opt/soundux/soundux
+Exec=/opt/soundux/soundux --hidden
 GenericName=Soundboard
 Icon=soundux
 Name=Soundux
