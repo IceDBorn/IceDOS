@@ -1,10 +1,12 @@
 #!/bin/bash
 
+echo "Changing settings..."
+
 # Clicking on files or folders selects them instead of opening them
 echo "Editing single click behavior..."
 sed -i '/KDE/a SingleClick=false' ~/.config/kdeglobals
 
-# Enables bluetooth headphones
+# Enables bluetooth audio devices
 echo "Enabling headphones support for bluetooth..."
 sed -i '/General/a Enable=Source,Sink,Media,Socket' /etc/bluetooth/main.conf
 
@@ -34,4 +36,29 @@ sudo systemctl start nv-power-limit.service
 sudo systemctl enable nv-power-limit.service
 
 # Enable Signal's tray icon
+echo "Enabling signal's tray icon..."
 cp settings/autostart/signal-desktop.desktop ~/.local/share/applications/signal-desktop.desktop
+
+# Set hard/soft memlock limits to 2 GBs (required by RPCS3)
+echo "Setting hard/soft memlock limits to 2 GBs..."
+cat /etc/security/limits.conf settings/limits.txt > /etc/security/limits.conf.new
+mv /etc/security/limits.conf /etc/security/limits.conf.old
+mv /etc/security/limits.conf.new /etc/security/limits.conf
+
+# Pictures
+echo "Adding pictures to the Pictures directory..."
+cp pictures/arcolinux-hello.png ~/Pictures/.arcolinux-hello.png
+cp pictures/wallpaper.png ~/Pictures/.wallpaper.png
+
+# SDDM config
+echo "Installing SDDM config..."
+sudo mkdir -p /etc/sddm.conf.d/
+sudo cp kde-theme/kde_settings.conf /etc/sddm.conf.d/kde_settings.conf
+
+# nvm installer
+echo "Installing nvm..."
+curl -o- https://raw.githubusercontent.com/nvm-sh/nvm/v0.38.0/install.sh | bash
+
+# Enable ssh
+echo "Enabling ssh..."
+sudo systemctl enable sshd

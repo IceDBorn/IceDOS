@@ -3,6 +3,8 @@
 # Variables
 username=$(whoami)
 
+echo "Setting up Single GPU Passthrough..."
+
 # Install necessary applications
 echo "Installing necessary applications for single GPU passthrough..."
 apps=(
@@ -75,8 +77,3 @@ sudo chmod +x /etc/libvirt/hooks/qemu.d/"$input"/release/end/revert.sh
 
 echo "Adding $username to the kvm and libvirt groups..."
 sudo usermod -a -G kvm,libvirt "$username"
-
-echo "Do not forget to add above tweaks to the VM xml after installing it, using Virtual Machine Manager..."
-echo "Press any button to view the xml tweaks..."
-read -r -n 1 -s
-subl single-gpu-passthrough/xml-editing.txt

@@ -1,5 +1,7 @@
 #!/bin/bash
 
+echo "Installing applications..."
+
 # Add packages to their corresponding array
 pacman=(
 "--needed git base-devel yay"
