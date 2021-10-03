@@ -58,6 +58,7 @@ pacman=(
 "wine"
 "winetricks"
 "xpadneo-dkms"
+"youtube-dl"
 "zsh"
 )
 
