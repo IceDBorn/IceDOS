@@ -119,5 +119,7 @@ protonup -y
 
 # Installing RPCS3
 echo "Installing RPCS3..."
-curl -JLO --create-dirs --output-dir ~/.local/share/rpcs3 https://rpcs3.net/latest-appimage
-chmod a+x ~/.local/share/rpcs3/rpcs3-*_linux64.AppImage
+mkdir -p ~/.local/share/rpcs3/
+wget --content-disposition https://rpcs3.net/latest-appimage -O ~/.local/share/rpcs3/rpcs3.AppImage
+chmod a+x ~/.local/share/rpcs3/rpcs3.AppImage
+cp settings/desktop-files/rpcs3.desktop ~/.local/share/applications/rpcs3.desktop

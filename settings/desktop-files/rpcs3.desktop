@@ -1,0 +1,5 @@
+[Desktop Entry]
+Name=RPCS3
+Icon=rpcs3
+Exec=mangohud gamemoderun ~/.local/share/rpcs3/rpcs3.AppImage
+Type=Application
