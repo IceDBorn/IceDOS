@@ -71,6 +71,7 @@ pacman=(
 
 yay=(
 "cadmus-appimage"
+"emulsion-bin"
 "moonlight-qt"
 "rar"
 "sunshine-git"
