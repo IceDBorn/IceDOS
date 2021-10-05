@@ -1,4 +1,4 @@
 #!/bin/bash
 
 # Change "sddm" according to your display manager Ex. "gdm" for Gnome
-systemctl start sddm
+systemctl start display-manager
