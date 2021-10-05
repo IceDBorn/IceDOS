@@ -75,3 +75,7 @@ sudo cp settings/autostart/soundux.desktop ~/.local/share/applications/soundux.d
 echo "Installing custom desktop files..."
 sudo cp settings/desktop-files/duckstation-qt.desktop ~/.local/share/applications/duckstation-qt.desktop
 sudo cp settings/desktop-files/PCSX2.desktop ~/.local/share/applications/PCSX2.desktop
+
+# Generate GPG key
+echo "Generating GPG key..."
+gpg --gen-key
