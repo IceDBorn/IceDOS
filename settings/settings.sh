@@ -86,3 +86,8 @@ mkdir ~/Games
 mkdir ~/Storage
 sudo chown "$username":"$username" Games --recursive
 sudo chown "$username":"$username" Storage --recursive
+
+# Install KDE wallpaper engine plugin
+echo "Installing KDE wallpaper engine plugin..."
+git clone https://github.com/catsout/wallpaper-engine-kde-plugin.git
+plasmapkg2 -i wallpaper-engine-kde-plugin/plugin
