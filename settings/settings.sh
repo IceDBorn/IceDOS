@@ -1,5 +1,7 @@
 #!/bin/bash
 
+username=$(whoami)
+
 echo "Changing settings..."
 
 # Clicking on files or folders selects them instead of opening them
@@ -78,3 +80,9 @@ sudo cp -a settings/applications/ ~/.local/share/
 # Generate GPG key
 echo "Generating GPG key..."
 gpg --gen-key
+
+# Create folders for HDD mounts and change permissions
+mkdir ~/Games
+mkdir ~/Storage
+sudo chown "$username":"$username" Games --recursive
+sudo chown "$username":"$username" Storage --recursive
