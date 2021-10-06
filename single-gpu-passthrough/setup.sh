@@ -70,8 +70,8 @@ read -r -p "Type VM's name: " input
 echo "Installing start and revert scripts..."
 sudo mkdir -p /etc/libvirt/hooks/qemu.d/"$input"/prepare/begin
 sudo mkdir -p /etc/libvirt/hooks/qemu.d/"$input"/release/end
-sudo mv single-gpu-passthrough/start.sh /etc/libvirt/hooks/qemu.d/"$input"/prepare/begin/
-sudo mv single-gpu-passthrough/revert.sh /etc/libvirt/hooks/qemu.d/"$input"/release/end
+sudo cp single-gpu-passthrough/start.sh /etc/libvirt/hooks/qemu.d/"$input"/prepare/begin/start.sh
+sudo cp single-gpu-passthrough/revert.sh /etc/libvirt/hooks/qemu.d/"$input"/release/end/revert.sh
 sudo chmod +x /etc/libvirt/hooks/qemu.d/"$input"/prepare/begin/start.sh
 sudo chmod +x /etc/libvirt/hooks/qemu.d/"$input"/release/end/revert.sh
 
