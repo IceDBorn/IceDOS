@@ -47,6 +47,7 @@ pacman=(
 "paru"
 "pcsx2"
 "powerpill"
+"ppsspp"
 "protontricks"
 "pulseaudio-bluetooth"
 "python-pip"
