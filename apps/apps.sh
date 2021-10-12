@@ -21,6 +21,7 @@ pacman=(
 "bpytop"
 "duckstation-git"
 "etcher"
+"firefox-nightly"
 "flameshot"
 "gamemode"
 "garuda-assistant"
