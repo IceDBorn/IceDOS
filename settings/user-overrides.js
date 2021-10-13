@@ -1,0 +1,15 @@
+user_pref("webgl.disabled", false);
+user_pref("privacy.resistFingerprinting.letterboxing", false);
+user_pref("privacy.clearOnShutdown.cookies", false);
+user_pref("signon.rememberSignons", false);
+user_pref("browser.urlbar.suggest.history", false);
+user_pref("browser.urlbar.suggest.openpage", false);
+user_pref("browser.urlbar.suggest.topsites", false);
+user_pref("keyword.enabled", true);
+user_pref("media.videocontrols.picture-in-picture.video-toggle.enabled", false);
+user_pref("privacy.clearOnShutdown.offlineApps", false);
+user_pref("browser.compactmode.show", true);
+user_pref("browser.uidensity", 1);
+user_pref("dom.webgpu.enabled", true)
+user_pref("extensions.webextensions.uuids", "{\"doh-rollout@mozilla.org\":\"81f801b2-7711-4e6e-a729-f867ca124384\",\"formautofill@mozilla.org\":\"9f36a5e4-65e4-47a7-807c-095005bb9a75\",\"pictureinpicture@mozilla.org\":\"db7dff88-a4c2-4496-8cbe-431f76c3154e\",\"screenshots@mozilla.org\":\"d00d7332-0578-43e1-bed9-aacd4c8255e7\",\"webcompat-reporter@mozilla.org\":\"e5cc47cb-4d21-49e8-95b8-5e11f0801497\",\"webcompat@mozilla.org\":\"21e6d3cc-8681-4d60-8d0f-ebcad8b7b7cd\",\"default-theme@mozilla.org\":\"6d6aaa0e-3651-45d4-8eea-6c24ec3352ac\",\"google@search.mozilla.org\":\"3dd7f84e-a796-406c-b723-6a2f1c26506d\",\"amazondotcom@search.mozilla.org\":\"ebb651a7-23cd-46cb-bbaa-19b8180497aa\",\"wikipedia@search.mozilla.org\":\"5fbe4956-f83d-4751-ab88-6e1adb800028\",\"bing@search.mozilla.org\":\"aa1f6f31-8cc6-4259-bf4a-39d630c2bb58\",\"ddg@search.mozilla.org\":\"ff1360ee-0267-4f6f-a447-d39249a1d89f\",\"{446900e4-71c2-419f-a6a7-df9c091e268b}\":\"b1054b8e-fb51-4563-8648-ac43eca65bce\",\"{74145f27-f039-47ce-a470-a662b129930a}\":\"dfee9dbb-1d2e-4469-bbb3-d2aafa301b32\",\"CookieAutoDelete@kennydo.com\":\"390a6527-11a3-4921-b934-d17bc33efa0f\",\"addon@darkreader.org\":\"a6735a4a-2036-41d5-901a-24b09c2dd49f\",\"jid1-BoFifL9Vbdl2zQ@jetpack\":\"236e44c4-69e4-4bec-9cf8-9adc8781ea82\",\"jid1-KKzOGWgsW3Ao4Q@jetpack\":\"cec90616-baac-43a9-9dff-bf1797f77377\",\"jid1-MnnxcxisBPnSXQ@jetpack\":\"ce7cf852-e8b6-4516-b849-29ad5a0f97ef\",\"addon@simplelogin\":\"1788d67c-d8a9-40cc-b7fa-02c6fb932bf0\",\"{8540a13e-ae0f-4a36-a8a0-381bfe083ef8}\":\"9dd41db6-90ba-4d75-afe2-2e5397af081a\",\"uBlock0@raymondhill.net\":\"a0d8ab47-aca1-492f-8475-e7688ab9bb29\"}");
+user_pref("privacy.resistFingerprinting", false);
