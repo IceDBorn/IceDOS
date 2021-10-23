@@ -33,6 +33,7 @@ pacman=(
 "jetbrains-toolbox"
 "kcalc"
 "kdeconnect"
+"kdenlive"
 "kitty"
 "lib32-mangohud"
 "libreoffice-fresh"
