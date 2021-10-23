@@ -18,3 +18,4 @@ user_pref("privacy.resistFingerprinting", false);
 user_pref("privacy.resistFingerprinting.letterboxing", false);
 user_pref("signon.rememberSignons", false);
 user_pref("webgl.disabled", false);
+user_pref("media.peerconnection.enabled", true);
