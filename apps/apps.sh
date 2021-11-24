@@ -111,7 +111,7 @@ do
   echo "${uninstall[command]}" | tee -a temp >/dev/null
 done
 packagesList=$(cat temp)
-sudo pacman -Rd $packagesList --noconfirm
+sudo pacman -Rns $packagesList --noconfirm
 rm -rf temp temp2
 
 # Install proton ge
