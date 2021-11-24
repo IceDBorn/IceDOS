@@ -11,7 +11,7 @@ sudo chmod +x scripts/chmod.sh
 ./scripts/chmod.sh
 
 # KDE theme installer
-./cinnamon-theme/setup.sh
+./kde-theme/setup.sh
 
 # Applications installer
 ./apps/apps.sh
