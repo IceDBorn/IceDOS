@@ -17,9 +17,11 @@ pacman=(
 "adobe-source-han-serif-otc-fonts"
 "adobe-source-han-serif-tw-fonts"
 "blender"
+"blueberry"
 "bluedevil"
 "bluez-utils"
 "bpytop"
+"cinnamon"
 "duckstation-git"
 "etcher"
 "firefox-nightly"
@@ -42,6 +44,7 @@ pacman=(
 "lutris"
 "mangohud"
 "mullvad-vpn"
+"noisetorch"
 "noto-fonts-emoji"
 "npm"
 "nvidia-dkms"
@@ -73,7 +76,6 @@ pacman=(
 )
 
 yay=(
-"cadmus-appimage"
 "emulsion-bin"
 "moonlight-qt"
 "rar"
@@ -81,10 +83,13 @@ yay=(
 )
 
 uninstall=(
+"dolphin"
 "garuda-welcome"
 "htop"
+"kde"
 "konsole"
 "micro"
+"systemd-guest-user"
 )
 
 # Install pacman packages
@@ -111,7 +116,7 @@ do
   echo "${uninstall[command]}" | tee -a temp >/dev/null
 done
 packagesList=$(cat temp)
-sudo pacman -Rd $packagesList --noconfirm
+sudo pacman -Rns $packagesList --noconfirm
 rm -rf temp temp2
 
 # Install proton ge
