@@ -4,10 +4,6 @@ username=$(whoami)
 
 echo "Changing settings..."
 
-# Clicking on files or folders selects them instead of opening them
-echo "Editing single click behavior..."
-sed -i '/KDE/a SingleClick=false' ~/.config/kdeglobals
-
 # Enables bluetooth audio devices
 echo "Enabling headphones support for bluetooth..."
 sed -i '/General/a Enable=Source,Sink,Media,Socket' /etc/bluetooth/main.conf
@@ -15,10 +11,6 @@ sed -i '/General/a Enable=Source,Sink,Media,Socket' /etc/bluetooth/main.conf
 # Add autostart items
 echo "Adding autostart items..."
 cp -a settings/autostart ~/.config/
-
-# Remove guest account
-echo "Removing guest account..."
-sudo pacman -Rd systemd-guest-user
 
 # Auto mount disks on startup
 echo "Adding mounts to fstab..."
@@ -55,7 +47,7 @@ cp pictures/wallpaper.png ~/Pictures/.wallpaper.png
 # SDDM config
 echo "Installing SDDM config..."
 sudo mkdir -p /etc/sddm.conf.d/
-sudo cp kde-theme/kde_settings.conf /etc/sddm.conf.d/kde_settings.conf
+sudo cp kde-theme/sddm_settings.conf /etc/sddm.conf.d/sddm_settings.conf
 
 # nvm installer
 echo "Installing nvm..."
@@ -86,8 +78,3 @@ mkdir ~/Games
 mkdir ~/Storage
 sudo chown "$username":"$username" Games --recursive
 sudo chown "$username":"$username" Storage --recursive
-
-# Install KDE wallpaper engine plugin
-echo "Installing KDE wallpaper engine plugin..."
-git clone https://github.com/catsout/wallpaper-engine-kde-plugin.git
-plasmapkg2 -i wallpaper-engine-kde-plugin/plugin
