@@ -29,6 +29,10 @@ sudo ln -s /usr/local/etc/systemd/nv-power-limit.service /etc/systemd/system/nv-
 sudo systemctl start nv-power-limit.service
 sudo systemctl enable nv-power-limit.service
 
+# Enable nvidia overclocking
+echo "Enabling nvidia overclocking..."
+sudo nvidia-xconfig --cool-bits=31
+
 # Enable Signal's tray icon
 echo "Enabling signal's tray icon..."
 sudo cp settings/autostart/signal-desktop.desktop ~/.local/share/applications/signal-desktop.desktop
@@ -47,7 +51,7 @@ cp pictures/wallpaper.png ~/Pictures/.wallpaper.png
 # SDDM config
 echo "Installing SDDM config..."
 sudo mkdir -p /etc/sddm.conf.d/
-sudo cp kde-theme/sddm_settings.conf /etc/sddm.conf.d/sddm_settings.conf
+sudo cp theme/sddm_settings.conf /etc/sddm.conf.d/sddm_settings.conf
 
 # nvm installer
 echo "Installing nvm..."
