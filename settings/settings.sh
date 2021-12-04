@@ -84,8 +84,10 @@ gpg --gen-key
 # Create folders for HDD mounts and change permissions
 mkdir ~/Games
 mkdir ~/Storage
+mkdir ~/SSDGames
 sudo chown "$username":"$username" Games --recursive
 sudo chown "$username":"$username" Storage --recursive
+sudo chown "$username":"$username" SSDGames --recursive
 
 # Add feedback to sudo password
 echo "Adding password feedback to sudo..."
