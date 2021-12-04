@@ -10,11 +10,11 @@ sudo chmod +x scripts/chmod.sh
 # Mark child scripts as executables
 ./scripts/chmod.sh
 
-# KDE theme installer
-./theme/setup.sh
-
 # Applications installer
 ./apps/apps.sh
+
+# KDE theme installer
+./theme/setup.sh
 
 # Application configs installer
 ./apps/configs.sh
