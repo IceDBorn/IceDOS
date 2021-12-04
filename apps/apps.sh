@@ -86,6 +86,8 @@ pacman=(
 "zsh"
 )
 
+yay -Syyu
+
 yay=(
 "emulsion-bin"
 "moonlight-qt"
