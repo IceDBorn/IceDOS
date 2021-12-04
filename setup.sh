@@ -11,7 +11,7 @@ sudo chmod +x scripts/chmod.sh
 ./scripts/chmod.sh
 
 # KDE theme installer
-./kde-theme/setup.sh
+./theme/setup.sh
 
 # Applications installer
 ./apps/apps.sh
@@ -24,9 +24,6 @@ sudo chmod +x scripts/chmod.sh
 
 # Settings changer
 ./settings/settings.sh
-
-# Single gpu passthrough setup
-./single-gpu-passthrough/setup.sh
 
 # Photoshop installer
 ./photoshop/setup.sh
