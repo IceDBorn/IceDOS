@@ -10,7 +10,7 @@ cp apps/kitty.conf ~/.config/kitty/kitty.conf
 # Flameshot config installer
 echo "Installing flameshot config..."
 mkdir -p ~/.config/flameshot/
-cp apps/flameshot.conf ~/.config/kitty/flameshot.conf
+cp apps/flameshot.conf ~/.config/flameshot/flameshot.conf
 
 # Mangohud config installer
 echo "Installing mangohud config..."

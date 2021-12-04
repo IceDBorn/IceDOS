@@ -57,6 +57,10 @@ curl -o- https://raw.githubusercontent.com/nvm-sh/nvm/v0.38.0/install.sh | bash
 echo "Enabling ssh..."
 sudo systemctl enable sshd
 
+# Enable bluetooth
+echo "Enabling bluetooth..."
+sudo systemctl enable bluetooth
+
 # Default steam to start to tray
 echo "Defaulting steam to start to tray..."
 sudo cp settings/autostart/steam.desktop ~/.local/share/applications/steam.desktop

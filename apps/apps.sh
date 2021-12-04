@@ -2,11 +2,12 @@
 
 # Install Chaotic AUR as a pacman mirror
 echo "Installing Chaotic AUR..."
-pacman-key --recv-key FBA220DFC880C036 --keyserver keyserver.ubuntu.com
-pacman-key --lsign-key FBA220DFC880C036
-pacman -U 'https://cdn-mirror.chaotic.cx/chaotic-aur/chaotic-keyring.pkg.tar.zst' 'https://cdn-mirror.chaotic.cx/chaotic-aur/chaotic-mirrorlist.pkg.tar.zst'
-echo "[chaotic-aur]" >> /etc/pacman.conf
-echo "Include = /etc/pacman.d/chaotic-mirrorlist" >> /etc/pacman.conf
+sudo pacman-key --recv-key FBA220DFC880C036 --keyserver keyserver.ubuntu.com
+sudo pacman-key --lsign-key FBA220DFC880C036
+sudo pacman -U "https://cdn-mirror.chaotic.cx/chaotic-aur/chaotic-keyring.pkg.tar.zst" "https://cdn-mirror.chaotic.cx/chaotic-aur/chaotic-mirrorlist.pkg.tar.zst"
+echo "[chaotic-aur]" | sudo tee -a /etc/pacman.conf
+echo "Include = /etc/pacman.d/chaotic-mirrorlist" | sudo tee -a /etc/pacman.conf
+sudo pacman -Syyu
 
 echo "Installing applications..."
 # Add packages to their corresponding array
@@ -26,6 +27,7 @@ pacman=(
   "amd-ucode"
   "blender"
   "bluedevil"
+  "blueman"
   "bluez-utils"
   "bpytop"
   "duckstation-git"
@@ -49,6 +51,7 @@ pacman=(
   "lxqt-kwin-desktop-git"
   "mangohud"
   "mullvad-vpn"
+  "network-manager-applet"
   "noisetorch"
   "noto-fonts-emoji"
   "npm"
