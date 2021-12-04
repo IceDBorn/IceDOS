@@ -62,6 +62,8 @@ pacman=(
 "papirus-icon-theme"
 "paru"
 "pcsx2"
+"ntfs-3g"
+"sddm-kcm"
 "powerpill"
 "ppsspp"
 "protontricks"
