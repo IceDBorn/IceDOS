@@ -43,12 +43,14 @@ pacman=(
 "kdeconnect"
 "kdenlive"
 "kitty"
+"kvantum-theme-materia"
 "lib32-mangohud"
 "libreoffice-fresh"
 "linux-zen"
 "linux-zen-headers"
 "lutris"
 "mangohud"
+"materia-kde"
 "mullvad-vpn"
 "noisetorch"
 "noto-fonts-emoji"
@@ -91,6 +93,7 @@ yay -Syyu
 yay=(
 "emulsion-bin"
 "moonlight-qt"
+"papirus-libreoffice-theme"
 "rar"
 "sunshine-git"
 )

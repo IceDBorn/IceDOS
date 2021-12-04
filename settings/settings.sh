@@ -92,3 +92,7 @@ sudo chown "$username":"$username" SSDGames --recursive
 # Add feedback to sudo password
 echo "Adding password feedback to sudo..."
 echo "Defaults pwfeedback" | sudo tee -a /etc/sudoers
+
+# Set global KDE theme
+echo "Setting Materia Dark as global theme..."
+lookandfeeltool -a com.github.varlesh.materia-dark

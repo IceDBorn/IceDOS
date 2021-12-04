@@ -4,7 +4,7 @@ DataCount=1
 [Data_1]
 Comment=Comment
 DataCount=5
-Enabled=false
+Enabled=true
 Name=Custom
 SystemGroup=0
 Type=ACTION_DATA_GROUP
@@ -15,7 +15,7 @@ ConditionsCount=0
 
 [Data_1_1]
 Comment=
-Enabled=false
+Enabled=true
 Name=flameshot
 Type=SIMPLE_ACTION_DATA
 
@@ -41,7 +41,7 @@ Uuid={98ae2b09-1060-4cef-947b-85c7498e512b}
 
 [Data_1_2]
 Comment=
-Enabled=false
+Enabled=true
 Name=kitty
 Type=SIMPLE_ACTION_DATA
 
@@ -61,13 +61,13 @@ Comment=Simple_action
 TriggersCount=1
 
 [Data_1_2Triggers0]
-Key=
+Key=Meta+X
 Type=SHORTCUT
 Uuid={9448f000-4250-4a61-af83-d78908996948}
 
 [Data_1_3]
 Comment=
-Enabled=false
+Enabled=true
 Name=bpytop
 Type=SIMPLE_ACTION_DATA
 
@@ -87,13 +87,13 @@ Comment=Simple_action
 TriggersCount=1
 
 [Data_1_3Triggers0]
-Key=
+Key=Meta+T
 Type=SHORTCUT
 Uuid={758170da-f842-4616-a68e-daa4ba8a7ee4}
 
 [Data_1_4]
 Comment=
-Enabled=false
+Enabled=true
 Name=mullvad connect
 Type=SIMPLE_ACTION_DATA
 
@@ -113,13 +113,13 @@ Comment=Simple_action
 TriggersCount=1
 
 [Data_1_4Triggers0]
-Key=
+Key=Meta+M
 Type=SHORTCUT
 Uuid={30282106-fde9-405c-9f5e-6d33a9242995}
 
 [Data_1_5]
 Comment=
-Enabled=false
+Enabled=true
 Name=mullvad disconnect
 Type=SIMPLE_ACTION_DATA
 
