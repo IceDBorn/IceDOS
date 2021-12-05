@@ -42,6 +42,8 @@ bash ./scripts/add-user-service.sh noisetorch
 # Add sunshine service
 echo "Adding sunshine service..."
 bash ./scripts/add-user-service.sh sunshine
+sudo setcap cap_sys_admin+p /usr/bin/sunshine
+systemctl enable --now avahi-daemon
 
 # Enable Signal's tray icon
 echo "Enabling signal's tray icon..."
