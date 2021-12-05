@@ -1,96 +1,5 @@
 #!/bin/bash
 
-# TODO: Simplify package install
-
-# Add packages to their corresponding array
-pacman=(
-"--needed git base-devel yay"
-"adobe-source-han-sans-cn-fonts"
-"adobe-source-han-sans-hk-fonts"
-"adobe-source-han-sans-jp-fonts"
-"adobe-source-han-sans-kr-fonts"
-"adobe-source-han-sans-otc-fonts"
-"adobe-source-han-sans-tw-fonts"
-"adobe-source-han-serif-cn-fonts"
-"adobe-source-han-serif-jp-fonts"
-"adobe-source-han-serif-kr-fonts"
-"adobe-source-han-serif-otc-fonts"
-"adobe-source-han-serif-tw-fonts"
-"amd-ucode"
-"ark"
-"blender"
-"bluedevil"
-"bluez-utils"
-"bpytop"
-"dolphin"
-"duckstation-git"
-"etcher"
-"firefox-nightly"
-"flameshot"
-"gamemode"
-"godot"
-"gparted"
-"gwe"
-"jetbrains-toolbox"
-"kcalc"
-"kdeconnect"
-"kdenlive"
-"kitty"
-"kvantum-theme-materia"
-"lib32-mangohud"
-"libreoffice-fresh"
-"linux-zen"
-"linux-zen-headers"
-"lutris"
-"mangohud"
-"materia-gtk-theme"
-"materia-kde"
-"mullvad-vpn"
-"noisetorch"
-"noto-fonts-emoji"
-"npm"
-"ntfs-3g"
-"nvidia"
-"nvidia-dkms"
-"nvtop"
-"os-prober"
-"papirus-icon-theme"
-"paru"
-"pcsx2"
-"plasma"
-"powerpill"
-"ppsspp"
-"protontricks"
-"pulseaudio-bluetooth"
-"python-pip"
-"qbittorrent"
-"qt5ct"
-"sddm"
-"sddm-kcm"
-"signal-desktop"
-"soundux"
-"steam"
-"steamtinkerlaunch"
-"stremio"
-"sublime-text-4"
-"tree"
-"tutanota-desktop"
-"vlc"
-"wine"
-"winetricks"
-"xpadneo-dkms-git"
-"youtube-dl"
-"zsh"
-)
-
-yay=(
-"emulsion-bin"
-"moonlight-qt"
-"papirus-libreoffice-theme"
-"rar"
-"sunshine-git"
-)
-
 # Install Chaotic AUR as a pacman mirror
 echo "Installing Chaotic AUR..."
 sudo pacman-key --recv-key FBA220DFC880C036 --keyserver keyserver.ubuntu.com
@@ -99,26 +8,15 @@ sudo pacman -U "https://cdn-mirror.chaotic.cx/chaotic-aur/chaotic-keyring.pkg.ta
 echo "[chaotic-aur]" | sudo tee -a /etc/pacman.conf
 echo "Include = /etc/pacman.d/chaotic-mirrorlist" | sudo tee -a /etc/pacman.conf
 sudo pacman -Syyu
-yay -Syyu
 
-echo "Installing applications..."
 # Install pacman packages
-for command in "${!pacman[@]}"
-do
-  echo "${pacman[command]}" | tee -a temp >/dev/null
-done
-packagesList=$(cat temp)
-sudo pacman -S "$packagesList" --noconfirm
-rm -rf temp
+echo "Installing pacman packages..."
+< apps/packages/pacman.txt xargs sudo pacman -S --noconfirm --needed
 
 # Install yay packages
-for command in "${!yay[@]}"
-do
-  echo "${yay[command]}" | tee -a temp >/dev/null
-done
-packagesList=$(cat temp)
-yay -S "$packagesList" --noconfirm
-rm -rf temp
+yay -Syyu
+echo "Installing yay packages..."
+< apps/packages/yay.txt xargs yay -S --noconfirm --needed
 
 # Install Proton GE updater
 echo "Installing Proton GE updater..."

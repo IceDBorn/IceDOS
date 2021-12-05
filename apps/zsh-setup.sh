@@ -29,7 +29,6 @@ echo "Adding custom config to '~/.zshrc'..."
 cat ~/.zshrc apps/zsh/zsh-config-append-content.txt > ~/.zshrc.new
 mv ~/.zshrc ~/.zshrc.old
 mv ~/.zshrc.new ~/.zshrc
-# TODO: Replace default plugins with given list instead of appending the list inside the parenthesis
 sed -i 's/^plugins=(\(.*\)/plugins=(archlinux npm nvm sudo systemd zsh-autosuggestions zsh-better-npm-completion zsh-syntax-highlighting \1/' ~/.zshrc
 
 # Revert to zsh config template before adding the firefox profile path
