@@ -1,5 +1,7 @@
 #!/bin/bash
 
+# TODO: Simplify package install
+
 # Add packages to their corresponding array
 pacman=(
 "--needed git base-devel yay"
@@ -105,7 +107,7 @@ do
   echo "${pacman[command]}" | tee -a temp >/dev/null
 done
 packagesList=$(cat temp)
-sudo pacman -S $packagesList --noconfirm
+sudo pacman -S "$packagesList" --noconfirm
 rm -rf temp
 
 # Install yay packages
@@ -114,7 +116,7 @@ do
   echo "${yay[command]}" | tee -a temp >/dev/null
 done
 packagesList=$(cat temp)
-yay -S $packagesList --noconfirm
+yay -S "$packagesList" --noconfirm
 rm -rf temp
 
 # Install Proton GE updater

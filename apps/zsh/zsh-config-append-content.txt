@@ -1,5 +1,5 @@
 # Enable provided zsh script
-source ~/.config/zsh/promptline.sh
+source ~/.config/zsh/zsh-theme.sh
 unsetopt PROMPT_SP
 
 alias chmod="sudo chmod"

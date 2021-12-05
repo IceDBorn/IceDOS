@@ -1,0 +1,5 @@
+emulsion-bin
+moonlight-qt
+papirus-libreoffice-theme
+rar
+sunshine-git

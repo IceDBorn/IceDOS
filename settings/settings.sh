@@ -47,8 +47,8 @@ mv /etc/security/limits.conf.new /etc/security/limits.conf
 
 # Pictures
 echo "Adding pictures to the Pictures directory..."
-cp pictures/arcolinux-hello.png ~/Pictures/.arcolinux-hello.png
-cp pictures/wallpaper.png ~/Pictures/.wallpaper.png
+cp settings/pictures/arcolinux-hello.png ~/Pictures/.arcolinux-hello.png
+cp settings/pictures/wallpaper.png ~/Pictures/.wallpaper.png
 
 # SDDM config
 echo "Installing SDDM config..."
@@ -103,5 +103,5 @@ mkdir -p "$randomPath"
 cp settings/user-overrides.js "$randomPath"/user-overrides.js
 git clone https://github.com/arkenfox/user.js.git
 cp user.js/updater.sh "$randomPath"/updater.sh
-cp zsh/zsh-custom-config.txt zsh/zsh-custom-config.txt.old
+cp apps/zsh/zsh-config-append-content.txt apps/zsh/zsh-config-append-content.txt
 sed -i "s|path-to-mozilla-updater|$randomPath|" zsh/zsh-custom-config.txt

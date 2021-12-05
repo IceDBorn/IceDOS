@@ -10,7 +10,7 @@ sudo chsh -s /bin/zsh "$username"
 # Install zsh theme
 echo "Installing zsh theme..."
 mkdir -p ~/.config/zsh
-cp zsh/theme.sh ~/.config/zsh/theme.sh
+cp apps/zsh/zsh-theme.sh ~/.config/zsh/zsh-theme.sh
 
 # Run zsh once to generate default config
 echo "Running zsh for the first time..."
@@ -22,16 +22,16 @@ sh -c "$(curl -fsSL https://raw.githubusercontent.com/ohmyzsh/ohmyzsh/master/too
 
 # Install oh my zsh plugins
 echo "Installing Oh My Zsh plugins..."
-./zsh/install-plugins.sh
+./apps/zsh/install-zsh-plugins.sh
 
 # Append custom config to zsh config file
 echo "Adding custom config to '~/.zshrc'..."
-cat ~/.zshrc zsh/zsh-custom-config.txt > ~/.zshrc.new
+cat ~/.zshrc apps/zsh/zsh-config-append-content.txt > ~/.zshrc.new
 mv ~/.zshrc ~/.zshrc.old
 mv ~/.zshrc.new ~/.zshrc
 # TODO: Replace default plugins with given list instead of appending the list inside the parenthesis
 sed -i 's/^plugins=(\(.*\)/plugins=(archlinux npm nvm sudo systemd zsh-autosuggestions zsh-better-npm-completion zsh-syntax-highlighting \1/' ~/.zshrc
 
 # Revert to zsh config template before adding the firefox profile path
-rm zsh/zsh-custom-config.txt
-mv zsh/zsh-custom-config.txt.old zsh/zsh-custom-config.txt
+rm apps/zsh/zsh-config-append-content.txt
+mv apps/zsh/zsh-config-append-content.txt.old zsh/zsh-config-append-content.txt

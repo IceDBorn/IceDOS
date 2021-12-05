@@ -11,19 +11,19 @@ sudo chmod +x scripts/chmod.sh
 ./scripts/chmod.sh
 
 # Applications installer
-./apps/apps.sh
+./apps/install-apps.sh
 
 # Application configs installer
-./apps/configs.sh
+./apps/install-app-configs.sh
 
 # Settings changer
 ./settings/settings.sh
 
 # Zsh installer
-./zsh/install.sh
+./apps/zsh/zsh-setup.sh
 
 # Photoshop installer
-./photoshop/setup.sh
+./apps/install-photoshop.sh
 
 # Rebooting sequence
 ./scripts/reboot.sh

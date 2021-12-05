@@ -4,11 +4,11 @@
 # Install
 
 ```bash 
-git clone https://github.com/IceDBorn/garuda-linux-setup.git && cd garuda-linux-setup && ./setup.sh
+git clone https://github.com/IceDBorn/arch-linux-setup.git && cd arch-linux-setup && ./main-setup.sh
 ```
 
 # Edit
 
 ```bash
-git clone https://github.com/IceDBorn/garuda-linux-setup.git && cd garuda-linux-setup && dolphin .
+git clone https://github.com/IceDBorn/arch-linux-setup.git && cd arch-linux-setup && dolphin .
 ```
