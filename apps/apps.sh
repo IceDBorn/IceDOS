@@ -59,6 +59,7 @@ pacman=(
 "nvidia"
 "nvidia-dkms"
 "nvtop"
+"os-prober"
 "papirus-icon-theme"
 "paru"
 "pcsx2"
