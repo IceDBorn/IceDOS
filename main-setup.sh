@@ -38,6 +38,7 @@ then
 else
   echo
   printf "You really should:
+  - Edit main-setup.sh and comment out and script you do not want to run.
   - Edit settings/fstab or remove it entirely.$RED$BOLD A non-configured fstab file can break your system!$NC$NORMAL
   - Edit pacman and yay packages lists in apps/packages.
   - Edit install-apps.sh to remove installation of extra apps not present in pacman and yay.
