@@ -25,7 +25,7 @@ sudo chown "$username":"$username" ~/Games --recursive
 sudo chown "$username":"$username" ~/Storage --recursive
 sudo chown "$username":"$username" ~/SSDGames --recursive
 sed -i "s|changethis|$username|" settings/services/chown-disks.sh
-./scripts/add-service.sh chown-disks
+./scripts/add-system-service.sh chown-disks
 
 # Enable nvidia overclocking
 echo "Enabling nvidia overclocking..."
@@ -33,14 +33,15 @@ sudo nvidia-xconfig --cool-bits=31
 
 # Maximize nvidia GPU power limit on startup
 echo "Maximizing GPU power limit..."
-./scripts/add-service.sh nv-power-limit
+./scripts/add-system-service.sh nv-power-limit
 
 # Add noisetorch service
 echo "Adding noisetorch service..."
-mkdir -p ~/.config/systemd/user/
-cp settings/services/noisetorch.service ~/.config/systemd/user/noisetorch.service
-systemctl --user daemon-reload
-systemctl --user start noisetorch && systemctl --user enable noisetorch
+./scripts/add-user-service.sh noisetorch
+
+# Add sunshine service
+echo "Adding sunshine service..."
+./scripts/add-user-service.sh sunshine
 
 # Enable Signal's tray icon
 echo "Enabling signal's tray icon..."
