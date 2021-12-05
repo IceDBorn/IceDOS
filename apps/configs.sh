@@ -1,7 +1,5 @@
 #!/bin/bash
 
-echo "Installing app configs..."
-
 # Kitty config installer
 echo "Installing kitty config..."
 mkdir -p ~/.config/kitty/
@@ -10,7 +8,7 @@ cp apps/kitty.conf ~/.config/kitty/kitty.conf
 # Flameshot config installer
 echo "Installing flameshot config..."
 mkdir -p ~/.config/flameshot/
-cp apps/flameshot.conf ~/.config/flameshot/flameshot.conf
+cp apps/flameshot.ini ~/.config/flameshot/flameshot.ini
 
 # Mangohud config installer
 echo "Installing mangohud config..."
