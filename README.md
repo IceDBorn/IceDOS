@@ -6,9 +6,3 @@
 ```bash 
 git clone https://github.com/IceDBorn/arch-linux-setup.git && cd arch-linux-setup && ./main-setup.sh
 ```
-
-# Edit
-
-```bash
-git clone https://github.com/IceDBorn/arch-linux-setup.git && cd arch-linux-setup && dolphin .
-```
