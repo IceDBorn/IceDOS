@@ -22,7 +22,7 @@ sh -c "$(curl -fsSL https://raw.githubusercontent.com/ohmyzsh/ohmyzsh/master/too
 
 # Install oh my zsh plugins
 echo "Installing Oh My Zsh plugins..."
-./apps/zsh/install-zsh-plugins.sh
+bash ./apps/zsh/install-zsh-plugins.sh
 
 # Append custom config to zsh config file
 echo "Adding custom config to '~/.zshrc'..."

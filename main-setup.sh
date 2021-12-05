@@ -16,25 +16,25 @@ then
     sudo chmod +x scripts/chmod.sh
 
     # Mark child scripts as executables
-    ./scripts/chmod.sh
+    bash ./scripts/chmod.sh
 
     # Applications installer
-    ./apps/install-apps.sh
+    bash ./apps/install-apps.sh
 
     # Application configs installer
-    ./apps/install-app-configs.sh
+    bash ./apps/install-app-configs.sh
 
     # Settings changer
-    ./settings/settings.sh
+    bash ./settings/settings.sh
 
     # Zsh installer
-    ./apps/zsh/zsh-setup.sh
+    bash ./apps/zsh/zsh-setup.sh
 
     # Photoshop installer
-    ./apps/install-photoshop.sh
+    bash ./apps/install-photoshop.sh
 
     # Rebooting sequence
-    ./scripts/reboot.sh
+    bash ./scripts/reboot.sh
 else
   echo
   printf "You really should:
