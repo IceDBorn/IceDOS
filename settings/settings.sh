@@ -100,3 +100,12 @@ lookandfeeltool -a com.github.varlesh.materia-dark
 # Update grub
 echo "Updating grub..."
 sudo grub-mkconfig -o /boot/grub/grub.cfg
+
+# Add mozilla custom profile
+echo "Adding custom mozilla profile..."
+randomPath="$HOME/.mozilla/firefox/$RANDOM.privacy"
+mkdir -p "$randomPath"
+cp settings/user-overrides.js "$randomPath"/user-overrides.js
+git clone https://github.com/arkenfox/user.js.git
+cp user.js/updater.sh "$randomPath"/updater.sh
+sed -i "s|path-to-mozilla-updater|$randomPath|" zsh/zsh-custom-config.txt
