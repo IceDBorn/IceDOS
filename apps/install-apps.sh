@@ -17,6 +17,7 @@ pacman=(
 "adobe-source-han-serif-otc-fonts"
 "adobe-source-han-serif-tw-fonts"
 "amd-ucode"
+"ark"
 "blender"
 "bluedevil"
 "bluez-utils"
