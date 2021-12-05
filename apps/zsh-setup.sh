@@ -32,5 +32,4 @@ mv ~/.zshrc.new ~/.zshrc
 sed -i 's/^plugins=(\(.*\)/plugins=(archlinux npm nvm sudo systemd zsh-autosuggestions zsh-better-npm-completion zsh-syntax-highlighting \1/' ~/.zshrc
 
 # Revert to zsh config template before adding the firefox profile path
-rm apps/zsh/zsh-config-append-content.txt
 mv apps/zsh/zsh-config-append-content.txt.old zsh/zsh-config-append-content.txt
