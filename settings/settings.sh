@@ -19,25 +19,11 @@ sudo chown "$username":"$username" ~/Games --recursive
 sudo chown "$username":"$username" ~/Storage --recursive
 sudo chown "$username":"$username" ~/SSDGames --recursive
 sed -i "s|changethis|$username|" settings/services/chown-disks.sh
-sudo cp settings/services/chown-disks.sh /usr/local/sbin/chown-disks.sh
-sudo chmod 744 /usr/local/sbin/chown-disks.sh
-sudo mkdir -p /usr/local/etc/systemd
-sudo cp settings/services/chown-disks.service /usr/local/etc/systemd/chown-disks.service
-sudo chmod 644 /usr/local/etc/systemd/chown-disks.service
-sudo ln -s /usr/local/etc/systemd/chown-disks.service /etc/systemd/system/chown-disks.service
-sudo systemctl start chown-disks.service
-sudo systemctl enable chown-disks.service
+./scripts/add-service.sh chown-disks
 
 # Maximize nvidia GPU power limit on startup
 echo "Maximizing GPU power limit..."
-sudo cp settings/services/nv-power-limit.sh /usr/local/sbin/nv-power-limit.sh
-sudo chmod 744 /usr/local/sbin/nv-power-limit.sh
-sudo mkdir -p /usr/local/etc/systemd
-sudo cp settings/services/nv-power-limit.service /usr/local/etc/systemd/nv-power-limit.service
-sudo chmod 644 /usr/local/etc/systemd/nv-power-limit.service
-sudo ln -s /usr/local/etc/systemd/nv-power-limit.service /etc/systemd/system/nv-power-limit.service
-sudo systemctl start nv-power-limit.service
-sudo systemctl enable nv-power-limit.service
+./scripts/add-service.sh nv-power-limit
 
 # Auto mount disks on startup
 echo "Adding mounts to fstab..."
