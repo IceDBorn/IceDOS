@@ -1,0 +1,18 @@
+[Unit]
+# Replace "sys-devices-pci0000:00-0000:00:03.1-0000:0a:00.1-sound-card0-controlC0.device" with your device unit, you can get it with "systemctl list-units --type=device"
+Description=Noisetorch Noise Cancelling
+Requires=sys-devices-pci0000:00-0000:00:03.1-0000:0a:00.1-sound-card0-controlC0.device
+After=sys-devices-pci0000:00-0000:00:03.1-0000:0a:00.1-sound-card0-controlC0.device
+# Depending on if you're using pulseaudio or pipewire, uncomment the correct line
+# After=pulseaudio.service
+After=pipewire.service
+
+[Service]
+Type=simple
+RemainAfterExit=yes
+# Replace "alsa_input.pci-0000_0c_00.4.analog-stereo" with your device id, you can get it with noisetorch -l
+ExecStart=/usr/bin/noisetorch -i -s alsa_input.pci-0000_0c_00.4.analog-stereo -t 95
+ExecStop=/usr/bin/noisetorch -u
+
+[Install]
+WantedBy=default.target

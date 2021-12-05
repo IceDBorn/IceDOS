@@ -7,7 +7,6 @@ alias clear-keys="sudo rm -rf ~/.local/share/keyrings/* ~/.local/share/kwalletd/
 alias pacman="sudo pacman"
 alias ssh="TERM=xterm-256color ssh"
 alias sunshine="sunshine ~/.config/sunshine/sunshine.conf"
-alias systemctl="sudo systemctl"
 alias update="sudo pacman -Sy --noconfirm && sudo powerpill -Su --noconfirm && paru -Su && yay -Syu --noconfirm && protonup && alias update="sudo pacman -Sy --noconfirm && sudo powerpill -Su --noconfirm && paru -Su && yay -Syu --noconfirm && yes | protonup && yes | path-to-mozilla-updater/updater.sh""
 alias update-grub="sudo grub-mkconfig -o /boot/grub/grub.cfg"
 alias vpn-off="mullvad disconnect"

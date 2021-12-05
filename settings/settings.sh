@@ -10,6 +10,12 @@ sed -i '/General/a Enable=Source,Sink,Media,Socket' /etc/bluetooth/main.conf
 echo "Adding autostart items..."
 cp -a settings/autostart ~/.config/
 
+# Auto mount disks on startup
+echo "Adding mounts to fstab..."
+cat /etc/fstab settings/fstab > ~/.fstab.new
+sudo mv /etc/fstab /etc/fstab.old
+sudo mv ~/.fstab.new /etc/fstab
+
 # Create folders for HDD mounts and change permissions now and on startup
 echo "Creating folders for mounts..."
 mkdir ~/Games
@@ -21,19 +27,20 @@ sudo chown "$username":"$username" ~/SSDGames --recursive
 sed -i "s|changethis|$username|" settings/services/chown-disks.sh
 ./scripts/add-service.sh chown-disks
 
+# Enable nvidia overclocking
+echo "Enabling nvidia overclocking..."
+sudo nvidia-xconfig --cool-bits=31
+
 # Maximize nvidia GPU power limit on startup
 echo "Maximizing GPU power limit..."
 ./scripts/add-service.sh nv-power-limit
 
-# Auto mount disks on startup
-echo "Adding mounts to fstab..."
-cat /etc/fstab settings/fstab > ~/.fstab.new
-sudo mv /etc/fstab /etc/fstab.old
-sudo mv ~/.fstab.new /etc/fstab
-
-# Enable nvidia overclocking
-echo "Enabling nvidia overclocking..."
-sudo nvidia-xconfig --cool-bits=31
+# Add noisetorch service
+echo "Adding noisetorch service..."
+mkdir -p ~/.config/systemd/user/
+cp settings/services/noisetorch.service ~/.config/systemd/user/noisetorch.service
+systemctl --user daemon-reload
+systemctl --user start noisetorch && systemctl --user enable noisetorch
 
 # Enable Signal's tray icon
 echo "Enabling signal's tray icon..."
