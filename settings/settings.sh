@@ -2,9 +2,7 @@
 
 username=$(whoami)
 
-echo "Changing settings..."
-
-# Enables bluetooth audio devices
+# Enable bluetooth audio devices
 echo "Enabling headphones support for bluetooth..."
 sed -i '/General/a Enable=Source,Sink,Media,Socket' /etc/bluetooth/main.conf
 
@@ -12,22 +10,40 @@ sed -i '/General/a Enable=Source,Sink,Media,Socket' /etc/bluetooth/main.conf
 echo "Adding autostart items..."
 cp -a settings/autostart ~/.config/
 
+# Create folders for HDD mounts and change permissions now and on startup
+echo "Creating folders for mounts..."
+mkdir ~/Games
+mkdir ~/Storage
+mkdir ~/SSDGames
+sudo chown "$username":"$username" ~/Games --recursive
+sudo chown "$username":"$username" ~/Storage --recursive
+sudo chown "$username":"$username" ~/SSDGames --recursive
+sed -i "s|changethis|$username|" settings/services/chown-disks.sh
+sudo cp settings/services/chown-disks.sh /usr/local/sbin/chown-disks.sh
+sudo chmod 744 /usr/local/sbin/chown-disks.sh
+sudo mkdir -p /usr/local/etc/systemd
+sudo cp settings/services/chown-disks.service /usr/local/etc/systemd/chown-disks.service
+sudo chmod 644 /usr/local/etc/systemd/chown-disks.service
+sudo ln -s /usr/local/etc/systemd/chown-disks.service /etc/systemd/system/chown-disks.service
+sudo systemctl start chown-disks.service
+sudo systemctl enable chown-disks.service
+
+# Maximize nvidia GPU power limit on startup
+echo "Maximizing GPU power limit..."
+sudo cp settings/services/nv-power-limit.sh /usr/local/sbin/nv-power-limit.sh
+sudo chmod 744 /usr/local/sbin/nv-power-limit.sh
+sudo mkdir -p /usr/local/etc/systemd
+sudo cp settings/services/nv-power-limit.service /usr/local/etc/systemd/nv-power-limit.service
+sudo chmod 644 /usr/local/etc/systemd/nv-power-limit.service
+sudo ln -s /usr/local/etc/systemd/nv-power-limit.service /etc/systemd/system/nv-power-limit.service
+sudo systemctl start nv-power-limit.service
+sudo systemctl enable nv-power-limit.service
+
 # Auto mount disks on startup
 echo "Adding mounts to fstab..."
 cat /etc/fstab settings/fstab > ~/.fstab.new
 sudo mv /etc/fstab /etc/fstab.old
 sudo mv ~/.fstab.new /etc/fstab
-
-# Maximize nvidia GPU power limit on startup
-echo "Maximizing GPU power limit..."
-sudo cp settings/nv-power-limit.sh /usr/local/sbin/nv-power-limit.sh
-sudo chmod 744 /usr/local/sbin/nv-power-limit.sh
-sudo mkdir /usr/local/etc/systemd
-sudo cp settings/nv-power-limit.service /usr/local/etc/systemd/nv-power-limit.service
-sudo chmod 644 /usr/local/etc/systemd/nv-power-limit.service
-sudo ln -s /usr/local/etc/systemd/nv-power-limit.service /etc/systemd/system/nv-power-limit.service
-sudo systemctl start nv-power-limit.service
-sudo systemctl enable nv-power-limit.service
 
 # Enable nvidia overclocking
 echo "Enabling nvidia overclocking..."
@@ -51,7 +67,8 @@ cp pictures/wallpaper.png ~/Pictures/.wallpaper.png
 # SDDM config
 echo "Installing SDDM config..."
 sudo mkdir -p /etc/sddm.conf.d/
-sudo cp theme/sddm_settings.conf /etc/sddm.conf.d/sddm_settings.conf
+sudo mv /etc/sddm.conf /etc/sddm.conf.old
+sudo cp settings/kde_settings.conf /etc/sddm.conf.d/
 
 # nvm installer
 echo "Installing nvm..."
@@ -67,27 +84,19 @@ sudo systemctl enable bluetooth
 
 # Default steam to start to tray
 echo "Defaulting steam to start to tray..."
-sudo cp settings/autostart/steam.desktop ~/.local/share/applications/steam.desktop
+cp settings/autostart/steam.desktop ~/.local/share/applications/steam.desktop
 
 # Default soundux to start to tray
 echo "Defaulting soundux to start to tray..."
-sudo cp settings/autostart/soundux.desktop ~/.local/share/applications/soundux.desktop
+cp settings/autostart/soundux.desktop ~/.local/share/applications/soundux.desktop
 
 # Custom desktop files
 echo "Installing custom desktop files..."
-sudo cp -a settings/applications/ ~/.local/share/
+cp -a settings/applications/ ~/.local/share/
 
 # Generate GPG key
 echo "Generating GPG key..."
 gpg --gen-key
-
-# Create folders for HDD mounts and change permissions
-mkdir ~/Games
-mkdir ~/Storage
-mkdir ~/SSDGames
-sudo chown "$username":"$username" Games --recursive
-sudo chown "$username":"$username" Storage --recursive
-sudo chown "$username":"$username" SSDGames --recursive
 
 # Add feedback to sudo password
 echo "Adding password feedback to sudo..."

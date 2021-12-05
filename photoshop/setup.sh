@@ -2,6 +2,5 @@
 
 echo "Installing Photoshop..."
 git clone https://github.com/Gictorbit/photoshopCClinux.git
-cd photoshopCClinux || exit
-sudo chmod +x setup.sh
-./setup.sh
+(cd photoshopCClinux && sudo chmod +x setup.sh && ./setup.sh)
+rm -rf photoshopCClinux
