@@ -35,6 +35,10 @@ sudo nvidia-xconfig --cool-bits=31
 echo "Maximizing GPU power limit..."
 bash ./scripts/add-system-service.sh nv-power-limit
 
+# Enable wol service
+echo "Enabling wake on lan service..."
+bash ./scripts/add-system-service.sh wol
+
 # Add noisetorch service
 echo "Adding noisetorch service..."
 bash ./scripts/add-user-service.sh noisetorch
