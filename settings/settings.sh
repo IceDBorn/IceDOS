@@ -62,6 +62,7 @@ cp settings/pictures/wallpaper.png ~/Pictures/.wallpaper.png
 echo "Installing SDDM config..."
 sudo mkdir -p /etc/sddm.conf.d/
 sudo mv /etc/sddm.conf /etc/sddm.conf.old
+sed -i "s|changethis|$username|" kde_settings.conf
 sudo cp settings/kde_settings.conf /etc/sddm.conf.d/
 
 # nvm installer
