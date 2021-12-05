@@ -16,11 +16,11 @@ sudo chmod +x scripts/chmod.sh
 # Application configs installer
 ./apps/configs.sh
 
-# Zsh installer
-./zsh/install.sh
-
 # Settings changer
 ./settings/settings.sh
+
+# Zsh installer
+./zsh/install.sh
 
 # Photoshop installer
 ./photoshop/setup.sh

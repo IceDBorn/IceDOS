@@ -14,8 +14,6 @@ user_pref("identity.sync.tokenserver.uri", "https://mozilla.alfonso.top/token/1.
 user_pref("keyword.enabled", true);
 user_pref("media.peerconnection.enabled", true);
 user_pref("media.videocontrols.picture-in-picture.video-toggle.enabled", false);
-user_pref("privacy.clearOnShutdown.cookies", false);
-user_pref("privacy.clearOnShutdown.offlineApps", false);
 user_pref("privacy.resistFingerprinting", false);
 user_pref("privacy.resistFingerprinting.letterboxing", false);
 user_pref("services.sync.engine.addons", true);
