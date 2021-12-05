@@ -3,7 +3,7 @@ source ~/.config/zsh/zsh-theme.sh
 unsetopt PROMPT_SP
 
 alias chmod="sudo chmod"
-alias clear-keys="sudo rm -rf ~/.local/share/keyrings ~/.local/share/kwalletd"
+alias clear-keys="sudo rm -rf ~/.local/share/keyrings/* ~/.local/share/kwalletd/*"
 alias pacman="sudo pacman"
 alias ssh="TERM=xterm-256color ssh"
 alias sunshine="sunshine ~/.config/sunshine/sunshine.conf"
