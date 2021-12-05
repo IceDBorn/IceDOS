@@ -1,8 +1,0 @@
-[Unit]
-Description=Sunshine Gamestream Server for Moonlight
-
-[Service]
-ExecStart=/usr/bin/sunshine %h/.config/sunshine/sunshine.conf
-
-[Install]
-WantedBy=graphical-session.target

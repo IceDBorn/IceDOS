@@ -39,12 +39,6 @@ bash ./scripts/add-system-service.sh nv-power-limit
 echo "Adding noisetorch service..."
 bash ./scripts/add-user-service.sh noisetorch
 
-# Add sunshine service
-echo "Adding sunshine service..."
-bash ./scripts/add-user-service.sh sunshine
-sudo setcap cap_sys_admin+p /usr/bin/sunshine
-systemctl enable --now avahi-daemon
-
 # Enable Signal's tray icon
 echo "Enabling signal's tray icon..."
 sudo cp settings/autostart/signal-desktop.desktop ~/.local/share/applications/signal-desktop.desktop
@@ -63,11 +57,12 @@ cp settings/pictures/wallpaper.png ~/Pictures/.wallpaper.png
 # SDDM config
 echo "Installing SDDM config..."
 sudo mkdir -p /etc/sddm.conf.d/
-sudo mv /etc/sddm.conf /etc/sddm.conf.old
-mv settings/kde_settings.conf settings/kde_settings.conf.old
-sed -i "s|changethis|$username|" settings/kde_settings.conf
-sudo cp settings/kde_settings.conf /etc/sddm.conf.d/
-mv settings/kde_settings.conf.old settings/kde_settings.conf
+mkdir -p ~/.config/sddm
+cp settings/autologin.conf settings/autologin.conf.old
+sed -i "s|changethis|$username|" settings/autologin.conf
+cp settings/autologin.conf ~/.config/sddm/
+cp settings/passwordlogin.conf ~/.config/sddm/
+mv settings/autologin.conf.old settings/autologin.conf
 
 # nvm installer
 echo "Installing nvm..."
