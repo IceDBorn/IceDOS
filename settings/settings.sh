@@ -96,3 +96,7 @@ echo "Defaults pwfeedback" | sudo tee -a /etc/sudoers
 # Set global KDE theme
 echo "Setting Materia Dark as global theme..."
 lookandfeeltool -a com.github.varlesh.materia-dark
+
+# Update grub
+echo "Updating grub..."
+sudo grub-mkconfig -o /boot/grub/grub.cfg
