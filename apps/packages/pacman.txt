@@ -19,6 +19,7 @@ bpytop
 dolphin
 duckstation-git
 etcher
+ethertool
 firefox-nightly
 flameshot
 gamemode
@@ -59,7 +60,6 @@ protontricks
 pulseaudio-bluetooth
 python-pip
 qbittorrent
-qt5ct
 sddm
 sddm-kcm
 signal-desktop
@@ -71,6 +71,7 @@ sublime-text-4
 tree
 tutanota-desktop
 vlc
+wget
 wine
 winetricks
 xpadneo-dkms-git
