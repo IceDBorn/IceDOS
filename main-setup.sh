@@ -12,12 +12,6 @@ echo "Hello $username!"
 read -r -p "Have you customized the setup to your needs? [y/N] " response
 if [[ "$response" =~ ^([yY][eE][sS]|[yY])$ ]]
 then
-    # Mark chmod script as executable
-    sudo chmod +x scripts/chmod.sh
-
-    # Mark child scripts as executables
-    bash ./scripts/chmod.sh
-
     # Applications installer
     bash ./apps/install-apps.sh
 
