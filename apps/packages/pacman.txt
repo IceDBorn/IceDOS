@@ -10,6 +10,7 @@ adobe-source-han-serif-kr-fonts
 adobe-source-han-serif-otc-fonts
 adobe-source-han-serif-tw-fonts
 amd-ucode
+aria2
 ark
 base-devel
 blender

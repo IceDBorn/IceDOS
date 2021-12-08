@@ -2,6 +2,7 @@
 source ~/.config/zsh/zsh-theme.sh
 unsetopt PROMPT_SP
 
+alias aria2c="aria2c -j 16 -s 16"
 alias autologin="sudo cp ~/ config/sddm/autologin conf /etc/sddm conf d/kde_settings conf"
 alias chmod="sudo chmod"
 alias clear-keys="sudo rm -rf ~/ local/share/keyrings/* ~/ local/share/kwalletd/*"
