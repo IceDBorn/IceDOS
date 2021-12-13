@@ -1,0 +1,33 @@
+[Desktop Action new-private-window]
+Exec=/opt/firefox-nightly/firefox --private-window %u
+Name[en_US]=New Private Window
+Name=New Private Window
+
+[Desktop Action new-window]
+Exec=/opt/firefox-nightly/firefox --new-window %u
+Name[en_US]=New Window
+Name=New Window
+
+[Desktop Entry]
+Actions=new-window;new-private-window;
+Categories=Network;WebBrowser;
+Comment[en_US]=Browse the Web
+Comment=Browse the Web
+Exec=/opt/firefox-nightly/firefox --class startup-firefox-social https://revolt.alfonso.top/ https://jitsi.alfonso.top/ https://discord.com/app
+GenericName[en_US]=Web Browser
+GenericName=Web Browser
+Icon=firefox-nightly
+Keywords=web;browser;internet;
+MimeType=text/html;application/xml;application/xhtml+xml;application/vnd.mozilla.xul+xml;
+Name[en_US]=Firefox
+Name=Firefox
+Path=
+StartupNotify=true
+StartupWMClass=Nightly
+Terminal=false
+TerminalOptions=
+Type=Application
+X-DBUS-ServiceName=
+X-DBUS-StartupType=
+X-KDE-SubstituteUID=false
+X-KDE-Username=
