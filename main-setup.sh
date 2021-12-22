@@ -31,7 +31,6 @@ then
     # Rebooting sequence
     bash ./scripts/reboot.sh
 else
-  echo
   printf "You really should:
   - Edit main-setup.sh and comment out any script you do not want to run.
   - Edit settings/fstab or remove it entirely.$RED$BOLD A non-configured fstab file can break your system!$NC$NORMAL
@@ -41,5 +40,5 @@ else
   - Remove autostart entries you do not want in settings/autostart.
   - Remove services you do not want to run on startup in settings/services.
   - Edit settings/settings.sh and comment out the parts you do not want to setup.
-  - Edit settings/user-overrides if you're using firefox."
+  - Edit settings/user-overrides if you're using firefox.\n"
 fi
