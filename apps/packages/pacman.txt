@@ -45,7 +45,6 @@ materia-kde
 mullvad-vpn
 noisetorch
 noto-fonts-emoji
-npm
 ntfs-3g
 nvidia
 nvidia-dkms
