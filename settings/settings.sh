@@ -8,6 +8,7 @@ sed -i '/General/a Enable=Source,Sink,Media,Socket' /etc/bluetooth/main.conf
 
 # Add autostart items
 echo "Adding autostart items..."
+mkdir ~/.config
 cp -a settings/autostart ~/.config/
 
 # Auto mount disks on startup
@@ -45,6 +46,7 @@ bash ./scripts/add-user-service.sh noisetorch
 
 # Enable Signal's tray icon
 echo "Enabling signal's tray icon..."
+mkdir -p ~/.local/share/applications
 sudo cp settings/autostart/signal-desktop.desktop ~/.local/share/applications/signal-desktop.desktop
 
 # Set hard/soft memlock limits to 2 GBs (required by RPCS3)
@@ -55,6 +57,7 @@ mv /etc/security/limits.conf.new /etc/security/limits.conf
 
 # Pictures
 echo "Adding pictures to the Pictures directory..."
+mkdir ~/Pictures
 cp settings/pictures/arcolinux-hello.png ~/Pictures/.arcolinux-hello.png
 cp settings/pictures/wallpaper.png ~/Pictures/.wallpaper.png
 
@@ -79,10 +82,6 @@ sudo systemctl enable sshd
 # Enable bluetooth
 echo "Enabling bluetooth..."
 sudo systemctl enable bluetooth
-
-# Default steam to start to tray
-echo "Defaulting steam to start to tray..."
-cp settings/autostart/steam.desktop ~/.local/share/applications/steam.desktop
 
 # Default soundux to start to tray
 echo "Defaulting soundux to start to tray..."
