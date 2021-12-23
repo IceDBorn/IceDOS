@@ -21,7 +21,8 @@ echo "Installing yay packages..."
 # Install Proton GE updater
 echo "Installing Proton GE updater..."
 sudo pip3 install protonup
-protonup -d ~/.steam/root/compatibilitytools.d/
+mkdir -p ~/.local/share/Steam/compatibilitytools.d/
+protonup -d ~/.local/share/Steam/compatibilitytools.d/
 protonup -y
 
 # Install RPCS3
