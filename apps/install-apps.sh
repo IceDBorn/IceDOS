@@ -9,6 +9,10 @@ echo "[chaotic-aur]" | sudo tee -a /etc/pacman.conf
 echo "Include = /etc/pacman.d/chaotic-mirrorlist" | sudo tee -a /etc/pacman.conf
 sudo pacman -Syyu --noconfirm
 
+# Enable multilib
+echo "[multilib]" | sudo tee -a /etc/pacman.conf
+echo "Include = /etc/pacman.d/mirrorlist" | sudo tee -a /etc/pacman.conf
+
 # Install pacman packages
 echo "Installing pacman packages..."
 < apps/packages/pacman.txt xargs sudo pacman -S --noconfirm --needed
