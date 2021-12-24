@@ -2,6 +2,10 @@
 
 username=$(whoami)
 
+# Enable SDDM
+echo "Enabling SDDM..."
+sudo systemctl enable sddm
+
 # Enable bluetooth audio devices
 echo "Enabling headphones support for bluetooth..."
 sed -i '/General/a Enable=Source,Sink,Media,Socket' /etc/bluetooth/main.conf
