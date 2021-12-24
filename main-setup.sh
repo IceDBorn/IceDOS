@@ -18,11 +18,11 @@ then
     # Application configs installer
     bash ./apps/install-app-configs.sh
 
-    # Settings changer
-    bash ./settings/settings.sh
-
     # Zsh installer
     bash ./apps/zsh-setup.sh
+
+    # Settings changer
+    bash ./settings/settings.sh
 
     # TODO: Add one time service at next boot
     # Photoshop installer
