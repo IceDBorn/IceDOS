@@ -24,10 +24,6 @@ then
     # Settings changer
     bash ./settings/settings.sh
 
-    # TODO: Add one time service at next boot
-    # Photoshop installer
-    #bash ./apps/install-photoshop.sh
-
     # Rebooting sequence
     bash ./scripts/reboot.sh
 else

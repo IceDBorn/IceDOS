@@ -103,10 +103,6 @@ gpg --gen-key
 echo "Adding password feedback to sudo..."
 echo "Defaults pwfeedback" | sudo tee -a /etc/sudoers
 
-# Set global KDE theme
-echo "Setting Materia Dark as global theme..."
-lookandfeeltool -a com.github.varlesh.materia-dark
-
 # Update grub
 echo "Updating grub..."
 sudo grub-mkconfig -o /boot/grub/grub.cfg
@@ -119,3 +115,6 @@ cp settings/user-overrides.js "$randomPath"/user-overrides.js
 git clone https://github.com/arkenfox/user.js.git
 cp user.js/updater.sh "$randomPath"/updater.sh
 sed -i "s|path-to-mozilla-updater|$randomPath|" ~/.zshrc
+
+# Add post install to next boot
+cp scripts/post-install.sh ~/post-install.sh
