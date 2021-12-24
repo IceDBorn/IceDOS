@@ -22,7 +22,7 @@ then
     bash ./settings/settings.sh
 
     # Zsh installer
-    bash ./apps/zsh/zsh-setup.sh
+    bash ./apps/zsh-setup.sh
 
     # TODO: Add one time service at next boot
     # Photoshop installer
