@@ -118,5 +118,4 @@ mkdir -p "$randomPath"
 cp settings/user-overrides.js "$randomPath"/user-overrides.js
 git clone https://github.com/arkenfox/user.js.git
 cp user.js/updater.sh "$randomPath"/updater.sh
-cp apps/zsh/zsh-config-append-content.txt apps/zsh/zsh-config-append-content.txt
-sed -i "s|path-to-mozilla-updater|$randomPath|" zsh/zsh-custom-config.txt
+sed -i "s|path-to-mozilla-updater|$randomPath|" ~/.zshrc
