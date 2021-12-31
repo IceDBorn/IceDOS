@@ -69,6 +69,7 @@ stremio
 sublime-text-4
 tree
 tutanota-desktop
+unrar
 vlc
 wget
 wine
