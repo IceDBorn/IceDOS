@@ -1,4 +1,0 @@
-emulsion-bin
-moonlight-qt
-papirus-libreoffice-theme
-sunshine

@@ -19,6 +19,7 @@ bluez-utils
 bpytop
 dolphin
 duckstation-git
+emulsion
 etcher
 ethtool
 firefox-nightly
@@ -42,6 +43,7 @@ lutris
 mangohud
 materia-gtk-theme
 materia-kde
+moonlight-qt
 mullvad-vpn
 noisetorch
 noto-fonts-emoji
@@ -51,6 +53,7 @@ nvidia-dkms
 nvtop
 os-prober
 papirus-icon-theme
+papirus-libreoffice-theme
 paru
 pcsx2
 plasma
@@ -67,6 +70,7 @@ steam
 steamtinkerlaunch
 stremio
 sublime-text-4
+sunshine
 tree
 tutanota-desktop
 unrar
