@@ -110,8 +110,9 @@ sudo grub-mkconfig -o /boot/grub/grub.cfg
 # Add mozilla custom profile
 echo "Adding custom mozilla profile..."
 randomPath="$HOME/.mozilla/firefox/$RANDOM.privacy"
-mkdir -p "$randomPath"
-cp settings/user-overrides.js "$randomPath"/user-overrides.js
+mkdir -p "$randomPath/chrome"
+cp settings/firefox/user-overrides.js "$randomPath"/user-overrides.js
+cp settings/firefox/userChrome.css "$randomPath"/chrome/userChrome.css
 git clone https://github.com/arkenfox/user.js.git
 cp user.js/updater.sh "$randomPath"/updater.sh
 sed -i "s|path-to-mozilla-updater|$randomPath|" ~/.zshrc
