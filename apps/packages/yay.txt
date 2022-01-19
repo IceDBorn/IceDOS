@@ -1,0 +1,2 @@
+awesome-git
+i3lock-fancy-git
