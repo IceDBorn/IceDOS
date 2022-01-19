@@ -10,11 +10,6 @@ sudo systemctl enable sddm
 echo "Enabling headphones support for bluetooth..."
 sed -i '/General/a Enable=Source,Sink,Media,Socket' /etc/bluetooth/main.conf
 
-# Add autostart items
-echo "Adding autostart items..."
-mkdir ~/.config
-cp -a settings/autostart ~/.config/
-
 # Auto mount disks on startup
 echo "Adding mounts to fstab..."
 cat /etc/fstab settings/fstab > ~/.fstab.new
@@ -48,22 +43,11 @@ bash ./scripts/add-system-service.sh wol
 echo "Adding noisetorch service..."
 bash ./scripts/add-user-service.sh noisetorch
 
-# Enable Signal's tray icon
-echo "Enabling signal's tray icon..."
-mkdir -p ~/.local/share/applications
-sudo cp settings/autostart/signal-desktop.desktop ~/.local/share/applications/signal-desktop.desktop
-
 # Set hard/soft memlock limits to 2 GBs (required by RPCS3)
 echo "Setting hard/soft memlock limits to 2 GBs..."
 cat /etc/security/limits.conf settings/limits.txt > /etc/security/limits.conf.new
 mv /etc/security/limits.conf /etc/security/limits.conf.old
 mv /etc/security/limits.conf.new /etc/security/limits.conf
-
-# Pictures
-echo "Adding pictures to the Pictures directory..."
-mkdir ~/Pictures
-cp settings/pictures/arcolinux-hello.png ~/Pictures/.arcolinux-hello.png
-cp settings/pictures/wallpaper.png ~/Pictures/.wallpaper.png
 
 # SDDM config
 echo "Installing SDDM config..."
@@ -86,14 +70,6 @@ sudo systemctl enable sshd
 # Enable bluetooth
 echo "Enabling bluetooth..."
 sudo systemctl enable bluetooth
-
-# Default soundux to start to tray
-echo "Defaulting soundux to start to tray..."
-cp settings/autostart/soundux.desktop ~/.local/share/applications/soundux.desktop
-
-# Custom desktop files
-echo "Installing custom desktop files..."
-cp -a settings/applications/ ~/.local/share/
 
 # Generate GPG key
 echo "Generating GPG key..."
