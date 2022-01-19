@@ -47,6 +47,7 @@ mangohud
 materia-gtk-theme
 moonlight-qt
 mullvad-vpn
+network-manager-applet
 noisetorch
 noto-fonts-emoji
 ntfs-3g
