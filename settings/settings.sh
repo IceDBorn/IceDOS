@@ -93,5 +93,8 @@ git clone https://github.com/arkenfox/user.js.git
 cp user.js/updater.sh "$randomPath"/updater.sh
 sed -i "s|path-to-mozilla-updater|$randomPath|" ~/.zshrc
 
+# Add awesome theme
+git clone https://github.com/IceDBorn/material-awesome.git ~/.config/awesome
+
 # Add post install to next boot
 cp scripts/post-install.sh ~/post-install.sh
