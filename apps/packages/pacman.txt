@@ -14,7 +14,6 @@ arandr
 aria2
 base-devel
 blender
-bluedevil
 blueman
 bluez-utils
 bpytop
@@ -47,6 +46,7 @@ mangohud
 materia-gtk-theme
 moonlight-qt
 mullvad-vpn
+network-manager-applet
 noisetorch
 noto-fonts-emoji
 ntfs-3g
