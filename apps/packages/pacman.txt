@@ -88,7 +88,7 @@ wine
 winetricks
 xfce4-clipman-plugin
 xpadneo-dkms-git
-xrandr
+xorg-xrandr
 yay
 youtube-dl
 zsh
