@@ -12,6 +12,7 @@ adobe-source-han-serif-tw-fonts
 amd-ucode
 arandr
 aria2
+awesome-git
 base-devel
 blender
 blueman
@@ -31,6 +32,7 @@ godot
 gparted
 gvfs
 gwe
+i3lock-fancy-git
 jetbrains-toolbox
 kcalc
 kdeconnect
@@ -87,8 +89,8 @@ wget
 wine
 winetricks
 xfce4-clipman-plugin
-xpadneo-dkms-git
 xorg-xrandr
+xpadneo-dkms-git
 yay
 youtube-dl
 zsh
