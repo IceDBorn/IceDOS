@@ -15,14 +15,14 @@ then
     # Applications installer
     bash ./apps/install-apps.sh
 
-    # Application configs installer
-    bash ./apps/install-app-configs.sh
-
     # Zsh installer
     bash ./apps/zsh-setup.sh
 
     # Settings changer
     bash ./settings/settings.sh
+
+    # Application configs installer
+    bash ./apps/install-app-configs.sh
 
     # Rebooting sequence
     bash ./scripts/reboot.sh
