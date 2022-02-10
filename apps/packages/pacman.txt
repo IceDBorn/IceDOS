@@ -12,7 +12,7 @@ adobe-source-han-serif-tw-fonts
 amd-ucode
 arandr
 aria2
-awesome-git
+awesome
 base-devel
 blender
 blueman
