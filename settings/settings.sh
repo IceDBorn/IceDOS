@@ -18,14 +18,21 @@ sudo mv ~/.fstab.new /etc/fstab
 
 # Create folders for HDD mounts and change permissions now and on startup
 echo "Creating folders for mounts..."
-mkdir ~/Games
-mkdir ~/Storage
-mkdir ~/SSDGames
-sudo chown "$username":"$username" ~/Games --recursive
-sudo chown "$username":"$username" ~/Storage --recursive
-sudo chown "$username":"$username" ~/SSDGames --recursive
+mkdir /mnt/Games
+mkdir /mnt/Storage
+mkdir /mnt/SSDGames
+mkdir /mnt/Windows
+sudo groupadd mnt
+sudo chown "$username:mnt" /mnt/Games --recursive
+sudo chown "$username:mnt" /mnt/Storage --recursive
+sudo chown "$username:mnt" /mnt/SSDGames --recursive
+sudo chown "$username:mnt" /mnt/Windows --recursive
 sed -i "s|changethis|$username|" settings/services/chown-disks.sh
 bash ./scripts/add-system-service.sh chown-disks
+echo "Creating additional user"
+mkdir /mnt/guest
+sudo useradd -m -d /mnt/guest guest
+sudo chown "guest:guest" /mnt/guest --recursive
 
 # Enable nvidia overclocking
 echo "Enabling nvidia overclocking..."
