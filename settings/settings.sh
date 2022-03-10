@@ -103,9 +103,10 @@ sed -i "s|path-to-mozilla-updater|$randomPath|" ~/.zshrc
 # Add awesome theme
 git clone https://github.com/IceDBorn/material-awesome.git ~/.config/awesome
 
-# Force QT applications to follow GTK theme
+# Force QT applications to follow GTK theme and cursor size
 echo "XDG_CURRENT_DESKTOP=Unity
-QT_QPA_PLATFORMTHEME=gtk2" | sudo tee -a /etc/environment
+QT_QPA_PLATFORMTHEME=gtk2
+XCURSOR_SIZE=24" | sudo tee -a /etc/environment
 
 # Add post install to next boot
 cp scripts/post-install.sh ~/post-install.sh
