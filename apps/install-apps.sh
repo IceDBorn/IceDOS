@@ -13,6 +13,9 @@ sudo pacman -Syyu --noconfirm
 echo "Installing pacman packages..."
 < apps/packages/pacman.txt xargs sudo pacman -S --noconfirm --needed
 
+# Install yay
+(cd /opt && sudo git clone https://aur.archlinux.org/yay-git.git && sudo chown -R "$username:$username" ./yay-git && cd yay-git && makepkg -si)
+
 # Install yay packages
 yay -Syyu --noconfirm
 echo "Installing yay packages..."
