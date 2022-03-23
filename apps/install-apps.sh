@@ -9,6 +9,9 @@ echo "Include = /etc/pacman.d/mirrorlist" | sudo tee -a /etc/pacman.conf
 # Update pacman mirrors
 sudo pacman -Syyu --noconfirm
 
+# Install Nvidia drivers
+sudo pacman -S nvidia nvidia-dkms
+
 # Install pacman packages
 echo "Installing pacman packages..."
 < apps/packages/pacman.txt xargs sudo pacman -S --noconfirm --needed
