@@ -10,7 +10,8 @@ echo "Include = /etc/pacman.d/mirrorlist" | sudo tee -a /etc/pacman.conf
 sudo pacman -Syyu --noconfirm
 
 # Install Nvidia drivers
-sudo pacman -S nvidia nvidia-dkms
+# You have to install the GPU drivers before installing Steam because Steam defaults to AMD vulkan drivers
+(lspci | grep NVIDIA > /dev/null) && sudo pacman -S nvidia nvidia-dkms nvidia-utils
 
 # Install pacman packages
 echo "Installing pacman packages..."
