@@ -1,7 +1,5 @@
 #!/bin/bash
 
-username=$(whoami)
-
 # Enable SDDM
 echo "Enabling SDDM..."
 sudo systemctl enable sddm

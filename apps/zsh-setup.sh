@@ -1,7 +1,5 @@
 #!/bin/bash
 
-username=$(whoami)
-
 # Set zsh as the default shell
 echo "Setting zsh as the default shell..."
 sudo chsh -s /bin/zsh root

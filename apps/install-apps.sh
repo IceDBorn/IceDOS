@@ -1,7 +1,5 @@
 #!/bin/bash
 
-username=$(whoami)
-
 # Enable multilib
 echo "[multilib]" | sudo tee -a /etc/pacman.conf
 echo "Include = /etc/pacman.d/mirrorlist" | sudo tee -a /etc/pacman.conf

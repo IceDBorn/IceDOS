@@ -6,6 +6,7 @@ BOLD=$(tput bold)
 NORMAL=$(tput sgr0)
 
 username=$(whoami)
+export username
 
 echo "Hello $username!"
 
