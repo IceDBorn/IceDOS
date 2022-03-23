@@ -2,8 +2,7 @@
 
 username="changethis"
 
-sudo chown "$username:mnt" /mnt/Games --recursive
-sudo chown "$username:mnt" /mnt/Storage --recursive
-sudo chown "$username:mnt" /mnt/SSDGames --recursive
-sudo chown "$username:mnt" /mnt/Windows --recursive
-sudo chown "guest:guest" /mnt/guest --recursive
+sudo chown "$username:$username" /mnt/Games --recursive
+sudo chown "$username:$username" /mnt/Storage --recursive
+sudo chown "$username:$username" /mnt/SSDGames --recursive
+sudo chown "$username:$username" /mnt/Windows --recursive
