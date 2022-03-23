@@ -56,16 +56,6 @@ cat /etc/security/limits.conf settings/limits.txt > /etc/security/limits.conf.ne
 mv /etc/security/limits.conf /etc/security/limits.conf.old
 mv /etc/security/limits.conf.new /etc/security/limits.conf
 
-# SDDM config
-echo "Installing SDDM config..."
-sudo mkdir -p /etc/sddm.conf.d/
-mkdir -p ~/.config/sddm
-cp settings/autologin.conf settings/autologin.conf.old
-sed -i "s|changethis|$username|" settings/autologin.conf
-cp settings/autologin.conf ~/.config/sddm/
-cp settings/passwordlogin.conf ~/.config/sddm/
-mv settings/autologin.conf.old settings/autologin.conf
-
 # nvm installer
 echo "Installing nvm..."
 curl -o- https://raw.githubusercontent.com/nvm-sh/nvm/v0.38.0/install.sh | bash
