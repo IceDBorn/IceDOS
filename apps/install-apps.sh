@@ -18,7 +18,7 @@ echo "Installing pacman packages..."
 < apps/packages/pacman.txt xargs sudo pacman -S --noconfirm --needed
 
 # Install yay
-(cd /opt && sudo git clone https://aur.archlinux.org/yay-git.git && sudo chown -R "$username:$username" ./yay-git && cd yay-git && makepkg -si)
+(cd /opt && sudo git clone https://aur.archlinux.org/yay-git.git && sudo chown -R "$username:$username" ./yay-git && cd yay-git && makepkg -si --noconfirm)
 
 # Install yay packages
 yay -Syyu --noconfirm
@@ -42,5 +42,5 @@ cp settings/applications/rpcs3.desktop ~/.local/share/applications/rpcs3.desktop
 # Install performance tweaks
 echo "Installing performance tweaks..."
 git clone https://gitlab.com/garuda-linux/themes-and-settings/settings/performance-tweaks.git
-(cd performance-tweaks && makepkg -si)
+(cd performance-tweaks && makepkg -si --noconfirm)
 rm -rf performance-tweaks
