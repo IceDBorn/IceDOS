@@ -14,3 +14,4 @@ alias update="yay -Syu --noconfirm && yes | protonup && yes | path-to-mozilla-up
 alias vpn-off="mullvad disconnect"
 alias vpn-on="mullvad connect"
 alias vpn="mullvad status"
+alias clear-cache="sudo rm -rf ~/.cache/*"
