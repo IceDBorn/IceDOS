@@ -10,6 +10,10 @@ echo "Installing zsh theme..."
 mkdir -p ~/.config/zsh
 cp apps/zsh/zsh-theme.sh ~/.config/zsh/zsh-theme.sh
 
+# Install zsh theme
+echo "Installing zsh personal config..."
+cp apps/zsh/zsh-personal.sh ~/.config/zsh/zsh-personal.sh
+
 # Run zsh once to generate default config
 echo "Running zsh for the first time..."
 zsh
