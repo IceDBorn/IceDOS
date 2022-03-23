@@ -34,11 +34,11 @@ sudo chown "guest:guest" /mnt/guest --recursive
 
 # Enable nvidia overclocking
 echo "Enabling nvidia overclocking..."
-sudo nvidia-xconfig --cool-bits=31
+(lspci | grep NVIDIA > /dev/null) && sudo nvidia-xconfig --cool-bits=31
 
 # Maximize nvidia GPU power limit on startup
-echo "Maximizing GPU power limit..."
-bash ./scripts/add-system-service.sh nv-power-limit
+echo "Maximizing Nvidia GPU power limit..."
+(lspci | grep NVIDIA > /dev/null) && bash ./scripts/add-system-service.sh nv-power-limit
 
 # Enable wol service
 echo "Enabling wake on lan service..."
