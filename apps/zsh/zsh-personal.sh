@@ -5,7 +5,6 @@ unsetopt PROMPT_SP
 alias aria2c="aria2c -j 16 -s 16"
 alias chmod="sudo chmod"
 alias clear-keys="sudo rm -rf ~/ local/share/keyrings/* ~/ local/share/kwalletd/*"
-alias clear-yay-cache="sudo rm -rf ~/.cache/yay/*"
 alias pacman="sudo pacman"
 alias reboot-windows="sudo grub-set-default 0 && sudo grub-reboot 2 && sudo reboot"
 alias ssh="TERM=xterm-256color ssh"
