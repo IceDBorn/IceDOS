@@ -13,6 +13,7 @@ amd-ucode
 arandr
 aria2
 awesome
+baobab
 base-devel
 blender
 blueman
