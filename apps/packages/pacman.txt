@@ -21,8 +21,10 @@ bluez-utils
 bpytop
 engrampa
 ethtool
+firefox
 flameshot
 gamemode
+gamescope
 git
 gnome-keyring
 godot
