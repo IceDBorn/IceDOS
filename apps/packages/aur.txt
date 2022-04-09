@@ -19,5 +19,6 @@ soundux
 steamtinkerlaunch
 sublime-text-4
 sunshine
+tela-icon-theme
 tutanota-desktop-bin
 xpadneo-dkms-git

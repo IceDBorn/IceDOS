@@ -48,7 +48,6 @@ noto-fonts-emoji
 ntfs-3g
 nvtop
 os-prober
-papirus-icon-theme
 pasystray
 pcsx2
 picom
