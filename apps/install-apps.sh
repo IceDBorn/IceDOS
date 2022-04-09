@@ -15,13 +15,13 @@ sudo pacman -Syyu --noconfirm
 echo "Installing pacman packages..."
 < apps/packages/pacman.txt xargs sudo pacman -S --noconfirm --needed
 
-# Install yay
-(cd /opt && sudo git clone https://aur.archlinux.org/yay-git.git && sudo chown -R "$username:$username" ./yay-git && cd yay-git && makepkg -si --noconfirm)
+# Install paru
+(git clone https://aur.archlinux.org/paru.git && cd paru && makepkg -si)
 
-# Install yay packages
-yay -Syyu --noconfirm
-echo "Installing yay packages..."
-< apps/packages/yay.txt xargs yay -S --noconfirm --needed
+# Install aur packages
+paru -Syyu --noconfirm
+echo "Installing aur packages..."
+< apps/packages/aur.txt xargs paru -S --noconfirm --needed
 
 # Install Proton GE updater
 echo "Installing Proton GE updater..."

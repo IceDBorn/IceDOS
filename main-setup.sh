@@ -31,8 +31,8 @@ else
   printf "You really should:
   - Edit main-setup.sh and comment out any script you do not want to run.
   - Edit settings/fstab or remove it entirely.$RED$BOLD A non-configured fstab file can break your system!$NC$NORMAL
-  - Edit pacman and yay packages lists in apps/packages.
-  - Edit install-apps.sh to remove installation of extra apps not present in pacman and yay.
+  - Edit pacman and aur packages lists in apps/packages.
+  - Edit install-apps.sh to remove installation of extra apps not present in pacman and aur.
   - Remove custom application entries you do not want in settings/applications.
   - Remove autostart entries you do not want in settings/autostart.
   - Remove services you do not want to run on startup in settings/services.
