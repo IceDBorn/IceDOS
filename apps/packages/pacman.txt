@@ -26,7 +26,10 @@ flameshot
 gamemode
 gamescope
 git
+gnome
 gnome-keyring
+gnome-shell-extensions
+gnome-tweaks
 godot
 gparted
 gvfs
