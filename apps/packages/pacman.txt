@@ -56,7 +56,9 @@ polkit-qt5
 ppsspp
 python-pip
 qbittorrent
+reflector
 rofi
+rsync
 sddm
 sddm-kcm
 signal-desktop
