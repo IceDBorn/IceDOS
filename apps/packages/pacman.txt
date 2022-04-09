@@ -25,6 +25,7 @@ firefox
 flameshot
 gamemode
 gamescope
+gdm
 git
 gnome
 gnome-keyring
@@ -42,7 +43,6 @@ linux-zen
 linux-zen-headers
 lutris
 lxappearance
-materia-gtk-theme
 network-manager-applet
 noto-fonts-emoji
 ntfs-3g
@@ -59,7 +59,6 @@ qbittorrent
 reflector
 rofi
 rsync
-gdm
 signal-desktop
 steam
 thunar

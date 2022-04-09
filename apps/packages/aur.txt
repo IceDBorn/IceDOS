@@ -12,6 +12,7 @@ mullvad-vpn-bin
 noisetorch
 nvlax-git
 papirus-libreoffice-theme
+plata-theme
 protontricks
 qt5-styleplugins
 soundux
