@@ -1,8 +1,8 @@
 #!/bin/bash
 
-# Enable SDDM
-echo "Enabling SDDM..."
-sudo systemctl enable sddm
+# Enable GDM
+echo "Enabling GDM..."
+sudo systemctl enable gdm
 
 # Enable bluetooth audio devices
 echo "Enabling headphones support for bluetooth..."

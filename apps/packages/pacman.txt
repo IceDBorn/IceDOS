@@ -59,8 +59,7 @@ qbittorrent
 reflector
 rofi
 rsync
-sddm
-sddm-kcm
+gdm
 signal-desktop
 steam
 thunar
