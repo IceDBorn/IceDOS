@@ -1,4 +1,5 @@
 balena-etcher
+deezer
 downgrade
 duckstation-git
 emulsion-bin
