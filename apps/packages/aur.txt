@@ -3,7 +3,6 @@ deezer
 downgrade
 duckstation-git
 gwe
-i3lock-fancy-git
 jetbrains-toolbox
 lib32-mangohud
 mangohud
@@ -14,7 +13,6 @@ nvlax-git
 papirus-libreoffice-theme
 plata-theme
 protontricks
-qt5-styleplugins
 soundux
 steamtinkerlaunch
 sublime-text-4
