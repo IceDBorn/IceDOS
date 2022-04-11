@@ -10,6 +10,7 @@ alias reboot-windows="sudo grub-set-default 0 && sudo grub-reboot 2 && sudo rebo
 alias ssh="TERM=xterm-256color ssh"
 alias sunshine="export DISPLAY=:0 && sunshine ~/ config/sunshine/sunshine conf"
 alias update-grub="sudo grub-mkconfig -o /boot/grub/grub cfg"
+alias update-mirrors="sudo reflector --latest 200 --sort rate --save /etc/pacman.d/mirrorlist"
 alias update="(paru -Syu --noconfirm) ; (yes | protonup) ; (yes | path-to-mozilla-updater/updater.sh)"
 alias vpn-off="mullvad disconnect"
 alias vpn-on="mullvad connect"
