@@ -1,4 +1,5 @@
 balena-etcher
+bottles
 deezer
 downgrade
 duckstation-git

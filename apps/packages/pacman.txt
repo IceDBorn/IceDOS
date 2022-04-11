@@ -31,7 +31,6 @@ kitty
 libreoffice-fresh
 linux-zen
 linux-zen-headers
-lutris
 noto-fonts-emoji
 ntfs-3g
 nvtop
