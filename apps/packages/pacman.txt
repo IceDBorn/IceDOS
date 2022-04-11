@@ -32,7 +32,6 @@ gnome-keyring
 gnome-shell-extensions
 gnome-tweaks
 godot
-gparted
 gvfs
 kcalc
 kdeconnect
@@ -60,7 +59,6 @@ rofi
 rsync
 signal-desktop
 steam
-thunar
 tree
 ttf-roboto
 unrar

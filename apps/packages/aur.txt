@@ -2,7 +2,6 @@ balena-etcher
 deezer
 downgrade
 duckstation-git
-emulsion-bin
 gwe
 i3lock-fancy-git
 jetbrains-toolbox
