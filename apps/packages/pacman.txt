@@ -60,6 +60,7 @@ rsync
 signal-desktop
 steam
 tree
+ttf-font-awesome
 ttf-roboto
 unrar
 vlc
