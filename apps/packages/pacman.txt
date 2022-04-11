@@ -9,15 +9,9 @@ adobe-source-han-serif-jp-fonts
 adobe-source-han-serif-kr-fonts
 adobe-source-han-serif-otc-fonts
 adobe-source-han-serif-tw-fonts
-amd-ucode
-arandr
 aria2
 base-devel
-blender
-blueman
-bluez-utils
 bpytop
-engrampa
 ethtool
 firefox
 flameshot
@@ -31,7 +25,6 @@ gnome-shell-extensions
 gnome-tweaks
 godot
 gvfs
-kcalc
 kdeconnect
 kdenlive
 kitty
@@ -43,7 +36,6 @@ noto-fonts-emoji
 ntfs-3g
 nvtop
 os-prober
-pasystray
 pcsx2
 polkit-qt5
 ppsspp
@@ -60,7 +52,6 @@ vlc
 wget
 wine
 winetricks
-xfce4-clipman-plugin
 xorg-xrandr
 youtube-dl
 zsh
