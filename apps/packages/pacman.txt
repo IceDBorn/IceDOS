@@ -14,7 +14,6 @@ base-devel
 bpytop
 ethtool
 firefox
-flameshot
 gamemode
 gamescope
 gdm
