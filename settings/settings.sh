@@ -91,8 +91,5 @@ XCURSOR_SIZE=24" | sudo tee -a /etc/environment
 # Add post install to next boot
 cp scripts/post-install.sh ~/post-install.sh
 
-# Enable pacman parallel downloads, add pacman progress bar and add color to output
-sudo sed -i '/^# Misc options/a ParallelDownloads = 16\nILoveCandy\nColor' /etc/pacman.conf
-
 # Add wallpaper
 cp settings/wallpaper/.wallpaper.png "$HOME"/Pictures/.wallpaper.png

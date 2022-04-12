@@ -4,6 +4,9 @@
 echo "[multilib]" | sudo tee -a /etc/pacman.conf
 echo "Include = /etc/pacman.d/mirrorlist" | sudo tee -a /etc/pacman.conf
 
+# Enable pacman parallel downloads, add pacman progress bar and add color to output
+sudo sed -i '/^# Misc options/a ParallelDownloads = 16\nILoveCandy\nColor' /etc/pacman.conf
+
 # Update pacman mirrors
 sudo pacman -Syyu --noconfirm
 
