@@ -78,7 +78,7 @@ cp settings/firefox/user-overrides.js "$randomPath"/user-overrides.js
 cp settings/firefox/userChrome.css "$randomPath"/chrome/userChrome.css
 git clone https://github.com/arkenfox/user.js.git
 cp user.js/updater.sh "$randomPath"/updater.sh
-sed -i "s|path-to-mozilla-updater|$randomPath|" ~/.zshrc
+sed -i "s|path-to-mozilla-updater|$randomPath|" ~/.config/zsh/zsh-personal.sh
 
 # Add awesome theme
 git clone https://github.com/IceDBorn/material-awesome.git ~/.config/awesome
@@ -93,3 +93,6 @@ cp scripts/post-install.sh ~/post-install.sh
 
 # Enable pacman parallel downloads, add pacman progress bar and add color to output
 sudo sed -i '/^# Misc options/a ParallelDownloads = 16\nILoveCandy\nColor' /etc/pacman.conf
+
+# Add wallpaper
+cp settings/wallpaper/.wallpaper.png "$HOME"/Pictures/.wallpaper.png
