@@ -43,6 +43,7 @@ reflector
 rsync
 signal-desktop
 steam
+syncthing
 tree
 ttf-font-awesome
 unrar
