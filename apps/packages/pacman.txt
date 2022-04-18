@@ -11,7 +11,7 @@ adobe-source-han-serif-otc-fonts
 adobe-source-han-serif-tw-fonts
 aria2
 base-devel
-bpytop
+btop
 ethtool
 firefox
 gamemode
