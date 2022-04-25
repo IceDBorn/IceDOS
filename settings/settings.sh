@@ -80,9 +80,6 @@ git clone https://github.com/arkenfox/user.js.git
 cp user.js/updater.sh "$randomPath"/updater.sh
 sed -i "s|path-to-mozilla-updater|$randomPath|" ~/.config/zsh/zsh-personal.sh
 
-# Add awesome theme
-git clone https://github.com/IceDBorn/material-awesome.git ~/.config/awesome
-
 # Force QT applications to follow GTK theme and cursor size
 echo "XDG_CURRENT_DESKTOP=Unity
 QT_QPA_PLATFORMTHEME=gtk2
