@@ -11,7 +11,6 @@ adobe-source-han-serif-otc-fonts
 adobe-source-han-serif-tw-fonts
 aria2
 base-devel
-btop
 ethtool
 firefox
 gamemode
@@ -32,7 +31,6 @@ linux-zen
 linux-zen-headers
 noto-fonts-emoji
 ntfs-3g
-nvtop
 os-prober
 pcsx2
 polkit-qt5
