@@ -12,7 +12,7 @@ sudo pacman -Syyu --noconfirm
 
 # Install Nvidia drivers
 # You have to install the GPU drivers before installing Steam because Steam defaults to AMD vulkan drivers
-(lspci | grep NVIDIA > /dev/null) && sudo pacman -S nvidia nvidia-dkms nvidia-utils
+(lspci | grep NVIDIA > /dev/null) && sudo pacman -S nvidia nvidia-dkms nvidia-utils --noconfirm
 
 # Install pacman packages
 echo "Installing pacman packages..."
@@ -23,6 +23,10 @@ echo "Installing pacman packages..."
 
 # Install aur packages
 paru -Syyu --noconfirm
+
+# Install nvidia patch only on NVIDIA GPUs
+(lspci | grep NVIDIA > /dev/null) && paru -S nvlax-git --noconfirm
+
 echo "Installing aur packages..."
 < apps/packages/aur.txt xargs paru -S --noconfirm --needed
 
