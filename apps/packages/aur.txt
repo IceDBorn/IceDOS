@@ -1,5 +1,6 @@
 balena-etcher
 bottles
+chrome-gnome-shell
 deezer
 downgrade
 duckstation-git
