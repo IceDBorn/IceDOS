@@ -28,7 +28,7 @@ paru -Syyu --noconfirm --skipreview
 (lspci | grep NVIDIA > /dev/null) && paru -S nvlax-git --noconfirm --skipreview
 
 echo "Installing aur packages..."
-< apps/packages/aur.txt xargs paru -S --noconfirm --needed --skipreview
+< apps/packages/aur.txt xargs paru -S --needed --skipreview
 
 # Install Proton GE updater
 echo "Installing Proton GE updater..."
