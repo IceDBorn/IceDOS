@@ -14,8 +14,3 @@ cp apps/configs/MangoHud.conf ~/.config/MangoHud/MangoHud.conf
 echo "Installing sunshine config..."
 mkdir -p ~/.config/sunshine/
 cp apps/configs/sunshine.conf ~/.config/sunshine/sunshine.conf
-
-# Bpytop config installer
-echo "Installing bpytop config..."
-mkdir -p ~/.config/bpytop
-cp apps/configs/bpytop.conf ~/.config/bpytop/bpytop.conf
