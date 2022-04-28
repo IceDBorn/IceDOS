@@ -25,3 +25,4 @@ system-monitoring-center
 tela-icon-theme
 tutanota-desktop-bin
 xpadneo-dkms-git
+yay
