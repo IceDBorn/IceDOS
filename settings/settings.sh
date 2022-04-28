@@ -16,10 +16,10 @@ sudo mv ~/.fstab.new /etc/fstab
 
 # Create folders for HDD mounts and change permissions now and on startup
 echo "Creating folders for mounts..."
-mkdir /mnt/Games
-mkdir /mnt/Storage
-mkdir /mnt/SSDGames
-mkdir /mnt/Windows
+sudo mkdir /mnt/Games
+sudo mkdir /mnt/Storage
+sudo mkdir /mnt/SSDGames
+sudo mkdir /mnt/Windows
 sed -i "s|changethis|$username|" settings/services/chown-disks.sh
 bash ./settings/services/chown-disks.sh
 bash ./scripts/add-system-service.sh chown-disks
