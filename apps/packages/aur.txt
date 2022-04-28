@@ -1,3 +1,5 @@
+ananicy-cpp
+ananicy-rules-git
 balena-etcher
 bottles
 chrome-gnome-shell
@@ -13,6 +15,7 @@ mullvad-vpn-bin
 noisetorch
 papirus-libreoffice-theme
 plata-theme
+preload
 protontricks
 soundux
 steamtinkerlaunch
