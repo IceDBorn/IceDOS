@@ -89,4 +89,6 @@ XCURSOR_SIZE=24" | sudo tee -a /etc/environment
 cp scripts/post-install.sh ~/post-install.sh
 
 # Add wallpaper
-cp settings/wallpaper/.wallpaper.png "$HOME"/Pictures/.wallpaper.png
+echo "Adding wallpaper..."
+mkdir -p ~/Pictures
+cp settings/wallpaper/.wallpaper.png ~/Pictures/.wallpaper.png
