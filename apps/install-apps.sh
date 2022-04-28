@@ -22,13 +22,13 @@ echo "Installing pacman packages..."
 (git clone https://aur.archlinux.org/paru.git && cd paru && makepkg -si)
 
 # Install aur packages
-paru -Syyu --noconfirm
+paru -Syyu --noconfirm --skipreview
 
 # Install nvidia patch only on NVIDIA GPUs
-(lspci | grep NVIDIA > /dev/null) && paru -S nvlax-git --noconfirm
+(lspci | grep NVIDIA > /dev/null) && paru -S nvlax-git --noconfirm --skipreview
 
 echo "Installing aur packages..."
-< apps/packages/aur.txt xargs paru -S --noconfirm --needed
+< apps/packages/aur.txt xargs paru -S --noconfirm --needed --skipreview
 
 # Install Proton GE updater
 echo "Installing Proton GE updater..."
