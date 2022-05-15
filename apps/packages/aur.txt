@@ -6,6 +6,7 @@ chrome-gnome-shell
 deezer
 downgrade
 duckstation-git
+gpu-screen-recorder-gtk-git
 gwe
 jetbrains-toolbox
 lib32-mangohud
