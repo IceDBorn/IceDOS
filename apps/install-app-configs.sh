@@ -19,3 +19,7 @@ cp apps/configs/sunshine.conf ~/.config/sunshine/sunshine.conf
 echo "Installing alacritty config..."
 mkdir -p ~/.config/alacritty/
 cp apps/configs/alacritty.yml ~/.config/sunshine/alacritty.yml
+
+# Alacritty multiple terminals desktop file installer
+echo "Installing alacritty multiple terminals desktop file..."
+cp apps/startup/startup-terminals.desktop ~/.local/share/applications/startup-terminals.desktop
