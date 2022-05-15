@@ -10,6 +10,7 @@ extramaus
 firefox-pwa
 gpu-screen-recorder-gtk-git
 gwe
+heroic-games-launcher-bin
 jetbrains-toolbox
 lib32-mangohud
 mangohud
