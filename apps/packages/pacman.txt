@@ -15,6 +15,7 @@ base-devel
 ethtool
 firefox
 fragments
+gameconqueror
 gamemode
 gamescope
 gdm
