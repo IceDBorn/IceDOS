@@ -14,3 +14,8 @@ cp apps/configs/MangoHud.conf ~/.config/MangoHud/MangoHud.conf
 echo "Installing sunshine config..."
 mkdir -p ~/.config/sunshine/
 cp apps/configs/sunshine.conf ~/.config/sunshine/sunshine.conf
+
+# Alacritty config installer
+echo "Installing alacritty config..."
+mkdir -p ~/.config/alacritty/
+cp apps/configs/alacritty.yml ~/.config/sunshine/alacritty.yml
