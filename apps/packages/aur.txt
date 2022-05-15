@@ -25,5 +25,6 @@ sunshine
 system-monitoring-center
 tela-icon-theme
 tutanota-desktop-bin
+usbimager
 xpadneo-dkms-git
 yay
