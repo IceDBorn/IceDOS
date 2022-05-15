@@ -1,8 +1,13 @@
 #!/bin/bash
 
-echo "Installing Photoshop..."
-git clone https://github.com/Gictorbit/photoshopCClinux.git
-(cd photoshopCClinux && sudo chmod +x setup.sh && ./setup.sh)
-rm -rf photoshopCClinux
+# Enable fractional scaling
+echo "Enabling fractional scaling..."
+gsettings set org.gnome.mutter experimental-features "['scale-monitor-framebuffer']"
 
-gsettings set org.gnome.desktop.background picture-uri file:///home/"$username"/Pictures/.wallpaper.png
+# Change GTK theme
+echo "Changing GTK theme to Plata-Noir-Compact..."
+gsettings set org.gnome.desktop.interface gtk-theme Plata-Noir-Compact
+
+# Change icon theme
+echo "Changing icon theme to Tela-black-dark..."
+gsettings set org.gnome.desktop.interface icon-theme Tela-black-dark
