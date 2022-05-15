@@ -21,3 +21,7 @@ sudo mkinitcpio -P
 sudo sed -i "/^GRUB_CMDLINE_LINUX_DEFAULT=/ s/\"$/ nvidia-drm.modeset=1\"/" /etc/default/grub
 sudo grub-mkconfig -o /boot/grub/grub.cfg
 sudo pacman -Syu --needed --noconfirm xorg-xwayland libxcb egl-wayland
+
+# Remove script from startup
+echo "Removing script from startup"
+sudo rm -rf ~/.config/autostart/post-install.desktop

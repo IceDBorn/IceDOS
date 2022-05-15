@@ -94,7 +94,14 @@ mkdir -p ~/Pictures
 cp settings/wallpaper/.wallpaper.png ~/Pictures/.wallpaper.png
 
 # Enable firefox wayland support
+echo "Enabling firefox wayland support..."
 cp apps/zsh/.zprofile ~/.zprofile
 
 # Add nvidia gpu fan control (wayland)
+echo "Adding nvidia gpu fan control script for wayland..."
 cp scripts/.nvidia-fan-control-wayland.sh ~/.nvidia-fan-control-wayland.sh
+
+# Add post install script to startup
+echo "Adding post install script to startup..."
+cp scripts/.post-install.sh ~/.post-install.sh
+cp apps/startup/post-install.desktop ~/.config/autostart/post-install.desktop
