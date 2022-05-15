@@ -19,6 +19,7 @@ gameconqueror
 gamemode
 gamescope
 gdm
+gimp
 git
 gnome
 gnome-keyring
