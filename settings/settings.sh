@@ -95,3 +95,6 @@ cp settings/wallpaper/.wallpaper.png ~/Pictures/.wallpaper.png
 
 # Enable firefox wayland support
 cp apps/zsh/.zprofile ~/.zprofile
+
+# Add nvidia gpu fan control (wayland)
+cp scripts/.nvidia-fan-control-wayland.sh ~/.nvidia-fan-control-wayland.sh
