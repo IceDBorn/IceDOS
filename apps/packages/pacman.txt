@@ -41,6 +41,7 @@ ppsspp
 python-pip
 reflector
 rsync
+rust
 signal-desktop
 steam
 syncthing
