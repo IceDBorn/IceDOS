@@ -85,9 +85,6 @@ echo "XDG_CURRENT_DESKTOP=Unity
 QT_QPA_PLATFORMTHEME=gtk2
 XCURSOR_SIZE=24" | sudo tee -a /etc/environment
 
-# Add post install to next boot
-cp scripts/post-install.sh ~/post-install.sh
-
 # Add wallpaper
 echo "Adding wallpaper..."
 mkdir -p ~/Pictures
