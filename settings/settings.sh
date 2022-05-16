@@ -83,11 +83,6 @@ echo "XDG_CURRENT_DESKTOP=Unity
 QT_QPA_PLATFORMTHEME=gtk2
 XCURSOR_SIZE=24" | sudo tee -a /etc/environment
 
-# Add wallpaper
-echo "Adding wallpaper..."
-mkdir -p ~/Pictures
-cp settings/wallpaper/.wallpaper.png ~/Pictures/.wallpaper.png
-
 # Enable firefox wayland support
 echo "Enabling firefox wayland support..."
 cp apps/zsh/.zprofile ~/.zprofile
