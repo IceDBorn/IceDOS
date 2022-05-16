@@ -28,17 +28,10 @@ echo "Installing aur packages..."
 
 # Install Proton GE updater
 echo "Installing Proton GE updater..."
-sudo pip3 install protonup
+sudo pip3 install protonup-ng
 mkdir -p ~/.local/share/Steam/compatibilitytools.d/
 protonup -d ~/.local/share/Steam/compatibilitytools.d/
 protonup -y
-
-# Install RPCS3
-echo "Installing RPCS3..."
-mkdir -p ~/.local/share/rpcs3/
-wget --content-disposition https://rpcs3.net/latest-appimage -O ~/.local/share/rpcs3/rpcs3.AppImage
-chmod a+x ~/.local/share/rpcs3/rpcs3.AppImage
-cp settings/applications/rpcs3.desktop ~/.local/share/applications/rpcs3.desktop
 
 # Install performance tweaks
 echo "Installing performance tweaks..."
