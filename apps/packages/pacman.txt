@@ -29,7 +29,6 @@ godot
 gvfs
 kdeconnect
 kdenlive
-kitty
 libreoffice-fresh
 linux-zen
 linux-zen-headers
