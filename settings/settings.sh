@@ -103,5 +103,6 @@ cp scripts/.nvidia-fan-control-wayland.sh ~/.nvidia-fan-control-wayland.sh
 
 # Add post install script to startup
 echo "Adding post install script to startup..."
+mkdir -p ~/.config/autostart
 cp scripts/.post-install.sh ~/.post-install.sh
 cp apps/startup/post-install.desktop ~/.config/autostart/post-install.desktop
