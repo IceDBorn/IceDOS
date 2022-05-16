@@ -1,6 +1,5 @@
 ananicy-cpp
 ananicy-rules-git
-balena-etcher
 bottles
 chrome-gnome-shell
 deezer
