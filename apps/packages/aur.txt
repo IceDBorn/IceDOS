@@ -11,7 +11,7 @@ gpu-screen-recorder-gtk-git
 gwe
 heroic-games-launcher-bin
 jetbrains-toolbox
-mangohud
+mangohud-wayland
 moonlight-qt
 mullvad-vpn-bin
 noisetorch
