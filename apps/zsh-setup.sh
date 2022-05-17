@@ -15,7 +15,7 @@ echo "Installing zsh personal config..."
 cp apps/zsh/zsh-personal.sh ~/.config/zsh/zsh-personal.sh
 
 # Run zsh once to generate default config
-echo "Running zsh for the first time..."
+echo "Executing zsh for the first time..."
 zsh
 
 # Install oh my zsh
