@@ -1,9 +1,11 @@
 #!/bin/bash
 
 # Enable pacman parallel downloads, add pacman progress bar and add color to output
+echo "Customizing pacman..."
 sudo sed -i '/^# Misc options/a ParallelDownloads = 16\nILoveCandy\nColor' /etc/pacman.conf
 
 # Update pacman mirrors
+echo "Updating pacman mirrors..."
 sudo pacman -Syyu --noconfirm
 
 # Install GPU drivers
@@ -20,14 +22,18 @@ echo "Installing pacman packages..."
 < apps/packages/pacman.txt xargs sudo pacman -S --noconfirm --needed
 
 # Install paru
+echo "Installing paru..."
 (git clone https://aur.archlinux.org/paru.git && cd paru && makepkg -si)
 
-# Install aur packages
+# Update aur mirrots
+echo "Updating aur mirrors..."
 paru -Syyu --noconfirm --skipreview
 
 # Install nvidia patch only on NVIDIA GPUs
+echo "Installing NVIDIA driver patch..."
 (lspci | grep -i '.* vga .* nvidia .*' > /dev/null) && paru -S nvlax-git --noconfirm --skipreview
 
+# Install aur packages
 echo "Installing aur packages..."
 < apps/packages/aur.txt xargs paru -S --needed --skipreview
 
