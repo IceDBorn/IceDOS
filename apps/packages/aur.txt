@@ -14,7 +14,6 @@ jetbrains-toolbox
 mangohud-wayland
 moonlight-qt
 mullvad-vpn-bin
-noisetorch
 papirus-libreoffice-theme
 plata-theme
 preload
