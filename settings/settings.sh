@@ -41,8 +41,9 @@ echo "Adding noisetorch service..."
 bash ./scripts/add-user-service.sh noisetorch
 
 # Set hard/soft memlock limits to 2 GBs (required by RPCS3)
+echo "Settings memory limits required by RPCS3..."
 echo "*        hard    memlock        2147483648
-*        soft    memlock        2147483648" | sudo tee -a mv /etc/security/limits.conf
+*        soft    memlock        2147483648" | sudo tee -a /etc/security/limits.conf
 
 # nvm installer
 echo "Installing nvm..."
