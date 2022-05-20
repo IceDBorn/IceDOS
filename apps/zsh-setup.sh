@@ -2,13 +2,11 @@
 
 # Set zsh as the default shell
 echo "Setting zsh as the default shell..."
-sudo chsh -s /usr/bin/zsh root
-sudo chsh -s /usr/bin/zsh "$username"
+( (sudo chsh -s /usr/bin/zsh root) && (sudo chsh -s /usr/bin/zsh "$username") )
 
 # Install zsh theme
 echo "Installing zsh theme..."
-mkdir -p ~/.config/zsh
-cp apps/zsh/zsh-theme.sh ~/.config/zsh/zsh-theme.sh
+( (mkdir -p ~/.config/zsh) && (cp apps/zsh/zsh-theme.sh ~/.config/zsh/zsh-theme.sh) )
 
 # Install zsh theme
 echo "Installing zsh personal config..."
@@ -28,5 +26,4 @@ bash ./apps/zsh/install-zsh-plugins.sh
 
 # Add personal zsh config to zshrc
 echo "Adding personal zsh config to '~/.zshrc'..."
-echo "source ~/.config/zsh/zsh-personal.sh" >> ~/.zshrc
-sed -i 's/^plugins=(\(.*\)/plugins=(archlinux npm nvm sudo systemd zsh-autosuggestions zsh-better-npm-completion zsh-syntax-highlighting \1/' ~/.zshrc
+( (echo "source ~/.config/zsh/zsh-personal.sh" >> ~/.zshrc) && (sed -i 's/^plugins=(\(.*\)/plugins=(archlinux npm nvm sudo systemd zsh-autosuggestions zsh-better-npm-completion zsh-syntax-highlighting \1/' ~/.zshrc) )
