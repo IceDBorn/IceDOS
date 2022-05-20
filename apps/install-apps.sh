@@ -27,8 +27,7 @@ echo "Updating aur mirrors..."
 paru -Syyu --noconfirm --skipreview
 
 # Install nvidia patch only on NVIDIA GPUs
-echo "Installing NVIDIA driver patch..."
-(lspci | grep -i '.* vga .* nvidia .*' > /dev/null) && paru -S nvlax-git --noconfirm --skipreview
+(lspci | grep -i '.* vga .* nvidia .*' > /dev/null) && (echo "Installing NVIDIA driver patch..." && paru -S nvlax-git --noconfirm --skipreview)
 
 # Install aur packages
 echo "Installing aur packages..."
@@ -36,20 +35,12 @@ echo "Installing aur packages..."
 
 # Install Proton GE updater
 echo "Installing Proton GE updater..."
-sudo pip3 install protonup-ng
-mkdir -p ~/.local/share/Steam/compatibilitytools.d/
-protonup -d ~/.local/share/Steam/compatibilitytools.d/
-protonup -y
+( (sudo pip3 install protonup-ng) && (mkdir -p ~/.local/share/Steam/compatibilitytools.d/) && (protonup -d ~/.local/share/Steam/compatibilitytools.d/) && (protonup -y) )
 
 # Install RPCS3
 echo "Installing RPCS3..."
-mkdir -p ~/.local/share/rpcs3/
-wget --content-disposition https://rpcs3.net/latest-appimage -O ~/.local/share/rpcs3/rpcs3.AppImage
-chmod a+x ~/.local/share/rpcs3/rpcs3.AppImage
-cp settings/applications/rpcs3.desktop ~/.local/share/applications/rpcs3.desktop
+( (mkdir -p ~/.local/share/rpcs3/) && (wget --content-disposition https://rpcs3.net/latest-appimage -O ~/.local/share/rpcs3/rpcs3.AppImage) && (chmod a+x ~/.local/share/rpcs3/rpcs3.AppImage) && (cp settings/applications/rpcs3.desktop ~/.local/share/applications/rpcs3.desktop) )
 
 # Install performance tweaks
 echo "Installing performance tweaks..."
-git clone https://gitlab.com/garuda-linux/themes-and-settings/settings/performance-tweaks.git
-(cd performance-tweaks && makepkg -si --noconfirm)
-rm -rf performance-tweaks
+( (git clone https://gitlab.com/garuda-linux/themes-and-settings/settings/performance-tweaks.git) && (cd performance-tweaks) && (makepkg -si --noconfirm) && (rm -rf performance-tweaks) )
