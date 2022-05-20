@@ -1,10 +1,5 @@
 #!/bin/bash
 
-# Kitty config installer
-echo "Installing kitty config..."
-mkdir -p ~/.config/kitty/
-cp apps/configs/kitty.conf ~/.config/kitty/kitty.conf
-
 # Mangohud config installer
 echo "Installing mangohud config..."
 mkdir -p ~/.config/MangoHud/
