@@ -23,7 +23,7 @@ echo "Installing pacman packages..."
 
 # Install paru
 echo "Installing paru..."
-(git clone https://aur.archlinux.org/paru.git && cd paru && makepkg -si)
+((git clone https://aur.archlinux.org/paru.git) && (cd paru) && (makepkg -si) && rm -rf paru)
 
 # Update aur mirrots
 echo "Updating aur mirrors..."
