@@ -11,7 +11,6 @@ user_pref("browser.urlbar.suggest.openpage", false);
 user_pref("browser.urlbar.suggest.topsites", false);
 user_pref("dom.webgpu.enabled", true);
 user_pref("general.autoScroll", true);
-user_pref("identity.sync.tokenserver.uri", "https://mozilla.alfonso.top/token/1.0/sync/1.5");
 user_pref("keyword.enabled", true);
 user_pref("media.peerconnection.enabled", true);
 user_pref("media.videocontrols.picture-in-picture.video-toggle.enabled", false);
