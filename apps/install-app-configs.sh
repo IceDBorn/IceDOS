@@ -2,20 +2,16 @@
 
 # Mangohud config installer
 echo "Installing mangohud config..."
-mkdir -p ~/.config/MangoHud/
-cp apps/configs/MangoHud.conf ~/.config/MangoHud/MangoHud.conf
+( (mkdir -p ~/.config/MangoHud/) && (cp apps/configs/MangoHud.conf ~/.config/MangoHud/MangoHud.conf) )
 
 # Sunshine config installer
 echo "Installing sunshine config..."
-mkdir -p ~/.config/sunshine/
-cp apps/configs/sunshine.conf ~/.config/sunshine/sunshine.conf
+( (mkdir -p ~/.config/sunshine/) && (cp apps/configs/sunshine.conf ~/.config/sunshine/sunshine.conf) )
 
 # Alacritty config installer
 echo "Installing alacritty config..."
-mkdir -p ~/.config/alacritty/
-cp apps/configs/alacritty.yml ~/.config/sunshine/alacritty.yml
+( (mkdir -p ~/.config/alacritty/) && (cp apps/configs/alacritty.yml ~/.config/sunshine/alacritty.yml) )
 
 # Alacritty multiple terminals desktop file installer
 echo "Installing alacritty multiple terminals desktop file..."
-mkdir -p ~/.local/share/applications/
-cp apps/startup/startup-terminals.desktop ~/.local/share/applications/startup-terminals.desktop
+( (mkdir -p ~/.local/share/applications/) && (cp apps/startup/startup-terminals.desktop ~/.local/share/applications/startup-terminals.desktop) )
