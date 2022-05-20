@@ -29,7 +29,6 @@ godot
 gvfs
 kdeconnect
 kdenlive
-libreoffice-fresh
 linux-zen
 linux-zen-headers
 noto-fonts-emoji
