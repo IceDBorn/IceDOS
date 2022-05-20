@@ -10,7 +10,7 @@ echo "Installing sunshine config..."
 
 # Alacritty config installer
 echo "Installing alacritty config..."
-( (mkdir -p ~/.config/alacritty/) && (cp apps/configs/alacritty.yml ~/.config/sunshine/alacritty.yml) )
+( (mkdir -p ~/.config/alacritty/) && (cp apps/configs/alacritty.yml ~/.config/alacritty/alacritty.yml) )
 
 # Alacritty multiple terminals desktop file installer
 echo "Installing alacritty multiple terminals desktop file..."
