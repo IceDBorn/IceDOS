@@ -14,6 +14,7 @@ jetbrains-toolbox
 mangohud-wayland
 moonlight-qt
 mullvad-vpn-bin
+noise-suppression-for-voice
 onlyoffice-bin
 papirus-libreoffice-theme
 plata-theme
