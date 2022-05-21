@@ -33,9 +33,6 @@ else
   - Edit settings/fstab or remove it entirely.$RED$BOLD A non-configured fstab file can break your system!$NC$NORMAL
   - Edit pacman and aur packages lists in apps/packages.
   - Edit install-apps.sh to remove installation of extra apps not present in pacman and aur.
-  - Remove custom application entries you do not want in settings/applications.
-  - Remove autostart entries you do not want in settings/autostart.
-  - Remove services you do not want to run on startup in settings/services.
   - Edit settings/settings.sh and comment out the parts you do not want to setup.
-  - Edit settings/user-overrides if you're using firefox.\n"
+  - Edit settings/user-overrides to customize your firefox custom user settings appending the updater's 'user.js'.\n"
 fi
