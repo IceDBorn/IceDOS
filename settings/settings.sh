@@ -79,3 +79,7 @@ cp scripts/.nvidia-fan-control-wayland.sh ~/.nvidia-fan-control-wayland.sh
 # Add post install script to startup
 echo "Adding post install script to startup..."
 ( (mkdir -p ~/.config/autostart) && (cp scripts/.post-install.sh ~/.post-install.sh) && (cp apps/startup/post-install.desktop ~/.config/autostart/post-install.desktop) )
+
+# Add noise supression to pipewire
+echo "Adding noise supression to pipewire..."
+( (mkdir -p ~/.config/pipewire) && (cp /usr/share/pipewire/pipewire.conf ~/.config/pipewire/pipewire.conf) && (sed "/libpipewire-module-session-manager/a $(cat settings/txt-to-append/noise-supression.txt)" ~/.config/pipewire/pipewire.conf) )
