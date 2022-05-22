@@ -17,12 +17,11 @@ echo "Creating folders for mounts..."
 ( (sudo mkdir /mnt/Games) && (sudo mkdir /mnt/Storage) && (sudo mkdir /mnt/SSDGames) && (sudo mkdir /mnt/Windows) )
 
 # Enable nvidia overclocking
-echo "Enabling nvidia overclocking..."
-(lspci | grep NVIDIA > /dev/null) && (sudo nvidia-xconfig --cool-bits=32)
+(lspci | grep NVIDIA > /dev/null) && ( (echo "Enabling nvidia overclocking...") && (sudo nvidia-xconfig --cool-bits=32) )
 
 # Maximize nvidia GPU power limit on startup
 echo "Maximizing Nvidia GPU power limit..."
-(lspci | grep NVIDIA > /dev/null) && (bash ./scripts/add-system-service.sh nv-power-limit)
+(lspci | grep NVIDIA > /dev/null) && ( (echo "Maximizing Nvidia GPU power limit...") && (bash ./scripts/add-system-service.sh nv-power-limit) )
 
 # Set hard/soft memlock limits to 2 GBs (required by RPCS3)
 echo "Settings memory limits required by RPCS3..."
