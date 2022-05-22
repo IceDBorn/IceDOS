@@ -20,9 +20,9 @@ echo "Installing pacman packages..."
 
 # Install paru
 echo "Installing paru..."
-( (git clone https://aur.archlinux.org/paru.git) && (cd paru) && (makepkg -si) && (rm -rf paru) )
+( (sudo pacman -S --needed base-devel) && (git clone https://aur.archlinux.org/paru.git) && (cd paru) && (makepkg -si) && (rm -rf paru) )
 
-# Update aur mirrots
+# Update aur mirrors
 echo "Updating aur mirrors..."
 paru -Syyu --noconfirm --skipreview
 
