@@ -18,7 +18,6 @@ onlyoffice-bin
 plata-theme
 preload
 protontricks
-soundux
 steamtinkerlaunch
 sublime-text-4
 sunshine
