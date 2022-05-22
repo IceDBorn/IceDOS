@@ -29,3 +29,4 @@ sudo pacman -Syu --needed --noconfirm xorg-xwayland libxcb egl-wayland)
 # Remove script from startup
 echo "Removing script from startup"
 sudo rm -rf ~/.config/autostart/post-install.desktop
+sudo rm -rf ~/.post-install.sh
