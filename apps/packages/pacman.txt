@@ -12,7 +12,6 @@ adobe-source-han-serif-tw-fonts
 alacritty
 aria2
 base-devel
-ethtool
 firefox
 fragments
 gameconqueror
