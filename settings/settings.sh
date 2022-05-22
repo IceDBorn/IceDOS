@@ -52,7 +52,7 @@ sudo grub-mkconfig -o /boot/grub/grub.cfg
 # Add mozilla custom profile
 echo "Adding custom mozilla profile..."
 randomPath="$HOME/.mozilla/firefox/$RANDOM.privacy"
-( (cp settings/firefox/user-overrides.js "$randomPath"/user-overrides.js) && (git clone https://github.com/arkenfox/user.js.git) && (cp user.js/updater.sh "$randomPath"/updater.sh) && (sed -i "s|path-to-mozilla-updater|$randomPath|" ~/.config/zsh/zsh-personal.sh) )
+( (mkdir -p "$randomPath") && (cp settings/firefox/user-overrides.js "$randomPath"/user-overrides.js) && (git clone https://github.com/arkenfox/user.js.git) && (cp user.js/updater.sh "$randomPath"/updater.sh) && (sed -i "s|path-to-mozilla-updater|$randomPath|" ~/.config/zsh/zsh-personal.sh) )
 
 # Force QT applications to follow GTK theme and cursor size
 echo "XDG_CURRENT_DESKTOP=Unity
