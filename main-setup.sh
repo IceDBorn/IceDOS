@@ -17,19 +17,19 @@ read -r -p "Have you customized the setup to your needs? [y/N] " response
 if [[ "$response" =~ ^([yY][eE][sS]|[yY])$ ]]
 then
     # Applications installer
-    bash ./apps/install-apps.sh
+    bash apps/install-apps.sh
 
     # Zsh installer
-    bash ./apps/zsh-setup.sh
+    bash apps/zsh-setup.sh
 
     # Settings changer
-    bash ./settings/settings.sh
+    bash settings/settings.sh
 
     # Application configs installer
-    bash ./apps/install-app-configs.sh
+    bash apps/install-app-configs.sh
 
     # Rebooting sequence
-    bash ./scripts/reboot.sh
+    bash scripts/reboot.sh
 else
   printf "You really should:
   - Edit main-setup.sh and comment out any script you do not want to run.
