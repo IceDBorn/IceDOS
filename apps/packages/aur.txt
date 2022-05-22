@@ -2,7 +2,6 @@ ananicy-cpp
 ananicy-rules-git
 bottles
 chrome-gnome-shell
-deezer
 downgrade
 duckstation-git
 extramaus
