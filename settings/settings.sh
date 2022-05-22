@@ -15,7 +15,6 @@ echo "Adding mounts to fstab..."
 # Create folders for HDD mounts and change permissions now and on startup
 echo "Creating folders for mounts..."
 ( (sudo mkdir /mnt/Games) && (sudo mkdir /mnt/Storage) && (sudo mkdir /mnt/SSDGames) && (sudo mkdir /mnt/Windows) )
-( (sed -i "s|changethis|$username|" settings/services/chown-disks.sh) && (bash ./settings/services/chown-disks.sh) && (bash ./scripts/add-system-service.sh chown-disks) )
 
 # Enable nvidia overclocking
 echo "Enabling nvidia overclocking..."
@@ -24,10 +23,6 @@ echo "Enabling nvidia overclocking..."
 # Maximize nvidia GPU power limit on startup
 echo "Maximizing Nvidia GPU power limit..."
 (lspci | grep NVIDIA > /dev/null) && (bash ./scripts/add-system-service.sh nv-power-limit)
-
-# Enable wol service
-echo "Enabling wake on lan service..."
-bash ./scripts/add-system-service.sh wol
 
 # Set hard/soft memlock limits to 2 GBs (required by RPCS3)
 echo "Settings memory limits required by RPCS3..."
@@ -45,10 +40,6 @@ sudo systemctl enable sshd
 # Enable bluetooth
 echo "Enabling bluetooth..."
 sudo systemctl enable bluetooth
-
-# Generate GPG key
-echo "Generating GPG key..."
-gpg --gen-key
 
 # Add feedback to sudo password
 echo "Adding password feedback to sudo..."
