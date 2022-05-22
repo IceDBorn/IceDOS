@@ -27,7 +27,7 @@ echo "Updating aur mirrors..."
 paru -Syyu --noconfirm --skipreview
 
 # Install nvidia patch only on NVIDIA GPUs
-(lspci | grep -i '.* vga .* nvidia .*' > /dev/null) && (echo "Installing NVIDIA driver patch..." && paru -S nvlax-git --noconfirm --skipreview)
+(lspci | grep -i '.* vga .* nvidia .*' > /dev/null) && (echo "Installing NVIDIA driver patch and GreenWithEnvy..." && paru -S nvlax-git gwe --noconfirm --skipreview)
 
 # Install aur packages
 echo "Installing aur packages..."

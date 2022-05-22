@@ -7,7 +7,6 @@ duckstation-git
 extramaus
 firefox-pwa
 gpu-screen-recorder-gtk-git
-gwe
 heroic-games-launcher-bin
 jetbrains-toolbox
 mangohud-wayland
