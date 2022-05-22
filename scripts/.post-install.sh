@@ -12,6 +12,10 @@ gsettings set org.gnome.desktop.interface gtk-theme Plata-Noir-Compact
 echo "Changing icon theme to Tela-black-dark..."
 gsettings set org.gnome.desktop.interface icon-theme Tela-black-dark
 
+# Change color scheme to dark
+echo "Enabling GNOME dark mode..."
+gsettings set org.gnome.desktop.interface color-scheme 'prefer-dark'
+
 # Enable nvidia wayland support
 (lspci | grep -i '.* vga .* nvidia .*' > /dev/null) && (echo "Enabling NVIDIA wayland support..."
 sudo ln -s /dev/null /etc/udev/rules.d/61-gdm.rules
