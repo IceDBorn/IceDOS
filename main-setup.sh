@@ -1,5 +1,8 @@
 #!/bin/bash
 
+# cd into script's folder
+cd "$(cd "$(dirname "$0")" && pwd)" || exit
+
 RED='\033[0;31m'
 NC='\033[0m'
 BOLD=$(tput bold)
