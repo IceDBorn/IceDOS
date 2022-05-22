@@ -28,6 +28,8 @@ godot
 gvfs
 kdeconnect
 kdenlive
+linux-headers
+linux-lts-headers
 linux-zen
 linux-zen-headers
 noto-fonts-emoji
