@@ -1,10 +1,8 @@
 #!/bin/bash
 
-username=$(whoami)
-
-# Enable SDDM
-echo "Enabling SDDM..."
-sudo systemctl enable sddm
+# Enable GDM
+echo "Enabling GDM..."
+sudo systemctl enable gdm
 
 # Enable bluetooth audio devices
 echo "Enabling headphones support for bluetooth..."
@@ -12,49 +10,23 @@ sed -i '/General/a Enable=Source,Sink,Media,Socket' /etc/bluetooth/main.conf
 
 # Auto mount disks on startup
 echo "Adding mounts to fstab..."
-cat /etc/fstab settings/fstab > ~/.fstab.new
-sudo mv /etc/fstab /etc/fstab.old
-sudo mv ~/.fstab.new /etc/fstab
+( (cat /etc/fstab.txt settings/txt-to-append/fstab.txt > ~/.fstab.txt.new) && (sudo mv /etc/fstab.txt /etc/fstab.txt.old) && (sudo mv ~/.fstab.txt.new /etc/fstab.txt) )
 
 # Create folders for HDD mounts and change permissions now and on startup
 echo "Creating folders for mounts..."
-mkdir /mnt/Games
-mkdir /mnt/Storage
-mkdir /mnt/SSDGames
-mkdir /mnt/Windows
-sudo groupadd mnt
-sudo chown "$username:mnt" /mnt/Games --recursive
-sudo chown "$username:mnt" /mnt/Storage --recursive
-sudo chown "$username:mnt" /mnt/SSDGames --recursive
-sudo chown "$username:mnt" /mnt/Windows --recursive
-sed -i "s|changethis|$username|" settings/services/chown-disks.sh
-bash ./scripts/add-system-service.sh chown-disks
-echo "Creating additional user"
-mkdir /mnt/guest
-sudo useradd -m -d /mnt/guest guest
-sudo chown "guest:guest" /mnt/guest --recursive
+( (sudo mkdir /mnt/Games) && (sudo mkdir /mnt/Storage) && (sudo mkdir /mnt/SSDGames) && (sudo mkdir /mnt/Windows) )
 
 # Enable nvidia overclocking
-echo "Enabling nvidia overclocking..."
-sudo nvidia-xconfig --cool-bits=31
+(lspci | grep NVIDIA > /dev/null) && ( (echo "Enabling nvidia overclocking...") && (sudo nvidia-xconfig --cool-bits=32) )
 
 # Maximize nvidia GPU power limit on startup
-echo "Maximizing GPU power limit..."
-bash ./scripts/add-system-service.sh nv-power-limit
-
-# Enable wol service
-echo "Enabling wake on lan service..."
-bash ./scripts/add-system-service.sh wol
-
-# Add noisetorch service
-echo "Adding noisetorch service..."
-bash ./scripts/add-user-service.sh noisetorch
+echo "Maximizing Nvidia GPU power limit..."
+(lspci | grep NVIDIA > /dev/null) && ( (echo "Maximizing Nvidia GPU power limit...") && (bash ./scripts/add-system-service.sh nv-power-limit) )
 
 # Set hard/soft memlock limits to 2 GBs (required by RPCS3)
-echo "Setting hard/soft memlock limits to 2 GBs..."
-cat /etc/security/limits.conf settings/limits.txt > /etc/security/limits.conf.new
-mv /etc/security/limits.conf /etc/security/limits.conf.old
-mv /etc/security/limits.conf.new /etc/security/limits.conf
+echo "Settings memory limits required by RPCS3..."
+(echo "*        hard    memlock        2147483648
+*        soft    memlock        2147483648" | sudo tee -a /etc/security/limits.conf)
 
 # nvm installer
 echo "Installing nvm..."
@@ -68,10 +40,6 @@ sudo systemctl enable sshd
 echo "Enabling bluetooth..."
 sudo systemctl enable bluetooth
 
-# Generate GPG key
-echo "Generating GPG key..."
-gpg --gen-key
-
 # Add feedback to sudo password
 echo "Adding password feedback to sudo..."
 echo "Defaults pwfeedback" | sudo tee -a /etc/sudoers
@@ -83,20 +51,25 @@ sudo grub-mkconfig -o /boot/grub/grub.cfg
 # Add mozilla custom profile
 echo "Adding custom mozilla profile..."
 randomPath="$HOME/.mozilla/firefox/$RANDOM.privacy"
-mkdir -p "$randomPath/chrome"
-cp settings/firefox/user-overrides.js "$randomPath"/user-overrides.js
-cp settings/firefox/userChrome.css "$randomPath"/chrome/userChrome.css
-git clone https://github.com/arkenfox/user.js.git
-cp user.js/updater.sh "$randomPath"/updater.sh
-sed -i "s|path-to-mozilla-updater|$randomPath|" ~/.zshrc
-
-# Add awesome theme
-git clone https://github.com/IceDBorn/material-awesome.git ~/.config/awesome
+( (mkdir -p "$randomPath") && (cp settings/firefox/user-overrides.js "$randomPath"/user-overrides.js) && (git clone https://github.com/arkenfox/user.js.git) && (cp user.js/updater.sh "$randomPath"/updater.sh) && (sed -i "s|path-to-mozilla-updater|$randomPath|" ~/.config/zsh/zsh-personal.sh) && (yes | bash "$randomPath"/updater.sh) )
 
 # Force QT applications to follow GTK theme and cursor size
 echo "XDG_CURRENT_DESKTOP=Unity
 QT_QPA_PLATFORMTHEME=gtk2
 XCURSOR_SIZE=24" | sudo tee -a /etc/environment
 
-# Add post install to next boot
-cp scripts/post-install.sh ~/post-install.sh
+# Enable firefox wayland support
+echo "Enabling firefox wayland support..."
+cp apps/zsh/.zprofile ~/.zprofile
+
+# Add nvidia gpu fan control (wayland)
+echo "Adding nvidia gpu fan control script for wayland..."
+cp scripts/.nvidia-fan-control-wayland.sh ~/.nvidia-fan-control-wayland.sh
+
+# Add post install script to startup
+echo "Adding post install script to startup..."
+( (mkdir -p ~/.config/autostart) && (cp scripts/.post-install.sh ~/.post-install.sh) && (cp apps/startup/post-install.desktop ~/.config/autostart/post-install.desktop) )
+
+# Add noise suppression to pipewire
+echo "Adding noise suppression to pipewire..."
+( (mkdir -p ~/.config/pipewire) && (cp /usr/share/pipewire/pipewire.conf ~/.config/pipewire/pipewire.conf) && (sed -i "/libpipewire-module-session-manager/a $(cat settings/txt-to-append/noise-suppression.txt)" ~/.config/pipewire/pipewire.conf) )

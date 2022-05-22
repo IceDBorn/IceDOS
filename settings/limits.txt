@@ -1,2 +1,0 @@
-*        hard    memlock        2147483648
-*        soft    memlock        2147483648
