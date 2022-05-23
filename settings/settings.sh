@@ -44,6 +44,10 @@ sudo systemctl enable bluetooth
 echo "Adding password feedback to sudo..."
 echo "Defaults pwfeedback" | sudo tee -a /etc/sudoers
 
+# Enable os prober
+echo "Enabling os prober..."
+sudo sed -i 's/#\(GRUB_DISABLE_OS_PROBER="false"\)/\1/g' /etc/default/grub
+
 # Update grub
 echo "Updating grub..."
 sudo grub-mkconfig -o /boot/grub/grub.cfg
