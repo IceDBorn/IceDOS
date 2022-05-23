@@ -16,7 +16,7 @@ sudo pacman -Syyu --noconfirm
 
 # Install pacman packages
 echo "Installing pacman packages..."
-< apps/packages/pacman.txt xargs sudo pacman -S --noconfirm --needed
+< apps/packages/pacman.txt xargs sudo pacman -S --noconfirm --needed || exit
 
 # Install paru
 echo "Installing paru..."
@@ -31,7 +31,7 @@ paru -Syyu --noconfirm --skipreview
 
 # Install aur packages
 echo "Installing aur packages..."
-< apps/packages/aur.txt xargs paru -S --needed --skipreview --noconfirm
+< apps/packages/aur.txt xargs paru -S --needed --skipreview --noconfirm || exit
 
 # Install Proton GE updater
 echo "Installing Proton GE updater..."
