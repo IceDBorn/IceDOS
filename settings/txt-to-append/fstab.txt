@@ -1,6 +1,4 @@
 # My mounts
 UUID=4a8bd4b6-e5c9-4e98-a7ca-31c907967461 /mnt/Games	btrfs	rw,relatime,space_cache,subvolid=5,subvol=/ 0 0
 UUID=4b2d6cf0-f73a-4b4a-820a-db5b5aa17efa /mnt/Storage	btrfs	rw,relatime,space_cache,subvolid=5,subvol=/ 0 0
-UUID=6e539236-af80-41da-abc5-5608c27f41bd /mnt/SSDGames	btrfs	rw,relatime,ssd,space_cache,subvolid=5,subvol=/ 0 0
 UUID=1E46A64F46A6280B /mnt/Windows	ntfs	rw,nosuid,nodev,relatime,user_id=0,group_id=0,allow_other,blksize=4096,uid=1000,gid=1000,umask=0000 0 0
-UUID=2c75c98f-576c-467f-b871-88820e7af203 /mnt/guest btrfs rw,relatime,space_cache=v2,subvolid=5,subvol=/ 0 0
