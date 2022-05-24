@@ -85,3 +85,7 @@ echo "Adding noise suppression to pipewire..."
 # Enable avahi service
 echo "Enabling avahi service..."
 sudo systemctl enable avahi-daemon.service
+
+# Setup sunshine setcap
+echo "Setting sunshine setcap..."
+sudo setcap cap_sys_admin+p /usr/bin/sunshine
