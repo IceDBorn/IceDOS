@@ -14,7 +14,7 @@ echo "Adding mounts to fstab..."
 
 # Create folders for HDD mounts and change permissions now and on startup
 echo "Creating folders for mounts..."
-( (sudo mkdir /mnt/Games) && (sudo mkdir /mnt/Storage) && (sudo mkdir /mnt/SSDGames) && (sudo mkdir /mnt/Windows) )
+( (sudo mkdir /mnt/Games) && (sudo mkdir /mnt/Storage) && (sudo mkdir /mnt/Windows) )
 
 # Enable nvidia overclocking
 (lspci | grep NVIDIA > /dev/null) && ( (echo "Enabling nvidia overclocking...") && (sudo nvidia-xconfig --cool-bits=32) )
