@@ -52,6 +52,7 @@ vlc
 wget
 wine
 winetricks
+xorg-xinit
 xorg-xrandr
 youtube-dl
 zsh
