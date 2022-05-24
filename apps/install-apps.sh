@@ -18,6 +18,7 @@ sudo pacman -Syyu --noconfirm
 echo "Installing pacman packages..."
 < apps/packages/pacman.txt xargs sudo pacman -S --noconfirm --needed || exit
 
+
 # Install paru
 echo "Installing paru..."
 ( (git clone https://aur.archlinux.org/paru.git) && (cd paru && makepkg -si) && (rm -rf paru) )
@@ -43,4 +44,4 @@ echo "Installing RPCS3..."
 
 # Install performance tweaks
 echo "Installing performance tweaks..."
-( (git clone https://gitlab.com/garuda-linux/themes-and-settings/settings/performance-tweaks.git) && (cd performance-tweaks) && (makepkg -si --noconfirm) && (rm -rf performance-tweaks) )
+( (git clone https://gitlab.com/garuda-linux/themes-and-settings/settings/performance-tweaks.git) && (cd performance-tweaks && makepkg -si --noconfirm) && (rm -rf performance-tweaks) )
