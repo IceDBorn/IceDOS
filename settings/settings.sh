@@ -10,7 +10,7 @@ sed -i '/General/a Enable=Source,Sink,Media,Socket' /etc/bluetooth/main.conf
 
 # Auto mount disks on startup
 echo "Adding mounts to fstab..."
-( (cat /etc/fstab.txt settings/txt-to-append/fstab.txt > ~/.fstab.txt.new) && (sudo mv /etc/fstab.txt /etc/fstab.txt.old) && (sudo mv ~/.fstab.txt.new /etc/fstab.txt) )
+( (cat /etc/fstab settings/txt-to-append/fstab.txt > ~/.fstab.txt.new) && (sudo mv /etc/fstab /etc/fstab.old) && (sudo mv ~/.fstab.txt.new /etc/fstab) )
 
 # Create folders for HDD mounts and change permissions now and on startup
 echo "Creating folders for mounts..."
