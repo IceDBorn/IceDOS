@@ -10,7 +10,7 @@ sudo pacman -Syyu --noconfirm
 
 # Install GPU drivers
 # You have to install the GPU/Vulkan drivers before installing Steam because Steam defaults to AMD vulkan drivers
-(lspci | grep -i '.* vga .* nvidia .*' > /dev/null) && (echo "Installing NVIDIA GPU/Vulkan drivers..." && sudo pacman -S nvidia-open-dkms lib32-nvidia-utils nvidia-utils cuda --noconfirm)
+(lspci | grep -i '.* vga .* nvidia .*' > /dev/null) && (echo "Installing NVIDIA GPU/Vulkan drivers..." && sudo pacman -S nvidia-open-dkms lib32-nvidia-utils nvidia-utils cuda nvidia-settings --noconfirm)
 (lspci | grep -i '.* vga .* amd .*' > /dev/null) && (echo "Installing AMD Vulkan drivers..." && sudo pacman -S lib32-amdvlk --noconfirm)
 (lspci | grep -i '.* vga .* intel .*' > /dev/null) && (echo "Installing INTEL Vulkan drivers..." && sudo pacman -S lib32-vulkan-intel --noconfirm)
 
