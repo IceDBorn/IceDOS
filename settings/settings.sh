@@ -7,6 +7,7 @@ sudo systemctl enable gdm
 # Enable bluetooth audio devices
 echo "Enabling headphones support for bluetooth..."
 sed -i '/General/a Enable=Source,Sink,Media,Socket' /etc/bluetooth/main.conf
+sudo systemctl enable bluetooth
 
 read -r -p "Install fstab \n(can break system if it's not configured correctly)? [y/N] " response
 if [[ "$response" =~ ^([yY][eE][sS]|[yY])$ ]]
