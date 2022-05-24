@@ -8,13 +8,17 @@ sudo systemctl enable gdm
 echo "Enabling headphones support for bluetooth..."
 sed -i '/General/a Enable=Source,Sink,Media,Socket' /etc/bluetooth/main.conf
 
-# Auto mount disks on startup
-echo "Adding mounts to fstab..."
-( (cat /etc/fstab settings/txt-to-append/fstab.txt > ~/.fstab.txt.new) && (sudo mv /etc/fstab /etc/fstab.old) && (sudo mv ~/.fstab.txt.new /etc/fstab) )
+read -r -p "Install fstab \n(can break system if it's not configured correctly)? [y/N] " response
+if [[ "$response" =~ ^([yY][eE][sS]|[yY])$ ]]
+then
+    # Auto mount disks on startup
+    echo "Adding mounts to fstab..."
+    ( (cat /etc/fstab settings/txt-to-append/fstab.txt > ~/.fstab.txt.new) && (sudo mv /etc/fstab /etc/fstab.old) && (sudo mv ~/.fstab.txt.new /etc/fstab) )
 
-# Create folders for HDD mounts and change permissions now and on startup
-echo "Creating folders for mounts..."
-( (sudo mkdir /mnt/Games) && (sudo mkdir /mnt/Storage) && (sudo mkdir /mnt/Windows) )
+    # Create folders for HDD mounts and change permissions now and on startup
+    echo "Creating folders for mounts..."
+    ( (sudo mkdir /mnt/Games) && (sudo mkdir /mnt/Storage) && (sudo mkdir /mnt/Windows) )
+fi
 
 # Enable nvidia overclocking
 (lspci | grep NVIDIA > /dev/null) && ( (echo "Enabling nvidia overclocking...") && (sudo nvidia-xconfig --cool-bits=32) )
