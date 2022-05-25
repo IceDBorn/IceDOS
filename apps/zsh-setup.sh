@@ -12,6 +12,10 @@ echo "Installing zsh theme..."
 echo "Installing zsh personal config..."
 cp apps/zsh/zsh-personal.sh ~/.config/zsh/zsh-personal.sh
 
+# Create zsh scripts folder
+echo "Creating zsh scripts folder..."
+mkdir -p ~/.config/zsh/scripts
+
 # Run zsh once to generate default config
 echo "Executing zsh for the first time..."
 zsh

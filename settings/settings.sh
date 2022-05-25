@@ -72,7 +72,7 @@ echo "Enabling firefox wayland support..."
 cp apps/zsh/.zprofile ~/.zprofile
 
 # Add nvidia gpu fan control (wayland)
-(lspci | grep NVIDIA > /dev/null) && ( (echo "Adding nvidia gpu fan control script for wayland...") && (cp scripts/.nvidia-fan-control-wayland.sh ~/.nvidia-fan-control-wayland.sh) )
+(lspci | grep NVIDIA > /dev/null) && ( (echo "Adding nvidia gpu fan control script for wayland...") && (cp scripts/.nvidia-fan-control-wayland.sh ~/.config/zsh/scripts/.nvidia-fan-control-wayland.sh) )
 
 # Add post install script to startup
 echo "Adding post install script to startup..."
