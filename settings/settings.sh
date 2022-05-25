@@ -89,3 +89,6 @@ sudo systemctl enable avahi-daemon.service
 # Setup sunshine setcap
 echo "Setting sunshine setcap..."
 sudo setcap cap_sys_admin+p /usr/bin/sunshine
+
+# Add proton remove script to zsh scripts
+pip list | grep -F protonup-ng && (echo "Adding proton ge version remover script...") && (cp scripts/.protondown.sh ~/.config/zsh/scripts/.protondown.sh)
