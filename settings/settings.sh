@@ -7,6 +7,9 @@ sudo systemctl enable gdm
 # Enable bluetooth audio devices
 echo "Enabling headphones support for bluetooth..."
 sed -i '/General/a Enable=Source,Sink,Media,Socket' /etc/bluetooth/main.conf
+
+# Enable bluetooth
+echo "Enabling bluetooth..."
 sudo systemctl enable bluetooth
 
 # Enable bluetooth on startup
@@ -45,10 +48,6 @@ curl -o- https://raw.githubusercontent.com/nvm-sh/nvm/v0.38.0/install.sh | bash
 echo "Enabling ssh..."
 sudo systemctl enable sshd
 
-# Enable bluetooth
-echo "Enabling bluetooth..."
-sudo systemctl enable bluetooth
-
 # Add feedback to sudo password
 echo "Adding password feedback to sudo..."
 echo "Defaults pwfeedback" | sudo tee -a /etc/sudoers
@@ -61,6 +60,10 @@ sudo sed -i 's/#\(GRUB_DISABLE_OS_PROBER="false"\)/\1/g' /etc/default/grub
 echo "Updating grub..."
 sudo grub-mkconfig -o /boot/grub/grub.cfg
 
+# Enable firefox wayland support
+echo "Enabling firefox wayland support..."
+cp apps/zsh/.zprofile ~/.zprofile
+
 # Add mozilla custom profile
 echo "Adding custom mozilla profile..."
 randomPath="$HOME/.mozilla/firefox/$RANDOM.privacy"
@@ -71,16 +74,8 @@ echo "XDG_CURRENT_DESKTOP=Unity
 QT_QPA_PLATFORMTHEME=gtk2
 XCURSOR_SIZE=24" | sudo tee -a /etc/environment
 
-# Enable firefox wayland support
-echo "Enabling firefox wayland support..."
-cp apps/zsh/.zprofile ~/.zprofile
-
 # Add nvidia gpu fan control (wayland)
 (lspci | grep NVIDIA > /dev/null) && ( (echo "Adding nvidia gpu fan control script for wayland...") && (cp scripts/.nvidia-fan-control-wayland.sh ~/.config/zsh/scripts/.nvidia-fan-control-wayland.sh) )
-
-# Add post install script to startup
-echo "Adding post install script to startup..."
-( (mkdir -p ~/.config/autostart) && (cp scripts/.post-install.sh ~/.post-install.sh) && (cp apps/startup/post-install.desktop ~/.config/autostart/post-install.desktop) )
 
 # Add noise suppression to pipewire
 echo "Adding noise suppression to pipewire..."
@@ -96,3 +91,7 @@ sudo setcap cap_sys_admin+p /usr/bin/sunshine
 
 # Add proton remove script to zsh scripts
 pip list | grep -F protonup-ng && (echo "Adding proton ge version remover script...") && (cp scripts/.protondown.sh ~/.config/zsh/scripts/.protondown.sh)
+
+# Add post install script to startup
+echo "Adding post install script to startup..."
+( (mkdir -p ~/.config/autostart) && (cp scripts/.post-install.sh ~/.post-install.sh) && (cp apps/startup/post-install.desktop ~/.config/autostart/post-install.desktop) )
