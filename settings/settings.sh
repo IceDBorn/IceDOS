@@ -9,6 +9,10 @@ echo "Enabling headphones support for bluetooth..."
 sed -i '/General/a Enable=Source,Sink,Media,Socket' /etc/bluetooth/main.conf
 sudo systemctl enable bluetooth
 
+# Enable bluetooth on startup
+echo "Enabling bluetooth on startup"
+sudo sed -i 's/#AutoEnable=false/AutoEnable=true/g' /etc/bluetooth/main.conf
+
 read -r -p "Install fstab \n(can break system if it's not configured correctly)? [y/N] " response
 if [[ "$response" =~ ^([yY][eE][sS]|[yY])$ ]]
 then
