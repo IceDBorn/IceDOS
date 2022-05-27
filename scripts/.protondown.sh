@@ -3,7 +3,7 @@
 # Download the latest proton ge version
 yes | protonup
 
-# List all proton ge versions (protonup -l), find the latest version (grep -v), remove it from the list and remove any part not associated with the version tag (grep -o).
+# List all proton ge versions (protonup -l), find the latest version (grep -v), remove it from the list and remove any part not associated with the version tag (grep -o)
 binaries=$(protonup -l | grep -v "$(protonup --releases | tail -n 1)" | grep -o '^\S*')
 
 if [ -z "$binaries" ]

@@ -25,3 +25,4 @@ tela-icon-theme
 usbimager
 xpadneo-dkms-git
 yay
+zenstates-git

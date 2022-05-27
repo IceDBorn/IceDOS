@@ -16,7 +16,15 @@ sudo systemctl enable bluetooth
 echo "Enabling bluetooth on startup"
 sudo sed -i 's/#AutoEnable=false/AutoEnable=true/g' /etc/bluetooth/main.conf
 
-read -r -p "Install fstab \n(can break system if it's not configured correctly)? [y/N] " response
+read -r -p "Install zenstates.sh (can break your ruzen cpu if it's not configured correctly)? [y/N] " response
+if [[ "$response" =~ ^([yY][eE][sS]|[yY])$ ]]
+then
+      # Undervolt ryzen cpu
+      echo "Undervolting ryzen cpu..."
+      bash ./scripts/add-system-service.sh zenstates
+fi
+
+read -r -p "Install fstab (can break system if it's not configured correctly)? [y/N] " response
 if [[ "$response" =~ ^([yY][eE][sS]|[yY])$ ]]
 then
     # Auto mount disks on startup
