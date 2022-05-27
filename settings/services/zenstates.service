@@ -1,0 +1,12 @@
+[Unit]
+Description=Ryzen undervolt
+After=syslog.target systemd-modules-load.service
+ConditionPathExists=/usr/bin/zenstates
+
+[Service]
+User=root
+Environment="PATH=/bin:/usr/local/sbin:/usr/local/bin:/usr/sbin:/usr/bin"
+ExecStart=/usr/local/sbin/zenstates.sh
+
+[Install]
+WantedBy=multi-user.target
