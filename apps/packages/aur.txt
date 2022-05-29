@@ -23,6 +23,7 @@ sunshine
 system-monitoring-center
 tela-icon-theme
 usbimager
+woeusb
 xpadneo-dkms-git
 yay
 zenstates-git
