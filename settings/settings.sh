@@ -78,8 +78,8 @@ randomPath="$HOME/.mozilla/firefox/$RANDOM.privacy"
 ( (mkdir -p "$randomPath") && (cp settings/firefox/user-overrides.js "$randomPath"/user-overrides.js) && (git clone https://github.com/arkenfox/user.js.git) && (cp user.js/updater.sh "$randomPath"/updater.sh) && (sed -i "s|path-to-mozilla-updater|$randomPath|" ~/.config/zsh/zsh-personal.sh) && (yes | bash "$randomPath"/updater.sh) && (rm -rf user.js) )
 
 # Force QT applications to follow GTK theme and cursor size
-echo "XDG_CURRENT_DESKTOP=Unity
-QT_QPA_PLATFORMTHEME=gtk2
+echo "XDG_CURRENT_DESKTOP=Gnome
+QT_QPA_PLATFORMTHEME=Adwaita-Dark
 XCURSOR_SIZE=24" | sudo tee -a /etc/environment
 
 # Add nvidia gpu fan control (wayland)
