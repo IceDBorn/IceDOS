@@ -8,5 +8,5 @@
 # Install
 
 ```bash 
-git clone https://github.com/IceDBorn/IceDOS && cd IceDOS && bash main-setup.sh
+git clone https://github.com/CrazyStevenz/arch && cd arch && bash main-setup.sh
 ```
