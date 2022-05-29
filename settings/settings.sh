@@ -79,7 +79,7 @@ randomPath="$HOME/.mozilla/firefox/$RANDOM.privacy"
 
 # Force QT applications to follow GTK theme and cursor size
 echo "XDG_CURRENT_DESKTOP=Gnome
-QT_QPA_PLATFORMTHEME=Adwaita-Dark
+QT_QPA_PLATFORMTHEME=Plata-Noir-Compact
 XCURSOR_SIZE=24" | sudo tee -a /etc/environment
 
 # Add nvidia gpu fan control (wayland)
