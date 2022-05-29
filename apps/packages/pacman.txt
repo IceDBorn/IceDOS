@@ -13,7 +13,6 @@ alacritty
 aria2
 base-devel
 firefox
-flameshot
 fragments
 gameconqueror
 gamemode
@@ -25,8 +24,10 @@ gnome
 gnome-keyring
 gnome-shell-extensions
 gnome-tweaks
+godot
 gvfs
 kdeconnect
+kdenlive
 linux
 linux-headers
 linux-lts

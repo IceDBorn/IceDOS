@@ -1,9 +1,5 @@
 #!/bin/bash
 
-# Flameshot config installer
-echo "Installing flameshot config..."
-( (mkdir -p /~.config/flameshot/) && (cp apps/configs/flameshot.ini ~/.config/flameshot/flameshot.ini) )
-
 # Mangohud config installer
 echo "Installing mangohud config..."
 ( (mkdir -p ~/.config/MangoHud/) && (cp apps/configs/MangoHud.conf ~/.config/MangoHud/MangoHud.conf) )

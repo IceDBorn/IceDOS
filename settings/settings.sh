@@ -33,7 +33,7 @@ then
 
     # Create folders for HDD mounts and change permissions now and on startup
     echo "Creating folders for mounts..."
-    ( (sudo mkdir /mnt/Games) && (sudo mkdir /mnt/SSDGames) )
+    ( (sudo mkdir /mnt/Games) && (sudo mkdir /mnt/Storage) && (sudo mkdir /mnt/Windows) )
 fi
 
 # Enable nvidia overclocking
