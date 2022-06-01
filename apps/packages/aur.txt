@@ -9,7 +9,7 @@ firefox-pwa
 gpu-screen-recorder-gtk-git
 heroic-games-launcher-bin
 jetbrains-toolbox
-mangohud-wayland
+mangohud
 moonlight-qt
 mullvad-vpn-bin
 noise-suppression-for-voice
