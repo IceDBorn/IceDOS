@@ -52,10 +52,6 @@ echo "Settings memory limits required by RPCS3..."
 echo "Installing nvm..."
 curl -o- https://raw.githubusercontent.com/nvm-sh/nvm/v0.38.0/install.sh | bash
 
-# Enable ssh
-echo "Enabling ssh..."
-sudo systemctl enable sshd
-
 # Add feedback to sudo password
 echo "Adding password feedback to sudo..."
 echo "Defaults pwfeedback" | sudo tee -a /etc/sudoers
