@@ -30,6 +30,9 @@ paru -Syyu --noconfirm --skipreview
 # Install nvidia patch only on NVIDIA GPUs
 (lspci | grep -i '.* vga .* nvidia .*' > /dev/null) && (echo "Installing NVIDIA driver patch and GreenWithEnvy..." && paru -S nvlax-git gwe --noconfirm --skipreview)
 
+# Install corectrl only on AMD GPUs
+(lspci | grep -i '.* vga .* amd .*' > /dev/null) && (echo "Installing CoreCTRL..." && paru -S corectrl --noconfirm --skipreview)
+
 # Install aur packages
 echo "Installing aur packages..."
 < apps/packages/aur.txt xargs paru -S --needed --skipreview --noconfirm || exit
