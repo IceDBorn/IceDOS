@@ -4,6 +4,10 @@
 echo "Customizing pacman..."
 sudo sed -i '/^# Misc options/a ParallelDownloads = 16\nILoveCandy\nColor' /etc/pacman.conf
 
+# Enable multilib repository
+echo "Enabling multilib reposiroty..."
+sudo sed -i "/\[multilib\]/,/Include/"'s/^#//' /etc/pacman.conf
+
 # Update pacman mirrors
 echo "Updating pacman mirrors..."
 sudo pacman -Syyu --noconfirm
