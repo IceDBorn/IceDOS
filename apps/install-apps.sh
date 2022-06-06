@@ -5,8 +5,12 @@ echo "Customizing pacman..."
 sudo sed -i '/^# Misc options/a ParallelDownloads = 16\nILoveCandy\nColor' /etc/pacman.conf
 
 # Enable multilib repository
-echo "Enabling multilib reposiroty..."
-sudo sed -i "/\[multilib\]/,/Include/"'s/^#//' /etc/pacman.conf
+echo "Enabling multilib repository..."
+sudo sed -i "/\[multilib\]/,/Include/"'s/^#/peos/' /etc/pacman.conf
+
+# Disable multilib-testing repo (enabled by archinstall when selecting multilib)
+echo "Disabling multilib-testing repository"
+sudo sed -i "/\[multilib-testing\]/,/Include/"'s/^/#/' /etc/pacman.conf
 
 # Update pacman mirrors
 echo "Updating pacman mirrors..."
