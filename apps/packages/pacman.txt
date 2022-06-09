@@ -13,6 +13,7 @@ alacritty
 aria2
 base-devel
 firefox
+flameshot
 fragments
 gameconqueror
 gamemode
