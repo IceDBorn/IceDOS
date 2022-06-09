@@ -6,7 +6,7 @@
 command -v nvidia-smi &> /dev/null || { echo >&2 "nvidia-smi not found ... exiting."; exit 1; }
 
 # Change according to your card's max power limit
-POWER_LIMIT=180
+POWER_LIMIT=242
 MAX_POWER_LIMIT=$(nvidia-smi -q -d POWER | grep 'Max Power Limit' | tr -s ' ' | cut -d ' ' -f 6)
 
 if [[ ${POWER_LIMIT%.*}-1 -lt ${MAX_POWER_LIMIT%.*}+0 ]]; then
