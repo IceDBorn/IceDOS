@@ -25,10 +25,8 @@ gnome
 gnome-keyring
 gnome-shell-extensions
 gnome-tweaks
-godot
 gvfs
 kdeconnect
-kdenlive
 linux
 linux-headers
 linux-lts
