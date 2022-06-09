@@ -6,7 +6,7 @@ sudo sed -i '/^# Misc options/a ParallelDownloads = 16\nILoveCandy\nColor' /etc/
 
 # Enable multilib repository
 echo "Enabling multilib repository..."
-sudo sed -i "/\[multilib\]/,/Include/"'s/^#/peos/' /etc/pacman.conf
+sudo sed -i "/\[multilib\]/,/Include/"'s/^#//' /etc/pacman.conf
 
 # Disable multilib-testing repo (enabled by archinstall when selecting multilib)
 echo "Disabling multilib-testing repository"
