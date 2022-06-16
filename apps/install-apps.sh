@@ -36,22 +36,20 @@ echo "Updating aur mirrors..."
 paru -Syyu --noconfirm --skipreview
 
 # Install nvidia patch only on NVIDIA GPUs
-(lspci | grep -i '.* vga .* nvidia .*' > /dev/null) && (echo "Installing NVIDIA driver patch and GreenWithEnvy..." && paru -S nvlax-git gwe --noconfirm --skipreview)
+(lspci | grep -i '.* vga .* nvidia .*' > /dev/null) && (echo "Installing NVIDIA driver patch and GreenWithEnvy..." && paru -S nvlax-git gwe gpu-screen-recorder-gtk-git --noconfirm --skipreview)
 
 # Install corectrl only on AMD GPUs
 (lspci | grep -i '.* vga .* amd .*' > /dev/null) && (echo "Installing CoreCTRL..." && paru -S corectrl --noconfirm --skipreview)
 
 # Install aur packages
 echo "Installing aur packages..."
-< apps/packages/aur.txt xargs paru -S --needed --skipreview --noconfirm || exit
+while read -r package; do
+  yes | paru -S "$package" --needed --skipreview
+done < apps/packages/aur.txt
 
 # Install Proton GE updater
 echo "Installing Proton GE updater..."
 ( (sudo pip3 install protonup-ng) && (mkdir -p ~/.local/share/Steam/compatibilitytools.d/) && (protonup -d ~/.local/share/Steam/compatibilitytools.d/) && (echo "Downloading latest proton ge...") && (yes | protonup) )
-
-# Install RPCS3
-echo "Installing RPCS3..."
-( (mkdir -p ~/.local/share/rpcs3/) && (wget --content-disposition https://rpcs3.net/latest-appimage -O ~/.local/share/rpcs3/rpcs3.AppImage) && (chmod a+x ~/.local/share/rpcs3/rpcs3.AppImage) && (cp settings/applications/rpcs3.desktop ~/.local/share/applications/rpcs3.desktop) )
 
 # Install performance tweaks
 echo "Installing performance tweaks..."
