@@ -3,9 +3,9 @@ ananicy-rules-git
 bottles
 chrome-gnome-shell
 downgrade
-duckstation-git
+duckstation-qt-bin
 extramaus
-firefox-pwa
+firefox-pwa-bin
 gnome-shell-extension-clipboard-indicator
 gnome-shell-extension-material-shell-git
 gnome-shell-extension-tray-icons-reloaded
@@ -27,6 +27,6 @@ system-monitoring-center
 tela-icon-theme
 usbimager
 woeusb
-xpadneo-dkms-git
+xpadneo-dkms
 yay
 zenstates-git
