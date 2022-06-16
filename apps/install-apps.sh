@@ -36,7 +36,7 @@ echo "Updating aur mirrors..."
 paru -Syyu --noconfirm --skipreview
 
 # Install nvidia patch only on NVIDIA GPUs
-(lspci | grep -i '.* vga .* nvidia .*' > /dev/null) && (echo "Installing NVIDIA driver patch and GreenWithEnvy..." && paru -S nvlax-git gwe --noconfirm --skipreview)
+(lspci | grep -i '.* vga .* nvidia .*' > /dev/null) && (echo "Installing NVIDIA driver patch and GreenWithEnvy..." && paru -S nvlax-git gwe gpu-screen-recorder-gtk-git --noconfirm --skipreview)
 
 # Install corectrl only on AMD GPUs
 (lspci | grep -i '.* vga .* amd .*' > /dev/null) && (echo "Installing CoreCTRL..." && paru -S corectrl --noconfirm --skipreview)

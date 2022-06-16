@@ -9,7 +9,6 @@ firefox-pwa-bin
 gnome-shell-extension-clipboard-indicator
 gnome-shell-extension-material-shell-git
 gnome-shell-extension-tray-icons-reloaded
-gpu-screen-recorder-gtk-git
 heroic-games-launcher-bin
 jetbrains-toolbox
 mangohud
