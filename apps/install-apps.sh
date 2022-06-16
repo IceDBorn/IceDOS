@@ -43,7 +43,9 @@ paru -Syyu --noconfirm --skipreview
 
 # Install aur packages
 echo "Installing aur packages..."
-< apps/packages/aur.txt xargs paru -S --needed --skipreview --noconfirm || exit
+while read -r package; do
+  yes | paru -S "$package" --needed --skipreview
+done < apps/packages/aur.txt
 
 # Install Proton GE updater
 echo "Installing Proton GE updater..."
