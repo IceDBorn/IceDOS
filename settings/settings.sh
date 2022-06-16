@@ -4,10 +4,6 @@
 echo "Enabling GDM..."
 sudo systemctl enable gdm
 
-# Enable bluetooth audio devices
-echo "Enabling headphones support for bluetooth..."
-sed -i '/General/a Enable=Source,Sink,Media,Socket' /etc/bluetooth/main.conf
-
 # Enable bluetooth
 echo "Enabling bluetooth..."
 sudo systemctl enable bluetooth
