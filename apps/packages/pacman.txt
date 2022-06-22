@@ -51,6 +51,7 @@ syncthing
 tree
 ttf-font-awesome
 unrar
+v4l2loopback-dkms
 vlc
 wget
 wine
