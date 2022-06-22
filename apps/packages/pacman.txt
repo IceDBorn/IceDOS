@@ -27,6 +27,7 @@ gnome-shell-extensions
 gnome-tweaks
 godot
 gvfs
+helvum
 kdeconnect
 kdenlive
 linux
