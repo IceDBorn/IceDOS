@@ -37,6 +37,7 @@ linux-zen
 linux-zen-headers
 noto-fonts-emoji
 ntfs-3g
+obs-studio
 os-prober
 pcsx2
 polkit-qt5
