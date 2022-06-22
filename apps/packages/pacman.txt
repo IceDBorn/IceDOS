@@ -27,6 +27,7 @@ gnome-keyring
 gnome-shell-extensions
 gnome-tweaks
 gvfs
+helvum
 kdeconnect
 linux
 linux-headers
@@ -36,6 +37,7 @@ linux-zen
 linux-zen-headers
 noto-fonts-emoji
 ntfs-3g
+obs-studio
 os-prober
 pcsx2
 polkit-qt5
@@ -50,6 +52,7 @@ syncthing
 tree
 ttf-font-awesome
 unrar
+v4l2loopback-dkms
 vlc
 wget
 wine
