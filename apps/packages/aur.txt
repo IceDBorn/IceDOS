@@ -6,9 +6,15 @@ downgrade
 duckstation-qt-bin
 extramaus
 firefox-pwa-bin
+gnome-shell-extension-arch-update
+gnome-shell-extension-bluetooth-quick-connect
 gnome-shell-extension-clipboard-indicator
+gnome-shell-extension-color-picker
+gnome-shell-extension-coverflow-alt-tab-git
+gnome-shell-extension-gamemode-git
 gnome-shell-extension-gsconnect
 gnome-shell-extension-material-shell-git
+gnome-shell-extension-sound-output-device-chooser
 gnome-shell-extension-tray-icons-reloaded
 heroic-games-launcher-bin
 jetbrains-toolbox
