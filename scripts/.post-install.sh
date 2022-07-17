@@ -31,6 +31,7 @@ gsettings set org.gnome.shell disable-user-extensions false
 gnome-extensions enable material-shell@papyelgringo
 gnome-extensions enable trayIconsReloaded@selfmade.pl
 gnome-extensions enable clipboard-indicator@tudmotu.com
+gnome-extensions enable gsconnect@andyholmes.github.io
 
 # Remove script from startup
 echo "Removing script from startup"
