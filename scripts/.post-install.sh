@@ -32,6 +32,12 @@ gnome-extensions enable material-shell@papyelgringo
 gnome-extensions enable trayIconsReloaded@selfmade.pl
 gnome-extensions enable clipboard-indicator@tudmotu.com
 gnome-extensions enable gsconnect@andyholmes.github.io
+gnome-extensions enable sound-output-device-chooser@kgshank.net
+gnome-extensions enable bluetooth-quick-connect@bjarosze.gmail.com
+gnome-extensions enable arch-update@RaphaelRochet
+gnome-extensions enable color-picker@tuberry
+gnome-extensions enable gamemode@christian.kellner.me
+gnome-extensions enable CoverflowAltTab@dmo60.de
 
 # Remove script from startup
 echo "Removing script from startup"
