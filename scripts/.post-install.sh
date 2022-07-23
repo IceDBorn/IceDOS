@@ -38,6 +38,7 @@ gnome-extensions enable arch-update@RaphaelRochet
 gnome-extensions enable color-picker@tuberry
 gnome-extensions enable gamemode@christian.kellner.me
 gnome-extensions enable CoverflowAltTab@dmo60.de
+gnome-extensions enable volume-mixer@evermiss.net
 
 # Remove script from startup
 echo "Removing script from startup"

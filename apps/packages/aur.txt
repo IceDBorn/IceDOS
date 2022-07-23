@@ -6,6 +6,7 @@ downgrade
 duckstation-qt-bin
 extramaus
 firefox-pwa-bin
+gnome-shell-extension-application-volume-mixer
 gnome-shell-extension-arch-update
 gnome-shell-extension-bluetooth-quick-connect
 gnome-shell-extension-clipboard-indicator
