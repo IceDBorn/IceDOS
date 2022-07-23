@@ -44,6 +44,7 @@ pcsx2
 polkit-qt5
 ppsspp
 python-pip
+ranger
 reflector
 rsync
 rust
