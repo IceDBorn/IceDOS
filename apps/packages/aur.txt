@@ -1,11 +1,11 @@
 ananicy-cpp
 ananicy-rules-git
 bottles
-chrome-gnome-shell
 downgrade
 duckstation-qt-bin
 extramaus
 firefox-pwa-bin
+gnome-browser-connector
 gnome-shell-extension-application-volume-mixer
 gnome-shell-extension-arch-update
 gnome-shell-extension-bluetooth-quick-connect
