@@ -1,6 +1,7 @@
 ananicy-cpp
 ananicy-rules-git
 bottles
+discord-screenaudio
 downgrade
 duckstation-qt-bin
 extramaus
