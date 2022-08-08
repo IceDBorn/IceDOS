@@ -28,7 +28,6 @@ gnome-tweaks
 godot
 gvfs
 helvum
-kdeconnect
 kdenlive
 linux
 linux-headers
