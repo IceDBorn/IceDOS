@@ -6,3 +6,4 @@ gamescope
 gnome-browser-connector
 system-monitoring-center
 python-pip
+protonup-ng

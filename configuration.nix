@@ -124,7 +124,7 @@
                 extraGroups = [ "networkmanager" "wheel" ];
                 # Packages installed for this specific user only
                 packages = with pkgs; [
-                    #Add work specific packages here
+                    # Add work specific packages here
                 ];
             };
         };
