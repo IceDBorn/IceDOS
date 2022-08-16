@@ -1,13 +1,5 @@
 #!/bin/bash
 
-read -r -p "Install zenstates.sh (can break your ryzen cpu if it's not configured correctly)? [y/N] " response
-if [[ "$response" =~ ^([yY][eE][sS]|[yY])$ ]]
-then
-      # Undervolt ryzen cpu
-      echo "Undervolting ryzen cpu..."
-      bash ./scripts/add-system-service.sh zenstates
-fi
-
 read -r -p "Install fstab (can break system if it's not configured correctly)? [y/N] " response
 if [[ "$response" =~ ^([yY][eE][sS]|[yY])$ ]]
 then
