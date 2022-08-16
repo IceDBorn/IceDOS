@@ -1,17 +1,5 @@
 #!/bin/bash
 
-# Enable GDM
-echo "Enabling GDM..."
-sudo systemctl enable gdm
-
-# Enable bluetooth
-echo "Enabling bluetooth..."
-sudo systemctl enable bluetooth
-
-# Enable bluetooth on startup
-echo "Enabling bluetooth on startup"
-sudo sed -i 's/#AutoEnable=false/AutoEnable=true/g' /etc/bluetooth/main.conf
-
 read -r -p "Install zenstates.sh (can break your ryzen cpu if it's not configured correctly)? [y/N] " response
 if [[ "$response" =~ ^([yY][eE][sS]|[yY])$ ]]
 then
