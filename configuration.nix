@@ -8,9 +8,13 @@
     ];
 
     # Grub configuration
-    boot.loader.systemd-boot.enable = true;
-    boot.loader.efi.canTouchEfiVariables = true;
-    boot.loader.efi.efiSysMountPoint = "/boot/efi";
+    boot.loader = {
+        systemd-boot.enable = true;
+        efi = {
+            canTouchEfiVariables = true;
+            efiSysMountPoint = "/boot/efi";
+        };
+    };
 
     networking = {
         # Define your hostname
