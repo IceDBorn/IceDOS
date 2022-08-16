@@ -179,6 +179,15 @@
         zenstates # Ryzen CPU controller
     ];
 
+    programs = {
+        zsh = {
+            enable = true;
+            ohMyZsh = {
+                enable = true;
+            };
+        };
+    };
+
     # Do not change without checking the docs
     system.stateVersion = "22.05";
 }

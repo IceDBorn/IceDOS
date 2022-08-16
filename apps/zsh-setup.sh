@@ -12,10 +12,6 @@ cp apps/zsh/zsh-personal.sh ~/.config/zsh/zsh-personal.sh
 echo "Creating zsh scripts folder..."
 mkdir -p ~/.config/zsh/scripts
 
-# Install oh my zsh
-echo "Installing Oh My Zsh..."
-sh -c "$(curl -fsSL https://raw.githubusercontent.com/ohmyzsh/ohmyzsh/master/tools/install.sh)"
-
 # Install oh my zsh plugins
 echo "Installing Oh My Zsh plugins..."
 bash ./apps/zsh/install-zsh-plugins.sh
