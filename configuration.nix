@@ -210,6 +210,9 @@
                 vpn-on="mullvad connect"; # Connect to VPN
                 vpn="mullvad status"; # Show VPN status
             };
+
+            # Commands to run on zsh shell initialization
+            interactiveShellInit = "source ~/.config/zsh/zsh-theme.sh\nunsetopt PROMPT_SP";
         };
     };
 
