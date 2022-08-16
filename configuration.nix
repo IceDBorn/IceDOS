@@ -180,14 +180,36 @@
     ];
 
     programs = {
+        # Enable zsh and configure it
         zsh = {
             enable = true;
+            # Enable oh my zsh and it's plugins
             ohMyZsh = {
                 enable = true;
                 plugins = [ "git" "npm" "nvm" "sudo" "systemd" ];
             };
+            # Enable auto suggestions
             autosuggestions.enable = true;
+
+            # Enable syntax highlighting
             syntaxHighlighting.enable = true;
+
+            # Aliases
+            shellAliases = {
+                aria2c="aria2c -j 16 -s 16"; # Download with aria using best settings
+                chmod="sudo chmod"; # It's a command that I always execute with sudo
+                clear-keys="sudo rm -rf ~/ local/share/keyrings/* ~/ local/share/kwalletd/*"; # Clear system keys
+                clear-proton-ge="bash ~/.config/zsh/scripts/.protondown.sh"; # Download the latest proton ge version and delete the older ones
+                nvidia-max-fan-speed="sudo bash ~/.config/zsh/scripts/.nvidia-fan-control-wayland.sh 100"; # Maximize nvidia fan speed on wayland
+                reboot-windows="(sudo grub-set-default 0) && (sudo grub-reboot 2) && (sudo reboot)"; # Reboot to windows once
+                restart-pipewire="systemctl --user restart pipewire"; # Restart pipewire
+                ssh="TERM=xterm-256color ssh"; # SSH with colors
+                update-grub="sudo grub-mkconfig -o /boot/grub/grub.cfg"; # Update grub with new entries
+                update="(sudo nixos-rebuild switch --upgrade) ; (yes | protonup) ; (yes | ~/.mozilla/firefox/privacy/updater.sh)"; # Update everything
+                vpn-off="mullvad disconnect"; # Disconnect from VPN
+                vpn-on="mullvad connect"; # Connect to VPN
+                vpn="mullvad status"; # Show VPN status
+            };
         };
     };
 
