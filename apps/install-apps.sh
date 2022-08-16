@@ -1,21 +1,3 @@
-#!/bin/bash
-
-# Enable pacman parallel downloads, add pacman progress bar and add color to output
-echo "Customizing pacman..."
-sudo sed -i '/^# Misc options/a ParallelDownloads = 16\nILoveCandy\nColor' /etc/pacman.conf
-
-# Enable multilib repository
-echo "Enabling multilib repository..."
-sudo sed -i "/\[multilib\]/,/Include/"'s/^#//' /etc/pacman.conf
-
-# Disable multilib-testing repo (enabled by archinstall when selecting multilib)
-echo "Disabling multilib-testing repository"
-sudo sed -i "/\[multilib-testing\]/,/Include/"'s/^/#/' /etc/pacman.conf
-
-# Update pacman mirrors
-echo "Updating pacman mirrors..."
-sudo pacman -Syyu --noconfirm
-
 # Install GPU drivers
 # You have to install the GPU/Vulkan drivers before installing Steam because Steam defaults to AMD vulkan drivers
 (lspci | grep -i '.* vga .* nvidia .*' > /dev/null) && (echo "Installing NVIDIA GPU/Vulkan drivers..." && sudo pacman -S nvidia-open-dkms lib32-nvidia-utils nvidia-utils cuda nvidia-settings --noconfirm)

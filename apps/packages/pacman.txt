@@ -18,10 +18,8 @@ fragments
 gameconqueror
 gamemode
 gamescope
-gdm
 gimp
 git
-gnome
 gnome-keyring
 gnome-shell-extensions
 gnome-tweaks
@@ -61,4 +59,3 @@ winetricks
 xorg-xinit
 xorg-xrandr
 youtube-dl
-zsh
