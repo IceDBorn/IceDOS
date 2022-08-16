@@ -52,6 +52,7 @@
             # Configure keymap in X11
             layout = "us";
             xkbVariant = "";
+            videoDrivers = [ "nvidia" ];
         };
 
         # Enable CUPS to print documents
@@ -70,10 +71,14 @@
     };
 
     sound.enable = true;
-    # Disable pulseaudio
-    hardware.pulseaudio.enable = false;
     # Enable the RealtimeKit system service, which hands out realtime scheduling priority to user processes on demand
     security.rtkit.enable = true;
+
+    hardware = {
+        # Disable pulseaudio
+        pulseaudio.enable = false;
+        opengl.enable = true;
+    };
 
     users = {
         # Set default shell to zsh
