@@ -15,6 +15,8 @@
                 canTouchEfiVariables = true;
                 efiSysMountPoint = "/boot/efi";
             };
+            # Detect all operating systems
+            grub.useOSProber = true;
         };
         # Use Zen kernel
         kernelPackages = pkgs.linuxPackages_zen;
@@ -189,7 +191,6 @@
         ntfs3g # Support NTFS drives
         obs-studio # Recording/Livestream
         onlyoffice-bin # Microsoft Office alternative for Linux
-        os-prober # Detect all operating systems
         pitivi # Video editor
         plata-theme # Gnome theme
         ranger # Terminal file manager
