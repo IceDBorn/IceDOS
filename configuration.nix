@@ -184,7 +184,10 @@
             enable = true;
             ohMyZsh = {
                 enable = true;
+                plugins = [ "git" "npm" "nvm" "sudo" "systemd" ];
             };
+            autosuggestions.enable = true;
+            syntaxHighlighting.enable = true;
         };
     };
 
