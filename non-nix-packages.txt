@@ -1,6 +1,8 @@
 discord-screenaudio
+extension-manager
 extramaus
 firefox-pwa-bin
+gamescope
 gnome-browser-connector
 system-monitoring-center
-extension-manager
+python-pip
