@@ -97,6 +97,7 @@
                 extraGroups = [ "networkmanager" "wheel" ];
                 # Packages installed for this specific user only
                 packages = with pkgs; [
+                    android-studio # IDE for Android apps
                     bottles # Wine prefix manager
                     duckstation # PS1 Emulator
                     gamemode # Optimizations for gaming
