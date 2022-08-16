@@ -4,6 +4,7 @@ extramaus
 firefox-pwa-bin
 gamescope
 gnome-browser-connector
-system-monitoring-center
-python-pip
 protonup-ng
+python-pip
+ryujinx-ldn
+system-monitoring-center
