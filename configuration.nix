@@ -71,8 +71,28 @@
     };
 
     sound.enable = true;
-    # Enable the RealtimeKit system service, which hands out realtime scheduling priority to user processes on demand
-    security.rtkit.enable = true;
+
+    security = {
+        # Required by RPCS3
+        pam.loginLimits = [
+            {
+                domain = "*";
+                type = "hard";
+                item = "memlock";
+                value = "2147483648";
+            }
+
+            {
+                domain = "*";
+                type = "soft";
+                item = "memlock";
+                value = "2147483648";
+            }
+        ];
+
+        # Enable the RealtimeKit system service, which hands out realtime scheduling priority to user processes on demand
+        rtkit.enable = true;
+    };
 
     hardware = {
         # Disable pulseaudio
