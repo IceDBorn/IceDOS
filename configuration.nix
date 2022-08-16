@@ -246,6 +246,21 @@
         };
     };
 
+    # Ryzen 5 3600 clock (4200) voltage (1.25)
+    systemd.services.zenstates = {
+        enable = true;
+        description = "Ryzen undervolt";
+        after = "After=syslog.target systemd-modules-load.service";
+        unitconfig = {
+            ConditionPathExists = "{zenstates}/bin/zenstates";
+        };
+        serviceConfig = {
+            User = "root";
+          ExecStart = "$sudo {zenstates}/bin/zenstates -p 0 -v 30 -f BD";
+        };
+        wantedBy = [ "multi-user.target" ];
+    };
+
     # Do not change without checking the docs
     system.stateVersion = "22.05";
 }
