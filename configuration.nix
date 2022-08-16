@@ -132,7 +132,6 @@
         pitivi # Video editor
         ranger # Terminal file manager
         signal-desktop # Encrypted messaging platform
-        steam # Gaming store
         syncthing # Local file sync
         tree # Display folder content at a tree format
         unrar # Support opening rar files

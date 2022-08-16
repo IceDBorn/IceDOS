@@ -5,3 +5,4 @@ godot
 pcsx2
 ppsspp
 python-pip
+steam
