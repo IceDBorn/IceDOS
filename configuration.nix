@@ -77,7 +77,13 @@
     hardware = {
         # Disable pulseaudio
         pulseaudio.enable = false;
-        opengl.enable = true;
+        opengl = {
+            enable = true;
+            # Support Direct Rendering for 32-bit applications (such as Wine) on 64-bit systems
+            driSupport32Bit = true;
+        };
+        # Enable kernel modesetting when using the NVIDIA driver, needed for gnome wayland
+        nvidia.modesetting.enable = true;
     };
 
     users = {
