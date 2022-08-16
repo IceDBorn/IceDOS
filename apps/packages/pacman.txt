@@ -1,8 +1,2 @@
-gameconqueror
-gamemode
 gamescope
-godot
-pcsx2
-ppsspp
 python-pip
-steam
