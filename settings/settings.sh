@@ -27,14 +27,6 @@ fi
 echo "Maximizing Nvidia GPU power limit..."
 (lspci | grep NVIDIA > /dev/null) && ( (echo "Maximizing Nvidia GPU power limit...") && (bash ./scripts/add-system-service.sh nv-power-limit) )
 
-# nvm installer
-echo "Installing nvm..."
-curl -o- https://raw.githubusercontent.com/nvm-sh/nvm/v0.38.0/install.sh | bash
-
-# Add feedback to sudo password
-echo "Adding password feedback to sudo..."
-echo "Defaults pwfeedback" | sudo tee -a /etc/sudoers
-
 # Enable os prober
 echo "Enabling os prober..."
 sudo sed -i 's/#\(GRUB_DISABLE_OS_PROBER="false"\)/\1/g' /etc/default/grub

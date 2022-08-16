@@ -92,6 +92,9 @@
 
         # Enable the RealtimeKit system service, which hands out realtime scheduling priority to user processes on demand
         rtkit.enable = true;
+
+        # Show asterisks when typing sudo password
+        sudo.extraConfig = "Defaults pwfeedback";
     };
 
     hardware = {
