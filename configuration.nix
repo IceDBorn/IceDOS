@@ -31,9 +31,10 @@
         firewall.enable = false;
     };
 
-    # Set your time zone.
+    # Set your time zone
     time.timeZone = "Europe/Bucharest";
 
+    # Set your locale settings
     i18n = {
         defaultLocale = "en_US.utf8";
         extraLocaleSettings = {
@@ -91,7 +92,12 @@
                 extraGroups = [ "networkmanager" "wheel" ];
                 # Packages installed for this specific user only
                 packages = with pkgs; [
-                    firefox
+                    scanmem # Cheat engine for linux
+                    gamemode # Optimizations for gaming
+                    godot # Game engine
+                    pcsx2 # PS2 Emulator
+                    ppsspp # PSP Emulator
+                    steam # Gaming platform
                 ];
             };
 
