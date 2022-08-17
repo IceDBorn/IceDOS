@@ -73,6 +73,11 @@ in
                         "org/gnome/nautilus/preferences" = {
                             always-use-location-entry = true;
                         };
+
+                        # Enable fractional scaling
+                        "org/gnome/mutter" = {
+                            experimental-features = [ "scale-monitor-framebuffer" ];
+                        };
                     };
                 };
             };
@@ -112,6 +117,11 @@ in
                         # Nautilus path bar is always editable
                         "org/gnome/nautilus/preferences" = {
                             always-use-location-entry = true;
+                        };
+
+                        # Enable fractional scaling
+                        "org/gnome/mutter" = {
+                            experimental-features = [ "scale-monitor-framebuffer" ];
                         };
                     };
                 };
