@@ -1,3 +1,4 @@
+# TODO: Implement into hardware configuration, mount once and then run "nixos-generate-config"
 # My mounts
 UUID=4a8bd4b6-e5c9-4e98-a7ca-31c907967461 /mnt/Games	btrfs	rw,relatime,space_cache,subvolid=5,subvol=/ 0 0
 UUID=4b2d6cf0-f73a-4b4a-820a-db5b5aa17efa /mnt/Storage	btrfs	rw,relatime,space_cache,subvolid=5,subvol=/ 0 0
