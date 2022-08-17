@@ -67,6 +67,13 @@ in
                         # Enable firefox wayland
                         profileExtra = "export MOZ_ENABLE_WAYLAND=1";
                     };
+
+                    dconf.settings = {
+                        # Nautilus path bar is always editable
+                        "org/gnome/nautilus/preferences" = {
+                            always-use-location-entry = true;
+                        };
+                    };
                 };
             };
 
@@ -99,6 +106,13 @@ in
                         enable = true;
                         # Enable firefox wayland
                         profileExtra = "export MOZ_ENABLE_WAYLAND=1";
+                    };
+
+                    dconf.settings = {
+                        # Nautilus path bar is always editable
+                        "org/gnome/nautilus/preferences" = {
+                            always-use-location-entry = true;
+                        };
                     };
                 };
             };
@@ -178,10 +192,10 @@ in
         openssh.enable = true;
 
         gnome = {
-            chrome-gnome-shell.enable = true;
-            gnome-keyring.enable = true;
-            gnome-disks.enable = true;
-            sushi.enable = true;
+            chrome-gnome-shell.enable = true; # Allows to install GNOME Shell extensions from a web browser
+            gnome-keyring.enable = true; # Takes care of the user's security credentials
+            gnome-disks.enable = true; # UDisks2 graphical front-end
+            sushi.enable = true; # Quick previewer for nautilus
         };
     };
 
