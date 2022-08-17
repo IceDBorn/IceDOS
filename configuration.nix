@@ -1,5 +1,6 @@
 { config, pkgs, ... }:
 
+# Install home manager
 let
     home-manager = builtins.fetchTarball "https://github.com/nix-community/home-manager/archive/master.tar.gz";
 in
@@ -9,7 +10,27 @@ in
     ];
 
     home-manager.users.icedborn = {
-        /* Here goes your home-manager config, eg home.packages = [ pkgs.foo ]; */
+        programs = {
+            # Git config
+            git = {
+            enable = true;
+            userName  = "IceDBorn";
+            userEmail = "github.envenomed@dralias.com";
+            };
+
+            # Alacritty config
+            alacritty.settings = {
+                window = {
+                    decorations = "none";
+                    opacity = 0.8;
+                };
+
+                cursor.style = {
+                    shape = "Underline";
+                    blinking = "Always";
+                };
+            };
+        };
     };
 }
 
