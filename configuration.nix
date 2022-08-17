@@ -59,6 +59,12 @@ in
                     no_small_font = "";
                 };
             };
+
+            zsh = {
+                enable = true;
+                # Enable firefox wayland
+                profileExtra = "export MOZ_ENABLE_WAYLAND=1";
+            };
         };
     };
 }
