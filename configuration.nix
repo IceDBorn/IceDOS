@@ -176,6 +176,13 @@ in
 
         # Enable SSH
         openssh.enable = true;
+
+        gnome = {
+            chrome-gnome-shell.enable = true;
+            gnome-keyring.enable = true;
+            gnome-disks.enable = true;
+            sushi.enable = true;
+        };
     };
 
     sound.enable = true;

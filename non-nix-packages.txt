@@ -3,7 +3,6 @@ extension-manager
 extramaus
 firefox-pwa-bin
 gamescope
-gnome-browser-connector
 protonup-ng
 python-pip
 ryujinx-ldn
