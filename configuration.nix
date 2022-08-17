@@ -315,6 +315,7 @@ in
         helvum # Pipewire patchbay
         jetbrains.webstorm # All purpose IDE
         mullvad-vpn # VPN Client
+        nautilus-open-any-terminal # Open any terminal from nautilus context menu
         ntfs3g # Support NTFS drives
         obs-studio # Recording/Livestream
         onlyoffice-bin # Microsoft Office alternative for Linux

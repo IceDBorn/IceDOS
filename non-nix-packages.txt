@@ -7,3 +7,5 @@ protonup-ng
 python-pip
 ryujinx-ldn
 system-monitoring-center
+nautilus-image-converter
+nextcloud-client-nautilus
