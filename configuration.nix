@@ -113,6 +113,21 @@ in
                         "org/gnome/desktop/interface" = {
                             gtk-theme = "Plata-Noir-Compact";
                         };
+
+                        # Add startup file for 4 terminals
+                        xdg.desktopEntries = {
+                            startup-terminals = {
+                                type = "Application";
+                                exec = "bash -c 'alacritty & alacritty & alacritty & alacritty'";
+                                icon = "Alacritty";
+                                terminal = "false";
+                                categories = "System;TerminalEmulator;";
+                                name = "Startup Terminals";
+                                genericName = "Terminal";
+                                comment = "A fast, cross-platform, OpenGL terminal emulator";
+                                actions = "New;";
+                            };
+                        };
                     };
                 };
             };
@@ -193,6 +208,21 @@ in
                         # Change gtk theme
                         "org/gnome/desktop/interface" = {
                             gtk-theme = "Plata-Noir-Compact";
+                        };
+
+                        # Add desktop file for 4 terminals
+                        xdg.desktopEntries = {
+                            startup-terminals = {
+                                type = "Application";
+                                exec = "bash -c 'alacritty & alacritty & alacritty & alacritty'";
+                                icon = "Alacritty";
+                                terminal = "false";
+                                categories = "System;TerminalEmulator;";
+                                name = "Startup Terminals";
+                                genericName = "Terminal";
+                                comment = "A fast, cross-platform, OpenGL terminal emulator";
+                                actions = "New;";
+                            };
                         };
                     };
                 };
