@@ -78,6 +78,11 @@ in
                         "org/gnome/mutter" = {
                             experimental-features = [ "scale-monitor-framebuffer" ];
                         };
+
+                        # Enable gnome extensions
+                        "org.gnome.shell" = {
+                            disable-user-extensions = false;
+                        };
                     };
                 };
             };

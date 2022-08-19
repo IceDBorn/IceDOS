@@ -14,7 +14,6 @@ gsettings set org.gnome.desktop.interface color-scheme 'prefer-dark'
 
 # Enable extensions
 echo "Enabling gnome extensions..."
-gsettings set org.gnome.shell disable-user-extensions false
 gnome-extensions enable material-shell@papyelgringo
 gnome-extensions enable trayIconsReloaded@selfmade.pl
 gnome-extensions enable clipboard-indicator@tudmotu.com
