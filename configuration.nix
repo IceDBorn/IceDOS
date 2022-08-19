@@ -158,6 +158,42 @@ in
                         "org/gnome/mutter" = {
                             experimental-features = [ "scale-monitor-framebuffer" ];
                         };
+
+                        # Enable gnome extensions
+                        "org/gnome/shell" = {
+                            disable-user-extensions = false;
+                        };
+
+                        # Set enabled gnome extensions
+                        "org/gnome/shell" = {
+                            enabled-extensions = [
+                                "clipboard-indicator@tudmotu.com"
+                                "material-shell@papyelgringo"
+                                "gsconnect@andyholmes.github.io"
+                                "trayIconsReloaded@selfmade.pl"
+                                "sound-output-device-chooser@kgshank.net"
+                                "bluetooth-quick-connect@bjarosze.gmail.com"
+                                "color-picker@tuberry"
+                                "gamemode@christian.kellner.me"
+                                "CoverflowAltTab@dmo60.de"
+                                "volume-mixer@evermiss.net"
+                            ];
+                        };
+
+                        # Enable dark mode
+                        "org/gnome/desktop/interface" = {
+                            color-scheme = "prefer-dark";
+                        };
+
+                        # Change icon theme
+                        "org/gnome/desktop/interface" = {
+                            icon-theme = "Tela-black-dark";
+                        };
+
+                        # Change gtk theme
+                        "org/gnome/desktop/interface" = {
+                            gtk-theme = "Plata-Noir-Compact";
+                        };
                     };
                 };
             };
