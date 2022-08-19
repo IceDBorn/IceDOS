@@ -1,15 +1,8 @@
 #!/bin/bash
 
-# Enable nvidia overclocking
-(lspci | grep NVIDIA > /dev/null) && ( (echo "Enabling nvidia overclocking...") && (sudo nvidia-xconfig --cool-bits=32) )
-
 # Maximize nvidia GPU power limit on startup
 echo "Maximizing Nvidia GPU power limit..."
 (lspci | grep NVIDIA > /dev/null) && ( (echo "Maximizing Nvidia GPU power limit...") && (bash ./scripts/add-system-service.sh nv-power-limit) )
-
-# Enable firefox wayland support
-echo "Enabling firefox wayland support..."
-cp apps/zsh/.zprofile ~/.zprofile
 
 # Add mozilla custom profile
 echo "Adding custom mozilla profile..."
