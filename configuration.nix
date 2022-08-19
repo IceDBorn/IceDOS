@@ -160,6 +160,12 @@ in
                             source = ./scripts/user-overrides.js;
                             recursive = true;
                         };
+
+                        # Add noise suppression microphone
+                        ".config/pipewire" = {
+                            source = ./configs/pipewire.conf;
+                            recursive = true;
+                        };
                     };
                 };
             };
