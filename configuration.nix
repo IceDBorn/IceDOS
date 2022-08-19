@@ -130,26 +130,28 @@ in
                         };
                     };
 
-                    # Add zsh theme to zsh directory
                     home.file = {
+                        # Add zsh theme to zsh directory
                         ".config/zsh" = {
                             source = ./scripts/zsh-theme.sh;
                             recursive = true;
                         };
-                    };
 
-                    # Add protondown script to zsh directory
-                    home.file = {
+                        # Add protondown script to zsh directory
                         ".config/zsh" = {
                             source = ./scripts/protondown.sh;
                             recursive = true;
                         };
-                    };
 
-                    # Add nvidia fan control wayland to zsh directory
-                    home.file = {
+                        # Add nvidia fan control wayland to zsh directory
                         ".config/zsh" = {
                             source = ./scripts/nvidia-fan-control-wayland.sh;
+                            recursive = true;
+                        };
+
+                        # Add nvidia power limit control
+                        ".config/nvidia-power-limit" = {
+                            source = ./scripts/nv-power-limit.sh;
                             recursive = true;
                         };
                     };
@@ -250,26 +252,28 @@ in
                         };
                     };
 
-                    # Add zsh theme to zsh directory
                     home.file = {
+                        # Add zsh theme to zsh directory
                         ".config/zsh" = {
                             source = ./scripts/zsh-theme.sh;
                             recursive = true;
                         };
-                    };
 
-                    # Add protondown script to zsh directory
-                    home.file = {
+                        # Add protondown script to zsh directory
                         ".config/zsh" = {
                             source = ./scripts/protondown.sh;
                             recursive = true;
                         };
-                    };
 
-                    # Add nvidia fan control wayland to zsh directory
-                    home.file = {
+                        # Add nvidia fan control wayland to zsh directory
                         ".config/zsh" = {
                             source = ./scripts/nvidia-fan-control-wayland.sh;
+                            recursive = true;
+                        };
+
+                        # Add nvidia power limit control
+                        ".config/nvidia-power-limit" = {
+                            source = ./scripts/nv-power-limit.sh;
                             recursive = true;
                         };
                     };
@@ -533,19 +537,34 @@ in
         };
     };
 
-    # Ryzen 5 3600 clock (4200) voltage (1.25)
-    systemd.services.zenstates = {
-        enable = true;
-        description = "Ryzen Undervolt";
-        after = "After=syslog.target systemd-modules-load.service";
-        unitconfig = {
-            ConditionPathExists = "{zenstates}/bin/zenstates";
+
+    systemd.services = {
+        # Ryzen 5 3600 clock (4200) voltage (1.25)
+        zenstates = {
+            enable = true;
+            description = "Ryzen Undervolt";
+            after = "After=syslog.target systemd-modules-load.service";
+            unitconfig = {
+                ConditionPathExists = "{zenstates}/bin/zenstates";
+            };
+            serviceConfig = {
+                User = "root";
+                ExecStart = "$sudo {zenstates}/bin/zenstates -p 0 -v 30 -f BD";
+            };
+            wantedBy = [ "multi-user.target" ];
         };
-        serviceConfig = {
-            User = "root";
-            ExecStart = "$sudo {zenstates}/bin/zenstates -p 0 -v 30 -f BD";
+
+        # Nvidia power limit to 180W
+        nv-power-limit = {
+            enable = true;
+            description = "Nvidia power limit control";
+            after = "syslog.target systemd-modules-load.service";
+            serviceConfig = {
+                User = "root";
+                ExecStart = "/home/icedborn/.config/nvidia-power-limit/nv-power-limit.sh";
+            };
+            wantedBy = [ "multi-user.target" ];
         };
-        wantedBy = [ "multi-user.target" ];
     };
 
     # Do not change without checking the docs

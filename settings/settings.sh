@@ -1,9 +1,5 @@
 #!/bin/bash
 
-# Maximize nvidia GPU power limit on startup
-echo "Maximizing Nvidia GPU power limit..."
-(lspci | grep NVIDIA > /dev/null) && ( (echo "Maximizing Nvidia GPU power limit...") && (bash ./scripts/add-system-service.sh nv-power-limit) )
-
 # Add mozilla custom profile
 echo "Adding custom mozilla profile..."
 randomPath="$HOME/.mozilla/firefox/$RANDOM.privacy"
