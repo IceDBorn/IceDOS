@@ -544,8 +544,8 @@ in
                 aria2c="aria2c -j 16 -s 16"; # Download with aria using best settings
                 chmod="sudo chmod"; # It's a command that I always execute with sudo
                 clear-keys="sudo rm -rf ~/ local/share/keyrings/* ~/ local/share/kwalletd/*"; # Clear system keys
-                clear-proton-ge="bash ~/.config/zsh/scripts/.protondown.sh"; # Download the latest proton ge version and delete the older ones
-                nvidia-max-fan-speed="sudo bash ~/.config/zsh/scripts/.nvidia-fan-control-wayland.sh 100"; # Maximize nvidia fan speed on wayland
+                clear-proton-ge="bash ~/.config/zsh/protondown.sh"; # Download the latest proton ge version and delete the older ones
+                nvidia-max-fan-speed="sudo bash ~/.config/zsh/nvidia-fan-control-wayland.sh 100"; # Maximize nvidia fan speed on wayland
                 reboot-windows="(sudo grub-set-default 0) && (sudo grub-reboot 2) && (sudo reboot)"; # Reboot to windows once
                 restart-pipewire="systemctl --user restart pipewire"; # Restart pipewire
                 ssh="TERM=xterm-256color ssh"; # SSH with colors
