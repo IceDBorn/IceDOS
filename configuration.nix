@@ -113,20 +113,44 @@ in
                         "org/gnome/desktop/interface" = {
                             gtk-theme = "Plata-Noir-Compact";
                         };
+                    };
 
-                        # Add startup file for 4 terminals
-                        xdg.desktopEntries = {
-                            startup-terminals = {
-                                type = "Application";
-                                exec = "bash -c 'alacritty & alacritty & alacritty & alacritty'";
-                                icon = "Alacritty";
-                                terminal = "false";
-                                categories = "System;TerminalEmulator;";
-                                name = "Startup Terminals";
-                                genericName = "Terminal";
-                                comment = "A fast, cross-platform, OpenGL terminal emulator";
-                                actions = "New;";
-                            };
+                    # Add desktop file for 4 terminals
+                    xdg.desktopEntries = {
+                        startup-terminals = {
+                            type = "Application";
+                            exec = "bash -c 'alacritty & alacritty & alacritty & alacritty'";
+                            icon = "Alacritty";
+                            terminal = "false";
+                            categories = "System;TerminalEmulator;";
+                            name = "Startup Terminals";
+                            genericName = "Terminal";
+                            comment = "A fast, cross-platform, OpenGL terminal emulator";
+                            actions = "New;";
+                        };
+                    };
+
+                    # Add zsh theme to zsh directory
+                    home.file = {
+                        ".config/zsh" = {
+                            source = ./scripts/zsh-theme.sh;
+                            recursive = true;
+                        };
+                    };
+
+                    # Add protondown script to zsh directory
+                    home.file = {
+                        ".config/zsh" = {
+                            source = ./scripts/protondown.sh;
+                            recursive = true;
+                        };
+                    };
+
+                    # Add nvidia fan control wayland to zsh directory
+                    home.file = {
+                        ".config/zsh" = {
+                            source = ./scripts/nvidia-fan-control-wayland.sh;
+                            recursive = true;
                         };
                     };
                 };
@@ -209,20 +233,44 @@ in
                         "org/gnome/desktop/interface" = {
                             gtk-theme = "Plata-Noir-Compact";
                         };
+                    };
 
-                        # Add desktop file for 4 terminals
-                        xdg.desktopEntries = {
-                            startup-terminals = {
-                                type = "Application";
-                                exec = "bash -c 'alacritty & alacritty & alacritty & alacritty'";
-                                icon = "Alacritty";
-                                terminal = "false";
-                                categories = "System;TerminalEmulator;";
-                                name = "Startup Terminals";
-                                genericName = "Terminal";
-                                comment = "A fast, cross-platform, OpenGL terminal emulator";
-                                actions = "New;";
-                            };
+                    # Add desktop file for 4 terminals
+                    xdg.desktopEntries = {
+                        startup-terminals = {
+                            type = "Application";
+                            exec = "bash -c 'alacritty & alacritty & alacritty & alacritty'";
+                            icon = "Alacritty";
+                            terminal = "false";
+                            categories = "System;TerminalEmulator;";
+                            name = "Startup Terminals";
+                            genericName = "Terminal";
+                            comment = "A fast, cross-platform, OpenGL terminal emulator";
+                            actions = "New;";
+                        };
+                    };
+
+                    # Add zsh theme to zsh directory
+                    home.file = {
+                        ".config/zsh" = {
+                            source = ./scripts/zsh-theme.sh;
+                            recursive = true;
+                        };
+                    };
+
+                    # Add protondown script to zsh directory
+                    home.file = {
+                        ".config/zsh" = {
+                            source = ./scripts/protondown.sh;
+                            recursive = true;
+                        };
+                    };
+
+                    # Add nvidia fan control wayland to zsh directory
+                    home.file = {
+                        ".config/zsh" = {
+                            source = ./scripts/nvidia-fan-control-wayland.sh;
+                            recursive = true;
                         };
                     };
                 };

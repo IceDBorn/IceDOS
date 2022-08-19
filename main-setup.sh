@@ -16,14 +16,9 @@ echo "Hello $username!"
 read -r -p "Have you customized the setup to your needs? [y/N] " response
 if [[ "$response" =~ ^([yY][eE][sS]|[yY])$ ]]
 then
-    # Zsh installer
-    bash apps/zsh-setup.sh
 
     # Settings changer
     bash settings/settings.sh
-
-    # Application configs installer
-    bash apps/install-app-configs.sh
 
     # Rebooting sequence
     bash scripts/reboot.sh
