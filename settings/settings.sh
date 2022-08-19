@@ -25,7 +25,3 @@ echo "Adding noise suppression to pipewire..."
 
 # Add proton remove script to zsh scripts
 (cp scripts/.protondown.sh ~/.config/zsh/scripts/.protondown.sh)
-
-# Add post install script to startup
-echo "Adding post install script to startup..."
-( (mkdir -p ~/.config/autostart) && (cp scripts/.post-install.sh ~/.post-install.sh) && (cp apps/startup/post-install.desktop ~/.config/autostart/post-install.desktop) )
