@@ -154,6 +154,12 @@ in
                             source = ./scripts/nv-power-limit.sh;
                             recursive = true;
                         };
+
+                        # Add firefox privacy profile
+                        ".mozilla/firefox/privacy/updater.sh" = {
+                            source = ./scripts/user-overrides.js;
+                            recursive = true;
+                        };
                     };
                 };
             };
@@ -274,6 +280,12 @@ in
                         # Add nvidia power limit control
                         ".config/nvidia-power-limit" = {
                             source = ./scripts/nv-power-limit.sh;
+                            recursive = true;
+                        };
+
+                        # Add firefox privacy profile
+                        ".mozilla/firefox/privacy/updater.sh" = {
+                            source = ./scripts/user-overrides.js;
                             recursive = true;
                         };
                     };
