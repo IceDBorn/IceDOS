@@ -285,7 +285,13 @@ in
 
                         # Add firefox privacy profile
                         ".mozilla/firefox/privacy/updater.sh" = {
-                            source = ./scripts/user-overrides.js;
+                            source = ./configs/user-overrides.js;
+                            recursive = true;
+                        };
+
+                        # Add noise suppression microphone
+                        ".config/pipewire" = {
+                            source = ./configs/pipewire.conf;
                             recursive = true;
                         };
                     };
