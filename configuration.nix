@@ -98,6 +98,21 @@ in
                                                     "volume-mixer@evermiss.net"
                                                   ];
                         };
+
+                        # Enable dark mode
+                        "org/gnome/desktop/interface" = {
+                            color-scheme = "prefer-dark";
+                        };
+
+                        # Change icon theme
+                        "org/gnome/desktop/interface" = {
+                            icon-theme = "Tela-black-dark";
+                        };
+
+                        # Change gtk theme
+                        "org/gnome/desktop/interface" = {
+                            gtk-theme = "Plata-Noir-Compact";
+                        };
                     };
                 };
             };
