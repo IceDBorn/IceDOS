@@ -592,6 +592,21 @@ in
         };
     };
 
+    # Nix Package Manager settings
+    nix = {
+        settings ={
+            # Nix automatically detects files in the store that have identical contents, and replaces them with hard links (makes store 3 times slower)
+            auto-optimise-store = true;
+        };
+
+        # Automatic garbage collection
+        gc = {
+            automatic = true;
+            dates = "weekly";
+            options = "--delete-older-than 7d";
+        };
+    };
+
     # Do not change without checking the docs
     system.stateVersion = "22.05";
 }
