@@ -24,10 +24,9 @@ then
   # Build the configuration
   sudo nixos-rebuild switch
 
-  # Get all users
-  USERS=$(cut -d: -f1,3 /etc/passwd | grep -E ':[0-9]{4}$' | cut -d: -f1)
+  ### ARKENFOX JS ###
+  USERS=$(cut -d: -f1,3 /etc/passwd | grep -E ':[0-9]{4}$' | cut -d: -f1) # Get all users
 
-  # Add the arkefox js updater
   if [ -z "$USERS" ]
   then
       echo "No users to install arkenfox js..."
@@ -36,7 +35,9 @@ then
     git clone https://github.com/arkenfox/user.js.git
     while IFS= read -r user ; do
       # Install the updater for all users
-      cp user.js/updater.sh /home/"$user"/.mozilla/privacy
+      echo "Installing arkenfox js for $RED$BOLD$user$NC$NORMAL!"
+      sudo cp user.js/updater.sh /home/"$user"/.mozilla/privacy
+      sudo chown "$user":"$user" /home/"$user"/.mozilla/privacy/updater.sh
     done <<< "$USERS"
     # Remove the arkenfox js folder
     rm -rf user.js
