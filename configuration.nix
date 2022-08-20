@@ -126,7 +126,15 @@ in
                 xdg.desktopEntries = {
                     startup-terminals = {
                         type = "Application";
-                        exec = "bash -c 'alacritty & alacritty & alacritty & alacritty'";
+                        exec =
+                        (
+                            pkgs.writeShellScript "alacritty-exec" ''
+                              alacritty &
+                              alacritty &
+                              alacritty &
+                              alacritty &
+                            ''
+                        ).outPath;
                         icon = "Alacritty";
                         terminal = false;
                         categories = [ "System" "TerminalEmulator" ];
@@ -263,7 +271,15 @@ in
                 xdg.desktopEntries = {
                     startup-terminals = {
                         type = "Application";
-                        exec = "bash -c 'alacritty & alacritty & alacritty & alacritty'";
+                        exec =
+                        (
+                            pkgs.writeShellScript "alacritty-exec" ''
+                              alacritty &
+                              alacritty &
+                              alacritty &
+                              alacritty &
+                            ''
+                        ).outPath;
                         icon = "Alacritty";
                         terminal = false;
                         categories = [ "System" "TerminalEmulator" ];
