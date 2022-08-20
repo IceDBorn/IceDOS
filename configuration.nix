@@ -89,15 +89,16 @@ in
                     # Set enabled gnome extensions
                     "org/gnome/shell" = {
                         enabled-extensions = [
-                            "clipboard-indicator@tudmotu.com"
-                            "material-shell@papyelgringo"
-                            "gsconnect@andyholmes.github.io"
-                            "trayIconsReloaded@selfmade.pl"
-                            "sound-output-device-chooser@kgshank.net"
+                            "CoverflowAltTab@palatis.blogspot.com"
                             "bluetooth-quick-connect@bjarosze.gmail.com"
+                            "clipboard-indicator@tudmotu.com"
                             "color-picker@tuberry"
                             "gamemode@christian.kellner.me"
-                            "CoverflowAltTab@dmo60.de"
+                            "gsconnect@andyholmes.github.io"
+                            # Material shell crashes the gnome desktop
+                            #"material-shell@papyelgringo"
+                            "sound-output-device-chooser@kgshank.net"
+                            "trayIconsReloaded@selfmade.pl"
                             "volume-mixer@evermiss.net"
                         ];
                     };
@@ -222,15 +223,16 @@ in
                     # Set enabled gnome extensions
                     "org/gnome/shell" = {
                         enabled-extensions = [
-                            "clipboard-indicator@tudmotu.com"
-                            "material-shell@papyelgringo"
-                            "gsconnect@andyholmes.github.io"
-                            "trayIconsReloaded@selfmade.pl"
-                            "sound-output-device-chooser@kgshank.net"
+                            "CoverflowAltTab@palatis.blogspot.com"
                             "bluetooth-quick-connect@bjarosze.gmail.com"
+                            "clipboard-indicator@tudmotu.com"
                             "color-picker@tuberry"
                             "gamemode@christian.kellner.me"
-                            "CoverflowAltTab@dmo60.de"
+                            "gsconnect@andyholmes.github.io"
+                            # Material shell crashes the gnome desktop
+                            #"material-shell@papyelgringo"
+                            "sound-output-device-chooser@kgshank.net"
+                            "trayIconsReloaded@selfmade.pl"
                             "volume-mixer@evermiss.net"
                         ];
                     };
