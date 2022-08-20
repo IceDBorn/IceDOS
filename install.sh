@@ -29,7 +29,7 @@ then
 
   if [ -z "$USERS" ]
   then
-      echo "No users to install arkenfox js..."
+      echo "No users available to install arkenfox js..."
   else
     # Download the updater
     git clone https://github.com/arkenfox/user.js.git
