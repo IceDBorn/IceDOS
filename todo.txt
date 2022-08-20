@@ -1,2 +1,5 @@
 TODO
-    3: Implement fstab into hardware configuration, mount once and then run "nixos-generate-config"
+    1: Implement fstab into hardware configuration, mount once and then run "nixos-generate-config"
+    2: Fix pipewire
+    3: Fix nvidia power limit
+    4: Fix material shell
