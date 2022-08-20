@@ -577,26 +577,31 @@ in
             enable = true;
             description = "Ryzen Undervolt";
             after = [ "syslog.target" "systemd-modules-load.service" ];
+
             unitConfig = {
-                conditionPathExists = "{zenstates}/bin/zenstates";
+                ConditionPathExists = "${pkgs.zenstates}/bin/zenstates";
             };
+
             serviceConfig = {
                 User = "root";
-                ExecStart = "$sudo {zenstates}/bin/zenstates -p 0 -v 30 -f BD";
+                ExecStart = "${pkgs.zenstates}/bin/zenstates -p 0 -v 30 -f BD";
             };
+
             wantedBy = [ "multi-user.target" ];
         };
 
         # Nvidia power limit to 180W
         nv-power-limit = {
-            enable = true;
-            description = "Nvidia power limit control";
-            after = [ "syslog.target" "systemd-modules-load.service" ];
-            serviceConfig = {
-                User = "root";
-                ExecStart = "/home/icedborn/.config/nvidia-power-limit/nv-power-limit.sh";
-            };
-            wantedBy = [ "multi-user.target" ];
+        enable = true;
+        description = "Nvidia power limit control";
+        after = [ "syslog.target" "systemd-modules-load.service" ];
+
+        serviceConfig = {
+            User = "root";
+            ExecStart = "/home/icedborn/.config/nvidia-power-limit/nv-power-limit.sh";
+        };
+
+        wantedBy = [ "multi-user.target" ];
         };
     };
 
