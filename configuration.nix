@@ -507,7 +507,7 @@ in
         alacritty # Terminal
         android-tools # Tools for debugging android devices
         aria # Terminal downloader with multiple connections support
-        firefox-bin # Browser
+        firefox # Browser
         fragments # Bittorrent client following Gnome UI standards
         gimp # Image editor
         git # Distributed version control system
