@@ -565,7 +565,7 @@ in
         zenstates = {
             enable = true;
             description = "Ryzen Undervolt";
-            after = "After=syslog.target systemd-modules-load.service";
+            after = [ "syslog.target" "systemd-modules-load.service" ];
             unitConfig = {
                 conditionPathExists = "{zenstates}/bin/zenstates";
             };
@@ -580,7 +580,7 @@ in
         nv-power-limit = {
             enable = true;
             description = "Nvidia power limit control";
-            after = "syslog.target systemd-modules-load.service";
+            after = [ "syslog.target" "systemd-modules-load.service" ];
             serviceConfig = {
                 User = "root";
                 ExecStart = "/home/icedborn/.config/nvidia-power-limit/nv-power-limit.sh";
