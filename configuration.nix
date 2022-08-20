@@ -607,6 +607,14 @@ in
         };
     };
 
-    # Do not change without checking the docs
-    system.stateVersion = "22.05";
+    system = {
+        # Allow auto update
+        autoUpgrade = {
+          enable = true;
+          # Unstable channel
+          channel = "https://nixos.org/channels/nixos-unstable";
+        };
+        # Do not change without checking the docs
+        stateVersion = "22.05";
+    };
 }
