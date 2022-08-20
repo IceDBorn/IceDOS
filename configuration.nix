@@ -132,37 +132,37 @@ in
 
                     home.file = {
                         # Add zsh theme to zsh directory
-                        ".config/zsh" = {
+                        ".config/zsh/zsh-theme.sh" = {
                             source = ./scripts/zsh-theme.sh;
                             recursive = true;
                         };
 
                         # Add protondown script to zsh directory
-                        ".config/zsh" = {
+                        ".config/zsh/protondown.sh" = {
                             source = ./scripts/protondown.sh;
                             recursive = true;
                         };
 
                         # Add nvidia fan control wayland to zsh directory
-                        ".config/zsh" = {
+                        ".config/zsh/nvidia-fan-control-wayland.sh" = {
                             source = ./scripts/nvidia-fan-control-wayland.sh;
                             recursive = true;
                         };
 
                         # Add nvidia power limit control
-                        ".config/nvidia-power-limit" = {
+                        ".config/nvidia-power-limit/nv-power-limit.sh" = {
                             source = ./scripts/nv-power-limit.sh;
                             recursive = true;
                         };
 
                         # Add firefox privacy profile
-                        ".mozilla/firefox/privacy/updater.sh" = {
+                        ".mozilla/firefox/privacy/user-overrides.js" = {
                             source = ./scripts/user-overrides.js;
                             recursive = true;
                         };
 
                         # Add noise suppression microphone
-                        ".config/pipewire" = {
+                        ".config/pipewire/pipewire.conf" = {
                             source = ./configs/pipewire.conf;
                             recursive = true;
                         };
