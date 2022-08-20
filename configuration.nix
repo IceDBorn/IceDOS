@@ -317,13 +317,20 @@ in
     # Grub configuration
     boot = {
         loader = {
-            systemd-boot.enable = true;
             efi = {
                 canTouchEfiVariables = true;
-                efiSysMountPoint = "/boot/efi";
+                efiSysMountPoint = "/boot";
             };
-            # Detect all operating systems
-            grub.useOSProber = true;
+            grub = {
+                enable = true;
+                version = 2;
+                devices = [ "nodev" ];
+                efiSupport = true;
+                # Find all boot options
+                useOSProber = true;
+                configurationLimit = 5;
+            };
+            timeout = 1;
         };
         # Use Zen kernel
         kernelPackages = pkgs.linuxPackages_zen;
@@ -607,6 +614,7 @@ in
         };
     };
 
+    # NixOS settings
     system = {
         # Allow auto update
         autoUpgrade = {
