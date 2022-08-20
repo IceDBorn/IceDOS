@@ -68,105 +68,105 @@ in
                         # Enable firefox wayland
                         profileExtra = "export MOZ_ENABLE_WAYLAND=1";
                     };
+                };
 
-                    dconf.settings = {
-                        # Nautilus path bar is always editable
-                        "org/gnome/nautilus/preferences" = {
-                            always-use-location-entry = true;
-                        };
-
-                        # Enable fractional scaling
-                        "org/gnome/mutter" = {
-                            experimental-features = [ "scale-monitor-framebuffer" ];
-                        };
-
-                        # Enable gnome extensions
-                        "org/gnome/shell" = {
-                            disable-user-extensions = false;
-                        };
-
-                        # Set enabled gnome extensions
-                        "org/gnome/shell" = {
-                            enabled-extensions = [  "clipboard-indicator@tudmotu.com"
-                                                    "material-shell@papyelgringo"
-                                                    "gsconnect@andyholmes.github.io"
-                                                    "trayIconsReloaded@selfmade.pl"
-                                                    "sound-output-device-chooser@kgshank.net"
-                                                    "bluetooth-quick-connect@bjarosze.gmail.com"
-                                                    "color-picker@tuberry"
-                                                    "gamemode@christian.kellner.me"
-                                                    "CoverflowAltTab@dmo60.de"
-                                                    "volume-mixer@evermiss.net"
-                                                  ];
-                        };
-
-                        # Enable dark mode
-                        "org/gnome/desktop/interface" = {
-                            color-scheme = "prefer-dark";
-                        };
-
-                        # Change icon theme
-                        "org/gnome/desktop/interface" = {
-                            icon-theme = "Tela-black-dark";
-                        };
-
-                        # Change gtk theme
-                        "org/gnome/desktop/interface" = {
-                            gtk-theme = "Plata-Noir-Compact";
-                        };
+                dconf.settings = {
+                    # Nautilus path bar is always editable
+                    "org/gnome/nautilus/preferences" = {
+                        always-use-location-entry = true;
                     };
 
-                    # Add desktop file for 4 terminals
-                    xdg.desktopEntries = {
-                        startup-terminals = {
-                            type = "Application";
-                            exec = "bash -c 'alacritty & alacritty & alacritty & alacritty'";
-                            icon = "Alacritty";
-                            terminal = "false";
-                            categories = "System;TerminalEmulator;";
-                            name = "Startup Terminals";
-                            genericName = "Terminal";
-                            comment = "A fast, cross-platform, OpenGL terminal emulator";
-                            actions = "New;";
-                        };
+                    # Enable fractional scaling
+                    "org/gnome/mutter" = {
+                        experimental-features = [ "scale-monitor-framebuffer" ];
                     };
 
-                    home.file = {
-                        # Add zsh theme to zsh directory
-                        ".config/zsh/zsh-theme.sh" = {
-                            source = ./scripts/zsh-theme.sh;
-                            recursive = true;
-                        };
+                    # Enable gnome extensions
+                    "org/gnome/shell" = {
+                        disable-user-extensions = false;
+                    };
 
-                        # Add protondown script to zsh directory
-                        ".config/zsh/protondown.sh" = {
-                            source = ./scripts/protondown.sh;
-                            recursive = true;
-                        };
+                    # Set enabled gnome extensions
+                    "org/gnome/shell" = {
+                        enabled-extensions = [  "clipboard-indicator@tudmotu.com"
+                                                "material-shell@papyelgringo"
+                                                "gsconnect@andyholmes.github.io"
+                                                "trayIconsReloaded@selfmade.pl"
+                                                "sound-output-device-chooser@kgshank.net"
+                                                "bluetooth-quick-connect@bjarosze.gmail.com"
+                                                "color-picker@tuberry"
+                                                "gamemode@christian.kellner.me"
+                                                "CoverflowAltTab@dmo60.de"
+                                                "volume-mixer@evermiss.net"
+                                              ];
+                    };
 
-                        # Add nvidia fan control wayland to zsh directory
-                        ".config/zsh/nvidia-fan-control-wayland.sh" = {
-                            source = ./scripts/nvidia-fan-control-wayland.sh;
-                            recursive = true;
-                        };
+                    # Enable dark mode
+                    "org/gnome/desktop/interface" = {
+                        color-scheme = "prefer-dark";
+                    };
 
-                        # Add nvidia power limit control
-                        ".config/nvidia-power-limit/nv-power-limit.sh" = {
-                            source = ./scripts/nv-power-limit.sh;
-                            recursive = true;
-                        };
+                    # Change icon theme
+                    "org/gnome/desktop/interface" = {
+                        icon-theme = "Tela-black-dark";
+                    };
 
-                        # Add firefox privacy profile
-                        ".mozilla/firefox/privacy/user-overrides.js" = {
-                            source = ./scripts/user-overrides.js;
-                            recursive = true;
-                        };
+                    # Change gtk theme
+                    "org/gnome/desktop/interface" = {
+                        gtk-theme = "Plata-Noir-Compact";
+                    };
+                };
 
-                        # Add noise suppression microphone
-                        ".config/pipewire/pipewire.conf" = {
-                            source = ./configs/pipewire.conf;
-                            recursive = true;
-                        };
+                # Add desktop file for 4 terminals
+                xdg.desktopEntries = {
+                    startup-terminals = {
+                        type = "Application";
+                        exec = "bash -c 'alacritty & alacritty & alacritty & alacritty'";
+                        icon = "Alacritty";
+                        terminal = "false";
+                        categories = "System;TerminalEmulator;";
+                        name = "Startup Terminals";
+                        genericName = "Terminal";
+                        comment = "A fast, cross-platform, OpenGL terminal emulator";
+                        actions = "New;";
+                    };
+                };
+
+                home.file = {
+                    # Add zsh theme to zsh directory
+                    ".config/zsh/zsh-theme.sh" = {
+                        source = ./scripts/zsh-theme.sh;
+                        recursive = true;
+                    };
+
+                    # Add protondown script to zsh directory
+                    ".config/zsh/protondown.sh" = {
+                        source = ./scripts/protondown.sh;
+                        recursive = true;
+                    };
+
+                    # Add nvidia fan control wayland to zsh directory
+                    ".config/zsh/nvidia-fan-control-wayland.sh" = {
+                        source = ./scripts/nvidia-fan-control-wayland.sh;
+                        recursive = true;
+                    };
+
+                    # Add nvidia power limit control
+                    ".config/nvidia-power-limit/nv-power-limit.sh" = {
+                        source = ./scripts/nv-power-limit.sh;
+                        recursive = true;
+                    };
+
+                    # Add firefox privacy profile
+                    ".mozilla/firefox/privacy/user-overrides.js" = {
+                        source = ./scripts/user-overrides.js;
+                        recursive = true;
+                    };
+
+                    # Add noise suppression microphone
+                    ".config/pipewire/pipewire.conf" = {
+                        source = ./configs/pipewire.conf;
+                        recursive = true;
                     };
                 };
             };
@@ -201,106 +201,106 @@ in
                         # Enable firefox wayland
                         profileExtra = "export MOZ_ENABLE_WAYLAND=1";
                     };
+                };
 
-                    dconf.settings = {
-                        # Nautilus path bar is always editable
-                        "org/gnome/nautilus/preferences" = {
-                            always-use-location-entry = true;
-                        };
-
-                        # Enable fractional scaling
-                        "org/gnome/mutter" = {
-                            experimental-features = [ "scale-monitor-framebuffer" ];
-                        };
-
-                        # Enable gnome extensions
-                        "org/gnome/shell" = {
-                            disable-user-extensions = false;
-                        };
-
-                        # Set enabled gnome extensions
-                        "org/gnome/shell" = {
-                            enabled-extensions = [
-                                "clipboard-indicator@tudmotu.com"
-                                "material-shell@papyelgringo"
-                                "gsconnect@andyholmes.github.io"
-                                "trayIconsReloaded@selfmade.pl"
-                                "sound-output-device-chooser@kgshank.net"
-                                "bluetooth-quick-connect@bjarosze.gmail.com"
-                                "color-picker@tuberry"
-                                "gamemode@christian.kellner.me"
-                                "CoverflowAltTab@dmo60.de"
-                                "volume-mixer@evermiss.net"
-                            ];
-                        };
-
-                        # Enable dark mode
-                        "org/gnome/desktop/interface" = {
-                            color-scheme = "prefer-dark";
-                        };
-
-                        # Change icon theme
-                        "org/gnome/desktop/interface" = {
-                            icon-theme = "Tela-black-dark";
-                        };
-
-                        # Change gtk theme
-                        "org/gnome/desktop/interface" = {
-                            gtk-theme = "Plata-Noir-Compact";
-                        };
+                dconf.settings = {
+                    # Nautilus path bar is always editable
+                    "org/gnome/nautilus/preferences" = {
+                        always-use-location-entry = true;
                     };
 
-                    # Add desktop file for 4 terminals
-                    xdg.desktopEntries = {
-                        startup-terminals = {
-                            type = "Application";
-                            exec = "bash -c 'alacritty & alacritty & alacritty & alacritty'";
-                            icon = "Alacritty";
-                            terminal = "false";
-                            categories = "System;TerminalEmulator;";
-                            name = "Startup Terminals";
-                            genericName = "Terminal";
-                            comment = "A fast, cross-platform, OpenGL terminal emulator";
-                            actions = "New;";
-                        };
+                    # Enable fractional scaling
+                    "org/gnome/mutter" = {
+                        experimental-features = [ "scale-monitor-framebuffer" ];
                     };
 
-                    home.file = {
-                        # Add zsh theme to zsh directory
-                        ".config/zsh/zsh-theme.sh" = {
-                            source = ./scripts/zsh-theme.sh;
-                            recursive = true;
-                        };
+                    # Enable gnome extensions
+                    "org/gnome/shell" = {
+                        disable-user-extensions = false;
+                    };
 
-                        # Add protondown script to zsh directory
-                        ".config/zsh/protondown.sh" = {
-                            source = ./scripts/protondown.sh;
-                            recursive = true;
-                        };
+                    # Set enabled gnome extensions
+                    "org/gnome/shell" = {
+                        enabled-extensions = [
+                            "clipboard-indicator@tudmotu.com"
+                            "material-shell@papyelgringo"
+                            "gsconnect@andyholmes.github.io"
+                            "trayIconsReloaded@selfmade.pl"
+                            "sound-output-device-chooser@kgshank.net"
+                            "bluetooth-quick-connect@bjarosze.gmail.com"
+                            "color-picker@tuberry"
+                            "gamemode@christian.kellner.me"
+                            "CoverflowAltTab@dmo60.de"
+                            "volume-mixer@evermiss.net"
+                        ];
+                    };
 
-                        # Add nvidia fan control wayland to zsh directory
-                        ".config/zsh/nvidia-fan-control-wayland.sh" = {
-                            source = ./scripts/nvidia-fan-control-wayland.sh;
-                            recursive = true;
-                        };
+                    # Enable dark mode
+                    "org/gnome/desktop/interface" = {
+                        color-scheme = "prefer-dark";
+                    };
 
-                        # Add nvidia power limit control
-                        ".config/nvidia-power-limit/nv-power-limit.sh" = {
-                            source = ./scripts/nv-power-limit.sh;
-                            recursive = true;
-                        };
+                    # Change icon theme
+                    "org/gnome/desktop/interface" = {
+                        icon-theme = "Tela-black-dark";
+                    };
 
-                        # Add firefox privacy profile
-                        ".mozilla/firefox/privacy/user-overrides.js" = {
-                            source = ./configs/user-overrides.js;
-                            recursive = true;
-                        };
+                    # Change gtk theme
+                    "org/gnome/desktop/interface" = {
+                        gtk-theme = "Plata-Noir-Compact";
+                    };
+                };
 
-                        # Add noise suppression microphone
-                        ".config/pipewire/pipewire.conf" = {
-                            source = ./configs/pipewire.conf;
-                            recursive = true;
-                        };
+                # Add desktop file for 4 terminals
+                xdg.desktopEntries = {
+                    startup-terminals = {
+                        type = "Application";
+                        exec = "bash -c 'alacritty & alacritty & alacritty & alacritty'";
+                        icon = "Alacritty";
+                        terminal = "false";
+                        categories = "System;TerminalEmulator;";
+                        name = "Startup Terminals";
+                        genericName = "Terminal";
+                        comment = "A fast, cross-platform, OpenGL terminal emulator";
+                        actions = "New;";
+                    };
+                };
+
+                home.file = {
+                    # Add zsh theme to zsh directory
+                    ".config/zsh/zsh-theme.sh" = {
+                        source = ./scripts/zsh-theme.sh;
+                        recursive = true;
+                    };
+
+                    # Add protondown script to zsh directory
+                    ".config/zsh/protondown.sh" = {
+                        source = ./scripts/protondown.sh;
+                        recursive = true;
+                    };
+
+                    # Add nvidia fan control wayland to zsh directory
+                    ".config/zsh/nvidia-fan-control-wayland.sh" = {
+                        source = ./scripts/nvidia-fan-control-wayland.sh;
+                        recursive = true;
+                    };
+
+                    # Add nvidia power limit control
+                    ".config/nvidia-power-limit/nv-power-limit.sh" = {
+                        source = ./scripts/nv-power-limit.sh;
+                        recursive = true;
+                    };
+
+                    # Add firefox privacy profile
+                    ".mozilla/firefox/privacy/user-overrides.js" = {
+                        source = ./configs/user-overrides.js;
+                        recursive = true;
+                    };
+
+                    # Add noise suppression microphone
+                    ".config/pipewire/pipewire.conf" = {
+                        source = ./configs/pipewire.conf;
+                        recursive = true;
                     };
                 };
             };
