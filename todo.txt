@@ -1,4 +1,3 @@
 TODO
-    1: Replace systemd-boot with GRUB
     2: Fix home manager
     3: Implement fstab into hardware configuration, mount once and then run "nixos-generate-config"
