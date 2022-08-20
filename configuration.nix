@@ -68,6 +68,9 @@ in
                         # Enable firefox wayland
                         profileExtra = "export MOZ_ENABLE_WAYLAND=1";
                     };
+
+                    # Install gnome extensions using firefox
+                    firefox.enableGnomeExtensions = true;
                 };
 
                 dconf.settings = {
@@ -202,6 +205,9 @@ in
                         # Enable firefox wayland
                         profileExtra = "export MOZ_ENABLE_WAYLAND=1";
                     };
+
+                    # Install gnome extensions using firefox
+                    firefox.enableGnomeExtensions = true;
                 };
 
                 dconf.settings = {
