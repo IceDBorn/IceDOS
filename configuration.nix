@@ -88,17 +88,18 @@ in
 
                     # Set enabled gnome extensions
                     "org/gnome/shell" = {
-                        enabled-extensions = [  "clipboard-indicator@tudmotu.com"
-                                                "material-shell@papyelgringo"
-                                                "gsconnect@andyholmes.github.io"
-                                                "trayIconsReloaded@selfmade.pl"
-                                                "sound-output-device-chooser@kgshank.net"
-                                                "bluetooth-quick-connect@bjarosze.gmail.com"
-                                                "color-picker@tuberry"
-                                                "gamemode@christian.kellner.me"
-                                                "CoverflowAltTab@dmo60.de"
-                                                "volume-mixer@evermiss.net"
-                                              ];
+                        enabled-extensions = [
+                            "clipboard-indicator@tudmotu.com"
+                            "material-shell@papyelgringo"
+                            "gsconnect@andyholmes.github.io"
+                            "trayIconsReloaded@selfmade.pl"
+                            "sound-output-device-chooser@kgshank.net"
+                            "bluetooth-quick-connect@bjarosze.gmail.com"
+                            "color-picker@tuberry"
+                            "gamemode@christian.kellner.me"
+                            "CoverflowAltTab@dmo60.de"
+                            "volume-mixer@evermiss.net"
+                        ];
                     };
 
                     # Enable dark mode
@@ -123,12 +124,11 @@ in
                         type = "Application";
                         exec = "bash -c 'alacritty & alacritty & alacritty & alacritty'";
                         icon = "Alacritty";
-                        terminal = "false";
-                        categories = "System;TerminalEmulator;";
+                        terminal = false;
+                        categories = [ "System" "TerminalEmulator" ];
                         name = "Startup Terminals";
                         genericName = "Terminal";
                         comment = "A fast, cross-platform, OpenGL terminal emulator";
-                        actions = "New;";
                     };
                 };
 
@@ -159,7 +159,7 @@ in
 
                     # Add firefox privacy profile
                     ".mozilla/firefox/privacy/user-overrides.js" = {
-                        source = ./scripts/user-overrides.js;
+                        source = ./configs/user-overrides.js;
                         recursive = true;
                     };
 
@@ -257,12 +257,11 @@ in
                         type = "Application";
                         exec = "bash -c 'alacritty & alacritty & alacritty & alacritty'";
                         icon = "Alacritty";
-                        terminal = "false";
-                        categories = "System;TerminalEmulator;";
+                        terminal = false;
+                        categories = [ "System" "TerminalEmulator" ];
                         name = "Startup Terminals";
                         genericName = "Terminal";
                         comment = "A fast, cross-platform, OpenGL terminal emulator";
-                        actions = "New;";
                     };
                 };
 
