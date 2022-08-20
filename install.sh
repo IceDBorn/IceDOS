@@ -16,19 +16,36 @@ echo "Hello $username!"
 read -r -p "Have you customized the setup to your needs? [y/N] " response
 if [[ "$response" =~ ^([yY][eE][sS]|[yY])$ ]]
 then
+  # Add configuration files to the appropriate path
+  sudo cp configuration.nix /etc/nixos
+  sudo cp -r configs /etc/nixos
+  sudo cp -r scripts /etc/nixos
 
-    # Settings changer
-    bash settings/settings.sh
+  # Build the configuration
+  sudo nixos-rebuild switch
 
-    # Rebooting sequence
-    bash scripts/reboot.sh
+  # Get all users
+  USERS=$(cut -d: -f1,3 /etc/passwd | grep -E ':[0-9]{4}$' | cut -d: -f1)
+
+  # Add the arkefox js updater
+  if [ -z "$USERS" ]
+  then
+      echo "No users to install arkenfox js..."
+  else
+    # Download the updater
+    git clone https://github.com/arkenfox/user.js.git
+    while IFS= read -r user ; do
+      # Install the updater for all users
+      cp user.js/updater.sh /home/"$user"/.mozilla/privacy
+    done <<< "$USERS"
+    # Remove the arkenfox js folder
+    rm -rf user.js
+  fi
+
 else
   printf "You really should:
-  - Edit main-setup.sh and comment out any script you do not want to run.
-  - Edit settings/fstab.txt or do not install it.$RED$BOLD A non-configured fstab file can break your system!$NC$NORMAL
-  - Edit settings/services/zenstates.sh or do not install it. $RED$BOLD A non-configured zenstates.sh file can break your cpu!$NC$NORMAL
-  - Edit pacman and aur packages lists in apps/packages.
-  - Edit install-apps.sh to remove installation of extra apps not present in pacman and aur.
-  - Edit settings/settings.sh and comment out the parts you do not want to setup.
-  - Edit settings/user-overrides to customize your firefox custom user settings appending the updater's 'user.js'.\n"
+  - Edit configuration.nix and comment out anything you do not want to setup.
+  - Replace hardware-configuration.nix with yours or do not install it.$RED$BOLD A wrong hardware-configuration.nix file can break your system!$NC$NORMAL
+  - Edit scripts/zenstates.sh or do not install it. $RED$BOLD A non-configured zenstates.sh file can break your cpu!$NC$NORMAL
+  - Edit configs/user-overrides to customize your firefox custom user settings appending the updater's 'user.js'.\n"
 fi
