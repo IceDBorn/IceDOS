@@ -600,7 +600,7 @@ in
 
             serviceConfig = {
                 User = "root";
-                ExecStart = "${pkgs.zenstates}/bin/zenstates -p 0 -v 30 -f BD";
+                ExecStart = "${pkgs.zenstates}/bin/zenstates -p 0 -v 30 -f A8";
             };
 
             wantedBy = [ "multi-user.target" ];
