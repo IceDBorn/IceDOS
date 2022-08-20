@@ -319,7 +319,7 @@ in
         loader = {
             efi = {
                 canTouchEfiVariables = true;
-                efiSysMountPoint = "/boot";
+                efiSysMountPoint = "/boot/efi";
             };
             grub = {
                 enable = true;
@@ -329,6 +329,8 @@ in
                 # Find all boot options
                 useOSProber = true;
                 configurationLimit = 5;
+                # Detect encrypted disks
+                enableCryptodisk = true;
             };
             timeout = 1;
         };
@@ -568,7 +570,6 @@ in
         # Add dconf
         dconf.enable = true;
     };
-
 
     systemd.services = {
         # Ryzen 5 3600 clock (4200) voltage (1.25)
