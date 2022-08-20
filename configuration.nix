@@ -353,7 +353,7 @@ in
         # Use Zen kernel
         kernelPackages = pkgs.linuxPackages_zen;
         # Virtual camera for OBS
-        kernelModules = [ "v4l2loopback" "xpadneo" ];
+        kernelModules = [ "v4l2loopback" "xpadneo" "msr" ];
     };
 
     networking = {
