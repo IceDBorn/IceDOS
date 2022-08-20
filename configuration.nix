@@ -557,6 +557,9 @@ in
             # Commands to run on zsh shell initialization
             interactiveShellInit = "source ~/.config/zsh/zsh-theme.sh\nunsetopt PROMPT_SP";
         };
+
+        # Add dconf
+        dconf.enable = true;
     };
 
 
