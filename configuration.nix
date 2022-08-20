@@ -333,7 +333,7 @@ in
 
     networking = {
         # Define your hostname
-        hostname = "icedborn";
+        hostName = "icedborn";
         # Enable networking
         networkmanager.enable = true;
         # Disable firewall
@@ -380,8 +380,6 @@ in
 
         gnome = {
             chrome-gnome-shell.enable = true; # Allows to install GNOME Shell extensions from a web browser
-            gnome-keyring.enable = true; # Takes care of the user's security credentials
-            gnome-disks.enable = true; # UDisks2 graphical front-end
             sushi.enable = true; # Quick previewer for nautilus
         };
     };
@@ -427,7 +425,7 @@ in
 
     users = {
         # Set default shell to zsh
-        defaultShell = pkgs.zsh;
+        defaultUserShell = pkgs.zsh;
 
         # Define users below
         users = {
@@ -568,8 +566,8 @@ in
             enable = true;
             description = "Ryzen Undervolt";
             after = "After=syslog.target systemd-modules-load.service";
-            unitconfig = {
-                ConditionPathExists = "{zenstates}/bin/zenstates";
+            unitConfig = {
+                conditionPathExists = "{zenstates}/bin/zenstates";
             };
             serviceConfig = {
                 User = "root";
