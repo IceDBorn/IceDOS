@@ -3,21 +3,18 @@
 # Install home manager
 let
     home-manager = builtins.fetchTarball "https://github.com/nix-community/home-manager/archive/release-22.05.tar.gz";
-    nvidia-power-limit = "180";
-    # Pstate 0, 1.25 voltage, 4200 clock speed
-    zenstates-options = "-p 0 -v 30 -f A8";
 in
 {
     imports = [
         (import "${home-manager}/nixos")
         # Generated automatically
         ./hardware-configuration.nix
-        # Disks to mount on startup
-        ./mounts.nix
         # Packages to install
         ./programs
         # Gnome
         ./desktop
+        # CPU, GPU, Drives
+        ./hardware
     ];
 
     home-manager.users = {
@@ -397,7 +394,7 @@ in
         # Use Zen kernel
         kernelPackages = pkgs.linuxPackages_zen;
         # Virtual camera for OBS
-        kernelModules = [ "v4l2loopback" "xpadneo" "msr" ];
+        kernelModules = [ "v4l2loopback" "xpadneo" ];
     };
 
     networking = {
@@ -410,8 +407,6 @@ in
     };
 
     services = {
-        xserver.videoDrivers = [ "nvidia" ];
-
         # Enable SSH
         openssh.enable = true;
 
@@ -445,16 +440,6 @@ in
 
         # Show asterisks when typing sudo password
         sudo.extraConfig = "Defaults pwfeedback";
-    };
-
-    hardware = {
-        opengl = {
-            enable = true;
-            # Support Direct Rendering for 32-bit applications (such as Wine) on 64-bit systems
-            driSupport32Bit = true;
-        };
-        # Enable kernel modesetting when using the NVIDIA driver, needed for gnome wayland
-        nvidia.modesetting.enable = true;
     };
 
     users = {
@@ -537,44 +522,6 @@ in
 
             # Commands to run on zsh shell initialization
             interactiveShellInit = "source ~/.config/zsh/zsh-theme.sh\nunsetopt PROMPT_SP";
-        };
-    };
-
-    systemd.services = {
-        # Ryzen cpu control
-        zenstates = {
-            enable = true;
-            description = "Ryzen Undervolt";
-            after = [ "syslog.target" "systemd-modules-load.service" ];
-
-            unitConfig = {
-                ConditionPathExists = "${pkgs.zenstates}/bin/zenstates";
-            };
-
-            serviceConfig = {
-                User = "root";
-                ExecStart = "${pkgs.zenstates}/bin/zenstates ${zenstates-options}";
-            };
-
-            wantedBy = [ "multi-user.target" ];
-        };
-
-        # Nvidia power limit
-        nv-power-limit = {
-            enable = true;
-            description = "Nvidia power limit control";
-            after = [ "syslog.target" "systemd-modules-load.service" ];
-
-            unitConfig = {
-                ConditionPathExists = "${config.boot.kernelPackages.nvidia_x11.bin}/bin/nvidia-smi";
-            };
-
-            serviceConfig = {
-                User = "root";
-                ExecStart = "${config.boot.kernelPackages.nvidia_x11.bin}/bin/nvidia-smi  --power-limit=${nvidia-power-limit}";
-            };
-
-            wantedBy = [ "multi-user.target" ];
         };
     };
 
