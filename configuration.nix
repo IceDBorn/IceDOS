@@ -406,17 +406,6 @@ in
         firewall.enable = false;
     };
 
-    services = {
-        # Enable SSH
-        openssh.enable = true;
-
-        # Enable flatpak
-        flatpak.enable = true;
-
-        # Enable mullvad
-        mullvad-vpn.enable = true;
-    };
-
     security = {
         # Required by RPCS3
         pam.loginLimits = [
@@ -469,72 +458,6 @@ in
                 description = "Work";
                 extraGroups = [ "networkmanager" "wheel" ];
             };
-        };
-    };
-
-    nixpkgs.config = {
-         # Allow proprietary packages
-        allowUnfree = true;
-
-        # Install NUR
-        packageOverrides = pkgs: {
-            nur = import (builtins.fetchTarball "https://github.com/nix-community/NUR/archive/master.tar.gz") {
-                inherit pkgs;
-            };
-        };
-    };
-
-    environment = {
-        # Symlink the noise suppression plugin to a regular location
-        etc."rnnoise-plugin/librnnoise_ladspa.so".source = "${pkgs.rnnoise-plugin}/lib/ladspa/librnnoise_ladspa.so";
-    };
-
-    programs = {
-        # Enable zsh and configure it
-        zsh = {
-            enable = true;
-            # Enable oh my zsh and it's plugins
-            ohMyZsh = {
-                enable = true;
-                plugins = [ "git" "npm" "nvm" "sudo" "systemd" ];
-            };
-            # Enable auto suggestions
-            autosuggestions.enable = true;
-
-            # Enable syntax highlighting
-            syntaxHighlighting.enable = true;
-
-            # Aliases
-            shellAliases = {
-                aria2c="aria2c -j 16 -s 16"; # Download with aria using best settings
-                chmod="sudo chmod"; # It's a command that I always execute with sudo
-                clear-keys="sudo rm -rf ~/ local/share/keyrings/* ~/ local/share/kwalletd/*"; # Clear system keys
-                clear-proton-ge="bash ~/.config/zsh/protondown.sh"; # Download the latest proton ge version and delete the older ones
-                nvidia-max-fan-speed="sudo bash ~/.config/zsh/nvidia-fan-control-wayland.sh 100"; # Maximize nvidia fan speed on wayland
-                reboot-windows="(sudo grub-set-default 0) && (sudo grub-reboot 2) && (sudo reboot)"; # Reboot to windows once
-                restart-pipewire="systemctl --user restart pipewire"; # Restart pipewire
-                ssh="TERM=xterm-256color ssh"; # SSH with colors
-                update="(sudo nixos-rebuild switch --upgrade) ; (flatpak update) ; (yes | protonup) ; (yes | ~/.mozilla/firefox/privacy/updater.sh)"; # Update everything
-                vpn-off="mullvad disconnect"; # Disconnect from VPN
-                vpn-on="mullvad connect"; # Connect to VPN
-                vpn="mullvad status"; # Show VPN status
-            };
-
-            # Commands to run on zsh shell initialization
-            interactiveShellInit = "source ~/.config/zsh/zsh-theme.sh\nunsetopt PROMPT_SP";
-        };
-    };
-
-    # Nix Package Manager settings
-    nix = {
-        # Nix automatically detects files in the store that have identical contents, and replaces them with hard links (makes store 3 times slower)
-        settings.auto-optimise-store = true;
-
-        # Automatic garbage collection
-        gc = {
-            automatic = true;
-            dates = "weekly";
-            options = "--delete-older-than 7d";
         };
     };
 
