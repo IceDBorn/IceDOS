@@ -39,7 +39,18 @@
 
     sound.enable = true;
     hardware.pulseaudio.enable = false;
+    # Enable the RealtimeKit system service, which hands out realtime scheduling priority to user processes on demand, required by pipewire
+    security.rtkit.enable = true;
     programs.dconf.enable = true;
+
+    networking = {
+        # Define your hostname
+        hostName = "nixos";
+        # Enable networking
+        networkmanager.enable = true;
+        # Disable firewall
+        firewall.enable = false;
+    };
 
     environment.systemPackages = with pkgs; [
         bibata-cursors # Material cursors

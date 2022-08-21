@@ -399,39 +399,8 @@ in
         kernelModules = [ "v4l2loopback" "xpadneo" ];
     };
 
-    networking = {
-        # Define your hostname
-        hostName = "nixos";
-        # Enable networking
-        networkmanager.enable = true;
-        # Disable firewall
-        firewall.enable = false;
-    };
-
-    security = {
-        # Required by RPCS3
-        pam.loginLimits = [
-            {
-                domain = "*";
-                type = "hard";
-                item = "memlock";
-                value = "2147483648";
-            }
-
-            {
-                domain = "*";
-                type = "soft";
-                item = "memlock";
-                value = "2147483648";
-            }
-        ];
-
-        # Enable the RealtimeKit system service, which hands out realtime scheduling priority to user processes on demand
-        rtkit.enable = true;
-
-        # Show asterisks when typing sudo password
-        sudo.extraConfig = "Defaults pwfeedback";
-    };
+    # Show asterisks when typing sudo password
+    security.sudo.extraConfig = "Defaults pwfeedback";
 
     # Do not change without checking the docs
     system.stateVersion = "22.05";
