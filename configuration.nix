@@ -10,7 +10,9 @@ in
 {
     imports = [
         (import "${home-manager}/nixos")
+        # Generated automatically
         ./hardware-configuration.nix
+        # Disks to mount on startup
         ./mounts.nix
     ];
 
