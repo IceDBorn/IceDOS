@@ -193,15 +193,15 @@ in
                     recursive = true;
                 };
 
-                # Add firefox privacy profile
-                ".mozilla/firefox/privacy/users.js" = {
-                    source = /etc/arkenfox-userjs/user.js;
+                # Add firefox privacy profile overrides
+                ".mozilla/firefox/privacy/user-overrides.js" = {
+                    source = ./configs/firefox-user-overrides.js;
                     recursive = true;
                 };
 
-                # Add firefox privacy profile overrides
-                ".mozilla/firefox/privacy/user-overrides.js" = {
-                    source = ./configs/user-overrides.js;
+                # Set firefox to privacy profile
+                ".mozilla/firefox/profiles.ini" = {
+                    source = ./configs/firefox-profiles.ini;
                     recursive = true;
                 };
 
@@ -356,15 +356,15 @@ in
                     recursive = true;
                 };
 
-                # Add firefox privacy profile
-                ".mozilla/firefox/privacy/users.js" = {
-                    source = /etc/arkenfox-userjs/user.js;
+                # Add firefox privacy profile overrides
+                ".mozilla/firefox/privacy/user-overrides.js" = {
+                    source = ./configs/firefox-user-overrides.js;
                     recursive = true;
                 };
 
-                # Add firefox privacy profile overrides
-                ".mozilla/firefox/privacy/user-overrides.js" = {
-                    source = ./configs/user-overrides.js;
+                # Set firefox to privacy profile
+                ".mozilla/firefox/profiles.ini" = {
+                    source = ./configs/firefox-profiles.ini;
                     recursive = true;
                 };
 
@@ -583,7 +583,6 @@ in
             mullvad-vpn # VPN Client
             nautilus-open-any-terminal # Open any terminal from nautilus context menu
             ntfs3g # Support NTFS drives
-            nur.repos.slaier.arkenfox-userjs # Hardened firefox user.js focused on privacy
             obs-studio # Recording/Livestream
             onlyoffice-bin # Microsoft Office alternative for Linux
             pitivi # Video editor
@@ -605,10 +604,7 @@ in
         ];
 
         # Symlink the noise suppression plugin to a regular location
-        etc = {
-           "rnnoise-plugin/librnnoise_ladspa.so".source = "${pkgs.rnnoise-plugin}/lib/ladspa/librnnoise_ladspa.so";
-           "arkenfox-userjs/user.js".source = "${pkgs.nur.repos.slaier.arkenfox-userjs}/user.js";
-        };
+        etc."rnnoise-plugin/librnnoise_ladspa.so".source = "${pkgs.rnnoise-plugin}/lib/ladspa/librnnoise_ladspa.so";
     };
 
     programs = {
@@ -636,7 +632,7 @@ in
                 reboot-windows="(sudo grub-set-default 0) && (sudo grub-reboot 2) && (sudo reboot)"; # Reboot to windows once
                 restart-pipewire="systemctl --user restart pipewire"; # Restart pipewire
                 ssh="TERM=xterm-256color ssh"; # SSH with colors
-                update="(sudo nixos-rebuild switch --upgrade) ; (flatpak update) ; (yes | protonup)"; # Update everything
+                update="(sudo nixos-rebuild switch --upgrade) ; (flatpak update) ; (yes | protonup) ; (yes | ~/.mozilla/firefox/privacy/updater.sh)"; # Update everything
                 vpn-off="mullvad disconnect"; # Disconnect from VPN
                 vpn-on="mullvad connect"; # Connect to VPN
                 vpn="mullvad status"; # Show VPN status
