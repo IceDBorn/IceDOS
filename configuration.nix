@@ -360,26 +360,19 @@ in
             };
         };
     };
-
-    # Grub configuration
+    
     boot = {
         loader = {
             efi = {
                 canTouchEfiVariables = true;
                 efiSysMountPoint = "/boot/efi";
             };
-            grub = {
+
+            systemd-boot = {
                 enable = true;
-                version = 2;
-                devices = [ "nodev" ];
-                efiSupport = true;
-                # Find all boot options
-                useOSProber = true;
-                configurationLimit = 5;
-                # Detect encrypted disks
-                enableCryptodisk = true;
+                # Keep the last 10 configurations
+                configurationLimit = 10;
             };
-            timeout = 1;
         };
         # Use Zen kernel
         kernelPackages = pkgs.linuxPackages_zen;
