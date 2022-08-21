@@ -18,6 +18,7 @@ if [[ "$response" =~ ^([yY][eE][sS]|[yY])$ ]]
 then
   # Add configuration files to the appropriate path
   sudo cp configuration.nix /etc/nixos
+  sudo cp mounts.nix /etc/nixos
   sudo cp -r configs /etc/nixos
   sudo cp -r scripts /etc/nixos
 

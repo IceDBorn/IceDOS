@@ -1,7 +1,6 @@
 TODO
-    1: Implement fstab into hardware configuration, mount once and then run "nixos-generate-config"
-    2: Fix pipewire
-    3: Fix material shell
-    4: Disable blank screen delay
-    5: Add greek input source
-    7: QT applications using another cursor
+    1: Fix pipewire
+    2: Fix material shell
+    3: Disable blank screen delay
+    4: Add greek input source
+    5: QT applications using another cursor

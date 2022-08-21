@@ -11,6 +11,7 @@ in
     imports = [
         (import "${home-manager}/nixos")
         ./hardware-configuration.nix
+        ./mounts.nix
     ];
 
     home-manager.users = {
