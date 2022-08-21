@@ -145,6 +145,13 @@ in
                     "org/gnome/desktop/screensaver" = {
                         lock-enabled = false;
                     };
+
+                    "org/gnome/settings-daemon/plugins/power" = {
+                        # Disable auto suspend
+                        sleep-inactive-ac-type = "nothing";
+                        # Power button shutdown
+                        power-button-action = "interactive";
+                    };
                 };
 
                 # Add desktop file for 4 terminals
@@ -308,6 +315,13 @@ in
                     # Disable screen lock
                     "org/gnome/desktop/screensaver" = {
                         lock-enabled = false;
+                    };
+
+                    "org/gnome/settings-daemon/plugins/power" = {
+                        # Disable auto suspend
+                        sleep-inactive-ac-type = "nothing";
+                        # Power button shutdown
+                        power-button-action = "interactive";
                     };
                 };
 
