@@ -1,10 +1,7 @@
-discord-screenaudio
 extension-manager
 extramaus
 firefox-pwa-bin
 gamescope
-protonup-ng
-python-pip
 ryujinx-ldn
 system-monitoring-center
 nautilus-image-converter

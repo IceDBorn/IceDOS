@@ -29,6 +29,9 @@ then
   flatpak remote-add --if-not-exists flathub https://flathub.org/repo/flathub.flatpakrepo
   flatpak install de.shorsh.discord-screenaudio
 
+  # Download proton ge
+  protonup -d "$HOME/.steam/root/compatibilitytools.d/" && protonup
+
   ### ARKENFOX JS ###
   USERS=$(cut -d: -f1,3 /etc/passwd | grep -E ':[0-9]{4}$' | cut -d: -f1) # Get all users
 
