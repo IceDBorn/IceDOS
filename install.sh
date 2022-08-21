@@ -23,6 +23,7 @@ then
   sudo cp -r programs /etc/nixos
   sudo cp -r desktop /etc/nixos
   sudo cp -r hardware /etc/nixos
+  sudo cp -r users /etc/nixos
 
   # Build the configuration
   sudo nixos-rebuild switch || exit

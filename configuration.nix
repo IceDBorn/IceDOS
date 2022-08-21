@@ -15,6 +15,8 @@ in
         ./desktop
         # CPU, GPU, Drives
         ./hardware
+        # Set users
+        ./users
     ];
 
     home-manager.users = {
@@ -429,36 +431,6 @@ in
 
         # Show asterisks when typing sudo password
         sudo.extraConfig = "Defaults pwfeedback";
-    };
-
-    users = {
-        # Set default shell to zsh
-        defaultUserShell = pkgs.zsh;
-
-        # Define users below
-        users = {
-            icedborn = {
-                createHome = true;
-                home = "/home/icedborn";
-                useDefaultShell = true;
-                # Default password used for first login, change later with passwd
-                password = "1";
-                isNormalUser = true;
-                description = "IceDBorn";
-                extraGroups = [ "networkmanager" "wheel" ];
-            };
-
-            work = {
-                createHome = true;
-                home = "/home/work";
-                useDefaultShell = true;
-                # Default password used for first login, change later with passwd
-                password = "1";
-                isNormalUser = true;
-                description = "Work";
-                extraGroups = [ "networkmanager" "wheel" ];
-            };
-        };
     };
 
     # Do not change without checking the docs
