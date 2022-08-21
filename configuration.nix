@@ -190,10 +190,10 @@ in
                     };
 
                     # Add noise suppression microphone
-                    ".config/pipewire/pipewire.conf" = {
-                        source = ./configs/pipewire.conf;
-                        recursive = true;
-                    };
+                    #".config/pipewire/pipewire.conf" = {
+                        #source = ./configs/pipewire.conf;
+                        #recursive = true;
+                    #};
                 };
             };
 
@@ -349,10 +349,10 @@ in
                     };
 
                     # Add noise suppression microphone
-                    ".config/pipewire/pipewire.conf" = {
-                        source = ./configs/pipewire.conf;
-                        recursive = true;
-                    };
+                    #".config/pipewire/pipewire.conf" = {
+                        #source = ./configs/pipewire.conf;
+                        #recursive = true;
+                    #};
                 };
             };
         };

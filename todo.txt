@@ -1,4 +1,5 @@
 TODO
     1: Implement fstab into hardware configuration, mount once and then run "nixos-generate-config"
     2: Fix pipewire
-    4: Fix material shell
+    3: Fix material shell
+    4: Disable blank screen delay
