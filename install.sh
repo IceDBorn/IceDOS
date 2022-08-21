@@ -24,6 +24,7 @@ then
   sudo cp -r desktop /etc/nixos
   sudo cp -r hardware /etc/nixos
   sudo cp -r users /etc/nixos
+  sudo cp -r boot /etc/nixos
 
   # Build the configuration
   sudo nixos-rebuild switch || exit
