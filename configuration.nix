@@ -613,7 +613,6 @@ in
                 reboot-windows="(sudo grub-set-default 0) && (sudo grub-reboot 2) && (sudo reboot)"; # Reboot to windows once
                 restart-pipewire="systemctl --user restart pipewire"; # Restart pipewire
                 ssh="TERM=xterm-256color ssh"; # SSH with colors
-                update-grub="sudo grub-mkconfig -o /boot/grub/grub.cfg"; # Update grub with new entries
                 update="(sudo nixos-rebuild switch --upgrade) ; (yes | protonup) ; (yes | ~/.mozilla/firefox/privacy/updater.sh)"; # Update everything
                 vpn-off="mullvad disconnect"; # Disconnect from VPN
                 vpn-on="mullvad connect"; # Connect to VPN
