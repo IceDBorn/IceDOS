@@ -16,6 +16,8 @@ in
         ./mounts.nix
         # Packages to install
         ./programs
+        # Gnome
+        ./desktop
     ];
 
     home-manager.users = {
@@ -407,46 +409,11 @@ in
         firewall.enable = false;
     };
 
-    # Set your time zone
-    time.timeZone = "Europe/Bucharest";
-
-    # Set your locale settings
-    i18n = {
-        defaultLocale = "en_US.utf8";
-        extraLocaleSettings.LC_MEASUREMENT = "es_ES.utf8";
-    };
-
     services = {
-        xserver = {
-            # Enable the X11 windowing system
-            enable = true;
-            # Enable the GNOME Desktop Environment
-            displayManager.gdm.enable = true;
-            desktopManager.gnome.enable = true;
-            # Configure keymap in X11
-            layout = "us,gr";
-            xkbVariant = "";
-            videoDrivers = [ "nvidia" ];
-        };
-
-        # Enable CUPS to print documents
-        printing.enable = true;
-
-        # Enable sound with pipewire
-        pipewire = {
-            enable = true;
-            alsa.enable = true;
-            alsa.support32Bit = true;
-            pulse.enable = true;
-        };
+        xserver.videoDrivers = [ "nvidia" ];
 
         # Enable SSH
         openssh.enable = true;
-
-        gnome = {
-            chrome-gnome-shell.enable = true; # Allows to install GNOME Shell extensions from a web browser
-            sushi.enable = true; # Quick previewer for nautilus
-        };
 
         # Enable flatpak
         flatpak.enable = true;
@@ -454,8 +421,6 @@ in
         # Enable mullvad
         mullvad-vpn.enable = true;
     };
-
-    sound.enable = true;
 
     security = {
         # Required by RPCS3
@@ -483,8 +448,6 @@ in
     };
 
     hardware = {
-        # Disable pulseaudio
-        pulseaudio.enable = false;
         opengl = {
             enable = true;
             # Support Direct Rendering for 32-bit applications (such as Wine) on 64-bit systems
@@ -575,9 +538,6 @@ in
             # Commands to run on zsh shell initialization
             interactiveShellInit = "source ~/.config/zsh/zsh-theme.sh\nunsetopt PROMPT_SP";
         };
-
-        # Add dconf
-        dconf.enable = true;
     };
 
     systemd.services = {
