@@ -29,25 +29,6 @@ then
   flatpak remote-add --if-not-exists flathub https://flathub.org/repo/flathub.flatpakrepo
   flatpak install de.shorsh.discord-screenaudio
 
-  ### ARKENFOX JS ###
-  USERS=$(cut -d: -f1,3 /etc/passwd | grep -E ':[0-9]{4}$' | cut -d: -f1) # Get all users
-
-  if [ -z "$USERS" ]
-  then
-      echo "No users available to install arkenfox js..."
-  else
-    # Download the updater
-    git clone https://github.com/arkenfox/user.js.git
-    while IFS= read -r user ; do
-      # Install the updater for all users
-      echo "Installing arkenfox js for $RED$BOLD$user$NC$NORMAL!"
-      sudo cp user.js/updater.sh /home/"$user"/.mozilla/privacy
-      sudo chown "$user":"$user" /home/"$user"/.mozilla/privacy/updater.sh
-    done <<< "$USERS"
-    # Remove the arkenfox js folder
-    rm -rf user.js
-  fi
-
   # Reboot after the installation is completed
   bash scripts/reboot.sh
 

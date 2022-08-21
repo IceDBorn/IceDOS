@@ -194,6 +194,12 @@ in
                 };
 
                 # Add firefox privacy profile
+                ".mozilla/firefox/privacy/users.js" = {
+                    source = /etc/arkenfox-userjs/user.js;
+                    recursive = true;
+                };
+
+                # Add firefox privacy profile overrided
                 ".mozilla/firefox/privacy/user-overrides.js" = {
                     source = ./configs/user-overrides.js;
                     recursive = true;
@@ -351,6 +357,12 @@ in
                 };
 
                 # Add firefox privacy profile
+                ".mozilla/firefox/privacy/users.js" = {
+                    source = /etc/arkenfox-userjs/user.js;
+                    recursive = true;
+                };
+
+                # Add firefox privacy profile overrided
                 ".mozilla/firefox/privacy/user-overrides.js" = {
                     source = ./configs/user-overrides.js;
                     recursive = true;
@@ -589,10 +601,14 @@ in
             winetricks # Wine prefix settings manager
             woeusb # Windows ISO Burner
             zenstates # Ryzen CPU controller
+            nur.repos.slaier.arkenfox-userjs # Hardened firefox user.js focused on privacy
         ];
 
         # Symlink the noise suppression plugin to a regular location
-        etc."rnnoise-plugin/librnnoise_ladspa.so".source = "${pkgs.rnnoise-plugin}/lib/ladspa/librnnoise_ladspa.so";
+        etc = {
+           "rnnoise-plugin/librnnoise_ladspa.so".source = "${pkgs.rnnoise-plugin}/lib/ladspa/librnnoise_ladspa.so";
+           "arkenfox-userjs/user.js".source = "${pkgs.nur.repos.slaier.arkenfox-userjs}/user.js";
+        };
     };
 
     programs = {
