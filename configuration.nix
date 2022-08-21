@@ -140,6 +140,11 @@ in
                     "org/gnome/desktop/privacy" = {
                         remember-recent-files = false;
                     };
+
+                    # Disable screen lock
+                    "org/gnome/desktop/screensaver" = {
+                        lock-enabled = false;
+                    };
                 };
 
                 # Add desktop file for 4 terminals
@@ -298,6 +303,11 @@ in
                     # Disable file history
                     "org/gnome/desktop/privacy" = {
                         remember-recent-files = false;
+                    };
+
+                    # Disable screen lock
+                    "org/gnome/desktop/screensaver" = {
+                        lock-enabled = false;
                     };
                 };
 
