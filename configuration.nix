@@ -135,6 +135,11 @@ in
                     "org/gnome/shell/app-switcher" = {
                         current-workspace-only = true;
                     };
+
+                    # Disable file history
+                    "org/gnome/desktop/privacy" = {
+                        remember-recent-files = false;
+                    };
                 };
 
                 # Add desktop file for 4 terminals
@@ -288,6 +293,11 @@ in
                     # Limit app switcher to current workspace
                     "org/gnome/shell/app-switcher" = {
                         current-workspace-only = true;
+                    };
+
+                    # Disable file history
+                    "org/gnome/desktop/privacy" = {
+                        remember-recent-files = false;
                     };
                 };
 
