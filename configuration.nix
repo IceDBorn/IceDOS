@@ -130,6 +130,11 @@ in
                     "org/gnome/desktop/notifications" = {
                         show-in-lock-screen = false;
                     };
+
+                    # Limit app switcher to current workspace
+                    "org/gnome/shell/app-switcher" = {
+                        current-workspace-only = true;
+                    };
                 };
 
                 # Add desktop file for 4 terminals
@@ -278,6 +283,11 @@ in
                     # Disable lock screen notifications
                     "org/gnome/desktop/notifications" = {
                         show-in-lock-screen = false;
+                    };
+
+                    # Limit app switcher to current workspace
+                    "org/gnome/shell/app-switcher" = {
+                        current-workspace-only = true;
                     };
                 };
 
