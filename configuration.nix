@@ -439,6 +439,9 @@ in
 
         # Enable flatpak
         flatpak.enable = true;
+
+        # Enable mullvad
+        mullvad-vpn.enable = true;
     };
 
     sound.enable = true;
