@@ -1,9 +1,0 @@
-[Desktop Entry]
-Version=1.0
-Name=Post Install
-Comment=Post install script
-Exec=bash -c 'bash ~/.post-install.sh'
-Icon=utilities-terminal
-Terminal=true
-Type=Application
-Categories=Application;

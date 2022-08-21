@@ -1,0 +1,6 @@
+TODO
+    1: Fix pipewire
+    2: Fix material shell
+    3: Disable blank screen delay
+    4: Add greek input source
+    5: QT applications using another cursor
