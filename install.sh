@@ -21,6 +21,7 @@ then
   sudo cp mounts.nix /etc/nixos
   sudo cp -r configs /etc/nixos
   sudo cp -r scripts /etc/nixos
+  sudo cp -r programs /etc/nixos
 
   # Build the configuration
   sudo nixos-rebuild switch || exit

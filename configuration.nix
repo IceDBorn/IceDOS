@@ -6,32 +6,6 @@ let
     nvidia-power-limit = "180";
     # Pstate 0, 1.25 voltage, 4200 clock speed
     zenstates-options = "-p 0 -v 30 -f A8";
-
-    # Convert protonup-ng python package to a nix package
-    protonup-ng = pkgs.python3Packages.buildPythonPackage rec {
-        pname = "protonup-ng";
-        version = "0.2.1";
-        doCheck = false;
-
-
-        propagatedBuildInputs = with pkgs.python3Packages; [
-            requests
-            wheel
-            setuptools
-            configparser
-        ];
-        src = (pkgs.python3Packages.fetchPypi {
-            inherit pname version;
-            sha256 = "sha256-rys9Noa3+w4phttfcI1OGEDfHMy8s80bm8kM8TzssQA=";
-        });
-
-        meta = with pkgs.lib; {
-            homepage = "https://github.com/cloudishBenne/protonup-ng";
-            description = "ProtonUp-ng: CLI program and API to automate the installation and update of GloriousEggroll's Proton-GE";
-            license = licenses.gpl3;
-            maintainers = with maintainers; [];
-        };
-    };
 in
 {
     imports = [
@@ -40,6 +14,8 @@ in
         ./hardware-configuration.nix
         # Disks to mount on startup
         ./mounts.nix
+        # Packages to install
+        ./programs
     ];
 
     home-manager.users = {
@@ -533,23 +509,6 @@ in
                 isNormalUser = true;
                 description = "IceDBorn";
                 extraGroups = [ "networkmanager" "wheel" ];
-                # Packages installed for this specific user only
-                packages = with pkgs; [
-                    android-studio # IDE for Android apps
-                    bottles # Wine prefix manager
-                    duckstation # PS1 Emulator
-                    gamemode # Optimizations for gaming
-                    godot # Game engine
-                    heroic # Epic Games Launcher for Linux
-                    mangohud # A metric overlay
-                    pcsx2 # PS2 Emulator
-                    ppsspp # PSP Emulator
-                    protontricks # Winetricks for proton prefixes
-                    rpcs3 # PS3 Emulator
-                    ryujinx # Switch Emulator
-                    scanmem # Cheat engine for linux
-                    steam # Gaming platform
-                ];
             };
 
             work = {
@@ -561,10 +520,6 @@ in
                 isNormalUser = true;
                 description = "Work";
                 extraGroups = [ "networkmanager" "wheel" ];
-                # Packages installed for this specific user only
-                packages = with pkgs; [
-                    # Add work specific packages here
-                ];
             };
         };
     };
@@ -581,55 +536,7 @@ in
         };
     };
 
-    # Packages installed system-wide
     environment = {
-        systemPackages = with pkgs; [
-            alacritty # Terminal
-            android-tools # Tools for debugging android devices
-            aria # Terminal downloader with multiple connections support
-            bibata-cursors # Material cursors
-            firefox # Browser
-            flatpak # Source for more applications
-            fragments # Bittorrent client following Gnome UI standards
-            gimp # Image editor
-            git # Distributed version control system
-            gnome.gnome-tweaks # Tweaks missing from pure Gnome
-            gnomeExtensions.application-volume-mixer # Application volume mixer on the gnome control center
-            gnomeExtensions.bluetooth-quick-connect # Show bluetooth devices on the gnome control center
-            gnomeExtensions.clipboard-indicator # Clipboard indicator for gnome
-            gnomeExtensions.color-picker # Color picker for gnome
-            gnomeExtensions.coverflow-alt-tab # Makes alt tab on gnome cooler
-            gnomeExtensions.gamemode # Status indicator for gamemode on gnome
-            gnomeExtensions.gsconnect # KDE Connect implementation for gnome
-            #gnomeExtensions.material-shell # Tiling WM for gnome
-            gnomeExtensions.sound-output-device-chooser # Sound devices choose on the gnome control center
-            gnomeExtensions.tray-icons-reloaded # Tray icons for gnome
-            helvum # Pipewire patchbay
-            jetbrains.webstorm # All purpose IDE
-            mullvad-vpn # VPN Client
-            nautilus-open-any-terminal # Open any terminal from nautilus context menu
-            ntfs3g # Support NTFS drives
-            obs-studio # Recording/Livestream
-            onlyoffice-bin # Microsoft Office alternative for Linux
-            pitivi # Video editor
-            plata-theme # Gnome theme
-            ranger # Terminal file manager
-            rnnoise-plugin # A real-time noise suppression plugin
-            signal-desktop # Encrypted messaging platform
-            sublime4 # Text editor
-            syncthing # Local file sync
-            tela-icon-theme # Icon theme
-            tree # Display folder content at a tree format
-            unrar # Support opening rar files
-            usbimager # ISO Burner
-            wget # Terminal downloader
-            wine # Compatibility layer capable of running Windows applications
-            winetricks # Wine prefix settings manager
-            woeusb # Windows ISO Burner
-            zenstates # Ryzen CPU controller
-            protonup-ng
-        ];
-
         # Symlink the noise suppression plugin to a regular location
         etc."rnnoise-plugin/librnnoise_ladspa.so".source = "${pkgs.rnnoise-plugin}/lib/ladspa/librnnoise_ladspa.so";
     };
