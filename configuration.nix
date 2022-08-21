@@ -199,7 +199,7 @@ in
                     recursive = true;
                 };
 
-                # Add firefox privacy profile overrided
+                # Add firefox privacy profile overrides
                 ".mozilla/firefox/privacy/user-overrides.js" = {
                     source = ./configs/user-overrides.js;
                     recursive = true;
@@ -362,7 +362,7 @@ in
                     recursive = true;
                 };
 
-                # Add firefox privacy profile overrided
+                # Add firefox privacy profile overrides
                 ".mozilla/firefox/privacy/user-overrides.js" = {
                     source = ./configs/user-overrides.js;
                     recursive = true;
@@ -583,6 +583,7 @@ in
             mullvad-vpn # VPN Client
             nautilus-open-any-terminal # Open any terminal from nautilus context menu
             ntfs3g # Support NTFS drives
+            nur.repos.slaier.arkenfox-userjs # Hardened firefox user.js focused on privacy
             obs-studio # Recording/Livestream
             onlyoffice-bin # Microsoft Office alternative for Linux
             pitivi # Video editor
@@ -601,7 +602,6 @@ in
             winetricks # Wine prefix settings manager
             woeusb # Windows ISO Burner
             zenstates # Ryzen CPU controller
-            nur.repos.slaier.arkenfox-userjs # Hardened firefox user.js focused on privacy
         ];
 
         # Symlink the noise suppression plugin to a regular location
