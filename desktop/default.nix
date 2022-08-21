@@ -11,9 +11,6 @@
         extraLocaleSettings.LC_MEASUREMENT = "es_ES.utf8";
     };
 
-    sound.enable = true;
-    hardware.pulseaudio.enable = false;
-
     services = {
         xserver = {
             # Enable the X11 windowing system
@@ -26,6 +23,11 @@
             xkbVariant = "";
         };
 
+        gnome = {
+            chrome-gnome-shell.enable = true; # Allows to install GNOME Shell extensions from a web browser
+            sushi.enable = true; # Quick previewer for nautilus
+        };
+
         # Enable sound with pipewire
         pipewire = {
             enable = true;
@@ -33,13 +35,10 @@
             alsa.support32Bit = true;
             pulse.enable = true;
         };
-
-        gnome = {
-            chrome-gnome-shell.enable = true; # Allows to install GNOME Shell extensions from a web browser
-            sushi.enable = true; # Quick previewer for nautilus
-        };
     };
 
+    sound.enable = true;
+    hardware.pulseaudio.enable = false;
     programs.dconf.enable = true;
 
     environment.systemPackages = with pkgs; [
@@ -53,6 +52,7 @@
         gnomeExtensions.coverflow-alt-tab # Makes alt tab on gnome cooler
         gnomeExtensions.gamemode # Status indicator for gamemode on gnome
         gnomeExtensions.gsconnect # KDE Connect implementation for gnome
+        # Material shell is broken at the moment
         #gnomeExtensions.material-shell # Tiling WM for gnome
         gnomeExtensions.sound-output-device-chooser # Sound devices choose on the gnome control center
         gnomeExtensions.tray-icons-reloaded # Tray icons for gnome
