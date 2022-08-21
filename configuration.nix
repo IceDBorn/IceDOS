@@ -28,8 +28,9 @@ in
                     # Alacritty config
                     settings = {
                         window = {
-                            decorations = "none";
-                            opacity = 0.8;
+                            # Disabled until material shell is fixed
+                            #decorations = "none";
+                            decorations = "full";
                         };
 
                         cursor.style = {
