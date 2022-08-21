@@ -4,5 +4,4 @@ TODO
     3: Fix material shell
     4: Disable blank screen delay
     5: Add greek input source
-    6: Switch back to systemd boot
     7: QT applications using another cursor
