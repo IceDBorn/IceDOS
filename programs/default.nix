@@ -7,6 +7,8 @@
         ./main.nix
         # Packages installed for work user
         ./work.nix
+        # Install home-manager
+        ./home-manager.nix
     ];
 
     # Nix Package Manager settings
