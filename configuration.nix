@@ -217,7 +217,9 @@ in
                     # Alacritty config
                     settings = {
                         window = {
-                            decorations = "none";
+                            # Disabled until material shell is fixed
+                            #decorations = "none";
+                            decorations = "full";
                             opacity = 0.8;
                         };
 
