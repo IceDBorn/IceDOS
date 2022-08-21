@@ -17,6 +17,8 @@ in
         ./hardware
         # Set users
         ./users
+        # Bootloader, kernel
+        ./boot
     ];
 
     home-manager.users = {
@@ -379,28 +381,6 @@ in
             };
         };
     };
-    
-    boot = {
-        loader = {
-            efi = {
-                canTouchEfiVariables = true;
-                efiSysMountPoint = "/boot/efi";
-            };
-
-            systemd-boot = {
-                enable = true;
-                # Keep the last 10 configurations
-                configurationLimit = 10;
-            };
-        };
-        # Use Zen kernel
-        kernelPackages = pkgs.linuxPackages_zen;
-        # Virtual camera for OBS
-        kernelModules = [ "v4l2loopback" "xpadneo" ];
-    };
-
-    # Show asterisks when typing sudo password
-    security.sudo.extraConfig = "Defaults pwfeedback";
 
     # Do not change without checking the docs
     system.stateVersion = "22.05";

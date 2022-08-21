@@ -35,4 +35,9 @@
             value = "2147483648";
         }
     ];
+
+    boot.kernelModules = [
+        "v4l2loopback" # Virtual camera for OBS
+        "xpadneo" # XBOX Gamepad bluetooth driver
+    ];
 }

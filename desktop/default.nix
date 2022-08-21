@@ -52,6 +52,9 @@
         firewall.enable = false;
     };
 
+    # Show asterisks when typing sudo password
+    security.sudo.extraConfig = "Defaults pwfeedback";
+
     environment.systemPackages = with pkgs; [
         bibata-cursors # Material cursors
         fragments # Bittorrent client following Gnome UI standards
