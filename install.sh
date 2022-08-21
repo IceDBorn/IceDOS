@@ -48,6 +48,9 @@ then
     rm -rf user.js
   fi
 
+  # Reboot after the installation is completed
+  bash scripts/reboot.sh
+
 else
   printf "You really should:
   - Edit configuration.nix and comment out anything you do not want to setup.
