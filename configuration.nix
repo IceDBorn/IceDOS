@@ -120,6 +120,11 @@ in
                     "org/gnome/desktop/interface" = {
                         gtk-theme = "Plata-Noir-Compact";
                     };
+
+                    # Disable system sounds
+                    "org/gnome/desktop/sound" = {
+                        event-sounds = false;
+                    };
                 };
 
                 # Add desktop file for 4 terminals
@@ -258,6 +263,11 @@ in
                     # Change gtk theme
                     "org/gnome/desktop/interface" = {
                         gtk-theme = "Plata-Noir-Compact";
+                    };
+
+                    # Disable system sounds
+                    "org/gnome/desktop/sound" = {
+                        event-sounds = false;
                     };
                 };
 
