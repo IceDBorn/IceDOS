@@ -113,6 +113,8 @@ in
                     icon-theme = "Tela-black-dark";
                     # Change gtk theme
                     gtk-theme = "Plata-Noir-Compact";
+                    # Change cursor theme
+                    cursor-theme = "Bibata-Modern-Classic";
                 };
 
                 # Disable system sounds
@@ -535,6 +537,7 @@ in
         alacritty # Terminal
         android-tools # Tools for debugging android devices
         aria # Terminal downloader with multiple connections support
+        bibata-cursors # Material cursors
         firefox # Browser
         flatpak # Source for more applications
         fragments # Bittorrent client following Gnome UI standards
