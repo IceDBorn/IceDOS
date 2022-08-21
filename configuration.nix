@@ -125,6 +125,11 @@ in
                     "org/gnome/desktop/sound" = {
                         event-sounds = false;
                     };
+
+                    # Disable lockscreen notifications
+                    "org/gnome/desktop/notifications" = {
+                        show-in-lock-screen = false;
+                    };
                 };
 
                 # Add desktop file for 4 terminals
@@ -268,6 +273,11 @@ in
                     # Disable system sounds
                     "org/gnome/desktop/sound" = {
                         event-sounds = false;
+                    };
+
+                    # Disable lock screen notifications
+                    "org/gnome/desktop/notifications" = {
+                        show-in-lock-screen = false;
                     };
                 };
 
