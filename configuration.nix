@@ -163,12 +163,6 @@ in
                         recursive = true;
                     };
 
-                    # Add nvidia power limit control
-                    ".config/nvidia-power-limit/nv-power-limit.sh" = {
-                        source = ./scripts/nv-power-limit.sh;
-                        recursive = true;
-                    };
-
                     # Add firefox privacy profile
                     ".mozilla/firefox/privacy/user-overrides.js" = {
                         source = ./configs/user-overrides.js;
@@ -305,12 +299,6 @@ in
                     # Add nvidia fan control wayland to zsh directory
                     ".config/zsh/nvidia-fan-control-wayland.sh" = {
                         source = ./scripts/nvidia-fan-control-wayland.sh;
-                        recursive = true;
-                    };
-
-                    # Add nvidia power limit control
-                    ".config/nvidia-power-limit/nv-power-limit.sh" = {
-                        source = ./scripts/nv-power-limit.sh;
                         recursive = true;
                     };
 
@@ -608,16 +596,16 @@ in
 
         # Nvidia power limit to 180W
         nv-power-limit = {
-        enable = true;
-        description = "Nvidia power limit control";
-        after = [ "syslog.target" "systemd-modules-load.service" ];
+            enable = true;
+            description = "Nvidia power limit control";
+            after = [ "syslog.target" "systemd-modules-load.service" ];
 
-        serviceConfig = {
-            User = "root";
-            ExecStart = "/home/icedborn/.config/nvidia-power-limit/nv-power-limit.sh";
-        };
+            serviceConfig = {
+                User = "root";
+                ExecStart = "${config.boot.kernelPackages.nvidia_x11.bin}/bin/nvidia-smi  --power-limit=180";
+            };
 
-        wantedBy = [ "multi-user.target" ];
+            wantedBy = [ "multi-user.target" ];
         };
     };
 

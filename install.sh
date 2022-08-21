@@ -22,7 +22,11 @@ then
   sudo cp -r scripts /etc/nixos
 
   # Build the configuration
-  sudo nixos-rebuild switch
+  sudo nixos-rebuild switch || exit
+
+  # Install discord-screenaudio
+  flatpak remote-add --if-not-exists flathub https://flathub.org/repo/flathub.flatpakrepo
+  flatpak install de.shorsh.discord-screenaudio
 
   ### ARKENFOX JS ###
   USERS=$(cut -d: -f1,3 /etc/passwd | grep -E ':[0-9]{4}$' | cut -d: -f1) # Get all users
