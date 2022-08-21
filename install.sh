@@ -54,7 +54,5 @@ then
 else
   printf "You really should:
   - Edit configuration.nix and comment out anything you do not want to setup.
-  - Replace hardware-configuration.nix with yours or do not install it.$RED$BOLD A wrong hardware-configuration.nix file can break your system!$NC$NORMAL
-  - Edit scripts/zenstates.sh or do not install it. $RED$BOLD A non-configured zenstates.sh file can break your cpu!$NC$NORMAL
-  - Edit configs/user-overrides.js to customize your firefox custom user settings appending the updater's 'user.js'.\n"
+  - Edit mounts.nix or do not install it.$RED$BOLD A wrong mounts.nix file can break your system!$NC$NORMAL"
 fi
