@@ -1,4 +1,7 @@
 { config, pkgs, ... }:
+let
+    unstable-channel = builtins.fetchTarball "https://github.com/NixOS/nixpkgs/archive/nixos-unstable.tar.gz";
+in
 {
     imports = [
         # Packages installed for all users
@@ -31,8 +34,13 @@
 
         # Install NUR
         packageOverrides = pkgs: {
+            # Add NUR, use with "nur.repo.package"
             nur = import (builtins.fetchTarball "https://github.com/nix-community/NUR/archive/master.tar.gz") {
                 inherit pkgs;
+            };
+            # Add unstable nix channel, use with "unstable.package"
+            unstable = import unstable-channel {
+                config = config.nixpkgs.config;
             };
         };
     };
