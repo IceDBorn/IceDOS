@@ -5,7 +5,6 @@
     imports = [ ./protonup-ng.nix ]; # Proton ge downloader
 
     users.users.${config.main.user.username}.packages = with pkgs; [
-        android-studio # IDE for Android apps
         bottles # Wine prefix manager
         duckstation # PS1 Emulator
         gamemode # Optimizations for gaming
@@ -19,5 +18,6 @@
         ryujinx # Switch Emulator
         scanmem # Cheat engine for linux
         steam # Gaming platform
+        unstable.android-studio # IDE for Android apps
     ];
 }
