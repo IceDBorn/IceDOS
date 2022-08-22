@@ -1,9 +1,12 @@
 { config, pkgs, ... }:
 let
     unstable-channel = builtins.fetchTarball "https://github.com/NixOS/nixpkgs/archive/nixos-unstable.tar.gz";
+    home-manager = builtins.fetchTarball "https://github.com/nix-community/home-manager/archive/release-22.05.tar.gz";
 in
 {
     imports = [
+        # Import home manager
+        (import "${home-manager}/nixos")
         # Packages installed for all users
         ./global.nix
         # Packages installed for main user
