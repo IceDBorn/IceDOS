@@ -1,8 +1,18 @@
 { config, pkgs, lib, ... }:
 let
     home-manager = builtins.fetchTarball "https://github.com/nix-community/home-manager/archive/release-22.05.tar.gz";
+    unstable-channel = builtins.fetchTarball "https://github.com/NixOS/nixpkgs/archive/nixos-unstable.tar.gz";
 in
 {
+    # Add unstable nix channel, use with "unstable.package"
+    config.nixpkgs.config = {
+        packageOverrides = pkgs: {
+            unstable = import unstable-channel {
+                config = config.nixpkgs.config;
+            };
+        };
+    };
+
     # Create options for declaring users
     options = {
         main.user = {
