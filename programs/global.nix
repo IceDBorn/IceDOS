@@ -3,7 +3,6 @@
 
 {
     environment.systemPackages = with pkgs; [
-        alacritty # Terminal
         android-tools # Tools for debugging android devices
         aria # Terminal downloader with multiple connections support
         btop # Terminal system monitor
@@ -13,6 +12,7 @@
         git # Distributed version control system
         helvum # Pipewire patchbay
         jetbrains.webstorm # All purpose IDE
+        kitty # Terminal
         mullvad-vpn # VPN Client
         ntfs3g # Support NTFS drives
         obs-studio # Recording/Livestream

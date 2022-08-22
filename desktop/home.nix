@@ -84,13 +84,13 @@
                 exec =
                 (
                     pkgs.writeShellScript "alacritty-exec" ''
-                      alacritty &
-                      alacritty &
-                      alacritty &
-                      alacritty &
+                      kitty &
+                      kitty &
+                      kitty &
+                      kitty &
                     ''
                 ).outPath;
-                icon = "Alacritty";
+                icon = "Kitty";
                 terminal = false;
                 categories = [ "System" "TerminalEmulator" ];
                 name = "Startup Terminals";
@@ -219,13 +219,13 @@
                 exec =
                 (
                     pkgs.writeShellScript "alacritty-exec" ''
-                      alacritty &
-                      alacritty &
-                      alacritty &
-                      alacritty &
+                      kitty &
+                      kitty &
+                      kitty &
+                      kitty &
                     ''
                 ).outPath;
-                icon = "Alacritty";
+                icon = "Kitty";
                 terminal = false;
                 categories = [ "System" "TerminalEmulator" ];
                 name = "Startup Terminals";

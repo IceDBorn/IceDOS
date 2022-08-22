@@ -14,20 +14,13 @@ in
                     userEmail = "${github.email}";
                 };
 
-                alacritty = {
+                kitty = {
                     enable = true;
-                    # Alacritty config
                     settings = {
-                        window = {
-                            # Disabled until material shell is fixed
-                            #decorations = "none";
-                            decorations = "full";
-                        };
-
-                        cursor.style = {
-                            shape = "Underline";
-                            blinking = "Always";
-                        };
+                        cursor_shape = "underline";
+                        cursor_underline_thickness = "1.0";
+                        background_opacity = "0.8";
+                        linux_display_server = "x11";
                     };
                 };
 
@@ -77,20 +70,13 @@ in
                     userEmail = "${github.email}";
                 };
 
-                alacritty = {
+                kitty = {
                     enable = true;
-                    # Alacritty config
                     settings = {
-                        window = {
-                            # Disabled until material shell is fixed
-                            #decorations = "none";
-                            decorations = "full";
-                        };
-
-                        cursor.style = {
-                            shape = "Underline";
-                            blinking = "Always";
-                        };
+                        cursor_shape = "underline";
+                        cursor_underline_thickness = "1.0";
+                        background_opacity = "0.8";
+                        linux_display_server = "x11";
                     };
                 };
 
