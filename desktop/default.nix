@@ -60,6 +60,8 @@
     environment.systemPackages = with pkgs; [
         bibata-cursors # Material cursors
         fragments # Bittorrent client following Gnome UI standards
+        gnome.dconf-editor # Edit gnome's dconf
+        gnome.gnome-boxes # VM manager
         gnome.gnome-tweaks # Tweaks missing from pure Gnome
         gnomeExtensions.application-volume-mixer # Application volume mixer on the gnome control center
         gnomeExtensions.bluetooth-quick-connect # Show bluetooth devices on the gnome control center
