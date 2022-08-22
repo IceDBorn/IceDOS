@@ -6,7 +6,7 @@
         alacritty # Terminal
         android-tools # Tools for debugging android devices
         aria # Terminal downloader with multiple connections support
-        dconf-editor # Edit gnome's dconf
+        btop # Terminal system monitor
         firefox # Browser
         flatpak # Source for more applications
         gimp # Image editor
