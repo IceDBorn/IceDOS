@@ -4,7 +4,7 @@
 {
     imports = [ ./protonup-ng.nix ]; # Proton ge downloader
 
-    users.users.icedborn.packages = with pkgs; [
+    users.users.${config.main-user.username}.packages = with pkgs; [
         android-studio # IDE for Android apps
         bottles # Wine prefix manager
         duckstation # PS1 Emulator

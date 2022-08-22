@@ -1,14 +1,14 @@
 { config, pkgs, ... }:
 
 {
-    users.users.icedborn = {
+    users.users.${config.main-user.username} = {
         createHome = true;
-        home = "/home/icedborn";
+        home = "/home/${config.main-user.username}";
         useDefaultShell = true;
         # Default password used for first login, change later with passwd
         password = "1";
         isNormalUser = true;
-        description = "IceDBorn";
+        description = "${config.main-user.description}";
         extraGroups = [ "networkmanager" "wheel" ];
     };
 }

@@ -1,14 +1,14 @@
 { config, pkgs, ... }:
 
 {
-    users.users.work = {
+    users.users.${config.work-user.username} = {
         createHome = true;
-        home = "/home/work";
+        home = "/home/${config.work-user.username}";
         useDefaultShell = true;
         # Default password used for first login, change later with passwd
         password = "1";
         isNormalUser = true;
-        description = "Work";
+        description = "${config.work-user.description}";
         extraGroups = [ "networkmanager" "wheel" ];
     };
 }

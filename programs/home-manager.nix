@@ -9,7 +9,7 @@ in
     ];
 
     home-manager.users = {
-        icedborn = {
+        ${config.main-user.username} = {
             programs = {
                 git = {
                     enable = true;
@@ -205,7 +205,7 @@ in
             };
         };
 
-        work = {
+        ${config.work-user.username} = {
             programs = {
                 git = {
                     enable = true;

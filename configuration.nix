@@ -1,6 +1,38 @@
-{ config, pkgs, ... }:
-
+{ config, pkgs, lib, ... }:
 {
+    # Create options for declaring users
+    options = {
+        main-user = {
+            username = lib.mkOption {
+                type = lib.types.str;
+                default = "main";
+            };
+
+            description = lib.mkOption {
+                type = lib.types.str;
+                default = "Main";
+            };
+        };
+
+        work-user = {
+            username = lib.mkOption {
+                type = lib.types.str;
+                default = "work";
+            };
+
+            description = lib.mkOption {
+                type = lib.types.str;
+                default = "Work";
+            };
+        };
+    };
+
+    # Set your username
+    config.main-user = {
+        username = "icedborn";
+        description = "IceDBorn";
+    };
+
     imports = [
         # Generated automatically by nixOS
         ./hardware-configuration.nix
@@ -17,5 +49,5 @@
     ];
 
     # Do not change without checking the docs
-    system.stateVersion = "22.05";
+    config.system.stateVersion = "22.05";
 }
