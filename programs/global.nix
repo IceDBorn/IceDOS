@@ -77,6 +77,9 @@
         mullvad-vpn.enable = true;
     };
 
-    # Symlink the noise suppression plugin to a regular location
-    environment.etc."rnnoise-plugin/librnnoise_ladspa.so".source = "${pkgs.rnnoise-plugin}/lib/ladspa/librnnoise_ladspa.so";
+    # Symlink files from store needed for applications or config files
+    environment.etc = {
+        "rnnoise-plugin/librnnoise_ladspa.so".source = "${pkgs.rnnoise-plugin}/lib/ladspa/librnnoise_ladspa.so";
+        "bibata-cursors".source = "${pkgs.bibata-cursors}/share/icons";
+    };
 }

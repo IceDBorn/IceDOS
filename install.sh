@@ -32,6 +32,8 @@ then
   # Install discord-screenaudio
   flatpak remote-add --if-not-exists flathub https://flathub.org/repo/flathub.flatpakrepo
   flatpak install de.shorsh.discord-screenaudio
+  # Use the same cursor theme normal apps use
+  flatpak --user override de.shorsh.discord-screenaudio --filesystem=/etc/bibata-cursors/:ro
 
   # Download proton ge
   protonup -d "$HOME/.steam/root/compatibilitytools.d/" && protonup
