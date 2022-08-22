@@ -5,7 +5,7 @@ let
 in
 {
     home-manager.users = {
-        ${config.main-user.username} = {
+        ${config.main.user.username} = {
             programs = {
                 git = {
                     enable = true;
@@ -68,7 +68,7 @@ in
             };
         };
 
-        ${config.work-user.username} = {
+        ${config.work.user.username} = {
             programs = {
                 git = {
                     enable = true;

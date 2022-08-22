@@ -29,5 +29,5 @@ let
     };
 in
 {
-    users.users.${config.main-user.username}.packages = [ protonup-ng ];
+    users.users.${config.main.user.username}.packages = [ protonup-ng ];
 }

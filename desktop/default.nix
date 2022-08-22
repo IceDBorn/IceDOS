@@ -2,6 +2,8 @@
 { config, pkgs, ... }:
 
 {
+    imports = [ ./home.nix ]; # Home manager specific stuff
+
     # Set your time zone
     time.timeZone = "Europe/Bucharest";
 

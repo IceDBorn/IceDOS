@@ -1,7 +1,8 @@
 { config, pkgs, home-manager, ... }:
+
 {
     home-manager.users = {
-        ${config.main-user.username} = {
+        ${config.main.user.username} = {
             dconf.settings = {
                 # Nautilus path bar is always editable
                 "org/gnome/nautilus/preferences" = {
@@ -136,7 +137,7 @@
             };
         };
 
-        ${config.work-user.username} = {
+        ${config.work.user.username} = {
             dconf.settings = {
                 # Nautilus path bar is always editable
                 "org/gnome/nautilus/preferences" = {
@@ -175,6 +176,8 @@
                     icon-theme = "Tela-black-dark";
                     # Change gtk theme
                     gtk-theme = "Plata-Noir-Compact";
+                    # Change cursor theme
+                    cursor-theme = "Bibata-Modern-Classic";
                 };
 
                 # Disable system sounds
@@ -234,6 +237,12 @@
                 # Add zsh theme to zsh directory
                 ".config/zsh/zsh-theme.sh" = {
                     source = ../scripts/zsh-theme.sh;
+                    recursive = true;
+                };
+
+                # Add protondown script to zsh directory
+                ".config/zsh/protondown.sh" = {
+                    source = ../scripts/protondown.sh;
                     recursive = true;
                 };
 

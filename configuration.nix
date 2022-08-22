@@ -5,7 +5,7 @@ in
 {
     # Create options for declaring users
     options = {
-        main-user = {
+        main.user = {
             username = lib.mkOption {
                 type = lib.types.str;
                 default = "main";
@@ -17,7 +17,7 @@ in
             };
         };
 
-        work-user = {
+        work.user = {
             username = lib.mkOption {
                 type = lib.types.str;
                 default = "work";
@@ -31,7 +31,7 @@ in
     };
 
     # Set your user
-    config.main-user = {
+    config.main.user = {
         username = "icedborn";
         description = "IceDBorn";
     };
