@@ -9,6 +9,8 @@
         ./work.nix
         # Install home-manager
         ./home-manager.nix
+        # Home manager specific stuff
+        ./home.nix
     ];
 
     # Nix Package Manager settings
