@@ -10,6 +10,7 @@
         duckstation # PS1 Emulator
         gamemode # Optimizations for gaming
         godot # Game engine
+        gnome.gnome-boxes # VM manager
         heroic # Epic Games Launcher for Linux
         mangohud # A metric overlay
         pcsx2 # PS2 Emulator
