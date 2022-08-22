@@ -1,4 +1,7 @@
 { config, pkgs, lib, ... }:
+let
+    home-manager = builtins.fetchTarball "https://github.com/nix-community/home-manager/archive/release-22.05.tar.gz";
+in
 {
     # Create options for declaring users
     options = {
@@ -27,13 +30,15 @@
         };
     };
 
-    # Set your username
+    # Set your user
     config.main-user = {
         username = "icedborn";
         description = "IceDBorn";
     };
 
     imports = [
+        # Import home manager
+        (import "${home-manager}/nixos")
         # Generated automatically by nixOS
         ./hardware-configuration.nix
         # Packages to install
