@@ -1,3 +1,2 @@
 TODO
-    1: Add greek input source
-    2: https://github.com/Stunkymonkey/nixos/blob/master/nixos/modules/nautilus.nix
+    1: https://github.com/Stunkymonkey/nixos/blob/master/nixos/modules/nautilus.nix
