@@ -29,11 +29,12 @@ then
   # Build the configuration
   sudo nixos-rebuild switch || exit
 
-  # Install discord-screenaudio
+  # Install flatpak apps
   flatpak remote-add --if-not-exists flathub https://flathub.org/repo/flathub.flatpakrepo
   flatpak install de.shorsh.discord-screenaudio
+  flatpak install flathub com.github.tchx84.Flatseal
   # Use the same cursor theme normal apps use
-  flatpak --user override de.shorsh.discord-screenaudio --filesystem=/etc/bibata-cursors/:ro
+  flatpak --user override --filesystem=/etc/bibata-cursors/:ro
 
   # Download proton ge
   protonup -d "$HOME/.steam/root/compatibilitytools.d/" && protonup
