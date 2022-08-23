@@ -20,8 +20,8 @@
                     # Set enabled gnome extensions
                     enabled-extensions =
                     [
-                        "CoverflowAltTab@palatis.blogspot.com"
                         "bluetooth-quick-connect@bjarosze.gmail.com"
+                        "caffeine@patapon.info"
                         "clipboard-indicator@tudmotu.com"
                         "color-picker@tuberry"
                         "gamemode@christian.kellner.me"
@@ -73,6 +73,41 @@
                     sleep-inactive-ac-type = "nothing";
                     # Power button shutdown
                     power-button-action = "interactive";
+                };
+
+                # Always hide tray icons
+                "org/gnome/shell/extensions/trayIconsReloaded" = {
+                    icons-limit = 1;
+                };
+                
+                "org/gnome/shell/extensions/sound-output-device-chooser" = {
+                    # Add an arrow to expand devices
+                    integrate-with-slider = true;
+                    # Hide arrow when there's only one device to choose from
+                    hide-on-single-device = true;
+                };
+
+                "org/gnome/shell/extensions/color-picker" = {
+                    # Disable color picker notifications
+                    enable-notify = false;
+                };
+
+                "org/gnome/shell/extensions/clipboard-indicator" = {
+                    # Remove whitespace before and after the text
+                    strip-text = true;
+                    # Open the extension with Super + V
+                    toggle-menu = [ "<Super>v" ];
+                };
+
+                "org/gnome/shell/extensions/caffeine" = {
+                    # Remember the user choice
+                    restore-state = true;
+                    # Disable icon
+                    show-indicator = false;
+                    # Disable auto suspend and lock
+                    user-enabled = true;
+                    # Disable notifications
+                    show-notifications = false;
                 };
             };
 
@@ -242,6 +277,41 @@
                     sleep-inactive-ac-type = "nothing";
                     # Power button shutdown
                     power-button-action = "interactive";
+                };
+
+                # Always hide tray icons
+                "org/gnome/shell/extensions/trayIconsReloaded" = {
+                    icons-limit = 1;
+                };
+                
+                "org/gnome/shell/extensions/sound-output-device-chooser" = {
+                    # Add an arrow to expand devices
+                    integrate-with-slider = true;
+                    # Hide arrow when there's only one device to choose from
+                    hide-on-single-device = true;
+                };
+
+                "org/gnome/shell/extensions/color-picker" = {
+                    # Disable color picker notifications
+                    enable-notify = false;
+                };
+
+                "org/gnome/shell/extensions/clipboard-indicator" = {
+                    # Remove whitespace before and after the text
+                    strip-text = true;
+                    # Open the extension with Super + V
+                    toggle-menu = [ "<Super>v" ];
+                };
+
+                "org/gnome/shell/extensions/caffeine" = {
+                    # Remember the user choice
+                    restore-state = true;
+                    # Disable icon
+                    show-indicator = false;
+                    # Disable auto suspend and lock
+                    user-enabled = true;
+                    # Disable notifications
+                    show-notifications = false;
                 };
             };
 
