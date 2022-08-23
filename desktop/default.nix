@@ -72,7 +72,6 @@
         gnomeExtensions.gsconnect # KDE Connect implementation for gnome
         gnomeExtensions.sound-output-device-chooser # Sound devices choose on the gnome control center
         gnomeExtensions.tray-icons-reloaded # Tray icons for gnome
-        nautilus-open-any-terminal # Open any terminal from nautilus context menu
         pitivi # Video editor
         plata-theme # Gnome theme
         tela-icon-theme # Icon theme
