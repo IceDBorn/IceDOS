@@ -2,4 +2,4 @@ TODO
     1: Fix material shell
     2: Disable blank screen delay
     3: Add greek input source
-    4: QT applications using another cursor
+    4: https://github.com/Stunkymonkey/nixos/blob/master/nixos/modules/nautilus.nix

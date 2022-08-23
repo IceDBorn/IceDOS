@@ -5,4 +5,3 @@ gamescope
 ryujinx-ldn
 system-monitoring-center
 nautilus-image-converter
-nextcloud-client-nautilus
