@@ -68,7 +68,6 @@
         gnomeExtensions.caffeine # Disable auto suspend and screen blank
         gnomeExtensions.clipboard-indicator # Clipboard indicator for gnome
         gnomeExtensions.color-picker # Color picker for gnome
-        gnomeExtensions.coverflow-alt-tab # Makes alt tab on gnome cooler
         gnomeExtensions.gamemode # Status indicator for gamemode on gnome
         gnomeExtensions.gsconnect # KDE Connect implementation for gnome
         gnomeExtensions.sound-output-device-chooser # Sound devices choose on the gnome control center
