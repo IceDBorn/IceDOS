@@ -8,7 +8,6 @@
         bottles # Wine prefix manager
         duckstation # PS1 Emulator
         gamemode # Optimizations for gaming
-        gamescope # Wayland microcompositor
         godot # Game engine
         heroic # Epic Games Launcher for Linux
         mangohud # A metric overlay
@@ -20,5 +19,6 @@
         scanmem # Cheat engine for linux
         steam # Gaming platform
         unstable.android-studio # IDE for Android apps
+        unstable.gamescope # Wayland microcompositor
     ];
 }
