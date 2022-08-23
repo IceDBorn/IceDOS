@@ -6,12 +6,12 @@
         android-tools # Tools for debugging android devices
         aria # Terminal downloader with multiple connections support
         btop # Terminal system monitor
+        direnv # Unclutter your .profile
         firefox # Browser
         flatpak # Source for more applications
         gimp # Image editor
         git # Distributed version control system
         helvum # Pipewire patchbay
-        jetbrains.webstorm # All purpose IDE
         kitty # Terminal
         mullvad-vpn # VPN Client
         ntfs3g # Support NTFS drives
@@ -25,6 +25,7 @@
         tree # Display folder content at a tree format
         unrar # Support opening rar files
         usbimager # ISO Burner
+        vscodium # All purpose IDE
         wget # Terminal downloader
         wine # Compatibility layer capable of running Windows applications
         winetricks # Wine prefix settings manager
