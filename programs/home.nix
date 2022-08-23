@@ -20,10 +20,10 @@ in
                         cursor_shape = "underline";
                         cursor_underline_thickness = "1.0";
                         background_opacity = "0.8";
-                        linux_display_server = "x11";
                         update_check_interval = "0";
                         confirm_os_window_close = "0";
                         enable_audio_bell = "no";
+                        hide_window_decorations = "yes";
                     };
                 };
 
@@ -88,10 +88,10 @@ in
                         cursor_shape = "underline";
                         cursor_underline_thickness = "1.0";
                         background_opacity = "0.8";
-                        linux_display_server = "x11";
                         update_check_interval = "0";
                         confirm_os_window_close = "0";
                         enable_audio_bell = "no";
+                        hide_window_decorations = "yes";
                     };
                 };
 
