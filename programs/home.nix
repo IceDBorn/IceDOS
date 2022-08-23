@@ -57,6 +57,15 @@ in
                     enable = true;
                     # Enable firefox wayland
                     profileExtra = "export MOZ_ENABLE_WAYLAND=1";
+
+                    # Install powerlevel10k
+                    plugins = with pkgs; [
+                        {
+                            name = "powerlevel10k";
+                            src = pkgs.zsh-powerlevel10k;
+                            file = "share/zsh-powerlevel10k/powerlevel10k.zsh-theme";
+                        }
+                    ];
                 };
 
                 # Install gnome extensions using firefox
@@ -90,6 +99,15 @@ in
                     enable = true;
                     # Enable firefox wayland
                     profileExtra = "export MOZ_ENABLE_WAYLAND=1";
+
+                    # Install powerlevel10k
+                    plugins = with pkgs; [
+                        {
+                            name = "powerlevel10k";
+                            src = pkgs.zsh-powerlevel10k;
+                            file = "share/zsh-powerlevel10k/powerlevel10k.zsh-theme";
+                        }
+                    ];
                 };
 
                 # Install gnome extensions using firefox

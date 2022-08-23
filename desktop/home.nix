@@ -134,8 +134,8 @@
 
             home.file = {
                 # Add zsh theme to zsh directory
-                ".config/zsh/zsh-theme.sh" = {
-                    source = ../scripts/zsh-theme.sh;
+                ".config/zsh/zsh-theme.zsh" = {
+                    source = ../configs/zsh-theme.zsh;
                     recursive = true;
                 };
 
@@ -303,8 +303,8 @@
 
             home.file = {
                 # Add zsh theme to zsh directory
-                ".config/zsh/zsh-theme.sh" = {
-                    source = ../scripts/zsh-theme.sh;
+                ".config/zsh/zsh-theme.zsh" = {
+                    source = ../configs/zsh-theme.zsh;
                     recursive = true;
                 };
 

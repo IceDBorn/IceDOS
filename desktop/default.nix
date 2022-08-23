@@ -79,4 +79,7 @@
         plata-theme # Gnome theme
         tela-icon-theme # Icon theme
     ];
+
+    # Font required by powerlevel10k
+    fonts.fonts = with pkgs; [ meslo-lgs-nf ];
 }

@@ -65,7 +65,7 @@
         };
 
         # Commands to run on zsh shell initialization
-        interactiveShellInit = "source ~/.config/zsh/zsh-theme.sh\nunsetopt PROMPT_SP";
+        interactiveShellInit = "source ~/.config/zsh/zsh-theme.zsh\nunsetopt PROMPT_SP";
     };
 
     # Program services
