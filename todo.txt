@@ -1,5 +1,3 @@
 TODO
-    1: Fix material shell
-    2: Disable blank screen delay
-    3: Add greek input source
-    4: https://github.com/Stunkymonkey/nixos/blob/master/nixos/modules/nautilus.nix
+    1: Add greek input source
+    2: https://github.com/Stunkymonkey/nixos/blob/master/nixos/modules/nautilus.nix

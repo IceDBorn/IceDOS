@@ -65,13 +65,12 @@
         gnome.gnome-tweaks # Tweaks missing from pure Gnome
         gnomeExtensions.application-volume-mixer # Application volume mixer on the gnome control center
         gnomeExtensions.bluetooth-quick-connect # Show bluetooth devices on the gnome control center
+        gnomeExtensions.caffeine # Disable auto suspend and screen blank
         gnomeExtensions.clipboard-indicator # Clipboard indicator for gnome
         gnomeExtensions.color-picker # Color picker for gnome
         gnomeExtensions.coverflow-alt-tab # Makes alt tab on gnome cooler
         gnomeExtensions.gamemode # Status indicator for gamemode on gnome
         gnomeExtensions.gsconnect # KDE Connect implementation for gnome
-        # Material shell is broken at the moment
-        #gnomeExtensions.material-shell # Tiling WM for gnome
         gnomeExtensions.sound-output-device-chooser # Sound devices choose on the gnome control center
         gnomeExtensions.tray-icons-reloaded # Tray icons for gnome
         nautilus-open-any-terminal # Open any terminal from nautilus context menu

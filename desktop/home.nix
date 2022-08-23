@@ -26,8 +26,6 @@
                         "color-picker@tuberry"
                         "gamemode@christian.kellner.me"
                         "gsconnect@andyholmes.github.io"
-                        # Material shell crashes the gnome desktop
-                        #"material-shell@papyelgringo"
                         "sound-output-device-chooser@kgshank.net"
                         "trayIconsReloaded@selfmade.pl"
                         "volume-mixer@evermiss.net"
