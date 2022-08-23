@@ -8,6 +8,7 @@
         bottles # Wine prefix manager
         duckstation # PS1 Emulator
         gamemode # Optimizations for gaming
+        gamescope # Wayland microcompositor
         godot # Game engine
         heroic # Epic Games Launcher for Linux
         mangohud # A metric overlay

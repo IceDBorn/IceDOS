@@ -1,7 +1,2 @@
-extension-manager
-extramaus
 firefox-pwa-bin
-gamescope
 ryujinx-ldn
-system-monitoring-center
-nautilus-image-converter
