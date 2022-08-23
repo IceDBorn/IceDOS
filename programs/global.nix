@@ -53,6 +53,7 @@
             chmod="sudo chmod"; # It's a command that I always execute with sudo
             clear-keys="sudo rm -rf ~/ local/share/keyrings/* ~/ local/share/kwalletd/*"; # Clear system keys
             clear-proton-ge="bash ~/.config/zsh/protondown.sh"; # Download the latest proton ge version and delete the older ones
+            desktop-files-list="ls -l /run/current-system/sw/share/applications"; # Show desktop files location
             nvidia-max-fan-speed="sudo bash ~/.config/zsh/nvidia-fan-control-wayland.sh 100"; # Maximize nvidia fan speed on wayland
             reboot-windows="(sudo grub-set-default 0) && (sudo grub-reboot 2) && (sudo reboot)"; # Reboot to windows once
             restart-pipewire="systemctl --user restart pipewire"; # Restart pipewire
