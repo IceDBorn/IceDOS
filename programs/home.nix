@@ -23,7 +23,6 @@ in
                         update_check_interval = "0";
                         confirm_os_window_close = "0";
                         enable_audio_bell = "no";
-                        hide_window_decorations = "yes";
                     };
                 };
 
@@ -91,7 +90,6 @@ in
                         update_check_interval = "0";
                         confirm_os_window_close = "0";
                         enable_audio_bell = "no";
-                        hide_window_decorations = "yes";
                     };
                 };
 
