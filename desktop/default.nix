@@ -57,6 +57,7 @@
     # Show asterisks when typing sudo password
     security.sudo.extraConfig = "Defaults pwfeedback";
 
+    # Gnome packages to install
     environment.systemPackages = with pkgs; [
         bibata-cursors # Material cursors
         fragments # Bittorrent client following Gnome UI standards
@@ -68,6 +69,7 @@
         gnomeExtensions.caffeine # Disable auto suspend and screen blank
         gnomeExtensions.clipboard-indicator # Clipboard indicator for gnome
         gnomeExtensions.color-picker # Color picker for gnome
+        gnomeExtensions.emoji-selector # Emoji selector
         gnomeExtensions.gamemode # Status indicator for gamemode on gnome
         gnomeExtensions.gsconnect # KDE Connect implementation for gnome
         gnomeExtensions.sound-output-device-chooser # Sound devices choose on the gnome control center
@@ -75,6 +77,24 @@
         pitivi # Video editor
         plata-theme # Gnome theme
         tela-icon-theme # Icon theme
+    ];
+
+    # Gnome packages to exclude
+    environment.gnome.excludePackages = with pkgs; [
+        epiphany # Web browser
+        evince # Document viewer
+        gnome-console # Terminal
+        gnome-text-editor # Text editor
+        gnome-tour # Greeter
+        gnome.cheese # Camera
+        gnome.geary # Email
+        gnome.gnome-characters # Emojis
+        gnome.gnome-font-viewer # Font viewer
+        gnome.gnome-maps # Maps
+        gnome.gnome-software # Software center
+        gnome.gnome-system-monitor # System monitoring tool
+        gnome.simple-scan # Scanner
+        gnome.yelp # Help
     ];
 
     # Font required by powerlevel10k
