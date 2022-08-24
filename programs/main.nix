@@ -7,7 +7,6 @@
     users.users.${config.main.user.username}.packages = with pkgs; [
         bottles # Wine prefix manager
         duckstation # PS1 Emulator
-        gamemode # Optimizations for gaming
         godot # Game engine
         heroic # Epic Games Launcher for Linux
         mangohud # A metric overlay

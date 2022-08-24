@@ -37,38 +37,43 @@
     ];
 
     # ZSH configuration
-    programs.zsh = {
-        enable = true;
-        # Enable oh my zsh and it's plugins
-        ohMyZsh = {
+    programs = {
+        zsh = {
             enable = true;
-            plugins = [ "git" "npm" "nvm" "sudo" "systemd" ];
+            # Enable oh my zsh and it's plugins
+            ohMyZsh = {
+                enable = true;
+                plugins = [ "git" "npm" "nvm" "sudo" "systemd" ];
+            };
+            # Enable auto suggestions
+            autosuggestions.enable = true;
+
+            # Enable syntax highlighting
+            syntaxHighlighting.enable = true;
+
+            # Aliases
+            shellAliases = {
+                aria2c="aria2c -j 16 -s 16"; # Download with aria using best settings
+                chmod="sudo chmod"; # It's a command that I always execute with sudo
+                clear-keys="sudo rm -rf ~/ local/share/keyrings/* ~/ local/share/kwalletd/*"; # Clear system keys
+                clear-proton-ge="bash ~/.config/zsh/protondown.sh"; # Download the latest proton ge version and delete the older ones
+                desktop-files-list="ls -l /run/current-system/sw/share/applications"; # Show desktop files location
+                nvidia-max-fan-speed="sudo bash ~/.config/zsh/nvidia-fan-control-wayland.sh 100"; # Maximize nvidia fan speed on wayland
+                reboot-windows="(sudo grub-set-default 0) && (sudo grub-reboot 2) && (sudo reboot)"; # Reboot to windows once
+                restart-pipewire="systemctl --user restart pipewire"; # Restart pipewire
+                ssh="TERM=xterm-256color ssh"; # SSH with colors
+                update="(sudo nixos-rebuild switch --upgrade) ; (flatpak update) ; (yes | protonup) ; (yes | ~/.mozilla/firefox/privacy/updater.sh)"; # Update everything
+                vpn-off="mullvad disconnect"; # Disconnect from VPN
+                vpn-on="mullvad connect"; # Connect to VPN
+                vpn="mullvad status"; # Show VPN status
+            };
+
+            # Commands to run on zsh shell initialization
+            interactiveShellInit = "source ~/.config/zsh/zsh-theme.zsh\nunsetopt PROMPT_SP";
         };
-        # Enable auto suggestions
-        autosuggestions.enable = true;
 
-        # Enable syntax highlighting
-        syntaxHighlighting.enable = true;
-
-        # Aliases
-        shellAliases = {
-            aria2c="aria2c -j 16 -s 16"; # Download with aria using best settings
-            chmod="sudo chmod"; # It's a command that I always execute with sudo
-            clear-keys="sudo rm -rf ~/ local/share/keyrings/* ~/ local/share/kwalletd/*"; # Clear system keys
-            clear-proton-ge="bash ~/.config/zsh/protondown.sh"; # Download the latest proton ge version and delete the older ones
-            desktop-files-list="ls -l /run/current-system/sw/share/applications"; # Show desktop files location
-            nvidia-max-fan-speed="sudo bash ~/.config/zsh/nvidia-fan-control-wayland.sh 100"; # Maximize nvidia fan speed on wayland
-            reboot-windows="(sudo grub-set-default 0) && (sudo grub-reboot 2) && (sudo reboot)"; # Reboot to windows once
-            restart-pipewire="systemctl --user restart pipewire"; # Restart pipewire
-            ssh="TERM=xterm-256color ssh"; # SSH with colors
-            update="(sudo nixos-rebuild switch --upgrade) ; (flatpak update) ; (yes | protonup) ; (yes | ~/.mozilla/firefox/privacy/updater.sh)"; # Update everything
-            vpn-off="mullvad disconnect"; # Disconnect from VPN
-            vpn-on="mullvad connect"; # Connect to VPN
-            vpn="mullvad status"; # Show VPN status
-        };
-
-        # Commands to run on zsh shell initialization
-        interactiveShellInit = "source ~/.config/zsh/zsh-theme.zsh\nunsetopt PROMPT_SP";
+        # Enable gamemode
+        gamemode.enable = true;
     };
 
     # Program services
