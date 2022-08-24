@@ -17,7 +17,7 @@ let
         ];
         src = (pkgs.python3Packages.fetchPypi {
             inherit pname version;
-            sha256 = "sha256-rys9Noa3+w4phttfcI1OGEDfHMy8s80bm8kM8TzssQA=";
+            sha256 = "rys9Noa3+w4phttfcI1OGEDfHMy8s80bm8kM8TzssQA=";
         });
 
         meta = with pkgs.lib; {
