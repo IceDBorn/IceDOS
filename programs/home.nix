@@ -34,21 +34,21 @@ in
                     settings = {
                         background_alpha = 0;
                         cpu_color = "FFFFFF";
+                        cpu_temp = true;
                         engine_color = "FFFFFF";
                         font_size = 20;
+                        fps = true;
                         fps_limit = "144+60+0";
                         frame_timing = 0;
+                        gamemode = true;
                         gl_vsync = 0;
                         gpu_color = "FFFFFF";
+                        gpu_temp = true;
+                        no_small_font = true;
                         offset_x = 50;
                         position = "top-right";
                         toggle_fps_limit = "F1";
                         vsync= 1;
-                        cpu_temp = "";
-                        fps = "";
-                        gamemode = "";
-                        gpu_temp = "";
-                        no_small_font = "";
                     };
                 };
 

@@ -1,3 +1,2 @@
 TODO
     1: Find replacement for kitty
-    3: Fix mangohud config creation
