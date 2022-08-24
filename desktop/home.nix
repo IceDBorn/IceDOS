@@ -4,34 +4,6 @@
     home-manager.users = {
         ${config.main.user.username} = {
             dconf.settings = {
-                # Nautilus path bar is always editable
-                "org/gnome/nautilus/preferences" = {
-                    always-use-location-entry = true;
-                };
-
-                # Enable fractional scaling
-                "org/gnome/mutter" = {
-                    experimental-features = [ "scale-monitor-framebuffer" ];
-                };
-
-                "org/gnome/shell" = {
-                    # Enable gnome extensions
-                    disable-user-extensions = false;
-                    # Set enabled gnome extensions
-                    enabled-extensions =
-                    [
-                        "bluetooth-quick-connect@bjarosze.gmail.com"
-                        "caffeine@patapon.info"
-                        "clipboard-indicator@tudmotu.com"
-                        "color-picker@tuberry"
-                        "gamemode@christian.kellner.me"
-                        "gsconnect@andyholmes.github.io"
-                        "sound-output-device-chooser@kgshank.net"
-                        "trayIconsReloaded@selfmade.pl"
-                        "volume-mixer@evermiss.net"
-                    ];
-                };
-
                 "org/gnome/desktop/interface" = {
                     # Enable dark mode
                     color-scheme = "prefer-dark";
@@ -41,11 +13,8 @@
                     gtk-theme = "Plata-Noir-Compact";
                     # Change cursor theme
                     cursor-theme = "Bibata-Modern-Classic";
-                };
-
-                # Disable system sounds
-                "org/gnome/desktop/sound" = {
-                    event-sounds = false;
+                    # Enable clock seconds
+                    clock-show-seconds = true;
                 };
 
                 # Disable lockscreen notifications
@@ -53,9 +22,9 @@
                     show-in-lock-screen = false;
                 };
 
-                # Limit app switcher to current workspace
-                "org/gnome/shell/app-switcher" = {
-                    current-workspace-only = true;
+                # Disable mouse acceleration
+                "org/gnome/desktop/peripherals/mouse" = {
+                    accel-profile = "flat";
                 };
 
                 # Disable file history
@@ -68,6 +37,21 @@
                     lock-enabled = false;
                 };
 
+                # Disable system sounds
+                "org/gnome/desktop/sound" = {
+                    event-sounds = false;
+                };
+
+                # Enable fractional scaling
+                "org/gnome/mutter" = {
+                    experimental-features = [ "scale-monitor-framebuffer" ];
+                };
+
+                # Nautilus path bar is always editable
+                "org/gnome/nautilus/preferences" = {
+                    always-use-location-entry = true;
+                };
+
                 "org/gnome/settings-daemon/plugins/power" = {
                     # Disable auto suspend
                     sleep-inactive-ac-type = "nothing";
@@ -75,28 +59,28 @@
                     power-button-action = "interactive";
                 };
 
-                # Always hide tray icons
-                "org/gnome/shell/extensions/trayIconsReloaded" = {
-                    icons-limit = 1;
-                };
-                
-                "org/gnome/shell/extensions/sound-output-device-chooser" = {
-                    # Add an arrow to expand devices
-                    integrate-with-slider = true;
-                    # Hide arrow when there's only one device to choose from
-                    hide-on-single-device = true;
+                "org/gnome/shell" = {
+                    # Enable gnome extensions
+                    disable-user-extensions = false;
+                    # Set enabled gnome extensions
+                    enabled-extensions =
+                    [
+                        "bluetooth-quick-connect@bjarosze.gmail.com"
+                        "caffeine@patapon.info"
+                        "clipboard-indicator@tudmotu.com"
+                        "color-picker@tuberry"
+                        "emoji-selector@maestroschan.fr"
+                        "gamemode@christian.kellner.me"
+                        "gsconnect@andyholmes.github.io"
+                        "sound-output-device-chooser@kgshank.net"
+                        "trayIconsReloaded@selfmade.pl"
+                        "volume-mixer@evermiss.net"
+                    ];
                 };
 
-                "org/gnome/shell/extensions/color-picker" = {
-                    # Disable color picker notifications
-                    enable-notify = false;
-                };
-
-                "org/gnome/shell/extensions/clipboard-indicator" = {
-                    # Remove whitespace before and after the text
-                    strip-text = true;
-                    # Open the extension with Super + V
-                    toggle-menu = [ "<Super>v" ];
+                # Limit app switcher to current workspace
+                "org/gnome/shell/app-switcher" = {
+                    current-workspace-only = true;
                 };
 
                 "org/gnome/shell/extensions/caffeine" = {
@@ -109,14 +93,42 @@
                     # Disable notifications
                     show-notifications = false;
                 };
+
+                "org/gnome/shell/extensions/clipboard-indicator" = {
+                    # Remove whitespace before and after the text
+                    strip-text = true;
+                    # Open the extension with Super + V
+                    toggle-menu = [ "<Super>v" ];
+                };
+
+                # Disable color picker notifications
+                "org/gnome/shell/extensions/color-picker" = {
+                    enable-notify = false;
+                };
+
+                # Do not always show emoji selector
+                "org/gnome/shell/extensions/emoji-selector" = {
+                    always-show = false;
+                };
+
+                "org/gnome/shell/extensions/sound-output-device-chooser" = {
+                    # Add an arrow to expand devices
+                    integrate-with-slider = true;
+                    # Hide arrow when there's only one device to choose from
+                    hide-on-single-device = true;
+                };
+
+                # Always hide tray icons
+                "org/gnome/shell/extensions/trayIconsReloaded" = {
+                    icons-limit = 1;
+                };
             };
 
             # Add desktop file for 4 terminals
             xdg.desktopEntries.startup-terminals = {
                 type = "Application";
-                exec =
-                (
-                    pkgs.writeShellScript "alacritty-exec" ''
+                exec = (
+                    pkgs.writeShellScript "kitty-exec" ''
                       kitty &
                       kitty &
                       kitty &
@@ -206,36 +218,6 @@
 
         ${config.work.user.username} = {
             dconf.settings = {
-                # Nautilus path bar is always editable
-                "org/gnome/nautilus/preferences" = {
-                    always-use-location-entry = true;
-                };
-
-                # Enable fractional scaling
-                "org/gnome/mutter" = {
-                    experimental-features = [ "scale-monitor-framebuffer" ];
-                };
-
-                "org/gnome/shell" = {
-                    # Enable gnome extensions
-                    disable-user-extensions = false;
-                    # Set enabled gnome extensions
-                    enabled-extensions =
-                    [
-                        "CoverflowAltTab@palatis.blogspot.com"
-                        "bluetooth-quick-connect@bjarosze.gmail.com"
-                        "clipboard-indicator@tudmotu.com"
-                        "color-picker@tuberry"
-                        "gamemode@christian.kellner.me"
-                        "gsconnect@andyholmes.github.io"
-                        # Material shell crashes the gnome desktop
-                        #"material-shell@papyelgringo"
-                        "sound-output-device-chooser@kgshank.net"
-                        "trayIconsReloaded@selfmade.pl"
-                        "volume-mixer@evermiss.net"
-                    ];
-                };
-
                 "org/gnome/desktop/interface" = {
                     # Enable dark mode
                     color-scheme = "prefer-dark";
@@ -245,11 +227,8 @@
                     gtk-theme = "Plata-Noir-Compact";
                     # Change cursor theme
                     cursor-theme = "Bibata-Modern-Classic";
-                };
-
-                # Disable system sounds
-                "org/gnome/desktop/sound" = {
-                    event-sounds = false;
+                    # Enable clock seconds
+                    clock-show-seconds = true;
                 };
 
                 # Disable lockscreen notifications
@@ -257,9 +236,9 @@
                     show-in-lock-screen = false;
                 };
 
-                # Limit app switcher to current workspace
-                "org/gnome/shell/app-switcher" = {
-                    current-workspace-only = true;
+                # Disable mouse acceleration
+                "org/gnome/desktop/peripherals/mouse" = {
+                    accel-profile = "flat";
                 };
 
                 # Disable file history
@@ -272,6 +251,21 @@
                     lock-enabled = false;
                 };
 
+                # Disable system sounds
+                "org/gnome/desktop/sound" = {
+                    event-sounds = false;
+                };
+
+                # Enable fractional scaling
+                "org/gnome/mutter" = {
+                    experimental-features = [ "scale-monitor-framebuffer" ];
+                };
+
+                # Nautilus path bar is always editable
+                "org/gnome/nautilus/preferences" = {
+                    always-use-location-entry = true;
+                };
+
                 "org/gnome/settings-daemon/plugins/power" = {
                     # Disable auto suspend
                     sleep-inactive-ac-type = "nothing";
@@ -279,28 +273,28 @@
                     power-button-action = "interactive";
                 };
 
-                # Always hide tray icons
-                "org/gnome/shell/extensions/trayIconsReloaded" = {
-                    icons-limit = 1;
-                };
-                
-                "org/gnome/shell/extensions/sound-output-device-chooser" = {
-                    # Add an arrow to expand devices
-                    integrate-with-slider = true;
-                    # Hide arrow when there's only one device to choose from
-                    hide-on-single-device = true;
+                "org/gnome/shell" = {
+                    # Enable gnome extensions
+                    disable-user-extensions = false;
+                    # Set enabled gnome extensions
+                    enabled-extensions =
+                    [
+                        "bluetooth-quick-connect@bjarosze.gmail.com"
+                        "caffeine@patapon.info"
+                        "clipboard-indicator@tudmotu.com"
+                        "color-picker@tuberry"
+                        "emoji-selector@maestroschan.fr"
+                        "gamemode@christian.kellner.me"
+                        "gsconnect@andyholmes.github.io"
+                        "sound-output-device-chooser@kgshank.net"
+                        "trayIconsReloaded@selfmade.pl"
+                        "volume-mixer@evermiss.net"
+                    ];
                 };
 
-                "org/gnome/shell/extensions/color-picker" = {
-                    # Disable color picker notifications
-                    enable-notify = false;
-                };
-
-                "org/gnome/shell/extensions/clipboard-indicator" = {
-                    # Remove whitespace before and after the text
-                    strip-text = true;
-                    # Open the extension with Super + V
-                    toggle-menu = [ "<Super>v" ];
+                # Limit app switcher to current workspace
+                "org/gnome/shell/app-switcher" = {
+                    current-workspace-only = true;
                 };
 
                 "org/gnome/shell/extensions/caffeine" = {
@@ -313,6 +307,35 @@
                     # Disable notifications
                     show-notifications = false;
                 };
+
+                "org/gnome/shell/extensions/clipboard-indicator" = {
+                    # Remove whitespace before and after the text
+                    strip-text = true;
+                    # Open the extension with Super + V
+                    toggle-menu = [ "<Super>v" ];
+                };
+
+                # Disable color picker notifications
+                "org/gnome/shell/extensions/color-picker" = {
+                    enable-notify = false;
+                };
+
+                # Do not always show emoji selector
+                "org/gnome/shell/extensions/emoji-selector" = {
+                    always-show = false;
+                };
+
+                "org/gnome/shell/extensions/sound-output-device-chooser" = {
+                    # Add an arrow to expand devices
+                    integrate-with-slider = true;
+                    # Hide arrow when there's only one device to choose from
+                    hide-on-single-device = true;
+                };
+
+                # Always hide tray icons
+                "org/gnome/shell/extensions/trayIconsReloaded" = {
+                    icons-limit = 1;
+                };
             };
 
             # Add desktop file for 4 terminals
@@ -320,7 +343,7 @@
                 type = "Application";
                 exec =
                 (
-                    pkgs.writeShellScript "alacritty-exec" ''
+                    pkgs.writeShellScript "kitty-exec" ''
                       kitty &
                       kitty &
                       kitty &
