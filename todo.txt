@@ -1,2 +1,2 @@
 TODO
-    1: Find replacement for kitty
+    1: Build gnome emoji selector 22

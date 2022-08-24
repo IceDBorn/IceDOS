@@ -10,7 +10,7 @@
                     # Change icon theme
                     icon-theme = "Tela-black-dark";
                     # Change gtk theme
-                    gtk-theme = "Plata-Noir-Compact";
+                    gtk-theme = "Adwaita-dark";
                     # Change cursor theme
                     cursor-theme = "Bibata-Modern-Classic";
                     # Enable clock seconds
@@ -231,7 +231,7 @@
                     # Change icon theme
                     icon-theme = "Tela-black-dark";
                     # Change gtk theme
-                    gtk-theme = "Plata-Noir-Compact";
+                    gtk-theme = "Adwaita-dark";
                     # Change cursor theme
                     cursor-theme = "Bibata-Modern-Classic";
                     # Enable clock seconds

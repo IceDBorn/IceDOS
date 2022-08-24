@@ -75,7 +75,6 @@
         gnomeExtensions.sound-output-device-chooser # Sound devices choose on the gnome control center
         gnomeExtensions.tray-icons-reloaded # Tray icons for gnome
         pitivi # Video editor
-        plata-theme # Gnome theme
         tela-icon-theme # Icon theme
     ];
 
