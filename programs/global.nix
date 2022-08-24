@@ -2,6 +2,9 @@
 { config, pkgs, ... }:
 
 {
+    # The native part cannot communicate with the extension yet
+    #imports = [ ./firefox-pwas.nix ]; # Firefox PWAs
+
     environment.systemPackages = with pkgs; [
         android-tools # Tools for debugging android devices
         aria # Terminal downloader with multiple connections support
