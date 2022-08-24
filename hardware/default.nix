@@ -16,6 +16,8 @@
             # Support Direct Rendering for 32-bit applications (such as Wine) on 64-bit systems
             driSupport32Bit = true;
         };
+        # Enable XBOX Gamepad bluetooth driver
+        xpadneo.enable = true;
     };
 
     # Set memory limits
