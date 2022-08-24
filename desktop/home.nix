@@ -15,11 +15,18 @@
                     cursor-theme = "Bibata-Modern-Classic";
                     # Enable clock seconds
                     clock-show-seconds = true;
+                    # Disable date
+                    clock-show-date = false;
                 };
 
                 # Disable lockscreen notifications
                 "org/gnome/desktop/notifications" = {
                     show-in-lock-screen = false;
+                };
+
+                # Disable application is ready notification
+                "org/gnome/desktop/wm/preferences" = {
+                    focus-new-windows = "strict";
                 };
 
                 # Disable mouse acceleration
@@ -229,11 +236,18 @@
                     cursor-theme = "Bibata-Modern-Classic";
                     # Enable clock seconds
                     clock-show-seconds = true;
+                    # Disable date
+                    clock-show-date = false;
                 };
 
                 # Disable lockscreen notifications
                 "org/gnome/desktop/notifications" = {
                     show-in-lock-screen = false;
+                };
+
+                # Disable application is ready notification
+                "org/gnome/desktop/wm/preferences" = {
+                    focus-new-windows = "strict";
                 };
 
                 # Disable mouse acceleration

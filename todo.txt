@@ -1,5 +1,4 @@
 TODO
     1: Find replacement for kitty
-    2: Remove <program> is ready from gnome notifications
     3: Fix mangohud config creation
     4: gamescope asking for password
