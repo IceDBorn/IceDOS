@@ -105,6 +105,20 @@
                     toggle-message-tray = [];
                 };
 
+                # Switch to workspaces with Super + number
+                "org/gnome/desktop/wm/keybindings" = {
+                    switch-to-workspace-1 = [ "<Super>1" ];
+                    switch-to-workspace-2 = [ "<Super>2" ];
+                    switch-to-workspace-3 = [ "<Super>3" ];
+                    switch-to-workspace-4 = [ "<Super>4" ];
+                    switch-to-workspace-5 = [ "<Super>5" ];
+                    switch-to-workspace-6 = [ "<Super>6" ];
+                    switch-to-workspace-7 = [ "<Super>7" ];
+                    switch-to-workspace-8 = [ "<Super>8" ];
+                    switch-to-workspace-9 = [ "<Super>9" ];
+                    switch-to-workspace-10 = [ "<Super>0" ];
+                };
+
                 # Limit app switcher to current workspace
                 "org/gnome/shell/app-switcher" = {
                     current-workspace-only = true;
