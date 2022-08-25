@@ -74,6 +74,7 @@
         gnomeExtensions.gsconnect # KDE Connect implementation for gnome
         gnomeExtensions.sound-output-device-chooser # Sound devices choose on the gnome control center
         gnomeExtensions.tray-icons-reloaded # Tray icons for gnome
+        gthumb # Image viewer
         pitivi # Video editor
         tela-icon-theme # Icon theme
     ];
@@ -86,6 +87,7 @@
         gnome-text-editor # Text editor
         gnome-tour # Greeter
         gnome.cheese # Camera
+        gnome.eog # Image viewer
         gnome.geary # Email
         gnome.gnome-characters # Emojis
         gnome.gnome-font-viewer # Font viewer

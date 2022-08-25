@@ -1,2 +1,2 @@
 TODO
-    1: Build gnome emoji selector 22
+    1: Wallpaper
