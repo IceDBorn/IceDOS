@@ -1,5 +1,4 @@
 TODO
     1: Set wallpaper
     2: Set keyboard shortcuts
-    4: Set startup apps
-    5: Set static workspaces
+    3: Set startup apps

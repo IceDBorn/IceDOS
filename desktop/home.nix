@@ -24,9 +24,11 @@
                     show-in-lock-screen = false;
                 };
 
-                # Disable application is ready notification
                 "org/gnome/desktop/wm/preferences" = {
+                    # Disable application is ready notification
                     focus-new-windows = "strict";
+                    # Set number of workspaces
+                    num-workspaces = 6;
                 };
 
                 # Disable mouse acceleration
@@ -49,9 +51,11 @@
                     event-sounds = false;
                 };
 
-                # Enable fractional scaling
                 "org/gnome/mutter" = {
+                    # Enable fractional scaling
                     experimental-features = [ "scale-monitor-framebuffer" ];
+                    # Disable dynamic workspaces
+                    dynamic-workspaces = false;
                 };
 
                 # Nautilus path bar is always editable
