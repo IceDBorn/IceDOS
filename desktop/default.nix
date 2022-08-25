@@ -72,6 +72,7 @@
         gnomeExtensions.emoji-selector # Emoji selector
         gnomeExtensions.gamemode # Status indicator for gamemode on gnome
         gnomeExtensions.gsconnect # KDE Connect implementation for gnome
+        gnomeExtensions.pop-shell # Tiling WM extension
         gnomeExtensions.smart-auto-move # Remember window state througout reboots and restore it
         gnomeExtensions.sound-output-device-chooser # Sound devices choose on the gnome control center
         gnomeExtensions.tray-icons-reloaded # Tray icons for gnome

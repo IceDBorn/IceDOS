@@ -83,6 +83,7 @@
                         "emoji-selector@maestroschan.fr"
                         "gamemode@christian.kellner.me"
                         "gsconnect@andyholmes.github.io"
+                        "pop-shell@system76.com"
                         "smart-auto-move@khimaros.com"
                         "sound-output-device-chooser@kgshank.net"
                         "trayIconsReloaded@selfmade.pl"
@@ -164,6 +165,12 @@
                     overrides = ''
                         {"firefox":[{"action":1,"threshold":0.7}],"":[{"query":{"title":"home.nix - arch-linux-setup - VSCodium"},"action":1}],"jetbrains-studio":[{"action":1,"threshold":0.7}],"signal":[{"action":1,"threshold":0.7}],"de.shorsh.discord-screenaudio":[{"action":1,"threshold":0.7}],"heroic":[{"action":1,"threshold":0.7}],"Steam":[{"threshold":0.7,"action":1}],"bottles":[{"action":1,"threshold":0.7}],"kitty":[{"action":1,"threshold":0.7}],"org.gnome.Nautilus":[{"action":1,"threshold":0.7}]}
                         '';
+                };
+
+                "org/gnome/shell/extensions/pop-shell" = {
+                    gap-inner = 0;
+                    gap-outer = 0;
+                    tile-by-default = true;
                 };
 
                 # Always hide tray icons
