@@ -28,7 +28,7 @@
                     # Disable application is ready notification
                     focus-new-windows = "strict";
                     # Set number of workspaces
-                    num-workspaces = 7;
+                    num-workspaces = 8;
                 };
 
                 # Disable mouse acceleration
