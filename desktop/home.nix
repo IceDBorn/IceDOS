@@ -28,7 +28,7 @@
                     # Disable application is ready notification
                     focus-new-windows = "strict";
                     # Set number of workspaces
-                    num-workspaces = 6;
+                    num-workspaces = 7;
                 };
 
                 # Disable mouse acceleration
@@ -162,7 +162,7 @@
                 "org/gnome/shell/extensions/smart-auto-move" = {
                     sync-mode = "IGNORE";
                     overrides = ''
-                        {"firefox":[{"action":1,"threshold":0.7}],"":[{"query":{"title":"home.nix - arch-linux-setup - VSCodium"},"action":1}],"jetbrains-studio":[{"action":1,"threshold":0.7}],"signal":[{"action":1,"threshold":0.7}],"de.shorsh.discord-screenaudio":[{"action":1,"threshold":0.7}],"heroic":[{"action":1,"threshold":0.7}],"Steam":[{"threshold":0.7,"action":1}],"bottles":[{"action":1,"threshold":0.7}],"kitty":[{"action":1,"threshold":0.7}]}
+                        {"firefox":[{"action":1,"threshold":0.7}],"":[{"query":{"title":"home.nix - arch-linux-setup - VSCodium"},"action":1}],"jetbrains-studio":[{"action":1,"threshold":0.7}],"signal":[{"action":1,"threshold":0.7}],"de.shorsh.discord-screenaudio":[{"action":1,"threshold":0.7}],"heroic":[{"action":1,"threshold":0.7}],"Steam":[{"threshold":0.7,"action":1}],"bottles":[{"action":1,"threshold":0.7}],"kitty":[{"action":1,"threshold":0.7}],"org.gnome.Nautilus":[{"action":1,"threshold":0.7}]}
                         '';
                 };
 
