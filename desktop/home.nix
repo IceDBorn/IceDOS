@@ -90,8 +90,8 @@
                     ];
                 };
 
-                # Disable switch to application shortcuts
                 "org/gnome/shell/keybindings" = {
+                    # Disable switch to application shortcuts
                     switch-to-application-1 = [];
                     switch-to-application-2 = [];
                     switch-to-application-3 = [];
@@ -101,6 +101,8 @@
                     switch-to-application-7 = [];
                     switch-to-application-8 = [];
                     switch-to-application-9 = [];
+                    # Disable clock shortcut
+                    toggle-message-tray = [];
                 };
 
                 # Limit app switcher to current workspace
