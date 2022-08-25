@@ -79,6 +79,7 @@
                         "emoji-selector@maestroschan.fr"
                         "gamemode@christian.kellner.me"
                         "gsconnect@andyholmes.github.io"
+                        "smart-auto-move@khimaros.com"
                         "sound-output-device-chooser@kgshank.net"
                         "trayIconsReloaded@selfmade.pl"
                         "volume-mixer@evermiss.net"
@@ -123,6 +124,13 @@
                     integrate-with-slider = true;
                     # Hide arrow when there's only one device to choose from
                     hide-on-single-device = true;
+                };
+
+                "org/gnome/shell/extensions/smart-auto-move" = {
+                    sync-mode = "IGNORE";
+                    overrides = ''
+                        {"firefox":[{"action":1,"threshold":0.7}],"":[{"query":{"title":"home.nix - arch-linux-setup - VSCodium"},"action":1}],"jetbrains-studio":[{"action":1,"threshold":0.7}],"signal":[{"action":1,"threshold":0.7}],"de.shorsh.discord-screenaudio":[{"action":1,"threshold":0.7}],"heroic":[{"action":1,"threshold":0.7}],"Steam":[{"threshold":0.7,"action":1}],"bottles":[{"action":1,"threshold":0.7}],"kitty":[{"action":1,"threshold":0.7}]}
+                        '';
                 };
 
                 # Always hide tray icons
