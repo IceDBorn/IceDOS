@@ -268,6 +268,54 @@
                     source = ../configs/pipewire.conf;
                     recursive = true;
                 };
+
+                # Add btop to startup
+                ".config/autostart/btop.desktop" = {
+                    source = ../startup/btop.desktop;
+                    recursive = true;
+                };
+
+                # Add discord-screenaudio to startup
+                ".config/autostart/de.shorsh.discord-screenaudio.desktop" = {
+                    source = ../startup/de.shorsh.discord-screenaudio.desktop;
+                    recursive = true;
+                };
+
+                # Add mullvad vpn to startup
+                ".config/autostart/mullvad-vpn.desktop" = {
+                    source = ../startup/mullvad-vpn.desktop;
+                    recursive = true;
+                };
+
+                # Add nvtop to startup
+                ".config/autostart/nvtop.desktop" = {
+                    source = ../startup/nvtop.desktop;
+                    recursive = true;
+                };
+
+                # Add nautilus to startup
+                ".config/autostart/org.gnome.Nautilus.desktop.desktop" = {
+                    source = ../startup/org.gnome.Nautilus.desktop.desktop;
+                    recursive = true;
+                };
+
+                # Add signal to startup
+                ".config/autostart/signal-desktop.desktop" = {
+                    source = ../startup/signal-desktop.desktop;
+                    recursive = true;
+                };
+
+                # Add 2 terminals to startup
+                ".config/autostart/startup-terminals.desktop" = {
+                    source = ../startup/startup-terminals.desktop;
+                    recursive = true;
+                };
+
+                # Add steam to startup
+                ".config/autostart/steam.desktop" = {
+                    source = ../startup/steam.desktop;
+                    recursive = true;
+                };
             };
         };
 
@@ -488,6 +536,49 @@
                 # Add noise suppression microphone
                 ".config/pipewire/pipewire.conf.d/99-input-denoising.conf" = {
                     source = ../configs/pipewire.conf;
+                    recursive = true;
+                };
+
+
+                # Add btop to startup
+                ".config/autostart/btop.desktop" = {
+                    source = ../startup/btop.desktop;
+                    recursive = true;
+                };
+
+                # Add discord-screenaudio to startup
+                ".config/autostart/de.shorsh.discord-screenaudio.desktop" = {
+                    source = ../startup/de.shorsh.discord-screenaudio.desktop;
+                    recursive = true;
+                };
+
+                # Add mullvad vpn to startup
+                ".config/autostart/mullvad-vpn.desktop" = {
+                    source = ../startup/mullvad-vpn.desktop;
+                    recursive = true;
+                };
+
+                # Add nvtop to startup
+                ".config/autostart/nvtop.desktop" = {
+                    source = ../startup/nvtop.desktop;
+                    recursive = true;
+                };
+
+                # Add nautilus to startup
+                ".config/autostart/org.gnome.Nautilus.desktop.desktop" = {
+                    source = ../startup/org.gnome.Nautilus.desktop.desktop;
+                    recursive = true;
+                };
+
+                # Add signal to startup
+                ".config/autostart/signal-desktop.desktop" = {
+                    source = ../startup/signal-desktop.desktop;
+                    recursive = true;
+                };
+
+                # Add 2 terminals to startup
+                ".config/autostart/startup-terminals.desktop" = {
+                    source = ../startup/startup-terminals.desktop;
                     recursive = true;
                 };
             };

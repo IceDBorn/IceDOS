@@ -1,0 +1,16 @@
+[Desktop Entry]
+Actions=new-empty-window
+Categories=Network;InstantMessaging;Chat
+Comment=Private messaging from your desktop
+Exec=signal-desktop --enable-features=UseOzonePlatform --ozone-platform=wayland %U
+GenericName=Text Editor
+Icon=signal-desktop
+Name=Signal
+Terminal=false
+Type=Application
+Version=1.4
+
+[Desktop Action new-empty-window]
+Exec=codium --new-window %F
+Icon=code
+Name=New Empty Window

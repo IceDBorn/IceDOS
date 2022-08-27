@@ -1,0 +1,7 @@
+[Desktop Entry]
+Type=Application
+Name=discord-screenaudio
+Exec=flatpak run --branch=stable --arch=x86_64 --command=discord-screenaudio de.shorsh.discord-screenaudio
+Icon=de.shorsh.discord-screenaudio
+Terminal=false
+X-Flatpak=de.shorsh.discord-screenaudio
