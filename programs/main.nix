@@ -18,7 +18,6 @@
         ryujinx # Switch Emulator
         scanmem # Cheat engine for linux
         steam # Gaming platform
-        unstable.android-studio # IDE for Android apps
         unstable.gamescope # Wayland microcompositor
     ];
 }
