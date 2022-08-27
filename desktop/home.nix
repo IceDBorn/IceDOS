@@ -294,8 +294,8 @@
                 };
 
                 # Add nautilus to startup
-                ".config/autostart/org.gnome.Nautilus.desktop.desktop" = {
-                    source = ../startup/org.gnome.Nautilus.desktop.desktop;
+                ".config/autostart/org.gnome.Nautilus.desktop" = {
+                    source = ../startup/org.gnome.Nautilus.desktop;
                     recursive = true;
                 };
 
@@ -565,8 +565,8 @@
                 };
 
                 # Add nautilus to startup
-                ".config/autostart/org.gnome.Nautilus.desktop.desktop" = {
-                    source = ../startup/org.gnome.Nautilus.desktop.desktop;
+                ".config/autostart/org.gnome.Nautilus.desktop" = {
+                    source = ../startup/org.gnome.Nautilus.desktop;
                     recursive = true;
                 };
 
