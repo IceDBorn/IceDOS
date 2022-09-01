@@ -22,7 +22,7 @@ in
                         cursor_shape = "underline";
                         cursor_underline_thickness = "1.0";
                         enable_audio_bell = "no";
-                        linux_display_server= "x11";
+                        hide_window_decorations = "yes";
                         update_check_interval = "0";
                     };
                 };
@@ -87,12 +87,13 @@ in
                 kitty = {
                     enable = true;
                     settings = {
+                        background_opacity = "0.8";
+                        confirm_os_window_close = "0";
                         cursor_shape = "underline";
                         cursor_underline_thickness = "1.0";
-                        background_opacity = "0.8";
-                        update_check_interval = "0";
-                        confirm_os_window_close = "0";
                         enable_audio_bell = "no";
+                        hide_window_decorations = "yes";
+                        update_check_interval = "0";
                     };
                 };
 
