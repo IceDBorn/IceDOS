@@ -66,6 +66,8 @@ in
                             file = "share/zsh-powerlevel10k/powerlevel10k.zsh-theme";
                         }
                     ];
+
+                    initExtra = ''eval "$(direnv hook zsh)"'';
                 };
 
                 # Install gnome extensions using firefox
@@ -107,6 +109,8 @@ in
                             file = "share/zsh-powerlevel10k/powerlevel10k.zsh-theme";
                         }
                     ];
+
+                    initExtra = ''eval "$(direnv hook zsh)"'';
                 };
 
                 # Install gnome extensions using firefox
