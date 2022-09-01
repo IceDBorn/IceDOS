@@ -35,7 +35,6 @@ then
   yes | flatpak install de.shorsh.discord-screenaudio
   yes | flatpak install flathub com.github.tchx84.Flatseal
   yes | flatpak install flathub com.mattjakeman.ExtensionManager
-  yes | flatpak install flathub com.github.mtkennerly.ludusavi
   # Use the same cursor theme normal apps use
   flatpak --user override --filesystem=/etc/bibata-cursors/:ro
 
