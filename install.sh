@@ -42,27 +42,6 @@ then
   # Download proton ge
   protonup -d "$HOME/.steam/root/compatibilitytools.d/" && protonup
 
-  ### ARKENFOX JS ###
-  USERS=$(cut -d: -f1,3 /etc/passwd | grep -E ':[0-9]{4}$' | cut -d: -f1) # Get all users
-
-  if [ -z "$USERS" ]
-  then
-      echo "No users available to install arkenfox js..."
-  else
-    # Download the updater
-    git clone https://github.com/arkenfox/user.js.git
-    while IFS= read -r user ; do
-      # Install the updater for all users
-      echo "Installing arkenfox js for $user..."
-      sudo cp user.js/updater.sh /home/"$user"/.mozilla/firefox/privacy
-      sudo chown "$user":users /home/"$user"/.mozilla/firefox/privacy/updater.sh
-      yes | sudo bash /home/"$user"/.mozilla/firefox/privacy/updater.sh
-      sudo chown "$user":users /home/"$user"/.mozilla/firefox/privacy/user.js
-    done <<< "$USERS"
-    # Remove the arkenfox js folder
-    rm -rf user.js
-  fi
-
   # Reboot after the installation is completed
   bash scripts/reboot.sh
 

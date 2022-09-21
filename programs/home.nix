@@ -1,7 +1,7 @@
 { config, pkgs, home-manager, ... }:
 let
-    github.username = "IceDBorn";
-    github.email = "github.envenomed@dralias.com";
+    github.username = "CrazyStevenz";
+    github.email = "spapanatsios@gmail.com";
 in
 {
     home-manager.users = {

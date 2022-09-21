@@ -6,7 +6,6 @@
 
     users.users.${config.main.user.username}.packages = with pkgs; [
         duckstation # PS1 Emulator
-        godot # Game engine
         heroic # Epic Games Launcher for Linux
         mangohud # A metric overlay
         nvtop # GPU monitoring tool

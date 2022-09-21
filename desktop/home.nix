@@ -15,8 +15,6 @@
                     cursor-theme = "Bibata-Modern-Classic";
                     # Enable clock seconds
                     clock-show-seconds = true;
-                    # Disable date
-                    clock-show-date = false;
                 };
 
                 # Disable lockscreen notifications
@@ -28,7 +26,7 @@
                     # Disable application is ready notification
                     focus-new-windows = "strict";
                     # Set number of workspaces
-                    num-workspaces = 8;
+                    num-workspaces = 1;
                 };
 
                 # Disable mouse acceleration
@@ -41,18 +39,13 @@
                     remember-recent-files = false;
                 };
 
-                # Disable screen lock
-                "org/gnome/desktop/screensaver" = {
-                    lock-enabled = false;
-                };
-
                 # Disable system sounds
                 "org/gnome/desktop/sound" = {
                     event-sounds = false;
                 };
 
+                # Enable fractional scaling
                 "org/gnome/mutter" = {
-                    # Enable fractional scaling
                     experimental-features = [ "scale-monitor-framebuffer" ];
                     # Disable dynamic workspaces
                     dynamic-workspaces = false;
@@ -63,13 +56,6 @@
                     always-use-location-entry = true;
                 };
 
-                "org/gnome/settings-daemon/plugins/power" = {
-                    # Disable auto suspend
-                    sleep-inactive-ac-type = "nothing";
-                    # Power button shutdown
-                    power-button-action = "interactive";
-                };
-
                 "org/gnome/shell" = {
                     # Enable gnome extensions
                     disable-user-extensions = false;
@@ -77,14 +63,11 @@
                     enabled-extensions =
                     [
                         "bluetooth-quick-connect@bjarosze.gmail.com"
-                        "caffeine@patapon.info"
                         "clipboard-indicator@tudmotu.com"
                         "color-picker@tuberry"
                         "emoji-selector@maestroschan.fr"
                         "gamemode@christian.kellner.me"
                         "gsconnect@andyholmes.github.io"
-                        "pop-shell@system76.com"
-                        "smart-auto-move@khimaros.com"
                         "sound-output-device-chooser@kgshank.net"
                         "trayIconsReloaded@selfmade.pl"
                         "volume-mixer@evermiss.net"
@@ -106,34 +89,9 @@
                     toggle-message-tray = [];
                 };
 
-                # Switch to workspaces with Super + number
-                "org/gnome/desktop/wm/keybindings" = {
-                    switch-to-workspace-1 = [ "<Super>1" ];
-                    switch-to-workspace-2 = [ "<Super>2" ];
-                    switch-to-workspace-3 = [ "<Super>3" ];
-                    switch-to-workspace-4 = [ "<Super>4" ];
-                    switch-to-workspace-5 = [ "<Super>5" ];
-                    switch-to-workspace-6 = [ "<Super>6" ];
-                    switch-to-workspace-7 = [ "<Super>7" ];
-                    switch-to-workspace-8 = [ "<Super>8" ];
-                    switch-to-workspace-9 = [ "<Super>9" ];
-                    switch-to-workspace-10 = [ "<Super>0" ];
-                };
-
                 # Limit app switcher to current workspace
                 "org/gnome/shell/app-switcher" = {
                     current-workspace-only = true;
-                };
-
-                "org/gnome/shell/extensions/caffeine" = {
-                    # Remember the user choice
-                    restore-state = true;
-                    # Disable icon
-                    show-indicator = false;
-                    # Disable auto suspend and lock
-                    user-enabled = true;
-                    # Disable notifications
-                    show-notifications = false;
                 };
 
                 "org/gnome/shell/extensions/clipboard-indicator" = {
@@ -160,42 +118,10 @@
                     hide-on-single-device = true;
                 };
 
-                "org/gnome/shell/extensions/smart-auto-move" = {
-                    sync-mode = "IGNORE";
-                    overrides = ''
-                        {"firefox":[{"action":1,"threshold":0.7}],"":[{"query":{"title":"home.nix - arch-linux-setup - VSCodium"},"action":1}],"jetbrains-studio":[{"action":1,"threshold":0.7}],"signal":[{"action":1,"threshold":0.7}],"de.shorsh.discord-screenaudio":[{"action":1,"threshold":0.7}],"heroic":[{"action":1,"threshold":0.7}],"Steam":[{"threshold":0.7,"action":1}],"bottles":[{"action":1,"threshold":0.7}],"kitty":[{"action":1,"threshold":0.7}],"org.gnome.Nautilus":[{"action":1,"threshold":0.7}]}
-                        '';
-                };
-
-                "org/gnome/shell/extensions/pop-shell" = {
-                    gap-inner = 0;
-                    gap-outer = 0;
-                    tile-by-default = true;
-                };
-
                 # Always hide tray icons
                 "org/gnome/shell/extensions/trayIconsReloaded" = {
-                    icons-limit = 1;
+                    icons-limit = 10;
                 };
-            };
-
-            # Add desktop file for 4 terminals
-            xdg.desktopEntries.startup-terminals = {
-                type = "Application";
-                exec = (
-                    pkgs.writeShellScript "kitty-exec" ''
-                      kitty &
-                      kitty &
-                      kitty &
-                      kitty &
-                    ''
-                ).outPath;
-                icon = "Kitty";
-                terminal = false;
-                categories = [ "System" "TerminalEmulator" ];
-                name = "Startup Terminals";
-                genericName = "Terminal";
-                comment = "A fast, cross-platform, OpenGL terminal emulator";
             };
 
             # Force vscodium to use wayland
@@ -251,27 +177,9 @@
                     recursive = true;
                 };
 
-                # Add firefox privacy profile overrides
-                ".mozilla/firefox/privacy/user-overrides.js" = {
-                    source = ../configs/firefox-user-overrides.js;
-                    recursive = true;
-                };
-
-                # Set firefox to privacy profile
-                ".mozilla/firefox/profiles.ini" = {
-                    source = ../configs/firefox-profiles.ini;
-                    recursive = true;
-                };
-
                 # Add noise suppression microphone
                 ".config/pipewire/pipewire.conf.d/99-input-denoising.conf" = {
                     source = ../configs/pipewire.conf;
-                    recursive = true;
-                };
-
-                # Add btop to startup
-                ".config/autostart/btop.desktop" = {
-                    source = ../startup/btop.desktop;
                     recursive = true;
                 };
 
@@ -297,27 +205,9 @@
                     recursive = true;
                 };
 
-                # Add nvtop to startup
-                ".config/autostart/nvtop.desktop" = {
-                    source = ../startup/nvtop.desktop;
-                    recursive = true;
-                };
-
-                # Add nautilus to startup
-                ".config/autostart/org.gnome.Nautilus.desktop" = {
-                    source = ../startup/org.gnome.Nautilus.desktop;
-                    recursive = true;
-                };
-
                 # Add signal to startup
                 ".config/autostart/signal-desktop.desktop" = {
                     source = ../startup/signal-desktop.desktop;
-                    recursive = true;
-                };
-
-                # Add 2 terminals to startup
-                ".config/autostart/startup-terminals.desktop" = {
-                    source = ../startup/startup-terminals.desktop;
                     recursive = true;
                 };
 
@@ -354,6 +244,8 @@
                 # Disable application is ready notification
                 "org/gnome/desktop/wm/preferences" = {
                     focus-new-windows = "strict";
+                    # Set number of workspaces
+                    num-workspaces = 1;
                 };
 
                 # Disable mouse acceleration
@@ -366,11 +258,6 @@
                     remember-recent-files = false;
                 };
 
-                # Disable screen lock
-                "org/gnome/desktop/screensaver" = {
-                    lock-enabled = false;
-                };
-
                 # Disable system sounds
                 "org/gnome/desktop/sound" = {
                     event-sounds = false;
@@ -379,18 +266,13 @@
                 # Enable fractional scaling
                 "org/gnome/mutter" = {
                     experimental-features = [ "scale-monitor-framebuffer" ];
+                    # Disable dynamic workspaces
+                    dynamic-workspaces = false;
                 };
 
                 # Nautilus path bar is always editable
                 "org/gnome/nautilus/preferences" = {
                     always-use-location-entry = true;
-                };
-
-                "org/gnome/settings-daemon/plugins/power" = {
-                    # Disable auto suspend
-                    sleep-inactive-ac-type = "nothing";
-                    # Power button shutdown
-                    power-button-action = "interactive";
                 };
 
                 "org/gnome/shell" = {
@@ -400,7 +282,6 @@
                     enabled-extensions =
                     [
                         "bluetooth-quick-connect@bjarosze.gmail.com"
-                        "caffeine@patapon.info"
                         "clipboard-indicator@tudmotu.com"
                         "color-picker@tuberry"
                         "emoji-selector@maestroschan.fr"
@@ -415,17 +296,6 @@
                 # Limit app switcher to current workspace
                 "org/gnome/shell/app-switcher" = {
                     current-workspace-only = true;
-                };
-
-                "org/gnome/shell/extensions/caffeine" = {
-                    # Remember the user choice
-                    restore-state = true;
-                    # Disable icon
-                    show-indicator = false;
-                    # Disable auto suspend and lock
-                    user-enabled = true;
-                    # Disable notifications
-                    show-notifications = false;
                 };
 
                 "org/gnome/shell/extensions/clipboard-indicator" = {
@@ -454,28 +324,8 @@
 
                 # Always hide tray icons
                 "org/gnome/shell/extensions/trayIconsReloaded" = {
-                    icons-limit = 1;
+                    icons-limit = 10;
                 };
-            };
-
-            # Add desktop file for 4 terminals
-            xdg.desktopEntries.startup-terminals = {
-                type = "Application";
-                exec =
-                (
-                    pkgs.writeShellScript "kitty-exec" ''
-                      kitty &
-                      kitty &
-                      kitty &
-                      kitty &
-                    ''
-                ).outPath;
-                icon = "Kitty";
-                terminal = false;
-                categories = [ "System" "TerminalEmulator" ];
-                name = "Startup Terminals";
-                genericName = "Terminal";
-                comment = "A fast, cross-platform, OpenGL terminal emulator";
             };
 
             # Force vscodium to use wayland
@@ -495,51 +345,10 @@
                 };
             };
 
-            # Force signal to use wayland
-            xdg.desktopEntries.signal-desktop = {
-                type = "Application";
-                exec = "signal-desktop --enable-features=UseOzonePlatform --ozone-platform=wayland %U";
-                icon = "signal-desktop";
-                terminal = false;
-                categories = [ "Network" "InstantMessaging" "Chat" ];
-                name = "Signal";
-                genericName = "Text Editor";
-                comment = "Private messaging from your desktop";
-                actions.new-empty-window = {
-                    "exec" = "codium --new-window %F";
-                    "icon" = "code";
-                    "name" = "New Empty Window";
-                };
-            };
-
             home.file = {
                 # Add zsh theme to zsh directory
                 ".config/zsh/zsh-theme.zsh" = {
                     source = ../configs/zsh-theme.zsh;
-                    recursive = true;
-                };
-
-                # Add protondown script to zsh directory
-                ".config/zsh/protondown.sh" = {
-                    source = ../scripts/protondown.sh;
-                    recursive = true;
-                };
-
-                # Add nvidia fan control wayland to zsh directory
-                ".config/zsh/nvidia-fan-control-wayland.sh" = {
-                    source = ../scripts/nvidia-fan-control-wayland.sh;
-                    recursive = true;
-                };
-
-                # Add firefox privacy profile overrides
-                ".mozilla/firefox/privacy/user-overrides.js" = {
-                    source = ../configs/firefox-user-overrides.js;
-                    recursive = true;
-                };
-
-                # Set firefox to privacy profile
-                ".mozilla/firefox/profiles.ini" = {
-                    source = ../configs/firefox-profiles.ini;
                     recursive = true;
                 };
 
@@ -549,46 +358,15 @@
                     recursive = true;
                 };
 
-
-                # Add btop to startup
-                ".config/autostart/btop.desktop" = {
-                    source = ../startup/btop.desktop;
-                    recursive = true;
-                };
-
                 # Add discord-screenaudio to startup
                 ".config/autostart/de.shorsh.discord-screenaudio.desktop" = {
                     source = ../startup/de.shorsh.discord-screenaudio.desktop;
                     recursive = true;
                 };
 
-                # Add mullvad vpn to startup
-                ".config/autostart/mullvad-vpn.desktop" = {
-                    source = ../startup/mullvad-vpn.desktop;
-                    recursive = true;
-                };
-
-                # Add nvtop to startup
-                ".config/autostart/nvtop.desktop" = {
-                    source = ../startup/nvtop.desktop;
-                    recursive = true;
-                };
-
-                # Add nautilus to startup
-                ".config/autostart/org.gnome.Nautilus.desktop" = {
-                    source = ../startup/org.gnome.Nautilus.desktop;
-                    recursive = true;
-                };
-
-                # Add signal to startup
-                ".config/autostart/signal-desktop.desktop" = {
-                    source = ../startup/signal-desktop.desktop;
-                    recursive = true;
-                };
-
-                # Add 2 terminals to startup
-                ".config/autostart/startup-terminals.desktop" = {
-                    source = ../startup/startup-terminals.desktop;
+                 # Add terminator
+                ".config/terminator/config" = {
+                    source = ../configs/terminator;
                     recursive = true;
                 };
             };

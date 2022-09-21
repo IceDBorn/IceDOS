@@ -30,8 +30,8 @@
 
     # Set your user
     config.main.user = {
-        username = "icedborn";
-        description = "IceDBorn";
+        username = "stef";
+        description = "Stefanos";
     };
 
     imports = [

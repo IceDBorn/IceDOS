@@ -1,7 +1,7 @@
 { config, pkgs, ... }:
 
 let
-    nvidia-power-limit = "180";
+    nvidia-power-limit = "242";
 in
 {
     # Install the nvidia drivers
