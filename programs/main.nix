@@ -5,7 +5,6 @@
     imports = [ ./protonup-ng.nix ]; # Proton ge downloader
 
     users.users.${config.main.user.username}.packages = with pkgs; [
-        bottles # Wine prefix manager
         duckstation # PS1 Emulator
         godot # Game engine
         heroic # Epic Games Launcher for Linux
