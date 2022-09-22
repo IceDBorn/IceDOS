@@ -26,6 +26,7 @@
         unrar # Support opening rar files
         usbimager # ISO Burner
         vscodium # All purpose IDE
+        webstorm
         wget # Terminal downloader
         wine # Compatibility layer capable of running Windows applications
         winetricks # Wine prefix settings manager
