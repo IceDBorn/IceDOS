@@ -129,7 +129,7 @@
             # Force vscodium to use wayland
             xdg.desktopEntries.codium = {
                 type = "Application";
-                exec = "codium --enable-features=UseOzonePlatform --ozone-platform=wayland %F";
+                exec = "codium --enable-features=UseOzonePlatform,WaylandWindowDecorations --ozone-platform=wayland %F";
                 icon = "code";
                 terminal = false;
                 categories = [ "Utility" "TextEditor" "Development" "IDE" ];
@@ -146,7 +146,7 @@
             # Force signal to use wayland
             xdg.desktopEntries.signal-desktop = {
                 type = "Application";
-                exec = "signal-desktop --enable-features=UseOzonePlatform --ozone-platform=wayland %U";
+                exec = "signal-desktop --enable-features=UseOzonePlatform,WaylandWindowDecorations --ozone-platform=wayland %U";
                 icon = "signal-desktop";
                 terminal = false;
                 categories = [ "Network" "InstantMessaging" "Chat" ];
@@ -335,7 +335,7 @@
             # Force vscodium to use wayland
             xdg.desktopEntries.codium = {
                 type = "Application";
-                exec = "codium --enable-features=UseOzonePlatform --ozone-platform=wayland %F";
+                exec = "codium --enable-features=UseOzonePlatform,WaylandWindowDecorations --ozone-platform=wayland %F";
                 icon = "code";
                 terminal = false;
                 categories = [ "Utility" "TextEditor" "Development" "IDE" ];
