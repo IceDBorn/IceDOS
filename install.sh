@@ -32,10 +32,7 @@ then
 
   # Install flatpak apps
   flatpak remote-add --if-not-exists flathub https://flathub.org/repo/flathub.flatpakrepo
-  yes | flatpak install de.shorsh.discord-screenaudio
-  yes | flatpak install flathub com.github.tchx84.Flatseal
-  yes | flatpak install flathub com.mattjakeman.ExtensionManager
-  yes | flatpak install flathub com.usebottles.bottles
+  flatpak install de.shorsh.discord-screenaudio com.github.tchx84.Flatseal com.mattjakeman.ExtensionManager com.usebottles.bottles
   # Use the same cursor theme normal apps use
   flatpak --user override --filesystem=/etc/bibata-cursors/:ro
 
