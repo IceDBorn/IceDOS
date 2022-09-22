@@ -195,12 +195,12 @@
                 ".config/autostart/mullvad-vpn.desktop" = {
                     text = ''
                         [Desktop Entry]
-                        Name=Mullvad VPN
+                        Name=mullvad-vpn
                         Exec=${pkgs.mullvad-vpn}/bin/mullvad-vpn --no-sandbox --disable-gpu
                         Terminal=false
                         Type=Application
                         Icon=mullvad-vpn
-                        StartupWMClass=Mullvad VPN
+                        StartupWMClass=mullvad-vpn
                         Comment=Mullvad VPN client
                         Categories=Network;
                     '';
