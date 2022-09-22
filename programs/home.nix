@@ -22,6 +22,7 @@ in
                         cursor_shape = "underline";
                         cursor_underline_thickness = "1.0";
                         enable_audio_bell = "no";
+                        linux_display_server = "x11";
                         update_check_interval = "0";
                     };
                 };
@@ -91,6 +92,7 @@ in
                         cursor_shape = "underline";
                         cursor_underline_thickness = "1.0";
                         enable_audio_bell = "no";
+                        linux_display_server = "x11";
                         update_check_interval = "0";
                     };
                 };
