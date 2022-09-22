@@ -91,7 +91,6 @@ in
                         cursor_shape = "underline";
                         cursor_underline_thickness = "1.0";
                         enable_audio_bell = "no";
-                        hide_window_decorations = "yes";
                         update_check_interval = "0";
                     };
                 };
