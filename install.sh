@@ -30,9 +30,17 @@ then
   # Build the configuration
   sudo nixos-rebuild switch || exit
 
-  # Install flatpak apps
+  # Add repos to this installation and to each user
   flatpak remote-add --if-not-exists flathub https://flathub.org/repo/flathub.flatpakrepo
+  sudo -u main remote-add --if-not-exists flathub https://flathub.org/repo/flathub.flatpakrepo
+  sudo -u work remote-add --if-not-exists flathub https://flathub.org/repo/flathub.flatpakrepo
+
+  # Install flatpak apps globally
   flatpak install de.shorsh.discord-screenaudio com.github.tchx84.Flatseal com.mattjakeman.ExtensionManager com.usebottles.bottles
+
+  # Install flatpak apps only for work user
+  sudo -u work flatpak install --user com.slack.Slack
+
   # Use the same cursor theme normal apps use
   flatpak --user override --filesystem=/etc/bibata-cursors/:ro
 
