@@ -67,6 +67,11 @@ in
                         }
                     ];
 
+                     # Aliases
+                    shellAliases = {
+                        update="(sudo nixos-rebuild switch --upgrade) ; (flatpak update) ; (yes | protonup)"; # Update everything
+                    };
+
                     initExtra = ''eval "$(direnv hook zsh)"'';
                 };
 
@@ -110,6 +115,11 @@ in
                             file = "share/zsh-powerlevel10k/powerlevel10k.zsh-theme";
                         }
                     ];
+
+                    # Aliases
+                    shellAliases = {
+                        update="(sudo nixos-rebuild switch --upgrade) ; (flatpak update)"; # Update everything
+                    };
 
                     initExtra = ''eval "$(direnv hook zsh)"'';
                 };
