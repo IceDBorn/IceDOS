@@ -185,9 +185,9 @@
                     recursive = true;
                 };
 
-                # Add discord-screenaudio to startup
-                ".config/autostart/de.shorsh.discord-screenaudio.desktop" = {
-                    source = ../startup/de.shorsh.discord-screenaudio.desktop;
+                # Add discord to startup
+                ".config/autostart/discord.desktop" = {
+                    source = ../startup/discord.desktop;
                     recursive = true;
                 };
 
@@ -362,9 +362,9 @@
                     recursive = true;
                 };
 
-                # Add discord-screenaudio to startup
-                ".config/autostart/de.shorsh.discord-screenaudio.desktop" = {
-                    source = ../startup/de.shorsh.discord-screenaudio.desktop;
+                # Add discord to startup
+                ".config/autostart/discord.desktop" = {
+                    source = ../startup/discord.desktop;
                     recursive = true;
                 };
 

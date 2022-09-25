@@ -36,7 +36,7 @@ then
   sudo -u work remote-add --if-not-exists flathub https://flathub.org/repo/flathub.flatpakrepo
 
   # Install flatpak apps globally
-  flatpak install de.shorsh.discord-screenaudio com.github.tchx84.Flatseal com.mattjakeman.ExtensionManager com.usebottles.bottles
+  flatpak install de.shorsh.discord-screenaudio com.discordapp.Discord com.github.tchx84.Flatseal com.mattjakeman.ExtensionManager com.usebottles.bottles
 
   # Install flatpak apps only for work user
   sudo -u work flatpak install --user com.slack.Slack
