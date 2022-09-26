@@ -121,7 +121,26 @@ in
                         update="(sudo nixos-rebuild switch --upgrade) ; (flatpak update)"; # Update everything
                     };
 
-                    initExtra = ''eval "$(direnv hook zsh)"'';
+                    initExtra = ''
+                        eval "$(direnv hook zsh)"
+
+                        # prevent terminator from remembering commands from other panes
+                        unset HISTFILE
+
+                        # terminator env
+                        echo $INIT_CMD
+                        if [ ! -z "$INIT_CMD" ]; then
+                            OLD_IFS=$IFS
+                            setopt shwordsplit
+                            IFS=';'
+                            for cmd in $INIT_CMD; do
+                                print -s "$cmd"  # add to history
+                                eval $cmd
+                            done
+                            unset INIT_CMD
+                            IFS=$OLD_IFS
+                        fi
+                    '';
                 };
 
                 # Install gnome extensions using firefox
