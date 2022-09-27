@@ -43,6 +43,10 @@ then
 
   # Use the same cursor theme normal apps use
   flatpak --user override --filesystem=/etc/bibata-cursors/:ro
+  # Patch the flatpak nvidia drivers for nvfbc support
+  git clone https://github.com/keylase/nvidia-patch.git
+  bash nvidia-patch/patch-fbc.sh -f
+  rm -rf nvidia-patch
 
   # Download proton ge
   protonup -d "$HOME/.steam/root/compatibilitytools.d/" && protonup
