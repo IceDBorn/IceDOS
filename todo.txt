@@ -1,2 +1,8 @@
 TODO
     1: Set wallpaper
+    2: Build sunshine
+    3: Build system monitoring center
+    4: Build discord-screenaudio
+    5: Build extension manager
+    6: Fix native bottles problems
+    7: Build Firefox-PWAs
