@@ -7,8 +7,14 @@ in
     # Install the nvidia drivers
     services.xserver.videoDrivers = [ "nvidia" ];
 
-    # Required for wayland
-    hardware.nvidia.modesetting.enable = true;
+    hardware.nvidia = {
+        # Required for wayland
+        modesetting.enable = true;
+        # Patch the driver for nvfbc
+        package = pkgs.nur.repos.arc.packages.nvidia-patch.override {
+            nvidia_x11 = config.boot.kernelPackages.nvidiaPackages.stable;
+        };
+    };
 
     # Nvidia power limit
     systemd.services.nv-power-limit = {
