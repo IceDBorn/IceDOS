@@ -11,6 +11,7 @@
         mangohud # A metric overlay
         nvtop # GPU monitoring tool
         pcsx2 # PS2 Emulator
+        polymc # Minecraft launcher
         ppsspp # PSP Emulator
         protontricks # Winetricks for proton prefixes
         rpcs3 # PS3 Emulator
@@ -18,5 +19,6 @@
         scanmem # Cheat engine for linux
         steam # Gaming platform
         unstable.gamescope # Wayland microcompositor
+        unstable.papermc # Minecraft server
     ];
 }
