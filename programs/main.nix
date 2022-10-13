@@ -6,7 +6,6 @@
         duckstation # PS1 Emulator
         heroic # Epic Games Launcher for Linux
         mangohud # A metric overlay
-        nvtop # GPU monitoring tool
         pcsx2 # PS2 Emulator
         polymc # Minecraft launcher
         ppsspp # PSP Emulator

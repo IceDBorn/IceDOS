@@ -47,6 +47,8 @@
         ./users
         # Bootloader, kernel
         ./boot
+        # Startup files
+        ./startup
     ];
 
     # Do not change without checking the docs

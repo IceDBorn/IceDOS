@@ -11,8 +11,8 @@
 , enableCuda ? false
 , config, pkgs, ...
 }:
-let 
-    sunshine = pkgs.stdenv.mkDerivation rec {
+
+let sunshine = pkgs.stdenv.mkDerivation rec {
         name = "sunshine-" + version;
         version = "v0.14.1";
 
@@ -64,15 +64,14 @@ let
 };
 in 
 {
-    #users.users.${config.main.user.username}.packages = [ sunshine ];
-    environment.systemPackages = [ sunshine ];
+    users.users.${config.main.user.username}.packages = [ sunshine ];
 
-    # security.wrappers = {
-    #     sunshine = {
-    #         owner = "root";
-    #         group = "root";
-    #         capabilities = "cap_sys_admin+p";
-    #         source = "${environment.systemPackages.sunshine}/bin/sunshine";
-    #     };
-    # };
+    security.wrappers = {
+        sunshine = {
+            owner = "root";
+            group = "root";
+            capabilities = "cap_sys_admin+p";
+            source = "${sunshine}/bin/sunshine";
+        };
+    };
 }
