@@ -97,7 +97,6 @@
         gnome.eog # Image viewer
         gnome.geary # Email
         gnome.gnome-characters # Emojis
-        gnome.gnome-font-viewer # Font viewer
         gnome.gnome-maps # Maps
         gnome.gnome-software # Software center
         gnome.gnome-system-monitor # System monitoring tool
