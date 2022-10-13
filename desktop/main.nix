@@ -246,6 +246,12 @@
                 source = ../configs/pipewire.conf;
                 recursive = true;
             };
+
+            # Create nvidia-patch folder needed for sunshine driver patch
+            ".config/zsh/nvidia-patch/.ignore" = {
+                text = '''';
+                recursive = true;
+            };
         };
     };
 }
