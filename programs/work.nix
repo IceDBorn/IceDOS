@@ -7,6 +7,7 @@
             docker
             docker-compose
             nodejs-14_x
+            nodePackages.firebase-tools
             terminator
             watchman
         ];
