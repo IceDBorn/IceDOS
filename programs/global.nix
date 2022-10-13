@@ -10,6 +10,7 @@
         gimp # Image editor
         git # Distributed version control system
         helvum # Pipewire patchbay
+        jetbrains-mono # A monospace typeface made for developers
         kitty # Terminal
         mullvad-vpn # VPN Client
         ntfs3g # Support NTFS drives
