@@ -2,8 +2,6 @@
 { config, pkgs, ... }:
 
 {
-    imports = [ ./protonup-ng.nix ]; # Proton ge downloader
-
     users.users.${config.main.user.username}.packages = with pkgs; [
         duckstation # PS1 Emulator
         godot # Game engine
