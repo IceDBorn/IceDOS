@@ -45,11 +45,30 @@ then
   flatpak --user override --filesystem=/etc/bibata-cursors/:ro
   # Patch the flatpak nvidia drivers for nvfbc support
   git clone https://github.com/keylase/nvidia-patch.git
-  bash nvidia-patch/patch-fbc.sh -f
-  rm -rf nvidia-patch
+  sudo bash nvidia-patch/patch-fbc.sh -f
+  cp -r nvidia-patch
 
   # Download proton ge
   protonup -d "$HOME/.steam/root/compatibilitytools.d/" && protonup
+
+  ### NVIDIA-PATCH ###
+  USERS=$(cut -d: -f1,3 /etc/passwd | grep -E ':[0-9]{4}$' | cut -d: -f1) # Get all users
+
+  if [ -z "$USERS" ]
+  then
+      echo "No users available to install nvidia-patch..."
+  else
+    while IFS= read -r user ; do
+      # Install nvidia-patch for main user
+      echo "Installing nvidia-patch for $user..."
+      if [[ -d /home/"$user"/.config/zsh/nvidia-patch ]]
+      then
+          cp -r nvidia-patch /home/"$user"/.config/zsh
+      fi
+    done <<< "$USERS"
+    # Remove nvidia-patch folder
+    rm -rf nvidia-patch
+  fi
 
   # Reboot after the installation is completed
   bash scripts/reboot.sh
