@@ -229,18 +229,6 @@
                 recursive = true;
             };
 
-            # Add firefox privacy profile overrides
-            ".mozilla/firefox/privacy/user-overrides.js" = {
-                source = ../configs/firefox-user-overrides.js;
-                recursive = true;
-            };
-
-            # Set firefox to privacy profile
-            ".mozilla/firefox/profiles.ini" = {
-                source = ../configs/firefox-profiles.ini;
-                recursive = true;
-            };
-
             # Add noise suppression microphone
             ".config/pipewire/pipewire.conf.d/99-input-denoising.conf" = {
                 source = ../configs/pipewire.conf;
