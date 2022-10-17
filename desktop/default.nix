@@ -74,8 +74,8 @@
         gnomeExtensions.bluetooth-quick-connect # Show bluetooth devices on the gnome control center
         gnomeExtensions.clipboard-indicator # Clipboard indicator for gnome
         gnomeExtensions.color-picker # Color picker for gnome
-        gnomeExtensions.coverflow-alt-tab
-        gnomeExtensions.date-menu-formatter
+        gnomeExtensions.dash-to-panel # An icon taskbar, similar to that found in KDE Plasma and Windows 7+.
+        gnomeExtensions.date-menu-formatter # Allows customization of the date display in the panel
         gnomeExtensions.emoji-selector # Emoji selector
         gnomeExtensions.gamemode # Status indicator for gamemode on gnome
         gnomeExtensions.gsconnect # KDE Connect implementation for gnome
