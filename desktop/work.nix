@@ -75,15 +75,13 @@
                 # Set enabled gnome extensions
                 enabled-extensions =
                 [
+                    "arcmenu@arcmenu.com"
                     "bluetooth-quick-connect@bjarosze.gmail.com"
-                    "caffeine@patapon.info"
                     "clipboard-indicator@tudmotu.com"
                     "color-picker@tuberry"
+                    "dash-to-panel@jderose9.github.com"
                     "emoji-selector@maestroschan.fr"
-                    "gamemode@christian.kellner.me"
                     "gsconnect@andyholmes.github.io"
-                    "pop-shell@system76.com"
-                    "smart-auto-move@khimaros.com"
                     "sound-output-device-chooser@kgshank.net"
                     "trayIconsReloaded@selfmade.pl"
                     "volume-mixer@evermiss.net"
