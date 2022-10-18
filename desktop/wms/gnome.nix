@@ -3,8 +3,10 @@
 
 {
     imports = [
-        # Install desktop environments and window managers
-        ./wms
+        # Setup home manager for main user
+        ../main.nix
+        # Setup home manager for work user
+        ../work.nix
     ];
 
     # Set your time zone
