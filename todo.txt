@@ -2,7 +2,8 @@ TODO
     1: Set wallpaper
     2: Build sunshine
     3: Build discord-screenaudio
-    4: Build extension manager
-    5: Fix native bottles problems
-    6: Build Firefox-PWAs
-    7: Distrobox
+    4: Nix Bottles (problems with discrete GPU)
+    5: Build Firefox-PWAs
+    6: Test and switch to distrobox (replaces flatpak)
+    7: Test and switch to hyprland (replaces gnome)
+    8: Set static IP (problems with network manager)

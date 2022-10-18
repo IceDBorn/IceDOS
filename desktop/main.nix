@@ -203,11 +203,6 @@
             name = "Signal";
             genericName = "Text Editor";
             comment = "Private messaging from your desktop";
-            actions.new-empty-window = {
-                "exec" = "codium --new-window %F";
-                "icon" = "code";
-                "name" = "New Empty Window";
-            };
         };
 
         home.file = {
