@@ -11,6 +11,7 @@
         gimp # Image editor
         git # Distributed version control system
         helvum # Pipewire patchbay
+        killall # Tool to kill all programs matching process name
         kitty # Terminal
         mullvad-vpn # VPN Client
         ntfs3g # Support NTFS drives

@@ -1,6 +1,6 @@
 TODO
     1: Set wallpaper
-    2: Build sunshine
+    2: Remove sunshine
     3: Build discord-screenaudio
     4: Nix Bottles (problems with discrete GPU)
     5: Build Firefox-PWAs
