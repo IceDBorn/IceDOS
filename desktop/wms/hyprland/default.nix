@@ -61,7 +61,11 @@ in
 
         systemPackages = with pkgs; [
             blueberry # Bluetooth manager
+            clipman # Clipboard manager for wayland
             dbus-hypr-environment # Run specific commands
+            dunst # Notification daemon
+            gnome.gnome-themes-extra # Adwaita GTK theme
+            gnome.nautilus # File manager
             grim # Screenshot tool
             networkmanagerapplet # Network manager tray icon
             pavucontrol # Sound manager

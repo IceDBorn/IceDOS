@@ -30,6 +30,12 @@
                 source = ../../../configs/rofi/theme.rasi;
                 recursive = true;
             };
+
+            # Add dunst config file
+            ".config/dunst/dunstrc" = {
+                source = ../../../configs/dunstrc;
+                recursive = true;
+            };
         };
     };
 
@@ -60,6 +66,12 @@
 
             ".config/rofi/theme.rasi" = {
                 source = ../../../configs/rofi/theme.rasi;
+                recursive = true;
+            };
+
+            # Add dunst config file
+            ".config/dunst/dunstrc" = {
+                source = ../../../configs/dunstrc;
                 recursive = true;
             };
         };
