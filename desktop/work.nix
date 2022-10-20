@@ -252,6 +252,17 @@
                 source = ../configs/hyprland.conf;
                 recursive = true;
             };
+
+            # Add waybar configs
+            ".config/waybar/config" = {
+                source = ../configs/waybar/config;
+                recursive = true;
+            };
+
+            ".config/waybar/style.css" = {
+                source = ../configs/waybar/style.css;
+                recursive = true;
+            };
         };
     };
 }
