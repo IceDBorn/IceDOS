@@ -3,8 +3,8 @@
 {
     imports = [
         # Install gnome
-        ./gnome.nix
+        #./gnome
         # Install hyprland
-        ./hyprland.nix
+        ./hyprland
     ];
 }

@@ -11,6 +11,8 @@
         flatpak # Source for more applications
         gimp # Image editor
         git # Distributed version control system
+        gnome.gnome-themes-extra # Adwaita GTK theme
+        gnome.nautilus # File manager
         helvum # Pipewire patchbay
         killall # Tool to kill all programs matching process name
         kitty # Terminal

@@ -19,7 +19,12 @@ let
     };
 in
 {
-    imports = [ hyprland.nixosModules.default ];
+    imports = [
+        # Setup home manager for hyprland
+        ./home.nix
+        # Needed for hyprland
+        hyprland.nixosModules.default 
+    ];
 
     programs = {
         nm-applet.enable = true;

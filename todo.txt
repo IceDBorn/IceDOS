@@ -4,5 +4,4 @@ TODO
     3: Nix Bottles (problems with discrete GPU)
     4: Build Firefox-PWAs
     5: Test and switch to distrobox (replaces flatpak)
-    6: Test and switch to hyprland (replaces gnome)
     7: Set static IP (problems with network manager)

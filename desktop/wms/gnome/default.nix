@@ -3,10 +3,8 @@
 
 {
     imports = [
-        # Setup home manager for main user
-        ../main.nix
-        # Setup home manager for work user
-        ../work.nix
+        # Setup home manager for gnome
+        ./home.nix
     ];
 
     # Set your time zone
