@@ -55,20 +55,17 @@ in
         };
 
         systemPackages = with pkgs; [
-            waybar
-            rofi-wayland
-            pavucontrol
-            wlogout
-            networkmanagerapplet
-            blueberry
-            flameshot
-            pipewire
-            wireplumber
-            grim
-            slurp
-            dbus-hypr-environment
-            wdisplays
-            wl-clipboard
+            blueberry # Bluetooth manager
+            dbus-hypr-environment # Run specific commands
+            grim # Screenshot tool
+            networkmanagerapplet # Network manager tray icon
+            pavucontrol # Sound manager
+            rofi-wayland # App launcher
+            slurp # Monitor selector
+            waybar # Status bar
+            wdisplays # Displays manager
+            wl-clipboard # Clipboard daemon
+            wlogout # Logout screen
         ];
     };
 

@@ -5,6 +5,7 @@
     environment.systemPackages = with pkgs; [
         android-tools # Tools for debugging android devices
         aria # Terminal downloader with multiple connections support
+        clipman # Clipboard manager for wayland
         direnv # Unclutter your .profile
         firefox # Browser
         flatpak # Source for more applications
