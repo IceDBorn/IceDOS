@@ -8,12 +8,15 @@ let
         version = "1.28.0";
         doCheck = false;
 
-
-        propagatedBuildInputs = with pkgs; [
-            python3Packages.pygobject3
+        nativeBuildInputs = with pkgs; [
             gobject-introspection
             girara
             wrapGAppsHook
+        ];
+
+        propagatedBuildInputs = with pkgs; [
+            python3Packages.pygobject3
+            girara
         ];
 
         src = (pkgs.python3Packages.fetchPypi {
