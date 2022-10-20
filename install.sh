@@ -35,10 +35,6 @@ then
   flatpak install de.shorsh.discord-screenaudio com.github.tchx84.Flatseal com.mattjakeman.ExtensionManager com.usebottles.bottles
   # Use the same cursor theme normal apps use
   flatpak --user override --filesystem=/etc/bibata-cursors/:ro
-  # Patch the flatpak nvidia drivers for nvfbc support
-  git clone https://github.com/keylase/nvidia-patch.git
-  sudo bash nvidia-patch/patch-fbc.sh -f
-  cp -r nvidia-patch
 
   # Download proton ge
   protonup -d "$HOME/.steam/root/compatibilitytools.d/" && protonup
@@ -53,20 +49,15 @@ then
     # Download the updater
     git clone https://github.com/arkenfox/user.js.git
     while IFS= read -r user ; do
-      # Install the updater and nvidia-patch for all users
-      echo "Installing arkenfox js and nvidia-patch for $user..."
+      # Install the updater for all users
+      echo "Installing arkenfox js for $user..."
       sudo cp user.js/updater.sh /home/"$user"/.mozilla/firefox/privacy
       sudo chown "$user":users /home/"$user"/.mozilla/firefox/privacy/updater.sh
       yes | sudo bash /home/"$user"/.mozilla/firefox/privacy/updater.sh
       sudo chown "$user":users /home/"$user"/.mozilla/firefox/privacy/user.js
-      if [[ -d /home/"$user"/.config/zsh/nvidia-patch ]]
-      then
-          cp -r nvidia-patch /home/"$user"/.config/zsh
-      fi
     done <<< "$USERS"
-    # Remove git folders
+    # Remove git folder
     rm -rf user.js
-    rm -rf nvidia-patch
   fi
 
   # Reboot after the installation is completed
