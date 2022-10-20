@@ -78,7 +78,11 @@ in
         ];
     };
 
-    services.dbus.enable = true;
+    services = {
+        dbus.enable = true;
+        # Needed for nautilus
+        gvfs.enable = true;
+    };
 
     xdg.portal = {
         enable = true;
