@@ -241,6 +241,12 @@
                 source = ../configs/pipewire.conf;
                 recursive = true;
             };
+
+            # Add hyprland config
+            ".config/hypr/hyprland.conf" = {
+                source = ../configs/hyprland.conf;
+                recursive = true;
+            };
         };
     };
 }

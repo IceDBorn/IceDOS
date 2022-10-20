@@ -12,6 +12,7 @@ let
 
         text = ''
             dbus-update-activation-environment --systemd XDG_SESSION_TYPE=wayland WAYLAND_DISPLAY XDG_CURRENT_DESKTOP=sway DBUS_SESSION_BUS_ADDRESS DISPLAY XAUTHORITY
+            systemctl --user import-environment WAYLAND_DISPLAY XDG_CURRENT_DESKTOP
             systemctl --user stop pipewire wireplumber xdg-desktop-portal xdg-desktop-portal-wlr
             systemctl --user start pipewire wireplumber xdg-desktop-portal xdg-desktop-portal-wlr
         '';
@@ -66,6 +67,8 @@ in
             grim
             slurp
             dbus-hypr-environment
+            wdisplays
+            wl-clipboard
         ];
     };
 
