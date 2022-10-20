@@ -11,7 +11,7 @@ let
         executable = true;
 
         text = ''
-            dbus-update-activation-environment --systemd WAYLAND_DISPLAY XDG_CURRENT_DESKTOP=sway DBUS_SESSION_BUS_ADDRESS DISPLAY XAUTHORITY
+            dbus-update-activation-environment --systemd XDG_SESSION_TYPE=wayland WAYLAND_DISPLAY XDG_CURRENT_DESKTOP=sway DBUS_SESSION_BUS_ADDRESS DISPLAY XAUTHORITY
             systemctl --user stop pipewire wireplumber xdg-desktop-portal xdg-desktop-portal-wlr
             systemctl --user start pipewire wireplumber xdg-desktop-portal xdg-desktop-portal-wlr
         '';
@@ -47,10 +47,9 @@ in
 
     environment = {
         sessionVariables = {
-            LIBVA_DRIVER_NAME = "nvidia"; 
-            XDG_SESSION_TYPE = "wayland"; 
-            GBM_BACKEND = "nvidia-drm"; 
-            __GLX_VENDOR_LIBRARY_NAME = "nvidia"; 
+            LIBVA_DRIVER_NAME = "nvidia";
+            GBM_BACKEND = "nvidia-drm";
+            __GLX_VENDOR_LIBRARY_NAME = "nvidia";
             WLR_NO_HARDWARE_CURSORS = "1";
         };
 
