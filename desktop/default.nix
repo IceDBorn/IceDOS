@@ -67,5 +67,5 @@
     ];
 
     # Font required by powerlevel10k
-    fonts.fonts = with pkgs; [ meslo-lgs-nf ];
+    fonts.fonts = with pkgs; [ meslo-lgs-nf cantarell-fonts ];
 }
