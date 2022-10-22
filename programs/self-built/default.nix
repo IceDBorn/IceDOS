@@ -2,9 +2,6 @@
 
 {
     imports = [
-        # PWAs for Firefox
-        #./firefox-pwas.nix
-
         # Proton GE Downloader
         ./protonup-ng.nix
 
