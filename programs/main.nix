@@ -14,6 +14,7 @@
         ryujinx # Switch Emulator
         scanmem # Cheat engine for linux
         steam # Gaming platform
+        unstable.bottles # Wine manager
         unstable.gamescope # Wayland microcompositor
         unstable.papermc # Minecraft server
         unstable.prismlauncher # Minecraft launcher
