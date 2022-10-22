@@ -64,7 +64,7 @@
     environment.systemPackages = with pkgs; [
         bibata-cursors # Material cursors
         fragments # Bittorrent client following Gnome UI standards
-        #gnome-extension-manager # Gnome extensions manager and downloader
+        gnome-extension-manager # Gnome extensions manager and downloader
         gnome.dconf-editor # Edit gnome's dconf
         gnome.gnome-boxes # VM manager
         gnome.gnome-tweaks # Tweaks missing from pure Gnome
