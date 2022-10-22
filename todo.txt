@@ -2,6 +2,5 @@ TODO
     1: Set wallpaper
     2: Build discord-screenaudio
     3: Nix Bottles (problems with discrete GPU)
-    4: Build Firefox-PWAs
-    5: Test and switch to distrobox (replaces flatpak)
-    7: Set static IP (problems with network manager)
+    4: Test and switch to distrobox (replaces flatpak)
+    5: Set static IP (problems with network manager)

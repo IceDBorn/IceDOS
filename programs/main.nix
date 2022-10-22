@@ -8,7 +8,6 @@
         heroic # Epic Games Launcher for Linux
         mangohud # A metric overlay
         pcsx2 # PS2 Emulator
-        polymc # Minecraft launcher
         ppsspp # PSP Emulator
         protontricks # Winetricks for proton prefixes
         rpcs3 # PS3 Emulator
@@ -17,5 +16,6 @@
         steam # Gaming platform
         unstable.gamescope # Wayland microcompositor
         unstable.papermc # Minecraft server
+        unstable.prismlauncher # Minecraft launcher
     ];
 }
