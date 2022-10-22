@@ -67,6 +67,7 @@ in
             gnome.gnome-themes-extra # Adwaita GTK theme
             gnome.nautilus # File manager
             grim # Screenshot tool
+            libsForQt5.kdeconnect-kde # Connect phone to PC
             networkmanagerapplet # Network manager tray icon
             pavucontrol # Sound manager
             rofi-wayland # App launcher
