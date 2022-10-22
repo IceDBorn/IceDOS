@@ -1,6 +1,7 @@
 TODO
     1: Set wallpaper
     2: Build discord-screenaudio
+    3: Build WebCord
     3: Nix Bottles (problems with discrete GPU)
     4: Test and switch to distrobox (replaces flatpak)
     5: Set static IP (problems with network manager)
