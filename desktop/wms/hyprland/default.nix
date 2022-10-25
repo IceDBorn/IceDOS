@@ -65,6 +65,7 @@ in
             dbus-hypr-environment # Run specific commands
             dunst # Notification daemon
             gnome.file-roller # Archive file manager
+            gnome.gnome-calculator # Calculator
             gnome.gnome-themes-extra # Adwaita GTK theme
             gnome.nautilus # File manager
             grim # Screenshot tool
