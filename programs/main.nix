@@ -6,7 +6,6 @@
         duckstation # PS1 Emulator
         godot # Game engine
         heroic # Epic Games Launcher for Linux
-        mangohud # A metric overlay
         pcsx2 # PS2 Emulator
         ppsspp # PSP Emulator
         protontricks # Winetricks for proton prefixes
