@@ -103,7 +103,4 @@
         gnome.simple-scan # Scanner
         gnome.yelp # Help
     ];
-
-    # Font required by powerlevel10k
-    fonts.fonts = with pkgs; [ meslo-lgs-nf ];
 }
