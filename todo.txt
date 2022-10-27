@@ -4,3 +4,6 @@ TODO
     3: Build WebCord
     4: Test and switch to distrobox (replaces flatpak)
     5: Set static IP (problems with network manager)
+    6: Fix gamescope permissions
+    7: Install sunshine
+    8: Update waybar to latest commit
