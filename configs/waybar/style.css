@@ -30,10 +30,6 @@ window#waybar {
     padding: 1px 5px;
     background-color: transparent;
 }
-#workspaces button:hover {
-    box-shadow: inherit;
-	background-color: rgba(0,0,0,0.85);
-}
 
 #workspaces button.focused {
 	background-color: rgba(0,43,51,0.85);
@@ -56,13 +52,15 @@ window#waybar {
 #mode,
 #custom-power,
 #custom-menu,
-#idle_inhibitor {
+#idle_inhibitor,
+#window {
     padding: 0 10px;
 }
 
-#clock {
-    font-weight: bold;
+#custom-separator {
+    padding: 0;
 }
+
 #mode {
     color: #cc3436;
     font-weight: bold;

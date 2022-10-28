@@ -60,6 +60,7 @@ in
         };
 
         systemPackages = with pkgs; [
+            (callPackage ../../../programs/self-built/waybar.nix {}) # Status bar
             blueberry # Bluetooth manager
             clipman # Clipboard manager for wayland
             dbus-hypr-environment # Run specific commands
@@ -74,7 +75,6 @@ in
             pavucontrol # Sound manager
             rofi-wayland # App launcher
             slurp # Monitor selector
-            waybar # Status bar
             wdisplays # Displays manager
             wl-clipboard # Clipboard daemon
             wlogout # Logout screen

@@ -1,8 +1,8 @@
 {
     "layer": "top",
     "modules-left": ["wlr/workspaces"],
-    "modules-center": ["custom/separator", "clock", "custom/separator"],
-    "modules-right": ["tray", "custom/separator", "bluetooth", "custom/separator", "pulseaudio", "custom/separator", "custom/power"],
+    "modules-center": ["hyprland/window"],
+    "modules-right": ["tray", "custom/separator", "bluetooth", "custom/separator", "hyprland/language", "custom/separator", "pulseaudio", "custom/separator", "clock", "custom/separator", "custom/power"],
 
     "bluetooth": {
         "format": "  {status}",
@@ -45,6 +45,17 @@
 
         "scroll-step": 5,
         "on-click": "pavucontrol"
+    },
+
+    "hyprland/language": {
+        "format": "{}",
+        "format-en": "US",
+        "format-gr": "GR"
+    },
+
+    "hyprland/window": {
+        "format": "{}",
+        "separate-outputs": true
     },
 
     "custom/power": {

@@ -1,8 +1,6 @@
 TODO
     1: Set wallpaper
-    2: Build discord-screenaudio
+    2: Build discord-screenaudio (does not build)
     3: Build WebCord
     4: Test and switch to distrobox (replaces flatpak)
-    5: Set static IP (problems with network manager)
-    6: Install sunshine
-    7: Update waybar to latest commit
+    6: Install sunshine (wait for package to hit servers)
