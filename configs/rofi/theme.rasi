@@ -45,6 +45,7 @@ configuration {
 
 window {
   transparency: "real";
+  border-radius: 10;
 }
 
 mainbox {
