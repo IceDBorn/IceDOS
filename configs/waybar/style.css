@@ -15,11 +15,6 @@ window#waybar {
     padding: 0px 5px;
 }
 
-#workspace button.active {
-    box-shadow: inherit;
-    background-color: rgb(124, 29, 29);
-}
-
 #clock,
 #battery,
 #cpu,
@@ -37,6 +32,7 @@ window#waybar {
 #bluetooth,
 #language {
     padding: 0 10px;
+    font-weight: bold;
 }
 
 #custom-separator {
