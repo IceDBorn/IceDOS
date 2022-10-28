@@ -65,12 +65,6 @@
                 recursive = true;
             };
 
-            # Add nvidia fan control wayland to zsh directory
-            ".config/zsh/nvidia-fan-control-wayland.sh" = {
-                source = ../scripts/nvidia-fan-control-wayland.sh;
-                recursive = true;
-            };
-
             # Add firefox privacy profile overrides
             ".mozilla/firefox/privacy/user-overrides.js" = {
                 source = ../configs/firefox-user-overrides.js;
@@ -152,12 +146,6 @@
             # Add protondown script to zsh directory
             ".config/zsh/protondown.sh" = {
                 source = ../scripts/protondown.sh;
-                recursive = true;
-            };
-
-            # Add nvidia fan control wayland to zsh directory
-            ".config/zsh/nvidia-fan-control-wayland.sh" = {
-                source = ../scripts/nvidia-fan-control-wayland.sh;
                 recursive = true;
             };
 
