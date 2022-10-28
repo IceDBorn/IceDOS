@@ -34,17 +34,28 @@
         "format-muted": "",
 
         "format-icons": {
-            "headphone": "",
+            "headphone": "",
             "hands-free": "",
-            "headset": "",
+            "headset": "",
             "phone": "",
             "portable": "",
-            "car": "",
-            "default": ["", ""]
+            "car": "",
+            "default": ["", "墳"]
         },
 
         "scroll-step": 5,
         "on-click": "pavucontrol"
+    },
+
+    "wlr/workspaces": {
+        "format": "{icon}",
+        "on-click": "activate",
+        "format-icons": {
+            "urgent": "",
+            "active": "",
+            "default": ""
+        },
+        "sort-by-number": true
     },
 
     "hyprland/language": {
@@ -59,7 +70,7 @@
     },
 
     "custom/power": {
-        "format": " ",
+        "format": "",
         "on-click": "wlogout"
     },
 
