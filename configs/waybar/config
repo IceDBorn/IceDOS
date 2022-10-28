@@ -71,10 +71,12 @@
 
     "custom/power": {
         "format": "",
-        "on-click": "wlogout"
+        "on-click": "wlogout",
+        "tooltip": false
     },
 
     "custom/separator": {
-        "format": "•"
+        "format": "•",
+        "tooltip": false
     }
 }
