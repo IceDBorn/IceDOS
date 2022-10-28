@@ -5,6 +5,7 @@
     environment.systemPackages = with pkgs; [
         android-tools # Tools for debugging android devices
         aria # Terminal downloader with multiple connections support
+        btop # System monitor
         direnv # Unclutter your .profile
         firefox # Browser
         flatpak # Source for more applications
@@ -15,8 +16,10 @@
         kitty # Terminal
         mullvad-vpn # VPN Client
         ntfs3g # Support NTFS drives
+        nvtop # GPU monitor
         obs-studio # Recording/Livestream
         onlyoffice-bin # Microsoft Office alternative for Linux
+        python # Python
         ranger # Terminal file manager
         rnnoise-plugin # A real-time noise suppression plugin
         signal-desktop # Encrypted messaging platform

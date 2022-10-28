@@ -6,6 +6,6 @@
         ./protonup-ng.nix
 
         # Task manager
-        ./system-monitoring-center.nix
+        #./system-monitoring-center.nix
     ];
 }
