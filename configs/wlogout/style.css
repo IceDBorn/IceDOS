@@ -1,0 +1,44 @@
+* {
+	background-image: none;
+}
+window {
+	background-color: rgba(12, 12, 12, 1);
+}
+button {
+    color: #FFFFFF;
+	background-color: #1E1E1E;
+	border-radius: 20px;
+	background-repeat: no-repeat;
+	background-position: center;
+	background-size: 50%;
+	margin: 10px;
+}
+
+button:hover {
+	background-color: #3b393d;
+	outline-style: none;
+}
+
+#lock {
+    background-image: image(url("/etc/wlogout-icons/lock.png"));
+}
+
+#logout {
+    background-image: image(url("/etc/wlogout-icons/logout.png"));
+}
+
+#suspend {
+    background-image: image(url("/etc/wlogout-icons/suspend.png"));
+}
+
+#hibernate {
+    background-image: image(url("/etc/wlogout-icons/hibernate.png"));
+}
+
+#shutdown {
+    background-image: image(url("/etc/wlogout-icons/shutdown.png"));
+}
+
+#reboot {
+    background-image: image(url("/etc/wlogout-icons/reboot.png"));
+}

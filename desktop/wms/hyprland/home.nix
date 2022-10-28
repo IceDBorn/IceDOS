@@ -36,6 +36,17 @@
                 source = ../../../configs/dunstrc;
                 recursive = true;
             };
+
+            # Add wlogout config files
+            ".config/wlogout/layout" = {
+                source = ../../../configs/wlogout/layout;
+                recursive = true;
+            };
+
+            ".config/wlogout/style.css" = {
+                source = ../../../configs/wlogout/style.css;
+                recursive = true;
+            };
         };
     };
 
@@ -72,6 +83,17 @@
             # Add dunst config file
             ".config/dunst/dunstrc" = {
                 source = ../../../configs/dunstrc;
+                recursive = true;
+            };
+
+            # Add wlogout config files
+            ".config/wlogout/layout" = {
+                source = ../../../configs/wlogout/layout;
+                recursive = true;
+            };
+
+            ".config/wlogout/style.css" = {
+                source = ../../../configs/wlogout/style.css;
                 recursive = true;
             };
         };
