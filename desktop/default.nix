@@ -56,19 +56,8 @@
         firewall.enable = false;
     };
 
-    security = {
-        # Give security capabilities to gamescope
-        wrappers = {
-            gamescope = {
-                owner = "root";
-                group = "root";
-                capabilities = "cap_sys_nice=eip";
-                source = "${pkgs.unstable.gamescope}/bin/gamescope";
-            };
-        };
-        # Show asterisks when typing sudo password
-        sudo.extraConfig = "Defaults pwfeedback";
-    };
+    # Show asterisks when typing sudo password
+    security.sudo.extraConfig = "Defaults pwfeedback";
 
     # Gnome packages to install
     environment.systemPackages = with pkgs; [
