@@ -25,6 +25,7 @@ in
                         hide_window_decorations = "yes";
                         update_check_interval = "0";
                     };
+                    font.name = "Jetbrains Mono";
                 };
 
                 mangohud = {
