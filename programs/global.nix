@@ -20,6 +20,8 @@
         obs-studio # Recording/Livestream
         onlyoffice-bin # Microsoft Office alternative for Linux
         python # Python
+        qemu # Virtual machines
+        qemu_kvm # Virtual machines
         ranger # Terminal file manager
         rnnoise-plugin # A real-time noise suppression plugin
         signal-desktop # Encrypted messaging platform
@@ -28,6 +30,7 @@
         tree # Display folder content at a tree format
         unrar # Support opening rar files
         usbimager # ISO Burner
+        virt-manager # Virtual machines GUI manager
         vscodium # All purpose IDE
         wget # Terminal downloader
         wine # Compatibility layer capable of running Windows applications
