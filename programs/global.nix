@@ -22,6 +22,7 @@
         python # Python
         qemu # Virtual machines
         qemu_kvm # Virtual machines
+        qgnomeplatform # Use GTK theme for QT apps
         ranger # Terminal file manager
         rnnoise-plugin # A real-time noise suppression plugin
         signal-desktop # Encrypted messaging platform
@@ -90,6 +91,9 @@
         # Enable mullvad
         mullvad-vpn.enable = true;
     };
+
+    # Enable libvirtd needed by QEMU
+    virtualisation.libvirtd.enable = true;
 
     # Symlink files from store needed for applications or config files
     environment.etc = {
