@@ -21,7 +21,6 @@
         obs-studio # Recording/Livestream
         onlyoffice-bin # Microsoft Office alternative for Linux
         python # Python
-        qgnomeplatform # Use GTK theme for QT apps
         ranger # Terminal file manager
         rnnoise-plugin # A real-time noise suppression plugin
         signal-desktop # Encrypted messaging platform

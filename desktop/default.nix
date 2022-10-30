@@ -59,16 +59,24 @@
     # Show asterisks when typing sudo password
     security.sudo.extraConfig = "Defaults pwfeedback";
 
-    # Packages to install for all wms
-    environment.systemPackages = with pkgs; [
-        bibata-cursors # Material cursors
-        fragments # Bittorrent client following Gnome UI standards
-        gnome.adwaita-icon-theme # GTK theme
-        gnome.gnome-boxes # VM manager
-        gthumb # Image viewer
-        pitivi # Video editor
-        tela-icon-theme # Icon theme
-    ];
+    environment = {
+        sessionVariables = {
+            # Use gtk theme for qt apps
+            QT_QPA_PLATFORMTHEME= "gnome";
+        };
+
+        # Packages to install for all wms
+        systemPackages = with pkgs; [
+            bibata-cursors # Material cursors
+            fragments # Bittorrent client following Gnome UI standards
+            gnome.adwaita-icon-theme # GTK theme
+            gnome.gnome-boxes # VM manager
+            gthumb # Image viewer
+            pitivi # Video editor
+            qgnomeplatform # Use GTK theme for QT apps
+            tela-icon-theme # Icon theme
+        ];
+    };
 
     # Fonts to install
     fonts.fonts = with pkgs; [ meslo-lgs-nf cantarell-fonts jetbrains-mono font-awesome ];
