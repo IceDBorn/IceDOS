@@ -290,3 +290,4 @@ Exec=nautilus --new-window
                 Icon=de.shorsh.discord-screenaudio
                 Terminal=false
                 X-Flatpak=de.shorsh.discord-screenaudio
+                
