@@ -21,8 +21,6 @@
         obs-studio # Recording/Livestream
         onlyoffice-bin # Microsoft Office alternative for Linux
         python # Python
-        qemu # Virtual machines
-        qemu_kvm # Virtual machines
         qgnomeplatform # Use GTK theme for QT apps
         ranger # Terminal file manager
         rnnoise-plugin # A real-time noise suppression plugin
@@ -33,7 +31,6 @@
         unrar # Support opening rar files
         unstable.distrobox # Wrapper around docker to create and start containers
         usbimager # ISO Burner
-        virt-manager # Virtual machines GUI manager
         vscodium # All purpose IDE
         wget # Terminal downloader
         wine # Compatibility layer capable of running Windows applications
