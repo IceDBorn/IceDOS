@@ -82,6 +82,10 @@ in
             wl-clipboard # Clipboard daemon
             wlogout # Logout screen
         ];
+
+        etc = {
+            "wlogout-icons".source = "${pkgs.wlogout}/share/wlogout/icons";
+        };
     };
 
     services = {

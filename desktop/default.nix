@@ -59,16 +59,17 @@
     # Show asterisks when typing sudo password
     security.sudo.extraConfig = "Defaults pwfeedback";
 
-    # Gnome packages to install
+    # Packages to install for all wms
     environment.systemPackages = with pkgs; [
         bibata-cursors # Material cursors
         fragments # Bittorrent client following Gnome UI standards
         gnome.adwaita-icon-theme # GTK theme
+        gnome.gnome-boxes # VM manager
         gthumb # Image viewer
         pitivi # Video editor
         tela-icon-theme # Icon theme
     ];
 
-    # Font required by powerlevel10k
+    # Fonts to install
     fonts.fonts = with pkgs; [ meslo-lgs-nf cantarell-fonts jetbrains-mono font-awesome ];
 }
