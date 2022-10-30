@@ -62,6 +62,7 @@ in
 
         systemPackages = with pkgs; [
             (callPackage ../../../programs/self-built/waybar.nix {}) # Status bar
+            baobab # Disk usage analyser
             blueberry # Bluetooth manager
             clipman # Clipboard manager for wayland
             dbus-hypr-environment # Run specific commands

@@ -1,5 +1,3 @@
 TODO
     1: Build discord-screenaudio (does not build)
     2: Build WebCord
-    3: Test and switch to distrobox (replaces flatpak)
-    4: Install sunshine (wait for package to hit servers)
