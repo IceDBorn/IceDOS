@@ -7,6 +7,9 @@
         ./home.nix
     ];
 
+    # Install gnome
+    services.xserver.desktopManager.gnome.enable = true;
+
     # Gnome packages to install
     environment.systemPackages = with pkgs; [
         gnome-extension-manager # Gnome extensions manager and downloader
