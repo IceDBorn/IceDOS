@@ -39,7 +39,7 @@
         ./hardware-configuration.nix
         # Packages to install
         ./programs
-        # Gnome
+        # Windows managers and desktop environments
         ./desktop
         # CPU, GPU, Drives
         ./hardware

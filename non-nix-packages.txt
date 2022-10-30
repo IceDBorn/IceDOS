@@ -1,2 +1,0 @@
-firefox-pwa-bin
-ryujinx-ldn

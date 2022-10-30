@@ -18,6 +18,9 @@
         };
         # Enable XBOX Gamepad bluetooth driver
         xpadneo.enable = true;
+
+        # Enable bluetooth
+        bluetooth.enable = true;
     };
 
     # Set memory limits

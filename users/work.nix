@@ -9,10 +9,6 @@
         password = "1";
         isNormalUser = true;
         description = "${config.work.user.description}";
-        extraGroups = [
-            "networkmanager"
-            "wheel"
-            "docker" # DANGER: This makes the user root equivalent, currently needed for my setup.
-        ];
+        extraGroups = [ "networkmanager" "wheel" "kvm" "docker" ];
     };
 }

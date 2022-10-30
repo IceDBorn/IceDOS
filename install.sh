@@ -30,17 +30,12 @@ then
   # Build the configuration
   sudo nixos-rebuild switch || exit
 
-  # Add repos to this installation and to each user
+  # Install flatpak apps
   flatpak remote-add --if-not-exists flathub https://flathub.org/repo/flathub.flatpakrepo
   sudo -u main remote-add --if-not-exists flathub https://flathub.org/repo/flathub.flatpakrepo
   sudo -u work remote-add --if-not-exists flathub https://flathub.org/repo/flathub.flatpakrepo
 
-  # Install flatpak apps globally
-  flatpak install de.shorsh.discord-screenaudio com.discordapp.Discord com.github.tchx84.Flatseal com.mattjakeman.ExtensionManager com.usebottles.bottles
-
-  # Install flatpak apps only for work user
-  sudo -u work flatpak install --user com.slack.Slack
-
+  flatpak install de.shorsh.discord-screenaudio com.discordapp.Discord com.github.tchx84.Flatseal com.usebottles.bottles io.github.spacingbat3.webcord
   # Use the same cursor theme normal apps use
   flatpak --user override --filesystem=/etc/bibata-cursors/:ro
   # Patch the flatpak nvidia drivers for nvfbc support
@@ -69,6 +64,32 @@ then
     # Remove nvidia-patch folder
     rm -rf nvidia-patch
   fi
+
+  ### ARKENFOX JS ###
+#  USERS=$(cut -d: -f1,3 /etc/passwd | grep -E ':[0-9]{4}$' | cut -d: -f1) # Get all users
+#
+#  if [ -z "$USERS" ]
+#  then
+#      echo "No users available to install arkenfox js..."
+#  else
+#    # Download the updater
+#    git clone https://github.com/arkenfox/user.js.git
+#    while IFS= read -r user ; do
+#      # Install the updater and nvidia-patch for all users
+#      echo "Installing arkenfox js and nvidia-patch for $user..."
+#      sudo cp user.js/updater.sh /home/"$user"/.mozilla/firefox/privacy
+#      sudo chown "$user":users /home/"$user"/.mozilla/firefox/privacy/updater.sh
+#      yes | sudo bash /home/"$user"/.mozilla/firefox/privacy/updater.sh
+#      sudo chown "$user":users /home/"$user"/.mozilla/firefox/privacy/user.js
+#      if [[ -d /home/"$user"/.config/zsh/nvidia-patch ]]
+#      then
+#          cp -r nvidia-patch /home/"$user"/.config/zsh
+#      fi
+#    done <<< "$USERS"
+#    # Remove git folders
+#    rm -rf user.js
+#    rm -rf nvidia-patch
+#  fi
 
   # Reboot after the installation is completed
   bash scripts/reboot.sh

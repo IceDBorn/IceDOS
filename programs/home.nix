@@ -25,12 +25,11 @@ in
                         linux_display_server = "x11";
                         update_check_interval = "0";
                     };
+                    font.name = "Jetbrains Mono";
                 };
 
                 mangohud = {
                     enable = true;
-                    # MangoHud is started on any application that supports it
-                    enableSessionWide = true;
                     # Mangohud config
                     settings = {
                         background_alpha = 0;
