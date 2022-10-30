@@ -17,6 +17,6 @@
         unstable.gamescope # Wayland microcompositor
         unstable.papermc # Minecraft server
         unstable.prismlauncher # Minecraft launcher
-        #unstable.sunshine # Streaming platform
+        unstable.sunshine # Streaming platform
     ];
 }
