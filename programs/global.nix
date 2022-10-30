@@ -7,6 +7,7 @@
         aria # Terminal downloader with multiple connections support
         btop # System monitor
         direnv # Unclutter your .profile
+        docker # Containers
         firefox # Browser
         flatpak # Source for more applications
         gimp # Image editor
@@ -30,6 +31,7 @@
         syncthing # Local file sync
         tree # Display folder content at a tree format
         unrar # Support opening rar files
+        unstable.distrobox # Wrapper around docker to create and start containers
         usbimager # ISO Burner
         virt-manager # Virtual machines GUI manager
         vscodium # All purpose IDE
@@ -37,6 +39,7 @@
         wine # Compatibility layer capable of running Windows applications
         winetricks # Wine prefix settings manager
         woeusb # Windows ISO Burner
+        xorg.xhost # Use x.org server with distrobox
         zenstates # Ryzen CPU controller
     ];
 
@@ -94,6 +97,8 @@
 
     # Enable libvirtd needed by QEMU
     virtualisation.libvirtd.enable = true;
+    virtualisation.docker.enable = true;
+    virtualisation.docker.enableNvidia = true;
 
     # Symlink files from store needed for applications or config files
     environment.etc = {

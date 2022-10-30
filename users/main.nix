@@ -9,6 +9,6 @@
         password = "1";
         isNormalUser = true;
         description = "${config.main.user.description}";
-        extraGroups = [ "networkmanager" "wheel" "kvm" ];
+        extraGroups = [ "networkmanager" "wheel" "kvm" "docker" ];
     };
 }
