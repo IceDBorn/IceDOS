@@ -69,6 +69,7 @@ in
             dunst # Notification daemon
             gnome.file-roller # Archive file manager
             gnome.gnome-calculator # Calculator
+            gnome.gnome-disk-utility # Disks manager
             gnome.gnome-themes-extra # Adwaita GTK theme
             gnome.nautilus # File manager
             grim # Screenshot tool
