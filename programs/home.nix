@@ -70,8 +70,6 @@ in
                     shellAliases = {
                         update="(sudo nixos-rebuild switch --upgrade) ; (flatpak update) ; (yes | protonup)"; # Update everything
                     };
-
-                    initExtra = ''eval "$(direnv hook zsh)"'';
                 };
 
                 # Install gnome extensions using firefox
@@ -121,8 +119,6 @@ in
                     };
 
                     initExtra = ''
-                        eval "$(direnv hook zsh)"
-
                         # prevent terminator from remembering commands from other panes
                         unset HISTFILE
 

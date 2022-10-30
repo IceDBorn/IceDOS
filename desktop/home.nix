@@ -24,21 +24,21 @@
         };
 
         # Force vscodium to use wayland
-        xdg.desktopEntries.codium = {
-            type = "Application";
-            exec = "codium --enable-features=UseOzonePlatform,WaylandWindowDecorations --ozone-platform=wayland %F";
-            icon = "code";
-            terminal = false;
-            categories = [ "Utility" "TextEditor" "Development" "IDE" ];
-            name = "VSCodium";
-            genericName = "Text Editor";
-            comment = "Code Editing. Redefined.";
-            actions.new-empty-window = {
-                "exec" = "codium --new-window %F";
-                "icon" = "code";
-                "name" = "New Empty Window";
-            };
-        };
+#        xdg.desktopEntries.codium = {
+#            type = "Application";
+#            exec = "codium --enable-features=UseOzonePlatform,WaylandWindowDecorations --ozone-platform=wayland %F";
+#            icon = "code";
+#            terminal = false;
+#            categories = [ "Utility" "TextEditor" "Development" "IDE" ];
+#            name = "VSCodium";
+#            genericName = "Text Editor";
+#            comment = "Code Editing. Redefined.";
+#            actions.new-empty-window = {
+#                "exec" = "codium --new-window %F";
+#                "icon" = "code";
+#                "name" = "New Empty Window";
+#            };
+#        };
 
         # Force signal to use wayland
         xdg.desktopEntries.signal-desktop = {
@@ -66,16 +66,16 @@
             };
 
             # Add firefox privacy profile overrides
-            ".mozilla/firefox/privacy/user-overrides.js" = {
-                source = ../configs/firefox-user-overrides.js;
-                recursive = true;
-            };
+#            ".mozilla/firefox/privacy/user-overrides.js" = {
+#                source = ../configs/firefox-user-overrides.js;
+#                recursive = true;
+#            };
 
             # Set firefox to privacy profile
-            ".mozilla/firefox/profiles.ini" = {
-                source = ../configs/firefox-profiles.ini;
-                recursive = true;
-            };
+#            ".mozilla/firefox/profiles.ini" = {
+#                source = ../configs/firefox-profiles.ini;
+#                recursive = true;
+#            };
 
             # Add noise suppression microphone
             ".config/pipewire/pipewire.conf.d/99-input-denoising.conf" = {
@@ -114,21 +114,21 @@
         };
 
         # Force vscodium to use wayland
-        xdg.desktopEntries.codium = {
-            type = "Application";
-            exec = "codium --enable-features=UseOzonePlatform,WaylandWindowDecorations --ozone-platform=wayland %F";
-            icon = "code";
-            terminal = false;
-            categories = [ "Utility" "TextEditor" "Development" "IDE" ];
-            name = "VSCodium";
-            genericName = "Text Editor";
-            comment = "Code Editing. Redefined.";
-            actions.new-empty-window = {
-                "exec" = "codium --new-window %F";
-                "icon" = "code";
-                "name" = "New Empty Window";
-            };
-        };
+#        xdg.desktopEntries.codium = {
+#            type = "Application";
+#            exec = "codium --enable-features=UseOzonePlatform,WaylandWindowDecorations --ozone-platform=wayland %F";
+#            icon = "code";
+#            terminal = false;
+#            categories = [ "Utility" "TextEditor" "Development" "IDE" ];
+#            name = "VSCodium";
+#            genericName = "Text Editor";
+#            comment = "Code Editing. Redefined.";
+#            actions.new-empty-window = {
+#                "exec" = "codium --new-window %F";
+#                "icon" = "code";
+#                "name" = "New Empty Window";
+#            };
+#        };
 
         # Force signal to use wayland
         xdg.desktopEntries.signal-desktop = {
@@ -156,16 +156,16 @@
             };
 
             # Add firefox privacy profile overrides
-            ".mozilla/firefox/privacy/user-overrides.js" = {
-                source = ../configs/firefox-user-overrides.js;
-                recursive = true;
-            };
+#            ".mozilla/firefox/privacy/user-overrides.js" = {
+#                source = ../configs/firefox-user-overrides.js;
+#                recursive = true;
+#            };
 
             # Set firefox to privacy profile
-            ".mozilla/firefox/profiles.ini" = {
-                source = ../configs/firefox-profiles.ini;
-                recursive = true;
-            };
+#            ".mozilla/firefox/profiles.ini" = {
+#                source = ../configs/firefox-profiles.ini;
+#                recursive = true;
+#            };
 
             # Add noise suppression microphone
             ".config/pipewire/pipewire.conf.d/99-input-denoising.conf" = {
@@ -176,6 +176,12 @@
             # Add btop config
             ".config/btop/btop.conf" = {
                 source = ../configs/btop.conf;
+                recursive = true;
+            };
+
+            # Add terminator
+            ".config/terminator/config" = {
+                source = ../configs/terminator;
                 recursive = true;
             };
         };

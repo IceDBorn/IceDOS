@@ -4,7 +4,6 @@
 {
     users.users.${config.work.user.username} = {
         packages = with pkgs; [
-            docker
             docker-compose
             nodejs-14_x
             nodePackages.firebase-tools
@@ -12,6 +11,4 @@
             watchman
         ];
     };
-
-    virtualisation.docker.enable = true;
 }
