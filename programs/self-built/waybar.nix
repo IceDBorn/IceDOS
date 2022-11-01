@@ -41,7 +41,7 @@ stdenv.mkDerivation rec {
         owner = "Alexays";
         repo = "Waybar";
         rev = "c374c412d34101506c5901e38b1c3fe5d0791d53";
-        sha256 = "sha256-r6IBJgjLNslR5DCE0lcwBHPikop/PD1GEYtJOltvhws=";
+        sha256 = "r6IBJgjLNslR5DCE0lcwBHPikop/PD1GEYtJOltvhws=";
     };
 
     nativeBuildInputs = [
