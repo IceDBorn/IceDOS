@@ -12,7 +12,6 @@
 
     # Gnome packages to install
     environment.systemPackages = with pkgs; [
-        unstable.gnome-extension-manager # Gnome extensions manager and downloader
         gnome.dconf-editor # Edit gnome's dconf
         gnome.gnome-tweaks # Tweaks missing from pure Gnome
         gnomeExtensions.application-volume-mixer # Application volume mixer on the gnome control center
@@ -29,6 +28,7 @@
 #        gnomeExtensions.smart-auto-move # Remember window state througout reboots and restore it
         gnomeExtensions.sound-output-device-chooser # Sound devices choose on the gnome control center
         gnomeExtensions.tray-icons-reloaded # Tray icons for gnome
+        unstable.gnome-extension-manager # Gnome extensions manager and downloader
     ];
 
     # Gnome packages to exclude
