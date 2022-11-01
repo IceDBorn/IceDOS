@@ -1,33 +1,29 @@
-### PROTON GE DOWNLOADER ###
-{ config, pkgs, ... }:
+{ lib, buildPythonPackage, pythonOlder, fetchPypi, requests, configparser }:
 
-let
-    # Convert protonup-ng python package to a nix package
-    protonup-ng = pkgs.python3Packages.buildPythonPackage rec {
-        pname = "protonup-ng";
-        version = "0.2.1";
-        doCheck = false;
+buildPythonPackage rec {
+    pname = "protonup-ng";
+    version = "0.2.1";
+    disabled = pythonOlder "3.6";
 
-
-        propagatedBuildInputs = with pkgs.python3Packages; [
-            requests
-            wheel
-            setuptools
-            configparser
-        ];
-        src = (pkgs.python3Packages.fetchPypi {
-            inherit pname version;
-            sha256 = "rys9Noa3+w4phttfcI1OGEDfHMy8s80bm8kM8TzssQA=";
-        });
-
-        meta = with pkgs.lib; {
-            homepage = "https://github.com/cloudishBenne/protonup-ng";
-            description = "ProtonUp-ng: CLI program and API to automate the installation and update of GloriousEggroll's Proton-GE";
-            license = licenses.gpl3;
-            maintainers = with maintainers; [];
-        };
+    src = fetchPypi {
+        inherit pname version;
+        sha256 = "rys9Noa3+w4phttfcI1OGEDfHMy8s80bm8kM8TzssQA=";
     };
-in
-{
-    users.users.${config.main.user.username}.packages = [ protonup-ng ];
+
+    postPatch = ''
+        substituteInPlace setup.cfg \
+        --replace "argparse" ""
+    '';
+
+    propagatedBuildInputs = [ requests configparser ];
+
+    doCheck = false; # protonup does not have any tests
+    pythonImportsCheck = [ "protonup" ];
+
+    meta = with lib; {
+        homepage = "https://github.com/cloudishBenne/protonup-ng";
+        description = "CLI program and API to automate the installation and update of GloriousEggroll's Proton-GE";
+        license = licenses.gpl3Only;
+        maintainers = with maintainers; [ Madouura ];
+    };
 }

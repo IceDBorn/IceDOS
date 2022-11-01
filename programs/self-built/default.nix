@@ -3,7 +3,7 @@
 {
     imports = [
         # Proton GE Downloader
-        ./protonup-ng.nix
+        #./protonup-ng.nix
 
         # Task manager
         #./system-monitoring-center.nix

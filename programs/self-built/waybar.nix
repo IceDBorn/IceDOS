@@ -34,78 +34,78 @@
 }:
 
 stdenv.mkDerivation rec {
-  pname = "waybar";
-  version = "git";
+    pname = "waybar";
+    version = "git";
 
-  src = fetchFromGitHub {
-    owner = "Alexays";
-    repo = "Waybar";
-    rev = "c374c412d34101506c5901e38b1c3fe5d0791d53";
-    sha256 = "sha256-r6IBJgjLNslR5DCE0lcwBHPikop/PD1GEYtJOltvhws=";
-  };
+    src = fetchFromGitHub {
+        owner = "Alexays";
+        repo = "Waybar";
+        rev = "c374c412d34101506c5901e38b1c3fe5d0791d53";
+        sha256 = "sha256-r6IBJgjLNslR5DCE0lcwBHPikop/PD1GEYtJOltvhws=";
+    };
 
-  nativeBuildInputs = [
-    meson ninja pkg-config scdoc wrapGAppsHook pkgs.unstable.fmt_8 libinput jack2 pkgs.unstable.catch2_3 coreutils
-  ] ++ lib.optional withMediaPlayer gobject-introspection;
+    nativeBuildInputs = [
+        meson ninja pkg-config scdoc wrapGAppsHook pkgs.unstable.fmt_8 libinput jack2 pkgs.unstable.catch2_3 coreutils
+    ] ++ lib.optional withMediaPlayer gobject-introspection;
 
-  propagatedBuildInputs = lib.optionals withMediaPlayer [
-    glib
-    playerctl
-    python38Packages.pygobject3
-  ];
-  strictDeps = false;
+    propagatedBuildInputs = lib.optionals withMediaPlayer [
+        glib
+        playerctl
+        python38Packages.pygobject3
+    ];
+    strictDeps = false;
 
-  buildInputs = with lib;
-    [ wayland wlroots gtkmm3 libsigcxx jsoncpp spdlog gtk-layer-shell howard-hinnant-date libxkbcommon ]
-    ++ optional  traySupport   libdbusmenu-gtk3
-    ++ optional  pulseSupport  libpulseaudio
-    ++ optional  sndioSupport  sndio
-    ++ optional  nlSupport     libnl
-    ++ optional  udevSupport   udev
-    ++ optional  evdevSupport  libevdev
-    ++ optional  swaySupport   sway
-    ++ optional  mpdSupport    libmpdclient
-    ++ optional  upowerSupport upower;
+    buildInputs = with lib;
+        [ wayland wlroots gtkmm3 libsigcxx jsoncpp spdlog gtk-layer-shell howard-hinnant-date libxkbcommon ]
+        ++ optional  traySupport   libdbusmenu-gtk3
+        ++ optional  pulseSupport  libpulseaudio
+        ++ optional  sndioSupport  sndio
+        ++ optional  nlSupport     libnl
+        ++ optional  udevSupport   udev
+        ++ optional  evdevSupport  libevdev
+        ++ optional  swaySupport   sway
+        ++ optional  mpdSupport    libmpdclient
+        ++ optional  upowerSupport upower;
 
-  checkInputs = [ catch2 ];
-  doCheck = runTests;
+    checkInputs = [ catch2 ];
+    doCheck = runTests;
 
-  mesonFlags = (lib.mapAttrsToList
-    (option: enable: "-D${option}=${if enable then "enabled" else "disabled"}")
-    {
-      dbusmenu-gtk = traySupport;
-      pulseaudio = pulseSupport;
-      sndio = sndioSupport;
-      libnl = nlSupport;
-      libudev = udevSupport;
-      mpd = mpdSupport;
-      rfkill = rfkillSupport;
-      upower_glib = upowerSupport;
-      tests = runTests;
-    }
-  ) ++ [
-    "-Dsystemd=disabled"
-    "-Dgtk-layer-shell=enabled"
-    "-Dman-pages=enabled"
-    "-Dexperimental=true"
-  ];
+    mesonFlags = (lib.mapAttrsToList
+        (option: enable: "-D${option}=${if enable then "enabled" else "disabled"}")
+        {
+            dbusmenu-gtk = traySupport;
+            pulseaudio = pulseSupport;
+            sndio = sndioSupport;
+            libnl = nlSupport;
+            libudev = udevSupport;
+            mpd = mpdSupport;
+            rfkill = rfkillSupport;
+            upower_glib = upowerSupport;
+            tests = runTests;
+        }
+    ) ++ [
+        "-Dsystemd=disabled"
+        "-Dgtk-layer-shell=enabled"
+        "-Dman-pages=enabled"
+        "-Dexperimental=true"
+    ];
 
-  postPatch = ''
-    sed -i 's/zext_workspace_handle_v1_activate(workspace_handle_);/const std::string command = "hyprctl dispatch workspace " + name_;\n\tsystem(command.c_str());/g' src/modules/wlr/workspace_manager.cpp
-  '';
+    postPatch = ''
+        sed -i 's/zext_workspace_handle_v1_activate(workspace_handle_);/const std::string command = "hyprctl dispatch workspace " + name_;\n\tsystem(command.c_str());/g' src/modules/wlr/workspace_manager.cpp
+    '';
 
-  preFixup = lib.optionalString withMediaPlayer ''
-      cp $src/resources/custom_modules/mediaplayer.py $out/bin/waybar-mediaplayer.py
+    preFixup = lib.optionalString withMediaPlayer ''
+        cp $src/resources/custom_modules/mediaplayer.py $out/bin/waybar-mediaplayer.py
 
-      wrapProgram $out/bin/waybar-mediaplayer.py \
+        wrapProgram $out/bin/waybar-mediaplayer.py \
         --prefix PYTHONPATH : "$PYTHONPATH:$out/${python3.sitePackages}"
     '';
 
-  meta = with lib; {
-    description = "Highly customizable Wayland bar for Sway and Wlroots based compositors";
-    license = licenses.mit;
-    maintainers = with maintainers; [ FlorianFranzen minijackson synthetica lovesegfault ];
-    platforms = platforms.unix;
-    homepage = "https://github.com/alexays/waybar";
-  };
+    meta = with lib; {
+        description = "Highly customizable Wayland bar for Sway and Wlroots based compositors";
+        license = licenses.mit;
+        maintainers = with maintainers; [ FlorianFranzen minijackson synthetica lovesegfault ];
+        platforms = platforms.unix;
+        homepage = "https://github.com/alexays/waybar";
+    };
 }
