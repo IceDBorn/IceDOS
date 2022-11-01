@@ -15,8 +15,6 @@ in
         ./work.nix
         # Home manager specific stuff
         ./home.nix
-        # Build packages
-        ./self-built
     ];
 
     # Nix Package Manager settings
