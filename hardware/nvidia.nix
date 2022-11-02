@@ -16,6 +16,9 @@ in
         };
     };
 
+    # Enable nvidia gpu acceleration for docker
+    virtualisation.docker.enableNvidia = true;
+
     # Nvidia power limit
     systemd.services.nv-power-limit = {
         enable = true;
