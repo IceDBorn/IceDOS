@@ -88,6 +88,12 @@
                 source = ../configs/btop.conf;
                 recursive = true;
             };
+
+            # Force bash to use zsh
+            ".bashrc" = {
+                text = ''zsh'';
+                recursive = true;
+            };
         };
     };
 
@@ -176,6 +182,12 @@
             # Add btop config
             ".config/btop/btop.conf" = {
                 source = ../configs/btop.conf;
+                recursive = true;
+            };
+
+            # Force bash to use zsh
+            ".bashrc" = {
+                text = ''zsh'';
                 recursive = true;
             };
         };
