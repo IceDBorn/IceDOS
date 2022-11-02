@@ -17,11 +17,22 @@
             driSupport32Bit = true;
         };
         # Enable XBOX Gamepad bluetooth driver
-        xpadneo.enable = true;
+        xpadneo.enable = false;
 
         # Enable bluetooth
         bluetooth.enable = true;
     };
+
+    # This would allow steam link to run as a top priority application
+    # It can be enabled after nvidia fixes their driver
+#    security.wrappers = {
+#        gamescope = {
+#          owner = "root";
+#          group = "root";
+#          capabilities = "cap_sys_nice=eip";
+#          source = "${pkgs.unstable.gamescope}/bin/gamescope";
+#        };
+#      };
 
     # Set memory limits
     security.pam.loginLimits =
