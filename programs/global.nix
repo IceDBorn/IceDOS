@@ -65,7 +65,7 @@
                 list-packages="nix-store --query --requisites /run/current-system | cut -d- -f2- | sort | uniq"; # List installed nix packages
                 restart-pipewire="systemctl --user restart pipewire"; # Restart pipewire
                 ssh="TERM=xterm-256color ssh"; # SSH with colors
-                steam-link="gamescope -W 3440 -H 1440 -b -- steam"; # Launch steam inside of a gamescope instance
+                steam-link="gamescope -W 3840 -H 2160 -b -U -- steam"; # Launch steam inside of a gamescope instance
                 update="(sudo nixos-rebuild switch --upgrade) ; (flatpak update) ; (yes | protonup)"; # Update everything
                 vpn-off="mullvad disconnect"; # Disconnect from VPN
                 vpn-on="mullvad connect"; # Connect to VPN
