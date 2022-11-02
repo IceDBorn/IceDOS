@@ -8,7 +8,6 @@
         aria # Terminal downloader with multiple connections support
         btop # System monitor
         direnv # Unclutter your .profile
-        docker # Containers
         firefox # Browser
         flatpak # Source for more applications
         gimp # Image editor
@@ -29,7 +28,6 @@
         syncthing # Local file sync
         tree # Display folder content at a tree format
         unrar # Support opening rar files
-        unstable.distrobox # Wrapper around docker to create and start containers
         usbimager # ISO Burner
         vscodium # All purpose IDE
         wget # Terminal downloader
@@ -91,11 +89,6 @@
         # Enable mullvad
         mullvad-vpn.enable = true;
     };
-
-    # Enable libvirtd needed by QEMU
-    virtualisation.libvirtd.enable = true;
-    virtualisation.docker.enable = true;
-    virtualisation.docker.enableNvidia = true;
 
     # Symlink files from store needed for applications or config files
     environment.etc = {

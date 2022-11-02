@@ -8,6 +8,8 @@
         ./ryzen.nix
         # Nvidia drivers, configuration and power limit
         ./nvidia.nix
+        # Virtualisation options
+        ./virtualisation.nix
     ];
 
     hardware = {
