@@ -2,6 +2,7 @@
 let
     unstable-channel = builtins.fetchTarball "https://github.com/NixOS/nixpkgs/archive/nixos-unstable.tar.gz";
     home-manager = builtins.fetchTarball "https://github.com/nix-community/home-manager/archive/release-22.05.tar.gz";
+    nix-alien-pkgs = import (fetchTarball "https://github.com/thiagokokada/nix-alien/tarball/master") { };
 in
 {
     imports = [
@@ -47,4 +48,11 @@ in
             };
         };
     };
+
+    # Add nix-alien
+    environment.systemPackages = with nix-alien-pkgs; [
+        nix-alien
+        nix-index-update
+        pkgs.nix-index
+    ];
 }

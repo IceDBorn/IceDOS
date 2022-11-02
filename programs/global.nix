@@ -5,6 +5,7 @@
     environment.systemPackages = with pkgs; [
         (callPackage ./self-built/system-monitoring-center.nix { buildPythonApplication = pkgs.python3Packages.buildPythonApplication; fetchPypi = pkgs.python3Packages.fetchPypi; pygobject3 = pkgs.python3Packages.pygobject3; }) # Task manager
         android-tools # Tools for debugging android devices
+        appimage-run # Appimage runner
         aria # Terminal downloader with multiple connections support
         btop # System monitor
 #        direnv # Unclutter your .profile
