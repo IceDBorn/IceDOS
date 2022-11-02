@@ -75,6 +75,7 @@ in
             libsForQt5.kdeconnect-kde # Connect phone to PC
             networkmanagerapplet # Network manager tray icon
             pavucontrol # Sound manager
+            polkit_gnome # Polkit manager
             rofi-wayland # App launcher
             slurp # Monitor selector
             wdisplays # Displays manager
@@ -84,6 +85,7 @@ in
 
         etc = {
             "wlogout-icons".source = "${pkgs.wlogout}/share/wlogout/icons";
+            "polkit-gnome".source = "${pkgs.polkit_gnome}/libexec/polkit-gnome-authentication-agent-1";
         };
     };
 
@@ -92,6 +94,9 @@ in
         # Needed for nautilus
         gvfs.enable = true;
     };
+
+    #Enable polkit
+    security.polkit.enable = true;
 
     xdg.portal = {
         enable = true;
