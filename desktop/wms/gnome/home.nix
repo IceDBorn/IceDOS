@@ -36,9 +36,9 @@
             };
 
             # Disable screen lock
-#            "org/gnome/desktop/screensaver" = {
-#                lock-enabled = false;
-#            };
+            "org/gnome/desktop/screensaver" = {
+                lock-enabled = false;
+            };
 
             # Disable system sounds
             "org/gnome/desktop/sound" = {
@@ -203,10 +203,16 @@
                 remember-recent-files = false;
             };
 
-            # Disable screen lock
-#            "org/gnome/desktop/screensaver" = {
-#                lock-enabled = false;
-#            };
+            # Turn off screen
+            "org/gnome/desktop/session" = {
+                idle-delay = 240;
+            };
+
+            # Enable screen lock
+            "org/gnome/desktop/screensaver" = {
+                lock-enabled = true;
+                lock-delay = 30;
+            };
 
             # Disable system sounds
             "org/gnome/desktop/sound" = {
