@@ -25,10 +25,33 @@
             recursive = true;
         };
 
+        # Add 2 terminals to startup
+#        ".config/autostart/startup-terminals.desktop" = {
+#            text = ''
+#                [Desktop Entry]
+#                Categories=System;TerminalEmulator
+#                Comment=A fast, cross-platform, OpenGL terminal emulator
+#                Exec=bash -c 'kitty & kitty'
+#                GenericName=Terminal
+#                Icon=Kitty
+#                Name=Startup Terminals
+#                Terminal=false
+#                Type=Application
+#                Version=1.4
+#            '';
+#            recursive = true;
+#        };
+
         # Add steam to startup
         ".config/autostart/steam.desktop" = {
             source = ./steam.desktop;
             recursive = true;
         };
+
+        # Add system monitoring center to startup
+#        ".config/autostart/com.github.hakand34.system-monitoring-center.desktop" = {
+#            source = ./system-monitoring-center.desktop;
+#            recursive = true;
+#        };
     };
 }
