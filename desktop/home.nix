@@ -52,6 +52,14 @@
             comment = "Private messaging from your desktop";
         };
 
+        # Force webcord to use wayland
+        xdg.desktopEntries.webcord = {
+            type = "Application";
+            exec = "flatpak run io.github.spacingbat3.webcord --enable-features=UseOzonePlatform,WaylandWindowDecorations --ozone-platform=wayland";
+            icon = "webcord";
+            name = "WebcordWayland";
+        };
+
         home.file = {
             # Add zsh theme to zsh directory
             ".config/zsh/zsh-theme.zsh" = {
@@ -140,6 +148,14 @@
             name = "Signal";
             genericName = "Text Editor";
             comment = "Private messaging from your desktop";
+        };
+
+        # Force webcord to use wayland
+        xdg.desktopEntries.webcord = {
+            type = "Application";
+            exec = "flatpak run io.github.spacingbat3.webcord --enable-features=UseOzonePlatform,WaylandWindowDecorations --ozone-platform=wayland";
+            icon = "webcord";
+            name = "WebcordWayland";
         };
 
         home.file = {
