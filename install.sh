@@ -35,7 +35,7 @@ then
   sudo -u main remote-add --if-not-exists flathub https://flathub.org/repo/flathub.flatpakrepo
   sudo -u work remote-add --if-not-exists flathub https://flathub.org/repo/flathub.flatpakrepo
 
-  flatpak install de.shorsh.discord-screenaudio com.discordapp.Discord com.github.tchx84.Flatseal com.usebottles.bottles io.github.spacingbat3.webcord
+  flatpak install com.discordapp.Discord com.github.tchx84.Flatseal com.usebottles.bottles io.github.spacingbat3.webcord
   # Use the same cursor theme normal apps use
   flatpak --user override --filesystem=/etc/bibata-cursors/:ro
   # Patch the flatpak nvidia drivers for nvfbc support
