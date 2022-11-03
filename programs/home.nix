@@ -22,7 +22,7 @@ in
                         cursor_shape = "underline";
                         cursor_underline_thickness = "1.0";
                         enable_audio_bell = "no";
-                        linux_display_server = "x11";
+                        hide_window_decorations = "yes";
                         update_check_interval = "0";
                     };
                     font.name = "Jetbrains Mono";
@@ -94,9 +94,10 @@ in
                         cursor_shape = "underline";
                         cursor_underline_thickness = "1.0";
                         enable_audio_bell = "no";
-                        linux_display_server = "x11";
+                        hide_window_decorations = "yes";
                         update_check_interval = "0";
                     };
+                    font.name = "Jetbrains Mono";
                 };
 
                 zsh = {
