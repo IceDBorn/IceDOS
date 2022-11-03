@@ -15,7 +15,8 @@
         gnome.dconf-editor # Edit gnome's dconf
         gnome.gnome-tweaks # Tweaks missing from pure Gnome
         gnomeExtensions.application-volume-mixer # Application volume mixer on the gnome control center
-        gnomeExtensions.arcmenu
+        gnomeExtensions.appindicator # Tray icons for gnome
+        gnomeExtensions.arcmenu # Start menu
         gnomeExtensions.bluetooth-quick-connect # Show bluetooth devices on the gnome control center
 #        gnomeExtensions.caffeine # Disable auto suspend and screen blank
         gnomeExtensions.clipboard-indicator # Clipboard indicator for gnome
@@ -27,7 +28,6 @@
 #        gnomeExtensions.pop-shell # Tiling WM extension
 #        gnomeExtensions.smart-auto-move # Remember window state througout reboots and restore it
         gnomeExtensions.sound-output-device-chooser # Sound devices choose on the gnome control center
-        gnomeExtensions.tray-icons-reloaded # Tray icons for gnome
         unstable.gnome-extension-manager # Gnome extensions manager and downloader
     ];
 

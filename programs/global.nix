@@ -9,6 +9,7 @@
         aria # Terminal downloader with multiple connections support
         btop # System monitor
 #        direnv # Unclutter your .profile
+        discord
         firefox # Browser
         flatpak # Source for more applications
         gimp # Image editor
