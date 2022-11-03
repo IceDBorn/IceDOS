@@ -30,7 +30,7 @@
         unrar # Support opening rar files
         usbimager # ISO Burner
         vscodium # All purpose IDE
-        jetbrains.webstorm # Javascript IDE
+        unstable.jetbrains.webstorm # Javascript IDE
         wget # Terminal downloader
         wine # Compatibility layer capable of running Windows applications
         winetricks # Wine prefix settings manager
