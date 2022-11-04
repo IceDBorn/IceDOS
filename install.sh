@@ -32,19 +32,17 @@ then
 
   # Install flatpak apps
   flatpak remote-add --if-not-exists flathub https://flathub.org/repo/flathub.flatpakrepo
-  sudo -u main remote-add --if-not-exists flathub https://flathub.org/repo/flathub.flatpakrepo
-  sudo -u work remote-add --if-not-exists flathub https://flathub.org/repo/flathub.flatpakrepo
-
   flatpak install com.github.tchx84.Flatseal io.github.spacingbat3.webcord
   # Use the same cursor theme normal apps use
   flatpak --user override --filesystem=/etc/bibata-cursors/:ro
+
+  # Download proton ge
+  protonup -d "$HOME/.steam/root/compatibilitytools.d/" && protonup
+
   # Patch the flatpak nvidia drivers for nvfbc support
   git clone https://github.com/keylase/nvidia-patch.git
   sudo bash nvidia-patch/patch-fbc.sh -f
   cp -r nvidia-patch
-
-  # Download proton ge
-  protonup -d "$HOME/.steam/root/compatibilitytools.d/" && protonup
 
   ### NVIDIA-PATCH ###
   USERS=$(cut -d: -f1,3 /etc/passwd | grep -E ':[0-9]{4}$' | cut -d: -f1) # Get all users
