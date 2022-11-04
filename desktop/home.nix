@@ -63,7 +63,7 @@
         # Force webcord to use wayland
         xdg.desktopEntries.webcord = {
             type = "Application";
-            exec = "flatpak run io.github.spacingbat3.webcord --enable-features=UseOzonePlatform,WaylandWindowDecorations --ozone-platform=wayland";
+            exec = "io.github.spacingbat3.webcord --enable-features=UseOzonePlatform --ozone-platform=wayland";
             icon = "webcord";
             name = "Webcord";
         };
@@ -169,7 +169,7 @@
         # Force webcord to use wayland
         xdg.desktopEntries.webcord = {
             type = "Application";
-            exec = "flatpak run io.github.spacingbat3.webcord --enable-features=UseOzonePlatform,WaylandWindowDecorations --ozone-platform=wayland";
+            exec = "io.github.spacingbat3.webcord --enable-features=UseOzonePlatform --ozone-platform=wayland";
             icon = "webcord";
             name = "WebcordWayland";
         };
