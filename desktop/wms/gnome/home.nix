@@ -111,6 +111,25 @@
 #                switch-to-workspace-10 = [ "<Super>0" ];
 #            };
 
+            "org/gnome/settings-daemon/plugins/media-keys" = {
+                custom-keybindings = [
+                    "/org/gnome/settings-daemon/plugins/media-keys/custom-keybindings/custom0/"
+                    "/org/gnome/settings-daemon/plugins/media-keys/custom-keybindings/custom1/"
+                ];
+            };
+
+            "org/gnome/settings-daemon/plugins/media-keys/custom-keybindings/custom0" = {
+                binding = "<Super>x";
+                command = "kitty";
+                name =  "Kitty";
+            };
+
+            "org/gnome/settings-daemon/plugins/media-keys/custom-keybindings/custom1" = {
+                binding = "<Super>e";
+                command = "nautilus .";
+                name =  "Nautilus";
+            };
+
             # Limit app switcher to current workspace
             "org/gnome/shell/app-switcher" = {
                 current-workspace-only = true;
