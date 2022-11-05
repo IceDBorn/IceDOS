@@ -47,6 +47,12 @@
                 source = ../../../configs/wlogout/style.css;
                 recursive = true;
             };
+
+            # Avoid file not found errors for bash
+            ".bashrc" = {
+                text = '''';
+                recursive = true;
+            };
         };
     };
 
@@ -94,6 +100,12 @@
 
             ".config/wlogout/style.css" = {
                 source = ../../../configs/wlogout/style.css;
+                recursive = true;
+            };
+
+            # Avoid file not found errors for bash
+            ".bashrc" = {
+                text = '''';
                 recursive = true;
             };
         };
