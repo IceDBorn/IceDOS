@@ -10,6 +10,8 @@
 	# Install gnome
 	services.xserver.desktopManager.gnome.enable = true;
 
+	programs.dconf.enable = true;
+
 	# Gnome packages to install
 	environment.systemPackages = with pkgs; [
 		gnome.dconf-editor # Edit gnome's dconf
