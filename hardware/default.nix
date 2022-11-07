@@ -2,12 +2,14 @@
 
 {
 	imports = [
+    # Amd drivers
+    ./amd.nix
 		# Disks to mount on startup
 		./mounts.nix
 		# Ryzen cpu voltage and clock control
 		./ryzen.nix
 		# Nvidia drivers, configuration and power limit
-		./nvidia.nix
+		#./nvidia.nix
 		# Virtualisation options
 		./virtualisation.nix
 	];

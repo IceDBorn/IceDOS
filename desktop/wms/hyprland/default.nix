@@ -30,16 +30,7 @@ in
 		nm-applet.enable = true;
 		hyprland = {
 			enable = true;
-			package = hyprland.packages.${pkgs.system}.default.override {
-				wlroots = hyprland.packages.${pkgs.system}.wlroots-hyprland.overrideAttrs(old: {
-					patches = (old.patches or []) ++ [
-						(pkgs.fetchpatch {
-							url = "https://aur.archlinux.org/cgit/aur.git/plain/0001-nvidia-format-workaround.patch?h=hyprland-nvidia-screenshare-git";
-							sha256 = "A9f1p5EW++mGCaNq8w7ZJfeWmvTfUm4iO+1KDcnqYX8=";
-						})
-					];
-				});
-			};
+			package = hyprland.packages.${pkgs.system}.default;
 		};
 	};
 
@@ -52,13 +43,6 @@ in
 	];
 
 	environment = {
-		sessionVariables = {
-			LIBVA_DRIVER_NAME = "nvidia";
-			GBM_BACKEND = "nvidia-drm";
-			__GLX_VENDOR_LIBRARY_NAME = "nvidia";
-			WLR_NO_HARDWARE_CURSORS = "1";
-		};
-
 		systemPackages = with pkgs; [
 			(callPackage ../../../programs/self-built/waybar.nix {}) # Status bar
 			baobab # Disk usage analyser
