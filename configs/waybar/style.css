@@ -1,18 +1,18 @@
 * {
-    border: none;
-    font-family: Font Awesome, Roboto, Arial, sans-serif;
-    font-size: 14px;
-    color: #ffffff;
-    border-radius: 10px;
+	border: none;
+	font-family: Font Awesome, Roboto, Arial, sans-serif;
+	font-size: 14px;
+	color: #ffffff;
+	border-radius: 10px;
 }
 
 window#waybar {
-    background: rgba(0, 0, 0, 1);
-    border-radius: 0px;
+	background: rgba(0, 0, 0, 1);
+	border-radius: 0px;
 }
 
 #workspaces button {
-    padding: 0px 5px;
+	padding: 0px 5px;
 }
 
 #clock,
@@ -31,15 +31,15 @@ window#waybar {
 #window,
 #bluetooth,
 #language {
-    padding: 0 10px;
-    font-weight: bold;
+	padding: 0 10px;
+	font-weight: bold;
 }
 
 #custom-separator {
-    padding: 0;
+	padding: 0;
 }
 
 #custom-power {
-    margin: 5px 5px;
-    padding: 0px 10px 0px 10px;
+	margin: 5px 5px;
+	padding: 0px 10px 0px 10px;
 }
