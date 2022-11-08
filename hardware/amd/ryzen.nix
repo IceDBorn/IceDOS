@@ -7,7 +7,7 @@ in
 {
 	boot.kernelModules = [ "msr" ];
 
-  hardware.cpu.amd.updateMicrocode = true;
+	hardware.cpu.amd.updateMicrocode = true;
 
 	# Ryzen cpu control
 	systemd.services.zenstates = {

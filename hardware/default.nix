@@ -2,8 +2,8 @@
 
 {
 	imports = [
-    # Amd drivers
-    ./amd.nix
+    # AMD CPU/GPU
+    ./amd
 		# Disks to mount on startup
 		./mounts.nix
 		# Ryzen cpu voltage and clock control

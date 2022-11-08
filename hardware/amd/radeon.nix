@@ -5,21 +5,11 @@
 
 	services.xserver.videoDrivers = [ "amdgpu" ];
 
-	# Let the program choose between radeon and amdvlk drivers
-	hardware.opengl = with pkgs; {
-		extraPackages = [ amdvlk ];
-		extraPackages32 = [ driversi686Linux.amdvlk ];
-	};
-
-	programs = {
-		xwayland.enable = true;
-
-		corectrl = {
+	programs.corectrl = {
+		enable = true;
+		gpuOverclock = {
 			enable = true;
-			gpuOverclock = {
-				enable = true;
-				ppfeaturemask = "0xffffffff";
-			};
+			ppfeaturemask = "0xffffffff";
 		};
 	};
 
@@ -35,5 +25,5 @@
 		});
 	'';
 
-	environment.systemPackages = [ pkgs.corectrl ];
+	environment.systemPackages = [ pkgs.unstable.corectrl ];
 }
