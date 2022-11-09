@@ -70,6 +70,7 @@ in
 					shellAliases = {
 						update="(sudo nixos-rebuild switch --upgrade) ; (flatpak update) ; (yes | protonup)"; # Update everything
 					};
+				};
 
 				# Install gnome extensions using firefox
 				firefox.enableGnomeExtensions = true;

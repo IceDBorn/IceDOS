@@ -186,8 +186,8 @@
 #			"org/gnome/shell/extensions/trayIconsReloaded" = {
 #				icons-limit = 1;
 #			};
-#		};
-#	};
+		};
+	};
 
 	home-manager.users.${config.work.user.username} = {
 
