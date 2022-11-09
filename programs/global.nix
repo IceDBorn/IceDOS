@@ -66,6 +66,7 @@
                 restart-pipewire="systemctl --user restart pipewire"; # Restart pipewire
                 ssh="TERM=xterm-256color ssh"; # SSH with colors
                 steam-link="gamescope -W 3840 -H 2160 -b -U -- steam"; # Launch steam inside of a gamescope instance
+                sunshine="cd /home/${config.main.user.username}/.config/zsh/nvidia-patch && git pull && sudo bash patch-fbc.sh -f && export PULSE_SERVER=/run/user/1000/pulse/native && flatpak run dev.lizardbyte.sunshine"; # Flatpak sunshine with sound
                 update="(sudo nixos-rebuild switch --upgrade) ; (flatpak update) ; (yes | protonup)"; # Update everything
                 vpn-off="mullvad disconnect"; # Disconnect from VPN
                 vpn-on="mullvad connect"; # Connect to VPN
