@@ -42,30 +42,26 @@
 
 		# Force signal to use wayland
 		xdg.desktopEntries.signal-desktop = {
-			type = "Application";
-			exec = "signal-desktop --use-tray-icon --enable-features=UseOzonePlatform,WaylandWindowDecorations --ozone-platform=wayland %U";
-			icon = "signal-desktop";
-			terminal = false;
-			categories = [ "Network" "InstantMessaging" "Chat" ];
 			name = "Signal";
-			genericName = "Text Editor";
-			comment = "Private messaging from your desktop";
+			exec = "signal-desktop --use-tray-icon --enable-features=UseOzonePlatform,WaylandWindowDecorations --ozone-platform=wayland %U";
+			icon = "signal";
+			settings = {
+				StartupWMClass = "signal";
+			};
 		};
 
 		# Force discord to use wayland and disable gpu to allow it to work
 		xdg.desktopEntries.discord = {
-			type = "Application";
-			exec = "discord --disable-gpu --enable-features=UseOzonePlatform --ozone-platform=wayland";
-			icon = "discord";
 			name = "Discord";
+			exec = "discord --disable-gpu --enable-features=UseOzonePlatform --ozone-platform=wayland %U";
+			icon = "discord";
 		};
 
 		# Force webcord to use wayland
 		xdg.desktopEntries.webcord = {
-			type = "Application";
+			name = "Webcord";
 			exec = "io.github.spacingbat3.webcord --enable-features=UseOzonePlatform --ozone-platform=wayland";
 			icon = "webcord";
-			name = "Webcord";
 		};
 
 		home.file = {
@@ -148,38 +144,36 @@
 
 		# Force signal to use wayland
 		xdg.desktopEntries.signal-desktop = {
-			type = "Application";
-			exec = "signal-desktop --use-tray-icon --enable-features=UseOzonePlatform,WaylandWindowDecorations --ozone-platform=wayland %U";
-			icon = "signal-desktop";
-			terminal = false;
-			categories = [ "Network" "InstantMessaging" "Chat" ];
 			name = "Signal";
-			genericName = "Text Editor";
-			comment = "Private messaging from your desktop";
+			exec = "signal-desktop --use-tray-icon --enable-features=UseOzonePlatform,WaylandWindowDecorations --ozone-platform=wayland %U";
+			icon = "signal";
+			settings = {
+				StartupWMClass = "signal";
+			};
 		};
 
 		# Force discord to use wayland and disable gpu to allow it to work
 		xdg.desktopEntries.discord = {
-			type = "Application";
+			name = "Discord";
 			exec = "discord --disable-gpu --enable-features=UseOzonePlatform --ozone-platform=wayland";
 			icon = "discord";
-			name = "Discord";
 		};
 
 		# Force webcord to use wayland
 		xdg.desktopEntries.webcord = {
-			type = "Application";
+			name = "Webcord";
 			exec = "io.github.spacingbat3.webcord --enable-features=UseOzonePlatform --ozone-platform=wayland";
 			icon = "webcord";
-			name = "Webcord";
 		};
 
 		# Force discord to use wayland and disable gpu to allow it to work
 		xdg.desktopEntries.slack = {
-			type = "Application";
+			name = "Slack";
 			exec = "slack --enable-features=UseOzonePlatform,WaylandWindowDecorations --ozone-platform=wayland";
 			icon = "slack";
-			name = "Slack";
+			settings = {
+				StartupWMClass = "slack";
+			};
 		};
 
 		home.file = {
