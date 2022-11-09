@@ -8,12 +8,12 @@ binaries=$(protonup -l | grep -v "$(protonup --releases | tail -n 1)" | grep -o 
 
 if [ -z "$binaries" ]
 then
-    echo "No proton GE versions to remove..."
+	echo "No proton GE versions to remove..."
 else
-        while IFS= read -r line ; do
-          # Remove "Proton-" from older versions of proton ge, because the uninstaller fails to match the folders
-          line="${line//Proton-/}"
-          # Remove all proton ge versions, except the latest one
-          yes | protonup -r "$line" && printf "\n"
-        done <<< "$binaries"
+	while IFS= read -r line ; do
+		# Remove "Proton-" from older versions of proton ge, because the uninstaller fails to match the folders
+		line="${line//Proton-/}"
+		# Remove all proton ge versions, except the latest one
+		yes | protonup -r "$line" && printf "\n"
+	done <<< "$binaries"
 fi
