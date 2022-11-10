@@ -27,6 +27,9 @@ then
 	sudo cp -r users /etc/nixos
 	sudo cp configuration.nix /etc/nixos
 
+	# Remove potentially generated firefox profiles before installing the nix configuration
+	sudo rm -rf /home/$username/.mozilla/firefox/profiles.ini
+
 	# Build the configuration
 	sudo nixos-rebuild switch || exit
 
