@@ -16,6 +16,7 @@
 		helvum # Pipewire patchbay
 		killall # Tool to kill all programs matching process name
 		kitty # Terminal
+		mpv # Video player
 		mullvad-vpn # VPN Client
 		ntfs3g # Support NTFS drives
 		nvtop # GPU monitor
