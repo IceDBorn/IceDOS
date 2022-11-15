@@ -100,6 +100,12 @@
 				source = ../configs/btop.conf;
 				recursive = true;
 			};
+
+			# Add kitty session config
+			".config/kitty/kitty.session" = {
+				source = ../configs/kitty.session;
+				recursive = true;
+			};
 		};
 	};
 
@@ -210,6 +216,12 @@
 			# Add btop config
 			".config/btop/btop.conf" = {
 				source = ../configs/btop.conf;
+				recursive = true;
+			};
+
+			# Add kitty session config
+			".config/kitty/kitty.session" = {
+				source = ../configs/kitty.session;
 				recursive = true;
 			};
 

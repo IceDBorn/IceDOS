@@ -2,12 +2,10 @@
 
 {
 	imports = [
-		# AMD CPU/GPU
-#		./amd
+    # AMD CPU/GPU
+    ./amd
 		# Disks to mount on startup
 		./mounts.nix
-		# Ryzen cpu voltage and clock control
-		./ryzen.nix
 		# Nvidia drivers, configuration and power limit
 		./nvidia.nix
 		# Virtualisation options
@@ -21,7 +19,7 @@
 			driSupport32Bit = true;
 		};
 		# Enable XBOX Gamepad bluetooth driver
-		xpadneo.enable = false;
+		#xpadneo.enable = true;
 
 		# Enable bluetooth
 		bluetooth.enable = true;
@@ -58,6 +56,6 @@
 
 	boot.kernelModules = [
 		"v4l2loopback" # Virtual camera for OBS
-		"xpadneo" # XBOX Gamepad bluetooth driver
+		#"xpadneo" # XBOX Gamepad bluetooth driver
 	];
 }
