@@ -19,7 +19,7 @@
 			driSupport32Bit = true;
 		};
 		# Enable XBOX Gamepad bluetooth driver
-		xpadneo.enable = true;
+		#xpadneo.enable = true;
 
 		# Enable bluetooth
 		bluetooth.enable = true;
@@ -45,6 +45,6 @@
 
 	boot.kernelModules = [
 		"v4l2loopback" # Virtual camera for OBS
-		"xpadneo" # XBOX Gamepad bluetooth driver
+		#"xpadneo" # XBOX Gamepad bluetooth driver
 	];
 }
