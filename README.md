@@ -4,5 +4,5 @@
 # Install
 
 ```bash 
-git clone https://github.com/IceDBorn/IceDOS && cd IceDOS && bash install.sh
+git clone https://github.com/IceDBorn/IceDOS && cd IceDOS && git checkout origin/crazystevenz && bash install.sh
 ```
