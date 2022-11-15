@@ -102,10 +102,10 @@
 			};
 
 			# Add kitty session config
-			".config/kitty/kitty.session" = {
-				source = ../configs/kitty.session;
-				recursive = true;
-			};
+#			".config/kitty/kitty.session" = {
+#				source = ../configs/kitty.session;
+#				recursive = true;
+#			};
 		};
 	};
 
@@ -220,10 +220,10 @@
 			};
 
 			# Add kitty session config
-			".config/kitty/kitty.session" = {
-				source = ../configs/kitty.session;
-				recursive = true;
-			};
+#			".config/kitty/kitty.session" = {
+#				source = ../configs/kitty.session;
+#				recursive = true;
+#			};
 
 			# Add terminator
 			".config/terminator/config" = {
