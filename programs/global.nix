@@ -20,7 +20,6 @@
 		mpv # Video player
 		mullvad-vpn # VPN Client
 		ntfs3g # Support NTFS drives
-		nvtop # GPU monitor
 		obs-studio # Recording/Livestream
 		onlyoffice-bin # Microsoft Office alternative for Linux
 		python # Python
