@@ -3,7 +3,6 @@
 
 {
 	users.users.${config.main.user.username}.packages = with pkgs; [
-		(callPackage ./self-built/sunshine.nix {})
 		duckstation # PS1 Emulator
 		#godot_4 # Game engine
 		heroic # Epic Games Launcher for Linux
@@ -19,6 +18,6 @@
 		#papermc # Minecraft server
 		#prismlauncher # Minecraft launcher
 		protonup-ng # Proton ge downloader
-		#sunshine # Streaming platform
+		sunshine # Streaming platform
 	];
 }

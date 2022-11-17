@@ -1,5 +1,5 @@
 ### PACKAGES INSTALLED ON ALL USERS ###
-{ pkgs, ... }:
+{ config, pkgs, ... }:
 
 {
 	environment.systemPackages = with pkgs; [
@@ -27,6 +27,7 @@
 		rnnoise-plugin # A real-time noise suppression plugin
 		signal-desktop # Encrypted messaging platform
 		sublime4 # Text editor
+#		syncthing # Local file sync
 		tree # Display folder content at a tree format
 		unrar # Support opening rar files
 		usbimager # ISO Burner
@@ -89,9 +90,9 @@
 		# Enable flatpak
 		flatpak.enable = true;
 
-        # Enable mullvad
-        mullvad-vpn.enable = true;
-    };
+		# Enable mullvad
+		mullvad-vpn.enable = true;
+	};
 
 	# Symlink files from store needed for applications or config files
 	environment.etc = {
