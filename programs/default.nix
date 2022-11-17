@@ -20,8 +20,12 @@ in
 
 	# Nix Package Manager settings
 	nix = {
-		# Nix automatically detects files in the store that have identical contents, and replaces them with hard links (makes store 3 times slower)
-		settings.auto-optimise-store = true;
+		settings = {
+			# Nix automatically detects files in the store that have identical contents, and replaces them with hard links (makes store 3 times slower)
+			auto-optimise-store = true;
+			# Enable flakes
+			experimental-features = [ "nix-command" "flakes" ];
+		};
 
 		# Automatic garbage collection
 		gc = {

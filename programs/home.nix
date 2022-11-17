@@ -64,6 +64,11 @@ in
 							src = pkgs.zsh-powerlevel10k;
 							file = "share/zsh-powerlevel10k/powerlevel10k.zsh-theme";
 						}
+						{
+							name = "zsh-nix-shell";
+							file = "share/zsh-nix-shell/nix-shell.plugin.zsh";
+							src = pkgs.zsh-nix-shell;
+						}
 					];
 
 					# Aliases
@@ -111,6 +116,11 @@ in
 							name = "powerlevel10k";
 							src = pkgs.zsh-powerlevel10k;
 							file = "share/zsh-powerlevel10k/powerlevel10k.zsh-theme";
+						}
+						{
+							name = "zsh-nix-shell";
+							file = "share/zsh-nix-shell/nix-shell.plugin.zsh";
+							src = pkgs.zsh-nix-shell;
 						}
 					];
 
