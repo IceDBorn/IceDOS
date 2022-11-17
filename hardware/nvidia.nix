@@ -19,6 +19,8 @@ in
 	# Enable nvidia gpu acceleration for docker
 	virtualisation.docker.enableNvidia = true;
 
+	environment.systemPackages = [ pkgs.nvtop ];
+
 	# Nvidia power limit
 	systemd.services.nv-power-limit = {
 		enable = true;

@@ -3,7 +3,6 @@
 
 {
 	users.users.${config.main.user.username}.packages = with pkgs; [
-		(callPackage ./self-built/protonup-ng.nix { buildPythonPackage = pkgs.python3Packages.buildPythonPackage; configparser = pkgs.python3Packages.configparser; fetchPypi = pkgs.python3Packages.fetchPypi; pythonOlder = pkgs.python3Packages.pythonOlder; requests = pkgs.python3Packages.requests; }) # Proton GE downloader
 		duckstation # PS1 Emulator
 		godot # Game engine
 		heroic # Epic Games Launcher for Linux
@@ -18,6 +17,7 @@
 		unstable.gamescope # Wayland microcompositor
 		unstable.papermc # Minecraft server
 		unstable.prismlauncher # Minecraft launcher
+		unstable.protonup-ng # Proton ge downloader
 		unstable.sunshine # Streaming platform
 	];
 }
