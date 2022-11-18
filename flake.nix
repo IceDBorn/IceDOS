@@ -13,14 +13,15 @@
 		};
 	};
 
-	outputs = { self, nixpkgs, hyprland, home-manager }@inputs: {
+	outputs = inputs@{ self, nixpkgs, hyprland, home-manager }: {
 		nixosConfigurations.nixos = nixpkgs.lib.nixosSystem {
 			system = "x86_64-linux";
 			specialArgs = {inherit inputs;};
 			modules = [
-				./configuration.nix
+				home-manager.nixosModules.home-manager
 				hyprland.nixosModules.default
 				{ programs.hyprland.enable = true; }
+				./configuration.nix
 			];
 		};
 	};
