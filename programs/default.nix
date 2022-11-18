@@ -2,8 +2,6 @@
 
 {
 	imports = [
-		# Import home manager
-		#(import "${home-manager}/nixos")
 		# Packages installed for all users
 		./global.nix
 		# Packages installed for main user

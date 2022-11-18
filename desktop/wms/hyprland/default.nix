@@ -1,44 +1,14 @@
 { config, pkgs, ... }:
-let
-	# flake-compat = builtins.fetchTarball "https://github.com/edolstra/flake-compat/archive/master.tar.gz";
-	# hyprland = (import flake-compat {
-	# 	src = builtins.fetchTarball "https://github.com/hyprwm/Hyprland/archive/master.tar.gz";
-	# }).defaultNix;
 
-	dbus-hypr-environment = pkgs.writeTextFile {
-		name = "dbus-hypr-environment";
-		destination = "/bin/dbus-hypr-environment";
-		executable = true;
-
-		text = ''
-			dbus-update-activation-environment --systemd WAYLAND_DISPLAY XDG_CURRENT_DESKTOP
-			systemctl --user import-environment WAYLAND_DISPLAY XDG_CURRENT_DESKTOP
-		'';
-	};
-in
 {
 	imports = [
 		# Setup home manager for hyprland
 		./home.nix
-		# Needed for hyprland
-		#hyprland.nixosModules.default
 	];
 
 	programs = {
 		nm-applet.enable = true;
-		# hyprland = {
-		# 	enable = true;
-		# 	package = hyprland.packages.${pkgs.system}.default;
-		# };
 	};
-
-	nixpkgs.overlays = [
-		(self: super: {
-			waybar = super.waybar.overrideAttrs (oldAttrs: {
-				mesonFlags = oldAttrs.mesonFlags ++ [ "-Dexperimental=true" ];
-			});
-		})
-	];
 
 	environment = {
 		systemPackages = with pkgs; [
@@ -46,7 +16,6 @@ in
 			baobab # Disk usage analyser
 			blueberry # Bluetooth manager
 			clipman # Clipboard manager for wayland
-			dbus-hypr-environment # Run specific commands
 			dunst # Notification daemon
 			gnome.file-roller # Archive file manager
 			gnome.gnome-calculator # Calculator
