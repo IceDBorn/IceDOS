@@ -28,7 +28,7 @@
 		gnomeExtensions.smart-auto-move # Remember window state througout reboots and restore it
 		gnomeExtensions.sound-output-device-chooser # Sound devices choose on the gnome control center
 		gnomeExtensions.tray-icons-reloaded # Tray icons for gnome
-		unstable.gnome-extension-manager # Gnome extensions manager and downloader
+		gnome-extension-manager # Gnome extensions manager and downloader
 	];
 
 	# Gnome packages to exclude

@@ -13,6 +13,7 @@ sudo cp -r scripts /etc/nixos
 sudo cp -r startup /etc/nixos
 sudo cp -r users /etc/nixos
 sudo cp configuration.nix /etc/nixos
+sudo cp flake.nix /etc/nixos
 
 # Build the configuration
 sudo nixos-rebuild switch || exit

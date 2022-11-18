@@ -1,9 +1,9 @@
 { config, pkgs, ... }:
 let
-	flake-compat = builtins.fetchTarball "https://github.com/edolstra/flake-compat/archive/master.tar.gz";
-	hyprland = (import flake-compat {
-		src = builtins.fetchTarball "https://github.com/hyprwm/Hyprland/archive/master.tar.gz";
-	}).defaultNix;
+	# flake-compat = builtins.fetchTarball "https://github.com/edolstra/flake-compat/archive/master.tar.gz";
+	# hyprland = (import flake-compat {
+	# 	src = builtins.fetchTarball "https://github.com/hyprwm/Hyprland/archive/master.tar.gz";
+	# }).defaultNix;
 
 	dbus-hypr-environment = pkgs.writeTextFile {
 		name = "dbus-hypr-environment";
@@ -21,15 +21,15 @@ in
 		# Setup home manager for hyprland
 		./home.nix
 		# Needed for hyprland
-		hyprland.nixosModules.default
+		#hyprland.nixosModules.default
 	];
 
 	programs = {
 		nm-applet.enable = true;
-		hyprland = {
-			enable = true;
-			package = hyprland.packages.${pkgs.system}.default;
-		};
+		# hyprland = {
+		# 	enable = true;
+		# 	package = hyprland.packages.${pkgs.system}.default;
+		# };
 	};
 
 	nixpkgs.overlays = [

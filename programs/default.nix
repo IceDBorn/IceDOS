@@ -1,13 +1,9 @@
 { config, pkgs, ... }:
-let
-	unstable-channel = builtins.fetchTarball "https://github.com/NixOS/nixpkgs/archive/nixos-unstable.tar.gz";
-	home-manager = builtins.fetchTarball "https://github.com/nix-community/home-manager/archive/release-22.05.tar.gz";
-	nix-alien-pkgs = import (fetchTarball "https://github.com/thiagokokada/nix-alien/tarball/master") { };
-in
+
 {
 	imports = [
 		# Import home manager
-		(import "${home-manager}/nixos")
+		#(import "${home-manager}/nixos")
 		# Packages installed for all users
 		./global.nix
 		# Packages installed for main user
@@ -46,17 +42,6 @@ in
 			nur = import (builtins.fetchTarball "https://github.com/nix-community/NUR/archive/master.tar.gz") {
 				inherit pkgs;
 			};
-			# Add unstable nix channel, use with "unstable.package"
-			unstable = import unstable-channel {
-				config = config.nixpkgs.config;
-			};
 		};
 	};
-
-	# Add nix-alien
-	environment.systemPackages = with nix-alien-pkgs; [
-		nix-alien
-		nix-index-update
-		pkgs.nix-index
-	];
 }

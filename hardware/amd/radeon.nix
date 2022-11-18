@@ -25,5 +25,5 @@
 		});
 	'';
 
-	environment.systemPackages = [ pkgs.unstable.corectrl ];
+	environment.systemPackages = [ pkgs.corectrl ];
 }
