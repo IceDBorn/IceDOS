@@ -4,7 +4,7 @@
 {
 	users.users.${config.main.user.username}.packages = with pkgs; [
 		duckstation # PS1 Emulator
-		godot # Game engine
+		godot_4 # Game engine
 		heroic # Epic Games Launcher for Linux
 		pcsx2 # PS2 Emulator
 		ppsspp # PSP Emulator
