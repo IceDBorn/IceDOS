@@ -1,5 +1,5 @@
 ### DESKTOP POWERED BY GNOME ###
-{ config, pkgs, ... }:
+{ pkgs, ... }:
 
 {
 	imports = [

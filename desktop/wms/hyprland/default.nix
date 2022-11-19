@@ -1,4 +1,4 @@
-{ config, pkgs, ... }:
+{ pkgs, ... }:
 
 {
 	imports = [
@@ -69,7 +69,7 @@
 		(final: prev: {
 			xdg-desktop-portal-wlr = prev.xdg-desktop-portal-wlr.overrideAttrs (o: {
 			patches = (o.patches or [ ]) ++ [
-				../../../programs/self-built/wlr.patch
+				../../../programs/self-built/xdg-desktop-portal-wlr.patch
 			];
 			});
 		})

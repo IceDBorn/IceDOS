@@ -1,5 +1,5 @@
 ### PACKAGES INSTALLED ON ALL USERS ###
-{ config, pkgs, ... }:
+{ pkgs, ... }:
 
 {
 	environment.systemPackages = with pkgs; [

@@ -1,5 +1,3 @@
-{ config, pkgs, ... }:
-
 {
 	imports = [
 		# Packages installed for all users

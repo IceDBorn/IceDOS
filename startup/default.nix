@@ -1,5 +1,3 @@
-{ config, pkgs, ... }:
-
 {
 	imports = [
 		# Startup files for main user
