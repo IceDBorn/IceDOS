@@ -5,7 +5,7 @@
 	users.users.${config.main.user.username}.packages = with pkgs; [
 		(callPackage ./self-built/sunshine.nix {})
 		duckstation # PS1 Emulator
-		#godot # Game engine
+		#godot_4 # Game engine
 		heroic # Epic Games Launcher for Linux
 		#pcsx2 # PS2 Emulator
 		#ppsspp # PSP Emulator
