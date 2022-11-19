@@ -46,7 +46,7 @@
 		gvfs.enable = true;
 	};
 
-	#Enable polkit
+	# Enable polkit
 	security.polkit.enable = true;
 
 	xdg.portal = {
@@ -63,4 +63,15 @@
 			};
 		};
 	};
+
+	# Patch wlr xdg portal to support hyprland
+	nixpkgs.overlays = [
+		(final: prev: {
+			xdg-desktop-portal-wlr = prev.xdg-desktop-portal-wlr.overrideAttrs (o: {
+			patches = (o.patches or [ ]) ++ [
+				../../../programs/self-built/wlr.patch
+			];
+			});
+		})
+	];
 }
