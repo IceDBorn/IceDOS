@@ -1,4 +1,4 @@
-{ config, pkgs, home-manager, ... }:
+{ config, pkgs, ... }:
 let
 	github.username = "CrazyStevenz";
 	github.email = "spapanatsios@gmail.com";

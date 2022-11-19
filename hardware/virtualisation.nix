@@ -1,4 +1,4 @@
-{ config, pkgs, ... }:
+{ pkgs, ... }:
 
 {
 	# Passthrough USB devices
@@ -10,6 +10,6 @@
 
 	environment.systemPackages = with pkgs; [
 		docker # Containers
-		unstable.distrobox # Wrapper around docker to create and start containers
+		distrobox # Wrapper around docker to create and start containers
 	];
 }

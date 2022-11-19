@@ -1,4 +1,4 @@
-{ config, pkgs, ... }:
+{ config, ... }:
 
 {
 	users.users.${config.work.user.username} = {
@@ -11,4 +11,6 @@
 		description = "${config.work.user.description}";
 		extraGroups = [ "networkmanager" "wheel" "kvm" "docker" ];
 	};
+
+	home-manager.users.${config.work.user.username}.home.stateVersion = "22.05";
 }

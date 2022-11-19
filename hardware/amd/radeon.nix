@@ -1,4 +1,4 @@
-{ config, pkgs, ... }:
+{ pkgs, ... }:
 
 {
 	boot.initrd.kernelModules = [ "amdgpu" ];
@@ -25,5 +25,5 @@
 		});
 	'';
 
-	environment.systemPackages = [ pkgs.unstable.corectrl ];
+	environment.systemPackages = [ pkgs.corectrl ];
 }

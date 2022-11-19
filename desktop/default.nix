@@ -1,5 +1,5 @@
 ### DESKTOP POWERED BY GNOME ###
-{ config, pkgs, ... }:
+{ pkgs, ... }:
 
 {
 	imports = [
@@ -47,8 +47,6 @@
 	security.rtkit.enable = true;
 
 	networking = {
-		# Define your hostname
-		hostName = "nixos";
 		# Enable networking
 		networkmanager.enable = true;
 		# Disable firewall

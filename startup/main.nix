@@ -1,4 +1,4 @@
-{ config, pkgs, home-manager, ... }:
+{ config, pkgs, ... }:
 
 {
 	home-manager.users.${config.main.user.username}.home.file = {

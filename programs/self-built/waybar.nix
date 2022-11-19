@@ -19,7 +19,7 @@
 , libinput
 , jack2
 , coreutils
-, runTests        ? true,  catch2
+, runTests        ? true,  catch2_3
 , traySupport     ? true,  libdbusmenu-gtk3
 , pulseSupport    ? true,  libpulseaudio
 , sndioSupport    ? true,  sndio
@@ -45,7 +45,7 @@ stdenv.mkDerivation rec {
 	};
 
 	nativeBuildInputs = [
-		meson ninja pkg-config scdoc wrapGAppsHook pkgs.unstable.fmt_8 libinput jack2 pkgs.unstable.catch2_3 coreutils
+		meson ninja pkg-config scdoc wrapGAppsHook libinput jack2 catch2_3 coreutils
 	] ++ lib.optional withMediaPlayer gobject-introspection;
 
 	propagatedBuildInputs = lib.optionals withMediaPlayer [
@@ -67,7 +67,7 @@ stdenv.mkDerivation rec {
 		++ optional  mpdSupport    libmpdclient
 		++ optional  upowerSupport upower;
 
-	checkInputs = [ catch2 ];
+	checkInputs = [ catch2_3 ];
 	doCheck = runTests;
 
 	mesonFlags = (lib.mapAttrsToList

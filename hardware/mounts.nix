@@ -1,5 +1,3 @@
-{ config, lib, pkgs, modulesPath, ... }:
-
 {
 	fileSystems."/mnt/SSDGames" =
 	{ device = "/dev/disk/by-uuid/2b04380c-cefe-4915-a1f4-26bef6ebc360";

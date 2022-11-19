@@ -1,4 +1,4 @@
-{ config, pkgs, ... }:
+{ pkgs, ... }:
 
 let
 	# Pstate 0, 1.25 voltage, 4200 clock speed

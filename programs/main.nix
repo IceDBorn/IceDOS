@@ -14,11 +14,11 @@
 		#ryujinx # Switch Emulator
 		scanmem # Cheat engine for linux
 		steam # Gaming platform
-		unstable.bottles # Wine manager
-		unstable.gamescope # Wayland microcompositor
-		#unstable.papermc # Minecraft server
-		#unstable.prismlauncher # Minecraft launcher
-		unstable.protonup-ng # Proton ge downloader
-		#unstable.sunshine # Streaming platform
+		bottles # Wine manager
+		gamescope # Wayland microcompositor
+		#papermc # Minecraft server
+		#prismlauncher # Minecraft launcher
+		protonup-ng # Proton ge downloader
+		#sunshine # Streaming platform
 	];
 }
