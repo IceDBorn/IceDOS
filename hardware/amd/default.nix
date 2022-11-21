@@ -1,7 +1,7 @@
 {
 	imports = [
 		# GPU
-		./radeon.nix
+#		./radeon.nix
 		# CPU
 		./ryzen.nix
 	];

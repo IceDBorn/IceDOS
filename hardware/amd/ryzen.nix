@@ -2,7 +2,7 @@
 
 let
 	# Pstate 0, 1.25 voltage, 4200 clock speed
-	zenstates-options = "-p 0 -v 30 -f A8";
+	zenstates-options = "-p 0 -v 30 -f AE";
 in
 {
 	boot.kernelModules = [ "msr" ];
