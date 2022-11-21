@@ -11,7 +11,7 @@ in
 		# Required for wayland
 		modesetting.enable = true;
 		# Patch the driver for nvfbc
-		package = pkgs.nur.repos.arc.packages.nvidia-patch.override {
+		package = config.nur.repos.arc.packages.nvidia-patch.override {
 			nvidia_x11 = config.boot.kernelPackages.nvidiaPackages.stable;
 		};
 	};
