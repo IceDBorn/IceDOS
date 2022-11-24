@@ -68,9 +68,9 @@
 	nixpkgs.overlays = [
 		(final: prev: {
 			xdg-desktop-portal-wlr = prev.xdg-desktop-portal-wlr.overrideAttrs (o: {
-			patches = (o.patches or [ ]) ++ [
-				../../../programs/self-built/xdg-desktop-portal-wlr.patch
-			];
+				patches = (o.patches or [ ]) ++ [
+					../../../programs/self-built/xdg-desktop-portal-wlr.patch
+				];
 			});
 		})
 	];

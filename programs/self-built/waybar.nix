@@ -19,6 +19,7 @@
 , libinput
 , jack2
 , coreutils
+, wireplumber
 , runTests        ? true,  catch2_3
 , traySupport     ? true,  libdbusmenu-gtk3
 , pulseSupport    ? true,  libpulseaudio
@@ -35,17 +36,17 @@
 
 stdenv.mkDerivation rec {
 	pname = "waybar";
-	version = "0.9.15";
+	version = "0.9.16";
 
 	src = fetchFromGitHub {
 		owner = "Alexays";
 		repo = "Waybar";
 		rev = version;
-		sha256 = "u2nEMS0lJ/Kf09+mWYWQLji9MVgjYAfUi5bmPEfTfFc=";
+		sha256 = "hcU0ijWIN7TtIPkURVmAh0kanQWkBUa22nubj7rSfBs=";
 	};
 
 	nativeBuildInputs = [
-		meson ninja pkg-config scdoc wrapGAppsHook libinput jack2 catch2_3 coreutils
+		meson ninja pkg-config scdoc wrapGAppsHook libinput jack2 catch2_3 coreutils wireplumber
 	] ++ lib.optional withMediaPlayer gobject-introspection;
 
 	propagatedBuildInputs = lib.optionals withMediaPlayer [
