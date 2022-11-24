@@ -31,13 +31,5 @@
 	nixpkgs.config = {
 		# Allow proprietary packages
 		allowUnfree = true;
-
-		# Install NUR
-		packageOverrides = pkgs: {
-			# Add NUR, use with "nur.repo.package"
-			nur = import (builtins.fetchTarball "https://github.com/nix-community/NUR/archive/master.tar.gz") {
-				inherit pkgs;
-			};
-		};
 	};
 }
