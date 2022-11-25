@@ -21,6 +21,9 @@
 
 		# Enable bluetooth
 		bluetooth.enable = true;
+
+		# Enablue uinput support
+		uinput.enable = true;
 	};
 
 	# Set memory limits
