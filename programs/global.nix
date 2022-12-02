@@ -61,10 +61,10 @@
 				chmod="sudo chmod"; # It's a command that I always execute with sudo
 				clear-keys="sudo rm -rf ~/ local/share/keyrings/* ~/ local/share/kwalletd/*"; # Clear system keys
 				clear-proton-ge="bash ~/.config/zsh/protondown.sh"; # Download the latest proton ge version and delete the older ones
-				cp="rsync -r --progress"; # Copy command with details
+				cp="rsync -rP"; # Copy command with details
 				desktop-files-list="ls -l /run/current-system/sw/share/applications"; # Show desktop files location
 				list-packages="nix-store --query --requisites /run/current-system | cut -d- -f2- | sort | uniq"; # List installed nix packages
-				mva="rsync -r --progress --remove-source-files"; # Move command with details
+				mva="rsync -rP --remove-source-files"; # Move command with details
 				restart-pipewire="systemctl --user restart pipewire"; # Restart pipewire
 				ssh="TERM=xterm-256color ssh"; # SSH with colors
 				steam-link="gamescope -H 1080 -b -- steam"; # Launch steam inside of a gamescope instance
