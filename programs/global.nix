@@ -21,6 +21,7 @@
 		ntfs3g # Support NTFS drives
 		obs-studio # Recording/Livestream
 		onlyoffice-bin # Microsoft Office alternative for Linux
+		p7zip # 7zip
 		python # Python
 		ranger # Terminal file manager
 		rnnoise-plugin # A real-time noise suppression plugin
