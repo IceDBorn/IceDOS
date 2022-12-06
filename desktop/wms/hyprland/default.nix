@@ -48,30 +48,4 @@
 
 	# Enable polkit
 	security.polkit.enable = true;
-
-	xdg.portal = {
-		enable = true;
-		extraPortals = [
-			pkgs.xdg-desktop-portal
-			pkgs.xdg-desktop-portal-wlr
-		];
-		wlr = {
-			enable = true;
-			settings.screencast = {
-				chooser_type = "simple";
-				chooser_cmd = "${pkgs.slurp}/bin/slurp -f %o -or";
-			};
-		};
-	};
-
-	# Patch wlr xdg portal to support hyprland
-	nixpkgs.overlays = [
-		(final: prev: {
-			xdg-desktop-portal-wlr = prev.xdg-desktop-portal-wlr.overrideAttrs (o: {
-				patches = (o.patches or [ ]) ++ [
-					../../../programs/self-built/xdg-desktop-portal-wlr.patch
-				];
-			});
-		})
-	];
 }
