@@ -1,12 +1,13 @@
 { pkgs, ... }:
 
 {
-	# Passthrough USB devices
-	virtualisation.spiceUSBRedirection.enable = true;
-	# A daemon that manages virtual machines
-	virtualisation.libvirtd.enable = true;
-	# Enable docker
-	virtualisation.docker.enable = true;
+	virtualisation = {
+		docker.enable = true; # Enable docker
+		libvirtd.enable = true; # A daemon that manages virtual machines
+		lxd.enable = true; # Container daemon
+		spiceUSBRedirection.enable = true; # Passthrough USB devices
+		waydroid.enable = true; # Android emulator
+	};
 
 	environment.systemPackages = with pkgs; [
 		docker # Containers
