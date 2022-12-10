@@ -1,27 +1,24 @@
 { config, pkgs, ... }:
 
 let
-	nvidia-power-limit = "180";
+	nvidia-power-limit = "242";
 in
 {
-	# Install the nvidia drivers
-	services.xserver.videoDrivers = [ "nvidia" ];
+	services.xserver.videoDrivers = [ "nvidia" ]; # Install the nvidia drivers
 
 	hardware.nvidia = {
-		# Required for wayland
-		modesetting.enable = true;
+		modesetting.enable = true; # Required for wayland
 		# Patch the driver for nvfbc
 		package = config.nur.repos.arc.packages.nvidia-patch.override {
 			nvidia_x11 = config.boot.kernelPackages.nvidiaPackages.stable;
 		};
 	};
 
-	# Enable nvidia gpu acceleration for docker
-	virtualisation.docker.enableNvidia = true;
+	virtualisation.docker.enableNvidia = true; # Enable nvidia gpu acceleration for docker
 
-	environment.systemPackages = [ pkgs.nvtop ];
+	environment.systemPackages = [ pkgs.nvtop-nvidia ]; # Monitoring tool for nvidia GPUs
 
-	# Nvidia power limit
+	# Set nvidia gpu power limit
 	systemd.services.nv-power-limit = {
 		enable = true;
 		description = "Nvidia power limit control";

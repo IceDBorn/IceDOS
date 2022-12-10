@@ -1,7 +1,7 @@
 { pkgs, ... }:
 
 {
-	boot.initrd.kernelModules = [ "amdgpu" ];
+	boot.initrd.kernelModules = [ "amdgpu" ]; # Use the amdgpu drivers upon boot
 
 	services.xserver.videoDrivers = [ "amdgpu" ];
 
@@ -9,10 +9,11 @@
 		enable = true;
 		gpuOverclock = {
 			enable = true;
-			ppfeaturemask = "0xffffffff";
+			ppfeaturemask = "0xffffffff"; # Unlock all gpu controls
 		};
 	};
 
+	# Do not ask for password when launching corectrl
 	security.polkit.extraConfig = ''
 		polkit.addRule(function(action, subject) {
 				if ((action.id == "org.corectrl.helper.init" ||
@@ -25,5 +26,5 @@
 		});
 	'';
 
-	environment.systemPackages = [ pkgs.corectrl ];
+	environment.systemPackages = [ pkgs.corectrl ]; # GPU overclocking tool
 }

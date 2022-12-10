@@ -1,29 +1,13 @@
 {
-	imports = [
-		# AMD CPU/GPU
-		./amd
-		# Disks to mount on startup
-		./mounts.nix
-		# Nvidia drivers, configuration and power limit
-		#./nvidia.nix
-		# Virtualisation options
-		./virtualisation.nix
-	];
-
 	hardware = {
 		opengl = {
 			enable = true;
-			# Support Direct Rendering for 32-bit applications (such as Wine) on 64-bit systems
-			driSupport32Bit = true;
+			driSupport32Bit = true; # Support Direct Rendering for 32-bit applications (such as Wine) on 64-bit systems
 		};
-		# Enable XBOX Gamepad bluetooth driver
-		xpadneo.enable = true;
 
-		# Enable bluetooth
+		xpadneo.enable = true; # Enable XBOX Gamepad bluetooth driver
 		bluetooth.enable = true;
-
-		# Enablue uinput support
-		uinput.enable = true;
+		uinput.enable = true; # Enable uinput support
 	};
 
 	# Set memory limits
@@ -45,7 +29,8 @@
 	];
 
 	boot.kernelModules = [
-		"v4l2loopback" # Virtual camera for OBS
-		"xpadneo" # XBOX Gamepad bluetooth driver
+		"v4l2loopback" # Virtual camera
+		"xpadneo"
+		"uinput"
 	];
 }

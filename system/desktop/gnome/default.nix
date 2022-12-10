@@ -3,16 +3,14 @@
 
 {
 	imports = [
-		# Setup home manager for gnome
-		./home.nix
+		./home.nix # Setup home manager for gnome
+		./startup # Startup programs
 	];
 
-	# Install gnome
-	services.xserver.desktopManager.gnome.enable = true;
+	services.xserver.desktopManager.gnome.enable = true; # Install gnome
 
 	programs.dconf.enable = true;
 
-	# Gnome packages to install
 	environment.systemPackages = with pkgs; [
 		gnome.dconf-editor # Edit gnome's dconf
 		gnome.gnome-tweaks # Tweaks missing from pure Gnome
@@ -31,7 +29,6 @@
 		gnome-extension-manager # Gnome extensions manager and downloader
 	];
 
-	# Gnome packages to exclude
 	environment.gnome.excludePackages = with pkgs; [
 		epiphany # Web browser
 		evince # Document viewer

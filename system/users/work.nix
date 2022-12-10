@@ -5,8 +5,7 @@
 		createHome = true;
 		home = "/home/${config.work.user.username}";
 		useDefaultShell = true;
-		# Default password used for first login, change later with passwd
-		password = "1";
+		password = "1"; # Default password used for first login, change later with passwd
 		isNormalUser = true;
 		description = "${config.work.user.description}";
 		extraGroups = [ "networkmanager" "wheel" "kvm" "docker" ];

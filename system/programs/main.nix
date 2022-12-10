@@ -22,7 +22,6 @@
 		sunshine # Streaming platform
 	];
 
-	# Enable input remapper services
 	services.input-remapper.enable = true;
 	services.input-remapper.enableUdevRules = true;
 }
