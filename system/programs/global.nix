@@ -2,6 +2,8 @@
 { pkgs, ... }:
 
 {
+	boot.kernelPackages = pkgs.linuxPackages_zen; # Use ZEN linux kernel
+
 	environment.systemPackages = with pkgs; [
 		#(callPackage ./self-built/system-monitoring-center.nix { buildPythonApplication = pkgs.python3Packages.buildPythonApplication; fetchPypi = pkgs.python3Packages.fetchPypi; pygobject3 = pkgs.python3Packages.pygobject3; }) # Task manager
 		(callPackage ./self-built/webcord.nix {}) # An open source discord client
@@ -41,7 +43,8 @@
 		zenstates # Ryzen CPU controller
 	];
 
-	# ZSH configuration
+	users.defaultUserShell = pkgs.zsh; # Use ZSH shell for all users
+
 	programs = {
 		zsh = {
 			enable = true;
@@ -50,10 +53,8 @@
 				enable = true;
 				plugins = [ "git" "npm" "nvm" "sudo" "systemd" ];
 			};
-			# Enable auto suggestions
 			autosuggestions.enable = true;
 
-			# Enable syntax highlighting
 			syntaxHighlighting.enable = true;
 
 			# Aliases
@@ -75,27 +76,19 @@
 				vpn="mullvad status"; # Show VPN status
 			};
 
-			# Commands to run on zsh shell initialization
-			interactiveShellInit = "source ~/.config/zsh/zsh-theme.zsh\nunsetopt PROMPT_SP";
+			interactiveShellInit = "source ~/.config/zsh/zsh-theme.zsh\nunsetopt PROMPT_SP"; # Commands to run on zsh shell initialization
 		};
 
-		# Enable gamemode
 		gamemode.enable = true;
 	};
 
-	# Program services
 	services = {
-		# Enable SSH
 		openssh.enable = true;
-
-		# Enable flatpak
 		flatpak.enable = true;
-
-		# Enable mullvad
 		mullvad-vpn.enable = true;
 	};
 
-	# Symlink files from store needed for applications or config files
+	# Symlink files and folders to /etc
 	environment.etc = {
 		"rnnoise-plugin/librnnoise_ladspa.so".source = "${pkgs.rnnoise-plugin}/lib/ladspa/librnnoise_ladspa.so";
 		"bibata-cursors".source = "${pkgs.bibata-cursors}/share/icons";

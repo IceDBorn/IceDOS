@@ -1,11 +1,10 @@
 { pkgs, ... }:
 
 let
-	# Pstate 0, 1.25 voltage, 4200 clock speed
-	zenstates-options = "-p 0 -v 30 -f A8";
+	zenstates-options = "-p 0 -v 30 -f A8"; # Pstate 0, 1.25 voltage, 4200 clock speed
 in
 {
-	boot.kernelModules = [ "msr" ];
+	boot.kernelModules = [ "msr" ]; # Needed for zenstates
 
 	hardware.cpu.amd.updateMicrocode = true;
 

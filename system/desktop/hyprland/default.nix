@@ -7,17 +7,18 @@
 	];
 
 	programs = {
-		nm-applet.enable = true;
+		nm-applet.enable = true; # Network manager tray icon
 	};
 
 	environment = {
 		systemPackages = with pkgs; [
+			# Status bar
 			(waybar.overrideAttrs (oldAttrs: {
 				mesonFlags = oldAttrs.mesonFlags ++ ["-Dexperimental=true"];
 				postPatch = ''
 					sed -i 's/zext_workspace_handle_v1_activate(workspace_handle_);/const std::string command = "hyprctl dispatch workspace " + name_;\n\tsystem(command.c_str());/g' src/modules/wlr/workspace_manager.cpp
 				'';
-			})) # Status bar
+			}))
 			baobab # Disk usage analyser
 			blueberry # Bluetooth manager
 			clipman # Clipboard manager for wayland
@@ -47,10 +48,8 @@
 
 	services = {
 		dbus.enable = true;
-		# Needed for nautilus
-		gvfs.enable = true;
+		gvfs.enable = true; # Needed for nautilus
 	};
 
-	# Enable polkit
 	security.polkit.enable = true;
 }

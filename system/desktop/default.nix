@@ -3,10 +3,7 @@
 
 {
 	imports = [
-		# Install desktop environments and window managers
-		./wms
-		# Setup home manager for desktop
-		./home.nix
+		./home.nix # Setup home manager
 	];
 
 	# Set your time zone
@@ -20,16 +17,14 @@
 
 	services = {
 		xserver = {
-			# Enable the X11 windowing system
-			enable = true;
-			# Enable the GNOME Desktop Environment
+			enable = true; # Enable the X11 windowing system
+
 			displayManager.gdm = {
 				enable = true;
 				autoSuspend = false;
 			};
-			# Configure keymap in X11
+
 			layout = "us,gr";
-			xkbVariant = "";
 		};
 
 		# Enable sound with pipewire
@@ -43,26 +38,21 @@
 
 	sound.enable = true;
 	hardware.pulseaudio.enable = false;
-	# Enable the RealtimeKit system service, which hands out realtime scheduling priority to user processes on demand, required by pipewire
-	security.rtkit.enable = true;
+	security.rtkit.enable = true; # Enable service which hands out realtime scheduling priority to user processes on demand, required by pipewire
 
 	networking = {
-		# Enable networking
 		networkmanager.enable = true;
-		# Disable firewall
 		firewall.enable = false;
 	};
 
-	# Show asterisks when typing sudo password
-	security.sudo.extraConfig = "Defaults pwfeedback";
+	security.sudo.extraConfig = "Defaults pwfeedback"; # Show asterisks when typing sudo password
 
 	environment = {
 		sessionVariables = {
-			# Use gtk theme for qt apps
-			QT_QPA_PLATFORMTHEME= "gnome";
+			QT_QPA_PLATFORMTHEME= "gnome"; # Use gtk theme for qt apps
 		};
 
-		# Packages to install for all wms
+		# Packages to install for all window manager/desktop environments
 		systemPackages = with pkgs; [
 			bibata-cursors # Material cursors
 			fragments # Bittorrent client following Gnome UI standards
@@ -75,6 +65,5 @@
 		];
 	};
 
-	# Fonts to install
 	fonts.fonts = with pkgs; [ meslo-lgs-nf cantarell-fonts jetbrains-mono font-awesome ];
 }

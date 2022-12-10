@@ -2,7 +2,7 @@
 
 {
 	virtualisation = {
-		docker.enable = true; # Enable docker
+		docker.enable = true;
 		libvirtd.enable = true; # A daemon that manages virtual machines
 		lxd.enable = true; # Container daemon
 		spiceUSBRedirection.enable = true; # Passthrough USB devices

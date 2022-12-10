@@ -10,13 +10,10 @@
 		./home.nix
 	];
 
-	# Nix Package Manager settings
 	nix = {
 		settings = {
-			# Nix automatically detects files in the store that have identical contents, and replaces them with hard links (makes store 3 times slower)
-			auto-optimise-store = true;
-			# Enable flakes
-			experimental-features = [ "nix-command" "flakes" ];
+			auto-optimise-store = true; # Use hard links to save space (slows down package manager)
+			experimental-features = [ "nix-command" "flakes" ]; # Enable flakes
 		};
 
 		# Automatic garbage collection
@@ -27,9 +24,7 @@
 		};
 	};
 
-	# Nix Packages settings
 	nixpkgs.config = {
-		# Allow proprietary packages
-		allowUnfree = true;
+		allowUnfree = true; # Allow proprietary packages
 	};
 }

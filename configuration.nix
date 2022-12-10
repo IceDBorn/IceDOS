@@ -28,29 +28,29 @@
 		};
 	};
 
-	# Set your user
 	config.main.user = {
 		username = "icedborn";
 		description = "IceDBorn";
 	};
 
 	imports = [
-		# Generated automatically by nixOS
+		# Auto-generated configuration by NixOS
 		./hardware-configuration.nix
-		# Packages to install
-		./programs
-		# Windows managers and desktop environments
-		./desktop
-		# CPU, GPU, Drives
-		./hardware
-		# Set users
-		./users
-		# Bootloader, kernel
-		./boot
-		# Startup files
-		./startup
+
+		# Custom configuration
+		./bootloader
+		./hardware # Enable various hardware capabilities
+		./hardware/amd/radeon.nix
+		./hardware/amd/ryzen.nix
+		./hardware/mounts.nix # Disks to mount on startup
+		#./hardware/nvidia.nix
+		./hardware/virtualisation.nix
+		./system/desktop
+		./system/desktop/gnome
+		./system/desktop/hyprland
+		./system/programs
+		./system/users
 	];
 
-	# Do not change without checking the docs
-	config.system.stateVersion = "22.05";
+	config.system.stateVersion = "22.05"; # Do not change without checking the docs
 }
