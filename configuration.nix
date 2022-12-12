@@ -29,8 +29,8 @@
 	};
 
 	config.main.user = {
-		username = "icedborn";
-		description = "IceDBorn";
+		username = "stef";
+		description = "Stefanos";
 	};
 
 	imports = [
@@ -47,7 +47,7 @@
 		./hardware/virtualisation.nix
 		./system/desktop
 		./system/desktop/gnome
-		./system/desktop/hyprland
+#		./system/desktop/hyprland
 		./system/programs
 		./system/users
 	];

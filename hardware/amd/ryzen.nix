@@ -1,7 +1,7 @@
 { pkgs, ... }:
 
 let
-	zenstates-options = "-p 0 -v 30 -f A8"; # Pstate 0, 1.25 voltage, 4200 clock speed
+	zenstates-options = "-p 0 -v 30 -f AE"; # Pstate 0, 1.25 voltage, 4350 clock speed
 in
 {
 	boot.kernelModules = [ "msr" ]; # Needed for zenstates

@@ -34,7 +34,7 @@ then
 
 	# Install flatpak apps
 	flatpak remote-add --if-not-exists flathub https://flathub.org/repo/flathub.flatpakrepo
-	flatpak install de.shorsh.discord-screenaudio com.github.tchx84.Flatseal io.github.spacingbat3.webcord
+	flatpak install de.shorsh.discord-screenaudio com.github.tchx84.Flatseal
 	# Use the same cursor theme normal apps use
 	flatpak --user override --filesystem=/etc/bibata-cursors/:ro
 

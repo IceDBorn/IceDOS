@@ -18,7 +18,7 @@
 
 		# Automatic garbage collection
 		gc = {
-			automatic = true;
+			automatic = false;
 			dates = "weekly";
 		};
 	};

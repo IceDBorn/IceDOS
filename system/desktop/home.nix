@@ -24,32 +24,52 @@
 		};
 
 		# Force vscodium to use wayland
-		xdg.desktopEntries.codium = {
-			type = "Application";
-			exec = "codium --enable-features=UseOzonePlatform,WaylandWindowDecorations --ozone-platform=wayland %F";
-			icon = "code";
-			terminal = false;
-			categories = [ "Utility" "TextEditor" "Development" "IDE" ];
-			name = "VSCodium";
-			genericName = "Text Editor";
-			comment = "Code Editing. Redefined.";
-			actions.new-empty-window = {
-				"exec" = "codium --new-window %F";
-				"icon" = "code";
-				"name" = "New Empty Window";
-			};
-		};
+#		xdg.desktopEntries.codium = {
+#			type = "Application";
+#			exec = "codium --enable-features=UseOzonePlatform,WaylandWindowDecorations --ozone-platform=wayland %F";
+#			icon = "code";
+#			terminal = false;
+#			categories = [ "Utility" "TextEditor" "Development" "IDE" ];
+#			name = "VSCodium";
+#			genericName = "Text Editor";
+#			comment = "Code Editing. Redefined.";
+#			actions.new-empty-window = {
+#				"exec" = "codium --new-window %F";
+#				"icon" = "code";
+#				"name" = "New Empty Window";
+#			};
+#		};
+
 
 		# Force signal to use wayland
 		xdg.desktopEntries.signal-desktop = {
-			type = "Application";
-			exec = "signal-desktop --enable-features=UseOzonePlatform,WaylandWindowDecorations --ozone-platform=wayland %U";
-			icon = "signal-desktop";
-			terminal = false;
-			categories = [ "Network" "InstantMessaging" "Chat" ];
 			name = "Signal";
-			genericName = "Text Editor";
-			comment = "Private messaging from your desktop";
+			exec = "signal-desktop --use-tray-icon --enable-features=UseOzonePlatform,WaylandWindowDecorations --ozone-platform=wayland %U";
+			icon = "signal";
+			settings = {
+				StartupWMClass = "signal";
+			};
+		};
+
+		# Force mullvad to use wayland
+		xdg.desktopEntries.mullvad-gui = {
+			name = "Mullvad";
+			exec = "mullvad-gui --enable-features=UseOzonePlatform,WaylandWindowDecorations --ozone-platform=wayland";
+			icon = "mullvad-vpn";
+		};
+
+		# Force discord to use wayland and disable gpu to allow it to work
+		xdg.desktopEntries.discord = {
+			name = "Discord";
+			exec = "discord --enable-features=UseOzonePlatform --ozone-platform=wayland %U";
+			icon = "discord";
+		};
+
+		# Force webcord to use wayland
+		xdg.desktopEntries.webcord = {
+			name = "Webcord";
+			exec = "io.github.spacingbat3.webcord --enable-features=UseOzonePlatform --ozone-platform=wayland";
+			icon = "webcord";
 		};
 
 		home.file = {
@@ -66,16 +86,16 @@
 			};
 
 			# Add firefox privacy profile overrides
-			".mozilla/firefox/privacy/user-overrides.js" = {
-				source = ../configs/firefox-user-overrides.js;
-				recursive = true;
-			};
+#			".mozilla/firefox/privacy/user-overrides.js" = {
+#				source = ../configs/firefox-user-overrides.js;
+#				recursive = true;
+#			};
 
 			# Set firefox to privacy profile
-			".mozilla/firefox/profiles.ini" = {
-				source = ../configs/firefox-profiles.ini;
-				recursive = true;
-			};
+#			".mozilla/firefox/profiles.ini" = {
+#				source = ../configs/firefox-profiles.ini;
+#				recursive = true;
+#			};
 
 			# Add noise suppression microphone
 			".config/pipewire/pipewire.conf.d/99-input-denoising.conf" = {
@@ -90,10 +110,10 @@
 			};
 
 			# Add kitty session config
-			".config/kitty/kitty.session" = {
-				source = ../configs/kitty.session;
-				recursive = true;
-			};
+#			".config/kitty/kitty.session" = {
+#				source = ../configs/kitty.session;
+#				recursive = true;
+#			};
 		};
 	};
 
@@ -120,32 +140,62 @@
 		};
 
 		# Force vscodium to use wayland
-		xdg.desktopEntries.codium = {
-			type = "Application";
-			exec = "codium --enable-features=UseOzonePlatform,WaylandWindowDecorations --ozone-platform=wayland %F";
-			icon = "code";
-			terminal = false;
-			categories = [ "Utility" "TextEditor" "Development" "IDE" ];
-			name = "VSCodium";
-			genericName = "Text Editor";
-			comment = "Code Editing. Redefined.";
-			actions.new-empty-window = {
-				"exec" = "codium --new-window %F";
-				"icon" = "code";
-				"name" = "New Empty Window";
-			};
-		};
+#		xdg.desktopEntries.codium = {
+#			type = "Application";
+#			exec = "codium --enable-features=UseOzonePlatform,WaylandWindowDecorations --ozone-platform=wayland %F";
+#			icon = "code";
+#			terminal = false;
+#			categories = [ "Utility" "TextEditor" "Development" "IDE" ];
+#			name = "VSCodium";
+#			genericName = "Text Editor";
+#			comment = "Code Editing. Redefined.";
+#			actions.new-empty-window = {
+#				"exec" = "codium --new-window %F";
+#				"icon" = "code";
+#				"name" = "New Empty Window";
+#			};
+#		};
+
 
 		# Force signal to use wayland
 		xdg.desktopEntries.signal-desktop = {
-			type = "Application";
-			exec = "signal-desktop --enable-features=UseOzonePlatform,WaylandWindowDecorations --ozone-platform=wayland %U";
-			icon = "signal-desktop";
-			terminal = false;
-			categories = [ "Network" "InstantMessaging" "Chat" ];
 			name = "Signal";
-			genericName = "Text Editor";
-			comment = "Private messaging from your desktop";
+			exec = "signal-desktop --use-tray-icon --enable-features=UseOzonePlatform,WaylandWindowDecorations --ozone-platform=wayland %U";
+			icon = "signal";
+			settings = {
+				StartupWMClass = "signal";
+			};
+		};
+
+		# Force mullvad to use wayland
+		xdg.desktopEntries.mullvad-gui = {
+			name = "Mullvad";
+			exec = "mullvad-gui --enable-features=UseOzonePlatform,WaylandWindowDecorations --ozone-platform=wayland";
+			icon = "mullvad-vpn";
+		};
+
+		# Force discord to use wayland and disable gpu to allow it to work
+		xdg.desktopEntries.discord = {
+			name = "Discord";
+			exec = "discord --enable-features=UseOzonePlatform --ozone-platform=wayland";
+			icon = "discord";
+		};
+
+		# Force webcord to use wayland
+		xdg.desktopEntries.webcord = {
+			name = "Webcord";
+			exec = "io.github.spacingbat3.webcord --enable-features=UseOzonePlatform --ozone-platform=wayland";
+			icon = "webcord";
+		};
+
+		# Force discord to use wayland and disable gpu to allow it to work
+		xdg.desktopEntries.slack = {
+			name = "Slack";
+			exec = "slack --enable-features=UseOzonePlatform,WaylandWindowDecorations --ozone-platform=wayland";
+			icon = "slack";
+			settings = {
+				StartupWMClass = "slack";
+			};
 		};
 
 		home.file = {
@@ -162,16 +212,16 @@
 			};
 
 			# Add firefox privacy profile overrides
-			".mozilla/firefox/privacy/user-overrides.js" = {
-				source = ../configs/firefox-user-overrides.js;
-				recursive = true;
-			};
+#			".mozilla/firefox/privacy/user-overrides.js" = {
+#				source = ../configs/firefox-user-overrides.js;
+#				recursive = true;
+#			};
 
 			# Set firefox to privacy profile
-			".mozilla/firefox/profiles.ini" = {
-				source = ../configs/firefox-profiles.ini;
-				recursive = true;
-			};
+#			".mozilla/firefox/profiles.ini" = {
+#				source = ../configs/firefox-profiles.ini;
+#				recursive = true;
+#			};
 
 			# Add noise suppression microphone
 			".config/pipewire/pipewire.conf.d/99-input-denoising.conf" = {
@@ -186,8 +236,14 @@
 			};
 
 			# Add kitty session config
-			".config/kitty/kitty.session" = {
-				source = ../configs/kitty.session;
+#			".config/kitty/kitty.session" = {
+#				source = ../configs/kitty.session;
+#				recursive = true;
+#			};
+
+			# Add terminator config
+			".config/terminator/config" = {
+				source = ../configs/terminator;
 				recursive = true;
 			};
 		};

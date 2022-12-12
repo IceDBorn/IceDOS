@@ -5,13 +5,14 @@
 	boot.kernelPackages = pkgs.linuxPackages_zen; # Use ZEN linux kernel
 
 	environment.systemPackages = with pkgs; [
-		#(callPackage ./self-built/system-monitoring-center.nix { buildPythonApplication = pkgs.python3Packages.buildPythonApplication; fetchPypi = pkgs.python3Packages.fetchPypi; pygobject3 = pkgs.python3Packages.pygobject3; }) # Task manager
+		(callPackage ./self-built/system-monitoring-center.nix { buildPythonApplication = pkgs.python3Packages.buildPythonApplication; fetchPypi = pkgs.python3Packages.fetchPypi; pygobject3 = pkgs.python3Packages.pygobject3; }) # Task manager
 		(callPackage ./self-built/webcord.nix {}) # An open source discord client
 		android-tools # Tools for debugging android devices
 		appimage-run # Appimage runner
 		aria # Terminal downloader with multiple connections support
 		btop # System monitor
-		direnv # Unclutter your .profile
+#		direnv # Unclutter your .profile
+		discord
 		firefox # Browser
 		flatpak # Source for more applications
 		gimp # Image editor
@@ -26,15 +27,17 @@
 		onlyoffice-bin # Microsoft Office alternative for Linux
 		p7zip # 7zip
 		python # Python
-		ranger # Terminal file manager
+#		ranger # Terminal file manager
 		rnnoise-plugin # A real-time noise suppression plugin
 		signal-desktop # Encrypted messaging platform
+		spotify # Music
 		sublime4 # Text editor
-		syncthing # Local file sync
+#		syncthing # Local file sync
 		tree # Display folder content at a tree format
 		unrar # Support opening rar files
 		usbimager # ISO Burner
 		vscodium # All purpose IDE
+		jetbrains.webstorm # Javascript IDE
 		wget # Terminal downloader
 		wine # Compatibility layer capable of running Windows applications
 		winetricks # Wine prefix settings manager
@@ -69,8 +72,9 @@
 				mva="rsync -rP --remove-source-files"; # Move command with details
 				restart-pipewire="systemctl --user restart pipewire"; # Restart pipewire
 				ssh="TERM=xterm-256color ssh"; # SSH with colors
-				steam-link="gamescope -H 1080 -b -- steam"; # Launch steam inside of a gamescope instance
-				update="(cd $(head -1 /etc/nixos/.configuration-location) && sudo nix flake update && bash rebuild.sh) ; (flatpak update) ; (yes | protonup) ; (yes | ~/.mozilla/firefox/privacy/updater.sh)"; # Update everything
+				steam-link="gamescope -W 3840 -H 2160 -be -U -- steam"; # Launch steam inside of a gamescope instance
+				sunshine="export PULSE_SERVER=/run/user/1000/pulse/native && flatpak run dev.lizardbyte.sunshine"; # Flatpak sunshine with sound
+				update="(cd $(head -1 /etc/nixos/.configuration-location) && sudo nix flake update && bash rebuild.sh) ; (flatpak update) ; (yes | protonup)"; # Update everything
 				vpn-off="mullvad disconnect"; # Disconnect from VPN
 				vpn-on="mullvad connect"; # Connect to VPN
 				vpn="mullvad status"; # Show VPN status

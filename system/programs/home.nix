@@ -1,7 +1,7 @@
 { config, pkgs, ... }:
 let
-	github.username = "IceDBorn";
-	github.email = "github.envenomed@dralias.com";
+	github.username = "CrazyStevenz";
+	github.email = "github.ekta@aleeas.com";
 in
 {
 	home-manager.users = {
@@ -71,7 +71,7 @@ in
 						}
 					];
 
-					initExtra = ''eval "$(direnv hook zsh)"'';
+#					initExtra = ''eval "$(direnv hook zsh)"'';
 				};
 
 				# Install gnome extensions using firefox
@@ -99,6 +99,7 @@ in
 						hide_window_decorations = "yes";
 						update_check_interval = "0";
 					};
+					font.name = "Jetbrains Mono";
 				};
 
 				zsh = {
@@ -120,7 +121,23 @@ in
 						}
 					];
 
-					initExtra = ''eval "$(direnv hook zsh)"'';
+					initExtra = ''
+						# prevent terminator from remembering commands from other panes
+						unset HISTFILE
+						# terminator env
+						echo $INIT_CMD
+						if [ ! -z "$INIT_CMD" ]; then
+							OLD_IFS=$IFS
+							setopt shwordsplit
+							IFS=';'
+							for cmd in $INIT_CMD; do
+								print -s "$cmd"  # add to history
+								eval $cmd
+							done
+							unset INIT_CMD
+							IFS=$OLD_IFS
+						fi
+					'';
 				};
 
 				# Install gnome extensions using firefox
