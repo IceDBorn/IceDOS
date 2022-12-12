@@ -65,6 +65,7 @@
 				# Set enabled gnome extensions
 				enabled-extensions =
 				[
+					"appindicatorsupport@rgcjonas.gmail.com"
 					"bluetooth-quick-connect@bjarosze.gmail.com"
 					"caffeine@patapon.info"
 					"clipboard-indicator@tudmotu.com"
@@ -74,8 +75,6 @@
 					"gsconnect@andyholmes.github.io"
 					"pop-shell@system76.com"
 					"smart-auto-move@khimaros.com"
-					"trayIconsReloaded@selfmade.pl"
-					"volume-mixer@evermiss.net"
 				];
 			};
 
@@ -230,6 +229,7 @@
 				# Set enabled gnome extensions
 				enabled-extensions =
 				[
+					"appindicatorsupport@rgcjonas.gmail.com"
 					"bluetooth-quick-connect@bjarosze.gmail.com"
 					"caffeine@patapon.info"
 					"clipboard-indicator@tudmotu.com"
@@ -239,8 +239,6 @@
 					"gsconnect@andyholmes.github.io"
 					"pop-shell@system76.com"
 					"smart-auto-move@khimaros.com"
-					"trayIconsReloaded@selfmade.pl"
-					"volume-mixer@evermiss.net"
 				];
 			};
 

@@ -14,7 +14,7 @@
 	environment.systemPackages = with pkgs; [
 		gnome.dconf-editor # Edit gnome's dconf
 		gnome.gnome-tweaks # Tweaks missing from pure Gnome
-		gnomeExtensions.application-volume-mixer # Application volume mixer on the gnome control center
+		gnomeExtensions.appindicator # Tray icons for gnome
 		gnomeExtensions.bluetooth-quick-connect # Show bluetooth devices on the gnome control center
 		gnomeExtensions.caffeine # Disable auto suspend and screen blank
 		gnomeExtensions.clipboard-indicator # Clipboard indicator for gnome
@@ -24,7 +24,6 @@
 		gnomeExtensions.gsconnect # KDE Connect implementation for gnome
 		gnomeExtensions.pop-shell # Tiling WM extension
 		gnomeExtensions.smart-auto-move # Remember window state througout reboots and restore it
-		gnomeExtensions.tray-icons-reloaded # Tray icons for gnome
 		gnome-extension-manager # Gnome extensions manager and downloader
 	];
 
