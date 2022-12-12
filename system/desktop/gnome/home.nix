@@ -141,13 +141,6 @@
 				always-show = false;
 			};
 
-			"org/gnome/shell/extensions/sound-output-device-chooser" = {
-				# Add an arrow to expand devices
-				integrate-with-slider = true;
-				# Hide arrow when there's only one device to choose from
-				hide-on-single-device = true;
-			};
-
 			"org/gnome/shell/extensions/smart-auto-move" = {
 				sync-mode = "IGNORE";
 				overrides = ''{"firefox":[{"action":1,"threshold":0.7}],"":[{"query":{"title":"home.nix - arch-linux-setup - VSCodium"},"action":1}],"jetbrains-studio":[{"action":1,"threshold":0.7}],"signal":[{"action":1,"threshold":0.7}],"de.shorsh.discord-screenaudio":[{"action":1,"threshold":0.7}],"heroic":[{"action":1,"threshold":0.7}],"Steam":[{"threshold":0.7,"action":1}],"bottles":[{"action":1,"threshold":0.7}],"kitty":[{"action":1,"threshold":0.7}],"org.gnome.Nautilus":[{"action":1,"threshold":0.7}],".system-monitoring-center-wrapped":[{"action":1,"threshold":0.7}]}'';
@@ -157,11 +150,6 @@
 				gap-inner = 0;
 				gap-outer = 0;
 				tile-by-default = true;
-			};
-
-			# Always hide tray icons
-			"org/gnome/shell/extensions/trayIconsReloaded" = {
-				icons-limit = 1;
 			};
 		};
 	};
@@ -306,13 +294,6 @@
 				always-show = false;
 			};
 
-			"org/gnome/shell/extensions/sound-output-device-chooser" = {
-				# Add an arrow to expand devices
-				integrate-with-slider = true;
-				# Hide arrow when there's only one device to choose from
-				hide-on-single-device = true;
-			};
-
 			"org/gnome/shell/extensions/smart-auto-move" = {
 				sync-mode = "IGNORE";
 				overrides = ''{"firefox":[{"action":1,"threshold":0.7}],"":[{"query":{"title":"home.nix - arch-linux-setup - VSCodium"},"action":1}],"jetbrains-studio":[{"action":1,"threshold":0.7}],"signal":[{"action":1,"threshold":0.7}],"de.shorsh.discord-screenaudio":[{"action":1,"threshold":0.7}],"heroic":[{"action":1,"threshold":0.7}],"Steam":[{"threshold":0.7,"action":1}],"bottles":[{"action":1,"threshold":0.7}],"kitty":[{"action":1,"threshold":0.7}],"org.gnome.Nautilus":[{"action":1,"threshold":0.7}],".system-monitoring-center-wrapped":[{"action":1,"threshold":0.7}]}'';
@@ -322,11 +303,6 @@
 				gap-inner = 0;
 				gap-outer = 0;
 				tile-by-default = true;
-			};
-
-			# Always hide tray icons
-			"org/gnome/shell/extensions/trayIconsReloaded" = {
-				icons-limit = 1;
 			};
 		};
 	};
