@@ -74,7 +74,6 @@
 					"gsconnect@andyholmes.github.io"
 					"pop-shell@system76.com"
 					"smart-auto-move@khimaros.com"
-					"sound-output-device-chooser@kgshank.net"
 					"trayIconsReloaded@selfmade.pl"
 					"volume-mixer@evermiss.net"
 				];
@@ -240,7 +239,6 @@
 					"gsconnect@andyholmes.github.io"
 					"pop-shell@system76.com"
 					"smart-auto-move@khimaros.com"
-					"sound-output-device-chooser@kgshank.net"
 					"trayIconsReloaded@selfmade.pl"
 					"volume-mixer@evermiss.net"
 				];
