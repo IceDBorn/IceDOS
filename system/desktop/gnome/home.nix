@@ -75,6 +75,7 @@
 					"gsconnect@andyholmes.github.io"
 					"pop-shell@system76.com"
 					"smart-auto-move@khimaros.com"
+					"quick-settings-tweaks@qwreey"
 				];
 			};
 
@@ -239,6 +240,7 @@
 					"gsconnect@andyholmes.github.io"
 					"pop-shell@system76.com"
 					"smart-auto-move@khimaros.com"
+					"quick-settings-tweaks@qwreey"
 				];
 			};
 

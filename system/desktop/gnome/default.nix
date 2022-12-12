@@ -23,6 +23,7 @@
 		gnomeExtensions.gamemode # Status indicator for gamemode on gnome
 		gnomeExtensions.gsconnect # KDE Connect implementation for gnome
 		gnomeExtensions.pop-shell # Tiling WM extension
+		gnomeExtensions.quick-settings-tweaker # Quick settings tweaker for the gnome control center~
 		gnomeExtensions.smart-auto-move # Remember window state througout reboots and restore it
 		gnome-extension-manager # Gnome extensions manager and downloader
 	];
