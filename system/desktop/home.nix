@@ -65,13 +65,6 @@
 			icon = "discord";
 		};
 
-		# Force webcord to use wayland
-		xdg.desktopEntries.webcord = {
-			name = "Webcord";
-			exec = "io.github.spacingbat3.webcord --enable-features=UseOzonePlatform --ozone-platform=wayland";
-			icon = "webcord";
-		};
-
 		home.file = {
 			# Add zsh theme to zsh directory
 			".config/zsh/zsh-theme.zsh" = {
@@ -179,13 +172,6 @@
 			name = "Discord";
 			exec = "discord --enable-features=UseOzonePlatform --ozone-platform=wayland";
 			icon = "discord";
-		};
-
-		# Force webcord to use wayland
-		xdg.desktopEntries.webcord = {
-			name = "Webcord";
-			exec = "io.github.spacingbat3.webcord --enable-features=UseOzonePlatform --ozone-platform=wayland";
-			icon = "webcord";
 		};
 
 		# Force discord to use wayland and disable gpu to allow it to work
