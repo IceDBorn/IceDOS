@@ -15,7 +15,7 @@
 #		prismlauncher # Minecraft launcher
 		protontricks # Winetricks for proton prefixes
 		protonup-ng # Proton ge downloader
-#		rpcs3 # PS3 Emulator
+    rpcs3 # PS3 Emulator
 #		ryujinx # Switch Emulator
 		scanmem # Cheat engine for linux
 		steam # Gaming platform
