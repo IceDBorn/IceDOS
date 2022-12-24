@@ -6,8 +6,8 @@
 
 	"bluetooth": {
 		"format": "  {status}",
-		"format-connected": "  {device_alias}",
-		"format-connected-battery": "  {device_alias} ({device_battery_percentage})",
+		"format-connected": "  Connected",
+		"format-connected-battery": "  Connected ({device_battery_percentage})",
 		"tooltip-format": "{controller_alias}\t{controller_address}\n\n{num_connections} connected",
 		"tooltip-format-connected": "{controller_alias}\t{controller_address}\n\n{num_connections} connected\n\n{device_enumerate}",
 		"tooltip-format-enumerate-connected": "{device_alias}\t{device_address}",
@@ -66,7 +66,8 @@
 
 	"hyprland/window": {
 		"format": "{}",
-		"separate-outputs": true
+		"separate-outputs": true,
+		"max-length": 50
 	},
 
 	"custom/power": {
