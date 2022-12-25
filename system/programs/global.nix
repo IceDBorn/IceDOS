@@ -67,6 +67,7 @@
 				desktop-files-list="ls -l /run/current-system/sw/share/applications"; # Show desktop files location
 				list-packages="nix-store --query --requisites /run/current-system | cut -d- -f2- | sort | uniq"; # List installed nix packages
 				mva="rsync -rP --remove-source-files"; # Move command with details
+				rebuild="cd $(head -1 /etc/nixos/.configuration-location) && bash rebuild.sh"; # Rebuild the system configuration
 				restart-pipewire="systemctl --user restart pipewire"; # Restart pipewire
 				ssh="TERM=xterm-256color ssh"; # SSH with colors
 				steam-link="gamescope -H 1080 -b -- steam"; # Launch steam inside of a gamescope instance
