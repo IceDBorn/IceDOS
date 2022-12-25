@@ -67,7 +67,7 @@
 	"hyprland/window": {
 		"format": "{}",
 		"separate-outputs": true,
-		"max-length": 50
+		"max-length": 40
 	},
 
 	"custom/power": {
