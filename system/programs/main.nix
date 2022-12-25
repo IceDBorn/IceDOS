@@ -19,7 +19,8 @@
 		ryujinx # Switch Emulator
 		scanmem # Cheat engine for linux
 		steam # Gaming platform
-		sunshine # Streaming platform
+		stremio # Straming platform
+		sunshine # Streaming software
 	];
 
 	services.input-remapper.enable = true;
