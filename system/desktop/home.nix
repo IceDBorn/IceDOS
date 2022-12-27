@@ -65,9 +65,16 @@
 				recursive = true;
 			};
 
-			# Add firefox privacy profile overrides
-			".mozilla/firefox/privacy/user-overrides.js" = {
-				source = ../configs/firefox-user-overrides.js;
+			# Add arkenfox user.js
+			".mozilla/firefox/privacy/user.js" = {
+				source =
+				"${(config.nur.repos.slaier.arkenfox-userjs.overrideAttrs (oldAttrs: {
+					installPhase = ''
+						cat ${../configs/firefox-user-overrides.js} >> user.js
+						mkdir -p $out
+						cp ./user.js $out/user.js
+					'';
+				}))}/user.js";
 				recursive = true;
 			};
 
@@ -161,9 +168,16 @@
 				recursive = true;
 			};
 
-			# Add firefox privacy profile overrides
-			".mozilla/firefox/privacy/user-overrides.js" = {
-				source = ../configs/firefox-user-overrides.js;
+			# Add arkenfox user.js
+			".mozilla/firefox/privacy/user.js" = {
+				source =
+				"${(config.nur.repos.slaier.arkenfox-userjs.overrideAttrs (oldAttrs: {
+					installPhase = ''
+						cat ${../configs/firefox-user-overrides.js} >> user.js
+						mkdir -p $out
+						cp ./user.js $out/user.js
+					'';
+				}))}/user.js";
 				recursive = true;
 			};
 
