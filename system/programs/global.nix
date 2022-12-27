@@ -90,8 +90,5 @@
 	};
 
 	# Symlink files and folders to /etc
-	environment.etc = {
-		"rnnoise-plugin/librnnoise_ladspa.so".source = "${pkgs.rnnoise-plugin}/lib/ladspa/librnnoise_ladspa.so";
-		"bibata-cursors".source = "${pkgs.bibata-cursors}/share/icons";
-	};
+	environment.etc."rnnoise-plugin/librnnoise_ladspa.so".source = "${pkgs.rnnoise-plugin}/lib/ladspa/librnnoise_ladspa.so";
 }
