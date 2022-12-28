@@ -1,5 +1,5 @@
 ### PACKAGES INSTALLED ON ALL USERS ###
-{ pkgs, ... }:
+{ pkgs, config, ... }:
 
 {
 	boot.kernelPackages = pkgs.linuxPackages_zen; # Use ZEN linux kernel
@@ -25,7 +25,7 @@
 		obs-studio # Recording/Livestream
 		onlyoffice-bin # Microsoft Office alternative for Linux
 		p7zip # 7zip
-		python # Python
+		python3 # Python
 		ranger # Terminal file manager
 		rnnoise-plugin # A real-time noise suppression plugin
 		signal-desktop # Encrypted messaging platform
