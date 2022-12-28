@@ -46,9 +46,6 @@ then
 	flatpak remote-add --if-not-exists flathub https://flathub.org/repo/flathub.flatpakrepo
 	flatpak install de.shorsh.discord-screenaudio com.github.tchx84.Flatseal
 
-	# Download proton ge
-	protonup -d "$HOME/.steam/root/compatibilitytools.d/" && protonup
-
 	# Reboot after the installation is completed
 	bash scripts/reboot.sh
 

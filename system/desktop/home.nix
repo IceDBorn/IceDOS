@@ -107,6 +107,12 @@
 				source = "${(pkgs.callPackage ../programs/self-built/adwaita-for-steam {})}/build/Adwaita";
 				recursive = true;
 			};
+
+			# Install proton ge
+			".local/share/Steam/compatibilitytools.d/GE-Proton-Nix" = {
+				source = "${(pkgs.callPackage ../programs/self-built/proton-ge.nix {})}/proton-ge";
+				recursive = true;
+			};
 		};
 	};
 
