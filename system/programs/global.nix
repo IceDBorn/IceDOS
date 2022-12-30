@@ -10,12 +10,14 @@
 		android-tools # Tools for debugging android devices
 		appimage-run # Appimage runner
 		aria # Terminal downloader with multiple connections support
+		bat # Better cat command
 		btop # System monitor
 		direnv # Unclutter your .profile
 		firefox # Browser
 		flatpak # Source for more applications
 		gimp # Image editor
 		git # Distributed version control system
+		gping # ping with a graph
 		helvum # Pipewire patchbay
 		killall # Tool to kill all programs matching process name
 		kitty # Terminal
@@ -61,6 +63,7 @@
 			# Aliases
 			shellAliases = {
 				aria2c="aria2c -j 16 -s 16"; # Download with aria using best settings
+				cat="bat"; # Better cat command
 				chmod="sudo chmod"; # It's a command that I always execute with sudo
 				clear-keys="sudo rm -rf ~/ local/share/keyrings/* ~/ local/share/kwalletd/*"; # Clear system keys
 				clear-proton-ge="bash ~/.config/zsh/protondown.sh"; # Download the latest proton ge version and delete the older ones
@@ -69,6 +72,7 @@
 				list-packages="nix-store --query --requisites /run/current-system | cut -d- -f2- | sort | uniq"; # List installed nix packages
 				ls="lsd"; # Better ls command
 				mva="rsync -rP --remove-source-files"; # Move command with details
+				ping="gping"; # ping with a graph
 				rebuild="(cd $(head -1 /etc/nixos/.configuration-location) && bash rebuild.sh)"; # Rebuild the system configuration
 				restart-pipewire="systemctl --user restart pipewire"; # Restart pipewire
 				ssh="TERM=xterm-256color ssh"; # SSH with colors
