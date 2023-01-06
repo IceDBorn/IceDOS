@@ -1,0 +1,30 @@
+diff --git a/install.py b/install.py
+index df1e75b..7643f03 100755
+--- a/install.py
++++ b/install.py
+@@ -147,7 +147,7 @@ if __name__ == "__main__":
+ 	if args.patch and not shutil.which("patch"):
+ 		raise SystemExit(f"{TEXT_BOLD}patch{TEXT_RESET} executable not found in $PATH. Make sure you have GNU Patch installed")
+
+-	with TemporaryDirectory() as tmpdir:
++	with (Path(os.environ['NIX_OUT']) / 'build') as tmpdir:
+ 		tmp = Path(tmpdir)
+ 		sourcedir = tmp / SKIN_DIR
+ 		print(f"Copying to the stage directory {TEXT_BOLD}{sourcedir}{TEXT_RESET}")
+@@ -168,16 +168,3 @@ if __name__ == "__main__":
+ 					apply_patch(tmp, patch)
+
+ 		gen_webkit_theme(sourcedir / CSS_FILE, args.web_theme, args.web_extras)
+-
+-		targets = set()
+-
+-		for t in args.target:
+-			if t == "normal":
+-				targets.add(Path(TARGET_NORMAL).expanduser().resolve())
+-			elif t == "flatpak":
+-				targets.add(Path(TARGET_FLATPAK).expanduser().resolve())
+-			else:
+-				targets.add(Path(t).expanduser().resolve())
+-
+-		for target in targets:
+-			install(sourcedir, target, args.name)

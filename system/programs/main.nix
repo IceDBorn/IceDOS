@@ -14,12 +14,12 @@
 #		ppsspp # PSP Emulator
 #		prismlauncher # Minecraft launcher
 		protontricks # Winetricks for proton prefixes
-		protonup-ng # Proton ge downloader
-    rpcs3 # PS3 Emulator
-#		ryujinx # Switch Emulator
+		rpcs3 # PS3 Emulator
+		ryujinx # Switch Emulator
 		scanmem # Cheat engine for linux
 		steam # Gaming platform
-		sunshine # Streaming platform
+		stremio # Straming platform
+		sunshine # Streaming software
 	];
 
 	services.input-remapper.enable = true;
