@@ -66,7 +66,6 @@
 				cat="bat"; # Better cat command
 				chmod="sudo chmod"; # It's a command that I always execute with sudo
 				clear-keys="sudo rm -rf ~/ local/share/keyrings/* ~/ local/share/kwalletd/*"; # Clear system keys
-				clear-proton-ge="bash ~/.config/zsh/protondown.sh"; # Download the latest proton ge version and delete the older ones
 				cp="rsync -rP"; # Copy command with details
 				desktop-files-list="ls -l /run/current-system/sw/share/applications"; # Show desktop files location
 				list-packages="nix-store --query --requisites /run/current-system | cut -d- -f2- | sort | uniq"; # List installed nix packages
@@ -77,7 +76,7 @@
 				restart-pipewire="systemctl --user restart pipewire"; # Restart pipewire
 				ssh="TERM=xterm-256color ssh"; # SSH with colors
 				steam-link="gamescope -H 1080 -b -- steam"; # Launch steam inside of a gamescope instance
-				update="(cd $(head -1 /etc/nixos/.configuration-location) && sudo nix flake update && bash rebuild.sh) ; (flatpak update)"; # Update everything
+				update="(cd $(head -1 /etc/nixos/.configuration-location) && sudo nix flake update && bash rebuild.sh) ; (bash ~/.config/zsh/proton-ge-updater.sh) ; (flatpak update)"; # Update everything
 				vpn-off="mullvad disconnect"; # Disconnect from VPN
 				vpn-on="mullvad connect"; # Connect to VPN
 				vpn="mullvad status"; # Show VPN status
@@ -97,4 +96,5 @@
 
 	# Symlink files and folders to /etc
 	environment.etc."rnnoise-plugin/librnnoise_ladspa.so".source = "${pkgs.rnnoise-plugin}/lib/ladspa/librnnoise_ladspa.so";
+	environment.etc."proton-ge-nix".source = "${(pkgs.callPackage self-built/proton-ge.nix {})}/";
 }

@@ -85,9 +85,9 @@ in
 					recursive = true;
 				};
 
-				# Add protondown script to zsh directory
-				".config/zsh/protondown.sh" = {
-					source = ../scripts/protondown.sh;
+				# Add proton-ge-updater script to zsh directory
+				".config/zsh/proton-ge-updater.sh" = {
+					source = ../scripts/proton-ge-updater.sh;
 					recursive = true;
 				};
 
@@ -131,12 +131,6 @@ in
 				# Add adwaita steam skin
 				".local/share/Steam/skins/Adwaita" = {
 					source = "${(pkgs.callPackage ../programs/self-built/adwaita-for-steam {})}/build/Adwaita";
-					recursive = true;
-				};
-
-				# Install proton ge
-				".local/share/Steam/compatibilitytools.d/GE-Proton-Nix" = {
-					source = "${(pkgs.callPackage ../programs/self-built/proton-ge.nix {})}/proton-ge";
 					recursive = true;
 				};
 			};
@@ -194,12 +188,6 @@ in
 				# Add zsh theme to zsh directory
 				".config/zsh/zsh-theme.zsh" = {
 					source = ../configs/zsh-theme.zsh;
-					recursive = true;
-				};
-
-				# Add protondown script to zsh directory
-				".config/zsh/protondown.sh" = {
-					source = ../scripts/protondown.sh;
 					recursive = true;
 				};
 

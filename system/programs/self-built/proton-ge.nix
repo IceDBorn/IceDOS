@@ -12,7 +12,7 @@ stdenvNoCC.mkDerivation rec {
 	preferLocalBuild = true;
 
 	installPhase = ''
-		mkdir -p $out/proton-ge
-		cp -r ./ $out/proton-ge
+		mkdir -p $out/${version}
+		cp -r ./ $out/${version}
 	'';
 }
