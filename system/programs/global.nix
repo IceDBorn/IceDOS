@@ -7,6 +7,7 @@
 	environment.systemPackages = with pkgs; [
 		#(callPackage ./self-built/system-monitoring-center.nix { buildPythonApplication = pkgs.python3Packages.buildPythonApplication; fetchPypi = pkgs.python3Packages.fetchPypi; pygobject3 = pkgs.python3Packages.pygobject3; }) # Task manager
 		(callPackage ./self-built/webcord.nix { electron = pkgs.electron_19; }) # An open source discord client
+		(callPackage self-built/apx.nix {}) # Package manager using distrobox
 		android-tools # Tools for debugging android devices
 		appimage-run # Appimage runner
 		aria # Terminal downloader with multiple connections support
@@ -14,7 +15,6 @@
 		btop # System monitor
 		direnv # Unclutter your .profile
 		firefox # Browser
-		flatpak # Source for more applications
 		gimp # Image editor
 		git # Distributed version control system
 		gping # ping with a graph
@@ -97,4 +97,5 @@
 	# Symlink files and folders to /etc
 	environment.etc."rnnoise-plugin/librnnoise_ladspa.so".source = "${pkgs.rnnoise-plugin}/lib/ladspa/librnnoise_ladspa.so";
 	environment.etc."proton-ge-nix".source = "${(pkgs.callPackage self-built/proton-ge.nix {})}/";
+	environment.etc."apx/config.json".source = "${(pkgs.callPackage self-built/apx.nix {})}/etc/apx/config.json";
 }

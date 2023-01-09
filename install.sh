@@ -42,9 +42,8 @@ then
 	# Build the configuration
 	sudo nixos-rebuild switch || exit
 
-	# Install flatpak apps
-	flatpak remote-add --if-not-exists flathub https://flathub.org/repo/flathub.flatpakrepo
-	flatpak install de.shorsh.discord-screenaudio com.github.tchx84.Flatseal
+	# Install apx applications
+	apx init --aur && apx install --aur discord-screenaudio
 
 	# Reboot after the installation is completed
 	bash scripts/reboot.sh
