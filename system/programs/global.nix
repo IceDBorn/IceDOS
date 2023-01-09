@@ -76,7 +76,7 @@
 				restart-pipewire="systemctl --user restart pipewire"; # Restart pipewire
 				ssh="TERM=xterm-256color ssh"; # SSH with colors
 				steam-link="gamescope -H 1080 -b -- steam"; # Launch steam inside of a gamescope instance
-				update="(cd $(head -1 /etc/nixos/.configuration-location) && sudo nix flake update && bash rebuild.sh) ; (bash ~/.config/zsh/proton-ge-updater.sh) ; (flatpak update)"; # Update everything
+				update="(cd $(head -1 /etc/nixos/.configuration-location) && sudo nix flake update && bash rebuild.sh) ; (bash ~/.config/zsh/proton-ge-updater.sh)"; # Update everything
 				vpn-off="mullvad disconnect"; # Disconnect from VPN
 				vpn-on="mullvad connect"; # Connect to VPN
 				vpn="mullvad status"; # Show VPN status
@@ -90,7 +90,6 @@
 
 	services = {
 		openssh.enable = true;
-		flatpak.enable = true;
 		mullvad-vpn.enable = true;
 	};
 
