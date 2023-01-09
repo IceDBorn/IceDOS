@@ -43,7 +43,7 @@ then
 	sudo nixos-rebuild switch || exit
 
 	# Install apx applications
-	apx init --aur && apx install --aur discord-screenaudio || exit
+	apx init --aur && apx install --aur discord-screenaudio && distrobox enter apx_managed_aur -- distrobox-export --app discord-screenaudio || exit
 
 	# Reboot after the installation is completed
 	bash scripts/reboot.sh
