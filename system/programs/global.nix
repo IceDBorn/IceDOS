@@ -65,6 +65,7 @@
 
 			# Aliases
 			shellAliases = {
+				apx="apx --aur"; # Use arch as the base apx container
 				aria2c="aria2c -j 16 -s 16"; # Download with aria using best settings
 				cat="bat"; # Better cat command
 				chmod="sudo chmod"; # It's a command that I always execute with sudo
@@ -79,7 +80,7 @@
 				restart-pipewire="systemctl --user restart pipewire"; # Restart pipewire
 				ssh="TERM=xterm-256color ssh"; # SSH with colors
 				steam-link="gamescope -H 1080 -b -- steam"; # Launch steam inside of a gamescope instance
-				update="(cd $(head -1 /etc/nixos/.configuration-location) && sudo nix flake update && bash rebuild.sh) ; (bash ~/.config/zsh/proton-ge-updater.sh)"; # Update everything
+				update="(cd $(head -1 /etc/nixos/.configuration-location) && sudo nix flake update && bash rebuild.sh) ; (apx --aur upgrade) ; (bash ~/.config/zsh/proton-ge-updater.sh)"; # Update everything
 				vpn-off="mullvad disconnect"; # Disconnect from VPN
 				vpn-on="mullvad connect"; # Connect to VPN
 				vpn="mullvad status"; # Show VPN status
