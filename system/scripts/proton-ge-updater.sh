@@ -1,7 +1,7 @@
 #!/bin/bash
 
 currentVersion=$(ls /etc/proton-ge-nix)
-installedVersions=$(ls $HOME/.local/share/Steam/compatibilitytools.d/ 2&>/dev/null)
+installedVersions=$(ls $HOME/.local/share/Steam/compatibilitytools.d/ 2> /dev/null)
 isInstalled=false
 
 function installProtonGE () {
