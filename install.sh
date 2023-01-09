@@ -35,7 +35,7 @@ then
 		while IFS= read -r user ; do
 			# Remove potentially generated firefox profiles ini before building the nix configuration
 			echo "Removing firefox profiles ini for $user..."
-			sudo rm -rf /home/$user/.mozilla/firefox/profiles.ini
+			sudo rm -rf /home/$user/.mozilla/firefox/profiles.ini 2> /dev/null
 		done <<< "$USERS"
 	fi
 
@@ -43,7 +43,7 @@ then
 	sudo nixos-rebuild switch || exit
 
 	# Install apx applications
-	apx init --aur && apx install --aur discord-screenaudio
+	apx init --aur && apx install --aur discord-screenaudio || exit
 
 	# Reboot after the installation is completed
 	bash scripts/reboot.sh
