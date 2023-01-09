@@ -63,6 +63,18 @@
 			exec = "discord --enable-features=UseOzonePlatform --ozone-platform=wayland %U";
 			icon = "discord";
 		};
+
+		# Create apx discord shortcut
+		xdg.desktopEntries.discord-screenaudio = {
+			type = "Application";
+			exec = "apx run --aur discord-screenaudio";
+			icon = "discord-screenaudio";
+			terminal = false;
+			categories = [ "Network" "InstantMessaging" "Chat" ];
+			name = "discord-screenaudio";
+			genericName = "Discord";
+			comment = "Discord with sound on share";
+		};
 	};
 
 	home-manager.users.${config.work.user.username} = {
@@ -136,6 +148,18 @@
 			settings = {
 				StartupWMClass = "slack";
 			};
+		};
+
+		# Create apx discord shortcut
+		xdg.desktopEntries.discord-screenaudio = {
+			type = "Application";
+			exec = "apx run --aur discord-screenaudio";
+			icon = "discord-screenaudio";
+			terminal = false;
+			categories = [ "Network" "InstantMessaging" "Chat" ];
+			name = "discord-screenaudio";
+			genericName = "Discord";
+			comment = "Discord with sound on share";
 		};
 	};
 }

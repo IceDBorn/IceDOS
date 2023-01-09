@@ -7,6 +7,7 @@
 	environment.systemPackages = with pkgs; [
 		(callPackage ./self-built/system-monitoring-center.nix { buildPythonApplication = pkgs.python3Packages.buildPythonApplication; fetchPypi = pkgs.python3Packages.fetchPypi; pygobject3 = pkgs.python3Packages.pygobject3; }) # Task manager
 		(callPackage ./self-built/webcord.nix { electron = pkgs.electron_19; }) # An open source discord client
+		(callPackage self-built/apx.nix {}) # Package manager using distrobox
 		android-tools # Tools for debugging android devices
 		appimage-run # Appimage runner
 		aria # Terminal downloader with multiple connections support
@@ -15,7 +16,6 @@
 #		direnv # Unclutter your .profile
 		discord
 		firefox # Browser
-		flatpak # Source for more applications
 		gimp # Image editor
 		git # Distributed version control system
 		gping # ping with a graph
@@ -69,7 +69,6 @@
 				cat="bat"; # Better cat command
 				chmod="sudo chmod"; # It's a command that I always execute with sudo
 				clear-keys="sudo rm -rf ~/ local/share/keyrings/* ~/ local/share/kwalletd/*"; # Clear system keys
-				clear-proton-ge="bash ~/.config/zsh/protondown.sh"; # Download the latest proton ge version and delete the older ones
 				cp="rsync -rP"; # Copy command with details
 				desktop-files-list="ls -l /run/current-system/sw/share/applications"; # Show desktop files location
 				list-packages="nix-store --query --requisites /run/current-system | cut -d- -f2- | sort | uniq"; # List installed nix packages
@@ -79,9 +78,8 @@
 				rebuild="(cd $(head -1 /etc/nixos/.configuration-location) && bash rebuild.sh)"; # Rebuild the system configuration
 				restart-pipewire="systemctl --user restart pipewire"; # Restart pipewire
 				ssh="TERM=xterm-256color ssh"; # SSH with colors
-				steam-link="gamescope -W 2560 -H 1440 -be -U -- steam"; # Launch steam inside of a gamescope instance
-				sunshine="export PULSE_SERVER=/run/user/1000/pulse/native && flatpak run dev.lizardbyte.sunshine"; # Flatpak sunshine with sound
-				update="(cd $(head -1 /etc/nixos/.configuration-location) && sudo nix flake update && bash rebuild.sh) ; (flatpak update)"; # Update everything
+				steam-link="gamescope -H 1080 -b -- steam"; # Launch steam inside of a gamescope instance
+				update="(cd $(head -1 /etc/nixos/.configuration-location) && sudo nix flake update && bash rebuild.sh) ; (bash ~/.config/zsh/proton-ge-updater.sh)"; # Update everything
 				vpn-off="mullvad disconnect"; # Disconnect from VPN
 				vpn-on="mullvad connect"; # Connect to VPN
 				vpn="mullvad status"; # Show VPN status
@@ -112,10 +110,11 @@
 
 	services = {
 		openssh.enable = true;
-		flatpak.enable = true;
 		mullvad-vpn.enable = true;
 	};
 
 	# Symlink files and folders to /etc
 	environment.etc."rnnoise-plugin/librnnoise_ladspa.so".source = "${pkgs.rnnoise-plugin}/lib/ladspa/librnnoise_ladspa.so";
+	environment.etc."proton-ge-nix".source = "${(pkgs.callPackage self-built/proton-ge.nix {})}/";
+	environment.etc."apx/config.json".source = "${(pkgs.callPackage self-built/apx.nix {})}/etc/apx/config.json";
 }

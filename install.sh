@@ -35,16 +35,15 @@ then
 		while IFS= read -r user ; do
 			# Remove potentially generated firefox profiles ini before building the nix configuration
 			echo "Removing firefox profiles ini for $user..."
-			sudo rm -rf /home/$user/.mozilla/firefox/profiles.ini
+			sudo rm -rf /home/$user/.mozilla/firefox/profiles.ini 2> /dev/null
 		done <<< "$USERS"
 	fi
 
 	# Build the configuration
 	sudo nixos-rebuild switch || exit
 
-	# Install flatpak apps
-  flatpak remote-add --if-not-exists flathub https://flathub.org/repo/flathub.flatpakrepo
-  flatpak install de.shorsh.discord-screenaudio com.github.tchx84.Flatseal
+	# Install apx applications
+	apx init --aur && apx install --aur discord-screenaudio || exit
 
 	# Reboot after the installation is completed
 	bash scripts/reboot.sh
