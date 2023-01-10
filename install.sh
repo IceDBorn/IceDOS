@@ -51,6 +51,6 @@ then
 
 else
 	printf "You really should:
-	- Edit configuration.nix and comment out anything you do not want to setup.
-	- Edit mounts.nix or do not install it.$RED$BOLD A wrong mounts.nix file can break your system!$NC$NORMAL\n"
+	- Edit .nix, configuration.nix and comment out anything you do not want to setup.
+	- Edit mounts.nix or disable it.$RED$BOLD A wrong mounts.nix file can break your system!$NC$NORMAL\n"
 fi
