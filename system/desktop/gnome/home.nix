@@ -10,7 +10,7 @@
 				# Enable clock seconds
 				clock-show-seconds = true;
 				# Disable date
-#				clock-show-date = false;
+				clock-show-date = config.desktop-environment.gnome.configuration.clock-date.enable;
 			};
 
 			# Disable lockscreen notifications
@@ -68,47 +68,20 @@
 					"appindicatorsupport@rgcjonas.gmail.com"
 					"arcmenu@arcmenu.com"
 					"bluetooth-quick-connect@bjarosze.gmail.com"
-#					"caffeine@patapon.info"
+					# "caffeine@patapon.info"
 					"clipboard-indicator@tudmotu.com"
 					"color-picker@tuberry"
 					"dash-to-panel@jderose9.github.com"
 					"emoji-selector@maestroschan.fr"
-					"gamemode@christian.kellner.me"
-#					"gsconnect@andyholmes.github.io"
-#					"pop-shell@system76.com"
-#					"smart-auto-move@khimaros.com"
+					# "gsconnect@andyholmes.github.io"
 					"quick-settings-tweaks@qwreey"
 				];
 			};
 
 			"org/gnome/shell/keybindings" = {
-				# Disable switch to application shortcuts
-#				switch-to-application-1 = [];
-#				switch-to-application-2 = [];
-#				switch-to-application-3 = [];
-#				switch-to-application-4 = [];
-#				switch-to-application-5 = [];
-#				switch-to-application-6 = [];
-#				switch-to-application-7 = [];
-#				switch-to-application-8 = [];
-#				switch-to-application-9 = [];
 				# Disable clock shortcut
 				toggle-message-tray = [];
 			};
-
-			# Switch to workspaces with Super + number
-#			"org/gnome/desktop/wm/keybindings" = {
-#				switch-to-workspace-1 = [ "<Super>1" ];
-#				switch-to-workspace-2 = [ "<Super>2" ];
-#				switch-to-workspace-3 = [ "<Super>3" ];
-#				switch-to-workspace-4 = [ "<Super>4" ];
-#				switch-to-workspace-5 = [ "<Super>5" ];
-#				switch-to-workspace-6 = [ "<Super>6" ];
-#				switch-to-workspace-7 = [ "<Super>7" ];
-#				switch-to-workspace-8 = [ "<Super>8" ];
-#				switch-to-workspace-9 = [ "<Super>9" ];
-#				switch-to-workspace-10 = [ "<Super>0" ];
-#			};
 
 			"org/gnome/settings-daemon/plugins/media-keys" = {
 				custom-keybindings = [
@@ -134,16 +107,16 @@
 				current-workspace-only = true;
 			};
 
-#			"org/gnome/shell/extensions/caffeine" = {
-#				# Remember the user choice
-#				restore-state = true;
-#				# Disable icon
-#				show-indicator = false;
-#				# Disable auto suspend and lock
-#				user-enabled = true;
-#				# Disable notifications
-#				show-notifications = false;
-#			};
+			"org/gnome/shell/extensions/caffeine" = lib.mkIf config.desktop-environment.gnome.configuration.caffeine.enable {
+				# Remember the user choice
+				restore-state = true;
+				# Disable icon
+				show-indicator = false;
+				# Disable auto suspend and lock
+				user-enabled = true;
+				# Disable notifications
+				show-notifications = false;
+			};
 
 			"org/gnome/shell/extensions/clipboard-indicator" = {
 				# Remove whitespace before and after the text
@@ -161,17 +134,6 @@
 			"org/gnome/shell/extensions/emoji-selector" = {
 				always-show = false;
 			};
-
-#			"org/gnome/shell/extensions/smart-auto-move" = {
-#				sync-mode = "IGNORE";
-#				overrides = ''{"firefox":[{"action":1,"threshold":0.7}],"":[{"query":{"title":"home.nix - arch-linux-setup - VSCodium"},"action":1}],"jetbrains-studio":[{"action":1,"threshold":0.7}],"signal":[{"action":1,"threshold":0.7}],"de.shorsh.discord-screenaudio":[{"action":1,"threshold":0.7}],"heroic":[{"action":1,"threshold":0.7}],"Steam":[{"threshold":0.7,"action":1}],"bottles":[{"action":1,"threshold":0.7}],"kitty":[{"action":1,"threshold":0.7}],"org.gnome.Nautilus":[{"action":1,"threshold":0.7}],".system-monitoring-center-wrapped":[{"action":1,"threshold":0.7}]}'';
-#			};
-
-#			"org/gnome/shell/extensions/pop-shell" = {
-#				gap-inner = 0;
-#				gap-outer = 0;
-#				tile-by-default = true;
-#			};
 		};
 	};
 
@@ -184,7 +146,7 @@
 				# Enable clock seconds
 				clock-show-seconds = true;
 				# Disable date
-#				clock-show-date = false;
+				clock-show-date = config.desktop-environment.gnome.configuration.clock-date.enable;
 			};
 
 			# Disable lockscreen notifications
@@ -211,7 +173,7 @@
 
 			# Turn off screen
 			"org/gnome/desktop/session" = {
-				idle-delay = 240;
+				idle-delay = 270;
 			};
 
 			# Enable screen lock
@@ -248,63 +210,55 @@
 					"appindicatorsupport@rgcjonas.gmail.com"
 					"arcmenu@arcmenu.com"
 					"bluetooth-quick-connect@bjarosze.gmail.com"
-#					"caffeine@patapon.info"
+					# "caffeine@patapon.info"
 					"clipboard-indicator@tudmotu.com"
 					"color-picker@tuberry"
 					"dash-to-panel@jderose9.github.com"
 					"emoji-selector@maestroschan.fr"
-					"gamemode@christian.kellner.me"
-#					"gsconnect@andyholmes.github.io"
-#					"pop-shell@system76.com"
-#					"smart-auto-move@khimaros.com"
+					# "gsconnect@andyholmes.github.io"
 					"quick-settings-tweaks@qwreey"
 				];
 			};
 
 			"org/gnome/shell/keybindings" = {
-				# Disable switch to application shortcuts
-#				switch-to-application-1 = [];
-#				switch-to-application-2 = [];
-#				switch-to-application-3 = [];
-#				switch-to-application-4 = [];
-#				switch-to-application-5 = [];
-#				switch-to-application-6 = [];
-#				switch-to-application-7 = [];
-#				switch-to-application-8 = [];
-#				switch-to-application-9 = [];
 				# Disable clock shortcut
 				toggle-message-tray = [];
 			};
 
-			# Switch to workspaces with Super + number
-#			"org/gnome/desktop/wm/keybindings" = {
-#				switch-to-workspace-1 = [ "<Super>1" ];
-#				switch-to-workspace-2 = [ "<Super>2" ];
-#				switch-to-workspace-3 = [ "<Super>3" ];
-#				switch-to-workspace-4 = [ "<Super>4" ];
-#				switch-to-workspace-5 = [ "<Super>5" ];
-#				switch-to-workspace-6 = [ "<Super>6" ];
-#				switch-to-workspace-7 = [ "<Super>7" ];
-#				switch-to-workspace-8 = [ "<Super>8" ];
-#				switch-to-workspace-9 = [ "<Super>9" ];
-#				switch-to-workspace-10 = [ "<Super>0" ];
-#			};
+			"org/gnome/settings-daemon/plugins/media-keys" = {
+				custom-keybindings = [
+					"/org/gnome/settings-daemon/plugins/media-keys/custom-keybindings/custom0/"
+					"/org/gnome/settings-daemon/plugins/media-keys/custom-keybindings/custom1/"
+				];
+			};
+
+			"org/gnome/settings-daemon/plugins/media-keys/custom-keybindings/custom0" = {
+				binding = "<Super>x";
+				command = "kitty";
+				name =  "Kitty";
+			};
+
+			"org/gnome/settings-daemon/plugins/media-keys/custom-keybindings/custom1" = {
+				binding = "<Super>e";
+				command = "nautilus .";
+				name =  "Nautilus";
+			};
 
 			# Limit app switcher to current workspace
 			"org/gnome/shell/app-switcher" = {
 				current-workspace-only = true;
 			};
 
-#			"org/gnome/shell/extensions/caffeine" = {
-#				# Remember the user choice
-#				restore-state = true;
-#				# Disable icon
-#				show-indicator = false;
-#				# Disable auto suspend and lock
-#				user-enabled = true;
-#				# Disable notifications
-#				show-notifications = false;
-#			};
+			"org/gnome/shell/extensions/caffeine" = lib.mkIf config.desktop-environment.gnome.configuration.caffeine.enable {
+				# Remember the user choice
+				restore-state = true;
+				# Disable icon
+				show-indicator = false;
+				# Disable auto suspend and lock
+				user-enabled = true;
+				# Disable notifications
+				show-notifications = false;
+			};
 
 			"org/gnome/shell/extensions/clipboard-indicator" = {
 				# Remove whitespace before and after the text
@@ -322,17 +276,6 @@
 			"org/gnome/shell/extensions/emoji-selector" = {
 				always-show = false;
 			};
-
-#			"org/gnome/shell/extensions/smart-auto-move" = {
-#				sync-mode = "IGNORE";
-#				overrides = ''{"firefox":[{"action":1,"threshold":0.7}],"":[{"query":{"title":"home.nix - arch-linux-setup - VSCodium"},"action":1}],"jetbrains-studio":[{"action":1,"threshold":0.7}],"signal":[{"action":1,"threshold":0.7}],"de.shorsh.discord-screenaudio":[{"action":1,"threshold":0.7}],"heroic":[{"action":1,"threshold":0.7}],"Steam":[{"threshold":0.7,"action":1}],"bottles":[{"action":1,"threshold":0.7}],"kitty":[{"action":1,"threshold":0.7}],"org.gnome.Nautilus":[{"action":1,"threshold":0.7}],".system-monitoring-center-wrapped":[{"action":1,"threshold":0.7}]}'';
-#			};
-
-#			"org/gnome/shell/extensions/pop-shell" = {
-#				gap-inner = 0;
-#				gap-outer = 0;
-#				tile-by-default = true;
-#			};
 		};
 	};
 }

@@ -23,33 +23,6 @@
 			};
 		};
 
-		# Force vscodium to use wayland
-#		xdg.desktopEntries.codium = {
-#			type = "Application";
-#			exec = "codium --enable-features=UseOzonePlatform,WaylandWindowDecorations --ozone-platform=wayland %F";
-#			icon = "code";
-#			terminal = false;
-#			categories = [ "Utility" "TextEditor" "Development" "IDE" ];
-#			name = "VSCodium";
-#			genericName = "Text Editor";
-#			comment = "Code Editing. Redefined.";
-#			actions.new-empty-window = {
-#				"exec" = "codium --new-window %F";
-#				"icon" = "code";
-#				"name" = "New Empty Window";
-#			};
-#		};
-
-		# Force signal to use wayland
-		xdg.desktopEntries.signal-desktop = {
-			name = "Signal";
-			exec = "signal-desktop --use-tray-icon --enable-features=UseOzonePlatform,WaylandWindowDecorations --ozone-platform=wayland %U";
-			icon = "signal";
-			settings = {
-				StartupWMClass = "signal";
-			};
-		};
-
 		# Force mullvad to use wayland
 		xdg.desktopEntries.mullvad-gui = {
 			name = "Mullvad";
@@ -87,33 +60,6 @@
 			};
 		};
 
-		# Force vscodium to use wayland
-#		xdg.desktopEntries.codium = {
-#			type = "Application";
-#			exec = "codium --enable-features=UseOzonePlatform,WaylandWindowDecorations --ozone-platform=wayland %F";
-#			icon = "code";
-#			terminal = false;
-#			categories = [ "Utility" "TextEditor" "Development" "IDE" ];
-#			name = "VSCodium";
-#			genericName = "Text Editor";
-#			comment = "Code Editing. Redefined.";
-#			actions.new-empty-window = {
-#				"exec" = "codium --new-window %F";
-#				"icon" = "code";
-#				"name" = "New Empty Window";
-#			};
-#		};
-
-		# Force signal to use wayland
-		xdg.desktopEntries.signal-desktop = {
-			name = "Signal";
-			exec = "signal-desktop --use-tray-icon --enable-features=UseOzonePlatform,WaylandWindowDecorations --ozone-platform=wayland %U";
-			icon = "signal";
-			settings = {
-				StartupWMClass = "signal";
-			};
-		};
-
 		# Force mullvad to use wayland
 		xdg.desktopEntries.mullvad-gui = {
 			name = "Mullvad";
@@ -124,14 +70,14 @@
 		# Force discord to use wayland and disable gpu to allow it to work
 		xdg.desktopEntries.discord = {
 			name = "Discord";
-			exec = "discord --enable-features=UseOzonePlatform --ozone-platform=wayland";
+			exec = "discord --enable-features=UseOzonePlatform --ozone-platform=wayland %U";
 			icon = "discord";
 		};
 
 		# Force discord to use wayland and disable gpu to allow it to work
 		xdg.desktopEntries.slack = {
 			name = "Slack";
-			exec = "slack --enable-features=UseOzonePlatform,WaylandWindowDecorations --ozone-platform=wayland";
+			exec = "slack --enable-features=WaylandWindowDecorations";
 			icon = "slack";
 			settings = {
 				StartupWMClass = "slack";

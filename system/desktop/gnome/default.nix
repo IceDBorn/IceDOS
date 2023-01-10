@@ -13,19 +13,17 @@
 
 	environment.systemPackages = with pkgs; lib.mkIf config.desktop-environment.gnome.enable [
 		gnome.dconf-editor # Edit gnome's dconf
-		gnome.gnome-tweaks # Tweaks missing from pure Gnome
+		gnome.gnome-tweaks # Tweaks missing from pure gnome
 		gnomeExtensions.appindicator # Tray icons for gnome
 		gnomeExtensions.arcmenu # Start menu
 		gnomeExtensions.bluetooth-quick-connect # Show bluetooth devices on the gnome control center
-#		gnomeExtensions.caffeine # Disable auto suspend and screen blank
+		# gnomeExtensions.caffeine # Disable auto suspend and screen blank
 		gnomeExtensions.clipboard-indicator # Clipboard indicator for gnome
 		gnomeExtensions.color-picker # Color picker for gnome
+		gnomeExtensions.dash-to-panel # An icon taskbar for gnome
 		gnomeExtensions.emoji-selector # Emoji selector
-		gnomeExtensions.gamemode # Status indicator for gamemode on gnome
-#		gnomeExtensions.gsconnect # KDE Connect implementation for gnome
-#		gnomeExtensions.pop-shell # Tiling WM extension
+		# gnomeExtensions.gsconnect # KDE Connect implementation for gnome
 		gnomeExtensions.quick-settings-tweaker # Quick settings tweaker for the gnome control center
-#		gnomeExtensions.smart-auto-move # Remember window state througout reboots and restore it
 		gnome-extension-manager # Gnome extensions manager and downloader
 	];
 
