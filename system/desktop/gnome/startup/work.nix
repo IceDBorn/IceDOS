@@ -1,7 +1,7 @@
 { config, pkgs, lib, ... }:
 
 lib.mkIf config.work.user.enable {
-	home-manager.users.${config.work.user.username}.home.file = lib.mkIf (config.work.user.enable && config.desktop-environment.gnome.enable) {
+	home-manager.users.${config.work.user.username}.home.file = lib.mkIf (config.desktop-environment.gnome.enable && config.desktop-environment.gnome.configuration.startup-items.enable) {
 		# Add discord-screenaudio to startup
 		".config/autostart/discord-screenaudio.desktop" = {
 			text = ''
