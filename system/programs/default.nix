@@ -19,7 +19,7 @@
 
 		# Automatic garbage collection
 		gc = {
-			automatic = false;
+			automatic = true;
 			dates = "weekly";
 		};
 	};
