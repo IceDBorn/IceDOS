@@ -101,10 +101,25 @@
 		};
 
 		desktop-environment = {
-			gnome.enable = lib.mkOption {
-				type = lib.types.bool;
-				default = true;
+			gnome = {
+				enable = lib.mkOption {
+					type = lib.types.bool;
+					default = true;
+				};
+
+				configuration = {
+					clock-date.enable = lib.mkOption {
+						type = lib.types.bool;
+						default = false;
+					};
+
+					caffeine.enable = lib.mkOption {
+						type = lib.types.bool;
+						default = true;
+					};
+				};
 			};
+
 			hyprland.enable = lib.mkOption {
 				type = lib.types.bool;
 				default = true;
