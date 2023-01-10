@@ -3,7 +3,9 @@
 
 {
 	imports = [
-		./home.nix # Setup home manager for gnome
+		# Setup home manager for gnome
+		./home-main.nix
+		./home-work.nix
 		./startup # Startup programs
 	];
 

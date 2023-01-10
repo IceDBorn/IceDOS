@@ -2,10 +2,10 @@
 
 {
 	users.users.${config.main.user.username} = {
-		createHome = config.main.user.enable;
-		home = lib.mkIf config.main.user.enable "/home/${config.main.user.username}";
+		createHome = true;
+		home = "/home/${config.main.user.username}";
 		useDefaultShell = true;
-		password = lib.mkIf config.main.user.enable "1"; # Default password used for first login, change later with passwd
+		password = "1"; # Default password used for first login, change later with passwd
 		isNormalUser = true;
 		description = lib.mkIf config.main.user.enable "${config.main.user.description}";
 		extraGroups = lib.mkIf config.main.user.enable [ "networkmanager" "wheel" "kvm" "docker" ];
