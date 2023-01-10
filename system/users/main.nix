@@ -1,6 +1,6 @@
 { config, lib, ... }:
 
-{
+lib.mkIf config.main.user.enable {
 	users.users.${config.main.user.username} = {
 		createHome = config.main.user.enable;
 		home = lib.mkIf config.main.user.enable "/home/${config.main.user.username}";

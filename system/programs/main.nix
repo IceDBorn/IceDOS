@@ -1,7 +1,7 @@
 ### PACKAGES INSTALLED ON MAIN USER ###
-{ config, pkgs, ... }:
+{ config, pkgs, lib, ... }:
 
-{
+lib.mkIf config.main.user.enable {
 	users.users.${config.main.user.username}.packages = with pkgs; lib.mkIf config.main.user.enable [
 		bottles # Wine manager
 		duckstation # PS1 Emulator

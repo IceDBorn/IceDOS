@@ -2,9 +2,9 @@
 
 {
 	imports = [
-		# Setup home manager for hyprland
-		./home.nix
-	];
+		./home-main.nix
+		./home-work.nix
+	]; # Setup home manager for hyprland
 
 	programs = {
 		nm-applet.enable = config.desktop-environment.hyprland.enable; # Network manager tray icon
