@@ -1,4 +1,4 @@
-{ config, pkgs, ... }:
+{ config, pkgs, lib, ... }:
 let
 	github.username = "CrazyStevenz";
 	github.email = "github.ekta@aleeas.com";
@@ -92,23 +92,23 @@ in
 				};
 
 				# Add arkenfox user.js
-				# ".mozilla/firefox/privacy/user.js" = {
-				# 	source =
-				# 	"${(config.nur.repos.slaier.arkenfox-userjs.overrideAttrs (oldAttrs: {
-				# 		installPhase = ''
-				# 			cat ${../configs/firefox-user-overrides.js} >> user.js
-				# 			mkdir -p $out
-				# 			cp ./user.js $out/user.js
-				# 		'';
-				# 	}))}/user.js";
-				# 	recursive = true;
-				# };
+				".mozilla/firefox/privacy/user.js" = lib.mkIf config.firefox-privacy.enable {
+					source =
+					"${(config.nur.repos.slaier.arkenfox-userjs.overrideAttrs (oldAttrs: {
+						installPhase = ''
+							cat ${../configs/firefox-user-overrides.js} >> user.js
+							mkdir -p $out
+							cp ./user.js $out/user.js
+						'';
+					}))}/user.js";
+					recursive = true;
+				};
 
 				# Set firefox to privacy profile
-				# ".mozilla/firefox/profiles.ini" = {
-				# 	source = ../configs/firefox-profiles.ini;
-				# 	recursive = true;
-				# };
+				".mozilla/firefox/profiles.ini" = lib.mkIf config.firefox-privacy.enable {
+					source = ../configs/firefox-profiles.ini;
+					recursive = true;
+				};
 
 				# Add noise suppression microphone
 				".config/pipewire/pipewire.conf.d/99-input-denoising.conf" = {
@@ -209,23 +209,23 @@ in
 				};
 
 				# Add arkenfox user.js
-				# ".mozilla/firefox/privacy/user.js" = {
-				# 	source =
-				# 	"${(config.nur.repos.slaier.arkenfox-userjs.overrideAttrs (oldAttrs: {
-				# 		installPhase = ''
-				# 			cat ${../configs/firefox-user-overrides.js} >> user.js
-				# 			mkdir -p $out
-				# 			cp ./user.js $out/user.js
-				# 		'';
-				# 	}))}/user.js";
-				# 	recursive = true;
-				# };
+				".mozilla/firefox/privacy/user.js" = lib.mkIf config.firefox-privacy.enable {
+					source =
+					"${(config.nur.repos.slaier.arkenfox-userjs.overrideAttrs (oldAttrs: {
+						installPhase = ''
+							cat ${../configs/firefox-user-overrides.js} >> user.js
+							mkdir -p $out
+							cp ./user.js $out/user.js
+						'';
+					}))}/user.js";
+					recursive = true;
+				};
 
 				# Set firefox to privacy profile
-				# ".mozilla/firefox/profiles.ini" = {
-				# 	source = ../configs/firefox-profiles.ini;
-				# 	recursive = true;
-				# };
+				".mozilla/firefox/profiles.ini" = lib.mkIf config.firefox-privacy.enable {
+					source = ../configs/firefox-profiles.ini;
+					recursive = true;
+				};
 
 				# Add noise suppression microphone
 				".config/pipewire/pipewire.conf.d/99-input-denoising.conf" = {

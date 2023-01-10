@@ -1,4 +1,6 @@
+{ config, ... }:
+
 {
-	hardware.cpu.intel.updateMicrocode = true;
-	services.throttled.enable = true;
+	hardware.cpu.intel.updateMicrocode = config.intel.enable;
+	services.throttled.enable = config.intel.enable;
 }

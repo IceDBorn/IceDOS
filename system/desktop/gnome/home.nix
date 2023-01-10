@@ -1,7 +1,7 @@
-{ config, ... }:
+{ config, lib, ... }:
 
 {
-	home-manager.users.${config.main.user.username} = {
+	home-manager.users.${config.main.user.username} = lib.mkIf config.desktop-environment.gnome.enable {
 
 		dconf.settings = {
 			"org/gnome/desktop/interface" = {
@@ -175,7 +175,7 @@
 		};
 	};
 
-	home-manager.users.${config.work.user.username} = {
+	home-manager.users.${config.work.user.username} = lib.mkIf config.desktop-environment.gnome.enable {
 
 		dconf.settings = {
 			"org/gnome/desktop/interface" = {

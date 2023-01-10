@@ -26,8 +26,8 @@ buildGoModule rec {
 		cat <<EOF > $out/etc/apx/config.json
 		{
 			"containername": "apx_managed",
-			"image": "docker.io/library/ubuntu",
-			"pkgmanager": "apt",
+			"image": "docker.io/library/archlinux",
+			"pkgmanager": "aur",
 			"distroboxpath": "${distrobox}/bin/distrobox"
 		}
 	'';

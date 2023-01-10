@@ -1,4 +1,4 @@
-{ pkgs, ... }:
+{ pkgs, config, lib, ... }:
 
 {
 	imports = [
@@ -7,10 +7,10 @@
 	];
 
 	programs = {
-		nm-applet.enable = true; # Network manager tray icon
+		nm-applet.enable = config.desktop-environment.hyprland.enable; # Network manager tray icon
 	};
 
-	environment = {
+	environment = lib.mkIf config.desktop-environment.hyprland.enable {
 		systemPackages = with pkgs; [
 			# Status bar
 			(waybar.overrideAttrs (oldAttrs: {
@@ -47,9 +47,9 @@
 	};
 
 	services = {
-		dbus.enable = true;
-		gvfs.enable = true; # Needed for nautilus
+		dbus.enable = config.desktop-environment.hyprland.enable;
+		gvfs.enable = config.desktop-environment.hyprland.enable; # Needed for nautilus
 	};
 
-	security.polkit.enable = true;
+	security.polkit.enable = config.desktop-environment.hyprland.enable;
 }

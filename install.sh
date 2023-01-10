@@ -22,6 +22,7 @@ then
 	sudo cp -r hardware /etc/nixos
 	sudo cp -r system /etc/nixos
 	sudo cp .configuration-location /etc/nixos
+	sudo cp .nix /etc/nixos
 	sudo cp configuration.nix /etc/nixos
 	sudo cp flake.lock /etc/nixos
 	sudo cp flake.nix /etc/nixos
@@ -43,13 +44,13 @@ then
 	sudo nixos-rebuild switch || exit
 
 	# Install apx applications
-	apx init --aur && apx install --aur discord-screenaudio || exit
+	apx init --aur && apx install --aur discord-screenaudio && distrobox enter apx_managed_aur -- distrobox-export --app discord-screenaudio || exit
 
 	# Reboot after the installation is completed
 	bash scripts/reboot.sh
 
 else
 	printf "You really should:
-	- Edit configuration.nix and comment out anything you do not want to setup.
-	- Edit mounts.nix or do not install it.$RED$BOLD A wrong mounts.nix file can break your system!$NC$NORMAL\n"
+	- Edit .nix, configuration.nix and comment out anything you do not want to setup.
+	- Edit mounts.nix or disable it.$RED$BOLD A wrong mounts.nix file can break your system!$NC$NORMAL\n"
 fi
