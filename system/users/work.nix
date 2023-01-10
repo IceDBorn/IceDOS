@@ -1,11 +1,11 @@
 { config, lib, ... }:
 
-lib.mkIf config.work.user.enable {
+{
 	users.users.${config.work.user.username} = {
-		createHome = config.work.user.enable;
-		home = lib.mkIf config.work.user.enable "/home/${config.work.user.username}";
+		createHome = true;
+		home = "/home/${config.work.user.username}";
 		useDefaultShell = true;
-		password = lib.mkIf config.work.user.enable "1"; # Default password used for first login, change later with passwd
+		password = "1"; # Default password used for first login, change later with passwd
 		isNormalUser = true;
 		description = lib.mkIf config.work.user.enable "${config.work.user.description}";
 		extraGroups = lib.mkIf config.work.user.enable [ "networkmanager" "wheel" "kvm" "docker" ];
