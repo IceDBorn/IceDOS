@@ -1,4 +1,4 @@
-{ config, pkgs, ... }:
+{ config, pkgs, lib, ... }:
 let
 	github.username = "IceDBorn";
 	github.email = "github.envenomed@dralias.com";
@@ -92,7 +92,7 @@ in
 				};
 
 				# Add arkenfox user.js
-				".mozilla/firefox/privacy/user.js" = {
+				".mozilla/firefox/privacy/user.js" = lib.mkIf config.firefox-privacy.enable {
 					source =
 					"${(config.nur.repos.slaier.arkenfox-userjs.overrideAttrs (oldAttrs: {
 						installPhase = ''
@@ -105,7 +105,7 @@ in
 				};
 
 				# Set firefox to privacy profile
-				".mozilla/firefox/profiles.ini" = {
+				".mozilla/firefox/profiles.ini" = lib.mkIf config.firefox-privacy.enable {
 					source = ../configs/firefox-profiles.ini;
 					recursive = true;
 				};
@@ -192,7 +192,7 @@ in
 				};
 
 				# Add arkenfox user.js
-				".mozilla/firefox/privacy/user.js" = {
+				".mozilla/firefox/privacy/user.js" = lib.mkIf config.firefox-privacy.enable {
 					source =
 					"${(config.nur.repos.slaier.arkenfox-userjs.overrideAttrs (oldAttrs: {
 						installPhase = ''
@@ -205,7 +205,7 @@ in
 				};
 
 				# Set firefox to privacy profile
-				".mozilla/firefox/profiles.ini" = {
+				".mozilla/firefox/profiles.ini" = lib.mkIf config.firefox-privacy.enable {
 					source = ../configs/firefox-profiles.ini;
 					recursive = true;
 				};

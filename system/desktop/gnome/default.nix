@@ -1,5 +1,5 @@
 ### DESKTOP POWERED BY GNOME ###
-{ pkgs, ... }:
+{ pkgs, config, lib, ... }:
 
 {
 	imports = [
@@ -7,11 +7,11 @@
 		./startup # Startup programs
 	];
 
-	services.xserver.desktopManager.gnome.enable = true; # Install gnome
+	services.xserver.desktopManager.gnome.enable = config.desktop-environment.gnome.enable; # Install gnome
 
-	programs.dconf.enable = true;
+	programs.dconf.enable = config.desktop-environment.gnome.enable;
 
-	environment.systemPackages = with pkgs; [
+	environment.systemPackages = with pkgs; lib.mkIf config.desktop-environment.gnome.enable [
 		gnome.dconf-editor # Edit gnome's dconf
 		gnome.gnome-tweaks # Tweaks missing from pure Gnome
 		gnomeExtensions.appindicator # Tray icons for gnome
@@ -28,7 +28,7 @@
 		gnome-extension-manager # Gnome extensions manager and downloader
 	];
 
-	environment.gnome.excludePackages = with pkgs; [
+	environment.gnome.excludePackages = with pkgs; lib.mkIf config.desktop-environment.gnome.enable [
 		epiphany # Web browser
 		evince # Document viewer
 		gnome-console # Terminal

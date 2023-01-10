@@ -1,15 +1,12 @@
-{ pkgs, ... }:
+{ pkgs, lib, config, ... }:
 
-let
-	zenstates-options = "-p 0 -v 30 -f A8"; # Pstate 0, 1.25 voltage, 4200 clock speed
-in
 {
-	boot.kernelModules = [ "msr" ]; # Needed for zenstates
+	boot.kernelModules = lib.mkIf config.amd.cpu.enable [ "msr" ]; # Needed for zenstates
 
-	hardware.cpu.amd.updateMicrocode = true;
+	hardware.cpu.amd.updateMicrocode = config.amd.cpu.enable;
 
 	# Ryzen cpu control
-	systemd.services.zenstates = {
+	systemd.services.zenstates = lib.mkIf config.amd.cpu.enable {
 		enable = true;
 		description = "Ryzen Undervolt";
 		after = [ "syslog.target" "systemd-modules-load.service" ];
@@ -20,7 +17,7 @@ in
 
 		serviceConfig = {
 			User = "root";
-			ExecStart = "${pkgs.zenstates}/bin/zenstates ${zenstates-options}";
+			ExecStart = "${pkgs.zenstates}/bin/zenstates ${config.amd.cpu.undervolt}";
 		};
 
 		wantedBy = [ "multi-user.target" ];

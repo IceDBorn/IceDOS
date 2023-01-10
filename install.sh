@@ -22,6 +22,7 @@ then
 	sudo cp -r hardware /etc/nixos
 	sudo cp -r system /etc/nixos
 	sudo cp .configuration-location /etc/nixos
+	sudo cp .nix /etc/nixos
 	sudo cp configuration.nix /etc/nixos
 	sudo cp flake.lock /etc/nixos
 	sudo cp flake.nix /etc/nixos
