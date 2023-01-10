@@ -1,6 +1,6 @@
 { config, pkgs, lib, ... }:
 
-{
+lib.mkIf config.main.user.enable {
 	home-manager.users.${config.main.user.username}.home.file = lib.mkIf config.desktop-environment.gnome.enable {
 		# Add discord-screenaudio to startup
 #		".config/autostart/de.shorsh.discord-screenaudio.desktop" = {

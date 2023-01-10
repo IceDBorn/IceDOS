@@ -7,7 +7,8 @@
 		# Packages installed for work user
 		./work.nix
 		# Home manager specific stuff
-		./home.nix
+		./home-main.nix
+		./home-work.nix
 	];
 
 	nix = {

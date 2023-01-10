@@ -3,8 +3,9 @@
 
 {
 	imports = [
-		./home.nix # Setup home manager
-	];
+		./home-main.nix
+		./home-work.nix
+	]; # Setup home manager
 
 	# Set your time zone
 	time.timeZone = "Europe/Bucharest";
