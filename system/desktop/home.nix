@@ -23,33 +23,18 @@
 			};
 		};
 
-		# Force vscodium to use wayland
-		xdg.desktopEntries.codium = {
-			type = "Application";
-			exec = "codium --enable-features=UseOzonePlatform,WaylandWindowDecorations --ozone-platform=wayland %F";
-			icon = "code";
-			terminal = false;
-			categories = [ "Utility" "TextEditor" "Development" "IDE" ];
-			name = "VSCodium";
-			genericName = "Text Editor";
-			comment = "Code Editing. Redefined.";
-			actions.new-empty-window = {
-				"exec" = "codium --new-window %F";
-				"icon" = "code";
-				"name" = "New Empty Window";
-			};
+		# Force mullvad to use wayland
+		xdg.desktopEntries.mullvad-gui = {
+			name = "Mullvad";
+			exec = "mullvad-gui --enable-features=UseOzonePlatform,WaylandWindowDecorations --ozone-platform=wayland";
+			icon = "mullvad-vpn";
 		};
 
-		# Force signal to use wayland
-		xdg.desktopEntries.signal-desktop = {
-			type = "Application";
-			exec = "signal-desktop --enable-features=UseOzonePlatform,WaylandWindowDecorations --ozone-platform=wayland %U";
-			icon = "signal-desktop";
-			terminal = false;
-			categories = [ "Network" "InstantMessaging" "Chat" ];
-			name = "Signal";
-			genericName = "Text Editor";
-			comment = "Private messaging from your desktop";
+		# Force discord to use wayland and disable gpu to allow it to work
+		xdg.desktopEntries.discord = {
+			name = "Discord";
+			exec = "discord --enable-features=UseOzonePlatform --ozone-platform=wayland %U";
+			icon = "discord";
 		};
 	};
 
@@ -75,33 +60,28 @@
 			};
 		};
 
-		# Force vscodium to use wayland
-		xdg.desktopEntries.codium = {
-			type = "Application";
-			exec = "codium --enable-features=UseOzonePlatform,WaylandWindowDecorations --ozone-platform=wayland %F";
-			icon = "code";
-			terminal = false;
-			categories = [ "Utility" "TextEditor" "Development" "IDE" ];
-			name = "VSCodium";
-			genericName = "Text Editor";
-			comment = "Code Editing. Redefined.";
-			actions.new-empty-window = {
-				"exec" = "codium --new-window %F";
-				"icon" = "code";
-				"name" = "New Empty Window";
-			};
+		# Force mullvad to use wayland
+		xdg.desktopEntries.mullvad-gui = {
+			name = "Mullvad";
+			exec = "mullvad-gui --enable-features=UseOzonePlatform,WaylandWindowDecorations --ozone-platform=wayland";
+			icon = "mullvad-vpn";
 		};
 
-		# Force signal to use wayland
-		xdg.desktopEntries.signal-desktop = {
-			type = "Application";
-			exec = "signal-desktop --enable-features=UseOzonePlatform,WaylandWindowDecorations --ozone-platform=wayland %U";
-			icon = "signal-desktop";
-			terminal = false;
-			categories = [ "Network" "InstantMessaging" "Chat" ];
-			name = "Signal";
-			genericName = "Text Editor";
-			comment = "Private messaging from your desktop";
+		# Force discord to use wayland and disable gpu to allow it to work
+		xdg.desktopEntries.discord = {
+			name = "Discord";
+			exec = "discord --enable-features=UseOzonePlatform --ozone-platform=wayland %U";
+			icon = "discord";
+		};
+
+		# Force discord to use wayland and disable gpu to allow it to work
+		xdg.desktopEntries.slack = {
+			name = "Slack";
+			exec = "slack --enable-features=WaylandWindowDecorations";
+			icon = "slack";
+			settings = {
+				StartupWMClass = "slack";
+			};
 		};
 	};
 }
