@@ -1,7 +1,7 @@
 { config, lib, ... }:
 
 {
-	home-manager.users.${config.main.user.username} = lib.mkIf config.desktop-environment.hyprland.enable {
+	home-manager.users.${config.main.user.username} = lib.mkIf (config.main.user.enable && config.desktop-environment.hyprland.enable) {
 		home.file = {
 			# Add hyprland config
 			".config/hypr/hyprland.conf" = {
@@ -56,7 +56,7 @@
 		};
 	};
 
-	home-manager.users.${config.work.user.username} = lib.mkIf config.desktop-environment.hyprland.enable {
+	home-manager.users.${config.work.user.username} = lib.mkIf (config.work.user.enable && config.desktop-environment.hyprland.enable) {
 		home.file = {
 			# Add hyprland config
 			".config/hypr/hyprland.conf" = {

@@ -1,17 +1,14 @@
 { config, pkgs, lib, ... }:
-let
-	github.username = "IceDBorn";
-	github.email = "github.envenomed@dralias.com";
-in
+
 {
 	home-manager.users = {
-		${config.main.user.username} = {
+		${config.main.user.username} = lib.mkIf config.main.user.enable {
 			programs = {
 				git = {
 					enable = true;
 					# Git config
-					userName  = "${github.username}";
-					userEmail = "${github.email}";
+					userName  = "${config.main.user.github.username}";
+					userEmail = "${config.main.user.github.email}";
 				};
 
 				kitty = {
@@ -136,13 +133,13 @@ in
 			};
 		};
 
-		${config.work.user.username} = {
+		${config.work.user.username} = lib.mkIf config.work.user.enable {
 			programs = {
 				git = {
 					enable = true;
 					# Git config
-					userName  = "${github.username}";
-					userEmail = "${github.email}";
+					userName  = "${config.work.user.github.username}";
+					userEmail = "${config.work.user.github.email}";
 				};
 
 				kitty = {

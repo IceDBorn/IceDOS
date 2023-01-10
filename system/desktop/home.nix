@@ -1,7 +1,7 @@
-{ config, pkgs, ... }:
+{ config, pkgs, lib, ... }:
 
 {
-	home-manager.users.${config.main.user.username} = {
+	home-manager.users.${config.main.user.username} = lib.mkIf config.main.user.enable {
 		gtk = {
 			# Change GTK themes
 			enable = true;
@@ -38,7 +38,7 @@
 		};
 	};
 
-	home-manager.users.${config.work.user.username} = {
+	home-manager.users.${config.work.user.username} = lib.mkIf config.work.user.enable {
 		gtk = {
 			# Change GTK themes
 			enable = true;

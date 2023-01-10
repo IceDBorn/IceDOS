@@ -2,7 +2,7 @@
 { config, pkgs, ... }:
 
 {
-	users.users.${config.main.user.username}.packages = with pkgs; [
+	users.users.${config.main.user.username}.packages = with pkgs; lib.mkIf config.main.user.enable [
 		bottles # Wine manager
 		duckstation # PS1 Emulator
 		gamescope # Wayland microcompositor
@@ -22,6 +22,6 @@
 		sunshine # Streaming software
 	];
 
-	services.input-remapper.enable = true;
-	services.input-remapper.enableUdevRules = true;
+	services.input-remapper.enable = config.main.user.enable;
+	services.input-remapper.enableUdevRules = config.main.user.enable;
 }

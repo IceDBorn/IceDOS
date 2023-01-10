@@ -18,6 +18,23 @@
 				type = lib.types.str;
 				default = "IceDBorn";
 			};
+
+			github = {
+				username = lib.mkOption {
+					type = lib.types.str;
+					default = "IceDBorn";
+				};
+
+				email = lib.mkOption {
+					type = lib.types.str;
+					default = "github.envenomed@dralias.com";
+				};
+			};
+
+			enable = lib.mkOption {
+				type = lib.types.bool;
+				default = true;
+			};
 		};
 
 		work.user = {
@@ -29,6 +46,23 @@
 			description = lib.mkOption {
 				type = lib.types.str;
 				default = "Work";
+			};
+
+			github = {
+				username = lib.mkOption {
+					type = lib.types.str;
+					default = "IceDBorn";
+				};
+
+				email = lib.mkOption {
+					type = lib.types.str;
+					default = "github.envenomed@dralias.com";
+				};
+			};
+
+			enable = lib.mkOption {
+				type = lib.types.bool;
+				default = false;
 			};
 		};
 
@@ -44,17 +78,31 @@
 					default = true;
 				};
 
-				undervolt = lib.mkOption {
-					type = lib.types.str;
-					default = "-p 0 -v 30 -f A8"; # Pstate 0, 1.25 voltage, 4200 clock speed
+				undervolt = {
+					value = lib.mkOption {
+						type = lib.types.str;
+						default = "-p 0 -v 30 -f A8"; # Pstate 0, 1.25 voltage, 4200 clock speed
+					};
+
+					enable = lib.mkOption {
+						type = lib.types.bool;
+						default = true;
+					};
 				};
 			};
 		};
 
 		nvidia = {
-			power-limit = lib.mkOption {
-				type = lib.types.str;
-				default = "242"; # RTX 3070
+			power-limit = {
+				value = lib.mkOption {
+					type = lib.types.str;
+					default = "242"; # RTX 3070
+				};
+
+				enable = lib.mkOption {
+					type = lib.types.bool;
+					default = true;
+				};
 			};
 
 			enable = lib.mkOption {
