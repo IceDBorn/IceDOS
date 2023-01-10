@@ -23,17 +23,17 @@ lib.mkIf config.main.user.enable {
 			};
 		};
 
-		# Force mullvad to use wayland
+		# Force mullvad to use wayland and window decorations
 		xdg.desktopEntries.mullvad-gui = {
 			name = "Mullvad";
 			exec = "mullvad-gui --enable-features=UseOzonePlatform,WaylandWindowDecorations --ozone-platform=wayland";
 			icon = "mullvad-vpn";
 		};
 
-		# Force discord to use wayland and disable gpu to allow it to work
+		# Force discord to use wayland
 		xdg.desktopEntries.discord = {
 			name = "Discord";
-			exec = "discord --enable-features=UseOzonePlatform --ozone-platform=wayland %U";
+			exec = "discord --enable-features=UseOzonePlatform --ozone-platform=wayland";
 			icon = "discord";
 		};
 	};
