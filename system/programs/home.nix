@@ -71,7 +71,7 @@ in
 						}
 					];
 
-#					initExtra = ''eval "$(direnv hook zsh)"'';
+					# initExtra = ''eval "$(direnv hook zsh)"'';
 				};
 
 				# Install gnome extensions using firefox
@@ -245,11 +245,11 @@ in
 				# 	recursive = true;
 				# };
 
-							# Add terminator config
-			".config/terminator/config" = {
-				source = ../configs/terminator;
-				recursive = true;
-			};
+				# Add terminator config
+				".config/terminator/config" = {
+					source = ../configs/terminator;
+					recursive = true;
+				};
 			};
 		};
 	};
