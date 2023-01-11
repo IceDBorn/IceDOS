@@ -6,11 +6,12 @@ lib.mkIf config.main.user.enable {
 		".config/autostart/discord-screenaudio.desktop" = {
 			text = ''
 				[Desktop Entry]
-				Name=discord-screenaudio
-				GenericName=Discord
-				Exec=apx run discord-screenaudio
+				Exec=apx --aur run discord-screenaudio
 				Icon=discord-screenaudio
+				Name=discord-screenaudio
 				StartupWMClass=discord-screenaudio
+				Terminal=false
+				Type=Application
 			'';
 			recursive = true;
 		};
@@ -19,17 +20,27 @@ lib.mkIf config.main.user.enable {
 		".config/autostart/signal-desktop.desktop" = {
 			text = ''
 				[Desktop Entry]
-				Name=Signal
 				Exec=signal-desktop
 				Icon=signal
+				Name=Signal
 				StartupWMClass=signal
+				Terminal=false
+				Type=Application
 			'';
 			recursive = true;
 		};
 
 		# Add steam to startup
 		".config/autostart/steam.desktop" = {
-			source = ./steam.desktop;
+			text = ''
+				[Desktop Entry]
+				Exec=steam
+				Icon=steam
+				Name=Steam
+				StartupWMClass=steam
+				Terminal=false
+				Type=Application
+			'';
 			recursive = true;
 		};
 	};
