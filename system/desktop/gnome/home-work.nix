@@ -140,6 +140,38 @@ lib.mkIf config.work.user.enable {
 			"org/gnome/shell/extensions/emoji-selector" = {
 				always-show = false;
 			};
+
+			"org/gnome/shell/extensions/dash-to-panel" = {
+				panel-element-positions = ''
+					{"0":[{"element":"showAppsButton","visible":false,"position":"stackedTL"},
+					{"element":"activitiesButton","visible":false,"position":"stackedTL"},
+					{"element":"leftBox","visible":true,"position":"stackedTL"},
+					{"element":"taskbar","visible":true,"position":"stackedTL"},
+					{"element":"centerBox","visible":true,"position":"stackedBR"},
+					{"element":"rightBox","visible":true,"position":"stackedBR"},
+					{"element":"dateMenu","visible":true,"position":"stackedBR"},
+					{"element":"systemMenu","visible":true,"position":"stackedBR"},
+					{"element":"desktopButton","visible":true,"position":"stackedBR"}]}
+				''; # Disable activities button
+				panel-sizes = ''{"0":44}'';
+				appicon-margin = 4;
+				dot-style-focused = "DASHES";
+				dot-style-unfocused = "DOTS";
+				hide-overview-on-startup = true;
+				scroll-icon-action = "NOTHING";
+				scroll-panel-action = "NOTHING";
+				hot-keys = true;
+			};
+
+			"org/gnome/shell/extensions/arcmenu" = {
+				distro-icon = 6;
+				menu-button-icon = "Distro_Icon"; # Use arch icon
+				multi-monitor = true;
+				menu-layout = "Windows";
+				windows-disable-frequent-apps = true;
+				windows-disable-pinned-apps = true;
+				pinned-app-list = []; # TODO: Add pinned apps
+			};
 		};
 	};
 }
