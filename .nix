@@ -175,6 +175,11 @@
 						type = lib.types.bool;
 						default = false;
 					};
+
+					pinned-apps.disable = lib.mkOption {
+						type = lib.types.bool;
+						default = true;
+					};
 				};
 			};
 

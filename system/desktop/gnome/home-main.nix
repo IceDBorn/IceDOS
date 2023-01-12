@@ -164,7 +164,7 @@ lib.mkIf config.main.user.enable {
 				multi-monitor = true;
 				menu-layout = "Windows";
 				windows-disable-frequent-apps = true;
-				windows-disable-pinned-apps = true;
+				windows-disable-pinned-apps = config.desktop-environment.gnome.configuration.pinned-apps.disable;
 				pinned-app-list = []; # TODO: Add pinned apps
 			};
 		};
