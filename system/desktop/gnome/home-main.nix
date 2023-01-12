@@ -76,6 +76,8 @@ lib.mkIf config.main.user.enable {
 					"gsconnect@andyholmes.github.io"
 					"quick-settings-tweaks@qwreey"
 				];
+
+				favorite-apps = lib.mkIf config.desktop-environment.gnome.configuration.pinned-apps.dash-to-panel.enable []; # Set dash to panel pinned apps
 			};
 
 			"org/gnome/shell/keybindings" = {
@@ -157,15 +159,14 @@ lib.mkIf config.main.user.enable {
 				hot-keys = true;
 			};
 
-			# Use arch icon
 			"org/gnome/shell/extensions/arcmenu" = {
 				distro-icon = 6;
 				menu-button-icon = "Distro_Icon"; # Use arch icon
 				multi-monitor = true;
 				menu-layout = "Windows";
 				windows-disable-frequent-apps = true;
-				windows-disable-pinned-apps = config.desktop-environment.gnome.configuration.pinned-apps.disable;
-				pinned-app-list = []; # TODO: Add pinned apps
+				windows-disable-pinned-apps = !config.desktop-environment.gnome.configuration.pinned-apps.arcmenu.enable;
+				pinned-app-list = lib.mkIf config.desktop-environment.gnome.configuration.pinned-apps.arcmenu.enable []; # Set arc menu pinned apps
 			};
 		};
 	};

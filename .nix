@@ -176,9 +176,16 @@
 						default = false;
 					};
 
-					pinned-apps.disable = lib.mkOption {
-						type = lib.types.bool;
-						default = true;
+					pinned-apps = {
+						arcmenu.enable = lib.mkOption {
+							type = lib.types.bool;
+							default = false;
+						};
+
+						dash-to-panel.enable = lib.mkOption {
+							type = lib.types.bool;
+							default = false;
+						};
 					};
 				};
 			};
