@@ -3,13 +3,7 @@
 lib.mkIf config.nvidia.enable {
 	services.xserver.videoDrivers = [ "nvidia" ]; # Install the nvidia drivers
 
-	hardware.nvidia = { # TODO Create option for patch
-		modesetting.enable = true; # Required for wayland
-		# Patch the driver for nvfbc
-		package = config.nur.repos.arc.packages.nvidia-patch.override {
-			nvidia_x11 = config.boot.kernelPackages.nvidiaPackages.stable;
-		};
-	};
+	hardware.nvidia.modesetting.enable = true; # Required for wayland
 
 	virtualisation.docker.enableNvidia = true; # Enable nvidia gpu acceleration for docker
 
