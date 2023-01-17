@@ -194,6 +194,11 @@
 				type = lib.types.bool;
 				default = true;
 			};
+
+			gdm.auto-suspend.enable = lib.mkOption {
+				type = lib.types.bool;
+				default = false;
+			};
 		};
 
 		firefox-privacy.enable = lib.mkOption {
