@@ -205,5 +205,10 @@
 			type = lib.types.bool;
 			default = true;
 		};
+
+		boot-animation.enable = lib.mkOption {
+			type = lib.types.bool;
+			default = false;
+		};
 	};
 }
