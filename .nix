@@ -7,6 +7,18 @@
 			default = true;
 		}; # Set to false if hardware/mounts.nix is not correctly configured
 
+		boot = {
+			animation.enable = lib.mkOption {
+				type = lib.types.bool;
+				default = false;
+			}; # Hides startup text and displays a circular loading icon
+
+			windows-entry = lib.mkOption {
+				type = lib.types.str;
+				default = "0000";
+			}; # Used for rebooting to windows with efibootmgr
+		};
+
 		# Declare users
 		main.user = {
 			username = lib.mkOption {
@@ -105,6 +117,11 @@
 				};
 			};
 
+			patch.enable = lib.mkOption {
+				type = lib.types.bool;
+				default = true;
+			};
+
 			enable = lib.mkOption {
 				type = lib.types.bool;
 				default = false;
@@ -170,6 +187,18 @@
 						type = lib.types.bool;
 						default = true;
 					};
+
+					pinned-apps = {
+						arcmenu.enable = lib.mkOption {
+							type = lib.types.bool;
+							default = false;
+						};
+
+						dash-to-panel.enable = lib.mkOption {
+							type = lib.types.bool;
+							default = false;
+						};
+					};
 				};
 			};
 
@@ -177,11 +206,28 @@
 				type = lib.types.bool;
 				default = true;
 			};
+
+			gdm.auto-suspend.enable = lib.mkOption {
+				type = lib.types.bool;
+				default = false;
+			};
 		};
 
 		firefox-privacy.enable = lib.mkOption {
 			type = lib.types.bool;
 			default = false;
+		};
+
+		steam = {
+			beta.enable = lib.mkOption {
+				type = lib.types.bool;
+				default = true;
+			};
+
+			link-resolution = lib.mkOption {
+				type = lib.types.str;
+				default = "1440";
+			}; # Set this to your monitor's height
 		};
 	};
 }

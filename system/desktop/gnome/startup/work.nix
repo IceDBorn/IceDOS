@@ -6,11 +6,12 @@ lib.mkIf config.work.user.enable {
 		".config/autostart/discord-screenaudio.desktop" = {
 			text = ''
 				[Desktop Entry]
-				Name=discord-screenaudio
-				GenericName=Discord
-				Exec=apx run discord-screenaudio
+				Exec=apx --aur run discord-screenaudio
 				Icon=discord-screenaudio
+				Name=discord-screenaudio
 				StartupWMClass=discord-screenaudio
+				Terminal=false
+				Type=Application
 			'';
 			recursive = true;
 		};
@@ -19,10 +20,12 @@ lib.mkIf config.work.user.enable {
 		".config/autostart/slack.desktop" = {
 			text = ''
 				[Desktop Entry]
-				Name=Slack
 				Exec=slack --enable-features=WaylandWindowDecorations
 				Icon=slack
+				Name=Slack
 				StartupWMClass=slack
+				Terminal=false
+				Type=Application
 			'';
 			recursive = true;
 		};
@@ -31,9 +34,12 @@ lib.mkIf config.work.user.enable {
 		".config/autostart/terminator.desktop" = {
 			text = ''
 				[Desktop Entry]
-				Name=Terminator
 				Exec=terminator
 				Icon=terminator
+				Name=Terminator
+				StartupWMClass=terminator
+				Terminal=false
+				Type=Application
 			'';
 			recursive = true;
 		};

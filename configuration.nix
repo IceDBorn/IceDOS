@@ -4,9 +4,8 @@
 	imports = [
 		# Auto-generated configuration by NixOS
 		./hardware-configuration.nix
-		./.nix
-
 		# Custom configuration
+		./.nix
 		./bootloader
 		./hardware # Enable various hardware capabilities
 		./hardware/amd/radeon.nix

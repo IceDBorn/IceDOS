@@ -1,11 +1,11 @@
 { pkgs, lib, config, ... }:
 
-{
-	boot.initrd.kernelModules = lib.mkIf config.amd.gpu.enable [ "amdgpu" ]; # Use the amdgpu drivers upon boot
+lib.mkIf config.amd.gpu.enable {
+	boot.initrd.kernelModules = [ "amdgpu" ]; # Use the amdgpu drivers upon boot
 
-	services.xserver.videoDrivers = lib.mkIf config.amd.gpu.enable [ "amdgpu" ];
+	services.xserver.videoDrivers = [ "amdgpu" ];
 
-	programs.corectrl = lib.mkIf config.amd.gpu.enable {
+	programs.corectrl = {
 		enable = true;
 		gpuOverclock = {
 			enable = true;
@@ -14,7 +14,7 @@
 	};
 
 	# Do not ask for password when launching corectrl
-	security.polkit.extraConfig = lib.mkIf config.amd.gpu.enable ''
+	security.polkit.extraConfig = ''
 		polkit.addRule(function(action, subject) {
 				if ((action.id == "org.corectrl.helper.init" ||
 				action.id == "org.corectrl.helperkiller.init") &&
@@ -26,5 +26,5 @@
 		});
 	'';
 
-	environment.systemPackages = lib.mkIf config.amd.gpu.enable [ pkgs.corectrl ]; # GPU overclocking tool
+	environment.systemPackages = [ pkgs.corectrl ]; # GPU overclocking tool
 }

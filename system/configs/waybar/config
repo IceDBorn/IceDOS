@@ -2,7 +2,7 @@
 	"layer": "top",
 	"modules-left": ["wlr/workspaces"],
 	"modules-center": ["hyprland/window"],
-	"modules-right": ["tray", "custom/separator", "bluetooth", "custom/separator", "hyprland/language", "custom/separator","pulseaudio", "custom/separator", "clock", "custom/separator", "custom/power"],
+	"modules-right": ["tray", "custom/separator", "bluetooth", "custom/separator", "hyprland/language", "custom/separator","wireplumber", "custom/separator", "clock", "custom/separator", "custom/power"],
 
 	"bluetooth": {
 		"format": "  {status}",
@@ -28,23 +28,10 @@
 		"max-length": 25
 	},
 
-	"pulseaudio": {
-		"format": "{icon}  {volume}",
-		"format-bluetooth": " {icon}  {volume}",
-		"format-muted": "",
-
-		"format-icons": {
-			"headphone": "",
-			"hands-free": "",
-			"headset": "",
-			"phone": "",
-			"portable": "",
-			"car": "",
-			"default": ["", "墳"]
-		},
-
-		"scroll-step": 5,
-		"on-click": "pavucontrol"
+	"wireplumber": {
+		"format": "墳  {volume}",
+		"on-click": "pavucontrol",
+		"tooltip": false
 	},
 
 	"wlr/workspaces": {

@@ -40,15 +40,15 @@
 			wlogout # Logout screen
 		];
 
-		etc = {
+		etc = lib.mkIf config.desktop-environment.hyprland.enable {
 			"wlogout-icons".source = "${pkgs.wlogout}/share/wlogout/icons";
 			"polkit-gnome".source = "${pkgs.polkit_gnome}/libexec/polkit-gnome-authentication-agent-1";
 		};
 	};
 
-	services = {
-		dbus.enable = config.desktop-environment.hyprland.enable;
-		gvfs.enable = config.desktop-environment.hyprland.enable; # Needed for nautilus
+	services = lib.mkIf config.desktop-environment.hyprland.enable {
+		dbus.enable = true;
+		gvfs.enable = true; # Needed for nautilus
 	};
 
 	security.polkit.enable = config.desktop-environment.hyprland.enable;

@@ -1,3 +1,14 @@
+{lib, config, pkgs, ...}:
+
+let
+	nvidia-offload = pkgs.writeShellScriptBin "nvidia-offload" ''
+		export __NV_PRIME_RENDER_OFFLOAD=1
+		export __NV_PRIME_RENDER_OFFLOAD_PROVIDER=NVIDIA-G0
+		export __GLX_VENDOR_LIBRARY_NAME=nvidia
+		export __VK_LAYER_NV_optimus=NVIDIA_only
+		exec "$@"
+	'';
+in
 {
 	hardware = {
 		opengl = {
@@ -5,10 +16,18 @@
 			driSupport32Bit = true; # Support Direct Rendering for 32-bit applications (such as Wine) on 64-bit systems
 		};
 
+		nvidia = lib.mkIf (config.nvidia.enable && config.nvidia.patch.enable) {
+			package = config.nur.repos.arc.packages.nvidia-patch.override {
+				nvidia_x11 = config.boot.kernelPackages.nvidiaPackages.stable;
+			};# Patch the driver for nvfbc
+		};
+
 		xpadneo.enable = true; # Enable XBOX Gamepad bluetooth driver
 		bluetooth.enable = true;
 		uinput.enable = true; # Enable uinput support
 	};
+
+	environment.systemPackages = lib.mkIf (config.laptop.enable && config.nvidia.enable) [ nvidia-offload ]; # Use nvidia-offload to launch programs using the nvidia GPU
 
 	# Set memory limits
 	security.pam.loginLimits =

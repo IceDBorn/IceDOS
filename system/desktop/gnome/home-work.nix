@@ -82,6 +82,8 @@ lib.mkIf config.work.user.enable {
 					# "gsconnect@andyholmes.github.io"
 					"quick-settings-tweaks@qwreey"
 				];
+
+				favorite-apps = lib.mkIf config.desktop-environment.gnome.configuration.pinned-apps.dash-to-panel.enable []; # Set dash to panel pinned apps
 			};
 
 			"org/gnome/shell/keybindings" = {
@@ -139,6 +141,38 @@ lib.mkIf config.work.user.enable {
 			# Do not always show emoji selector
 			"org/gnome/shell/extensions/emoji-selector" = {
 				always-show = false;
+			};
+
+			"org/gnome/shell/extensions/dash-to-panel" = {
+				panel-element-positions = ''
+					{"0":[{"element":"showAppsButton","visible":false,"position":"stackedTL"},
+					{"element":"activitiesButton","visible":false,"position":"stackedTL"},
+					{"element":"leftBox","visible":true,"position":"stackedTL"},
+					{"element":"taskbar","visible":true,"position":"stackedTL"},
+					{"element":"centerBox","visible":true,"position":"stackedBR"},
+					{"element":"rightBox","visible":true,"position":"stackedBR"},
+					{"element":"dateMenu","visible":true,"position":"stackedBR"},
+					{"element":"systemMenu","visible":true,"position":"stackedBR"},
+					{"element":"desktopButton","visible":true,"position":"stackedBR"}]}
+				''; # Disable activities button
+				panel-sizes = ''{"0":44}'';
+				appicon-margin = 4;
+				dot-style-focused = "DASHES";
+				dot-style-unfocused = "DOTS";
+				hide-overview-on-startup = true;
+				scroll-icon-action = "NOTHING";
+				scroll-panel-action = "NOTHING";
+				hot-keys = true;
+			};
+
+			"org/gnome/shell/extensions/arcmenu" = {
+				distro-icon = 6;
+				menu-button-icon = "Distro_Icon"; # Use arch icon
+				multi-monitor = true;
+				menu-layout = "Windows";
+				windows-disable-frequent-apps = true;
+				windows-disable-pinned-apps = !config.desktop-environment.gnome.configuration.pinned-apps.arcmenu.enable;
+				pinned-app-list = lib.mkIf config.desktop-environment.gnome.configuration.pinned-apps.arcmenu.enable []; # Set arc menu pinned apps
 			};
 		};
 	};

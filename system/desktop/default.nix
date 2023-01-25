@@ -1,5 +1,5 @@
 ### DESKTOP POWERED BY GNOME ###
-{ pkgs, ... }:
+{ pkgs, config, ... }:
 
 {
 	imports = [
@@ -22,7 +22,7 @@
 
 			displayManager.gdm = {
 				enable = true;
-				autoSuspend = false;
+				autoSuspend = config.desktop-environment.gdm.auto-suspend.enable;
 			};
 
 			layout = "us,gr";

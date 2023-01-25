@@ -1,12 +1,12 @@
 { pkgs, lib, config, ... }:
 
-{
-	boot.kernelModules = lib.mkIf config.amd.cpu.enable [ "msr" ]; # Needed for zenstates
+lib.mkIf config.amd.cpu.enable {
+	boot.kernelModules = [ "msr" ]; # Needed for zenstates
 
-	hardware.cpu.amd.updateMicrocode = config.amd.cpu.enable;
+	hardware.cpu.amd.updateMicrocode = true;
 
 	# Ryzen cpu control
-	systemd.services.zenstates = lib.mkIf (config.amd.cpu.enable && config.amd.cpu.undervolt.enable) {
+	systemd.services.zenstates = lib.mkIf config.amd.cpu.undervolt.enable {
 		enable = true;
 		description = "Ryzen Undervolt";
 		after = [ "syslog.target" "systemd-modules-load.service" ];

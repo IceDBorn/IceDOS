@@ -1,22 +1,16 @@
 { config, pkgs, lib, ... }:
 
-{
-	services.xserver.videoDrivers = lib.mkIf config.nvidia.enable [ "nvidia" ]; # Install the nvidia drivers
+lib.mkIf config.nvidia.enable {
+	services.xserver.videoDrivers = [ "nvidia" ]; # Install the nvidia drivers
 
-	hardware.nvidia = lib.mkIf config.nvidia.enable {
-		modesetting.enable = true; # Required for wayland
-		# Patch the driver for nvfbc
-		package = config.nur.repos.arc.packages.nvidia-patch.override {
-			nvidia_x11 = config.boot.kernelPackages.nvidiaPackages.stable;
-		};
-	};
+	hardware.nvidia.modesetting.enable = true; # Required for wayland
 
-	virtualisation.docker.enableNvidia = config.nvidia.enable; # Enable nvidia gpu acceleration for docker
+	virtualisation.docker.enableNvidia = true; # Enable nvidia gpu acceleration for docker
 
-	environment.systemPackages = lib.mkIf config.nvidia.enable [ pkgs.nvtop-nvidia ]; # Monitoring tool for nvidia GPUs
+	environment.systemPackages = [ pkgs.nvtop-nvidia ]; # Monitoring tool for nvidia GPUs
 
 	# Set nvidia gpu power limit
-	systemd.services.nv-power-limit = lib.mkIf (config.nvidia.enable && config.nvidia.power-limit.enable) {
+	systemd.services.nv-power-limit = lib.mkIf config.nvidia.power-limit.enable {
 		enable = true;
 		description = "Nvidia power limit control";
 		after = [ "syslog.target" "systemd-modules-load.service" ];

@@ -18,6 +18,7 @@ lib.mkIf config.main.user.enable {
 		ryujinx # Switch Emulator
 		scanmem # Cheat engine for linux
 		steam # Gaming platform
+		steamtinkerlaunch # General tweaks for games
 		stremio # Straming platform
 		sunshine # Streaming software
 	];

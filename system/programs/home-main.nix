@@ -129,6 +129,12 @@ lib.mkIf config.main.user.enable {
 				source = "${(pkgs.callPackage ../programs/self-built/adwaita-for-steam {})}/build/Adwaita";
 				recursive = true;
 			};
+
+			# Enable steam beta
+			".local/share/Steam/package/beta" = lib.mkIf config.steam.beta.enable {
+				text = "publicbeta";
+				recursive = true;
+			};
 		};
 	};
 }
