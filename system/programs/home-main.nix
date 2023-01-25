@@ -131,7 +131,7 @@ lib.mkIf config.main.user.enable {
 			};
 
 			# Enable steam beta
-			".local/share/Steam/package/beta" = lib.mkIf config.steam-beta.enable {
+			".local/share/Steam/package/beta" = lib.mkIf config.steam.beta.enable {
 				text = "publicbeta";
 				recursive = true;
 			};

@@ -19,6 +19,6 @@
 			timeout = 1; # Boot default entry after 1 second
 		};
 
-		plymouth.enable = config.boot-animation.enable;
+		plymouth.enable = config.boot.animation.enable;
 	};
 }

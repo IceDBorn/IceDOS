@@ -7,6 +7,18 @@
 			default = true;
 		}; # Set to false if hardware/mounts.nix is not correctly configured
 
+		boot = {
+			animation.enable = lib.mkOption {
+				type = lib.types.bool;
+				default = false;
+			}; # Hides startup text and displays a circular loading icon
+
+			windows-entry = lib.mkOption {
+				type = lib.types.str;
+				default = "0000";
+			}; # Used for rebooting to windows with efibootmgr
+		};
+
 		# Declare users
 		main.user = {
 			username = lib.mkOption {
@@ -206,14 +218,16 @@
 			default = true;
 		};
 
-		boot-animation.enable = lib.mkOption {
-			type = lib.types.bool;
-			default = false;
-		};
+		steam = {
+			beta.enable = lib.mkOption {
+				type = lib.types.bool;
+				default = true;
+			};
 
-		steam-beta.enable = lib.mkOption {
-			type = lib.types.bool;
-			default = true;
+			link-resolution = lib.mkOption {
+				type = lib.types.str;
+				default = "1080";
+			}; # Set this to your monitor's height
 		};
 	};
 }
