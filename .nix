@@ -210,5 +210,10 @@
 			type = lib.types.bool;
 			default = false;
 		};
+
+		steam-beta.enable = lib.mkOption {
+			type = lib.types.bool;
+			default = true;
+		};
 	};
 }
