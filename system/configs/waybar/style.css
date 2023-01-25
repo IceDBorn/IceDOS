@@ -15,22 +15,23 @@ window#waybar {
 	padding: 0px 5px;
 }
 
-#clock,
 #battery,
-#cpu,
-#memory,
-#temperature,
-#network,
-#pulseaudio,
-#custom-media,
-#tray,
-#mode,
-#custom-power,
-#custom-menu,
-#idle_inhibitor,
-#window,
 #bluetooth,
-#language {
+#clock,
+#cpu,
+#custom-media,
+#custom-menu,
+#custom-power,
+#idle_inhibitor,
+#language,
+#memory,
+#mode,
+#network,
+#temperature,
+#tray,
+#window,
+#wireplumber,
+#wireplumber.muted {
 	padding: 0 10px;
 	font-weight: bold;
 }
