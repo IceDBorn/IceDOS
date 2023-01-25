@@ -31,17 +31,17 @@ lib.mkIf config.work.user.enable {
 		};
 
 		# Add terminator to startup
-		".config/autostart/terminator.desktop" = {
-			text = ''
-				[Desktop Entry]
-				Exec=terminator
-				Icon=terminator
-				Name=Terminator
-				StartupWMClass=terminator
-				Terminal=false
-				Type=Application
-			'';
-			recursive = true;
-		};
+		# ".config/autostart/terminator.desktop" = {
+		# 	text = ''
+		# 		[Desktop Entry]
+		# 		Exec=terminator
+		# 		Icon=terminator
+		# 		Name=Terminator
+		# 		StartupWMClass=terminator
+		# 		Terminal=false
+		# 		Type=Application
+		# 	'';
+		# 	recursive = true;
+		# };
 	};
 }
