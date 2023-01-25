@@ -14,6 +14,7 @@
 		bat # Better cat command
 		btop # System monitor
 		direnv # Unclutter your .profile
+		efibootmgr # Edit EFI entries
 		firefox # Browser
 		gimp # Image editor
 		git # Distributed version control system
@@ -73,6 +74,7 @@
 				ls="lsd"; # Better ls command
 				mva="rsync -rP --remove-source-files"; # Move command with details
 				ping="gping"; # ping with a graph
+				reboot-windows="sudo efibootmgr --bootnext 0002 && reboot"; # Reboot to windows
 				rebuild="(cd $(head -1 /etc/nixos/.configuration-location) && bash rebuild.sh)"; # Rebuild the system configuration
 				restart-pipewire="systemctl --user restart pipewire"; # Restart pipewire
 				ssh="TERM=xterm-256color ssh"; # SSH with colors
