@@ -78,7 +78,7 @@
 				rebuild="(cd $(head -1 /etc/nixos/.configuration-location) && bash rebuild.sh)"; # Rebuild the system configuration
 				restart-pipewire="systemctl --user restart pipewire"; # Restart pipewire
 				ssh="TERM=xterm-256color ssh"; # SSH with colors
-				steam-link="gamescope -H ${config.steam.link-resolution} -b -- steam"; # Launch steam inside of a gamescope instance
+				steam-link="killall steam 2> /dev/null ; while ps axg | grep -vw grep | grep -w steam > /dev/null; do sleep 1; done && (nohup steam -pipewire > /dev/null &) 2> /dev/null"; # Kill existing steam process and relaunch steam with the pipewire flag
 				update="(cd $(head -1 /etc/nixos/.configuration-location) && sudo nix flake update && bash rebuild.sh) ; (apx --aur upgrade) ; (bash ~/.config/zsh/proton-ge-updater.sh)"; # Update everything
 				vpn-off="mullvad disconnect"; # Disconnect from VPN
 				vpn-on="mullvad connect"; # Connect to VPN
