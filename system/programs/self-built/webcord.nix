@@ -5,13 +5,13 @@ buildNpmPackage rec {
   version = "4.0.0";
 
   src = fetchFromGitHub {
-    owner = "SpacingBat3";
+    owner = "IceDBorn";
     repo = "WebCord";
-    rev = "v${version}";
-    sha256 = "sha256-e+y/M+/gjezHoNrdXeFhqtvxbPdhRSDOQlwK1nUhNfo=";
+    rev = "f962496bd65f5d5a01e04c9759a4f997f8ea82b3";
+    sha256 = "xgUkmEoKjRO/WIyxooOq8t3AjMT5xHZ1Kl94+pCvBd8=";
   };
 
-  npmDepsHash = "sha256-F6d58VxTpeYdpp2InbXY8gHM9o43dnect+DQAreoRQI=";
+  npmDepsHash = "sha256-+2kJxvKt0g7ZkONqSv/3V3tKxtZbRl/yI6KPiHXGcG8=";
 
   nativeBuildInputs = [
     copyDesktopItems
@@ -37,7 +37,9 @@ buildNpmPackage rec {
     runHook preInstall
 
     mkdir -p $out/lib/node_modules/webcord
+	mkdir -p $out/lib/node_modules/webcord/node_modules/node-pipewire
     cp -r app node_modules sources package.json $out/lib/node_modules/webcord/
+	cp -r prebundled-node-modules/node-pipewire/* $out/lib/node_modules/webcord/node_modules/node-pipewire/
 
     install -Dm644 sources/assets/icons/app.png $out/share/icons/hicolor/256x256/apps/webcord.png
 
