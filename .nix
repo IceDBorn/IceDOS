@@ -218,16 +218,9 @@
 			default = true;
 		};
 
-		steam = {
-			beta.enable = lib.mkOption {
-				type = lib.types.bool;
-				default = true;
-			};
-
-			link-resolution = lib.mkOption {
-				type = lib.types.str;
-				default = "1080";
-			}; # Set this to your monitor's height
+		steam.beta.enable = lib.mkOption {
+			type = lib.types.bool;
+			default = true;
 		};
 	};
 }
