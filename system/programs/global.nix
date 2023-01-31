@@ -6,7 +6,7 @@
 
 	environment.systemPackages = with pkgs; [
 		#(callPackage ./self-built/system-monitoring-center.nix { buildPythonApplication = pkgs.python3Packages.buildPythonApplication; fetchPypi = pkgs.python3Packages.fetchPypi; pygobject3 = pkgs.python3Packages.pygobject3; }) # Task manager
-		(callPackage ./self-built/webcord.nix { electron = pkgs.electron_19; }) # An open source discord client
+		(callPackage ./self-built/webcord.nix { electron = pkgs.electron_21; }) # An open source discord client
 		(callPackage self-built/apx.nix {}) # Package manager using distrobox
 		android-tools # Tools for debugging android devices
 		appimage-run # Appimage runner
