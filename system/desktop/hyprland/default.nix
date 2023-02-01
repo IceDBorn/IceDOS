@@ -35,6 +35,7 @@
 			polkit_gnome # Polkit manager
 			rofi-wayland # App launcher
 			slurp # Monitor selector
+			swappy # Edit screenshots
 			wdisplays # Displays manager
 			wl-clipboard # Clipboard daemon
 			wlogout # Logout screen
