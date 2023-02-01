@@ -1,0 +1,15 @@
+diff --git a/package.json b/package.json
+--- package.json
++++ package.json
+@@ -82,11 +82,8 @@
+     "spdx-expression-parse": "^3.0.1",
+     "tslib": "^2.3.1",
+     "twemoji-colr-font": "^14.0.2"
+   },
+-  "optionalDependencies": {
+-    "node-pipewire": "^1.0.14"
+-  },
+   "config": {
+     "forge": "./app/code/build/forge.js"
+   },
+   "engines": {

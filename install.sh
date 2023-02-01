@@ -43,10 +43,9 @@ then
 	# Build the configuration
 	sudo nixos-rebuild switch || exit
 
-	# Install apx applications
+	# Initialise apx
 	apx init --aur
 	docker exec -it apx_managed_aur su - $username bash -c "sudo pacman -S --needed git base-devel wget file && cd .cache && wget https://github.com/Jguer/yay/releases/download/v11.3.2/yay_11.3.2_x86_64.tar.gz -O yay.tar.gz && tar -xzf yay.tar.gz && rm -rf yay.tar.gz && sh -c '$(find ~/.cache -wholename '*/yay' | tail -n1) -S yay'"
-	apx install --aur discord-screenaudio && distrobox enter apx_managed_aur -- distrobox-export --app discord-screenaudio || exit
 
 	# Reboot after the installation is completed
 	bash scripts/reboot.sh

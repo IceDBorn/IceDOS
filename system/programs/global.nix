@@ -6,8 +6,8 @@
 
 	environment.systemPackages = with pkgs; [
 		(callPackage ./self-built/system-monitoring-center.nix { buildPythonApplication = pkgs.python3Packages.buildPythonApplication; fetchPypi = pkgs.python3Packages.fetchPypi; pygobject3 = pkgs.python3Packages.pygobject3; }) # Task manager
-		(callPackage ./self-built/webcord.nix { electron = pkgs.electron_19; }) # An open source discord client
-		(callPackage self-built/apx.nix {}) # Package manager using distrobox
+		(callPackage ./self-built/webcord { electron = pkgs.electron_21; }) # An open source discord client
+		(callPackage ./self-built/apx.nix {}) # Package manager using distrobox
 		android-tools # Tools for debugging android devices
 		appimage-run # Appimage runner
 		aria # Terminal downloader with multiple connections support
@@ -48,6 +48,7 @@
 		woeusb # Windows ISO Burner
 		xorg.xhost # Use x.org server with distrobox
 		zenstates # Ryzen CPU controller
+		zerotierone # Virtual lan network
 	];
 
 	users.defaultUserShell = pkgs.zsh; # Use ZSH shell for all users
@@ -78,11 +79,11 @@
 				mva="rsync -rP --remove-source-files"; # Move command with details
 				ping="gping"; # ping with a graph
 				reboot-windows="sudo efibootmgr --bootnext ${config.boot.windows-entry} && reboot"; # Reboot to windows
-				rebuild="(cd $(head -1 /etc/nixos/.configuration-location) && bash rebuild.sh)"; # Rebuild the system configuration
+				rebuild="(cd $(head -1 /etc/nixos/.configuration-location) 2> /dev/null || (echo 'Configuration path is invalid. Run rebuild.sh manually to update the path!' && false) && bash rebuild.sh)"; # Rebuild the system configuration
 				restart-pipewire="systemctl --user restart pipewire"; # Restart pipewire
 				ssh="TERM=xterm-256color ssh"; # SSH with colors
-				steam-link="gamescope -H ${config.steam.link-resolution} -b -- steam"; # Launch steam inside of a gamescope instance
-				update="(cd $(head -1 /etc/nixos/.configuration-location) && sudo nix flake update && bash rebuild.sh) ; (apx --aur upgrade) ; (bash ~/.config/zsh/proton-ge-updater.sh)"; # Update everything
+				steam-link="killall steam 2> /dev/null ; while ps axg | grep -vw grep | grep -w steam > /dev/null; do sleep 1; done && (nohup steam -pipewire > /dev/null &) 2> /dev/null"; # Kill existing steam process and relaunch steam with the pipewire flag
+				update="(cd $(head -1 /etc/nixos/.configuration-location) 2> /dev/null || (echo 'Configuration path is invalid. Run rebuild.sh manually to update the path!' && false) && sudo nix flake update && bash rebuild.sh) ; (apx --aur upgrade) ; (bash ~/.config/zsh/proton-ge-updater.sh)"; # Update everything
 				vpn-off="mullvad disconnect"; # Disconnect from VPN
 				vpn-on="mullvad connect"; # Connect to VPN
 				vpn="mullvad status"; # Show VPN status
