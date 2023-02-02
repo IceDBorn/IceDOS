@@ -8,8 +8,8 @@ buildNpmPackage rec {
 	src = fetchFromGitHub {
 		owner = "kakxem";
 		repo = "WebCord";
-		rev = "4ece3caea532604a07d958924662338bdec2bab1";
-		sha256 = "xhno3LCjdefoKuAaRIe2ciTva+LfhbCS4T/dc9yRWgQ=";
+		rev = "e5c2ded3ee53b6397736a262bbec5d253375b745";
+		sha256 = "oFQ7fVJysmVUlhRMPxg/0w7srnXXu7gZ/kxlJZ2OW3g=";
 	};
 
 	npmDepsHash = "sha256-fg8BBVcNYeXipMX33Eh7wmDP27bp3NTM0FO+ld0jWF4=";
