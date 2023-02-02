@@ -37,7 +37,6 @@
 		syncthing # Local file sync
 		tree # Display folder content at a tree format
 		unrar # Support opening rar files
-		usbimager # ISO Burner
 		vscodium # All purpose IDE
 		wget # Terminal downloader
 		wine # Compatibility layer capable of running Windows applications
