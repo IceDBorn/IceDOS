@@ -6,10 +6,10 @@ buildNpmPackage rec {
 	nodePipewireVersion = "1.0.14";
 
 	src = fetchFromGitHub {
-		owner = "IceDBorn";
+		owner = "kakxem";
 		repo = "WebCord";
-		rev = "d96e15a54418df5d178df08ab481d0c528877a3a";
-		sha256 = "UmagharEWLGlv+6XlAq95bmJ0f1gqEEQu9NzLmupRsU=";
+		rev = "4ece3caea532604a07d958924662338bdec2bab1";
+		sha256 = "xhno3LCjdefoKuAaRIe2ciTva+LfhbCS4T/dc9yRWgQ=";
 	};
 
 	npmDepsHash = "sha256-fg8BBVcNYeXipMX33Eh7wmDP27bp3NTM0FO+ld0jWF4=";
