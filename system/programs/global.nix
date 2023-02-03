@@ -10,7 +10,7 @@
 		(callPackage ./self-built/apx.nix {}) # Package manager using distrobox
 		android-tools # Tools for debugging android devices
 		appimage-run # Appimage runner
-		aria # Terminal downloader with multiple connections support
+		# aria # Terminal downloader with multiple connections support
 		bat # Better cat command
 		btop # System monitor
 		# direnv # Unclutter your .profile
@@ -20,7 +20,7 @@
 		gimp # Image editor
 		git # Distributed version control system
 		gping # ping with a graph
-		helvum # Pipewire patchbay
+		# helvum # Pipewire patchbay
 		killall # Tool to kill all programs matching process name
 		kitty # Terminal
 		lsd # Better ls command
@@ -48,7 +48,7 @@
 		woeusb # Windows ISO Burner
 		xorg.xhost # Use x.org server with distrobox
 		zenstates # Ryzen CPU controller
-		zerotierone # Virtual lan network
+		# zerotierone # Virtual lan network
 	];
 
 	users.defaultUserShell = pkgs.zsh; # Use ZSH shell for all users

@@ -6,13 +6,13 @@ lib.mkIf config.main.user.enable {
 		bottles # Wine manager
 		duckstation # PS1 Emulator
 		gamescope # Wayland microcompositor
-#		godot_4 # Game engine
+		# godot_4 # Game engine
 		heroic # Epic Games Launcher for Linux
 		input-remapper # Remap input device controls
-		papermc # Minecraft server
-#		pcsx2 # PS2 Emulator
-#		ppsspp # PSP Emulator
-#		prismlauncher # Minecraft launcher
+		# papermc # Minecraft server
+		# pcsx2 # PS2 Emulator
+		# ppsspp # PSP Emulator
+		# prismlauncher # Minecraft launcher
 		protontricks # Winetricks for proton prefixes
 		rpcs3 # PS3 Emulator
 		ryujinx # Switch Emulator
