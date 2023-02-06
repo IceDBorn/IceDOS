@@ -1,21 +1,22 @@
 diff --git a/install.py b/install.py
-index df1e75b..7643f03 100755
---- a/install.py
-+++ b/install.py
-@@ -147,7 +147,7 @@ if __name__ == "__main__":
- 	if args.patch and not shutil.which("patch"):
- 		raise SystemExit(f"{TEXT_BOLD}patch{TEXT_RESET} executable not found in $PATH. Make sure you have GNU Patch installed")
+--- install.py
++++ install.py
+@@ -248,9 +248,9 @@
+ 				raise SystemExit(f"{TEXT_RED}{TEXT_CROSS} {TEXT_BOLD}{selected_theme}{TEXT_RESET}{TEXT_RED} theme not found.{TEXT_RESET}")
+ 			if not selected_theme_assets.exists():
+ 				raise SystemExit(f"{TEXT_RED}{TEXT_CROSS} {TEXT_BOLD}{selected_theme}{TEXT_RESET}{TEXT_RED} theme assets not found.{TEXT_RESET}")
 
 -	with TemporaryDirectory() as tmpdir:
 +	with (Path(os.environ['NIX_OUT']) / 'build') as tmpdir:
  		tmp = Path(tmpdir)
  		sourcedir = tmp / SKIN_DIR
- 		print(f"Copying to the stage directory {TEXT_BOLD}{sourcedir}{TEXT_RESET}")
-@@ -168,16 +168,3 @@ if __name__ == "__main__":
- 					apply_patch(tmp, patch)
+ 		print(f"{TEXT_BLUE}{TEXT_ARROW} Copying to the stage directory {TEXT_BOLD}{sourcedir}{TEXT_RESET}")
+ 		shutil.copytree(skindir, sourcedir)
+@@ -285,17 +285,5 @@
+ 			replace_css_colors(sourcedir / CSS_FILE, config)
+ 			replace_vgui_colors(sourcedir / COLORS_FILE, config)
+ 			shutil.copytree(selected_theme_assets, sourcedir / ASSETS_DIR, dirs_exist_ok=True)
 
- 		gen_webkit_theme(sourcedir / CSS_FILE, args.web_theme, args.web_extras)
--
 -		targets = set()
 -
 -		for t in args.target:
@@ -28,3 +29,4 @@ index df1e75b..7643f03 100755
 -
 -		for target in targets:
 -			install(sourcedir, target, args.name)
+ 		print(f"{TEXT_GREEN}{TEXT_CHECK} Done!{TEXT_RESET}")
