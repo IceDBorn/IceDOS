@@ -7,7 +7,7 @@ stdenvNoCC.mkDerivation rec {
 	src = fetchFromGitHub {
 		owner = "tkashkin";
 		repo = "Adwaita-for-Steam";
-		rev = "v0.30";
+		rev = "v${version}";
 		sha256 = "5NfWmrVNon2nDhXr9oZEQCw6SOFc2/4ghxmGP6nkqcQ=";
 	};
 
