@@ -2,14 +2,14 @@
 
 buildNpmPackage rec {
 	name = "webcord";
-	version = "4.0.0";
+	version = "4.1.1";
 	nodePipewireVersion = "1.0.14";
 
 	src = fetchFromGitHub {
 		owner = "kakxem";
 		repo = "WebCord";
-		rev = "b974eff94843c7d1c0e9e721bdfc7cfea208b9c3";
-		sha256 = "SzYJfsYQQf6+fz+CRGDeS2O8HncmCfDpaEK4+UHcXNk=";
+		rev = "e5c2ded3ee53b6397736a262bbec5d253375b745";
+		sha256 = "oFQ7fVJysmVUlhRMPxg/0w7srnXXu7gZ/kxlJZ2OW3g=";
 	};
 
 	npmDepsHash = "sha256-fg8BBVcNYeXipMX33Eh7wmDP27bp3NTM0FO+ld0jWF4=";

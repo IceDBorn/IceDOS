@@ -32,6 +32,7 @@
 		p7zip # 7zip
 		python3 # Python
 		# ranger # Terminal file manager
+		rnix-lsp # Nix language server
 		rnnoise-plugin # A real-time noise suppression plugin
 		signal-desktop # Encrypted messaging platform
 		spotify # Music
@@ -39,7 +40,6 @@
 		# syncthing # Local file sync
 		tree # Display folder content at a tree format
 		unrar # Support opening rar files
-		# usbimager # ISO Burner
 		vscodium # All purpose IDE
 		jetbrains.webstorm # Javascript IDE
 		wget # Terminal downloader

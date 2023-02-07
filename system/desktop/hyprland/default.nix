@@ -6,8 +6,8 @@
 		./home-work.nix
 	]; # Setup home manager for hyprland
 
-	programs = {
-		nm-applet.enable = config.desktop-environment.hyprland.enable; # Network manager tray icon
+	programs = lib.mkIf config.desktop-environment.hyprland.enable {
+		nm-applet.enable = true; # Network manager tray icon
 	};
 
 	environment = lib.mkIf config.desktop-environment.hyprland.enable {
@@ -41,7 +41,7 @@
 			wlogout # Logout screen
 		];
 
-		etc = lib.mkIf config.desktop-environment.hyprland.enable {
+		etc = {
 			"wlogout-icons".source = "${pkgs.wlogout}/share/wlogout/icons";
 			"polkit-gnome".source = "${pkgs.polkit_gnome}/libexec/polkit-gnome-authentication-agent-1";
 		};
@@ -52,5 +52,5 @@
 		gvfs.enable = true; # Needed for nautilus
 	};
 
-	security.polkit.enable = config.desktop-environment.hyprland.enable;
+	security.polkit.enable = lib.mkIf config.desktop-environment.hyprland.enable true;
 }
