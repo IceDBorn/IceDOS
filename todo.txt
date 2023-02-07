@@ -1,3 +1,0 @@
-TODO
-	1: Build discord-screenaudio (does not build)
-	2: Build WebCord
