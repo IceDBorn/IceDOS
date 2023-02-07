@@ -87,23 +87,6 @@
 				vpn-off="mullvad disconnect"; # Disconnect from VPN
 				vpn-on="mullvad connect"; # Connect to VPN
 				vpn="mullvad status"; # Show VPN status
-
-				twokify="
-					xrandr --delmode DisplayPort-0 '2560x1440_144.00' ;
-					xrandr --rmmode '2560x1440_144.00' ;
-					xrandr --newmode '2560x1440_144.00' 808.75 2560 2792 3072 3584 1440 1443 1448 1568 -hsync +vsync &&
-					xrandr --addmode DisplayPort-0 '2560x1440_144.00' &&
-					sleep 1 &&
-					xrandr --output DisplayPort-0 --mode '2560x1440_144.00'
-				";
-				fourkify="
-					xrandr --delmode DisplayPort-0 '3440x1440_144.00' ;
-					xrandr --rmmode '3440x1440_144.00' ;
-					xrandr --newmode '3440x1440_144.00' 1086.75 3440 3744 4128 4816 1440 1443 1453 1568 -hsync +vsync &&
-					xrandr --addmode DisplayPort-0 '3440x1440_144.00' &&
-					sleep 1 &&
-					xrandr --output DisplayPort-0 --mode '3440x1440_144.00'
-				";
 			};
 
 			interactiveShellInit = "source ~/.config/zsh/zsh-theme.zsh\nunsetopt PROMPT_SP"; # Commands to run on zsh shell initialization
