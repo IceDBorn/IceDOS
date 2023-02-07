@@ -1,6 +1,6 @@
 { config, pkgs, lib, ... }:
 
-lib.mkIf config.main.user.enable {
+lib.mkIf config.work.user.enable {
 	home-manager.users.${config.work.user.username} = {
 		gtk = {
 			# Change GTK themes
