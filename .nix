@@ -22,6 +22,11 @@
 				type = lib.types.str;
 				default = "0000";
 			}; # Used for rebooting to windows with efibootmgr
+
+			btrfs-compression.enable = lib.mkOption {
+				type = lib.types.bool;
+				default = true;
+			}; # Btrfs compression
 		};
 
 		# Declare users
