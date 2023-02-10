@@ -13,6 +13,11 @@
 				default = false;
 			}; # Hides startup text and displays a circular loading icon
 
+			autologin.enable = lib.mkOption {
+				type = lib.types.bool;
+				default = true;
+			};
+
 			windows-entry = lib.mkOption {
 				type = lib.types.str;
 				default = "0000";

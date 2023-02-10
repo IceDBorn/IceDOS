@@ -20,9 +20,14 @@
 		xserver = {
 			enable = true; # Enable the X11 windowing system
 
-			displayManager.gdm = {
-				enable = true;
-				autoSuspend = config.desktop-environment.gdm.auto-suspend.enable;
+			displayManager = {
+				gdm = {
+					enable = true;
+					autoSuspend = config.desktop-environment.gdm.auto-suspend.enable;
+				};
+
+				autoLogin.enable = config.boot.autologin.enable;
+  				autoLogin.user = config.main.user.username;
 			};
 
 			layout = "us,gr";
@@ -35,6 +40,12 @@
 			alsa.support32Bit = true;
 			pulse.enable = true;
 		};
+	};
+
+	# Workaround for GDM autologin
+	systemd.services = {
+		"getty@tty1".enable = false;
+		"autovt@tty1".enable = false;
 	};
 
 	sound.enable = true;
