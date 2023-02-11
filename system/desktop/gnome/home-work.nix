@@ -94,7 +94,7 @@ lib.mkIf config.work.user.enable {
 						"quick-settings-tweaks@qwreey"
 					];
 
-				favorite-apps = lib.mkIf config.desktop-environment.gnome.configuration.pinned-apps.dash-to-panel.enable []; # Set dash to panel pinned apps
+				favorite-apps = if (config.desktop-environment.gnome.configuration.pinned-apps.dash-to-panel.enable) then [] else []; # Set dash to panel pinned apps
 			};
 
 			"org/gnome/shell/keybindings" = {
@@ -183,7 +183,7 @@ lib.mkIf config.work.user.enable {
 				menu-layout = "Windows";
 				windows-disable-frequent-apps = true;
 				windows-disable-pinned-apps = !config.desktop-environment.gnome.configuration.pinned-apps.arcmenu.enable;
-				pinned-app-list = lib.mkIf config.desktop-environment.gnome.configuration.pinned-apps.arcmenu.enable []; # Set arc menu pinned apps
+				pinned-app-list = if (config.desktop-environment.gnome.configuration.pinned-apps.arcmenu.enable) then [] else []; # Set arc menu pinned apps
 			};
 		};
 	};
