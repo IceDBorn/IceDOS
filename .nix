@@ -13,9 +13,16 @@
 				default = false;
 			}; # Hides startup text and displays a circular loading icon
 
-			autologin.enable = lib.mkOption {
-				type = lib.types.bool;
-				default = true;
+			autologin = {
+				enable = lib.mkOption {
+					type = lib.types.bool;
+					default = true;
+				};
+
+				main.user.enable = lib.mkOption {
+					type = lib.types.bool;
+					default = false;
+				}; # If false, defaults to work user
 			};
 
 			windows-entry = lib.mkOption {
@@ -84,7 +91,7 @@
 
 			enable = lib.mkOption {
 				type = lib.types.bool;
-				default = false;
+				default = true;
 			};
 		};
 

@@ -1,5 +1,5 @@
 ### DESKTOP POWERED BY GNOME ###
-{ pkgs, config, ... }:
+{ pkgs, config, lib, ... }:
 
 {
 	imports = [
@@ -26,8 +26,12 @@
 					autoSuspend = config.desktop-environment.gdm.auto-suspend.enable;
 				};
 
-				autoLogin.enable = config.boot.autologin.enable;
-  				autoLogin.user = config.main.user.username;
+				autoLogin = lib.mkIf config.boot.autologin.enable {
+					enable = true;
+  					user = if (config.main.user.enable && config.boot.autologin.main.user.enable) then config.main.user.username
+						else if (config.work.user.enable) then config.work.user.username
+						else "";
+				};
 			};
 
 			layout = "us,gr";
