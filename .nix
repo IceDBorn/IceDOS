@@ -21,7 +21,7 @@
 
 				main.user.enable = lib.mkOption {
 					type = lib.types.bool;
-					default = false;
+					default = true;
 				}; # If false, defaults to work user
 			};
 
@@ -91,7 +91,7 @@
 
 			enable = lib.mkOption {
 				type = lib.types.bool;
-				default = true;
+				default = false;
 			};
 		};
 
