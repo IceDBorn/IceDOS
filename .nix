@@ -13,10 +13,27 @@
 				default = false;
 			}; # Hides startup text and displays a circular loading icon
 
+			autologin = {
+				enable = lib.mkOption {
+					type = lib.types.bool;
+					default = false;
+				};
+
+				main.user.enable = lib.mkOption {
+					type = lib.types.bool;
+					default = true;
+				}; # If false, defaults to work user
+			};
+
 			windows-entry = lib.mkOption {
 				type = lib.types.str;
 				default = "0000";
 			}; # Used for rebooting to windows with efibootmgr
+
+			btrfs-compression.enable = lib.mkOption {
+				type = lib.types.bool;
+				default = true;
+			}; # Btrfs compression
 		};
 
 		# Declare users

@@ -11,5 +11,11 @@
 		extraGroups = lib.mkIf config.main.user.enable [ "networkmanager" "wheel" "kvm" "docker" ];
 	};
 
-	home-manager.users.${config.main.user.username}.home.stateVersion = "22.05";
+	home-manager.users.${config.main.user.username}.home = {
+		stateVersion = "22.05";
+		file.".nix-successful-build" = {
+			text = "true";
+			recursive = true;
+		};
+	};
 }

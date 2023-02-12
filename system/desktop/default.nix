@@ -1,5 +1,5 @@
 ### DESKTOP POWERED BY GNOME ###
-{ pkgs, config, ... }:
+{ pkgs, config, lib, ... }:
 
 {
 	imports = [
@@ -20,9 +20,18 @@
 		xserver = {
 			enable = true; # Enable the X11 windowing system
 
-			displayManager.gdm = {
-				enable = true;
-				autoSuspend = config.desktop-environment.gdm.auto-suspend.enable;
+			displayManager = {
+				gdm = {
+					enable = true;
+					autoSuspend = config.desktop-environment.gdm.auto-suspend.enable;
+				};
+
+				autoLogin = lib.mkIf config.boot.autologin.enable {
+					enable = true;
+  					user = if (config.main.user.enable && config.boot.autologin.main.user.enable) then config.main.user.username
+						else if (config.work.user.enable) then config.work.user.username
+						else "";
+				};
 			};
 
 			layout = "us,gr";
@@ -35,6 +44,12 @@
 			alsa.support32Bit = true;
 			pulse.enable = true;
 		};
+	};
+
+	# Workaround for GDM autologin
+	systemd.services = {
+		"getty@tty1".enable = false;
+		"autovt@tty1".enable = false;
 	};
 
 	sound.enable = true;

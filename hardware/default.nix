@@ -52,4 +52,8 @@ in
 		"xpadneo"
 		"uinput"
 	];
+
+	fileSystems = lib.mkIf config.boot.btrfs-compression.enable {
+		"/".options = [ "compress=zstd" ];
+	};
 }

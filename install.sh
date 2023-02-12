@@ -41,17 +41,18 @@ then
 	fi
 
 	# Build the configuration
-	sudo nixos-rebuild switch || exit
+	sudo nixos-rebuild switch
 
-	# Initialise apx
-	apx init --aur
-	docker exec -it apx_managed_aur su - $username bash -c "sudo pacman -S --needed git base-devel wget file && cd .cache && wget https://github.com/Jguer/yay/releases/download/v11.3.2/yay_11.3.2_x86_64.tar.gz -O yay.tar.gz && tar -xzf yay.tar.gz && rm -rf yay.tar.gz && sh -c '$(find ~/.cache -wholename '*/yay' | tail -n1) -S yay'"
-
-	# Reboot after the installation is completed
-	bash scripts/reboot.sh
+	if [ -f "$HOME/.nix-successful-build" ]; then
+		echo "Nix generation was successful!"
+    	# Initialise apx
+		apx init --aur
+		# Reboot after the installation is completed
+		bash system/scripts/reboot.sh
+	fi
 
 else
 	printf "You really should:
 	- Edit .nix, configuration.nix and comment out anything you do not want to setup.
-	- Edit mounts.nix or disable it.$RED$BOLD A wrong mounts.nix file can break your system!$NC$NORMAL\n"
+	- Edit mounts.nix or disable it.$RED$BOLD An invalid mounts.nix configuration can break your system!$NC$NORMAL\n"
 fi
