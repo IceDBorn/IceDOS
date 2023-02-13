@@ -38,6 +38,11 @@
 
 		# Declare users
 		main.user = {
+			enable = lib.mkOption {
+				type = lib.types.bool;
+				default = true;
+			};
+
 			username = lib.mkOption {
 				type = lib.types.str;
 				default = "icedborn";
@@ -59,14 +64,14 @@
 					default = "github.envenomed@dralias.com";
 				};
 			};
+		};
 
+		work.user = {
 			enable = lib.mkOption {
 				type = lib.types.bool;
 				default = true;
 			};
-		};
 
-		work.user = {
 			username = lib.mkOption {
 				type = lib.types.str;
 				default = "work";
@@ -88,11 +93,6 @@
 					default = "github.envenomed@dralias.com";
 				};
 			};
-
-			enable = lib.mkOption {
-				type = lib.types.bool;
-				default = false;
-			};
 		};
 
 		amd = {
@@ -108,40 +108,40 @@
 				};
 
 				undervolt = {
-					value = lib.mkOption {
-						type = lib.types.str;
-						default = "-p 0 -v 30 -f A8"; # Pstate 0, 1.25 voltage, 4200 clock speed
-					};
-
 					enable = lib.mkOption {
 						type = lib.types.bool;
 						default = true;
+					};
+
+					value = lib.mkOption {
+						type = lib.types.str;
+						default = "-p 0 -v 30 -f A8"; # Pstate 0, 1.25 voltage, 4200 clock speed
 					};
 				};
 			};
 		};
 
 		nvidia = {
-			power-limit = {
-				value = lib.mkOption {
-					type = lib.types.str;
-					default = "242"; # RTX 3070
-				};
+			enable = lib.mkOption {
+				type = lib.types.bool;
+				default = false;
+			};
 
+			power-limit = {
 				enable = lib.mkOption {
 					type = lib.types.bool;
 					default = true;
+				};
+
+				value = lib.mkOption {
+					type = lib.types.str;
+					default = "242"; # RTX 3070
 				};
 			};
 
 			patch.enable = lib.mkOption {
 				type = lib.types.bool;
 				default = true;
-			};
-
-			enable = lib.mkOption {
-				type = lib.types.bool;
-				default = false;
 			};
 		};
 
