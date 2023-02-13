@@ -5,7 +5,7 @@
 	boot.kernelPackages = pkgs.linuxPackages_zen; # Use ZEN linux kernel
 
 	environment.systemPackages = with pkgs; [
-		# (callPackage ./self-built/system-monitoring-center.nix { buildPythonApplication = pkgs.python3Packages.buildPythonApplication; fetchPypi = pkgs.python3Packages.fetchPypi; pygobject3 = pkgs.python3Packages.pygobject3; }) # Task manager
+		#(callPackage ./self-built/system-monitoring-center.nix { buildPythonApplication = pkgs.python3Packages.buildPythonApplication; fetchPypi = pkgs.python3Packages.fetchPypi; pygobject3 = pkgs.python3Packages.pygobject3; }) # Task manager
 		(callPackage ./self-built/webcord { electron = pkgs.electron_21; }) # An open source discord client
 		(callPackage ./self-built/apx.nix {}) # Package manager using distrobox
 		android-tools # Tools for debugging android devices
@@ -19,7 +19,7 @@
 		gimp # Image editor
 		git # Distributed version control system
 		gping # ping with a graph
-		# helvum # Pipewire patchbay
+		#helvum # Pipewire patchbay
 		killall # Tool to kill all programs matching process name
 		kitty # Terminal
 		lsd # Better ls command
