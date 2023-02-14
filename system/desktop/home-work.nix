@@ -17,10 +17,13 @@ lib.mkIf config.work.user.enable {
 		};
 
 		dconf.settings = {
-			# Nautilus path bar is always editable
 			"org/gnome/nautilus/preferences" = {
 				always-use-location-entry = true;
-			};
+			}; # Nautilus path bar is always editable
+
+			"org/gtk/gtk4/settings/file-chooser" = {
+				sort-directories-first = true;
+			}; # Nautilus sorts directories first
 		};
 
 		# Force mullvad to use wayland and window decorations
