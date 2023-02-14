@@ -11,6 +11,8 @@ lib.mkIf config.main.user.enable {
 				clock-show-seconds = true;
 				# Disable date
 				clock-show-date = config.desktop-environment.gnome.configuration.clock-date.enable;
+				# Show the battery percentage when on a laptop
+				show-battery-percentage = config.laptop.enable;
 			};
 
 			# Disable lockscreen notifications
