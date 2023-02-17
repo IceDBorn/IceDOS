@@ -19,7 +19,7 @@
 		gimp # Image editor
 		git # Distributed version control system
 		gping # ping with a graph
-		#helvum # Pipewire patchbay
+		helvum # Pipewire patchbay
 		killall # Tool to kill all programs matching process name
 		kitty # Terminal
 		lsd # Better ls command
