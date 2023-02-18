@@ -13,6 +13,7 @@
 		aria # Terminal downloader with multiple connections support
 		bat # Better cat command
 		btop # System monitor
+		cinnamon.warpinator # Local file sync
 		direnv # Unclutter your .profile
 		efibootmgr # Edit EFI entries
 		firefox # Browser
@@ -35,7 +36,6 @@
 		rnnoise-plugin # A real-time noise suppression plugin
 		signal-desktop # Encrypted messaging platform
 		sublime4 # Text editor
-		syncthing # Local file sync
 		tree # Display folder content at a tree format
 		unrar # Support opening rar files
 		vscodium # All purpose IDE
