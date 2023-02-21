@@ -26,18 +26,28 @@ lib.mkIf config.main.user.enable {
 			}; # Nautilus sorts directories first
 		};
 
-		# Force mullvad to use wayland and window decorations
-		xdg.desktopEntries.mullvad-gui = {
-			name = "Mullvad";
-			exec = "mullvad-gui --enable-features=UseOzonePlatform,WaylandWindowDecorations --ozone-platform=wayland";
-			icon = "mullvad-vpn";
-		};
+		xdg = {
+			desktopEntries = {
+				discord = {
+					name = "Discord";
+					exec = "discord --enable-features=UseOzonePlatform --ozone-platform=wayland";
+					icon = "discord";
+				}; # Force discord to use wayland
 
-		# Force discord to use wayland
-		xdg.desktopEntries.discord = {
-			name = "Discord";
-			exec = "discord --enable-features=UseOzonePlatform --ozone-platform=wayland";
-			icon = "discord";
+				mullvad-gui = {
+					name = "Mullvad";
+					exec = "mullvad-gui --enable-features=UseOzonePlatform,WaylandWindowDecorations --ozone-platform=wayland";
+					icon = "mullvad-vpn";
+				}; # Force mullvad to use wayland and window decorations
+			};
+
+			mimeApps = {
+				enable = true;
+
+				defaultApplications = {
+					"text/plain" = ["sublime_text.desktop"];
+				};
+			}; # Default apps
 		};
 
 		home.file = {
