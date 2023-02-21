@@ -45,9 +45,6 @@ then
 
 	if [ -f "$HOME/.nix-successful-build" ]; then
 		echo "Nix generation was successful!"
-    	# Initialise apx
-		apx init --aur
-		# Reboot after the installation is completed
 		bash system/scripts/reboot.sh
 	fi
 
