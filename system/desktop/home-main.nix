@@ -47,6 +47,7 @@ lib.mkIf config.main.user.enable {
 				defaultApplications = {
 					"text/plain" = [ "sublime_text.desktop" ];
 					"application/zip" = [ "org.gnome.FileRoller.desktop" ];
+					"application/x-ms-dos-executable" = [ "wine.desktop" ];
 				};
 			}; # Default apps
 		};
