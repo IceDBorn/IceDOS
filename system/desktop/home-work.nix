@@ -49,5 +49,32 @@ lib.mkIf config.work.user.enable {
 				StartupWMClass = "slack";
 			};
 		};
+
+		home.file = {
+			"Templates/new" = {
+				text = "";
+				recursive = true;
+			};
+
+			"Templates/new.cfg" = {
+				text = "";
+				recursive = true;
+			};
+
+			"Templates/new.ini" = {
+				text = "";
+				recursive = true;
+			};
+
+			"Templates/new.sh" = {
+				text = "";
+				recursive = true;
+			};
+
+			"Templates/new.txt" = {
+				text = "";
+				recursive = true;
+			};
+		}; # New document options for nautilus
 	};
 }
