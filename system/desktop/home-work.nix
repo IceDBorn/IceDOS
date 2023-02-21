@@ -55,6 +55,7 @@ lib.mkIf config.work.user.enable {
 
 				defaultApplications = {
 					"text/plain" = ["sublime_text.desktop"];
+					"application/zip" = [ "org.gnome.FileRoller.desktop" ];
 				};
 			}; # Default apps
 		};
