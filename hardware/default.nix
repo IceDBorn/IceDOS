@@ -54,6 +54,6 @@ in
 	];
 
 	fileSystems = lib.mkIf config.boot.btrfs-compression.enable {
-		"/".options = [ "compress=zstd" ];
+		# "/".options = [ "compress=zstd" ];
 	};
 }
