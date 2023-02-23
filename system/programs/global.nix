@@ -15,6 +15,8 @@
 		btop # System monitor
 		# direnv # Unclutter your .profile
 		discord
+		cinnamon.warpinator # Local file sync
+		direnv # Unclutter your .profile
 		efibootmgr # Edit EFI entries
 		firefox # Browser
 		gimp # Image editor
@@ -37,7 +39,6 @@
 		signal-desktop # Encrypted messaging platform
 		spotify # Music
 		sublime4 # Text editor
-		# syncthing # Local file sync
 		tree # Display folder content at a tree format
 		unrar # Support opening rar files
 		vscodium # All purpose IDE
@@ -69,6 +70,7 @@
 			shellAliases = {
 				apx="apx --aur"; # Use arch as the base apx container
 				aria2c="aria2c -j 16 -s 16"; # Download with aria using best settings
+				btrfs-compress="sudo btrfs filesystem defrag -czstd -r -v"; # Compress given path with zstd
 				cat="bat"; # Better cat command
 				chmod="sudo chmod"; # It's a command that I always execute with sudo
 				clear-keys="sudo rm -rf ~/ local/share/keyrings/* ~/ local/share/kwalletd/*"; # Clear system keys

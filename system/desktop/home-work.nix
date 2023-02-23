@@ -26,28 +26,66 @@ lib.mkIf config.work.user.enable {
 			}; # Nautilus sorts directories first
 		};
 
-		# Force mullvad to use wayland and window decorations
-		xdg.desktopEntries.mullvad-gui = {
-			name = "Mullvad";
-			exec = "mullvad-gui --enable-features=UseOzonePlatform,WaylandWindowDecorations --ozone-platform=wayland";
-			icon = "mullvad-vpn";
-		};
+		xdg = {
+			desktopEntries = {
+				discord = {
+					name = "Discord";
+					exec = "discord --enable-features=UseOzonePlatform --ozone-platform=wayland";
+					icon = "discord";
+				}; # Force discord to use wayland
 
-		# Force discord to use wayland
-		xdg.desktopEntries.discord = {
-			name = "Discord";
-			exec = "discord --enable-features=UseOzonePlatform --ozone-platform=wayland";
-			icon = "discord";
-		};
+				mullvad-gui = {
+					name = "Mullvad";
+					exec = "mullvad-gui --enable-features=UseOzonePlatform,WaylandWindowDecorations --ozone-platform=wayland";
+					icon = "mullvad-vpn";
+				}; # Force mullvad to use wayland and window decorations
 
-		# Force slack to use window decorations
-		xdg.desktopEntries.slack = {
-			name = "Slack";
-			exec = "slack --enable-features=WaylandWindowDecorations";
-			icon = "slack";
-			settings = {
-				StartupWMClass = "slack";
+				slack = {
+					name = "Slack";
+					exec = "slack --enable-features=WaylandWindowDecorations";
+					icon = "slack";
+					settings = {
+						StartupWMClass = "slack";
+					};
+				}; # Force slack to use window decorations
 			};
+
+			mimeApps = {
+				enable = true;
+
+				defaultApplications = {
+					"text/plain" = ["sublime_text.desktop"];
+					"application/zip" = [ "org.gnome.FileRoller.desktop" ];
+					"application/x-ms-dos-executable" = [ "wine.desktop" ];
+				};
+			}; # Default apps
 		};
+
+		home.file = {
+			"Templates/new" = {
+				text = "";
+				recursive = true;
+			};
+
+			"Templates/new.cfg" = {
+				text = "";
+				recursive = true;
+			};
+
+			"Templates/new.ini" = {
+				text = "";
+				recursive = true;
+			};
+
+			"Templates/new.sh" = {
+				text = "";
+				recursive = true;
+			};
+
+			"Templates/new.txt" = {
+				text = "";
+				recursive = true;
+			};
+		}; # New document options for nautilus
 	};
 }
