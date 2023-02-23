@@ -10,7 +10,7 @@
 		(callPackage ./self-built/apx.nix {}) # Package manager using distrobox
 		android-tools # Tools for debugging android devices
 		appimage-run # Appimage runner
-		# aria # Terminal downloader with multiple connections support
+		aria # Terminal downloader with multiple connections support
 		bat # Better cat command
 		btop # System monitor
 		# direnv # Unclutter your .profile
