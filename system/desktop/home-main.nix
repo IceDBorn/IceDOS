@@ -48,6 +48,7 @@ lib.mkIf config.main.user.enable {
 					"text/plain" = [ "sublime_text.desktop" ];
 					"application/zip" = [ "org.gnome.FileRoller.desktop" ];
 					"application/x-ms-dos-executable" = [ "wine.desktop" ];
+					"application/x-bittorrent" = [ "de.haeckerfelix.Fragments.desktop" ];
 				};
 			}; # Default apps
 		};
