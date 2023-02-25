@@ -61,7 +61,7 @@
 
 				email = lib.mkOption {
 					type = lib.types.str;
-					default = "github.envenomed@dralias.com";
+					default = "github.ekta@aleeas.com";
 				};
 			};
 		};
