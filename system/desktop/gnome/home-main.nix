@@ -65,31 +65,29 @@ lib.mkIf config.main.user.enable {
 				# Enable gnome extensions
 				disable-user-extensions = false;
 				# Set enabled gnome extensions
-				enabled-extensions = if (config.desktop-environment.gnome.configuration.caffeine.enable) then
-					[
-						"appindicatorsupport@rgcjonas.gmail.com"
-						"arcmenu@arcmenu.com"
-						"bluetooth-quick-connect@bjarosze.gmail.com"
-						"caffeine@patapon.info"
-						"clipboard-indicator@tudmotu.com"
-						"color-picker@tuberry"
-						"dash-to-panel@jderose9.github.com"
-						"emoji-selector@maestroschan.fr"
-						"gsconnect@andyholmes.github.io"
-						"quick-settings-tweaks@qwreey"
-					] else
-					[
-						"appindicatorsupport@rgcjonas.gmail.com"
-						"arcmenu@arcmenu.com"
-						"bluetooth-quick-connect@bjarosze.gmail.com"
-						"clipboard-indicator@tudmotu.com"
-						"color-picker@tuberry"
-						"dash-to-panel@jderose9.github.com"
-						"emoji-selector@maestroschan.fr"
-						# "gsconnect@andyholmes.github.io"
-						"quick-settings-tweaks@qwreey"
-					];
-
+				enabled-extensions = if (config.desktop-environment.gnome.configuration.caffeine.enable) then [
+					"appindicatorsupport@rgcjonas.gmail.com"
+					"arcmenu@arcmenu.com"
+					"bluetooth-quick-connect@bjarosze.gmail.com"
+					"caffeine@patapon.info"
+					"clipboard-indicator@tudmotu.com"
+					"color-picker@tuberry"
+					"dash-to-panel@jderose9.github.com"
+					"emoji-selector@maestroschan.fr"
+					"gsconnect@andyholmes.github.io"
+					"quick-settings-tweaks@qwreey"
+				] else [
+					"appindicatorsupport@rgcjonas.gmail.com"
+					"arcmenu@arcmenu.com"
+					"bluetooth-quick-connect@bjarosze.gmail.com"
+					# "caffeine@patapon.info"
+					"clipboard-indicator@tudmotu.com"
+					"color-picker@tuberry"
+					"dash-to-panel@jderose9.github.com"
+					"emoji-selector@maestroschan.fr"
+					# "gsconnect@andyholmes.github.io"
+					"quick-settings-tweaks@qwreey"
+				];
 				favorite-apps = if (config.desktop-environment.gnome.configuration.pinned-apps.dash-to-panel.enable) then [
 					"webstorm.desktop"
 					"webcord.desktop"
@@ -156,15 +154,30 @@ lib.mkIf config.main.user.enable {
 
 			"org/gnome/shell/extensions/dash-to-panel" = {
 				panel-element-positions = ''
-					{"0":[{"element":"showAppsButton","visible":false,"position":"stackedTL"},
-					{"element":"activitiesButton","visible":false,"position":"stackedTL"},
-					{"element":"leftBox","visible":true,"position":"stackedTL"},
-					{"element":"taskbar","visible":true,"position":"stackedTL"},
-					{"element":"centerBox","visible":true,"position":"stackedBR"},
-					{"element":"rightBox","visible":true,"position":"stackedBR"},
-					{"element":"dateMenu","visible":true,"position":"stackedBR"},
-					{"element":"systemMenu","visible":true,"position":"stackedBR"},
-					{"element":"desktopButton","visible":true,"position":"stackedBR"}]}
+					{
+						"0": [
+							{"element":"showAppsButton","visible":false,"position":"stackedTL"},
+							{"element":"activitiesButton","visible":false,"position":"stackedTL"},
+							{"element":"leftBox","visible":true,"position":"stackedTL"},
+							{"element":"taskbar","visible":true,"position":"stackedTL"},
+							{"element":"centerBox","visible":true,"position":"stackedBR"},
+							{"element":"rightBox","visible":true,"position":"stackedBR"},
+							{"element":"dateMenu","visible":true,"position":"stackedBR"},
+							{"element":"systemMenu","visible":true,"position":"stackedBR"},
+							{"element":"desktopButton","visible":true,"position":"stackedBR"}
+						],
+						"1": [
+							{"element":"showAppsButton","visible":false,"position":"stackedTL"},
+							{"element":"activitiesButton","visible":false,"position":"stackedTL"},
+							{"element":"leftBox","visible":true,"position":"stackedTL"},
+							{"element":"taskbar","visible":true,"position":"stackedTL"},
+							{"element":"centerBox","visible":true,"position":"stackedBR"},
+							{"element":"rightBox","visible":true,"position":"stackedBR"},
+							{"element":"dateMenu","visible":true,"position":"stackedBR"},
+							{"element":"systemMenu","visible":true,"position":"stackedBR"},
+							{"element":"desktopButton","visible":true,"position":"stackedBR"}
+						]
+					}
 				''; # Disable activities button
 				panel-sizes = ''{"0":44}'';
 				appicon-margin = 4;
@@ -183,7 +196,14 @@ lib.mkIf config.main.user.enable {
 				menu-layout = "Windows";
 				windows-disable-frequent-apps = true;
 				windows-disable-pinned-apps = !config.desktop-environment.gnome.configuration.pinned-apps.arcmenu.enable;
-				pinned-app-list = if (config.desktop-environment.gnome.configuration.pinned-apps.arcmenu.enable) then [] else []; # Set arc menu pinned apps
+				pinned-app-list = if (config.desktop-environment.gnome.configuration.pinned-apps.arcmenu.enable) then [
+					"VSCodium" "" "codium.desktop"
+					"Spotify" "" "spotify.desktop"
+					"Signal" "" "signal-desktop.desktop"
+					"OBS Studio" "" "com.obsproject.Studio.desktop"
+					"Mullvad VPN" "" "mullvad-vpn.desktop"
+					"GNU Image Manipulation Program" "" "gimp.desktop"
+				] else []; # Set arc menu pinned apps
 			};
 		};
 	};
