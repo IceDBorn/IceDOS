@@ -93,6 +93,12 @@ lib.mkIf config.work.user.enable {
 				source = ../configs/kitty.session;
 				recursive = true;
 			};
+
+			# Add kitty task managers session config
+			".config/kitty/kitty-task-managers.session" = {
+				source = ../configs/kitty-task-managers.session;
+				recursive = true;
+			};
 		};
 	};
 }
