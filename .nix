@@ -209,12 +209,12 @@
 					pinned-apps = {
 						arcmenu.enable = lib.mkOption {
 							type = lib.types.bool;
-							default = false;
+							default = true;
 						};
 
 						dash-to-panel.enable = lib.mkOption {
 							type = lib.types.bool;
-							default = false;
+							default = true;
 						};
 					};
 				};

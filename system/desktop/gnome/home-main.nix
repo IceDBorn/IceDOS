@@ -90,7 +90,11 @@ lib.mkIf config.main.user.enable {
 						"quick-settings-tweaks@qwreey"
 					];
 
-				favorite-apps = if (config.desktop-environment.gnome.configuration.pinned-apps.dash-to-panel.enable) then [] else []; # Set dash to panel pinned apps
+				favorite-apps = if (config.desktop-environment.gnome.configuration.pinned-apps.dash-to-panel.enable) then [
+					"webstorm.desktop"
+					"webcord.desktop"
+					"firefox.desktop"
+				] else []; # Set dash to panel pinned apps
 			};
 
 			"org/gnome/shell/keybindings" = {
