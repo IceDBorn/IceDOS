@@ -54,10 +54,11 @@ lib.mkIf config.work.user.enable {
 				enable = true;
 
 				defaultApplications = {
-					"text/plain" = ["sublime_text.desktop"];
-					"application/zip" = [ "org.gnome.FileRoller.desktop" ];
-					"application/x-ms-dos-executable" = [ "wine.desktop" ];
 					"application/x-bittorrent" = [ "de.haeckerfelix.Fragments.desktop" ];
+					"application/x-ms-dos-executable" = [ "wine.desktop" ];
+					"application/zip" = [ "org.gnome.FileRoller.desktop" ];
+					"image/png" = [ "org.gnome.gThumb.desktop" ];
+					"text/plain" = [ "sublime_text.desktop" ];
 					"video/mp4" = [ "mpv.desktop" ];
 				};
 			}; # Default apps
