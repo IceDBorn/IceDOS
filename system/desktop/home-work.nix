@@ -58,6 +58,7 @@ lib.mkIf config.work.user.enable {
 					"application/zip" = [ "org.gnome.FileRoller.desktop" ];
 					"application/x-ms-dos-executable" = [ "wine.desktop" ];
 					"application/x-bittorrent" = [ "de.haeckerfelix.Fragments.desktop" ];
+					"video/mp4" = [ "mpv.desktop" ];
 				};
 			}; # Default apps
 		};
