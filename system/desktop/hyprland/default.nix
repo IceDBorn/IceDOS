@@ -8,6 +8,7 @@
 
 	programs = lib.mkIf config.desktop-environment.hyprland.enable {
 		nm-applet.enable = true; # Network manager tray icon
+		kdeconnect.enable = true; # Connect phone to PC
 	};
 
 	environment = lib.mkIf config.desktop-environment.hyprland.enable {
@@ -29,7 +30,6 @@
 			gnome.gnome-themes-extra # Adwaita GTK theme
 			gnome.nautilus # File manager
 			grim # Screenshot tool
-			libsForQt5.kdeconnect-kde # Connect phone to PC
 			networkmanagerapplet # Network manager tray icon
 			pavucontrol # Sound manager
 			polkit_gnome # Polkit manager
