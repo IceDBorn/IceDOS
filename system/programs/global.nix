@@ -36,6 +36,7 @@
 		# ranger # Terminal file manager
 		rnix-lsp # Nix language server
 		rnnoise-plugin # A real-time noise suppression plugin
+		rustup # The rust tooling package
 		signal-desktop # Encrypted messaging platform
 		spotify # Music
 		sublime4 # Text editor
