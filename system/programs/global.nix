@@ -7,7 +7,7 @@
 	environment.systemPackages = with pkgs; [
 		#(callPackage ./self-built/system-monitoring-center.nix { buildPythonApplication = pkgs.python3Packages.buildPythonApplication; fetchPypi = pkgs.python3Packages.fetchPypi; pygobject3 = pkgs.python3Packages.pygobject3; }) # Task manager
 		(callPackage ./self-built/apx.nix {}) # Package manager using distrobox
-		(callPackage ./self-built/sunshine.nix { amf-headers = (callPackage ./self-built/sunshine/amf-headers.nix {}); }) # Streaming software
+		(callPackage ./self-built/sunshine { amf-headers = (callPackage ./self-built/sunshine/amf-headers.nix {}); }) # Streaming software
 		(callPackage ./self-built/webcord { electron = pkgs.electron_21; }) # An open source discord client
 		android-tools # Tools for debugging android devices
 		appimage-run # Appimage runner
@@ -47,6 +47,7 @@
 		xorg.xhost # Use x.org server with distrobox
 		zenstates # Ryzen CPU controller
 		zerotierone # Virtual lan network
+		yarn
 	];
 
 	users.defaultUserShell = pkgs.zsh; # Use ZSH shell for all users
