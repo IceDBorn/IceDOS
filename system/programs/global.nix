@@ -47,7 +47,6 @@
 		xorg.xhost # Use x.org server with distrobox
 		zenstates # Ryzen CPU controller
 		zerotierone # Virtual lan network
-		yarn
 	];
 
 	users.defaultUserShell = pkgs.zsh; # Use ZSH shell for all users
