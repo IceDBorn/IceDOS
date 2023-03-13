@@ -20,7 +20,6 @@ lib.mkIf config.main.user.enable {
 		steam # Gaming platform
 		steamtinkerlaunch # General tweaks for games
 		stremio # Straming platform
-		sunshine # Streaming software
 	];
 
 	services.input-remapper.enable = config.main.user.enable;
