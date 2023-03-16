@@ -30,8 +30,8 @@ window#waybar {
 #temperature,
 #tray,
 #window,
-#wireplumber,
-#wireplumber.muted {
+#pulseaudio,
+#pulseaudio.muted {
 	padding: 0 10px;
 	font-weight: bold;
 }

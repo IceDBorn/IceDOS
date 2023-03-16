@@ -2,7 +2,7 @@
 	"layer": "top",
 	"modules-left": ["wlr/workspaces"],
 	"modules-center": ["hyprland/window"],
-	"modules-right": ["tray", "custom/separator", "bluetooth", "custom/separator", "hyprland/language", "custom/separator","wireplumber", "custom/separator", "clock", "custom/separator", "custom/power"],
+	"modules-right": ["tray", "custom/separator", "bluetooth", "custom/separator", "hyprland/language", "custom/separator","pulseaudio", "custom/separator", "clock", "custom/separator", "custom/power"],
 
 	"bluetooth": {
 		"format": "  {status}",
@@ -28,10 +28,13 @@
 		"max-length": 25
 	},
 
-	"wireplumber": {
-		"format": "墳  {volume}",
-		"on-click": "pavucontrol",
-		"tooltip": false
+	"pulseaudio": {
+		"format": " {volume}%",
+		"format-icons": {
+			"default": ["", ""]
+		},
+		"scroll-step": 5,
+		"on-click": "pavucontrol"
 	},
 
 	"wlr/workspaces": {
