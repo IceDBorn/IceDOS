@@ -29,7 +29,7 @@
 	},
 
 	"pulseaudio": {
-		"format": " {volume}%",
+		"format": "{icon}  {volume}",
 		"format-icons": {
 			"default": ["", ""]
 		},
