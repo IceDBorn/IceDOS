@@ -22,7 +22,6 @@ window#waybar {
 #custom-media,
 #custom-menu,
 #custom-power,
-#custom-vpn,
 #idle_inhibitor,
 #language,
 #memory,
@@ -34,6 +33,11 @@ window#waybar {
 #tray,
 #window {
 	padding: 0 10px;
+	font-weight: bold;
+}
+
+#custom-vpn {
+	padding: 0 11px 0 1px;
 	font-weight: bold;
 }
 

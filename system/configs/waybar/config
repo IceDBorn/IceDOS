@@ -68,7 +68,7 @@
 
 	"custom/vpn": {
 		"format": "{}",
-		"exec": "(ssh -f server@192.168.1.2 mullvad status | grep -q Connected && echo ' ') || echo ' '",
+		"exec": "(ssh -f server@192.168.1.2 mullvad status | grep -q Connected && echo '') || echo ''",
 		"on-click": "(ssh -f server@192.168.1.2 mullvad status | grep -q Connected && ssh -f server@192.168.1.2 mullvad disconnect) || ssh -f server@192.168.1.2 mullvad connect",
 		"return-type": "{}",
 		"interval": 1
