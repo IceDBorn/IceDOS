@@ -29,10 +29,7 @@
 	},
 
 	"pulseaudio": {
-		"format": "{icon}  {volume}",
-		"format-icons": {
-			"default": ["", ""]
-		},
+		"format": "{volume}",
 		"scroll-step": 5,
 		"on-click": "pavucontrol"
 	},
