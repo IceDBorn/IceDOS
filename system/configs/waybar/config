@@ -48,7 +48,8 @@
 	"hyprland/language": {
 		"format": "{}",
 		"format-en": "US",
-		"format-gr": "GR"
+		"format-gr": "GR",
+		"on-click": "hyprctl switchxkblayout kingston-hyperx-alloy-fps-pro-mechanical-gaming-keyboard-1 next"
 	},
 
 	"hyprland/window": {
