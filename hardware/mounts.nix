@@ -2,7 +2,7 @@
 
 lib.mkIf config.mounts.enable {
 	fileSystems."/mnt/Games" = {
-		device = "/dev/disk/by-uuid/4a8bd4b6-e5c9-4e98-a7ca-31c907967461";
+		device = "/dev/disk/by-uuid/89afb683-90b4-4291-82af-5d3238c8bd3d";
 		fsType = "btrfs";
 		options = lib.mkIf config.boot.btrfs-compression.enable [ "compress=zstd" ];
 	};
