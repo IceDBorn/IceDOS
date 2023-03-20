@@ -58,6 +58,7 @@ lib.mkIf config.work.user.enable {
 					"application/x-ms-dos-executable" = [ "wine.desktop" ];
 					"application/x-wine-extension-ini" = [ "sublime_text.desktop" ];
 					"application/zip" = [ "org.gnome.FileRoller.desktop" ];
+					"image/jpeg" = [ "org.gnome.gThumb.desktop" ];
 					"image/png" = [ "org.gnome.gThumb.desktop" ];
 					"text/plain" = [ "sublime_text.desktop" ];
 					"video/mp4" = [ "mpv.desktop" ];
