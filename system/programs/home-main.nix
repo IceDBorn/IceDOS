@@ -87,6 +87,12 @@ lib.mkIf config.main.user.enable {
 				recursive = true;
 			};
 
+			# Add steam-library-patcher to zsh directory
+			".config/zsh/steam-library-patcher.sh" = {
+				source = ../scripts/steam-library-patcher.sh;
+				recursive = true;
+			};
+
 			# Add arkenfox user.js
 			".mozilla/firefox/privacy/user.js" = lib.mkIf config.firefox-privacy.enable {
 				source =
