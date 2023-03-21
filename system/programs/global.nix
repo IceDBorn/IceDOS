@@ -7,7 +7,6 @@
 	environment.systemPackages = with pkgs; [
 		(callPackage ./self-built/system-monitoring-center.nix { buildPythonApplication = pkgs.python3Packages.buildPythonApplication; fetchPypi = pkgs.python3Packages.fetchPypi; pygobject3 = pkgs.python3Packages.pygobject3; }) # Task manager
 		(callPackage ./self-built/apx.nix {}) # Package manager using distrobox
-		(callPackage ./self-built/sunshine { amf-headers = (callPackage ./self-built/sunshine/amf-headers.nix {}); }) # Streaming software
 		(callPackage ./self-built/webcord { electron = pkgs.electron_21; }) # An open source discord client
 		android-tools # Tools for debugging android devices
 		appimage-run # Appimage runner
@@ -88,7 +87,7 @@
 				server="ssh server@192.168.1.2"; # Connect to local server
 				ssh="TERM=xterm-256color ssh"; # SSH with colors
 				steam-link="killall steam 2> /dev/null ; while ps axg | grep -vw grep | grep -w steam > /dev/null; do sleep 1; done && (nohup steam -pipewire > /dev/null &) 2> /dev/null"; # Kill existing steam process and relaunch steam with the pipewire flag
-				update="(cd $(head -1 /etc/nixos/.configuration-location) 2> /dev/null || (echo 'Configuration path is invalid. Run rebuild.sh manually to update the path!' && false) && sudo nix flake update && bash rebuild.sh) ; (apx --aur upgrade) ; (bash ~/.config/zsh/proton-ge-updater.sh)"; # Update everything
+				update="(cd $(head -1 /etc/nixos/.configuration-location) 2> /dev/null || (echo 'Configuration path is invalid. Run rebuild.sh manually to update the path!' && false) && sudo nix flake update && bash rebuild.sh) ; (apx --aur upgrade) ; (bash ~/.config/zsh/proton-ge-updater.sh) ; (bash ~/.config/zsh/steam-library-patcher.sh)"; # Update everything
 				vpn-btop="ssh -t server@192.168.1.2 'bpytop'"; # Show VPN bpytop
 				vpn-off="ssh -f server@192.168.1.2 'mullvad disconnect && sleep 1 && mullvad status'"; # Disconnect from VPN
 				vpn-on="ssh -f server@192.168.1.2 'mullvad connect && sleep 1 && mullvad status'"; # Connect to VPN

@@ -30,6 +30,7 @@
 			gnome.gnome-themes-extra # Adwaita GTK theme
 			gnome.nautilus # File manager
 			grim # Screenshot tool
+			jq # JSON parser
 			networkmanagerapplet # Network manager tray icon
 			pavucontrol # Sound manager
 			polkit_gnome # Polkit manager
