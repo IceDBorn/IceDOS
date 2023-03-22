@@ -43,7 +43,7 @@ lib.mkIf config.main.user.enable {
 					no_small_font = true;
 					offset_x = 50;
 					position = "top-right";
-					toggle_fps_limit = "F1";
+					toggle_fps_limit = "Ctrl_L+Shift_L+F1";
 					vsync= 1;
 				};
 			};
@@ -145,6 +145,30 @@ lib.mkIf config.main.user.enable {
 			# Enable steam beta
 			".local/share/Steam/package/beta" = lib.mkIf config.steam.beta.enable {
 				text = "publicbeta";
+				recursive = true;
+			};
+
+			# Add custom mangohud config for CS:GO
+			".config/MangoHud/csgo_linux64.conf" =  {
+				text = ''
+					background_alpha=0
+					cpu_color=FFFFFF
+					cpu_temp
+					engine_color=FFFFFF
+					font_size=20
+					fps
+					fps_limit=0+144
+					frame_timing=0
+					gamemode
+					gl_vsync=0
+					gpu_color=FFFFFF
+					gpu_temp
+					no_small_font
+					offset_x=50
+					position=top-right
+					toggle_fps_limit=Ctrl_L+Shift_L+F1
+					vsync=1
+				'';
 				recursive = true;
 			};
 		};
