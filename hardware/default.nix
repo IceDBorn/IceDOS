@@ -47,11 +47,15 @@ in
 		}
 	];
 
-	boot.kernelModules = [
-		"v4l2loopback" # Virtual camera
-		"xpadneo"
-		"uinput"
-	];
+	boot = {
+		kernelModules = [
+			"v4l2loopback" # Virtual camera
+			"xpadneo"
+			"uinput"
+		];
+
+		extraModulePackages = with config.boot.kernelPackages; [ v4l2loopback ];
+	};
 
 	fileSystems = lib.mkIf config.boot.btrfs-compression.enable {
 		"/".options = [ "compress=zstd" ];
