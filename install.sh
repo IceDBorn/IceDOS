@@ -43,9 +43,12 @@ then
 	# Build the configuration
 	sudo nixos-rebuild switch
 
-	if [ -f "$HOME/.nix-successful-build" ]; then
+	if [ -f "$HOME/.nix-successful-build" ]
+	then
 		echo "Nix generation was successful!"
 		bash system/scripts/reboot.sh
+	else
+		echo "Nix generation was not successful!"
 	fi
 
 else
