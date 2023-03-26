@@ -4,7 +4,7 @@
 lib.mkIf config.main.user.enable {
 	users.users.${config.main.user.username}.packages = with pkgs; lib.mkIf config.main.user.enable [
 		bottles # Wine manager
-		duckstation # PS1 Emulator
+		# duckstation # PS1 Emulator
 		gamescope # Wayland microcompositor
 		# godot_4 # Game engine
 		heroic # Epic Games Launcher for Linux
@@ -19,7 +19,6 @@ lib.mkIf config.main.user.enable {
 		scanmem # Cheat engine for linux
 		steam # Gaming platform
 		steamtinkerlaunch # General tweaks for games
-		stremio # Straming platform
 		sunshine # Remote gaming
 	];
 

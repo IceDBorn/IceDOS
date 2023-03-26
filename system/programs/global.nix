@@ -5,7 +5,7 @@
 	boot.kernelPackages = pkgs.linuxPackages_zen; # Use ZEN linux kernel
 
 	environment.systemPackages = with pkgs; [
-		(callPackage ./self-built/system-monitoring-center.nix { buildPythonApplication = pkgs.python3Packages.buildPythonApplication; fetchPypi = pkgs.python3Packages.fetchPypi; pygobject3 = pkgs.python3Packages.pygobject3; }) # Task manager
+		# (callPackage ./self-built/system-monitoring-center.nix { buildPythonApplication = pkgs.python3Packages.buildPythonApplication; pygobject3 = pkgs.python3Packages.pygobject3; }) # Task manager
 		(callPackage ./self-built/apx.nix {}) # Package manager using distrobox
 		(callPackage ./self-built/webcord { electron = pkgs.electron_21; }) # An open source discord client
 		android-tools # Tools for debugging android devices
@@ -28,6 +28,7 @@
 		lsd # Better ls command
 		mpv # Video player
 		mullvad-vpn # VPN Client
+		nodejs-14_x
 		ntfs3g # Support NTFS drives
 		obs-studio # Recording/Livestream
 		onlyoffice-bin # Microsoft Office alternative for Linux
@@ -39,6 +40,7 @@
 		rustup # The rust tooling package
 		signal-desktop # Encrypted messaging platform
 		spotify # Music
+		stremio # Streaming platform
 		sublime4 # Text editor
 		tree # Display folder content at a tree format
 		unrar # Support opening rar files
