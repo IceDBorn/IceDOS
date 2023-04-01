@@ -24,6 +24,7 @@
 		helvum # Pipewire patchbay
 		killall # Tool to kill all programs matching process name
 		kitty # Terminal
+		libnotify # Send desktop notifications
 		lsd # Better ls command
 		mpv # Video player
 		mullvad-vpn # VPN Client
