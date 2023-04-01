@@ -55,6 +55,8 @@ in
 		];
 
 		extraModulePackages = with config.boot.kernelPackages; [ v4l2loopback ];
+
+		kernel.sysctl = { "vm.max_map_count" = 262144; }; # Fixes crash when loading maps in CS2
 	};
 
 	fileSystems = lib.mkIf config.boot.btrfs-compression.enable {
