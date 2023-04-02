@@ -7,6 +7,7 @@
 	environment.systemPackages = with pkgs; [
 		#(callPackage ./self-built/system-monitoring-center.nix { buildPythonApplication = pkgs.python3Packages.buildPythonApplication; fetchPypi = pkgs.python3Packages.fetchPypi; pygobject3 = pkgs.python3Packages.pygobject3; }) # Task manager
 		(callPackage ./self-built/apx.nix {}) # Package manager using distrobox
+		(callPackage ./self-built/screenaudio-mic {}) # Passthrough pipewire audio to WebRTC screenshare
 		(callPackage ./self-built/webcord {}) # An open source discord client
 		(pkgs.wrapOBS {plugins = with pkgs.obs-studio-plugins; [obs-pipewire-audio-capture];}) # Pipewire audio plugin for OBS Studio
 		android-tools # Tools for debugging android devices
