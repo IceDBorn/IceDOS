@@ -1,0 +1,27 @@
+diff --git a/rohrkabel-cmake.patch b/rohrkabel-cmake.patch
+new file mode 100644
+index 0000000..d1ad732
+--- /dev/null
++++ b/rohrkabel-cmake.patch
+@@ -0,0 +1,21 @@
++diff --git a/CMakeLists.txt b/CMakeLists.txt
++index 702e90f..f534814 100644
++--- a/CMakeLists.txt
+++++ b/CMakeLists.txt
++@@ -55,15 +55,7 @@ target_include_directories(${PROJECT_NAME} PRIVATE "include/rohrkabel")
++ 
++ include(FetchContent)
++ 
++-if (NOT rohrkabel_prefer_remote AND NOT TARGET tl::expected)
++-    find_package(tl-expected CONFIG REQUIRED)
++-else()    
++-    set(EXPECTED_BUILD_TESTS OFF)
++-    set(EXPECTED_BUILD_PACKAGE OFF)
++-    
++-    FetchContent_Declare(expected GIT_REPOSITORY "https://github.com/TartanLlama/expected")
++-    FetchContent_MakeAvailable(expected)
++-endif()
+++find_package(tl-expected CONFIG REQUIRED)
++ 
++ # --------------------------------------------------------------------------------------------------------
++ # Link required libraries
