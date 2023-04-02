@@ -1,4 +1,4 @@
-{ lib, stdenv, fetchFromGitHub, pipewire, cmake, git, tl-expected, ... }:
+{ lib, stdenv, fetchFromGitHub, pipewire, cmake, git, tl-expected, jq, hexdump, gawk, ... }:
 
 stdenv.mkDerivation rec {
 	pname = "screenaudio-mic";
@@ -20,9 +20,11 @@ stdenv.mkDerivation rec {
 		"-Wno-pedantic" # Fails without flag
 	];
 
-	dontUseCmakeConfigure=true;
+	dontUseCmakeConfigure = true;
 
-	buildInputs = [ cmake git pipewire tl-expected ];
+	nativeBuildInputs = [ cmake git ];
+
+	buildInputs = [ pipewire tl-expected jq hexdump gawk ];
 
 	libPath = lib.makeLibraryPath [ pipewire ];
 
