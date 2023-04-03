@@ -1,14 +1,14 @@
 { lib, stdenv, fetchFromGitHub, pipewire, cmake, git, tl-expected, jq, hexdump, gawk, ... }:
 
 stdenv.mkDerivation rec {
-	pname = "screenaudio-mic";
-  	version = "1.0";
+	pname = "pipewire-screenaudio";
+  	version = "0.0.1";
 
 	src = fetchFromGitHub {
 		owner = "IceDBorn";
-		repo = "screenaudio-mic";
-		rev = "3b39b128c0a0acffaaf8b9e6f3ee7f184cc33994";
-		sha256 = "HxB2pC86BkHD10fQnK+PPQCdm79lLM+0I2Uj+Hv0WF0=";
+		repo = "pipewire-screenaudio";
+		rev = "675faa5358c87d5740f6930907f6d4c33660ca61";
+		sha256 = "L4/yuKenf2ZhMtLKvE2cXHe9UVEV3nyqk7VBZdLsTaY=";
 		fetchSubmodules = true;
   	};
 
@@ -33,7 +33,7 @@ stdenv.mkDerivation rec {
 		cd native
 
 		(
-			cd ./screenaudio-mic/rohrkabel/
+			cd ./pipewire-screenaudio/rohrkabel/
 			git apply $rootPath/rohrkabel-cmake.patch
 		)
 
@@ -42,11 +42,11 @@ stdenv.mkDerivation rec {
 
 	installPhase = ''
 		mkdir -p $out/lib/out
-		install -Dm755 screenAudioMicConnector $out/lib/screenAudioMicConnector
-		install -Dm755 out/screenaudio-mic $out/lib/out/screenaudio-mic
+		install -Dm755 pipewireScreenAudioConnector $out/lib/pipewireScreenAudioConnector
+		install -Dm755 out/pipewire-screenaudio $out/lib/out/pipewire-screenaudio
 
-		# Manifest
-		sed -i "s|/usr/lib/screenaudio-mic|$out/lib|g" native-messaging-hosts/screenAudioMicConnector.json
-		install -Dm644 native-messaging-hosts/screenAudioMicConnector.json $out/lib/mozilla/native-messaging-hosts/screenAudioMicConnector.json
+		# Firefox manifest
+		sed -i "s|/usr/lib/pipewire-screenaudio|$out/lib|g" native-messaging-hosts/firefox.json
+		install -Dm644 native-messaging-hosts/firefox.json $out/lib/mozilla/native-messaging-hosts/com.icedborn.pipewirescreenaudioconnector.json
 	'';
 }
