@@ -2,11 +2,11 @@
 
 stdenvNoCC.mkDerivation rec {
 	name = "proton-ge";
-	version = "GE-Proton7-53";
+	version = "GE-Proton7-54";
 
 	src = builtins.fetchTarball {
 		url = "https://github.com/GloriousEggroll/proton-ge-custom/releases/download/${version}/${version}.tar.gz";
-		sha256 = "1cb0f7y4qfbpcg70fcmcrgd15xmpl18iljh5nw45c5rzvl6v0hm0";
+		sha256 = "1iy14s1d48wxnnmw45jh5w2yadkrvwip8k91xljwg066aprb00vi";
 	};
 
 	preferLocalBuild = true;
