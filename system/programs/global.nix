@@ -32,6 +32,7 @@
 		obs-studio # Recording/Livestream
 		onlyoffice-bin # Microsoft Office alternative for Linux
 		p7zip # 7zip
+		pulseaudio # Various pulseaudio tools
 		python3 # Python
 		ranger # Terminal file manager
 		rnix-lsp # Nix language server
