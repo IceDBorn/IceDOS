@@ -16,6 +16,7 @@
 		bat # Better cat command
 		btop # System monitor
 		cinnamon.warpinator # Local file sync
+		curtail # Image compressor
 		direnv # Unclutter your .profile
 		efibootmgr # Edit EFI entries
 		gimp # Image editor
