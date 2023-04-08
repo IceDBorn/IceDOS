@@ -7,8 +7,8 @@ stdenv.mkDerivation rec {
 	src = fetchFromGitHub {
 		owner = "IceDBorn";
 		repo = "pipewire-screenaudio";
-		rev = "675faa5358c87d5740f6930907f6d4c33660ca61";
-		sha256 = "L4/yuKenf2ZhMtLKvE2cXHe9UVEV3nyqk7VBZdLsTaY=";
+		rev = "5ee9c22e880028ced3fc389a56439a1e03c84969";
+		sha256 = "/Ua6Fyv2ePio9brBzfvgJiCT1nTmnHvnVlAnkr44CpE=";
 		fetchSubmodules = true;
   	};
 
@@ -42,7 +42,7 @@ stdenv.mkDerivation rec {
 
 	installPhase = ''
 		mkdir -p $out/lib/out
-		install -Dm755 pipewireScreenAudioConnector $out/lib/pipewireScreenAudioConnector
+		install -Dm755 connector/pipewire-screen-audio-connector.sh $out/lib/connector/pipewire-screen-audio-connector.sh
 		install -Dm755 out/pipewire-screenaudio $out/lib/out/pipewire-screenaudio
 
 		# Firefox manifest
