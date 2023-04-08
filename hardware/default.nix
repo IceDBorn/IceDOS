@@ -59,7 +59,7 @@ in
 		kernel.sysctl = { "vm.max_map_count" = 262144; }; # Fixes crash when loading maps in CS2
 	};
 
-	fileSystems = lib.mkIf config.boot.btrfs-compression.enable {
+	fileSystems = lib.mkIf (config.boot.btrfs-compression.enable && config.boot.btrfs-compression.root.enable) {
 		"/".options = [ "compress=zstd" ];
 	};
 }

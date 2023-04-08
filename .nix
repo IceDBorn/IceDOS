@@ -30,9 +30,21 @@
 				default = "0000";
 			}; # Used for rebooting to windows with efibootmgr
 
-			btrfs-compression.enable = lib.mkOption {
-				type = lib.types.bool;
-				default = true;
+			btrfs-compression = {
+				enable = lib.mkOption {
+					type = lib.types.bool;
+					default = true;
+				};
+
+				root.enable = lib.mkOption {
+					type = lib.types.bool;
+					default = true;
+				}; # /
+
+				mounts.enable = lib.mkOption {
+					type = lib.types.bool;
+					default = true;
+				}; # Mounted drives
 			}; # Btrfs compression
 		};
 
