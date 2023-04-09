@@ -2,16 +2,16 @@
 
 buildGoModule rec {
 	name = "apx";
-	version = "1.4.0";
+	version = "1.8.1";
 
 	src = fetchFromGitHub {
 		owner = "Vanilla-OS";
 		repo = "apx";
-		rev = "44b5c84600788c28e38671238967c282f597e2c0";
-		sha256 = "Cl079rAErxRyJjgVZ6gb+mVj3STJMV2lgyk5d6LZEVA=";
+		rev = version;
+		sha256 = "5yIRK0VRm1YXff08vSxVmQ9jgVLjedFDR6XcoA3Jb18=";
 	};
 
-	vendorSha256 = "c2hjnDvqjv0lVblnS/T60EzqBqOyE1hIWzwuLVqYRZU=";
+	vendorSha256 = null;
 
 	installPhase = ''
 		install -D $GOPATH/bin/apx $out/bin/apx
@@ -20,8 +20,8 @@ buildGoModule rec {
 		mkdir -p $out/share/man/es/man1
 		mkdir -p $out/etc/apx
 
-		cp "man/apx.1" "$out/share/man/man1/apx.1"
-		cp "man/es/apx.1" "$out/share/man/es/man1/apx.1"
+		cp "man/man1/apx.1" "$out/share/man/man1/apx.1"
+		cp "man/es/man1/apx.1" "$out/share/man/es/man1/apx.1"
 
 		cat <<EOF > $out/etc/apx/config.json
 		{
