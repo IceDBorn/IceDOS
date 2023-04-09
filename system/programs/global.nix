@@ -79,6 +79,7 @@
 				list-packages="nix-store --query --requisites /run/current-system | cut -d- -f2- | sort | uniq"; # List installed nix packages
 				ls="lsd"; # Better ls command
 				mva="rsync -rP --remove-source-files"; # Move command with details
+				nix-gc="nix-store --gc"; # Garbace collect for the nix store
 				ping="gping"; # ping with a graph
 				reboot-windows="sudo efibootmgr --bootnext ${config.boot.windows-entry} && reboot"; # Reboot to windows
 				rebuild="(cd $(head -1 /etc/nixos/.configuration-location) 2> /dev/null || (echo 'Configuration path is invalid. Run rebuild.sh manually to update the path!' && false) && bash rebuild.sh)"; # Rebuild the system configuration
