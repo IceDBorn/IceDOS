@@ -69,7 +69,6 @@ lib.mkIf config.main.user.enable {
 					[
 						"appindicatorsupport@rgcjonas.gmail.com"
 						"arcmenu@arcmenu.com"
-						"bluetooth-quick-connect@bjarosze.gmail.com"
 						"caffeine@patapon.info"
 						"clipboard-indicator@tudmotu.com"
 						"color-picker@tuberry"
@@ -81,7 +80,6 @@ lib.mkIf config.main.user.enable {
 					[
 						"appindicatorsupport@rgcjonas.gmail.com"
 						"arcmenu@arcmenu.com"
-						"bluetooth-quick-connect@bjarosze.gmail.com"
 						"clipboard-indicator@tudmotu.com"
 						"color-picker@tuberry"
 						"dash-to-panel@jderose9.github.com"

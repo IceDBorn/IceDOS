@@ -18,7 +18,6 @@
 		gnome.gnome-tweaks # Tweaks missing from pure gnome
 		gnomeExtensions.appindicator # Tray icons for gnome
 		gnomeExtensions.arcmenu # Start menu
-		gnomeExtensions.bluetooth-quick-connect # Show bluetooth devices on the gnome control center
 		gnomeExtensions.caffeine # Disable auto suspend and screen blank
 		gnomeExtensions.clipboard-indicator # Clipboard indicator for gnome
 		gnomeExtensions.color-picker # Color picker for gnome
