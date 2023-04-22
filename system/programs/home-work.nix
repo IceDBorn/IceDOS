@@ -105,6 +105,35 @@ lib.mkIf config.work.user.enable {
 				source = "${(pkgs.callPackage ../programs/self-built/nvchad.nix {})}";
 				recursive = true;
 			};
+
+			".config/nvim/lua/custom/chadrc.lua" = {
+				text = ''
+					local M = {}
+					M.ui = {theme = 'onedark'}
+					M.plugins = 'custom.plugins'
+					return M
+				'';
+				recursive = true;
+				force = true;
+			};
+
+			".config/nvim/lua/custom/plugins.lua" = {
+				text = ''
+					local plugins = {
+						{
+							"nvim-lua/plenary.nvim",
+							lazy = false
+						},
+						{
+							"TimUntersberger/neogit",
+							lazy = false
+						}
+					}
+					return plugins
+				'';
+				recursive = true;
+				force = true;
+			};
 		};
 	};
 }
