@@ -30,6 +30,7 @@
 		mpv # Video player
 		mullvad-vpn # VPN Client
 		ntfs3g # Support NTFS drives
+		nvim # Terminal text editor
 		obs-studio # Recording/Livestream
 		onlyoffice-bin # Microsoft Office alternative for Linux
 		p7zip # 7zip

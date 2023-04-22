@@ -99,6 +99,12 @@ lib.mkIf config.work.user.enable {
 				source = ../configs/kitty-task-managers.session;
 				recursive = true;
 			};
+
+			# Add nvchad
+			".config/nvim" = {
+				source = "${(pkgs.callPackage ../programs/self-built/nvchad.nix {})}";
+				recursive = true;
+			};
 		};
 	};
 }

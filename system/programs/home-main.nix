@@ -195,6 +195,12 @@ lib.mkIf config.main.user.enable {
 				'';
 				recursive = true;
 			};
+
+			# Add nvchad
+			".config/nvim" = {
+				source = "${(pkgs.callPackage ../programs/self-built/nvchad.nix {})}";
+				recursive = true;
+			};
 		};
 	};
 }
