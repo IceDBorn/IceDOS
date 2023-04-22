@@ -81,5 +81,10 @@
 		];
 	};
 
-	fonts.fonts = with pkgs; [ meslo-lgs-nf cantarell-fonts jetbrains-mono font-awesome ];
+	fonts.fonts = with pkgs; [
+		meslo-lgs-nf
+		cantarell-fonts
+		font-awesome
+		(nerdfonts.override { fonts = [ "JetBrainsMono" ]; })
+	];
 }

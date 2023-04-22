@@ -21,7 +21,7 @@ lib.mkIf config.work.user.enable {
 					hide_window_decorations = "yes";
 					update_check_interval = "0";
 				};
-				font.name = "Jetbrains Mono";
+				font.name = "JetBrainsMono Nerd Font";
 			};
 
 			zsh = {
