@@ -223,6 +223,10 @@ lib.mkIf config.main.user.enable {
 						{
 							"TimUntersberger/neogit",
 							lazy = false
+						},
+						{
+							"sQVe/sort.nvim",
+							lazy = false
 						}
 					}
 					return plugins
