@@ -19,6 +19,7 @@
 		curtail # Image compressor
 		direnv # Unclutter your .profile
 		efibootmgr # Edit EFI entries
+		gcc # C++ compiler
 		gimp # Image editor
 		git # Distributed version control system
 		gping # ping with a graph
