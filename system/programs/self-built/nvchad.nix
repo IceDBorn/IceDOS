@@ -8,7 +8,7 @@ stdenvNoCC.mkDerivation rec {
 		owner = "NvChad";
 		repo = "NvChad";
 		rev = "refs/heads/v${version}";
-		sha256 = "7c2DmZe7olC7575syftoiF0DfmIVox9rPDgy0Qj/uV8=";
+		sha256 = "CxigNtm5QKa62wRTpJS80hHG4Ytyj3LBy2nc+Gy3E2k=";
 	};
 
 	preferLocalBuild = true;
