@@ -131,6 +131,40 @@ lib.mkIf config.work.user.enable {
 						{
 							"sQVe/sort.nvim",
 							lazy = false
+						},
+						{
+							"nvim-treesitter/nvim-treesitter",
+							opts = {
+								ensure_installed = {
+									"awk",
+									"bash",
+									"c",
+									"c_sharp",
+									"cmake",
+									"cpp",
+									"css",
+									"diff",
+									"dockerfile",
+									"gdscript",
+									"git_config",
+									"git_rebase",
+									"gitattributes",
+									"gitcommit",
+									"gitignore",
+									"html",
+									"java",
+									"javascript",
+									"json",
+									"lua",
+									"markdown",
+									"nix",
+									"python",
+									"rust",
+									"tsx",
+									"typescript",
+									"vim"
+								}
+							}
 						}
 					}
 					return plugins
