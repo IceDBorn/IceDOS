@@ -207,6 +207,7 @@ lib.mkIf config.main.user.enable {
 					local M = {}
 					M.ui = {theme = 'onedark'}
 					M.plugins = 'custom.plugins'
+					M.mappings = require "custom.mappings"
 					return M
 				'';
 				recursive = true;
@@ -264,6 +265,23 @@ lib.mkIf config.main.user.enable {
 						}
 					}
 					return plugins
+				'';
+				recursive = true;
+				force = true;
+			};
+
+			".config/nvim/lua/custom/mappings.lua" = {
+				text = ''
+					local M = {}
+
+					M.abc = {
+						v = {
+							[">"] = { ">gv", "Indent" },
+							["<"] = { "<gv", "Unindent" },
+						}
+					}
+
+					return M
 				'';
 				recursive = true;
 				force = true;
