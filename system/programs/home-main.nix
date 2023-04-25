@@ -278,6 +278,9 @@ lib.mkIf config.main.user.enable {
 						v = {
 							[">"] = { ">gv", "Indent" },
 							["<"] = { "<gv", "Unindent" },
+						},
+						n = {
+							["<leader>G"] = { "<cmd> Neogit <CR>", "Source control" }
 						}
 					}
 
