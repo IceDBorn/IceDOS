@@ -4,6 +4,7 @@
 lib.mkIf config.main.user.enable {
 	users.users.${config.main.user.username}.packages = with pkgs; lib.mkIf config.main.user.enable [
 		bottles # Wine manager
+		cemu # Wii U Emulator
 		duckstation # PS1 Emulator
 		gamescope # Wayland microcompositor
 		godot_4 # Game engine
