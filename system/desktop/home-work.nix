@@ -24,6 +24,10 @@ lib.mkIf config.work.user.enable {
 			"org/gtk/gtk4/settings/file-chooser" = {
 				sort-directories-first = true;
 			}; # Nautilus sorts directories first
+
+			"org/gnome/desktop/interface" = {
+				color-scheme = "prefer-dark";
+			}; # Enable dark mode
 		};
 
 		xdg = {
