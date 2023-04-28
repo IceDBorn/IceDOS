@@ -52,9 +52,9 @@
 		"format": "{icon}",
 		"on-click": "activate",
 		"format-icons": {
-			"urgent": "",
-			"active": "",
-			"default": ""
+			"urgent": "",
+			"active": "",
+			"default": ""
 		},
 		"sort-by-number": true
 	},
@@ -80,7 +80,7 @@
 
 	"custom/vpn": {
 		"format": "{}",
-		"exec": "(ssh -f server@192.168.1.2 mullvad status | grep -q Connected && echo '') || echo ''",
+		"exec": "(ssh -f server@192.168.1.2 mullvad status | grep -q Connected && echo '') || echo ''",
 		"on-click": "(ssh -f server@192.168.1.2 mullvad status | grep -q Connected && ssh -f server@192.168.1.2 mullvad disconnect) || ssh -f server@192.168.1.2 mullvad connect",
 		"return-type": "{}",
 		"interval": 1
@@ -94,14 +94,10 @@
 		"tooltip": false,
 		"format": "{icon}",
 		"format-icons": {
-			"notification": "‎",
-			"none": "‎",
-			"dnd-notification": "<span foreground='red'><sup></sup></span>",
-			"dnd-none": "<span foreground='red'><sup>󱏧</sup></span>",
-			"inhibited-notification": "‎",
-			"inhibited-none": "‎",
-			"dnd-inhibited-notification": "<span foreground='red'><sup></sup></span>",
-			"dnd-inhibited-none": "<span foreground='red'><sup>󱏧</sup></span>"
+			"dnd-notification": "<span foreground='white'><sup></sup></span>",
+			"dnd-none": "<span foreground='white'><sup></sup></span>",
+			"dnd-inhibited-notification": "<span foreground='white'><sup></sup></span>",
+			"dnd-inhibited-none": "<span foreground='white'><sup></sup></span>"
 		},
 		"return-type": "json",
 		"exec-if": "which swaync-client",
