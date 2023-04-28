@@ -33,13 +33,13 @@ lib.mkIf config.work.user.enable {
 				plugins = with pkgs; [
 					{
 						name = "powerlevel10k";
-						src = pkgs.zsh-powerlevel10k;
+						src = zsh-powerlevel10k;
 						file = "share/zsh-powerlevel10k/powerlevel10k.zsh-theme";
 					}
 					{
 						name = "zsh-nix-shell";
 						file = "share/zsh-nix-shell/nix-shell.plugin.zsh";
-						src = pkgs.zsh-nix-shell;
+						src = zsh-nix-shell;
 					}
 				];
 
@@ -106,92 +106,21 @@ lib.mkIf config.work.user.enable {
 				recursive = true;
 			};
 
-			".config/nvim/lua/custom/chadrc.lua" = {
-				text = ''
-					local M = {}
-					M.ui = {theme = 'onedark'}
-					M.plugins = 'custom.plugins'
-					M.mappings = require "custom.mappings"
-					return M
-				'';
+			".config/nvim/lua/custom" = {
+				source = ../configs/nvchad;
 				recursive = true;
 				force = true;
 			};
 
-			".config/nvim/lua/custom/plugins.lua" = {
-				text = ''
-					local plugins = {
-						{
-							"nvim-lua/plenary.nvim",
-							lazy = false
-						},
-						{
-							"TimUntersberger/neogit",
-							lazy = false
-						},
-						{
-							"sQVe/sort.nvim",
-							lazy = false
-						},
-						{
-							"nvim-treesitter/nvim-treesitter",
-							opts = {
-								ensure_installed = {
-									"awk",
-									"bash",
-									"c",
-									"c_sharp",
-									"cmake",
-									"cpp",
-									"css",
-									"diff",
-									"dockerfile",
-									"gdscript",
-									"git_config",
-									"git_rebase",
-									"gitattributes",
-									"gitcommit",
-									"gitignore",
-									"html",
-									"java",
-									"javascript",
-									"json",
-									"lua",
-									"markdown",
-									"nix",
-									"python",
-									"rust",
-									"tsx",
-									"typescript",
-									"vim"
-								}
-							}
-						}
-					}
-					return plugins
-				'';
+			# Add tmux config
+			".config/tmux/tmux.conf" = {
+				source = ../configs/tmux.conf;
 				recursive = true;
-				force = true;
 			};
 
-			".config/nvim/lua/custom/mappings.lua" = {
-				text = ''
-					local M = {}
-
-					M.abc = {
-						v = {
-							[">"] = { ">gv", "Indent" },
-							["<"] = { "<gv", "Unindent" },
-						},
-						n = {
-							["<leader>G"] = { "<cmd> Neogit <CR>", "Source control" }
-						}
-					}
-
-					return M
-				'';
+			".config/tmux/tpm" = {
+				source = "${(pkgs.callPackage ../programs/self-built/tpm.nix {})}";
 				recursive = true;
-				force = true;
 			};
 		};
 	};

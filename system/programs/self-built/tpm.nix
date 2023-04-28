@@ -1,14 +1,14 @@
 { stdenvNoCC, fetchFromGitHub, ... }:
 
 stdenvNoCC.mkDerivation rec {
-	name = "nvchad";
-	version = "2.0";
+	name = "tpm";
+	version = "3.1.0";
 
 	src = fetchFromGitHub {
-		owner = "NvChad";
-		repo = "NvChad";
+		owner = "tmux-plugins";
+		repo = "tpm";
 		rev = "v${version}";
-		sha256 = "U0wR7tkr2PMM+qDfcFgXON/ee3Rk1MbbtXvRbAbzDC8=";
+		sha256 = "CeI9Wq6tHqV68woE11lIY4cLoNY8XWyXyMHTDmFKJKI=";
 	};
 
 	preferLocalBuild = true;

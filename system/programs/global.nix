@@ -42,6 +42,7 @@
 		rnnoise-plugin # A real-time noise suppression plugin
 		signal-desktop # Encrypted messaging platform
 		sublime4 # Text editor
+		tmux # Terminal multiplexer
 		tree # Display folder content at a tree format
 		unrar # Support opening rar files
 		vscodium # All purpose IDE
