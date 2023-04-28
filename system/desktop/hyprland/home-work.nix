@@ -31,9 +31,9 @@ lib.mkIf config.work.user.enable {
 				recursive = true;
 			};
 
-			# Add dunst config file
-			".config/dunst/dunstrc" = {
-				source = ../../configs/dunstrc;
+			# Add swaync config file
+			".config/swaync" = {
+				source = ../../configs/swaync;
 				recursive = true;
 			};
 

@@ -23,7 +23,6 @@
 			baobab # Disk usage analyser
 			blueberry # Bluetooth manager
 			clipman # Clipboard manager for wayland
-			dunst # Notification daemon
 			gnome.file-roller # Archive file manager
 			gnome.gnome-calculator # Calculator
 			gnome.gnome-disk-utility # Disks manager
@@ -37,6 +36,7 @@
 			rofi-wayland # App launcher
 			slurp # Monitor selector
 			swappy # Edit screenshots
+			swaynotificationcenter # Notification daemon
 			wdisplays # Displays manager
 			wl-clipboard # Clipboard daemon
 			wlogout # Logout screen
