@@ -84,7 +84,6 @@
 	fonts.fonts = with pkgs; [
 		meslo-lgs-nf
 		cantarell-fonts
-		font-awesome
 		(nerdfonts.override { fonts = [ "JetBrainsMono" ]; })
 	];
 }
