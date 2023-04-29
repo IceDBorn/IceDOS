@@ -53,6 +53,21 @@ lib.mkIf config.work.user.enable {
 				text = '''';
 				recursive = true;
 			};
+
+			# Add hyprpaper config files
+			".config/hypr/hyprpaper.conf" = {
+				text = ''
+					preload = ~/.config/hypr/hyprpaper.jpg
+					wallpaper = , ~/.config/hypr/hyprpaper.jpg
+					ipc = off
+				'';
+				recursive = true;
+			};
+
+			".config/hypr/hyprpaper.jpg" = {
+				source = ../../configs/hyprpaper.jpg;
+				recursive = true;
+			};
 		};
 	};
 }

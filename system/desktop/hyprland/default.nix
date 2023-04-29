@@ -29,6 +29,7 @@
 			gnome.gnome-themes-extra # Adwaita GTK theme
 			gnome.nautilus # File manager
 			grim # Screenshot tool
+			hyprpaper # Wallpaper daemon
 			jq # JSON parser
 			networkmanagerapplet # Network manager tray icon
 			pavucontrol # Sound manager
