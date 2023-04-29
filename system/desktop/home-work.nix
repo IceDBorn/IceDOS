@@ -73,6 +73,7 @@ lib.mkIf config.work.user.enable {
 		};
 
 		home.file = {
+			# New document options for nautilus
 			"Templates/new" = {
 				text = "";
 				recursive = true;
@@ -97,6 +98,11 @@ lib.mkIf config.work.user.enable {
 				text = "";
 				recursive = true;
 			};
-		}; # New document options for nautilus
+
+			".icons/default" = {
+				source = "${pkgs.bibata-cursors}/share/icons/Bibata-Modern-Classic";
+				recursive = true;
+			}; # Set icon theme fot QT apps and Hyprland
+		};
 	};
 }
