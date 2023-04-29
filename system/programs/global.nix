@@ -24,6 +24,7 @@
 		git # Distributed version control system
 		gping # ping with a graph
 		helvum # Pipewire patchbay
+		jc # JSON parser
 		killall # Tool to kill all programs matching process name
 		kitty # Terminal
 		libnotify # Send desktop notifications
