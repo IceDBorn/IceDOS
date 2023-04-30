@@ -65,6 +65,11 @@ lib.mkIf config.main.user.enable {
 				source = ../../configs/hyprpaper.jpg;
 				recursive = true;
 			};
+
+			".config/zsh/vpn-watcher.sh" = {
+				source = ../../scripts/vpn-watcher.sh;
+				recursive = true;
+			}; # Add vpn watcher script
 		};
 	};
 }

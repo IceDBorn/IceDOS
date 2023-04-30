@@ -3,11 +3,10 @@
 lib.mkIf config.work.user.enable {
 	home-manager.users.${config.work.user.username} = lib.mkIf config.desktop-environment.hyprland.enable {
 		home.file = {
-			# Add hyprland config
 			".config/hypr/hyprland.conf" = {
 				source = ../../configs/hyprland.conf;
 				recursive = true;
-			};
+			}; # Add hyprland config
 
 			# Add waybar config files
 			".config/waybar/config" = {
@@ -31,11 +30,10 @@ lib.mkIf config.work.user.enable {
 				recursive = true;
 			};
 
-			# Add swaync config file
 			".config/swaync" = {
 				source = ../../configs/swaync;
 				recursive = true;
-			};
+			}; # Add swaync config file
 
 			# Add wlogout config files
 			".config/wlogout/layout" = {
@@ -48,11 +46,10 @@ lib.mkIf config.work.user.enable {
 				recursive = true;
 			};
 
-			# Avoid file not found errors for bash
 			".bashrc" = {
 				text = '''';
 				recursive = true;
-			};
+			}; # Avoid file not found errors for bash
 
 			# Add hyprpaper config files
 			".config/hypr/hyprpaper.conf" = {
@@ -68,6 +65,11 @@ lib.mkIf config.work.user.enable {
 				source = ../../configs/hyprpaper.jpg;
 				recursive = true;
 			};
+
+			".config/zsh/vpn-watcher.sh" = {
+				source = ../../scripts/vpn-watcher.sh;
+				recursive = true;
+			}; # Add vpn watcher script
 		};
 	};
 }
