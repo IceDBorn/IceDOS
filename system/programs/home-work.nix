@@ -22,6 +22,7 @@ lib.mkIf config.work.user.enable {
 					update_check_interval = "0";
 				};
 				font.name = "JetBrainsMono Nerd Font";
+				theme = "Catppuccin-Mocha";
 			};
 
 			zsh = {
