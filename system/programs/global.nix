@@ -32,6 +32,7 @@
 		mpv # Video player
 		mullvad-vpn # VPN Client
 		neovim # Terminal text editor
+		nodePackages.npm # Node package manager
 		ntfs3g # Support NTFS drives
 		obs-studio # Recording/Livestream
 		onlyoffice-bin # Microsoft Office alternative for Linux
@@ -39,6 +40,7 @@
 		pulseaudio # Various pulseaudio tools
 		python3 # Python
 		ranger # Terminal file manager
+		ripgrep # Silver searcher grep
 		rnix-lsp # Nix language server
 		rnnoise-plugin # A real-time noise suppression plugin
 		signal-desktop # Encrypted messaging platform
