@@ -20,6 +20,7 @@ lib.mkIf config.main.user.enable {
 					enable_audio_bell = "no";
 					hide_window_decorations = "yes";
 					update_check_interval = "0";
+					copy_on_select = "no";
 				};
 				font.name = "JetBrainsMono Nerd Font";
 				theme = "Catppuccin-Mocha";
