@@ -15,8 +15,7 @@ lib.mkIf config.work.user.enable {
 				settings = {
 					background_opacity = "0.8";
 					confirm_os_window_close = "0";
-					cursor_shape = "underline";
-					cursor_underline_thickness = "1.0";
+					cursor_shape = "beam";
 					enable_audio_bell = "no";
 					hide_window_decorations = "yes";
 					update_check_interval = "0";
