@@ -17,6 +17,10 @@ local plugins = {
 		lazy = false,
 	},
 	{
+		"nvim-pack/nvim-spectre",
+		lazy = false,
+	},
+	{
 		"nvim-treesitter/nvim-treesitter",
 		opts = {
 			ensure_installed = {
