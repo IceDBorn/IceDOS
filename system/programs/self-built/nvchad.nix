@@ -7,8 +7,8 @@ stdenvNoCC.mkDerivation rec {
 	src = fetchFromGitHub {
 		owner = "NvChad";
 		repo = "NvChad";
-		rev = "v${version}";
-		sha256 = "U0wR7tkr2PMM+qDfcFgXON/ee3Rk1MbbtXvRbAbzDC8=";
+		rev = "refs/heads/v${version}";
+		sha256 = "i71S96cHmLTTpEb5xzf1tH2qBYnOFIxYhOEwWaGpv04=";
 	};
 
 	preferLocalBuild = true;
