@@ -2,17 +2,21 @@ local M = {}
 
 M.abc = {
 	v = {
-		[">"] = { ">gv", "Indent" },
-		["<"] = { "<gv", "Unindent" },
+		[ "<Tab>" ] = { ">gv", "Indent" },
+		[ "<S-Tab>" ] = { "<gv", "Unindent" },
+		[ "<leader>s" ] = { "<ESC> <cmd> Sort <CR>", "Sort selection" },
 	},
 	n = {
-		["<leader>R"] = { "<cmd> Spectre<CR>", "Find and Replace" },
-		["<leader>F"] = { "<cmd> Telescope live_grep<CR>", "Find" },
-		["<leader>G"] = { "<cmd> Neogit <CR>", "Source control" },
-		["C-h"] = { "<cmd> TmuxNavigateLeft<CR>", "Move window left" },
-		["C-l"] = { "<cmd> TmuxNavigateRight<CR>", "Move window right" },
-		["C-j"] = { "<cmd> TmuxNavigateDown<CR>", "Move window down" },
-		["C-k"] = { "<cmd> TmuxNavigateUp<CR>", "Move window up" },
+		[ "<leader>fr" ] = { "<cmd> Spectre<CR>", "Find and Replace" },
+		[ "<leader>ff" ] = { "<cmd> Telescope live_grep<CR>", "Find" },
+		[ "<leader>gg" ] = { "<cmd> Neogit <CR>", "Source control" },
+		[ "C-h" ] = { "<cmd> TmuxNavigateLeft <CR>", "Focus left" },
+		[ "C-l" ] = { "<cmd> TmuxNavigateRight <CR>", "Focus right" },
+		[ "C-j" ] = { "<cmd> TmuxNavigateDown <CR>", "Focus down" },
+		[ "C-k" ] = { "<cmd> TmuxNavigateUp <CR>", "Focus up" },
+	},
+	i = {
+		[ "jk" ] = { "<ESC>", "Escape insert mode" , opts = { nowait = true }},
 	}
 }
 
