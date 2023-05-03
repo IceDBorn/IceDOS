@@ -15,6 +15,7 @@
 		aria # Terminal downloader with multiple connections support
 		bat # Better cat command
 		btop # System monitor
+		cargo # Rust package manager
 		cinnamon.warpinator # Local file sync
 		curtail # Image compressor
 		direnv # Unclutter your .profile
@@ -24,7 +25,7 @@
 		git # Distributed version control system
 		gping # ping with a graph
 		helvum # Pipewire patchbay
-		jc # JSON parser
+		jq # JSON parser
 		killall # Tool to kill all programs matching process name
 		kitty # Terminal
 		libnotify # Send desktop notifications
@@ -32,7 +33,7 @@
 		mpv # Video player
 		mullvad-vpn # VPN Client
 		neovim # Terminal text editor
-		nodePackages.npm # Node package manager
+		nodejs # Node package manager
 		ntfs3g # Support NTFS drives
 		obs-studio # Recording/Livestream
 		onlyoffice-bin # Microsoft Office alternative for Linux
@@ -40,8 +41,6 @@
 		pulseaudio # Various pulseaudio tools
 		python3 # Python
 		ranger # Terminal file manager
-		ripgrep # Silver searcher grep
-		rnix-lsp # Nix language server
 		rnnoise-plugin # A real-time noise suppression plugin
 		signal-desktop # Encrypted messaging platform
 		sublime4 # Text editor

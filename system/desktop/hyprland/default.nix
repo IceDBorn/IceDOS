@@ -23,6 +23,9 @@
 			baobab # Disk usage analyser
 			blueberry # Bluetooth manager
 			clipman # Clipboard manager for wayland
+			dotnet-sdk_7 # SDK for .net
+			fd # Find alternative
+			gdtoolkit # Tools for gdscript
 			gnome.file-roller # Archive file manager
 			gnome.gnome-calculator # Calculator
 			gnome.gnome-disk-utility # Disks manager
@@ -30,14 +33,17 @@
 			gnome.nautilus # File manager
 			grim # Screenshot tool
 			hyprpaper # Wallpaper daemon
-			jq # JSON parser
+			jc # JSON parser
 			networkmanagerapplet # Network manager tray icon
+			nixfmt # A nix formatter
 			pavucontrol # Sound manager
 			polkit_gnome # Polkit manager
+			ripgrep # Silver searcher grep
 			rofi-wayland # App launcher
 			slurp # Monitor selector
 			swappy # Edit screenshots
 			swaynotificationcenter # Notification daemon
+			unzip # An extraction utility
 			wdisplays # Displays manager
 			wl-clipboard # Clipboard daemon
 			wlogout # Logout screen
