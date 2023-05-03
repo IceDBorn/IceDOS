@@ -1,6 +1,17 @@
 
 local plugins = {
 	{
+		"rmagatti/auto-session",
+		lazy = false,
+		config = function()
+			require("auto-session").setup {
+				auto_session_allowed_dirs = { "~/dev/*", },
+				auto_session_suppress_dirs = { "~/*", },
+				auto_session_root_dir = ".sessions/"
+			}
+		end
+	},
+	{
 		"nvim-lua/plenary.nvim",
 		lazy = false,
 	},
@@ -89,4 +100,3 @@ local plugins = {
 	},
 }
 return plugins
-
