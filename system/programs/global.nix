@@ -85,7 +85,7 @@
 				list-packages = "nix-store --query --requisites /run/current-system | cut -d- -f2- | sort | uniq"; # List installed nix packages
 				ls = "lsd"; # Better ls command
 				mva = "rsync -rP --remove-source-files"; # Move command with details
-				n = "(tmux -2 a -t nvchad || tmux -2 new -s nvchad nvim) 2> /dev/null"; # Nvchad
+				n = "(tmux a -t nvchad || tmux  new -s nvchad nvim) 2> /dev/null"; # Nvchad
 				nix-gc = "nix-store --gc"; # Garbace collect for the nix store
 				ping = "gping"; # ping with a graph
 				reboot-windows = "sudo efibootmgr --bootnext ${config.boot.windows-entry} && reboot"; # Reboot to windows
