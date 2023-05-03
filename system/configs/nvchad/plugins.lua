@@ -72,6 +72,7 @@ local plugins = {
 				"beautysh",
 				"black",
 				"clang-format",
+				"clangd",
 				"csharp-language-server",
 				"dockerfile-language-server",
 				"eslint-lsp",

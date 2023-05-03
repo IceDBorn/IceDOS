@@ -5,6 +5,7 @@ local capabilities = require("plugins.configs.lspconfig").capabilities
 local lspconfig = require "lspconfig"
 local servers = {
 	"bashls",
+	"clangd",
 	"csharp_ls",
 	"dockerls",
 	"eslint",
@@ -17,7 +18,6 @@ local servers = {
 	"neocmake",
 	"nil_ls",
 	"rust_analyzer",
-	"sourcekit",
 }
 
 for _, lsp in ipairs(servers) do
