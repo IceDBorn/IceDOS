@@ -54,12 +54,14 @@ in
 			"uinput"
 		];
 
+		kernelParams = [ "clearcpuid=514" ]; # Fixes certain wine games crash on launch
+
 		extraModulePackages = with config.boot.kernelPackages; [ v4l2loopback ];
 
 		kernel.sysctl = { "vm.max_map_count" = 262144; }; # Fixes crash when loading maps in CS2
 	};
 
-	fileSystems = lib.mkIf config.boot.btrfs-compression.enable {
-		# "/".options = [ "compress=zstd" ];
+	fileSystems = lib.mkIf (config.boot.btrfs-compression.enable && config.boot.btrfs-compression.root.enable) {
+		"/".options = [ "compress=zstd" ];
 	};
 }

@@ -7,9 +7,9 @@
 	environment.systemPackages = with pkgs; [
 		# (callPackage ./self-built/system-monitoring-center.nix { buildPythonApplication = pkgs.python3Packages.buildPythonApplication; pygobject3 = pkgs.python3Packages.pygobject3; }) # Task manager
 		(callPackage ./self-built/apx.nix {}) # Package manager using distrobox
-		(callPackage ./self-built/screenaudio-mic {}) # Passthrough pipewire audio to WebRTC screenshare
 		(callPackage ./self-built/webcord {}) # An open source discord client
-		(pkgs.wrapOBS {plugins = with pkgs.obs-studio-plugins; [obs-pipewire-audio-capture];}) # Pipewire audio plugin for OBS Studio
+		(firefox.override { extraNativeMessagingHosts = [ (callPackage ./self-built/pipewire-screenaudio {}) ]; }) # Browser
+		(pkgs.wrapOBS {plugins = with pkgs.obs-studio-plugins; [ obs-pipewire-audio-capture ];}) # Pipewire audio plugin for OBS Studio
 		android-tools # Tools for debugging android devices
 		appimage-run # Appimage runner
 		aria # Terminal downloader with multiple connections support
@@ -18,9 +18,9 @@
 		# direnv # Unclutter your .profile
 		discord
 		cinnamon.warpinator # Local file sync
+		curtail # Image compressor
 		direnv # Unclutter your .profile
 		efibootmgr # Edit EFI entries
-		firefox # Browser
 		gimp # Image editor
 		git # Distributed version control system
 		gping # ping with a graph
@@ -36,6 +36,7 @@
 		obs-studio # Recording/Livestream
 		onlyoffice-bin # Microsoft Office alternative for Linux
 		p7zip # 7zip
+		pulseaudio # Various pulseaudio tools
 		python3 # Python
 		# ranger # Terminal file manager
 		rnix-lsp # Nix language server
@@ -85,6 +86,7 @@
 				list-packages="nix-store --query --requisites /run/current-system | cut -d- -f2- | sort | uniq"; # List installed nix packages
 				ls="lsd"; # Better ls command
 				mva="rsync -rP --remove-source-files"; # Move command with details
+				nix-gc="nix-store --gc"; # Garbace collect for the nix store
 				ping="gping"; # ping with a graph
 				reboot-windows="sudo efibootmgr --bootnext ${config.boot.windows-entry} && reboot"; # Reboot to windows
 				rebuild="(cd $(head -1 /etc/nixos/.configuration-location) 2> /dev/null || (echo 'Configuration path is invalid. Run rebuild.sh manually to update the path!' && false) && bash rebuild.sh)"; # Rebuild the system configuration

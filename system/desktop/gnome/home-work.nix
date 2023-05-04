@@ -74,7 +74,6 @@ lib.mkIf config.work.user.enable {
 				enabled-extensions = if (config.desktop-environment.gnome.configuration.caffeine.enable) then [
 					"appindicatorsupport@rgcjonas.gmail.com"
 					"arcmenu@arcmenu.com"
-					"bluetooth-quick-connect@bjarosze.gmail.com"
 					"caffeine@patapon.info"
 					"clipboard-indicator@tudmotu.com"
 					"color-picker@tuberry"
@@ -85,7 +84,6 @@ lib.mkIf config.work.user.enable {
 				] else [
 					"appindicatorsupport@rgcjonas.gmail.com"
 					"arcmenu@arcmenu.com"
-					"bluetooth-quick-connect@bjarosze.gmail.com"
 					# "caffeine@patapon.info"
 					"clipboard-indicator@tudmotu.com"
 					"color-picker@tuberry"
