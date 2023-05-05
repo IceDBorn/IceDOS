@@ -1,5 +1,95 @@
-
 local plugins = {
+	{
+		"nvim-tree/nvim-tree.lua",
+		lazy = false,
+		cmd = { "NvimTreeToggle", "NvimTreeFocus" },
+		init = function()
+			require("core.utils").load_mappings "nvimtree"
+		end,
+		config = function(_)
+			local nvimtree_side = "left"
+			dofile(vim.g.base46_cache .. "nvimtree")
+			require("nvim-tree").setup {
+				filters = {
+					dotfiles = false,
+					exclude = { vim.fn.stdpath "config" .. "/lua/custom" },
+				},
+				disable_netrw = true,
+				hijack_netrw = true,
+				hijack_cursor = true,
+				hijack_unnamed_buffer_when_opening = false,
+				sync_root_with_cwd = true,
+				update_focused_file = {
+					enable = true,
+					update_root = false,
+				},
+				view = {
+					adaptive_size = false,
+					side = nvimtree_side,
+					width = 30,
+					preserve_window_proportions = true,
+				},
+				git = {
+					enable = true,
+					ignore = true,
+				},
+				filesystem_watchers = {
+					enable = true,
+				},
+				actions = {
+					open_file = {
+						resize_window = true,
+					},
+					change_dir = {
+						global = true
+					},
+				},
+				renderer = {
+					root_folder_label = true,
+					highlight_git = true,
+					highlight_modified = "name",
+
+					indent_markers = {
+						enable = false,
+					},
+
+					icons = {
+						show = {
+							file = true,
+							folder = true,
+							folder_arrow = true,
+							git = true,
+						},
+
+						glyphs = {
+							default = "󰈚",
+							symlink = "",
+							folder = {
+								default = "󰉋",
+								empty = "",
+								empty_open = "",
+								open = "",
+								symlink = "",
+								symlink_open = "",
+								arrow_open = "",
+								arrow_closed = "",
+							},
+							git = {
+								unstaged = "",
+								staged = "✓",
+								unmerged = "",
+								renamed = "➜",
+								untracked = "★",
+								deleted = "",
+								ignored = "◌",
+							},
+						},
+					},
+				},
+			}
+			vim.g.nvimtree_side = nvimtree_side
+		end,
+	},
 	{
 		"rmagatti/auto-session",
 		lazy = false,
@@ -7,7 +97,16 @@ local plugins = {
 			require("auto-session").setup {
 				auto_session_allowed_dirs = { "~/dev/*", },
 				auto_session_suppress_dirs = { "~/*", },
-				auto_session_root_dir = ".sessions/"
+				auto_session_root_dir = ".sessions/",
+				pre_save_cmds = { "tabdo NvimTreeClose" },
+				post_save_cmds = { "tabdo NvimTreeOpen" },
+				post_open_cmds = { "tabdo NvimTreeOpen" },
+				post_restore_cmds = { "tabdo NvimTreeOpen", vim.cmd('silent! bufdo e') },
+				cwd_change_handling = {
+					restore_upcoming_session = true,
+					pre_cwd_changed_hook = nil,
+					post_cwd_changed_hook = nil,
+				},
 			}
 		end,
 	},
