@@ -138,8 +138,8 @@ lib.mkIf config.main.user.enable {
 			};
 
 			# Add adwaita steam skin
-			".local/share/Steam/skins/Adwaita" = {
-				source = "${(pkgs.callPackage ../programs/self-built/adwaita-for-steam {})}/build/Adwaita";
+			".local/share/Steam/steamui/libraryroot.custom.css" = {
+				source = "${(pkgs.callPackage ../programs/self-built/adwaita-for-steam {})}/build/libraryroot.custom.css";
 				recursive = true;
 			};
 

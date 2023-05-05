@@ -16,9 +16,6 @@ if ! grep -Fxq "/*patched*/" library.css; then
 
 	# Pad new library file until it has the same size as the original one
 	truncate -r library.original.css library.css
-
-	sudo cp ../../skins/Adwaita/resource/webkit.css ../libraryroot.custom.css
-
 else
 	echo "Steam library is already patched..."
 fi
