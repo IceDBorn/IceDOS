@@ -19,9 +19,11 @@
 	],
 
 	"bluetooth": {
-		"format": "  {status}",
-		"format-connected": "  Connected",
-		"format-connected-battery": "  Connected ({device_battery_percentage})",
+		"format-on": "󰂯",
+		"format-off": "<span foreground='red'>󰂲</span>",
+		"format-disabled": "󰂲",
+		"format-connected": "󰂱",
+		"format-connected-battery": "󰂱  {device_battery_percentage}",
 		"tooltip-format": "{controller_alias}\t{controller_address}\n\n{num_connections} connected",
 		"tooltip-format-connected": "{controller_alias}\t{controller_address}\n\n{num_connections} connected\n\n{device_enumerate}",
 		"tooltip-format-enumerate-connected": "{device_alias}\t{device_address}",
@@ -38,7 +40,7 @@
 	"clock": {
 		"interval": 1,
 		"format": "{:%H:%M:%S}",
-		"format-alt": "{:%d/%m/%Y}",
+		"tooltip-format": "{:%A, %B %d, %Y}",
 		"max-length": 25
 	},
 
