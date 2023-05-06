@@ -43,7 +43,15 @@
 	},
 
 	"pulseaudio": {
-		"format": "{volume}",
+		"format": "{icon}  {volume}",
+		"format-muted": "󰝟",
+		"format-icons": {
+			"headphone": "󰋋",
+			"headset": "󰋎",
+			"phone": "",
+			"car": "󰄋",
+			"default": ["󰕿", "󰖀", "󰕾"]
+		},
 		"scroll-step": 5,
 		"on-click": "pavucontrol"
 	},
