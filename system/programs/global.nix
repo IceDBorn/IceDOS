@@ -20,6 +20,7 @@
 		curtail # Image compressor
 		direnv # Unclutter your .profile
 		efibootmgr # Edit EFI entries
+		feh # Minimal image viewer
 		gcc # C++ compiler
 		gimp # Image editor
 		git # Distributed version control system
