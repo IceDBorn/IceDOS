@@ -1,10 +1,10 @@
 diff --git a/install.py b/install.py
 --- install.py
 +++ install.py
-@@ -288,9 +288,9 @@
+@@ -287,9 +287,9 @@
+ 			selected_theme = colorthemedir / t / "{}{}".format(t, ".theme")
+ 			if not selected_theme.exists():
  				raise SystemExit(f"{TEXT_RED}{TEXT_CROSS} {TEXT_BOLD}{selected_theme}{TEXT_RESET}{TEXT_RED} theme not found.{TEXT_RESET}")
- 			if not selected_theme_assets.exists():
- 				raise SystemExit(f"{TEXT_RED}{TEXT_CROSS} {TEXT_BOLD}{selected_theme}{TEXT_RESET}{TEXT_RED} theme assets not found.{TEXT_RESET}")
 
 -	with TemporaryDirectory() as tmpdir:
 +	with (Path(os.environ['NIX_OUT']) / 'build') as tmpdir:
@@ -12,7 +12,7 @@ diff --git a/install.py b/install.py
  		sourcedir = tmp
  		print(f"{TEXT_BLUE}{TEXT_ARROW} Creating stage directory {TEXT_BOLD}{sourcedir}{TEXT_RESET}")
 
-@@ -307,18 +307,5 @@
+@@ -306,18 +306,5 @@
  			config = configparser.ConfigParser()
  			config.read(selected_theme)
  			replace_css_colors(sourcedir / LIBRARY_CSS_FILE, config)
@@ -31,4 +31,3 @@ diff --git a/install.py b/install.py
 -			patch_client_css(sourcedir, target, "Library")
 -
  		print(f"{TEXT_GREEN}{TEXT_CHECK} Done!{TEXT_RESET}")
-
