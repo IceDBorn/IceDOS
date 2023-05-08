@@ -3,6 +3,7 @@
 
 lib.mkIf config.main.user.enable {
 	users.users.${config.main.user.username}.packages = with pkgs; lib.mkIf config.main.user.enable [
+		(callPackage ./self-built/yuzu {}) # Switch emulator
 		bottles # Wine manager
 		cemu # Wii U Emulator
 		duckstation # PS1 Emulator
@@ -21,7 +22,6 @@ lib.mkIf config.main.user.enable {
 		steamtinkerlaunch # General tweaks for games
 		stremio # Straming platform
 		sunshine # Remote gaming
-		yuzu # Switch emulator
 	];
 
 	services.input-remapper.enable = config.main.user.enable;
