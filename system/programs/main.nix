@@ -16,12 +16,12 @@ lib.mkIf config.main.user.enable {
 		prismlauncher # Minecraft launcher
 		protontricks # Winetricks for proton prefixes
 		rpcs3 # PS3 Emulator
-		ryujinx # Switch Emulator
 		scanmem # Cheat engine for linux
 		steam # Gaming platform
 		steamtinkerlaunch # General tweaks for games
 		stremio # Straming platform
 		sunshine # Remote gaming
+		yuzu # Switch emulator
 	];
 
 	services.input-remapper.enable = config.main.user.enable;
