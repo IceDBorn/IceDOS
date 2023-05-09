@@ -251,5 +251,10 @@
 			type = lib.types.bool;
 			default = true;
 		};
+
+		local.cache.enable = lib.mkOption {
+			type = lib.types.bool;
+			default = true;
+		};
 	};
 }
