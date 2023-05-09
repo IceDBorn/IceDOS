@@ -63,7 +63,7 @@ lib.mkIf config.work.user.enable {
 				source =
 				"${(config.nur.repos.slaier.arkenfox-userjs.overrideAttrs (oldAttrs: {
 					installPhase = ''
-						cat ${../configs/firefox-user-overrides.js} >> user.js
+						cat ${../configs/firefox/user-overrides.js} >> user.js
 						mkdir -p $out
 						cp ./user.js $out/user.js
 					'';
@@ -73,7 +73,7 @@ lib.mkIf config.work.user.enable {
 
 			# Set firefox to privacy profile
 			".mozilla/firefox/profiles.ini" = lib.mkIf config.firefox-privacy.enable {
-				source = ../configs/firefox-profiles.ini;
+				source = ../configs/firefox/profiles.ini;
 				recursive = true;
 			};
 
