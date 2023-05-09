@@ -54,6 +54,7 @@
 		winetricks # Wine prefix settings manager
 		woeusb # Windows ISO Burner
 		xorg.xhost # Use x.org server with distrobox
+		youtube-dl # Video downloader
 		zenstates # Ryzen CPU controller
 		zerotierone # Virtual lan network
 	];
