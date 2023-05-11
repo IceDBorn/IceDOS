@@ -2,14 +2,15 @@
 
 stdenvNoCC.mkDerivation {
 	name = "adwaita-for-steam";
-	version = "0.38";
+	# version = "0.38";
+	version = "beta";
 
 	src = fetchFromGitHub {
 		owner = "Foldex";
 		repo = "Adwaita-for-Steam";
 		# rev = "v${version}";
-		rev = "4b5d158ddf371eaade64c0461e862cae50f866af";
-		sha256 = "i5L+xI7fuoCuNlC1o3edHQAR7We5r1CFOVyKJNp7zXw=";
+		rev = "19c43290d945278d0025150ba628e6b00439690c";
+		sha256 = "u1w20T9OTa9iEh9YZfzR+hGTCe3W77KRNu6XdEPMfmQ=";
 	};
 
 	preferLocalBuild = true;
