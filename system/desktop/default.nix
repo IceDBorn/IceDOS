@@ -64,10 +64,6 @@
 	security.sudo.extraConfig = "Defaults pwfeedback"; # Show asterisks when typing sudo password
 
 	environment = {
-		sessionVariables = {
-			QT_QPA_PLATFORMTHEME= "gnome"; # Use gtk theme for qt apps
-		};
-
 		# Packages to install for all window manager/desktop environments
 		systemPackages = with pkgs; [
 			bibata-cursors # Material cursors
@@ -76,10 +72,13 @@
 			gnome.gnome-boxes # VM manager
 			gthumb # Image viewer
 			pitivi # Video editor
-			qgnomeplatform # Use GTK theme for QT apps
 			tela-icon-theme # Icon theme
 		];
 	};
 
-	fonts.fonts = with pkgs; [ meslo-lgs-nf cantarell-fonts jetbrains-mono font-awesome ];
+	fonts.fonts = with pkgs; [
+		meslo-lgs-nf
+		cantarell-fonts
+		(nerdfonts.override { fonts = [ "JetBrainsMono" ]; })
+	];
 }

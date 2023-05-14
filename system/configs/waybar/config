@@ -2,12 +2,28 @@
 	"layer": "top",
 	"modules-left": ["wlr/workspaces"],
 	"modules-center": ["hyprland/window"],
-	"modules-right": ["tray", "custom/vpn", "custom/separator", "bluetooth", "custom/separator", "hyprland/language", "custom/separator","pulseaudio", "custom/separator", "clock", "custom/separator", "custom/power"],
+	"modules-right": [
+		"tray",
+		"custom/vpn",
+		"custom/separator",
+		"bluetooth",
+		"custom/separator",
+		"hyprland/language",
+		"custom/separator",
+		"pulseaudio",
+		"custom/separator",
+		"clock",
+		"custom/notification",
+		"custom/separator",
+		"custom/power",
+	],
 
 	"bluetooth": {
-		"format": "  {status}",
-		"format-connected": "  Connected",
-		"format-connected-battery": "  Connected ({device_battery_percentage})",
+		"format-on": "󰂯",
+		"format-off": "<span foreground='red'>󰂲</span>",
+		"format-disabled": "󰂲",
+		"format-connected": "󰂱",
+		"format-connected-battery": "󰂱  {device_battery_percentage}",
 		"tooltip-format": "{controller_alias}\t{controller_address}\n\n{num_connections} connected",
 		"tooltip-format-connected": "{controller_alias}\t{controller_address}\n\n{num_connections} connected\n\n{device_enumerate}",
 		"tooltip-format-enumerate-connected": "{device_alias}\t{device_address}",
@@ -24,12 +40,20 @@
 	"clock": {
 		"interval": 1,
 		"format": "{:%H:%M:%S}",
-		"format-alt": "{:%d/%m/%Y}",
+		"tooltip-format": "{:%A, %B %d, %Y}",
 		"max-length": 25
 	},
 
 	"pulseaudio": {
-		"format": "{volume}",
+		"format": "{icon}  {volume}",
+		"format-muted": "󰝟",
+		"format-icons": {
+			"headphone": "󰋋",
+			"headset": "󰋎",
+			"phone": "",
+			"car": "󰄋",
+			"default": ["󰕿", "󰖀", "󰕾"]
+		},
 		"scroll-step": 5,
 		"on-click": "pavucontrol"
 	},
@@ -38,9 +62,9 @@
 		"format": "{icon}",
 		"on-click": "activate",
 		"format-icons": {
-			"urgent": "",
-			"active": "",
-			"default": ""
+			"urgent": "",
+			"active": "",
+			"default": ""
 		},
 		"sort-by-number": true
 	},
@@ -66,14 +90,30 @@
 
 	"custom/vpn": {
 		"format": "{}",
-		"exec": "(ssh -f server@192.168.1.2 mullvad status | grep -q Connected && echo '') || echo ''",
-		"on-click": "(ssh -f server@192.168.1.2 mullvad status | grep -q Connected && ssh -f server@192.168.1.2 mullvad disconnect) || ssh -f server@192.168.1.2 mullvad connect",
+		"exec": "bash ~/.config/zsh/vpn-watcher.sh",
+		"on-click": "nmcli d show | jc --nmcli | jq -r '[.[] | select(.ip4_gateway != null)][0].connection' | tr -d '\\n' | xargs -0 -I {} bash -c \"curl -sS https://am.i.mullvad.net/check-ip/$(curl -sS https://ifconfig.me/ip || printf '0.0.0.0') | jq '.mullvad_exit_ip' | grep -q true && (nmcli con mod \\\"{}\\\" ipv4.gateway 192.168.1.1) || (nmcli con mod \\\"{}\\\" ipv4.gateway 192.168.1.2) ; nmcli con up \\\"{}\\\"\"",
 		"return-type": "{}",
-		"interval": 1
+		"interval": 2,
+		"tooltip": false,
 	},
 
 	"custom/separator": {
 		"format": "•",
 		"tooltip": false
-	}
+	},
+	"custom/notification": {
+		"tooltip": false,
+		"format": "{icon}",
+		"format-icons": {
+			"dnd-notification": "<span foreground='white'><sup></sup></span>",
+			"dnd-none": "<span foreground='white'><sup></sup></span>",
+			"dnd-inhibited-notification": "<span foreground='white'><sup></sup></span>",
+			"dnd-inhibited-none": "<span foreground='white'><sup></sup></span>"
+		},
+		"return-type": "json",
+		"exec-if": "which swaync-client",
+		"exec": "swaync-client -swb",
+		"escape": true
+	},
+
 }

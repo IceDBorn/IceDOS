@@ -3,8 +3,9 @@
 
 lib.mkIf config.main.user.enable {
 	users.users.${config.main.user.username}.packages = with pkgs; lib.mkIf config.main.user.enable [
+		(callPackage ./self-built/yuzu {}) # Switch emulator
 		bottles # Wine manager
-		cemu
+		cemu # Wii U Emulator
 		# duckstation # PS1 Emulator
 		gamescope # Wayland microcompositor
 		# godot_4 # Game engine
@@ -16,7 +17,6 @@ lib.mkIf config.main.user.enable {
 		# prismlauncher # Minecraft launcher
 		protontricks # Winetricks for proton prefixes
 		rpcs3 # PS3 Emulator
-		ryujinx # Switch Emulator
 		scanmem # Cheat engine for linux
 		steam # Gaming platform
 		steamtinkerlaunch # General tweaks for games

@@ -1,21 +1,21 @@
 diff --git a/install.py b/install.py
 --- install.py
 +++ install.py
-@@ -302,9 +302,9 @@
+@@ -287,9 +287,9 @@
+ 			selected_theme = colorthemedir / t / "{}{}".format(t, ".theme")
+ 			if not selected_theme.exists():
  				raise SystemExit(f"{TEXT_RED}{TEXT_CROSS} {TEXT_BOLD}{selected_theme}{TEXT_RESET}{TEXT_RED} theme not found.{TEXT_RESET}")
- 			if not selected_theme_assets.exists():
- 				raise SystemExit(f"{TEXT_RED}{TEXT_CROSS} {TEXT_BOLD}{selected_theme}{TEXT_RESET}{TEXT_RED} theme assets not found.{TEXT_RESET}")
 
 -	with TemporaryDirectory() as tmpdir:
 +	with (Path(os.environ['NIX_OUT']) / 'build') as tmpdir:
  		tmp = Path(tmpdir)
- 		sourcedir = tmp / SKIN_DIR
- 		print(f"{TEXT_BLUE}{TEXT_ARROW} Copying to the stage directory {TEXT_BOLD}{sourcedir}{TEXT_RESET}")
- 		shutil.copytree(skindir, sourcedir)
-@@ -339,19 +339,5 @@
- 			replace_css_colors(sourcedir / CSS_FILE, config)
- 			replace_vgui_colors(sourcedir / COLORS_FILE, config)
- 			shutil.copytree(selected_theme_assets, sourcedir / ASSETS_DIR, dirs_exist_ok=True)
+ 		sourcedir = tmp
+ 		print(f"{TEXT_BLUE}{TEXT_ARROW} Creating stage directory {TEXT_BOLD}{sourcedir}{TEXT_RESET}")
+
+@@ -306,18 +306,5 @@
+ 			config = configparser.ConfigParser()
+ 			config.read(selected_theme)
+ 			replace_css_colors(sourcedir / LIBRARY_CSS_FILE, config)
 
 -		targets = set()
 -
@@ -28,7 +28,6 @@ diff --git a/install.py b/install.py
 -				targets.add(Path(t).expanduser().resolve())
 -
 -		for target in targets:
--			install(sourcedir, target, args.name)
 -			patch_client_css(sourcedir, target, "Library")
 -
  		print(f"{TEXT_GREEN}{TEXT_CHECK} Done!{TEXT_RESET}")

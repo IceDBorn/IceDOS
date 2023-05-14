@@ -15,23 +15,29 @@
 		aria # Terminal downloader with multiple connections support
 		bat # Better cat command
 		btop # System monitor
+		# cargo # Rust package manager
 		# direnv # Unclutter your .profile
 		discord
 		cinnamon.warpinator # Local file sync
 		curtail # Image compressor
 		direnv # Unclutter your .profile
 		efibootmgr # Edit EFI entries
+		# feh # Minimal image viewer
+		# gcc # C++ compiler
 		gimp # Image editor
 		git # Distributed version control system
 		gping # ping with a graph
 		# helvum # Pipewire patchbay
+		jq # JSON parser
 		killall # Tool to kill all programs matching process name
 		kitty # Terminal
 		libnotify # Send desktop notifications
 		lsd # Better ls command
 		mpv # Video player
 		mullvad-vpn # VPN Client
-		nodejs-14_x
+		# neovim # Terminal text editor
+		# nodejs
+		nodejs-16_x # Node package manager
 		ntfs3g # Support NTFS drives
 		obs-studio # Recording/Livestream
 		onlyoffice-bin # Microsoft Office alternative for Linux
@@ -39,13 +45,13 @@
 		pulseaudio # Various pulseaudio tools
 		python3 # Python
 		# ranger # Terminal file manager
-		rnix-lsp # Nix language server
 		rnnoise-plugin # A real-time noise suppression plugin
 		rustup # The rust tooling package
 		signal-desktop # Encrypted messaging platform
 		spotify # Music
 		stremio # Streaming platform
 		sublime4 # Text editor
+		# tmux # Terminal multiplexer
 		tree # Display folder content at a tree format
 		unrar # Support opening rar files
 		vscodium # All purpose IDE
@@ -55,6 +61,7 @@
 		winetricks # Wine prefix settings manager
 		woeusb # Windows ISO Burner
 		xorg.xhost # Use x.org server with distrobox
+		youtube-dl # Video downloader
 		zenstates # Ryzen CPU controller
 		# zerotierone # Virtual lan network
 	];
@@ -75,30 +82,32 @@
 
 			# Aliases
 			shellAliases = {
-				apx="apx --aur"; # Use arch as the base apx container
-				aria2c="aria2c -j 16 -s 16"; # Download with aria using best settings
-				btrfs-compress="sudo btrfs filesystem defrag -czstd -r -v"; # Compress given path with zstd
-				cat="bat"; # Better cat command
-				chmod="sudo chmod"; # It's a command that I always execute with sudo
-				clear-keys="sudo rm -rf ~/ local/share/keyrings/* ~/ local/share/kwalletd/*"; # Clear system keys
-				cp="rsync -rP"; # Copy command with details
-				desktop-files-list="ls -l /run/current-system/sw/share/applications"; # Show desktop files location
-				list-packages="nix-store --query --requisites /run/current-system | cut -d- -f2- | sort | uniq"; # List installed nix packages
-				ls="lsd"; # Better ls command
-				mva="rsync -rP --remove-source-files"; # Move command with details
-				nix-gc="nix-store --gc"; # Garbace collect for the nix store
-				ping="gping"; # ping with a graph
-				reboot-windows="sudo efibootmgr --bootnext ${config.boot.windows-entry} && reboot"; # Reboot to windows
-				rebuild="(cd $(head -1 /etc/nixos/.configuration-location) 2> /dev/null || (echo 'Configuration path is invalid. Run rebuild.sh manually to update the path!' && false) && bash rebuild.sh)"; # Rebuild the system configuration
-				restart-pipewire="systemctl --user restart pipewire"; # Restart pipewire
-				server="ssh server@192.168.1.2"; # Connect to local server
-				ssh="TERM=xterm-256color ssh"; # SSH with colors
-				steam-link="killall steam 2> /dev/null ; while ps axg | grep -vw grep | grep -w steam > /dev/null; do sleep 1; done && (nohup steam -pipewire > /dev/null &) 2> /dev/null"; # Kill existing steam process and relaunch steam with the pipewire flag
-				update="(cd $(head -1 /etc/nixos/.configuration-location) 2> /dev/null || (echo 'Configuration path is invalid. Run rebuild.sh manually to update the path!' && false) && sudo nix flake update && bash rebuild.sh) ; (bash ~/.config/zsh/proton-ge-updater.sh) ; (bash ~/.config/zsh/steam-library-patcher.sh)"; # Update everything
-				vpn-btop="ssh -t server@192.168.1.2 'bpytop'"; # Show VPN bpytop
-				vpn-off="ssh -f server@192.168.1.2 'mullvad disconnect && sleep 1 && mullvad status'"; # Disconnect from VPN
-				vpn-on="ssh -f server@192.168.1.2 'mullvad connect && sleep 1 && mullvad status'"; # Connect to VPN
-				vpn="ssh -f server@192.168.1.2 'mullvad status'"; # Show VPN status
+				apx = "apx --aur"; # Use arch as the base apx container
+				aria2c = "aria2c -j 16 -s 16"; # Download with aria using best settings
+				btrfs-compress = "sudo btrfs filesystem defrag -czstd -r -v"; # Compress given path with zstd
+				cat = "bat"; # Better cat command
+				chmod = "sudo chmod"; # It's a command that I always execute with sudo
+				clear-keys = "sudo rm -rf ~/ local/share/keyrings/* ~/ local/share/kwalletd/*"; # Clear system keys
+				cp = "rsync -rP"; # Copy command with details
+				desktop-files-list = "ls -l /run/current-system/sw/share/applications"; # Show desktop files location
+				list-packages = "nix-store --query --requisites /run/current-system | cut -d- -f2- | sort | uniq"; # List installed nix packages
+				ls = "lsd"; # Better ls command
+				mva = "rsync -rP --remove-source-files"; # Move command with details
+				n = "tmux a -t nvchad || tmux new -s nvchad nvim"; # Nvchad
+				nix-gc = "nix-store --gc"; # Garbace collect for the nix store
+				ping = "gping"; # ping with a graph
+				reboot-windows = "sudo efibootmgr --bootnext ${config.boot.windows-entry} && reboot"; # Reboot to windows
+				rebuild = "(cd $(head -1 /etc/nixos/.configuration-location) 2> /dev/null || (echo 'Configuration path is invalid. Run rebuild.sh manually to update the path!' && false) && bash rebuild.sh)"; # Rebuild the system configuration
+				restart-pipewire = "systemctl --user restart pipewire"; # Restart pipewire
+				server = "ssh server@192.168.1.2"; # Connect to local server
+				ssh = "TERM=xterm-256color ssh"; # SSH with colors
+				steam-link = "killall steam 2> /dev/null ; while ps axg | grep -vw grep | grep -w steam > /dev/null; do sleep 1; done && (nohup steam -pipewire > /dev/null &) 2> /dev/null"; # Kill existing steam process and relaunch steam with the pipewire flag
+				update = "(cd $(head -1 /etc/nixos/.configuration-location) 2> /dev/null || (echo 'Configuration path is invalid. Run rebuild.sh manually to update the path!' && false) && sudo nix flake update && bash rebuild.sh) ; (bash ~/.config/zsh/proton-ge-updater.sh) ; (bash ~/.config/zsh/steam-library-patcher.sh)"; # Update everything
+				v = "nvim"; # Neovim
+				vpn = "ssh -f server@192.168.1.2 'mullvad status'"; # Show VPN status
+				vpn-btop = "ssh -t server@192.168.1.2 'bpytop'"; # Show VPN bpytop
+				vpn-off = "ssh -f server@192.168.1.2 'mullvad disconnect && sleep 1 && mullvad status'"; # Disconnect from VPN
+				vpn-on = "ssh -f server@192.168.1.2 'mullvad connect && sleep 1 && mullvad status'"; # Connect to VPN
 			};
 
 			interactiveShellInit = "source ~/.config/zsh/zsh-theme.zsh\nunsetopt PROMPT_SP"; # Commands to run on zsh shell initialization

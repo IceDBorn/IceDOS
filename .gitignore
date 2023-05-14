@@ -1,3 +1,4 @@
-/.history/
-/.configuration-location
+.history
+.configuration-location
+.sessions
 .idea

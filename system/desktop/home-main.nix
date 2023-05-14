@@ -24,6 +24,10 @@ lib.mkIf config.main.user.enable {
 			"org/gtk/gtk4/settings/file-chooser" = {
 				sort-directories-first = true;
 			}; # Nautilus sorts directories first
+
+			"org/gnome/desktop/interface" = {
+				color-scheme = "prefer-dark";
+			}; # Enable dark mode
 		};
 
 		xdg = {
@@ -60,6 +64,7 @@ lib.mkIf config.main.user.enable {
 		};
 
 		home.file = {
+			# New document options for nautilus
 			"Templates/new" = {
 				text = "";
 				recursive = true;
@@ -84,6 +89,11 @@ lib.mkIf config.main.user.enable {
 				text = "";
 				recursive = true;
 			};
-		}; # New document options for nautilus
+
+			".icons/default" = {
+				source = "${pkgs.bibata-cursors}/share/icons/Bibata-Modern-Classic";
+				recursive = true;
+			}; # Set icon theme fot QT apps and Hyprland
+		};
 	};
 }

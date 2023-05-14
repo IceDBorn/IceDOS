@@ -15,13 +15,14 @@ lib.mkIf config.work.user.enable {
 				settings = {
 					background_opacity = "0.8";
 					confirm_os_window_close = "0";
-					cursor_shape = "underline";
-					cursor_underline_thickness = "1.0";
+					cursor_shape = "beam";
 					enable_audio_bell = "no";
 					hide_window_decorations = "yes";
 					update_check_interval = "0";
+					copy_on_select = "no";
 				};
-				font.name = "Jetbrains Mono";
+				font.name = "JetBrainsMono Nerd Font";
+				theme = "Catppuccin-Mocha";
 			};
 
 			zsh = {
@@ -33,13 +34,13 @@ lib.mkIf config.work.user.enable {
 				plugins = with pkgs; [
 					{
 						name = "powerlevel10k";
-						src = pkgs.zsh-powerlevel10k;
+						src = zsh-powerlevel10k;
 						file = "share/zsh-powerlevel10k/powerlevel10k.zsh-theme";
 					}
 					{
 						name = "zsh-nix-shell";
 						file = "share/zsh-nix-shell/nix-shell.plugin.zsh";
-						src = pkgs.zsh-nix-shell;
+						src = zsh-nix-shell;
 					}
 				];
 
@@ -82,7 +83,7 @@ lib.mkIf config.work.user.enable {
 				source =
 				"${(config.nur.repos.slaier.arkenfox-userjs.overrideAttrs (oldAttrs: {
 					installPhase = ''
-						cat ${../configs/firefox-user-overrides.js} >> user.js
+						cat ${../configs/firefox/user-overrides.js} >> user.js
 						mkdir -p $out
 						cp ./user.js $out/user.js
 					'';
@@ -92,7 +93,7 @@ lib.mkIf config.work.user.enable {
 
 			# Set firefox to privacy profile
 			".mozilla/firefox/profiles.ini" = lib.mkIf config.firefox-privacy.enable {
-				source = ../configs/firefox-profiles.ini;
+				source = ../configs/firefox/profiles.ini;
 				recursive = true;
 			};
 
@@ -119,6 +120,29 @@ lib.mkIf config.work.user.enable {
 				source = ../configs/kitty-task-managers.session;
 				recursive = true;
 			};
+
+			# Add nvchad
+			# ".config/nvim" = {
+			# 	source = "${(pkgs.callPackage ../programs/self-built/nvchad.nix {})}";
+			# 	recursive = true;
+			# };
+
+			# ".config/nvim/lua/custom" = {
+			# 	source = ../configs/nvchad;
+			# 	recursive = true;
+			# 	force = true;
+			# };
+
+			# Add tmux config
+			# ".config/tmux/tmux.conf" = {
+			# 	source = ../configs/tmux.conf;
+			# 	recursive = true;
+			# };
+
+			# ".config/tmux/tpm" = {
+			# 	source = "${(pkgs.callPackage ../programs/self-built/tpm.nix {})}";
+			# 	recursive = true;
+			# };
 
 			# Add terminator config
 			".config/terminator/config" = {

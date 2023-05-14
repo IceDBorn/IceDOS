@@ -26,5 +26,8 @@ lib.mkIf config.amd.gpu.enable {
 		});
 	'';
 
-	environment.systemPackages = [ pkgs.corectrl ]; # GPU overclocking tool
+	environment.systemPackages = with pkgs; [
+		corectrl # GPU overclocking tool
+		nvtop-amd # GPU task manager
+	];
 }

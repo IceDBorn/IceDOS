@@ -5,8 +5,6 @@ lib.mkIf config.main.user.enable {
 
 		dconf.settings = {
 			"org/gnome/desktop/interface" = {
-				# Enable dark mode
-				color-scheme = "prefer-dark";
 				# Enable clock seconds
 				clock-show-seconds = true;
 				# Disable date
@@ -78,7 +76,7 @@ lib.mkIf config.main.user.enable {
 					] else [
 						"appindicatorsupport@rgcjonas.gmail.com"
 						"arcmenu@arcmenu.com"
-						# "clipboard-indicator@tudmotu.com"
+						"clipboard-indicator@tudmotu.com"
 						# "color-picker@tuberry"
 						"dash-to-panel@jderose9.github.com"
 						# "emoji-selector@maestroschan.fr"
