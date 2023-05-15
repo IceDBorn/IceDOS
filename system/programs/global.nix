@@ -16,7 +16,6 @@
 		bat # Better cat command
 		btop # System monitor
 		cargo # Rust package manager
-		cinnamon.warpinator # Local file sync
 		curtail # Image compressor
 		direnv # Unclutter your .profile
 		efibootmgr # Edit EFI entries
@@ -49,6 +48,7 @@
 		tree # Display folder content at a tree format
 		unrar # Support opening rar files
 		vscodium # All purpose IDE
+		warp # File sync
 		wget # Terminal downloader
 		wine # Compatibility layer capable of running Windows applications
 		winetricks # Wine prefix settings manager
