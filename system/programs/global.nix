@@ -18,7 +18,6 @@
 		# cargo # Rust package manager
 		# direnv # Unclutter your .profile
 		discord
-		cinnamon.warpinator # Local file sync
 		curtail # Image compressor
 		direnv # Unclutter your .profile
 		efibootmgr # Edit EFI entries
@@ -56,7 +55,7 @@
 		unrar # Support opening rar files
 		vscodium # All purpose IDE
 		jetbrains.webstorm # Javascript IDE
-		warp
+		warp # File sync
 		wget # Terminal downloader
 		wine # Compatibility layer capable of running Windows applications
 		winetricks # Wine prefix settings manager
