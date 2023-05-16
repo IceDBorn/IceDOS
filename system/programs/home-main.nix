@@ -210,15 +210,15 @@ lib.mkIf config.main.user.enable {
 			# };
 
 			# Add tmux
-			# ".config/tmux/tmux.conf" = {
-			# 	source = ../configs/tmux.conf;
-			# 	recursive = true;
-			# };
+			".config/tmux/tmux.conf" = {
+				source = ../configs/tmux.conf;
+				recursive = true;
+			};
 
-			# ".config/tmux/tpm" = {
-			# 	source = "${(pkgs.callPackage ../programs/self-built/tpm.nix {})}";
-			# 	recursive = true;
-			# };
+			".config/tmux/tpm" = {
+				source = "${(pkgs.callPackage ../programs/self-built/tpm.nix {})}";
+				recursive = true;
+			};
 		};
 	};
 }

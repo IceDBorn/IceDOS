@@ -51,11 +51,12 @@
 		spotify # Music
 		stremio # Streaming platform
 		sublime4 # Text editor
-		# tmux # Terminal multiplexer
+		tmux # Terminal multiplexer
 		tree # Display folder content at a tree format
 		unrar # Support opening rar files
 		vscodium # All purpose IDE
 		jetbrains.webstorm # Javascript IDE
+		warp
 		wget # Terminal downloader
 		wine # Compatibility layer capable of running Windows applications
 		winetricks # Wine prefix settings manager

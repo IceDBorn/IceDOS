@@ -134,15 +134,15 @@ lib.mkIf config.work.user.enable {
 			# };
 
 			# Add tmux config
-			# ".config/tmux/tmux.conf" = {
-			# 	source = ../configs/tmux.conf;
-			# 	recursive = true;
-			# };
+			".config/tmux/tmux.conf" = {
+				source = ../configs/tmux.conf;
+				recursive = true;
+			};
 
-			# ".config/tmux/tpm" = {
-			# 	source = "${(pkgs.callPackage ../programs/self-built/tpm.nix {})}";
-			# 	recursive = true;
-			# };
+			".config/tmux/tpm" = {
+				source = "${(pkgs.callPackage ../programs/self-built/tpm.nix {})}";
+				recursive = true;
+			};
 
 			# Add terminator config
 			".config/terminator/config" = {
