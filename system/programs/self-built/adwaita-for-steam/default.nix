@@ -9,8 +9,8 @@ stdenvNoCC.mkDerivation {
 		owner = "Foldex";
 		repo = "Adwaita-for-Steam";
 		# rev = "v${version}";
-		rev = "19c43290d945278d0025150ba628e6b00439690c";
-		sha256 = "u1w20T9OTa9iEh9YZfzR+hGTCe3W77KRNu6XdEPMfmQ=";
+		rev = "55d169fc70d9ca0f29a071d0054436262eb9f431";
+		sha256 = "2IJxZG9EPBq/6MgExxssuKwUwmbRyTPpn2HEwefifcQ=";
 	};
 
 	preferLocalBuild = true;
