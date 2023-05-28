@@ -59,7 +59,7 @@ in
 		sublime4 # Text editor
 		tmux # Terminal multiplexer
 		tree # Display folder content at a tree format
-		trim-generations
+		trim-generations # Smarter old nix generations cleaner
 		unrar # Support opening rar files
 		vscodium # All purpose IDE
 		warp # File sync
