@@ -32,6 +32,7 @@
 		kitty # Terminal
 		libnotify # Send desktop notifications
 		lsd # Better ls command
+		mousai # Song recognizer
 		mpv # Video player
 		mullvad-vpn # VPN Client
 		# neovim # Terminal text editor
