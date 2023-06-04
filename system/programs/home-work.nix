@@ -81,13 +81,7 @@ lib.mkIf config.work.user.enable {
 			# Add arkenfox user.js
 			".mozilla/firefox/privacy/user.js" = lib.mkIf config.firefox-privacy.enable {
 				source =
-				"${(config.nur.repos.slaier.arkenfox-userjs.overrideAttrs (oldAttrs: {
-					installPhase = ''
-						cat ${../configs/firefox/user-overrides.js} >> user.js
-						mkdir -p $out
-						cp ./user.js $out/user.js
-					'';
-				}))}/user.js";
+				"${(pkgs.callPackage ../programs/self-built/arkenfox-userjs.nix {})}/user.js";
 				recursive = true;
 			};
 

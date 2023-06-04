@@ -1,6 +1,17 @@
 ### PACKAGES INSTALLED ON ALL USERS ###
 { pkgs, config, ... }:
 
+let
+	trim-generations =  pkgs.writeShellScriptBin "trim-generations" (builtins.readFile ../scripts/trim-generations.sh);
+	nix-gc = pkgs.writeShellScriptBin "nix-gc" ''
+		trim-generations 10 0 user ;
+		trim-generations 10 0 home-manager ;
+		sudo runuser - ${config.work.user.username} -c 'trim-generations 10 0 user' ;
+		sudo runuser - ${config.work.user.username} -c 'trim-generations 10 0 home-manager' ;
+		sudo trim-generations 10 0 system ;
+		nix-store --gc
+	'';
+in
 {
 	boot.kernelPackages = pkgs.linuxPackages_zen; # Use ZEN linux kernel
 
@@ -36,6 +47,7 @@
 		mpv # Video player
 		mullvad-vpn # VPN Client
 		# neovim # Terminal text editor
+		nix-gc # Garbage collect old nix generations
 		# nodejs
 		nodejs-16_x # Node package manager
 		ntfs3g # Support NTFS drives
@@ -53,6 +65,7 @@
 		sublime4 # Text editor
 		tmux # Terminal multiplexer
 		tree # Display folder content at a tree format
+		trim-generations # Smarter old nix generations cleaner
 		unrar # Support opening rar files
 		vscodium # All purpose IDE
 		jetbrains.webstorm # Javascript IDE
@@ -64,7 +77,6 @@
 		xorg.xhost # Use x.org server with distrobox
 		youtube-dl # Video downloader
 		zenstates # Ryzen CPU controller
-		# zerotierone # Virtual lan network
 	];
 
 	users.defaultUserShell = pkgs.zsh; # Use ZSH shell for all users
@@ -95,7 +107,6 @@
 				ls = "lsd"; # Better ls command
 				mva = "rsync -rP --remove-source-files"; # Move command with details
 				n = "tmux a -t nvchad || tmux new -s nvchad nvim"; # Nvchad
-				nix-gc = "nix-store --gc"; # Garbace collect for the nix store
 				ping = "gping"; # ping with a graph
 				reboot-windows = "sudo efibootmgr --bootnext ${config.boot.windows-entry} && reboot"; # Reboot to windows
 				rebuild = "(cd $(head -1 /etc/nixos/.configuration-location) 2> /dev/null || (echo 'Configuration path is invalid. Run rebuild.sh manually to update the path!' && false) && bash rebuild.sh)"; # Rebuild the system configuration

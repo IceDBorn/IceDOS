@@ -2,7 +2,7 @@
 { config, pkgs, lib, ... }:
 
 lib.mkIf config.main.user.enable {
-	users.users.${config.main.user.username}.packages = with pkgs; lib.mkIf config.main.user.enable [
+	users.users.${config.main.user.username}.packages = with pkgs; [
 		(callPackage ./self-built/yuzu {}) # Switch emulator
 		bottles # Wine manager
 		cemu # Wii U Emulator
@@ -21,9 +21,15 @@ lib.mkIf config.main.user.enable {
 		steam # Gaming platform
 		steamtinkerlaunch # General tweaks for games
 		sunshine # Remote gaming
+		tailscale # VPN with P2P support
 	];
 
-	services.input-remapper.enable = config.main.user.enable;
-	services.input-remapper.enableUdevRules = config.main.user.enable;
-	services.teamviewer.enable = true;
+	services = {
+		tailscale.enable = true;
+		teamviewer.enable = true;
+		input-remapper = {
+			enable = true;
+			enableUdevRules = true;
+		};
+	};
 }
