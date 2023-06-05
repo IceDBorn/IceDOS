@@ -5,6 +5,8 @@ lib.mkIf config.main.user.enable {
 
 		dconf.settings = {
 			"org/gnome/desktop/interface" = {
+				# Enable dark mode
+				color-scheme = "prefer-dark";
 				# Enable clock seconds
 				clock-show-seconds = true;
 				# Disable date

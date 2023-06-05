@@ -11,6 +11,7 @@ let
 		sudo trim-generations 10 0 system ;
 		nix-store --gc
 	'';
+  vpn-exclude = pkgs.writeShellScriptBin "vpn-exclude" (builtins.readFile ../scripts/create-ns.sh);
 in
 {
 	boot.kernelPackages = pkgs.linuxPackages_zen; # Use ZEN linux kernel
@@ -77,6 +78,7 @@ in
 		xorg.xhost # Use x.org server with distrobox
 		youtube-dl # Video downloader
 		zenstates # Ryzen CPU controller
+    vpn-exclude # Run shell with another gateway and IP
 	];
 
 	users.defaultUserShell = pkgs.zsh; # Use ZSH shell for all users
