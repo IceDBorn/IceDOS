@@ -13,6 +13,8 @@ lib.mkIf config.work.user.enable {
 				clock-show-date = config.desktop-environment.gnome.configuration.clock-date.enable;
 				# Show the battery percentage when on a laptop
 				show-battery-percentage = config.laptop.enable;
+				# Access the activity overview by moving the mouse to the top-left corner
+				enable-hot-corners = config.desktop-environment.gnome.configuration.hot-corners.enable;
 			};
 
 			# Disable lockscreen notifications
