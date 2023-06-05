@@ -10,7 +10,13 @@
 		};
 	};
 
-	outputs = inputs@{ self, nixpkgs, hyprland, home-manager, nur }: {
+	outputs = inputs@{
+			self,
+			nixpkgs,
+			hyprland,
+			home-manager,
+			nur
+		}: {
 		nixosConfigurations.nixos = nixpkgs.lib.nixosSystem {
 			system = "x86_64-linux";
 			specialArgs = {inherit inputs;};
