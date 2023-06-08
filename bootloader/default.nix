@@ -6,7 +6,7 @@
 			# Allows discovery of UEFI disks
 			efi = {
 				canTouchEfiVariables = true;
-				efiSysMountPoint = "/boot/efi";
+				efiSysMountPoint = "/boot";
 			};
 
 			# Use systemd boot instead of grub
