@@ -119,18 +119,6 @@ lib.mkIf config.main.user.enable {
 				recursive = true;
 			};
 
-			# Add kitty session config
-			".config/kitty/kitty.session" = {
-				source = ../configs/kitty.session;
-				recursive = true;
-			};
-
-			# Add kitty task managers session config
-			".config/kitty/kitty-task-managers.session" = {
-				source = ../configs/kitty-task-managers.session;
-				recursive = true;
-			};
-
 			# Add adwaita steam skin
 			".local/share/Steam/steamui/libraryroot.custom.css" = {
 				source = "${(pkgs.callPackage ../programs/self-built/adwaita-for-steam {})}/build/libraryroot.custom.css";
