@@ -1,14 +1,15 @@
 #!/usr/bin/env bash
 
-if [ $# -ne 3 ]; then
-  echo 1>&2 "$0: Exactly three arguments are needed, in this particular order..."
-  echo 1>&2 "$0: Uplink, IP, Gateway"
+if [ $# -lt 3 ]; then
+  echo 1>&2 "$0: At least three arguments are needed, in this particular order..."
+  echo 1>&2 "$0: Uplink, IP, Gateway, Optional: Command"
   exit 1
 fi
 
 UPLINK=$1
 IP=$2
 GATEWAY=$3
+COMMAND=$4
 
 DEFAULT_SHELL=$(readlink -f /proc/$PPID/exe)
 
@@ -19,7 +20,7 @@ CURRENT_ENV_FILE=$(mktemp)
 chmod 600 $CURRENT_ENV_FILE
 $DEFAULT_SHELL -c 'export -p' > $CURRENT_ENV_FILE
 
-TO_EXPORT_ENV="UPLINK IP GATEWAY DEFAULT_SHELL LINK_NAME NAMESPACE_NAME CURRENT_ENV_FILE"
+TO_EXPORT_ENV="UPLINK IP GATEWAY COMMAND DEFAULT_SHELL LINK_NAME NAMESPACE_NAME CURRENT_ENV_FILE"
 TO_EXPORT_FUN="create_namespace configure_namespace execute"
 
 create_namespace () {
@@ -48,7 +49,12 @@ execute () {
     set +a
  
     cd $PWD
-    $DEFAULT_SHELL
+    echo $COMMAND
+    if [ -n /$COMMAND ]; then
+      $COMMAND
+    else
+      $DEFAULT_SHELL
+    fi
   "
 
   ip netns delete $NAMESPACE_NAME
