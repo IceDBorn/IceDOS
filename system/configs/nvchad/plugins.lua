@@ -95,7 +95,7 @@ local plugins = {
 		lazy = false,
 		config = function()
 			require("auto-session").setup {
-				auto_session_allowed_dirs = { "~/dev/*", },
+				auto_session_allowed_dirs = { "~/git/*", },
 				auto_session_suppress_dirs = { "~/*", },
 				auto_session_root_dir = ".sessions/",
 				pre_save_cmds = { "tabdo NvimTreeClose" },

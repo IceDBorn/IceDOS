@@ -150,8 +150,6 @@ stdenv.mkDerivation {
 
   passthru.updateScript = ./update.sh;
 
-  patches = [ ./aofix.patch ];
-
   meta = with lib; {
     homepage = "https://yuzu-emu.org";
     changelog = "https://yuzu-emu.org/entry";

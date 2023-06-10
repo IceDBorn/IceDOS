@@ -1,4 +1,4 @@
-{ lib, ... }:
+{ config, lib, ... }:
 
 {
 	imports = [
@@ -22,5 +22,5 @@
 		./system/users
 	];
 
-	config.system.stateVersion = "22.05"; # Do not change without checking the docs
+	config.system.stateVersion = config.state-version; # Do not change without checking the docs
 }
