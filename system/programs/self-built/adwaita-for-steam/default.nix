@@ -21,6 +21,6 @@ stdenvNoCC.mkDerivation {
 
 	installPhase = ''
 		mkdir -p $out/build
-		NIX_OUT="$out" python install.py -we library/hide_whats_new -we login/hover_qr -we windowcontrols/hide-close
+		NIX_OUT="$out" python install.py -we library/hide_whats_new -we login/hover_qr
 	'';
 }
