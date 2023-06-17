@@ -40,6 +40,7 @@ in
 		gping # ping with a graph
 		# helvum # Pipewire patchbay
 		jq # JSON parser
+		kdenlive
 		killall # Tool to kill all programs matching process name
 		kitty # Terminal
 		libnotify # Send desktop notifications
@@ -78,7 +79,7 @@ in
 		xorg.xhost # Use x.org server with distrobox
 		youtube-dl # Video downloader
 		zenstates # Ryzen CPU controller
-    vpn-exclude # Run shell with another gateway and IP
+		vpn-exclude # Run shell with another gateway and IP
 	];
 
 	users.defaultUserShell = pkgs.zsh; # Use ZSH shell for all users
