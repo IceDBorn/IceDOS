@@ -27,6 +27,7 @@ in
 		aria # Terminal downloader with multiple connections support
 		bat # Better cat command
 		btop # System monitor
+    bless # HEX Editor
 		cargo # Rust package manager
 		curtail # Image compressor
 		direnv # Unclutter your .profile
