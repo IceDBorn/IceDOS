@@ -2,7 +2,7 @@
 
 stdenvNoCC.mkDerivation rec {
 	name = "adwaita-for-steam";
-	version = "1.2";
+	version = "1.3";
 
 	src = fetchFromGitHub {
 		owner = "tkashkin";
@@ -19,6 +19,6 @@ stdenvNoCC.mkDerivation rec {
 
 	installPhase = ''
 		mkdir -p $out/build
-		NIX_OUT="$out" python install.py -we library/hide_whats_new -we login/hover_qr -we windowcontrols/hide-close
+		NIX_OUT="$out" python install.py -we library/hide_whats_new -we library/sidebar_hover -we login/hover_qr -we windowcontrols/hide-close
 	'';
 }
