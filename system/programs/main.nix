@@ -32,4 +32,14 @@ lib.mkIf config.main.user.enable {
 			enableUdevRules = true;
 		};
 	};
+
+  services.udev.packages = [
+    (pkgs.writeTextFile {
+    name = "sunshine_udev";
+    text = ''
+      KERNEL=="uinput", SUBSYSTEM=="misc", OPTIONS+="static_node=uinput", TAG+="uaccess"
+    '';
+    destination = "/etc/udev/rules.d/85-sunshine.rules";
+    }) # Needed for sunshine input to work
+  ];
 }
