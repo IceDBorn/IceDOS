@@ -26,6 +26,7 @@ in
 		appimage-run # Appimage runner
 		aria # Terminal downloader with multiple connections support
 		bat # Better cat command
+		bless # HEX Editor
 		btop # System monitor
 		# cargo # Rust package manager
 		# direnv # Unclutter your .profile
