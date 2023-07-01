@@ -3,7 +3,6 @@
 
 lib.mkIf config.main.user.enable {
 	users.users.${config.main.user.username}.packages = with pkgs; [
-		(callPackage ./self-built/yuzu {}) # Switch emulator
 		bottles # Wine manager
 		cemu # Wii U Emulator
 		duckstation # PS1 Emulator
@@ -23,6 +22,7 @@ lib.mkIf config.main.user.enable {
 		stremio # Straming platform
 		sunshine # Remote gaming
 		tailscale # VPN with P2P support
+    yuzu-early-access # Nintendo Switch emulator
 	];
 
 	services = {
