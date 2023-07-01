@@ -8,7 +8,7 @@ stdenvNoCC.mkDerivation rec {
 		owner = "tkashkin";
 		repo = "Adwaita-for-Steam";
 		rev = "v${version}";
-		sha256 = "KcvRVEC6X4+C6ouf1JEwA6I8eJI2uhSNOt3a1BxicqI=";
+		sha256 = "nRIblZxM7dUxbztcO/xON6GqsZ8RuiyqbKdlPvgXJyA=";
 	};
 
 	preferLocalBuild = true;
