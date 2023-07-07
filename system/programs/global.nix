@@ -91,7 +91,7 @@ in
 			# Enable oh my zsh and it's plugins
 			ohMyZsh = {
 				enable = true;
-				plugins = [ "git" "npm" "nvm" "sudo" "systemd" ];
+				plugins = [ "git" "npm" "sudo" "systemd" ];
 			};
 			autosuggestions.enable = true;
 
