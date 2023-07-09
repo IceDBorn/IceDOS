@@ -7,8 +7,8 @@ stdenv.mkDerivation rec {
 	src = fetchFromGitHub {
 		owner = "IceDBorn";
 		repo = "pipewire-screenaudio";
-		rev = "5ee9c22e880028ced3fc389a56439a1e03c84969";
-		sha256 = "/Ua6Fyv2ePio9brBzfvgJiCT1nTmnHvnVlAnkr44CpE=";
+		rev = version;
+		sha256 = "jXvMSL3iZ+ql7ZYja6cJF13kDzmZtQm/LUQI0dFISoo=";
 		fetchSubmodules = true;
   	};
 
