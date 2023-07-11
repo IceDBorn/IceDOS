@@ -4,7 +4,7 @@ lib.mkIf config.work.user.enable {
 	home-manager.users.${config.work.user.username} = lib.mkIf config.desktop-environment.hyprland.enable {
 		home.file = {
 			".config/hypr/hyprland.conf" = {
-				source = ../../configs/hyprland.conf;
+				source = if (config.desktop-environment.hyprland.dual-monitor.enable) then ../../configs/hyprland/hyprland-dual.conf else ../../configs/hyprland/hyprland.conf;
 				recursive = true;
 			}; # Add hyprland config
 
@@ -62,7 +62,7 @@ lib.mkIf config.work.user.enable {
 			};
 
 			".config/hypr/hyprpaper.jpg" = {
-				source = ../../configs/hyprpaper.jpg;
+				source = ../../configs/hyprland/hyprpaper.jpg;
 				recursive = true;
 			};
 
