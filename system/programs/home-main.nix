@@ -108,6 +108,12 @@ lib.mkIf config.main.user.enable {
 				recursive = true;
 			};
 
+      # Disable WebRTC indicator
+			".mozilla/firefox/privacy/chrome/userChrome.css" = lib.mkIf config.firefox-privacy.enable {
+				text = ''#webrtcIndicator { display: none }'';
+				recursive = true;
+			};
+
 			# Add noise suppression microphone
 			".config/pipewire/pipewire.conf.d/99-input-denoising.conf" = {
 				source = ../configs/pipewire.conf;
