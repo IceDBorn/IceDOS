@@ -242,9 +242,16 @@
 				};
 			};
 
-			hyprland.enable = lib.mkOption {
-				type = lib.types.bool;
-				default = false;
+			hyprland = {
+				enable = lib.mkOption {
+					type = lib.types.bool;
+					default = false;
+				};
+
+				dual-monitor.enable = lib.mkOption {
+					type = lib.types.bool;
+					default = false;
+				};
 			};
 
 			gdm.auto-suspend.enable = lib.mkOption {

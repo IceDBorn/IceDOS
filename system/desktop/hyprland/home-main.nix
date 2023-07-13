@@ -4,8 +4,8 @@ lib.mkIf config.main.user.enable {
 	home-manager.users.${config.main.user.username} = lib.mkIf config.desktop-environment.hyprland.enable {
 		home.file = {
 			".config/hypr/hyprland.conf" = {
-				source = ../../configs/hyprland.conf;
-				recursive = true;
+        source = if (config.desktop-environment.hyprland.dual-monitor.enable) then ../../configs/hyprland/hyprland-dual.conf else ../../configs/hyprland/hyprland.conf;
+        recursive = true;
 			}; # Add hyprland config
 
 			# Add waybar config files
@@ -62,7 +62,7 @@ lib.mkIf config.main.user.enable {
 			};
 
 			".config/hypr/hyprpaper.jpg" = {
-				source = ../../configs/hyprpaper.jpg;
+				source = ../../configs/hyprland/hyprpaper.jpg;
 				recursive = true;
 			};
 
