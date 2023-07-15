@@ -254,10 +254,17 @@
 			};
 		};
 
-		firefox-privacy.enable = lib.mkOption {
-			type = lib.types.bool;
-			default = true;
-		};
+    firefox = {
+      privacy.enable = lib.mkOption {
+        type = lib.types.bool;
+        default = true;
+      };
+
+      gnome-theme.enable = lib.mkOption {
+        type = lib.types.bool;
+        default = true;
+      };
+    };
 
 		steam.beta.enable = lib.mkOption {
 			type = lib.types.bool;

@@ -1,4 +1,4 @@
-{ stdenvNoCC, fetchFromGitHub, python3, ... }:
+{ stdenvNoCC, fetchFromGitHub, ... }:
 
 stdenvNoCC.mkDerivation rec {
 	name = "arkenfox-userjs";
