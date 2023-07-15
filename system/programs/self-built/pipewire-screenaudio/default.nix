@@ -2,13 +2,13 @@
 
 stdenv.mkDerivation rec {
 	pname = "pipewire-screenaudio";
-  	version = "0.0.1";
+  	version = "0.1.0";
 
 	src = fetchFromGitHub {
 		owner = "IceDBorn";
 		repo = "pipewire-screenaudio";
 		rev = version;
-		sha256 = "jXvMSL3iZ+ql7ZYja6cJF13kDzmZtQm/LUQI0dFISoo=";
+		sha256 = "Sc2Dk/idHpGrGyaj98148bo9xeLQ1ITbRlTN+J7nYg4=";
 		fetchSubmodules = true;
   	};
 
