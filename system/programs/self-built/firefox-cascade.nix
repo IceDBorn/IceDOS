@@ -15,6 +15,7 @@ stdenvNoCC.mkDerivation {
 
 	installPhase = ''
 		mkdir -p $out
+    sed -i '/#unified-extensions-button { display: none !important; }/d' ./chrome/includes/cascade-config.css
     echo "#webrtcIndicator { display: none }" >> ./chrome/includes/cascade-config.css
 		cp -r ./chrome/* $out/
 	'';
