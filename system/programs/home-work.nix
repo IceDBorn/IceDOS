@@ -59,21 +59,23 @@ lib.mkIf config.work.user.enable {
 				recursive = true;
 			};
 
-			# Add arkenfox user.js
-			".mozilla/firefox/privacy/user.js" = lib.mkIf config.firefox-privacy.enable {
-				source =
-				"${(pkgs.callPackage ../programs/self-built/arkenfox-userjs.nix {})}/user.js";
-				recursive = true;
-			};
-
-			# Set firefox to privacy profile
-			".mozilla/firefox/profiles.ini" = lib.mkIf config.firefox-privacy.enable {
+      # Set firefox to privacy profile
+			".mozilla/firefox/profiles.ini" = {
 				source = ../configs/firefox/profiles.ini;
 				recursive = true;
 			};
 
+			# Add user.js
+			".mozilla/firefox/privacy/user.js" = lib.mkIf config.firefox-privacy.enable {
+        source = if (config.firefox-privacy.enable) then 
+          "${(pkgs.callPackage ../programs/self-built/arkenfox-userjs.nix {})}/user.js" 
+        else
+          ../configs/firefox/user.js;
+				recursive = true;
+			};
+
       # Disable WebRTC indicator
-			".mozilla/firefox/privacy/chrome/userChrome.css" = lib.mkIf config.firefox-privacy.enable {
+			".mozilla/firefox/privacy/chrome/userChrome.css" = {
 				text = ''#webrtcIndicator { display: none }'';
 				recursive = true;
 			};
