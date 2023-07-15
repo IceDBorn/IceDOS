@@ -79,22 +79,33 @@ lib.mkIf config.work.user.enable {
 				recursive = true;
 			};
 
-			# Add arkenfox user.js
-			".mozilla/firefox/privacy/user.js" = lib.mkIf config.firefox-privacy.enable {
-				source =
-				"${(pkgs.callPackage ../programs/self-built/arkenfox-userjs.nix {})}/user.js";
+			# Add user.js
+			".mozilla/firefox/privacy/user.js" = {
+        source = if (config.firefox.privacy.enable) then 
+          "${(pkgs.callPackage ../programs/self-built/arkenfox-userjs.nix {})}/user.js" 
+        else
+          ../configs/firefox/user.js;
 				recursive = true;
 			};
 
-			# Set firefox to privacy profile
-			".mozilla/firefox/profiles.ini" = lib.mkIf config.firefox-privacy.enable {
-				source = ../configs/firefox/profiles.ini;
+      # Install firefox gnome theme
+      ".mozilla/firefox/privacy/chrome/firefox-gnome-theme" = lib.mkIf config.firefox.gnome-theme.enable {
+				source = pkgs.callPackage ../programs/self-built/firefox-gnome-theme.nix {};
 				recursive = true;
 			};
 
-      # Disable WebRTC indicator
-			".mozilla/firefox/privacy/chrome/userChrome.css" = lib.mkIf config.firefox-privacy.enable {
-				text = ''#webrtcIndicator { display: none }'';
+      # Import firefox gnome theme userChrome.css or disable WebRTC indicator
+			".mozilla/firefox/privacy/chrome/userChrome.css" = {
+        text = if config.firefox.gnome-theme.enable then
+          ''@import "firefox-gnome-theme/userChrome.css"''
+        else
+          ''#webrtcIndicator { display: none }'';
+				recursive = true;
+			};
+
+      # Import firefox gnome theme userContent.css
+			".mozilla/firefox/privacy/chrome/userContent.css" = lib.mkIf config.firefox.gnome-theme.enable {
+        text = ''@import "firefox-gnome-theme/userContent.css"'';
 				recursive = true;
 			};
 

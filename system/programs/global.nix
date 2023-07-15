@@ -29,8 +29,8 @@ in
 		bless # HEX Editor
 		btop # System monitor
 		# cargo # Rust package manager
+		clamav # Antivirus
 		# direnv # Unclutter your .profile
-		discord
 		curtail # Image compressor
 		direnv # Unclutter your .profile
 		efibootmgr # Edit EFI entries
@@ -80,7 +80,7 @@ in
 		xorg.xhost # Use x.org server with distrobox
 		youtube-dl # Video downloader
 		zenstates # Ryzen CPU controller
-		vpn-exclude # Run shell with another gateway and IP
+		# vpn-exclude # Run shell with another gateway and IP
 	];
 
 	users.defaultUserShell = pkgs.zsh; # Use ZSH shell for all users
@@ -135,6 +135,7 @@ in
 	services = {
 		openssh.enable = true;
 		mullvad-vpn.enable = true;
+    clamav.updater.enable = true;
 	};
 
 	# Symlink files and folders to /etc
