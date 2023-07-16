@@ -4,20 +4,21 @@
 let
 	trim-generations =  pkgs.writeShellScriptBin "trim-generations" (builtins.readFile ../scripts/trim-generations.sh);
 	nix-gc = pkgs.writeShellScriptBin "nix-gc" ''
-		trim-generations 10 0 user ;
-		trim-generations 10 0 home-manager ;
-		sudo runuser - ${config.work.user.username} -c 'trim-generations 10 0 user' ;
-		sudo runuser - ${config.work.user.username} -c 'trim-generations 10 0 home-manager' ;
-		sudo trim-generations 10 0 system ;
+		gens=${config.gc.generations} ;
+		days=${config.gc.days} ;
+		trim-generations ''${1:-$gens} ''${2:-$days} user ;
+		trim-generations ''${1:-$gens} ''${2:-$days} home-manager ;
+		sudo -H -u ${config.work.user.username} env Gens="''${1:-$gens}" Days="''${2:-$days}" bash -c 'trim-generations $Gens $Days user' ;
+		sudo -H -u ${config.work.user.username} env Gens="''${1:-$gens}" Days="''${2:-$days}" bash -c 'trim-generations $Gens $Days home-manager' ;
+		sudo trim-generations ''${1:-$gens} ''${2:-$days} system ;
 		nix-store --gc
 	'';
-  vpn-exclude = pkgs.writeShellScriptBin "vpn-exclude" (builtins.readFile ../scripts/create-ns.sh);
+	vpn-exclude = pkgs.writeShellScriptBin "vpn-exclude" (builtins.readFile ../scripts/create-ns.sh);
 in
 {
 	boot.kernelPackages = pkgs.linuxPackages_zen; # Use ZEN linux kernel
 
 	environment.systemPackages = with pkgs; [
-		# (callPackage ./self-built/system-monitoring-center.nix { buildPythonApplication = pkgs.python3Packages.buildPythonApplication; pygobject3 = pkgs.python3Packages.pygobject3; }) # Task manager
 		(callPackage ./self-built/apx.nix {}) # Package manager using distrobox
 		(callPackage ./self-built/webcord {}) # An open source discord client
 		(firefox.override { extraNativeMessagingHosts = [ (callPackage ./self-built/pipewire-screenaudio {}) ]; }) # Browser

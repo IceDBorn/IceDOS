@@ -53,6 +53,18 @@
 			}; # Btrfs compression
 		};
 
+		gc = {
+			generations = lib.mkOption {
+				type = lib.types.str;
+				default = "5";
+			}; # Number of generations that will always be kept
+
+			days = lib.mkOption {
+				type = lib.types.str;
+				default = "7";
+			}; # Number of days before a generation can be deleted
+		};
+
 		# Declare users
 		main.user = {
 			enable = lib.mkOption {
