@@ -40,7 +40,7 @@ in
 		gimp # Image editor
 		git # Distributed version control system
 		gping # ping with a graph
-		# helvum # Pipewire patchbay
+		helvum # Pipewire patchbay
 		jq # JSON parser
 		killall # Tool to kill all programs matching process name
 		kitty # Terminal
