@@ -4,8 +4,8 @@
 let
 	trim-generations =  pkgs.writeShellScriptBin "trim-generations" (builtins.readFile ../scripts/trim-generations.sh);
 	nix-gc = pkgs.writeShellScriptBin "nix-gc" ''
-		gens="10" ;
-		days="0" ;
+		gens=${config.gc.generations} ;
+		days=${config.gc.days} ;
 		trim-generations ''${1:-$gens} ''${2:-$days} user ;
 		trim-generations ''${1:-$gens} ''${2:-$days} home-manager ;
 		sudo -H -u ${config.work.user.username} env Gens="''${1:-$gens}" Days="''${2:-$days}" bash -c 'trim-generations $Gens $Days user' ;
