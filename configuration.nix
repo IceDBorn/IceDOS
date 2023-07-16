@@ -22,5 +22,5 @@
 		./system/users
 	];
 
-	config.system.stateVersion = config.state-version; # Do not change without checking the docs
+	config.system.stateVersion = config.state-version;
 }

@@ -12,7 +12,7 @@ lib.mkIf config.work.user.enable {
 	};
 
 	home-manager.users.${config.work.user.username}.home = {
-		stateVersion = "22.05";
+		stateVersion = config.state-version;
 		file.".nix-successful-build" = {
 			text = "true";
 			recursive = true;
