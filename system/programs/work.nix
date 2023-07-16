@@ -6,7 +6,6 @@ lib.mkIf config.work.user.enable {
 		docker-compose
 		nodePackages.firebase-tools
 		slack
-		terminator
 		watchman
 	];
 }

@@ -45,27 +45,7 @@ lib.mkIf config.work.user.enable {
 					}
 				];
 
-				initExtra = ''
-					# prevent terminator from remembering commands from other panes
-					unset HISTFILE
-					# terminator env
-					echo $INIT_CMD
-					if [ ! -z "$INIT_CMD" ]; then
-						OLD_IFS=$IFS
-						setopt shwordsplit
-						IFS=';'
-						for cmd in $INIT_CMD; do
-							print -s "$cmd"  # add to history
-							eval $cmd
-						done
-						unset INIT_CMD
-						IFS=$OLD_IFS
-					fi
-
-					export NVM_DIR="$HOME/.nvm"
-					[ -s "$NVM_DIR/nvm.sh" ] && \. "$NVM_DIR/nvm.sh" # This loads nvm
-					[ -s "$NVM_DIR/bash_completion" ] && \. "$NVM_DIR/bash_completion"  # This loads nvm bash_completion
-				'';
+				# initExtra = ''eval "$(direnv hook zsh)"'';
 			};
 
 			# Install gnome extensions using firefox
@@ -81,8 +61,8 @@ lib.mkIf config.work.user.enable {
 
 			# Add user.js
 			".mozilla/firefox/privacy/user.js" = {
-        source = if (config.firefox.privacy.enable) then 
-          "${(pkgs.callPackage ../programs/self-built/arkenfox-userjs.nix {})}/user.js" 
+        source = if (config.firefox.privacy.enable) then
+          "${(pkgs.callPackage ../programs/self-built/arkenfox-userjs.nix {})}/user.js"
         else
           ../configs/firefox/user.js;
 				recursive = true;
@@ -152,12 +132,6 @@ lib.mkIf config.work.user.enable {
 
 			".config/tmux/tpm" = {
 				source = "${(pkgs.callPackage ../programs/self-built/tpm.nix {})}";
-				recursive = true;
-			};
-
-			# Add terminator config
-			".config/terminator/config" = {
-				source = ../configs/terminator;
 				recursive = true;
 			};
 		};
