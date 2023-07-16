@@ -4,6 +4,11 @@ lib.mkIf config.main.user.enable {
 	home-manager.users.${config.main.user.username} = lib.mkIf config.desktop-environment.gnome.enable {
 
 		dconf.settings = {
+			"org/gnome/desktop/input-sources" = {
+				# Use different keyboard language for each window
+				per-window = true;
+			};
+
 			"org/gnome/desktop/interface" = {
 				# Enable dark mode
 				color-scheme = "prefer-dark";
