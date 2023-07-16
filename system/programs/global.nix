@@ -25,6 +25,7 @@ in
 		android-tools # Tools for debugging android devices
 		appimage-run # Appimage runner
 		aria # Terminal downloader with multiple connections support
+		audacity # Audio editor
 		bat # Better cat command
 		bless # HEX Editor
 		btop # System monitor
