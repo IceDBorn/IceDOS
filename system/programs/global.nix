@@ -49,6 +49,7 @@ in
 		mousai # Song recognizer
 		mpv # Video player
 		mullvad-vpn # VPN Client
+		nextcloud-client
 		# neovim # Terminal text editor
 		nix-gc # Garbage collect old nix generations
 		# nodejs
