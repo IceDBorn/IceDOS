@@ -32,9 +32,8 @@ in
 		btop # System monitor
 		# cargo # Rust package manager
 		clamav # Antivirus
-		# direnv # Unclutter your .profile
 		curtail # Image compressor
-		direnv # Unclutter your .profile
+		# direnv # Unclutter your .profile
 		efibootmgr # Edit EFI entries
 		# feh # Minimal image viewer
 		# gcc # C++ compiler
@@ -43,7 +42,6 @@ in
 		gping # ping with a graph
 		# helvum # Pipewire patchbay
 		jq # JSON parser
-		kdenlive
 		killall # Tool to kill all programs matching process name
 		kitty # Terminal
 		libnotify # Send desktop notifications
