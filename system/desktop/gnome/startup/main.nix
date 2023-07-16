@@ -29,5 +29,19 @@ lib.mkIf config.main.user.enable {
 			'';
 			recursive = true;
 		};
+
+		# Add element to startup
+		".config/autostart/element.desktop" = {
+			text = ''
+				[Desktop Entry]
+				Exec=firefox --no-remote -P Element --name element https://icedborn.github.io/element-web
+				Icon=element
+				Name=Element
+				StartupWMClass=element
+				Terminal=false
+				Type=Application
+			'';
+			recursive = true;
+		};
 	};
 }
