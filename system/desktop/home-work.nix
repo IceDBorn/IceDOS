@@ -58,6 +58,7 @@ lib.mkIf config.work.user.enable {
 				enable = true;
 
 				defaultApplications = {
+					"application/pdf" = [ "firefox.desktop" ];
 					"application/x-bittorrent" = [ "de.haeckerfelix.Fragments.desktop" ];
 					"application/x-ms-dos-executable" = [ "wine.desktop" ];
 					"application/x-shellscript" = [ "sublime_text.desktop" ];
