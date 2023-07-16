@@ -2,7 +2,7 @@
 set -euo pipefail
 
 ## Defaults
-keepGensDef=10; keepDaysDef=7
+keepGensDef=10; keepDaysDef=0
 keepGens=$keepGensDef; keepDays=$keepDaysDef
 
 ## Usage
@@ -38,7 +38,11 @@ else
         if [[ $3 == "user" ]] || [[ $3 == "default" ]]; then
             profile=$(readlink /home/$USER/.nix-profile)
         elif [[ $3 == "home-manager" ]]; then
-            profile="/nix/var/nix/profiles/per-user/$USER/home-manager"
+            # home-manager defaults to $XDG_STATE_HOME; otherwise, use
+            # `home-manager generations` and `nix-store --query --roots
+            # /nix/store/...` to figure out what reference is keeping the old
+            # generations alive.
+            profile="${XDG_STATE_HOME:-$HOME/.local/state}/nix/profiles/home-manager"
         elif [[ $3 == "channels" ]]; then
             profile="/nix/var/nix/profiles/per-user/$USER/channels"
         else
