@@ -7,8 +7,8 @@ stdenvNoCC.mkDerivation {
 	src = fetchFromGitHub {
 		owner = "andreasgrafen";
 		repo = "cascade";
-		rev = "a89173a67696a8bf43e8e2ac7ed93ba7903d7a70";
-		sha256 = "D4ZZPm/li1Eoo1TmDS/lI2MAlgosNGOOk4qODqIaCes=";
+		rev = "9403343b9fb055767e32b7deb5c9a9c3c078b76e";
+		sha256 = "v6BcTyq57VcQ0pCErpnUgluelqlStmA1GnGJWGSFeIU=";
 	};
 
 	preferLocalBuild = true;
