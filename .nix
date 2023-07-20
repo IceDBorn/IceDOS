@@ -7,6 +7,11 @@
 			default = "23.05";
 		}; # Do not change without checking the docs (config.system.stateVersion)
 
+		efi-mount-path = lib.mkOption {
+			type = lib.types.str;
+			default = "/boot";
+		};
+
 		mounts.enable = lib.mkOption {
 			type = lib.types.bool;
 			default = true;
