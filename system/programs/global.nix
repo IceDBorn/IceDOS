@@ -1,5 +1,5 @@
 ### PACKAGES INSTALLED ON ALL USERS ###
-{ pkgs, config, ... }:
+{ pkgs, config, inputs, ... }:
 
 let
 	trim-generations =  pkgs.writeShellScriptBin "trim-generations" (builtins.readFile ../scripts/trim-generations.sh);
@@ -21,7 +21,7 @@ in
 	environment.systemPackages = with pkgs; [
 		(callPackage ./self-built/apx.nix {}) # Package manager using distrobox
 		(callPackage ./self-built/webcord {}) # An open source discord client
-		(firefox.override { extraNativeMessagingHosts = [ (callPackage ./self-built/pipewire-screenaudio {}) ]; }) # Browser
+		(firefox.override { extraNativeMessagingHosts = [ inputs.pipewire-screenaudio.packages.${pkgs.system}.default ]; }) # Browser
 		(pkgs.wrapOBS {plugins = with pkgs.obs-studio-plugins; [ obs-pipewire-audio-capture ];}) # Pipewire audio plugin for OBS Studio
 		android-tools # Tools for debugging android devices
 		appimage-run # Appimage runner

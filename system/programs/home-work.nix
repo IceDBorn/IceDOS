@@ -138,6 +138,7 @@ lib.mkIf config.work.user.enable {
 
 		xdg.desktopEntries.element = {
 			exec = "firefox --no-remote -P Element --name element https://icedborn.github.io/element-web https://discord.com/app";
+			icon = "element";
 			name = "Element";
 			terminal = false;
 			type = "Application";

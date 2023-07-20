@@ -3,18 +3,11 @@
 lib.mkIf config.work.user.enable {
 	home-manager.users.${config.work.user.username} = {
 		gtk = {
-			# Change GTK themes
 			enable = true;
-			theme = {
-				name = "Adwaita-dark";
-			};
-			cursorTheme = {
-				name = "Bibata-Modern-Classic";
-			};
-			iconTheme = {
-				name = "Tela-black-dark";
-			};
-		};
+			theme.name = "Adwaita-dark";
+			cursorTheme.name = "Bibata-Modern-Classic";
+			iconTheme.name = "Tela-black-dark";
+		};	# Change GTK themes
 
 		dconf.settings = {
 			"org/gnome/nautilus/preferences" = {
