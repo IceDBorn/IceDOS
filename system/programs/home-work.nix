@@ -135,5 +135,12 @@ lib.mkIf config.work.user.enable {
 				recursive = true;
 			};
 		};
+
+		xdg.desktopEntries.element = {
+			exec = "firefox --no-remote -P Element --name element https://icedborn.github.io/element-web https://discord.com/app";
+			name = "Element";
+			terminal = false;
+			type = "Application";
+		};
 	};
 }
