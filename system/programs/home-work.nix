@@ -61,8 +61,8 @@ lib.mkIf config.work.user.enable {
 
 			# Add user.js
 			".mozilla/firefox/privacy/user.js" = {
-        source = if (config.firefox.privacy.enable) then 
-          "${(pkgs.callPackage ../programs/self-built/arkenfox-userjs.nix {})}/user.js" 
+        source = if (config.firefox.privacy.enable) then
+          "${(pkgs.callPackage ../programs/self-built/arkenfox-userjs.nix {})}/user.js"
         else
           ../configs/firefox/user.js;
 				recursive = true;
@@ -138,6 +138,7 @@ lib.mkIf config.work.user.enable {
 
 		xdg.desktopEntries.element = {
 			exec = "firefox --no-remote -P Element --name element https://icedborn.github.io/element-web https://discord.com/app";
+			icon = "element";
 			name = "Element";
 			terminal = false;
 			type = "Application";
