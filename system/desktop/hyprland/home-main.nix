@@ -30,10 +30,17 @@ lib.mkIf config.main.user.enable {
         recursive = true;
       };
 
-      ".config/swaync" = {
-        source = ../../configs/swaync;
+      ".config/swaync/config.json" = {
+        source =
+          if (config.desktop-environment.hyprland.dual-monitor.enable) then ../../configs/swaync/config-dual.json
+          else ../../configs/swaync/config.json;
         recursive = true;
       }; # Add swaync config file
+
+      ".config/swaync/style.css" = {
+        source = ../../configs/swaync/style.css;
+        recursive = true;
+      }; # Add swaync styles file
 
       # Add wlogout config files
       ".config/wlogout/layout" = {
