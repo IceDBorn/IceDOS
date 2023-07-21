@@ -27,12 +27,13 @@ in
     appimage-run # Appimage runner
     aria # Terminal downloader with multiple connections support
     bat # Better cat command
-    btop # System monitor
     bless # HEX Editor
+    btop # System monitor
     cargo # Rust package manager
     clamav # Antivirus
     curtail # Image compressor
     direnv # Unclutter your .profile
+    easyeffects # Pipewire effects manager
     efibootmgr # Edit EFI entries
     feh # Minimal image viewer
     gcc # C++ compiler
@@ -49,6 +50,7 @@ in
     mpv # Video player
     mullvad-vpn # VPN Client
     neovim # Terminal text editor
+    newsflash # RSS reader
     nix-gc # Garbage collect old nix generations
     nodejs # Node package manager
     ntfs3g # Support NTFS drives
@@ -65,6 +67,7 @@ in
     tree # Display folder content at a tree format
     trim-generations # Smarter old nix generations cleaner
     unrar # Support opening rar files
+    vpn-exclude # Run shell with another gateway and IP
     vscodium # All purpose IDE
     warp # File sync
     wget # Terminal downloader
@@ -74,10 +77,6 @@ in
     xorg.xhost # Use x.org server with distrobox
     youtube-dl # Video downloader
     zenstates # Ryzen CPU controller
-    vpn-exclude # Run shell with another gateway and IP
-    newsflash # RSS reader
-    easyeffects
-    rnix-lsp
   ];
 
   users.defaultUserShell = pkgs.zsh; # Use ZSH shell for all users
