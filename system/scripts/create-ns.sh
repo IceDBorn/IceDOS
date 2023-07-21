@@ -47,7 +47,7 @@ execute () {
     . $CURRENT_ENV_FILE
     rm $CURRENT_ENV_FILE
     set +a
- 
+
     cd $PWD
     echo $COMMAND
     if [ -n /$COMMAND ]; then

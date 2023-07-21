@@ -6,8 +6,8 @@ vim.o.sessionoptions='blank,buffers,curdir,winsize,localoptions,tabpages'
 
 -- Fix tabufline compatibility with auto-session
 vim.api.nvim_create_autocmd({ 'BufEnter' }, {
-	callback = function()
-		vim.t.bufs = vim.api.nvim_list_bufs()
-	end,
+  callback = function()
+    vim.t.bufs = vim.api.nvim_list_bufs()
+  end,
 })
 
