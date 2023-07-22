@@ -1,75 +1,82 @@
 { config, lib, ... }:
 
 lib.mkIf config.main.user.enable {
-	home-manager.users.${config.main.user.username} = lib.mkIf config.desktop-environment.hyprland.enable {
-		home.file = {
-			".config/hypr/hyprland.conf" = {
+  home-manager.users.${config.main.user.username} = lib.mkIf config.desktop-environment.hyprland.enable {
+    home.file = {
+      ".config/hypr/hyprland.conf" = {
         source = if (config.desktop-environment.hyprland.dual-monitor.enable) then ../../configs/hyprland/hyprland-dual.conf else ../../configs/hyprland/hyprland.conf;
         recursive = true;
-			}; # Add hyprland config
+      }; # Add hyprland config
 
-			# Add waybar config files
-			".config/waybar/config" = {
-				source = ../../configs/waybar/config;
-				recursive = true;
-			};
+      # Add waybar config files
+      ".config/waybar/config" = {
+        source = ../../configs/waybar/config;
+        recursive = true;
+      };
 
-			".config/waybar/style.css" = {
-				source = ../../configs/waybar/style.css;
-				recursive = true;
-			};
+      ".config/waybar/style.css" = {
+        source = ../../configs/waybar/style.css;
+        recursive = true;
+      };
 
-			# Add rofi config files
-			".config/rofi/config.rasi" = {
-				source = ../../configs/rofi/config.rasi;
-				recursive = true;
-			};
+      # Add rofi config files
+      ".config/rofi/config.rasi" = {
+        source = ../../configs/rofi/config.rasi;
+        recursive = true;
+      };
 
-			".config/rofi/theme.rasi" = {
-				source = ../../configs/rofi/theme.rasi;
-				recursive = true;
-			};
+      ".config/rofi/theme.rasi" = {
+        source = ../../configs/rofi/theme.rasi;
+        recursive = true;
+      };
 
-			".config/swaync" = {
-				source = ../../configs/swaync;
-				recursive = true;
-			}; # Add swaync config file
+      ".config/swaync/config.json" = {
+        source =
+          if (config.desktop-environment.hyprland.dual-monitor.enable) then ../../configs/swaync/config-dual.json
+          else ../../configs/swaync/config.json;
+        recursive = true;
+      }; # Add swaync config file
 
-			# Add wlogout config files
-			".config/wlogout/layout" = {
-				source = ../../configs/wlogout/layout;
-				recursive = true;
-			};
+      ".config/swaync/style.css" = {
+        source = ../../configs/swaync/style.css;
+        recursive = true;
+      }; # Add swaync styles file
 
-			".config/wlogout/style.css" = {
-				source = ../../configs/wlogout/style.css;
-				recursive = true;
-			};
+      # Add wlogout config files
+      ".config/wlogout/layout" = {
+        source = ../../configs/wlogout/layout;
+        recursive = true;
+      };
 
-			".bashrc" = {
-				text = '''';
-				recursive = true;
-			}; # Avoid file not found errors for bash
+      ".config/wlogout/style.css" = {
+        source = ../../configs/wlogout/style.css;
+        recursive = true;
+      };
 
-			# Add hyprpaper config files
-			".config/hypr/hyprpaper.conf" = {
-				text = ''
-					preload = ~/.config/hypr/hyprpaper.jpg
-					wallpaper = , ~/.config/hypr/hyprpaper.jpg
-					ipc = off
-				'';
-				recursive = true;
-			};
+      ".bashrc" = {
+        text = '''';
+        recursive = true;
+      }; # Avoid file not found errors for bash
 
-			".config/hypr/hyprpaper.jpg" = {
-				source = ../../configs/hyprland/hyprpaper.jpg;
-				recursive = true;
-			};
+      # Add hyprpaper config files
+      ".config/hypr/hyprpaper.conf" = {
+        text = ''
+          preload = ~/.config/hypr/hyprpaper.jpg
+          wallpaper = , ~/.config/hypr/hyprpaper.jpg
+          ipc = off
+        '';
+        recursive = true;
+      };
 
-			".config/zsh/vpn-watcher.sh" = {
-				source = ../../scripts/vpn-watcher.sh;
-				recursive = true;
-			}; # Add vpn watcher script
-		};
-	};
+      ".config/hypr/hyprpaper.jpg" = {
+        source = ../../configs/hyprland/hyprpaper.jpg;
+        recursive = true;
+      };
+
+      ".config/zsh/vpn-watcher.sh" = {
+        source = ../../scripts/vpn-watcher.sh;
+        recursive = true;
+      }; # Add vpn watcher script
+    };
+  };
 }

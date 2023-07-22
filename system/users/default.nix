@@ -1,8 +1,8 @@
 { pkgs, ... }:
 
 {
-	imports = [
-		./main.nix
-		./work.nix
-	];
+  imports = [
+    ./main.nix
+    ./work.nix
+  ];
 }

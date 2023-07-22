@@ -1,20 +1,20 @@
 { stdenvNoCC, fetchFromGitHub, ... }:
 
 stdenvNoCC.mkDerivation rec {
-	name = "firefox-gnome-theme";
-	version = "115";
+  name = "firefox-gnome-theme";
+  version = "115";
 
-	src = fetchFromGitHub {
-		owner = "rafaelmardojai";
-		repo = "firefox-gnome-theme";
-		rev = "v${version}";
-		sha256 = "YuvNdDX1UAAJpoVMMUnmC20aRuIB5OuzZfaDHUEKFBQ=";
-	};
+  src = fetchFromGitHub {
+    owner = "rafaelmardojai";
+    repo = "firefox-gnome-theme";
+    rev = "v${version}";
+    sha256 = "YuvNdDX1UAAJpoVMMUnmC20aRuIB5OuzZfaDHUEKFBQ=";
+  };
 
-	preferLocalBuild = true;
+  preferLocalBuild = true;
 
-	installPhase = ''
-		mkdir -p $out
-		cp -r ./* $out/
-	'';
+  installPhase = ''
+    mkdir -p $out
+    cp -r ./* $out/
+  '';
 }

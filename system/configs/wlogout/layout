@@ -1,20 +1,20 @@
 {
-	"label" : "logout",
-	"action" : "loginctl terminate-user $USER",
-	"text" : "",
-	"keybind" : "l"
+  "label" : "logout",
+  "action" : "loginctl terminate-user $USER",
+  "text" : "",
+  "keybind" : "l"
 }
 
 {
-	"label" : "reboot",
-	"action" : "systemctl reboot",
-	"text" : "",
-	"keybind" : "r"
+  "label" : "reboot",
+  "action" : "systemctl reboot",
+  "text" : "",
+  "keybind" : "r"
 }
 
 {
-	"label" : "shutdown",
-	"action" : "systemctl poweroff",
-	"text" : "",
-	"keybind" : "s"
+  "label" : "shutdown",
+  "action" : "systemctl poweroff",
+  "text" : "",
+  "keybind" : "s"
 }
