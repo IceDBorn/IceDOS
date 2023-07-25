@@ -23,6 +23,7 @@ in
     (callPackage ./self-built/webcord {}) # An open source discord client
     (firefox.override { extraNativeMessagingHosts = [ inputs.pipewire-screenaudio.packages.${pkgs.system}.default ]; }) # Browser
     (pkgs.wrapOBS {plugins = with pkgs.obs-studio-plugins; [ obs-pipewire-audio-capture ];}) # Pipewire audio plugin for OBS Studio
+    amberol
     android-tools # Tools for debugging android devices
     appimage-run # Appimage runner
     aria # Terminal downloader with multiple connections support
