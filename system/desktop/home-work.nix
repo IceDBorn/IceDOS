@@ -57,11 +57,16 @@ lib.mkIf config.work.user.enable {
           "application/x-shellscript" = [ "sublime_text.desktop" ];
           "application/x-wine-extension-ini" = [ "sublime_text.desktop" ];
           "application/zip" = [ "org.gnome.FileRoller.desktop" ];
+          "audio/aac" = [ "io.bassi.Amberol.desktop" ];
+          "audio/mp3" = [ "io.bassi.Amberol.desktop" ];
+          "audio/wav" = [ "io.bassi.Amberol.desktop" ];
           "image/avif" = [ "org.gnome.gThumb.desktop" ];
           "image/jpeg" = [ "org.gnome.gThumb.desktop" ];
           "image/png" = [ "org.gnome.gThumb.desktop" ];
+          "image/svg+xml" = [ "org.gnome.gThumb.desktop" ];
           "text/plain" = [ "sublime_text.desktop" ];
           "video/mp4" = [ "mpv.desktop" ];
+          "video/quicktime" = [ "mpv.desktop" ];
         };
       }; # Default apps
     };
