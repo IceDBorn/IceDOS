@@ -84,20 +84,14 @@ lib.mkIf config.work.user.enable {
             "arcmenu@arcmenu.com"
             "caffeine@patapon.info"
             "clipboard-indicator@tudmotu.com"
-            "color-picker@tuberry"
             "dash-to-panel@jderose9.github.com"
-            "emoji-selector@maestroschan.fr"
             "gsconnect@andyholmes.github.io"
-            "quick-settings-tweaks@qwreey"
           ] else [
             "appindicatorsupport@rgcjonas.gmail.com"
             "arcmenu@arcmenu.com"
             "clipboard-indicator@tudmotu.com"
-            # "color-picker@tuberry"
             "dash-to-panel@jderose9.github.com"
-            # "emoji-selector@maestroschan.fr"
             # "gsconnect@andyholmes.github.io"
-            # "quick-settings-tweaks@qwreey"
           ];
 
         favorite-apps = if (config.desktop-environment.gnome.configuration.pinned-apps.dash-to-panel.enable) then [
