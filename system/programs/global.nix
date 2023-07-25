@@ -72,6 +72,7 @@ in
     tmux # Terminal multiplexer
     tree # Display folder content at a tree format
     trim-generations # Smarter old nix generations cleaner
+    ungoogled-chromium # Chrome without any google stuff (fallback when something doesn't work on Firefox)
     unrar # Support opening rar files
     # vpn-exclude # Run shell with another gateway and IP
     vscodium # All purpose IDE
