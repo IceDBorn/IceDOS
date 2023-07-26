@@ -42,7 +42,7 @@ lib.mkIf config.main.user.enable {
         enable = true;
 
         defaultApplications = {
-          "application/pdf" = [ "firefox.desktop" ];
+          "application/pdf" = "firefox.desktop";
           "application/x-bittorrent" = [ "de.haeckerfelix.Fragments.desktop" ];
           "application/x-ms-dos-executable" = [ "wine.desktop" ];
           "application/x-shellscript" = [ "sublime_text.desktop" ];
@@ -55,9 +55,14 @@ lib.mkIf config.main.user.enable {
           "image/jpeg" = [ "org.gnome.gThumb.desktop" ];
           "image/png" = [ "org.gnome.gThumb.desktop" ];
           "image/svg+xml" = [ "org.gnome.gThumb.desktop" ];
+          "text/html" = "firefox.desktop";
           "text/plain" = [ "sublime_text.desktop" ];
           "video/mp4" = [ "mpv.desktop" ];
           "video/quicktime" = [ "mpv.desktop" ];
+          "x-scheme-handler/http" = "firefox.desktop";
+          "x-scheme-handler/https" = "firefox.desktop";
+          "x-scheme-handler/about" = "firefox.desktop";
+          "x-scheme-handler/unknown" = "firefox.desktop";
         };
       }; # Default apps
     };
