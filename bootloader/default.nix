@@ -12,7 +12,7 @@
       # Use systemd boot instead of grub
       systemd-boot = {
         enable = true;
-        configurationLimit = 10;
+        configurationLimit = 20;
         consoleMode = "max"; # Select the highest resolution for the bootloader
       };
 
