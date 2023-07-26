@@ -19,13 +19,13 @@ in
   boot.kernelPackages = pkgs.linuxPackages_zen; # Use ZEN linux kernel
 
   environment.systemPackages = with pkgs; [
-    (callPackage ./self-built/apx.nix {}) # Package manager using distrobox
     (callPackage ./self-built/webcord {}) # An open source discord client
     (firefox.override { extraNativeMessagingHosts = [ inputs.pipewire-screenaudio.packages.${pkgs.system}.default ]; }) # Browser
     (pkgs.wrapOBS {plugins = with pkgs.obs-studio-plugins; [ obs-pipewire-audio-capture ];}) # Pipewire audio plugin for OBS Studio
     amberol
     android-tools # Tools for debugging android devices
     appimage-run # Appimage runner
+    apx
     aria # Terminal downloader with multiple connections support
     audacity # Audio editor
     bat # Better cat command
