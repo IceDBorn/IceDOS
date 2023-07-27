@@ -19,7 +19,7 @@ in
   boot.kernelPackages = pkgs.linuxPackages_zen; # Use ZEN linux kernel
 
   environment.systemPackages = with pkgs; [
-    (callPackage ./self-built/webcord {}) # An open source discord client
+    (callPackage ./self-built/webcord { electron = electron_24; }) # An open source discord client
     (firefox.override { extraNativeMessagingHosts = [ inputs.pipewire-screenaudio.packages.${pkgs.system}.default ]; }) # Browser
     (pkgs.wrapOBS {plugins = with pkgs.obs-studio-plugins; [ obs-pipewire-audio-capture ];}) # Pipewire audio plugin for OBS Studio
     amberol
