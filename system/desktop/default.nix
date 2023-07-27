@@ -75,6 +75,9 @@
       pitivi # Video editor
       tela-icon-theme # Icon theme
     ];
+
+    # set Firefox as default browser for Electron apps
+    sessionVariables.DEFAULT_BROWSER = "${pkgs.firefox}/bin/firefox";
   };
 
   fonts.fonts = with pkgs; [
