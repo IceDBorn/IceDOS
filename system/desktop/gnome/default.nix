@@ -19,6 +19,7 @@
     gnomeExtensions.appindicator # Tray icons for gnome
     gnomeExtensions.arcmenu # Start menu
     # gnomeExtensions.caffeine # Disable auto suspend and screen blank
+    gnomeExtensions.clipboard-indicator # Clipboard indicator for gnome
     gnomeExtensions.dash-to-panel # An icon taskbar for gnome
     # gnomeExtensions.gsconnect # KDE Connect implementation for gnome
     gnome-extension-manager # Gnome extensions manager and downloader
