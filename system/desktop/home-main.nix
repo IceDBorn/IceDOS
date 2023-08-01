@@ -46,7 +46,7 @@ lib.mkIf config.main.user.enable {
           "application/x-bittorrent" = "de.haeckerfelix.Fragments.desktop";
           "application/x-ms-dos-executable" = "wine.desktop";
           "application/x-shellscript" = "sublime_text.desktop";
-          "application/x-wine-extension-ini" = [ "sublime_text.desktop" ];
+          "application/x-wine-extension-ini" = "sublime_text.desktop";
           "application/zip" = "org.gnome.FileRoller.desktop";
           "audio/aac" = "io.bassi.Amberol.desktop";
           "audio/mp3" = "io.bassi.Amberol.desktop";
@@ -59,6 +59,7 @@ lib.mkIf config.main.user.enable {
           "text/plain" = "sublime_text.desktop";
           "video/mp4" = "mpv.desktop";
           "video/quicktime" = "mpv.desktop";
+          "video/x-ms-wmv" = "mpv.desktop";
           "x-scheme-handler/http" = "firefox.desktop";
           "x-scheme-handler/https" = "firefox.desktop";
           "x-scheme-handler/about" = "firefox.desktop";
