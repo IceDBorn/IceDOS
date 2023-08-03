@@ -69,7 +69,7 @@ lib.mkIf config.main.user.enable {
           }
         ];
 
-        initExtra = ''eval "$(direnv hook zsh)"'';
+        # initExtra = ''eval "$(direnv hook zsh)"'';
       };
 
       # Install gnome extensions using firefox
