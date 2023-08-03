@@ -77,7 +77,7 @@
     ];
   };
 
-  fonts.fonts = with pkgs; [
+  fonts.packages = with pkgs; [
     meslo-lgs-nf
     cantarell-fonts
     (nerdfonts.override { fonts = [ "JetBrainsMono" ]; })
