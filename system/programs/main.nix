@@ -10,6 +10,7 @@ lib.mkIf config.main.user.enable {
     # godot_4 # Game engine
     heroic # Epic Games Launcher for Linux
     input-remapper # Remap input device controls
+    jstest-gtk # Joystick controller tester
     # papermc # Minecraft server
     # pcsx2 # PS2 Emulator
     # ppsspp # PSP Emulator
