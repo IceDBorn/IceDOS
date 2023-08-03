@@ -40,7 +40,7 @@
     allowUnfree = true; # Allow proprietary packages
     permittedInsecurePackages = [
       "nodejs-16.20.1"
-      "openssl-1.1.1u"
+      "openssl-1.1.1v"
     ];
   };
 }
