@@ -2,8 +2,7 @@
 
 lib.mkIf config.amd.cpu.enable {
   boot = lib.mkMerge [
-    # Needed for zenstates
-    { kernelModules = [ "msr" ]; }
+    { kernelModules = [ "msr" ]; } # Needed for zenstates
 
     # for older kernels, see https://github.com/NixOS/nixos-hardware/blob/c256df331235ce369fdd49c00989fdaa95942934/common/cpu/amd/pstate.nix
     (lib.mkIf (lib.versionAtLeast config.boot.kernelPackages.kernel.version "6.3") {
