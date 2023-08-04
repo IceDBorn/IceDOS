@@ -62,7 +62,6 @@ in
     ranger # Terminal file manager
     rnnoise-plugin # A real-time noise suppression plugin
     signal-desktop # Encrypted messaging platform
-    sublime4 # Text editor
     tmux # Terminal multiplexer
     tree # Display folder content at a tree format
     trim-generations # Smarter old nix generations cleaner
