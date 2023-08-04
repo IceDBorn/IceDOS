@@ -2,13 +2,13 @@
 
 stdenvNoCC.mkDerivation rec {
   name = "firefox-gnome-theme";
-  version = "115";
+  version = "116";
 
   src = fetchFromGitHub {
     owner = "rafaelmardojai";
     repo = "firefox-gnome-theme";
     rev = "v${version}";
-    sha256 = "YuvNdDX1UAAJpoVMMUnmC20aRuIB5OuzZfaDHUEKFBQ=";
+    sha256 = "0IS5na2WRSNWNygHhmZOcXhdrx2aFhCDQY8XVVeHf8Q=";
   };
 
   preferLocalBuild = true;
