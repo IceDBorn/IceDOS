@@ -238,6 +238,12 @@ lib.mkIf config.main.user.enable {
         source = "${(pkgs.callPackage ../programs/self-built/tpm.nix {})}";
         recursive = true;
       };
+
+      # Use FSR on MPV by default
+      ".config/mpv" = {
+        source = ../configs/mpv;
+        recursive = true;
+      };
     };
 
     xdg.desktopEntries.element = {
