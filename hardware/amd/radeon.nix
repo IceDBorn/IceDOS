@@ -3,8 +3,6 @@
 lib.mkIf config.amd.gpu.enable {
   boot.initrd.kernelModules = [ "amdgpu" ]; # Use the amdgpu drivers upon boot
 
-  services.xserver.videoDrivers = [ "amdgpu" ];
-
   programs.corectrl = {
     enable = true;
     gpuOverclock = {
@@ -15,14 +13,14 @@ lib.mkIf config.amd.gpu.enable {
 
   # Do not ask for password when launching corectrl
   security.polkit.extraConfig = ''
-    polkit.addRule(function(action, subject) {
-    if ((action.id == "org.corectrl.helper.init" ||
-    action.id == "org.corectrl.helperkiller.init") &&
-    subject.local == true &&
-    subject.active == true &&
-    subject.isInGroup("users")) {
-    return polkit.Result.YES;
-    }
+    polkit.addRule(function (action, subject) {
+      if ((action.id == "org.corectrl.helper.init" ||
+          action.id == "org.corectrl.helperkiller.init") &&
+          subject.local == true &&
+          subject.active == true &&
+          subject.isInGroup("users")) {
+        return polkit.Result.YES;
+      }
     });
   '';
 

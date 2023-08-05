@@ -67,4 +67,6 @@ in
   fileSystems = lib.mkIf (config.boot.btrfs-compression.enable && config.boot.btrfs-compression.root.enable) {
     "/".options = [ "compress=zstd" ];
   };
+
+  services.fstrim.enable = true; # Enable SSD TRIM
 }
