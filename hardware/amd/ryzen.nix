@@ -1,7 +1,14 @@
 { pkgs, lib, config, ... }:
 
 lib.mkIf config.amd.cpu.enable {
-  boot.kernelModules = [ "msr" ]; # Needed for zenstates
+  boot = lib.mkMerge [
+    { kernelModules = [ "msr" ]; } # Needed for zenstates
+
+    # for older kernels, see https://github.com/NixOS/nixos-hardware/blob/c256df331235ce369fdd49c00989fdaa95942934/common/cpu/amd/pstate.nix
+    (lib.mkIf (lib.versionAtLeast config.boot.kernelPackages.kernel.version "6.3") {
+      kernelParams = [ "amd_pstate=active" ];
+    })
+  ];
 
   hardware.cpu.amd.updateMicrocode = true;
 
