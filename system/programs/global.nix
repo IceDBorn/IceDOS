@@ -147,4 +147,17 @@ in
   environment.etc."rnnoise-plugin/librnnoise_ladspa.so".source = "${pkgs.rnnoise-plugin}/lib/ladspa/librnnoise_ladspa.so";
   environment.etc."proton-ge-nix".source = "${(pkgs.callPackage self-built/proton-ge.nix {})}/";
   environment.etc."apx/config.json".source = "${(pkgs.callPackage self-built/apx.nix {})}/etc/apx/config.json";
+
+  nixpkgs.overlays = [
+    (self: super: {
+      mpv = super.mpv.override {
+        scripts = with pkgs; [
+          mpvScripts.inhibit-gnome
+          mpvScripts.mpris
+          mpvScripts.thumbfast
+          mpvScripts.uosc
+        ];
+      };
+    })
+  ];
 }
