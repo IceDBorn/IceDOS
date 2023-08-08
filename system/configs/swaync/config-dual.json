@@ -2,7 +2,7 @@
   "scripts": {
     "messengers": {
       "exec": "hyprctl dispatch workspace 11",
-      "app-name": "((^|, )(WebCord|Signal|element))+$",
+      "app-name": "((^|, )(WebCord|Signal|pwas))+$",
       "run-on": "action"
     }
   },

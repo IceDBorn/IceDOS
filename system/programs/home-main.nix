@@ -133,13 +133,13 @@ lib.mkIf config.main.user.enable {
         recursive = true;
       };
 
-      # Create second firefox profile for element
-      ".mozilla/firefox/element/user.js" = {
+      # Create second firefox profile for pwas
+      ".mozilla/firefox/pwas/user.js" = {
         source = "${(pkgs.callPackage ../programs/self-built/arkenfox-userjs.nix {})}/user.js";
         recursive = true;
       };
 
-      ".mozilla/firefox/element/chrome" = {
+      ".mozilla/firefox/pwas/chrome" = {
         source = pkgs.callPackage ../programs/self-built/firefox-cascade.nix { };
         recursive = true;
       };
@@ -246,10 +246,10 @@ lib.mkIf config.main.user.enable {
       };
     };
 
-    xdg.desktopEntries.element = {
-      exec = "firefox --no-remote -P Element --name element https://icedborn.github.io/icedchat https://discord.com/app";
+    xdg.desktopEntries.pwas = {
+      exec = "firefox --no-remote -P PWAs --name pwas https://mail.tutanota.com https://icedborn.github.io/icedchat https://discord.com/app";
       icon = "element";
-      name = "Element";
+      name = "Firefox PWAs";
       terminal = false;
       type = "Application";
     };
