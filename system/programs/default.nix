@@ -39,7 +39,7 @@
   nixpkgs.config = {
     allowUnfree = true; # Allow proprietary packages
     permittedInsecurePackages = [
-      "nodejs-16.20.1"
+      "nodejs-16.20.2"
       "openssl-1.1.1v"
     ];
   };
