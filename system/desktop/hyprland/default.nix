@@ -64,7 +64,7 @@
 
   security.polkit.enable = lib.mkIf config.desktop-environment.hyprland.enable true;
 
-  xdg.portal.extraPortals = [ pkgs.xdg-desktop-portal-gtk ]; # Needed for steam file picker
+  xdg.portal.extraPortals = if (config.desktop-environment.gnome.enable) then [] else [ pkgs.xdg-desktop-portal-gtk ]; # Needed for steam file picker
 
   disabledModules = [ "programs/hyprland.nix" ]; # Needed for hyprland flake
 }
