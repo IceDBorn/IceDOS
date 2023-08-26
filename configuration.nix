@@ -17,7 +17,7 @@
     ./hardware/virtualisation.nix
     ./system/desktop
     ./system/desktop/gnome
-    ./system/desktop/hyprland
+    ./system/desktop/steam
     ./system/programs
     ./system/users
   ];
