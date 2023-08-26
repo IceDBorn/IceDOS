@@ -1,5 +1,5 @@
 ### PACKAGES INSTALLED ON ALL USERS ###
-{ pkgs, config, inputs, ... }:
+{ pkgs, config, ... }:
 
 let
   trim-generations = pkgs.writeShellScriptBin "trim-generations" (builtins.readFile ../scripts/trim-generations.sh);
@@ -20,7 +20,7 @@ in
 
   environment.systemPackages = with pkgs; [
     (callPackage ./self-built/webcord { electron = electron_24; }) # An open source discord client
-    (firefox.override { extraNativeMessagingHosts = [ inputs.pipewire-screenaudio.packages.${pkgs.system}.default ]; }) # Browser
+    (firefox.override { extraNativeMessagingHosts = [ (callPackage ./self-built/pipewire-screenaudio {}) ]; }) # Browser
     (pkgs.wrapOBS {plugins = with pkgs.obs-studio-plugins; [ obs-pipewire-audio-capture ];}) # Pipewire audio plugin for OBS Studio
     amberol
     android-tools # Tools for debugging android devices
@@ -53,7 +53,7 @@ in
     mullvad-vpn # VPN Client
     nextcloud-client
     # neovim # Terminal text editor
-    newsflash # RSS reader
+    # newsflash # RSS reader
     nix-gc # Garbage collect old nix generations
     # nodejs
     nodejs-16_x # Node package manager
