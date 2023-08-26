@@ -114,7 +114,7 @@ local plugins = {
     lazy = false,
   },
   {
-    "timuntersberger/neogit",
+    "kdheepak/lazygit.nvim",
     lazy = false,
   },
   {
