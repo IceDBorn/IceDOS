@@ -35,6 +35,7 @@ in
     direnv # Unclutter your .profile
     easyeffects # Pipewire effects manager
     efibootmgr # Edit EFI entries
+    endeavour # Tasks
     feh # Minimal image viewer
     gcc # C++ compiler
     gimp # Image editor
