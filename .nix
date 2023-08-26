@@ -258,6 +258,13 @@
         };
       };
 
+      hypr = {
+        enable = lib.mkOption {
+          type = lib.types.bool;
+          default = true;
+        };
+      };
+
       hyprland = {
         enable = lib.mkOption {
           type = lib.types.bool;
