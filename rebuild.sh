@@ -15,4 +15,4 @@ sudo cp flake.lock /etc/nixos
 sudo cp flake.nix /etc/nixos
 
 # Build the configuration
-sudo nixos-rebuild switch || exit
+sudo nixos-rebuild switch --show-trace || exit

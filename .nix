@@ -258,6 +258,13 @@
         };
       };
 
+      hypr = {
+        enable = lib.mkOption {
+          type = lib.types.bool;
+          default = false;
+        };
+      };
+
       hyprland = {
         enable = lib.mkOption {
           type = lib.types.bool;
@@ -267,6 +274,28 @@
         dual-monitor.enable = lib.mkOption {
           type = lib.types.bool;
           default = false;
+        };
+      };
+
+      steam = {
+        enable = lib.mkOption {
+          type = lib.types.bool;
+          default = true;
+        };
+
+        width = lib.mkOption {
+          type = lib.types.str;
+          default = "3840";
+        };
+
+        height = lib.mkOption {
+          type = lib.types.str;
+          default = "2160";
+        };
+
+        refresh-rate = lib.mkOption {
+          type = lib.types.str;
+          default = "120";
         };
       };
 

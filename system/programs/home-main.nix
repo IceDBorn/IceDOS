@@ -244,6 +244,11 @@ lib.mkIf config.main.user.enable {
         source = ../configs/mpv;
         recursive = true;
       };
+
+      ".bashrc" = {
+        text = '''';
+        recursive = true;
+      }; # Avoid file not found errors for bash
     };
 
     xdg.desktopEntries.pwas = {

@@ -114,7 +114,7 @@ local plugins = {
     lazy = false,
   },
   {
-    "timuntersberger/neogit",
+    "kdheepak/lazygit.nvim",
     lazy = false,
   },
   {
@@ -186,6 +186,7 @@ local plugins = {
         "rust-analyzer",
         "rustfmt",
         "stylua",
+        "typescript-language-server",
       },
     },
   },

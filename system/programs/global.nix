@@ -35,17 +35,24 @@ in
     clamav # Antivirus
     curtail # Image compressor
     # direnv # Unclutter your .profile
+    # dotnet-sdk_7 # SDK for .net
     easyeffects # Pipewire effects manager
     efibootmgr # Edit EFI entries
+    # endeavour # Tasks
+    # fd # Find alternative
     # feh # Minimal image viewer
     # gcc # C++ compiler
+    # gdtoolkit # Tools for gdscript
     gimp # Image editor
     git # Distributed version control system
     gping # ping with a graph
     helvum # Pipewire patchbay
-    jq # JSON parser
+    # iotas # Notes
+    # jc # JSON parser
+    # jq # JSON parser
     killall # Tool to kill all programs matching process name
     kitty # Terminal
+    lazygit # Git CLI UI
     libnotify # Send desktop notifications
     lsd # Better ls command
     mousai # Song recognizer
@@ -55,6 +62,7 @@ in
     # neovim # Terminal text editor
     # newsflash # RSS reader
     nix-gc # Garbage collect old nix generations
+    # nixfmt # A nix formatter
     # nodejs
     nodejs-16_x # Node package manager
     ntfs3g # Support NTFS drives
@@ -64,6 +72,7 @@ in
     pulseaudio # Various pulseaudio tools
     python3 # Python
     # ranger # Terminal file manager
+    # ripgrep # Silver searcher grep
     rnnoise-plugin # A real-time noise suppression plugin
     rustup # The rust tooling package
     signal-desktop # Encrypted messaging platform
@@ -75,6 +84,7 @@ in
     trim-generations # Smarter old nix generations cleaner
     ungoogled-chromium # Chrome without any google stuff (fallback when something doesn't work on Firefox)
     unrar # Support opening rar files
+    # unzip # An extraction utility
     # vpn-exclude # Run shell with another gateway and IP
     vscodium # All purpose IDE
     jetbrains.webstorm # Javascript IDE
