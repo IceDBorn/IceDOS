@@ -44,6 +44,7 @@ in
     jq # JSON parser
     killall # Tool to kill all programs matching process name
     kitty # Terminal
+    lazygit # Git CLI UI
     libnotify # Send desktop notifications
     lsd # Better ls command
     mousai # Song recognizer
