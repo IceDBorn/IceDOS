@@ -24,6 +24,7 @@
       gnome.gnome-themes-extra # Adwaita GTK theme
       gnome.nautilus # File manager
       grim # Screenshot tool
+      networkmanagerapplet # Network manager tray icon
       pavucontrol # Sound manager
       polkit_gnome # Polkit manager
       rofi-wayland # App launcher
