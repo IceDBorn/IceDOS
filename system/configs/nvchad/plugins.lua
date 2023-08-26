@@ -186,6 +186,7 @@ local plugins = {
         "rust-analyzer",
         "rustfmt",
         "stylua",
+        "typescript-language-server",
       },
     },
   },

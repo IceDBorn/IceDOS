@@ -17,6 +17,7 @@ local servers = {
   "neocmake",
   "nil_ls",
   "rust_analyzer",
+  "tsserver",
 }
 
 for _, lsp in ipairs(servers) do
