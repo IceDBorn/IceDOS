@@ -27,13 +27,15 @@ lib.mkIf config.work.user.enable {
       desktopEntries = {
         discord = {
           name = "Discord";
-          exec = "discord --enable-features=UseOzonePlatform --ozone-platform=wayland";
+          exec =
+            "discord --enable-features=UseOzonePlatform --ozone-platform=wayland";
           icon = "discord";
         }; # Force discord to use wayland
 
         mullvad-gui = {
           name = "Mullvad";
-          exec = "mullvad-gui --enable-features=UseOzonePlatform,WaylandWindowDecorations --ozone-platform=wayland";
+          exec =
+            "mullvad-gui --enable-features=UseOzonePlatform,WaylandWindowDecorations --ozone-platform=wayland";
           icon = "mullvad-vpn";
         }; # Force mullvad to use wayland and window decorations
 
@@ -41,9 +43,7 @@ lib.mkIf config.work.user.enable {
           name = "Slack";
           exec = "slack --enable-features=WaylandWindowDecorations";
           icon = "slack";
-          settings = {
-            StartupWMClass = "slack";
-          };
+          settings = { StartupWMClass = "slack"; };
         }; # Force slack to use window decorations
       };
 

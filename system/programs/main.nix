@@ -1,4 +1,4 @@
-### PACKAGES INSTALLED ON MAIN USER ###
+# PACKAGES INSTALLED ON MAIN USER
 { config, pkgs, lib, ... }:
 
 lib.mkIf config.main.user.enable {

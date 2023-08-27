@@ -149,7 +149,8 @@
 
           value = lib.mkOption {
             type = lib.types.str;
-            default = "-p 0 -v 30 -f A8"; # Pstate 0, 1.25 voltage, 4200 clock speed
+            # Pstate 0, 1.25 voltage, 4200 clock speed
+            default = "-p 0 -v 30 -f A8";
           };
         };
       };

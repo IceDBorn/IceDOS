@@ -1,4 +1,4 @@
-{ pkgs, config, lib, ... }:
+{ pkgs, ... }:
 
 {
   imports = [ ./home-main.nix ./home-work.nix ]; # Setup home manager for hypr

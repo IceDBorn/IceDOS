@@ -11,11 +11,11 @@ vim.api.nvim_create_autocmd({ 'BufEnter' }, {
   end,
 })
 
--- Format on save
+-- Format on sav
 vim.cmd [[
     augroup format_on_save
-      autocmd! 
-      autocmd BufWritePre * lua vim.lsp.buf.format({ async = false }) 
+      autocmd!
+      autocmd BufWritePre * lua vim.lsp.buf.format({ async = false })
     augroup end
 ]]
 

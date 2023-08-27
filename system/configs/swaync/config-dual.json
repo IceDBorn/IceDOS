@@ -37,13 +37,7 @@
   "hide-on-action": true,
   "script-fail-notify": true,
 
-  "widgets": [
-    "inhibitors",
-    "title",
-    "dnd",
-    "mpris",
-    "notifications"
-  ],
+  "widgets": ["inhibitors", "title", "dnd", "mpris", "notifications"],
   "widget-config": {
     "inhibitors": {
       "text": "Inhibitors",

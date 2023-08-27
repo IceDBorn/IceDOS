@@ -1,11 +1,8 @@
-### DESKTOP POWERED BY GNOME ###
+# ## DESKTOP POWERED BY GNOME ###
 { pkgs, config, lib, ... }:
 
 {
-  imports = [
-    ./home-main.nix
-    ./home-work.nix
-  ]; # Setup home manager
+  imports = [ ./home-main.nix ./home-work.nix ]; # Setup home manager
 
   # Set your time zone
   time.timeZone = "Europe/Bucharest";
@@ -28,10 +25,13 @@
 
         autoLogin = lib.mkIf config.boot.autologin.enable {
           enable = true;
-          user =
-            if (config.main.user.enable && config.boot.autologin.main.user.enable) then config.main.user.username
-            else if (config.work.user.enable) then config.work.user.username
-            else "";
+          user = if (config.main.user.enable
+            && config.boot.autologin.main.user.enable) then
+            config.main.user.username
+          else if (config.work.user.enable) then
+            config.work.user.username
+          else
+            "";
         };
       };
 
@@ -55,14 +55,16 @@
 
   sound.enable = true;
   hardware.pulseaudio.enable = false;
-  security.rtkit.enable = true; # Enable service which hands out realtime scheduling priority to user processes on demand, required by pipewire
+  security.rtkit.enable =
+    true; # Enable service which hands out realtime scheduling priority to user processes on demand, required by pipewire
 
   networking = {
     networkmanager.enable = true;
     firewall.enable = false;
   };
 
-  security.sudo.extraConfig = "Defaults pwfeedback"; # Show asterisks when typing sudo password
+  security.sudo.extraConfig =
+    "Defaults pwfeedback"; # Show asterisks when typing sudo password
 
   environment = {
     # Packages to install for all window manager/desktop environments

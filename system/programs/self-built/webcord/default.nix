@@ -1,4 +1,5 @@
-{ lib, stdenv, buildNpmPackage, fetchFromGitHub, copyDesktopItems, python3, rustc, pipewire, libpulseaudio, electron, makeDesktopItem }:
+{ lib, buildNpmPackage, fetchFromGitHub, copyDesktopItems, python3, pipewire
+, libpulseaudio, electron, makeDesktopItem }:
 
 buildNpmPackage rec {
   name = "webcord";
@@ -14,15 +15,9 @@ buildNpmPackage rec {
 
   npmDepsHash = "sha256-fg8BBVcNYeXipMX33Eh7wmDP27bp3NTM0FO+ld0jWF4=";
 
-  nativeBuildInputs = [
-    copyDesktopItems
-    python3
-  ];
+  nativeBuildInputs = [ copyDesktopItems python3 ];
 
-  libPath = lib.makeLibraryPath [
-    pipewire
-    libpulseaudio
-  ];
+  libPath = lib.makeLibraryPath [ pipewire libpulseaudio ];
 
   patches = [ ./node-pipewire.patch ];
 
@@ -36,7 +31,8 @@ buildNpmPackage rec {
   '';
 
   nodePipewire = builtins.fetchTarball {
-    url = "https://github.com/kakxem/node-pipewire/releases/download/${nodePipewireVersion}/node-v108-linux-x64.tar.gz";
+    url =
+      "https://github.com/kakxem/node-pipewire/releases/download/${nodePipewireVersion}/node-v108-linux-x64.tar.gz";
     sha256 = "046fhaqz06sdnvrmvq02i2k1klv90sgyz24iz3as0hmr6v90ldm1";
   };
 
@@ -71,10 +67,12 @@ buildNpmPackage rec {
   ];
 
   meta = with lib; {
-    description = "A Discord and Fosscord electron-based client implemented without Discord API";
+    description =
+      "A Discord and Fosscord electron-based client implemented without Discord API";
     homepage = "https://github.com/SpacingBat3/WebCord";
     downloadPage = "https://github.com/SpacingBat3/WebCord/releases";
-    changelog = "https://github.com/SpacingBat3/WebCord/releases/tag/v${version}";
+    changelog =
+      "https://github.com/SpacingBat3/WebCord/releases/tag/v${version}";
     license = licenses.mit;
     maintainers = with maintainers; [ huantian ];
     platforms = platforms.linux;

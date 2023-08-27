@@ -1,4 +1,4 @@
-### PACKAGES INSTALLED ON WORK USER ###
+# PACKAGES INSTALLED ON WORK USER
 { config, pkgs, lib, ... }:
 
 lib.mkIf config.work.user.enable {

@@ -5,7 +5,8 @@ lib.mkIf config.main.user.enable {
     createHome = true;
     home = "/home/${config.main.user.username}";
     useDefaultShell = true;
-    password = "1"; # Default password used for first login, change later with passwd
+    # Default password used for first login, change later using passwd
+    password = "1";
     isNormalUser = true;
     description = "${config.main.user.description}";
     extraGroups = [ "networkmanager" "wheel" "kvm" "docker" "input" ];

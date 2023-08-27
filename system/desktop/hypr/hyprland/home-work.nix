@@ -1,10 +1,15 @@
 { config, lib, ... }:
 
-lib.mkIf (config.work.user.enable && config.desktop-environment.hyprland.enable) {
+lib.mkIf
+(config.work.user.enable && config.desktop-environment.hyprland.enable) {
   home-manager.users.${config.work.user.username} = {
     home.file = {
       ".config/hypr/hyprland.conf" = {
-        source = if (config.desktop-environment.hyprland.dual-monitor.enable) then ../../../configs/hyprland/hyprland-dual.conf else ../../../configs/hyprland/hyprland.conf;
+        source =
+          if (config.desktop-environment.hyprland.dual-monitor.enable) then
+            ../../../configs/hyprland/hyprland-dual.conf
+          else
+            ../../../configs/hyprland/hyprland.conf;
         recursive = true;
       }; # Add hyprland config
 

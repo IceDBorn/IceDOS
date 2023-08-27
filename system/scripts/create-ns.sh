@@ -1,9 +1,9 @@
 #!/usr/bin/env bash
 
 if [ $# -lt 3 ]; then
-  echo 1>&2 "$0: At least three arguments are needed, in this particular order..."
-  echo 1>&2 "$0: Uplink, IP, Gateway, Optional: Command"
-  exit 1
+    echo 1>&2 "$0: At least three arguments are needed, in this particular order..."
+    echo 1>&2 "$0: Uplink, IP, Gateway, Optional: Command"
+    exit 1
 fi
 
 UPLINK=$1
@@ -24,25 +24,25 @@ TO_EXPORT_ENV="UPLINK IP GATEWAY COMMAND DEFAULT_SHELL LINK_NAME NAMESPACE_NAME 
 TO_EXPORT_FUN="create_namespace configure_namespace execute"
 
 create_namespace () {
-  ip link add $LINK_NAME link $UPLINK type macvlan mode bridge
-  ip netns add $NAMESPACE_NAME
-  ip link set $LINK_NAME netns $NAMESPACE_NAME
+    ip link add $LINK_NAME link $UPLINK type macvlan mode bridge
+    ip netns add $NAMESPACE_NAME
+    ip link set $LINK_NAME netns $NAMESPACE_NAME
 }
 
 configure_namespace () {
-  ip netns exec $NAMESPACE_NAME bash -c "
+    ip netns exec $NAMESPACE_NAME bash -c "
     ip link set lo up
     ip link set $LINK_NAME up
     ip addr add $IP dev $LINK_NAME
     ip route add default via $GATEWAY
-  "
+    "
 }
 
 execute () {
-  create_namespace
-  configure_namespace
+    create_namespace
+    configure_namespace
 
-  ip netns exec $NAMESPACE_NAME su - $SUDO_USER bash -c "
+    ip netns exec $NAMESPACE_NAME su - $SUDO_USER bash -c "
     set -a
     . $CURRENT_ENV_FILE
     rm $CURRENT_ENV_FILE
@@ -55,15 +55,14 @@ execute () {
     else
       $DEFAULT_SHELL
     fi
-  "
+    "
 
-  ip netns delete $NAMESPACE_NAME
+    ip netns delete $NAMESPACE_NAME
 }
 
 sudo \
-  $(for x in $TO_EXPORT_ENV; do printf '%q=%q ' "$x" "${!x}"; done;) \
-  bash -c "
+    $(for x in $TO_EXPORT_ENV; do printf '%q=%q ' "$x" "${!x}"; done;) \
+    bash -c "
     $(for x in $TO_EXPORT_FUN; do echo "$(declare -f $x)"; done;)
     execute
-  "
-
+"

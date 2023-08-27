@@ -5,7 +5,8 @@ lib.mkIf config.work.user.enable {
     createHome = true;
     home = "/home/${config.work.user.username}";
     useDefaultShell = true;
-    password = "1"; # Default password used for first login, change later with passwd
+    # Default password used for first login, change later using passwd
+    password = "1";
     isNormalUser = true;
     description = "${config.work.user.description}";
     extraGroups = [ "networkmanager" "wheel" "kvm" "docker" "input" ];

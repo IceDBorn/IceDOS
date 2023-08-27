@@ -103,44 +103,50 @@ lib.mkIf config.main.user.enable {
 
       # Add user.js
       ".mozilla/firefox/privacy/user.js" = {
-        source =
-          if (config.firefox.privacy.enable) then
-            "${(pkgs.callPackage ../programs/self-built/arkenfox-userjs.nix {})}/user.js"
-          else
-            ../configs/firefox/user.js;
+        source = if (config.firefox.privacy.enable) then
+          "${
+            (pkgs.callPackage ../programs/self-built/arkenfox-userjs.nix { })
+          }/user.js"
+        else
+          ../configs/firefox/user.js;
         recursive = true;
       };
 
       # Install firefox gnome theme
-      ".mozilla/firefox/privacy/chrome/firefox-gnome-theme" = lib.mkIf config.firefox.gnome-theme.enable {
-        source = pkgs.callPackage ../programs/self-built/firefox-gnome-theme.nix { };
-        recursive = true;
-      };
+      ".mozilla/firefox/privacy/chrome/firefox-gnome-theme" =
+        lib.mkIf config.firefox.gnome-theme.enable {
+          source =
+            pkgs.callPackage ../programs/self-built/firefox-gnome-theme.nix { };
+          recursive = true;
+        };
 
       # Import firefox gnome theme userChrome.css or disable WebRTC indicator
       ".mozilla/firefox/privacy/chrome/userChrome.css" = {
-        text =
-          if config.firefox.gnome-theme.enable then
-            ''@import "firefox-gnome-theme/userChrome.css"''
-          else
-            ''#webrtcIndicator { display: none }'';
+        text = if config.firefox.gnome-theme.enable then
+          ''@import "firefox-gnome-theme/userChrome.css"''
+        else
+          "#webrtcIndicator { display: none }";
         recursive = true;
       };
 
       # Import firefox gnome theme userContent.css
-      ".mozilla/firefox/privacy/chrome/userContent.css" = lib.mkIf config.firefox.gnome-theme.enable {
-        text = ''@import "firefox-gnome-theme/userContent.css"'';
-        recursive = true;
-      };
+      ".mozilla/firefox/privacy/chrome/userContent.css" =
+        lib.mkIf config.firefox.gnome-theme.enable {
+          text = ''@import "firefox-gnome-theme/userContent.css"'';
+          recursive = true;
+        };
 
       # Create second firefox profile for pwas
       ".mozilla/firefox/pwas/user.js" = {
-        source = "${(pkgs.callPackage ../programs/self-built/arkenfox-userjs.nix {})}/user.js";
+        source = "${
+            (pkgs.callPackage ../programs/self-built/arkenfox-userjs.nix { })
+          }/user.js";
         recursive = true;
       };
 
       ".mozilla/firefox/pwas/chrome" = {
-        source = pkgs.callPackage ../programs/self-built/firefox-cascade.nix { };
+        source =
+          pkgs.callPackage ../programs/self-built/firefox-cascade.nix { };
         recursive = true;
       };
 
@@ -158,7 +164,9 @@ lib.mkIf config.main.user.enable {
 
       # Add adwaita steam skin
       ".local/share/Steam/steamui" = {
-        source = "${(pkgs.callPackage ../programs/self-built/adwaita-for-steam {})}/build";
+        source = "${
+            (pkgs.callPackage ../programs/self-built/adwaita-for-steam { })
+          }/build";
         recursive = true;
       };
 
@@ -218,7 +226,7 @@ lib.mkIf config.main.user.enable {
 
       # Add nvchad
       ".config/nvim" = {
-        source = "${(pkgs.callPackage ../programs/self-built/nvchad.nix {})}";
+        source = "${(pkgs.callPackage ../programs/self-built/nvchad.nix { })}";
         recursive = true;
       };
 
@@ -235,7 +243,7 @@ lib.mkIf config.main.user.enable {
       };
 
       ".config/tmux/tpm" = {
-        source = "${(pkgs.callPackage ../programs/self-built/tpm.nix {})}";
+        source = "${(pkgs.callPackage ../programs/self-built/tpm.nix { })}";
         recursive = true;
       };
 
@@ -246,13 +254,14 @@ lib.mkIf config.main.user.enable {
       };
 
       ".bashrc" = {
-        text = '''';
+        text = "";
         recursive = true;
       }; # Avoid file not found errors for bash
     };
 
     xdg.desktopEntries.pwas = {
-      exec = "firefox --no-remote -P PWAs --name pwas https://mail.tutanota.com https://icedborn.github.io/icedchat https://discord.com/app";
+      exec =
+        "firefox --no-remote -P PWAs --name pwas https://mail.tutanota.com https://icedborn.github.io/icedchat https://discord.com/app";
       icon = "element";
       name = "Firefox PWAs";
       terminal = false;

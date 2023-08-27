@@ -1,5 +1,5 @@
->- ⚠️ Do not forget to go through .nix, configuration.nix and edit and comment out (#) anything you don't want to setup!
->- ❗ mounts.nix can break your system! Be sure to replace it with yours or disable it!
+> - ⚠️ Do not forget to go through .nix, configuration.nix and edit and comment out (#) anything you don't want to setup!
+> - ❗ mounts.nix can break your system! Be sure to replace it with yours or disable it!
 
 # Install
 
