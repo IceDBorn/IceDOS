@@ -171,10 +171,11 @@ lib.mkIf config.main.user.enable {
       };
 
       # Enable steam beta
-      ".local/share/Steam/package/beta" = lib.mkIf config.steam.beta.enable {
-        text = "publicbeta";
-        recursive = true;
-      };
+      ".local/share/Steam/package/beta" =
+        lib.mkIf config.desktop-environment.steam.beta.enable {
+          text = "publicbeta";
+          recursive = true;
+        };
 
       # Add custom mangohud config for CS:GO
       ".config/MangoHud/csgo_linux64.conf" = {

@@ -279,24 +279,31 @@
       };
 
       steam = {
-        enable = lib.mkOption {
+        beta.enable = lib.mkOption {
           type = lib.types.bool;
           default = true;
         };
 
-        width = lib.mkOption {
-          type = lib.types.str;
-          default = "1920";
-        };
+        session = {
+          enable = lib.mkOption {
+            type = lib.types.bool;
+            default = true;
+          };
 
-        height = lib.mkOption {
-          type = lib.types.str;
-          default = "1080";
-        };
+          width = lib.mkOption {
+            type = lib.types.str;
+            default = "1920";
+          };
 
-        refresh-rate = lib.mkOption {
-          type = lib.types.str;
-          default = "144";
+          height = lib.mkOption {
+            type = lib.types.str;
+            default = "1080";
+          };
+
+          refresh-rate = lib.mkOption {
+            type = lib.types.str;
+            default = "144";
+          };
         };
       };
 
@@ -316,11 +323,6 @@
         type = lib.types.bool;
         default = true;
       };
-    };
-
-    steam.beta.enable = lib.mkOption {
-      type = lib.types.bool;
-      default = true;
     };
 
     local.cache.enable = lib.mkOption {

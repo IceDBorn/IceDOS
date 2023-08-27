@@ -20,7 +20,7 @@
     ./system/desktop/hypr
     ./system/desktop/hypr/hypr
     ./system/desktop/hypr/hyprland
-    ./system/desktop/steam
+    ./system/desktop/steam-session
     ./system/programs
     ./system/users
   ];
