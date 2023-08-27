@@ -2,8 +2,8 @@
 
 {
   imports = [
-    ./home-main.nix
-    ./home-work.nix
+    ./home/main.nix
+    ./home/work.nix
   ]; # Setup home manager for hypr and hyprland
 
   programs = lib.mkIf (config.desktop-environment.hyprland.enable

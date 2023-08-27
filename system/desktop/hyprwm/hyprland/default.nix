@@ -2,12 +2,12 @@
 
 {
   imports =
-    [ ./home-main.nix ./home-work.nix ]; # Setup home manager for hyprland
+    [ ./home/main.nix ./home/work.nix ]; # Setup home manager for hyprland
 
   environment = lib.mkIf config.desktop-environment.hyprland.enable {
     systemPackages = with pkgs; [
-      (callPackage ../../../programs/self-built/hyprland-per-window-layout.nix
-        { })
+      (callPackage
+        ../../../applications/self-built/hyprland-per-window-layout.nix { })
       # Status bar
       (waybar.overrideAttrs (oldAttrs: {
         mesonFlags = oldAttrs.mesonFlags ++ [ "-Dexperimental=true" ];

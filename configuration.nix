@@ -17,11 +17,11 @@
     ./hardware/virtualisation.nix
     ./system/desktop
     ./system/desktop/gnome
-    ./system/desktop/hypr
-    ./system/desktop/hypr/hypr
-    ./system/desktop/hypr/hyprland
+    ./system/desktop/hyprwm
+    ./system/desktop/hyprwm/hypr
+    ./system/desktop/hyprwm/hyprland
     ./system/desktop/steam-session
-    ./system/programs
+    ./system/applications
     ./system/users
   ];
 

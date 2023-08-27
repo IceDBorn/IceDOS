@@ -7,31 +7,31 @@ lib.mkIf
       ".config/hypr/hyprland.conf" = {
         source =
           if (config.desktop-environment.hyprland.dual-monitor.enable) then
-            ../../../configs/hyprland/hyprland-dual.conf
+            ../../../../applications/configs/hyprland/hyprland-dual.conf
           else
-            ../../../configs/hyprland/hyprland.conf;
+            ../../../../applications/configs/hyprland/hyprland.conf;
         recursive = true;
       }; # Add hyprland config
 
       # Add waybar config files
       ".config/waybar/config" = {
-        source = ../../../configs/waybar/config;
+        source = ../../../../applications/configs/waybar/config;
         recursive = true;
       };
 
       ".config/waybar/style.css" = {
-        source = ../../../configs/waybar/style.css;
+        source = ../../../../applications/configs/waybar/style.css;
         recursive = true;
       };
 
       # Add wlogout config files
       ".config/wlogout/layout" = {
-        source = ../../../configs/wlogout/layout;
+        source = ../../../../applications/configs/wlogout/layout;
         recursive = true;
       };
 
       ".config/wlogout/style.css" = {
-        source = ../../../configs/wlogout/style.css;
+        source = ../../../../applications/configs/wlogout/style.css;
         recursive = true;
       };
 
@@ -46,12 +46,12 @@ lib.mkIf
       };
 
       ".config/hypr/hyprpaper.jpg" = {
-        source = ../../../configs/hyprland/hyprpaper.jpg;
+        source = ../../../../applications/configs/hyprland/hyprpaper.jpg;
         recursive = true;
       };
 
       ".config/zsh/vpn-watcher.sh" = {
-        source = ../../../scripts/vpn-watcher.sh;
+        source = ../../../../scripts/vpn-watcher.sh;
         recursive = true;
       }; # Add vpn watcher script
     };

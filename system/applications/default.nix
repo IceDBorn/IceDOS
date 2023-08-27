@@ -6,8 +6,8 @@
     ./main.nix # Packages installed for main user
     ./work.nix # Packages installed for work user
     # Home manager specific stuff
-    ./home-main.nix
-    ./home-work.nix
+    ./home/main.nix
+    ./home/work.nix
   ];
 
   nix = {
@@ -35,4 +35,6 @@
   nixpkgs.config = {
     allowUnfree = true; # Allow proprietary packages
   };
+
+  nixpkgs.config.permittedInsecurePackages = [ "openssl-1.1.1v" ];
 }

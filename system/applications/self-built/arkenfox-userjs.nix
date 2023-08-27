@@ -14,7 +14,7 @@ stdenvNoCC.mkDerivation rec {
   preferLocalBuild = true;
 
   installPhase = ''
-    cat ${../../configs/firefox/user-overrides.js} >> user.js
+    cat ${../configs/firefox/user-overrides.js} >> user.js
     mkdir -p $out
     cp ./user.js $out/user.js
   '';
