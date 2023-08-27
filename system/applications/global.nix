@@ -14,8 +14,13 @@ let
     sudo trim-generations ''${1:-$gens} ''${2:-$days} system ;
     nix-store --gc
   '';
+
   vpn-exclude = pkgs.writeShellScriptBin "vpn-exclude"
     (builtins.readFile ../scripts/create-ns.sh);
+
+  logout = pkgs.writeShellScriptBin "logout" ''
+    pkill -KILL -u $USER
+  '';
 in {
   boot.kernelPackages = pkgs.linuxPackages_zen; # Use ZEN linux kernel
 
@@ -58,6 +63,7 @@ in {
     kitty # Terminal
     lazygit # Git CLI UI
     libnotify # Send desktop notifications
+    logout # Logout from any shell
     lsd # Better ls command
     mousai # Song recognizer
     mpv # Video player
