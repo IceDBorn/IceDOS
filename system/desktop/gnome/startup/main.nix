@@ -34,7 +34,7 @@ lib.mkIf config.main.user.enable {
 		".config/autostart/element.desktop" = {
 			text = ''
 				[Desktop Entry]
-				Exec=firefox --no-remote -P Element --name element https://icedborn.github.io/icedchat
+				Exec=firefox --no-remote -P PWAs --name pwas https://mail.tutanota.com https://icedborn.github.io/icedchat https://discord.com/app
 				Icon=element
 				Name=Element
 				StartupWMClass=element
