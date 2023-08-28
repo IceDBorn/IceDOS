@@ -18,7 +18,7 @@ let
   vpn-exclude = pkgs.writeShellScriptBin "vpn-exclude"
     (builtins.readFile ../scripts/create-ns.sh);
 
-  logout = pkgs.writeShellScriptBin "logout" ''
+  lout = pkgs.writeShellScriptBin "lout" ''
     pkill -KILL -u $USER
   '';
 in {
@@ -63,7 +63,7 @@ in {
     kitty # Terminal
     lazygit # Git CLI UI
     libnotify # Send desktop notifications
-    logout # Logout from any shell
+    lout # Logout from any shell
     lsd # Better ls command
     mousai # Song recognizer
     mpv # Video player
