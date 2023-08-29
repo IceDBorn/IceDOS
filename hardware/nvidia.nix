@@ -5,9 +5,11 @@ lib.mkIf config.nvidia.enable {
 
   hardware.nvidia.modesetting.enable = true; # Required for wayland
 
-  virtualisation.docker.enableNvidia = true; # Enable nvidia gpu acceleration for docker
+  virtualisation.docker.enableNvidia =
+    true; # Enable nvidia gpu acceleration for docker
 
-  environment.systemPackages = [ pkgs.nvtop-nvidia ]; # Monitoring tool for nvidia GPUs
+  environment.systemPackages =
+    [ pkgs.nvtop-nvidia ]; # Monitoring tool for nvidia GPUs
 
   # Set nvidia gpu power limit
   systemd.services.nv-power-limit = lib.mkIf config.nvidia.power-limit.enable {
@@ -16,12 +18,14 @@ lib.mkIf config.nvidia.enable {
     after = [ "syslog.target" "systemd-modules-load.service" ];
 
     unitConfig = {
-      ConditionPathExists = "${config.boot.kernelPackages.nvidia_x11.bin}/bin/nvidia-smi";
+      ConditionPathExists =
+        "${config.boot.kernelPackages.nvidia_x11.bin}/bin/nvidia-smi";
     };
 
     serviceConfig = {
       User = "root";
-      ExecStart = "${config.boot.kernelPackages.nvidia_x11.bin}/bin/nvidia-smi  --power-limit=${config.nvidia.power-limit.value}";
+      ExecStart =
+        "${config.boot.kernelPackages.nvidia_x11.bin}/bin/nvidia-smi  --power-limit=${config.nvidia.power-limit.value}";
     };
 
     wantedBy = [ "multi-user.target" ];

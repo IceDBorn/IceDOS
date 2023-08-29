@@ -149,7 +149,8 @@
 
           value = lib.mkOption {
             type = lib.types.str;
-            default = "-p 0 -v 30 -f AE"; # Pstate 0, 1.25 voltage, 4400 clock speed
+            # Pstate 0, 1.25 voltage, 4400 clock speed
+            default = "-p 0 -v 30 -f AE";
           };
         };
       };
@@ -278,24 +279,31 @@
       };
 
       steam = {
-        enable = lib.mkOption {
+        beta.enable = lib.mkOption {
           type = lib.types.bool;
           default = true;
         };
 
-        width = lib.mkOption {
-          type = lib.types.str;
-          default = "3840";
-        };
+        session = {
+          enable = lib.mkOption {
+            type = lib.types.bool;
+            default = true;
+          };
 
-        height = lib.mkOption {
-          type = lib.types.str;
-          default = "2160";
-        };
+          width = lib.mkOption {
+            type = lib.types.str;
+            default = "3840";
+          };
 
-        refresh-rate = lib.mkOption {
-          type = lib.types.str;
-          default = "120";
+          height = lib.mkOption {
+            type = lib.types.str;
+            default = "2160";
+          };
+
+          refresh-rate = lib.mkOption {
+            type = lib.types.str;
+            default = "120";
+          };
         };
       };
 
@@ -305,21 +313,16 @@
       };
     };
 
-		firefox = {
-			privacy.enable = lib.mkOption {
-				type = lib.types.bool;
-				default = false;
-			};
+    firefox = {
+      privacy.enable = lib.mkOption {
+        type = lib.types.bool;
+        default = false;
+      };
 
-			gnome-theme.enable = lib.mkOption {
-				type = lib.types.bool;
-				default = false;
-			};
-		};
-
-    steam.beta.enable = lib.mkOption {
-      type = lib.types.bool;
-      default = true;
+      gnome-theme.enable = lib.mkOption {
+        type = lib.types.bool;
+        default = false;
+      };
     };
 
     local.cache.enable = lib.mkOption {
