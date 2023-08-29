@@ -79,6 +79,7 @@ lib.mkIf config.main.user.enable {
               "clipboard-indicator@tudmotu.com"
               "dash-to-panel@jderose9.github.com"
               # "gsconnect@andyholmes.github.io"
+              "pano@elhan.io"
             ];
 
           favorite-apps =

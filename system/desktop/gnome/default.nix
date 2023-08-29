@@ -24,6 +24,7 @@
       gnomeExtensions.clipboard-indicator # Clipboard indicator for gnome
       gnomeExtensions.dash-to-panel # An icon taskbar for gnome
       # gnomeExtensions.gsconnect # KDE Connect implementation for gnome
+      gnomeExtensions.pano # Next-gen Clipboard manager
       gnome-extension-manager # Gnome extensions manager and downloader
     ];
 
