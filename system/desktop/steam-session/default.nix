@@ -2,7 +2,10 @@
 
 let
   steam-session = pkgs.writeShellScriptBin "steam-session" ''
+    mkdir -p ~/.local/share/Steam/steamapps
+    mkdir -p ~/.steam-session/.local/share/Steam
     ln -sf ~/.local/share/Steam/steamapps ~/.steam-session/.local/share/Steam/steamapps
+
     export HOME=~/.steam-session
     export INTEL_DEBUG=norbc
     export mesa_glthread=true
