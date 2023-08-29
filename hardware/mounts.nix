@@ -14,4 +14,9 @@ lib.mkIf config.mounts.enable {
     options = lib.mkIf (config.boot.btrfs-compression.enable
       && config.boot.btrfs-compression.mounts.enable) [ "compress=zstd" ];
   };
+
+  fileSystems."/mnt/Windows" = {
+    device = "/dev/disk/by-uuid/8AAE4B96AE4B79A9";
+    fsType = "ntfs";
+  };
 }
