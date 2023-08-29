@@ -69,6 +69,7 @@ in
     kitty # Terminal
     lazygit # Git CLI UI
     libnotify # Send desktop notifications
+    lout # Logout from any shell
     lsd # Better ls command
     mousai # Song recognizer
     mpv # Video player
