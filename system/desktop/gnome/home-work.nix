@@ -94,12 +94,13 @@ lib.mkIf config.work.user.enable {
             # "gsconnect@andyholmes.github.io"
           ];
 
-        favorite-apps = if (config.desktop-environment.gnome.configuration.pinned-apps.dash-to-panel.enable) then [
-          "webstorm.desktop"
-          "slack.desktop"
-          "webcord.desktop"
-          "firefox.desktop"
-        ] else []; # Set dash to panel pinned apps
+        favorite-apps =
+          if (config.desktop-environment.gnome.configuration.pinned-apps.dash-to-panel.enable) then [
+            "webstorm.desktop"
+            "slack.desktop"
+            "webcord.desktop"
+            "firefox.desktop"
+          ] else [ ]; # Set dash to panel pinned apps
       };
 
       "org/gnome/shell/keybindings" = {
@@ -203,14 +204,27 @@ lib.mkIf config.work.user.enable {
         menu-layout = "Windows";
         windows-disable-frequent-apps = true;
         windows-disable-pinned-apps = !config.desktop-environment.gnome.configuration.pinned-apps.arcmenu.enable;
-        pinned-app-list = if (config.desktop-environment.gnome.configuration.pinned-apps.arcmenu.enable) then [
-          "VSCodium" "" "codium.desktop"
-          "Spotify" "" "spotify.desktop"
-          "Signal" "" "signal-desktop.desktop"
-          "OBS Studio" "" "com.obsproject.Studio.desktop"
-          "Mullvad VPN" "" "mullvad-vpn.desktop"
-          "GNU Image Manipulation Program" "" "gimp.desktop"
-        ] else []; # Set arc menu pinned apps
+        pinned-app-list =
+          if (config.desktop-environment.gnome.configuration.pinned-apps.arcmenu.enable) then [
+            "VSCodium"
+            ""
+            "codium.desktop"
+            "Spotify"
+            ""
+            "spotify.desktop"
+            "Signal"
+            ""
+            "signal-desktop.desktop"
+            "OBS Studio"
+            ""
+            "com.obsproject.Studio.desktop"
+            "Mullvad VPN"
+            ""
+            "mullvad-vpn.desktop"
+            "GNU Image Manipulation Program"
+            ""
+            "gimp.desktop"
+          ] else [ ]; # Set arc menu pinned apps
       };
     };
   };

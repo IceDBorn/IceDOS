@@ -30,18 +30,18 @@ lib.mkIf config.main.user.enable {
       recursive = true;
     };
 
-		# Add element to startup
-		".config/autostart/element.desktop" = {
-			text = ''
-				[Desktop Entry]
-				Exec=firefox --no-remote -P PWAs --name pwas https://mail.tutanota.com https://icedborn.github.io/icedchat https://discord.com/app
-				Icon=element
-				Name=Element
-				StartupWMClass=element
-				Terminal=false
-				Type=Application
-			'';
-			recursive = true;
-		};
+    # Add element to startup
+    ".config/autostart/element.desktop" = {
+      text = ''
+        [Desktop Entry]
+        Exec=firefox --no-remote -P PWAs --name pwas https://mail.tutanota.com https://icedborn.github.io/icedchat https://discord.com/app
+        Icon=element
+        Name=Element
+        StartupWMClass=element
+        Terminal=false
+        Type=Application
+      '';
+      recursive = true;
+    };
   };
 }

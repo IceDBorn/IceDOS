@@ -22,7 +22,7 @@ lib.mkIf config.main.user.enable {
           copy_on_select = "no";
         };
         font.name = "JetBrainsMono Nerd Font";
-				font.size = 10;
+        font.size = 10;
         theme = "Catppuccin-Mocha";
       };
 

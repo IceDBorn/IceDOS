@@ -58,7 +58,7 @@ in
 
     extraModulePackages = with config.boot.kernelPackages; [
       v4l2loopback
-      (callPackage ../system/programs/self-built/xpadneo.nix {})
+      (callPackage ../system/programs/self-built/xpadneo.nix { })
     ];
 
     kernel.sysctl = { "vm.max_map_count" = 262144; }; # Fixes crash when loading maps in CS2
