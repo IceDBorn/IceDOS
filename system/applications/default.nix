@@ -15,18 +15,17 @@
 
   nix = {
     settings = {
-      auto-optimise-store = true; # Use hard links to save space (slows down package manager)
+      # Use hard links to save space (slows down package manager)
+      auto-optimise-store = true;
       experimental-features = [ "nix-command" "flakes" ]; # Enable flakes
-      substituters =
-        if (config.local.cache.enable) then
-          [
-            "https://hyprland.cachix.org"
-            "http://192.168.1.2:8080"
-          ] else
-          [
-            "https://hyprland.cachix.org"
-          ];
-      trusted-public-keys = [ "hyprland.cachix.org-1:a7pgxzMz7+chwVL3/pzj6jIBMioiJM7ypFP8PwtkuGc=" ];
+      substituters = if (config.local.cache.enable) then [
+        "https://hyprland.cachix.org"
+        "http://192.168.1.2:8080"
+      ] else
+        [ "https://hyprland.cachix.org" ];
+      trusted-public-keys = [
+        "hyprland.cachix.org-1:a7pgxzMz7+chwVL3/pzj6jIBMioiJM7ypFP8PwtkuGc="
+      ];
     };
 
     # Automatic garbage collection
@@ -38,9 +37,6 @@
 
   nixpkgs.config = {
     allowUnfree = true; # Allow proprietary packages
-    permittedInsecurePackages = [
-      "nodejs-16.20.2"
-      "openssl-1.1.1v"
-    ];
+    permittedInsecurePackages = [ "openssl-1.1.1v" "nodejs-16.20.2" ];
   };
 }
