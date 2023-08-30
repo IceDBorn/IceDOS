@@ -21,8 +21,7 @@ let
   lout = pkgs.writeShellScriptBin "lout" ''
     pkill -KILL -u $USER
   '';
-in
-{
+in {
   boot.kernelPackages = pkgs.linuxPackages_zen; # Use ZEN linux kernel
 
   environment.systemPackages = with pkgs; [
@@ -89,7 +88,6 @@ in
     python3 # Python
     # ranger # Terminal file manager
     # ripgrep # Silver searcher grep
-    rnix-lsp
     rnnoise-plugin # A real-time noise suppression plugin
     rustup # The rust tooling package
     signal-desktop # Encrypted messaging platform
@@ -183,6 +181,21 @@ in
     clamav.updater.enable = true;
   };
 
+  nixpkgs.overlays = [
+    (self: super: {
+      mpv = super.mpv.override {
+        scripts = [
+          pkgs.mpvScripts.mpris
+          pkgs.mpvScripts.thumbfast
+          pkgs.mpvScripts.uosc
+        ] ++ (if (config.desktop-environment.gnome.enable) then
+          [ pkgs.mpvScripts.inhibit-gnome ]
+        else
+          [ ]);
+      };
+    })
+  ];
+
   # Symlink files and folders to /etc
   environment.etc."rnnoise-plugin/librnnoise_ladspa.so".source =
     "${pkgs.rnnoise-plugin}/lib/ladspa/librnnoise_ladspa.so";
@@ -190,17 +203,4 @@ in
     "${(pkgs.callPackage self-built/proton-ge.nix { })}/";
   environment.etc."apx/config.json".source =
     "${(pkgs.callPackage self-built/apx.nix { })}/etc/apx/config.json";
-
-  nixpkgs.overlays = [
-    (self: super: {
-      mpv = super.mpv.override {
-        scripts = with pkgs; [
-          mpvScripts.inhibit-gnome
-          mpvScripts.mpris
-          mpvScripts.thumbfast
-          mpvScripts.uosc
-        ];
-      };
-    })
-  ];
 }
