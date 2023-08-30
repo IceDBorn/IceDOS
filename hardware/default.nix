@@ -8,8 +8,7 @@ let
     export __VK_LAYER_NV_optimus=NVIDIA_only
     exec "$@"
   '';
-in
-{
+in {
   hardware = {
     opengl = {
       enable = true;
@@ -17,11 +16,11 @@ in
         true; # Support Direct Rendering for 32-bit applications (such as Wine) on 64-bit systems
     };
 
-    # nvidia = lib.mkIf (config.nvidia.enable && config.nvidia.patch.enable) {
-    #   package = config.nur.repos.arc.packages.nvidia-patch.override {
-    #     nvidia_x11 = config.boot.kernelPackages.nvidiaPackages.stable;
-    #   }; # Patch the driver for nvfbc
-    # };
+    nvidia = lib.mkIf (config.nvidia.enable && config.nvidia.patch.enable) {
+      package = config.nur.repos.arc.packages.nvidia-patch.override {
+        nvidia_x11 = config.boot.kernelPackages.nvidiaPackages.stable;
+      }; # Patch the driver for nvfbc
+    };
 
     xpadneo.enable = false; # Enable XBOX Gamepad bluetooth driver
     bluetooth.enable = true;
@@ -70,10 +69,8 @@ in
     }; # Fixes crash when loading maps in CS2
   };
 
-  fileSystems = lib.mkIf
-    (config.boot.btrfs-compression.enable
-      && config.boot.btrfs-compression.root.enable)
-    {
+  fileSystems = lib.mkIf (config.boot.btrfs-compression.enable
+    && config.boot.btrfs-compression.root.enable) {
       "/".options = [ "compress=zstd" ];
     };
 
