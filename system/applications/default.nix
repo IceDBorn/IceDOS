@@ -34,7 +34,8 @@
 
   nixpkgs.config = {
     allowUnfree = true; # Allow proprietary packages
+    permittedInsecurePackages = [
+      "openssl-1.1.1v"
+    ];
   };
-
-  nixpkgs.config.permittedInsecurePackages = [ "openssl-1.1.1v" ];
 }
