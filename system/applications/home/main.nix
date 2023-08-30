@@ -103,11 +103,10 @@ lib.mkIf config.main.user.enable {
 
       # Add user.js
       ".mozilla/firefox/privacy/user.js" = {
-        source =
-          if (config.firefox.privacy.enable) then
-            "${(pkgs.callPackage ../self-built/arkenfox-userjs.nix { })}/user.js"
-          else
-            ../configs/firefox/user.js;
+        source = if (config.firefox.privacy.enable) then
+          "${(pkgs.callPackage ../self-built/arkenfox-userjs.nix { })}/user.js"
+        else
+          ../configs/firefox/user.js;
         recursive = true;
       };
 
@@ -120,11 +119,10 @@ lib.mkIf config.main.user.enable {
 
       # Import firefox gnome theme userChrome.css or disable WebRTC indicator
       ".mozilla/firefox/privacy/chrome/userChrome.css" = {
-        text =
-          if config.firefox.gnome-theme.enable then
-            ''@import "firefox-gnome-theme/userChrome.css"''
-          else
-            "#webrtcIndicator { display: none }";
+        text = if config.firefox.gnome-theme.enable then
+          ''@import "firefox-gnome-theme/userChrome.css"''
+        else
+          "#webrtcIndicator { display: none }";
         recursive = true;
       };
 

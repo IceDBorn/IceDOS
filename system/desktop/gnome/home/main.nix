@@ -83,13 +83,11 @@ lib.mkIf config.main.user.enable {
             ];
 
           favorite-apps =
-            if (config.desktop-environment.gnome.configuration.pinned-apps.dash-to-panel.enable) then
-              [
-                "webstorm.desktop"
-                "webcord.desktop"
-                "firefox.desktop"
-              ]
-            else
+            if (config.desktop-environment.gnome.configuration.pinned-apps.dash-to-panel.enable) then [
+              "webstorm.desktop"
+              "webcord.desktop"
+              "firefox.desktop"
+            ] else
               [ ]; # Set dash to panel pinned apps
         };
 
@@ -123,8 +121,7 @@ lib.mkIf config.main.user.enable {
         "org/gnome/shell/app-switcher" = { current-workspace-only = true; };
 
         "org/gnome/shell/extensions/caffeine" = lib.mkIf
-          config.desktop-environment.gnome.configuration.caffeine.enable
-          {
+          config.desktop-environment.gnome.configuration.caffeine.enable {
             # Remember the user choice
             restore-state = true;
             # Disable icon
@@ -194,28 +191,26 @@ lib.mkIf config.main.user.enable {
           windows-disable-pinned-apps =
             !config.desktop-environment.gnome.configuration.pinned-apps.arcmenu.enable;
           pinned-app-list =
-            if (config.desktop-environment.gnome.configuration.pinned-apps.arcmenu.enable) then
-              [
-                "VSCodium"
-                ""
-                "codium.desktop"
-                "Spotify"
-                ""
-                "spotify.desktop"
-                "Signal"
-                ""
-                "signal-desktop.desktop"
-                "OBS Studio"
-                ""
-                "com.obsproject.Studio.desktop"
-                "Mullvad VPN"
-                ""
-                "mullvad-vpn.desktop"
-                "GNU Image Manipulation Program"
-                ""
-                "gimp.desktop"
-              ]
-            else
+            if (config.desktop-environment.gnome.configuration.pinned-apps.arcmenu.enable) then [
+              "VSCodium"
+              ""
+              "codium.desktop"
+              "Spotify"
+              ""
+              "spotify.desktop"
+              "Signal"
+              ""
+              "signal-desktop.desktop"
+              "OBS Studio"
+              ""
+              "com.obsproject.Studio.desktop"
+              "Mullvad VPN"
+              ""
+              "mullvad-vpn.desktop"
+              "GNU Image Manipulation Program"
+              ""
+              "gimp.desktop"
+            ] else
               [ ]; # Set arc menu pinned apps
         };
       };
