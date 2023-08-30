@@ -2,12 +2,9 @@
 
 {
   imports = [
-    # Packages installed for all users
-    ./global.nix
-    # Packages installed for main user
-    ./main.nix
-    # Packages installed for work user
-    ./work.nix
+    ./global.nix # Packages installed for all users
+    ./main.nix # Packages installed for main user
+    ./work.nix # Packages installed for work user
     # Home manager specific stuff
     ./home/main.nix
     ./home/work.nix
