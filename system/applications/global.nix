@@ -1,9 +1,10 @@
-# ## PACKAGES INSTALLED ON ALL USERS ###
+# PACKAGES INSTALLED ON ALL USERS
 { pkgs, config, inputs, ... }:
 
 let
   trim-generations = pkgs.writeShellScriptBin "trim-generations"
     (builtins.readFile ../scripts/trim-generations.sh);
+
   nix-gc = pkgs.writeShellScriptBin "nix-gc" ''
     gens=${config.gc.generations} ;
     days=${config.gc.days} ;
