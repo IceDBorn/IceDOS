@@ -22,7 +22,6 @@
           home-manager.nixosModules.home-manager
           hyprland.nixosModules.default
           steam-session.nixosModules.default
-          { programs.hyprland.enable = true; }
           ./configuration.nix
         ];
       };

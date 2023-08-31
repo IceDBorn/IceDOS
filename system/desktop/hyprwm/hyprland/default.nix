@@ -4,6 +4,11 @@
   imports =
     [ ./home/main.nix ./home/work.nix ]; # Setup home manager for hyprland
 
+  programs.hyprland = lib.mkIf config.desktop-environment.hyprland.enable {
+    enable = true;
+    enableNvidiaPatches = config.nvidia.enable;
+  };
+
   environment = lib.mkIf config.desktop-environment.hyprland.enable {
     systemPackages = with pkgs; [
       (callPackage
