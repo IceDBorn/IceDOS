@@ -95,6 +95,12 @@ lib.mkIf config.main.user.enable {
         recursive = true;
       };
 
+      # Add update-codium-extensions to zsh directory
+      ".config/zsh/update-codium-extensions.sh" = {
+        source = ../../scripts/update-codium-extensions.sh;
+        recursive = true;
+      };
+
       # Set firefox to privacy profile
       ".mozilla/firefox/profiles.ini" = {
         source = ../configs/firefox/profiles.ini;
