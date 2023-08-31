@@ -59,6 +59,7 @@ in {
     gimp # Image editor
     git # Distributed version control system
     gping # ping with a graph
+    gradience
     gsound # Small library for playing system sounds
     helvum # Pipewire patchbay
     # iotas # Notes
