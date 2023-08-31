@@ -332,7 +332,7 @@
 
     xpadneo-unstable.enable = lib.mkOption {
       type = lib.types.bool;
-      default = false;
+      default = true;
     }; # use self-built version of xpadneo to fix some controller issues
   };
 }
