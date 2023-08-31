@@ -284,26 +284,9 @@
           default = true;
         };
 
-        session = {
-          enable = lib.mkOption {
-            type = lib.types.bool;
-            default = true;
-          };
-
-          width = lib.mkOption {
-            type = lib.types.str;
-            default = "1920";
-          };
-
-          height = lib.mkOption {
-            type = lib.types.str;
-            default = "1080";
-          };
-
-          refresh-rate = lib.mkOption {
-            type = lib.types.str;
-            default = "144";
-          };
+        session.enable = lib.mkOption {
+          type = lib.types.bool;
+          default = true;
         };
       };
 
