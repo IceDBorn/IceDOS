@@ -329,5 +329,10 @@
       type = lib.types.bool;
       default = false;
     };
+
+    xpadneo-unstable.enable = lib.mkOption {
+      type = lib.types.bool;
+      default = false;
+    }; # use self-built version of xpadneo to fix some controller issues
   };
 }

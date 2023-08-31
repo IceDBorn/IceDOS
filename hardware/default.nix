@@ -22,7 +22,8 @@ in {
       }; # Patch the driver for nvfbc
     };
 
-    xpadneo.enable = true; # Enable XBOX Gamepad bluetooth driver
+    xpadneo.enable =
+      !config.xpadneo-unstable.enable; # Enable XBOX Gamepad bluetooth driver
     bluetooth.enable = true;
     uinput.enable = true; # Enable uinput support
   };
@@ -52,14 +53,17 @@ in {
   boot = {
     kernelModules = [
       "v4l2loopback" # Virtual camera
-      "xpadneo"
       "uinput"
-    ];
+    ] ++ (if (config.xpadneo-unstable.enable) then [ "hid_xpadneo" ] else [ ]);
 
     kernelParams =
       [ "clearcpuid=514" ]; # Fixes certain wine games crash on launch
 
-    extraModulePackages = with config.boot.kernelPackages; [ v4l2loopback ];
+    extraModulePackages = with config.boot.kernelPackages;
+      [ v4l2loopback ] ++ (if (config.xpadneo-unstable.enable) then
+        [ (callPackage ../system/applications/self-built/xpadneo.nix { }) ]
+      else
+        [ ]);
 
     kernel.sysctl = {
       "vm.max_map_count" = 262144;
