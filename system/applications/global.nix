@@ -169,6 +169,24 @@ in {
     clamav.updater.enable = true;
   };
 
+  nixpkgs.overlays = [
+    (self: super: {
+      mpv = super.mpv.override {
+        # https://github.com/NixOS/nixpkgs/tree/nixos-unstable/pkgs/applications/video/mpv/scripts
+        scripts = [
+          pkgs.mpvScripts.mpris # Allow control with standard media keys
+          pkgs.mpvScripts.thumbfast # Thumbnailer
+          pkgs.mpvScripts.uosc # Feature-rich minimalist proximity-based UI
+        ] ++ (if (config.desktop-environment.gnome.enable) then
+          [
+            pkgs.mpvScripts.inhibit-gnome # Prevent gnome screen blanking while playing media
+          ]
+        else
+          [ ]);
+      };
+    })
+  ];
+
   # Symlink files and folders to /etc
   environment.etc."rnnoise-plugin/librnnoise_ladspa.so".source =
     "${pkgs.rnnoise-plugin}/lib/ladspa/librnnoise_ladspa.so";
