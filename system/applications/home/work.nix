@@ -59,6 +59,12 @@ lib.mkIf config.work.user.enable {
         recursive = true;
       };
 
+      # Add update-codium-extensions to zsh directory
+      ".config/zsh/update-codium-extensions.sh" = {
+        source = ../../scripts/update-codium-extensions.sh;
+        recursive = true;
+      };
+
       # Add user.js
       ".mozilla/firefox/privacy/user.js" = {
         source = if (config.firefox.privacy.enable) then
