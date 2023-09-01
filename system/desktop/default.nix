@@ -70,11 +70,7 @@
     # Packages to install for all window manager/desktop environments
     systemPackages = with pkgs; [
       bibata-cursors # Material cursors
-      fragments # Bittorrent client following Gnome UI standards
       gnome.adwaita-icon-theme # GTK theme
-      gnome.gnome-boxes # VM manager
-      gthumb # Image viewer
-      pitivi # Video editor
       tela-icon-theme # Icon theme
     ];
   };
