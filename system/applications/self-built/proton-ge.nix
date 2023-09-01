@@ -1,13 +1,13 @@
-{ stdenvNoCC, fetchFromGitHub, ... }:
+{ stdenvNoCC }:
 
 stdenvNoCC.mkDerivation rec {
   name = "proton-ge";
-  version = "GE-Proton8-13";
+  version = "GE-Proton8-14";
 
   src = builtins.fetchTarball {
     url =
       "https://github.com/GloriousEggroll/proton-ge-custom/releases/download/${version}/${version}.tar.gz";
-    sha256 = "0nj7m55hag0cvjs40lfsj3627gqlrknps5xdg8f2m1rmdhfgky65";
+    sha256 = "1kxnnlx993kwhc3cav96hk4csdq72930wf6rf3msl7k6lpfhkbzz";
   };
 
   preferLocalBuild = true;
