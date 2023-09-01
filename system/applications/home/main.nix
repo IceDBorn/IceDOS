@@ -101,6 +101,10 @@ lib.mkIf config.main.user.enable {
         recursive = true;
       };
 
+      ".config/VSCodium/User/settings.json" = {
+        source = ../configs/vscodium.json;
+      }; # Add vscodium config
+
       # Set firefox to privacy profile
       ".mozilla/firefox/profiles.ini" = {
         source = ../configs/firefox/profiles.ini;

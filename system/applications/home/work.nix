@@ -65,6 +65,10 @@ lib.mkIf config.work.user.enable {
         recursive = true;
       };
 
+      ".config/VSCodium/User/settings.json" = {
+        source = ../configs/vscodium.json;
+      }; # Add vscodium config
+
       # Add user.js
       ".mozilla/firefox/privacy/user.js" = {
         source = if (config.firefox.privacy.enable) then

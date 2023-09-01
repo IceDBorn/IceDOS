@@ -1,0 +1,12 @@
+{
+  "editor.fontFamily": "'JetBrainsMono Nerd Font', 'Droid Sans Mono', 'monospace', monospace",
+  "editor.formatOnPaste": true,
+  "editor.formatOnSave": true,
+  "editor.minimap.enabled": false,
+  "editor.renderWhitespace": "trailing",
+  "editor.tabSize": 2,
+  "nix.formatterPath": "nixfmt",
+  "update.mode": "none",
+  "window.menuBarVisibility": "toggle",
+  "workbench.colorTheme": "One Dark Pro Darker"
+}
