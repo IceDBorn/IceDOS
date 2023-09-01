@@ -44,17 +44,23 @@ lib.mkIf config.main.user.enable {
         enable = true;
 
         defaultApplications = {
-          "application/pdf" = [ "firefox.desktop" ];
-          "application/x-bittorrent" = [ "de.haeckerfelix.Fragments.desktop" ];
-          "application/x-ms-dos-executable" = [ "wine.desktop" ];
-          "application/x-shellscript" = [ "codium.desktop" ];
-          "application/x-wine-extension-ini" = [ "codium.desktop" ];
-          "application/zip" = [ "org.gnome.FileRoller.desktop" ];
-          "image/avif" = [ "org.gnome.gThumb.desktop" ];
-          "image/jpeg" = [ "org.gnome.gThumb.desktop" ];
-          "image/png" = [ "org.gnome.gThumb.desktop" ];
-          "text/plain" = [ "codium.desktop" ];
-          "video/mp4" = [ "mpv.desktop" ];
+          "application/pdf" = "firefox.desktop";
+          "application/x-bittorrent" = "de.haeckerfelix.Fragments.desktop";
+          "application/x-ms-dos-executable" = "wine.desktop";
+          "application/x-shellscript" = "codium.desktop";
+          "application/x-wine-extension-ini" = "codium.desktop";
+          "application/zip" = "org.gnome.FileRoller.desktop";
+          "image/avif" = "org.gnome.gThumb.desktop";
+          "image/jpeg" = "org.gnome.gThumb.desktop";
+          "image/png" = "org.gnome.gThumb.desktop";
+          "image/svg+xml" = "org.gnome.gThumb.desktop";
+          "text/html" = "firefox.desktop";
+          "text/plain" = "codium.desktop";
+          "video/mp4" = "mpv.desktop";
+          "x-scheme-handler/http" = "firefox.desktop";
+          "x-scheme-handler/https" = "firefox.desktop";
+          "x-scheme-handler/about" = "firefox.desktop";
+          "x-scheme-handler/unknown" = "firefox.desktop";
         };
       }; # Default apps
     };
