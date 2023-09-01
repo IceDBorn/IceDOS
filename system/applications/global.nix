@@ -51,11 +51,14 @@ in {
     endeavour # Tasks
     fd # Find alternative
     feh # Minimal image viewer
+    fragments # Bittorrent client following Gnome UI standards
     gcc # C++ compiler
     gdtoolkit # Tools for gdscript
     gimp # Image editor
     git # Distributed version control system
+    gnome.gnome-boxes # VM manager
     gping # ping with a graph
+    gthumb # Image viewer
     helvum # Pipewire patchbay
     iotas # Notes
     jc # JSON parser
@@ -78,6 +81,7 @@ in {
     obs-studio # Recording/Livestream
     onlyoffice-bin # Microsoft Office alternative for Linux
     p7zip # 7zip
+    pitivi # Video editor
     pulseaudio # Various pulseaudio tools
     python3 # Python
     ranger # Terminal file manager
