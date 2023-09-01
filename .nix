@@ -173,11 +173,6 @@
           default = "242"; # RTX 3070
         };
       };
-
-      patch.enable = lib.mkOption {
-        type = lib.types.bool;
-        default = true;
-      };
     };
 
     intel.enable = lib.mkOption {
@@ -306,11 +301,6 @@
         type = lib.types.bool;
         default = true;
       };
-    };
-
-    local.cache.enable = lib.mkOption {
-      type = lib.types.bool;
-      default = false;
     };
 
     xpadneo-unstable.enable = lib.mkOption {
