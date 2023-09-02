@@ -22,7 +22,4 @@ EXTENSIONS=(
 )
 
 echo "Installing codium extensions..."
-for extension in "${EXTENSIONS[@]}"; do
-    # --force updates the extension if already installed
-    codium --force --install-extension "$extension" > /dev/null &
-done
+echo ${EXTENSIONS[*]} | xargs -P `nproc` -n 1 codium --force --install-extension > /dev/null
