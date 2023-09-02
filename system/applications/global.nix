@@ -44,7 +44,6 @@ in {
     cargo # Rust package manager
     clamav # Antivirus
     curtail # Image compressor
-    direnv # Unclutter your .profile
     dotnet-sdk_7 # SDK for .net
     easyeffects # Pipewire effects manager
     efibootmgr # Edit EFI entries
