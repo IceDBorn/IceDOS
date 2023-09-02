@@ -3,6 +3,18 @@
 lib.mkIf (config.work.user.enable && (config.desktop-environment.hypr.enable
   || config.desktop-environment.hyprland.enable)) {
     home-manager.users.${config.work.user.username} = {
+      # Gnome control center running in Hypr WMs
+      xdg.desktopEntries.gnome-control-center = {
+        exec = "env XDG_CURRENT_DESKTOP=GNOME gnome-control-center";
+        icon = "gnome-control-center";
+        name = "Gnome Control Center";
+        terminal = false;
+        type = "Application";
+      };
+
+      # Set gnome control center to open in the online accounts submenu
+      dconf.settings."org/gnome/control-center".last-panel = "online-accounts";
+
       home.file = {
         # Add rofi config files
         ".config/rofi/config.rasi" = {
