@@ -263,14 +263,5 @@ lib.mkIf config.main.user.enable {
         recursive = true;
       }; # Avoid file not found errors for bash
     };
-
-    xdg.desktopEntries.pwas = {
-      exec =
-        "firefox --no-remote -P PWAs --name pwas https://mail.tutanota.com https://icedborn.github.io/icedchat https://discord.com/app";
-      icon = "element";
-      name = "Firefox PWAs";
-      terminal = false;
-      type = "Application";
-    };
   };
 }

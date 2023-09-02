@@ -38,6 +38,15 @@ lib.mkIf config.main.user.enable {
             "mullvad-gui --enable-features=UseOzonePlatform,WaylandWindowDecorations --ozone-platform=wayland";
           icon = "mullvad-vpn";
         }; # Force mullvad to use wayland and window decorations
+
+        pwas = {
+          exec =
+            "firefox --no-remote -P PWAs --name pwas https://mail.tutanota.com https://icedborn.github.io/icedchat https://discord.com/app";
+          icon = "element";
+          name = "Firefox PWAs";
+          terminal = false;
+          type = "Application";
+        }; # Firefox PWA
       };
 
       mimeApps = {
