@@ -148,7 +148,7 @@ lib.mkIf config.work.user.enable {
         recursive = true;
       };
 
-      # Use FSR on MPV by default
+      # Add mpv
       ".config/mpv" = {
         source = ../configs/mpv;
         recursive = true;
