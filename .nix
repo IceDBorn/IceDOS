@@ -219,38 +219,44 @@
           default = false;
         };
 
-        configuration = {
-          clock-date.enable = lib.mkOption {
-            type = lib.types.bool;
-            default = false;
-          };
+        arcmenu.enable = lib.mkOption {
+          type = lib.types.bool;
+          default = false;
+        };
 
-          caffeine.enable = lib.mkOption {
-            type = lib.types.bool;
-            default = true;
-          };
+        caffeine.enable = lib.mkOption {
+          type = lib.types.bool;
+          default = true;
+        };
 
-          hot-corners.enable = lib.mkOption {
-            type = lib.types.bool;
-            default = false;
-          };
+        clock-date.enable = lib.mkOption {
+          type = lib.types.bool;
+          default = false;
+        };
 
-          startup-items.enable = lib.mkOption {
-            type = lib.types.bool;
-            default = false;
-          };
+        dash-to-panel.enable = lib.mkOption {
+          type = lib.types.bool;
+          default = false;
+        };
 
-          pinned-apps = {
-            arcmenu.enable = lib.mkOption {
-              type = lib.types.bool;
-              default = false;
-            };
+        gsconnect.enable = lib.mkOption {
+          type = lib.types.bool;
+          default = true;
+        };
 
-            dash-to-panel.enable = lib.mkOption {
-              type = lib.types.bool;
-              default = false;
-            };
-          };
+        hot-corners.enable = lib.mkOption {
+          type = lib.types.bool;
+          default = false;
+        };
+
+        pinned-apps.enable = lib.mkOption {
+          type = lib.types.bool;
+          default = false;
+        }; # Whether to set (or unset) gnome's and arcmenu's pinned apps
+
+        startup-items.enable = lib.mkOption {
+          type = lib.types.bool;
+          default = false;
         };
       };
 

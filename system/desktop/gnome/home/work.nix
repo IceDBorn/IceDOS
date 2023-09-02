@@ -16,13 +16,12 @@ lib.mkIf config.work.user.enable {
           # Enable clock seconds
           clock-show-seconds = true;
           # Disable date
-          clock-show-date =
-            config.desktop-environment.gnome.configuration.clock-date.enable;
+          clock-show-date = config.desktop-environment.gnome.clock-date.enable;
           # Show the battery percentage when on a laptop
           show-battery-percentage = config.laptop.enable;
           # Access the activity overview by moving the mouse to the top-left corner
           enable-hot-corners =
-            config.desktop-environment.gnome.configuration.hot-corners.enable;
+            config.desktop-environment.gnome.hot-corners.enable;
         };
 
         # Disable lockscreen notifications
@@ -73,24 +72,31 @@ lib.mkIf config.work.user.enable {
           # Set enabled gnome extensions
           enabled-extensions = [
             "appindicatorsupport@rgcjonas.gmail.com"
-            "arcmenu@arcmenu.com"
             "clipboard-indicator@tudmotu.com"
-            "color-picker@tuberry"
-            "dash-to-panel@jderose9.github.com"
-            "emoji-selector@maestroschan.fr"
-            "gsconnect@andyholmes.github.io"
-            "quick-settings-tweaks@qwreey"
-          ]
-            ++ (if (config.desktop-environment.gnome.configuration.caffeine.enable) then
+            "pano@elhan.io"
+          ] ++ (if (config.desktop-environment.gnome.arcmenu.enable) then
+            [ "arcmenu@arcmenu.com" ]
+          else
+            [ ]) ++ (if (config.desktop-environment.gnome.caffeine.enable) then
               [ "caffeine@patapon.info" ]
+            else
+              [ ])
+            ++ (if (config.desktop-environment.gnome.dash-to-panel.enable) then
+              [ "dash-to-panel@jderose9.github.com" ]
+            else
+              [ ])
+            ++ (if (config.desktop-environment.gnome.gsconnect.enable) then
+              [ "gsconnect@andyholmes.github.io" ]
             else
               [ ]);
 
           favorite-apps =
-            if (config.desktop-environment.gnome.configuration.pinned-apps.dash-to-panel.enable) then
-              [ ]
-            else
-              [ ]; # Set dash to panel pinned apps
+            lib.mkIf config.desktop-environment.gnome.pinned-apps.enable [
+              "webstorm.desktop"
+              "slack.desktop"
+              "webcord.desktop"
+              "firefox.desktop"
+            ]; # Set dash to panel pinned apps
         };
 
         "org/gnome/shell/keybindings" = {
@@ -122,8 +128,8 @@ lib.mkIf config.work.user.enable {
         # Limit app switcher to current workspace
         "org/gnome/shell/app-switcher" = { current-workspace-only = true; };
 
-        "org/gnome/shell/extensions/caffeine" = lib.mkIf
-          config.desktop-environment.gnome.configuration.caffeine.enable {
+        "org/gnome/shell/extensions/caffeine" =
+          lib.mkIf config.desktop-environment.gnome.caffeine.enable {
             # Remember the user choice
             restore-state = true;
             # Disable icon
@@ -141,48 +147,75 @@ lib.mkIf config.work.user.enable {
           toggle-menu = [ "<Super>v" ];
         };
 
-        # Disable color picker notifications
-        "org/gnome/shell/extensions/color-picker" = { enable-notify = false; };
+        "org/gnome/shell/extensions/dash-to-panel" =
+          lib.mkIf config.desktop-environment.gnome.dash-to-panel.enable {
+            panel-element-positions = ''
+              {
+                "0": [
+                  {"element":"showAppsButton","visible":false,"position":"stackedTL"},
+                  {"element":"activitiesButton","visible":false,"position":"stackedTL"},
+                  {"element":"leftBox","visible":true,"position":"stackedTL"},
+                  {"element":"taskbar","visible":true,"position":"stackedTL"},
+                  {"element":"centerBox","visible":true,"position":"stackedBR"},
+                  {"element":"rightBox","visible":true,"position":"stackedBR"},
+                  {"element":"dateMenu","visible":true,"position":"stackedBR"},
+                  {"element":"systemMenu","visible":true,"position":"stackedBR"},
+                  {"element":"desktopButton","visible":true,"position":"stackedBR"}
+                ],
+                "1": [
+                  {"element":"showAppsButton","visible":false,"position":"stackedTL"},
+                  {"element":"activitiesButton","visible":false,"position":"stackedTL"},
+                  {"element":"leftBox","visible":true,"position":"stackedTL"},
+                  {"element":"taskbar","visible":true,"position":"stackedTL"},
+                  {"element":"centerBox","visible":true,"position":"stackedBR"},
+                  {"element":"rightBox","visible":true,"position":"stackedBR"},
+                  {"element":"dateMenu","visible":true,"position":"stackedBR"},
+                  {"element":"systemMenu","visible":true,"position":"stackedBR"},
+                  {"element":"desktopButton","visible":true,"position":"stackedBR"}
+                ]
+              }
+            ''; # Disable activities button
+            panel-sizes = ''{"0":44}'';
+            appicon-margin = 4;
+            dot-style-focused = "DASHES";
+            dot-style-unfocused = "DOTS";
+            hide-overview-on-startup = true;
+            scroll-icon-action = "NOTHING";
+            scroll-panel-action = "NOTHING";
+            hot-keys = true;
+          };
 
-        # Do not always show emoji selector
-        "org/gnome/shell/extensions/emoji-selector" = { always-show = false; };
-
-        "org/gnome/shell/extensions/dash-to-panel" = {
-          panel-element-positions = ''
-            {"0":[{"element":"showAppsButton","visible":false,"position":"stackedTL"},
-            {"element":"activitiesButton","visible":false,"position":"stackedTL"},
-            {"element":"leftBox","visible":true,"position":"stackedTL"},
-            {"element":"taskbar","visible":true,"position":"stackedTL"},
-            {"element":"centerBox","visible":true,"position":"stackedBR"},
-            {"element":"rightBox","visible":true,"position":"stackedBR"},
-            {"element":"dateMenu","visible":true,"position":"stackedBR"},
-            {"element":"systemMenu","visible":true,"position":"stackedBR"},
-            {"element":"desktopButton","visible":true,"position":"stackedBR"}]}
-          ''; # Disable activities button
-          panel-sizes = ''{"0":44}'';
-          appicon-margin = 4;
-          dot-style-focused = "DASHES";
-          dot-style-unfocused = "DOTS";
-          hide-overview-on-startup = true;
-          scroll-icon-action = "NOTHING";
-          scroll-panel-action = "NOTHING";
-          hot-keys = true;
-        };
-
-        "org/gnome/shell/extensions/arcmenu" = {
-          distro-icon = 6;
-          menu-button-icon = "Distro_Icon"; # Use arch icon
-          multi-monitor = true;
-          menu-layout = "Windows";
-          windows-disable-frequent-apps = true;
-          windows-disable-pinned-apps =
-            !config.desktop-environment.gnome.configuration.pinned-apps.arcmenu.enable;
-          pinned-app-list =
-            if (config.desktop-environment.gnome.configuration.pinned-apps.arcmenu.enable) then
-              [ ]
-            else
-              [ ]; # Set arc menu pinned apps
-        };
+        "org/gnome/shell/extensions/arcmenu" =
+          lib.mkIf config.desktop-environment.gnome.arcmenu.enable {
+            distro-icon = 6;
+            menu-button-icon = "Distro_Icon"; # Use arch icon
+            multi-monitor = true;
+            menu-layout = "Windows";
+            windows-disable-frequent-apps = true;
+            windows-disable-pinned-apps =
+              !config.desktop-environment.gnome.pinned-apps.enable;
+            pinned-app-list =
+              lib.mkIf config.desktop-environment.gnome.pinned-apps.enable [
+                "VSCodium"
+                ""
+                "codium.desktop"
+                "Spotify"
+                ""
+                "spotify.desktop"
+                "Signal"
+                ""
+                "signal-desktop.desktop"
+                "OBS Studio"
+                ""
+                "com.obsproject.Studio.desktop"
+                "Mullvad VPN"
+                ""
+                "mullvad-vpn.desktop"
+                "GNU Image Manipulation Program"
+                ""
+                "gimp.desktop"
+              ]; # Set arc menu pinned apps
+          };
       };
     };
 }
