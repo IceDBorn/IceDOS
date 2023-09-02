@@ -73,19 +73,20 @@
       gnome.adwaita-icon-theme # GTK theme
       tela-icon-theme # Icon theme
     ];
-  };
 
-  sessionVariables = {
-    # Set Firefox as default browser for Electron apps
-    DEFAULT_BROWSER = "${pkgs.firefox}/bin/firefox";
-    # Fix nautilus not displaying audio/video information in properties https://github.com/NixOS/nixpkgs/issues/53631
-    GST_PLUGIN_SYSTEM_PATH_1_0 =
-      lib.makeSearchPathOutput "lib" "lib/gstreamer-1.0" (with pkgs.gst_all_1; [
-        gst-plugins-good
-        gst-plugins-bad
-        gst-plugins-ugly
-        gst-libav
-      ]); # Fix from https://github.com/NixOS/nixpkgs/issues/195936#issuecomment-1366902737
+    sessionVariables = {
+      # Set Firefox as default browser for Electron apps
+      DEFAULT_BROWSER = "${pkgs.firefox}/bin/firefox";
+      # Fix nautilus not displaying audio/video information in properties https://github.com/NixOS/nixpkgs/issues/53631
+      GST_PLUGIN_SYSTEM_PATH_1_0 =
+        lib.makeSearchPathOutput "lib" "lib/gstreamer-1.0"
+        (with pkgs.gst_all_1; [
+          gst-plugins-good
+          gst-plugins-bad
+          gst-plugins-ugly
+          gst-libav
+        ]); # Fix from https://github.com/NixOS/nixpkgs/issues/195936#issuecomment-1366902737
+    };
   };
 
   fonts.packages = with pkgs; [
