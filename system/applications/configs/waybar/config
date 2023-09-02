@@ -1,6 +1,6 @@
 {
   "layer": "top",
-  "modules-left": ["wlr/workspaces"],
+  "modules-left": ["hyprland/workspaces"],
   "modules-center": ["hyprland/window"],
   "modules-right": [
     "tray",
@@ -58,15 +58,12 @@
     "on-click": "pavucontrol"
   },
 
-  "wlr/workspaces": {
+  "hyprland/workspaces": {
     "format": "{icon}",
-    "on-click": "activate",
     "format-icons": {
-      "urgent": "",
       "active": "",
       "default": ""
     },
-    "sort-by-number": true
   },
 
   "hyprland/language": {
