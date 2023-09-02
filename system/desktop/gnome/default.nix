@@ -19,7 +19,6 @@
       gnome.dconf-editor # Edit gnome's dconf
       gnome.gnome-tweaks # Tweaks missing from pure gnome
       gnomeExtensions.appindicator # Tray icons for gnome
-      gnomeExtensions.clipboard-indicator # Clipboard indicator for gnome
       gnomeExtensions.pano # Next-gen Clipboard manager
       gnome-extension-manager # Gnome extensions manager and downloader
     ] else
