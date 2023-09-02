@@ -75,6 +75,11 @@
     ];
   };
 
+  sessionVariables = {
+    # Set Firefox as default browser for Electron apps
+    DEFAULT_BROWSER = "${pkgs.firefox}/bin/firefox";
+  };
+
   fonts.packages = with pkgs; [
     meslo-lgs-nf
     cantarell-fonts
