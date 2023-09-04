@@ -35,16 +35,14 @@
     kernelModules = [
       "v4l2loopback" # Virtual camera
       "uinput"
-    ] ++ (if (config.xpadneo-unstable.enable) then [ "hid_xpadneo" ] else [ ]);
+    ] ++ lib.optionals config.xpadneo-unstable.enable [ "hid_xpadneo" ];
 
     kernelParams =
       [ "clearcpuid=514" ]; # Fixes certain wine games crash on launch
 
     extraModulePackages = with config.boot.kernelPackages;
-      [ v4l2loopback ] ++ (if (config.xpadneo-unstable.enable) then
-        [ (callPackage ../system/applications/self-built/xpadneo.nix { }) ]
-      else
-        [ ]);
+      [ v4l2loopback ] ++ lib.optional config.xpadneo-unstable.enable
+      (callPackage ../system/applications/self-built/xpadneo.nix { });
 
     kernel.sysctl = {
       "vm.max_map_count" = 262144;

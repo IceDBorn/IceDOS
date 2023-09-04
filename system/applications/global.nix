@@ -1,5 +1,5 @@
 # PACKAGES INSTALLED ON ALL USERS
-{ pkgs, config, inputs, ... }:
+{ pkgs, config, inputs, lib, ... }:
 
 let
   trim-generations = pkgs.writeShellScriptBin "trim-generations"
@@ -181,12 +181,8 @@ in {
           pkgs.mpvScripts.mpris # Allow control with standard media keys
           pkgs.mpvScripts.thumbfast # Thumbnailer
           pkgs.mpvScripts.uosc # Feature-rich minimalist proximity-based UI
-        ] ++ (if (config.desktop-environment.gnome.enable) then
-          [
-            pkgs.mpvScripts.inhibit-gnome # Prevent gnome screen blanking while playing media
-          ]
-        else
-          [ ]);
+        ] ++ lib.optional config.desktop-environment.gnome.enable
+          pkgs.mpvScripts.inhibit-gnome; # Prevent gnome screen blanking while playing media
       };
     })
   ];
