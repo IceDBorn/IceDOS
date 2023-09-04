@@ -35,7 +35,7 @@
     kernelModules = [
       "v4l2loopback" # Virtual camera
       "uinput"
-    ] ++ lib.optionals config.xpadneo-unstable.enable [ "hid_xpadneo" ];
+    ] ++ lib.optional config.xpadneo-unstable.enable "hid_xpadneo";
 
     kernelParams =
       [ "clearcpuid=514" ]; # Fixes certain wine games crash on launch
