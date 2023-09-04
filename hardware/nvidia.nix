@@ -17,12 +17,8 @@ in lib.mkIf config.nvidia.enable {
 
   environment.systemPackages =
     [ pkgs.nvtop-nvidia ] # Monitoring tool for nvidia GPUs
-    ++ (if (config.laptop.enable) then
-      [
-        nvidia-offload
-      ] # Use nvidia-offload to launch programs using the nvidia GPU
-    else
-      [ ]);
+    ++ lib.optional config.laptop.enable
+    nvidia-offload; # Use nvidia-offload to launch programs using the nvidia GPU
 
   # Set nvidia gpu power limit
   systemd.services.nv-power-limit = lib.mkIf config.nvidia.power-limit.enable {

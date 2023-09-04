@@ -72,22 +72,14 @@ lib.mkIf config.work.user.enable {
           # Set enabled gnome extensions
           enabled-extensions =
             [ "appindicatorsupport@rgcjonas.gmail.com" "pano@elhan.io" ]
-            ++ (if (config.desktop-environment.gnome.arcmenu.enable) then
-              [ "arcmenu@arcmenu.com" ]
-            else
-              [ ])
-            ++ (if (config.desktop-environment.gnome.caffeine.enable) then
-              [ "caffeine@patapon.info" ]
-            else
-              [ ])
-            ++ (if (config.desktop-environment.gnome.dash-to-panel.enable) then
-              [ "dash-to-panel@jderose9.github.com" ]
-            else
-              [ ])
-            ++ (if (config.desktop-environment.gnome.gsconnect.enable) then
-              [ "gsconnect@andyholmes.github.io" ]
-            else
-              [ ]);
+            ++ lib.optional config.desktop-environment.gnome.arcmenu.enable
+            "arcmenu@arcmenu.com"
+            ++ lib.optional config.desktop-environment.gnome.caffeine.enable
+            "caffeine@patapon.info" ++ lib.optional
+            config.desktop-environment.gnome.dash-to-panel.enable
+            "dash-to-panel@jderose9.github.com"
+            ++ lib.optional config.desktop-environment.gnome.gsconnect.enable
+            "gsconnect@andyholmes.github.io";
 
           favorite-apps =
             lib.mkIf config.desktop-environment.gnome.pinned-apps.enable [
