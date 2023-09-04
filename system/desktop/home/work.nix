@@ -27,8 +27,8 @@ lib.mkIf config.work.user.enable {
       desktopEntries = {
         pwas = {
           exec =
-            "firefox --no-remote -P PWAs --name pwas https://mail.tutanota.com https://icedborn.github.io/icedchat https://discord.com/app";
-          icon = "element";
+            "firefox --no-remote -P PWAs --name pwas ${config.firefox.pwas.sites}";
+          icon = "firefox-nightly";
           name = "Firefox PWAs";
           terminal = false;
           type = "Application";

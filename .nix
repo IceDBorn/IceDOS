@@ -307,6 +307,13 @@
         type = lib.types.bool;
         default = true;
       };
+
+      # Sites to launch on Firefox PWAs
+      pwas.sites = lib.mkOption {
+        type = lib.types.str;
+        default =
+          "https://mail.tutanota.com https://icedborn.github.io/icedchat https://discord.com/app";
+      };
     };
 
     xpadneo-unstable.enable = lib.mkOption {
