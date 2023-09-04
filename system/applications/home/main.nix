@@ -17,7 +17,8 @@ lib.mkIf config.main.user.enable {
           confirm_os_window_close = "0";
           cursor_shape = "beam";
           enable_audio_bell = "no";
-          hide_window_decorations = "yes";
+          hide_window_decorations =
+            if (config.kitty.hide-decorations) then "yes" else "no";
           update_check_interval = "0";
           copy_on_select = "no";
         };
@@ -167,8 +168,11 @@ lib.mkIf config.main.user.enable {
 
       # Add adwaita steam skin
       ".local/share/Steam/steamui" = {
-        source =
-          "${(pkgs.callPackage ../self-built/adwaita-for-steam { })}/build";
+        source = "${
+            (pkgs.callPackage ../self-built/adwaita-for-steam {
+              config = config;
+            })
+          }/build";
         recursive = true;
       };
 
