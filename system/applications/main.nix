@@ -6,7 +6,6 @@ lib.mkIf config.main.user.enable {
     bottles # Wine manager
     cemu # Wii U Emulator
     duckstation # PS1 Emulator
-    gamescope # Wayland microcompositor
     godot_4 # Game engine
     heroic # Epic Games Launcher for Linux
     input-remapper # Remap input device controls
@@ -24,6 +23,13 @@ lib.mkIf config.main.user.enable {
     tailscale # VPN with P2P support
     yuzu-early-access # Nintendo Switch emulator
   ];
+
+  # Wayland microcompositor
+  programs.gamescope =
+    lib.mkIf (!config.desktop-environment.steam.session.enable) {
+      enable = true;
+      capSysNice = true;
+    };
 
   services = {
     tailscale.enable = true;
