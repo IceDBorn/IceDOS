@@ -1,4 +1,6 @@
 #!/bin/bash
+
+mkdir -p ~/.local/share/Steam/steamui/css/
 cd ~/.local/share/Steam/steamui/css/
 
 if ! test -f "library.css"; then
