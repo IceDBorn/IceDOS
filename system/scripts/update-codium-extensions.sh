@@ -15,6 +15,7 @@ EXTENSIONS=(
     "markwylde.vscode-filesize"
     "ms-vscode.references-view"
     "nico-castell.linux-desktop-file"
+    "paragdiwan.gitpatch"
     "pkief.material-icon-theme"
     "timonwong.shellcheck"
     "zhuangtongfa.material-theme"
@@ -22,4 +23,4 @@ EXTENSIONS=(
 )
 
 echo "Installing codium extensions..."
-echo ${EXTENSIONS[*]} | xargs -P `nproc` -n 1 codium --force --install-extension > /dev/null
+echo "${EXTENSIONS[*]}" | xargs -P "$(nproc)" -n 1 codium --force --install-extension > /dev/null
