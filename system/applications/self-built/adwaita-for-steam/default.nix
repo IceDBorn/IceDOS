@@ -1,4 +1,4 @@
-{ stdenvNoCC, fetchFromGitHub, python3, ... }:
+{ stdenvNoCC, fetchFromGitHub, python3, config, ... }:
 
 stdenvNoCC.mkDerivation rec {
   name = "adwaita-for-steam";
@@ -19,6 +19,6 @@ stdenvNoCC.mkDerivation rec {
 
   installPhase = ''
     mkdir -p $out/build
-    NIX_OUT="$out" python install.py -e library/hide_whats_new -e library/sidebar_hover -e login/hover_qr -e windowcontrols/hide-close
+    NIX_OUT="$out" python install.py ${config.adwaita-for-steam.extras}
   '';
 }

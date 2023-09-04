@@ -320,5 +320,12 @@
       type = lib.types.bool;
       default = true;
     }; # use self-built version of xpadneo to fix some controller issues
+
+    # Extras to use for adwaita for steam theme
+    adwaita-for-steam.extras = lib.mkOption {
+      type = lib.types.str;
+      default =
+        "-e library/hide_whats_new -e library/sidebar_hover -e login/hover_qr -e windowcontrols/hide-close";
+    };
   };
 }
