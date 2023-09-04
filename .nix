@@ -180,9 +180,16 @@
       default = false;
     };
 
-    laptop.enable = lib.mkOption {
-      type = lib.types.bool;
-      default = false;
+    laptop = {
+      enable = lib.mkOption {
+        type = lib.types.bool;
+        default = false;
+      };
+
+      auto-cpufreq.enable = lib.mkOption {
+        type = lib.types.bool;
+        default = true;
+      };
     };
 
     virtualisation-settings = {
