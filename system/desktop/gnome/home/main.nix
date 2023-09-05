@@ -63,9 +63,11 @@ lib.mkIf config.system.user.main.enable {
           # Enable gnome extensions
           disable-user-extensions = false;
           # Set enabled gnome extensions
-          enabled-extensions =
-            [ "appindicatorsupport@rgcjonas.gmail.com" "pano@elhan.io" ]
-            ++ lib.optional config.desktop.gnome.arcmenu.enable
+          enabled-extensions = [
+            "appindicatorsupport@rgcjonas.gmail.com"
+            "pano@elhan.io"
+            "quick-settings-tweaks@qwreey"
+          ] ++ lib.optional config.desktop.gnome.arcmenu.enable
             "arcmenu@arcmenu.com"
             ++ lib.optional config.desktop.gnome.caffeine.enable
             "caffeine@patapon.info"

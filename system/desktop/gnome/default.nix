@@ -22,6 +22,7 @@
         gnomeExtensions.appindicator # Tray icons for gnome
         gnomeExtensions.pano # Next-gen Clipboard manager
         gnome-extension-manager # Gnome extensions manager and downloader
+        gnomeExtensions.quick-settings-tweaker
       ] ++ lib.optional config.desktop.gnome.arcmenu.enable
       gnomeExtensions.arcmenu # Start menu
       ++ lib.optional config.desktop.gnome.caffeine.enable
