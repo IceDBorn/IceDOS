@@ -1,8 +1,8 @@
 { config, lib, ... }:
 
-lib.mkIf (config.work.user.enable && (config.desktop-environment.hypr.enable
-  || config.desktop-environment.hyprland.enable)) {
-    home-manager.users.${config.work.user.username} = {
+lib.mkIf (config.system.user.work.enable
+  && (config.desktop.hypr.enable || config.desktop.hyprland.enable)) {
+    home-manager.users.${config.system.user.work.username} = {
       # Gnome control center running in Hypr WMs
       xdg.desktopEntries.gnome-control-center = {
         exec = "env XDG_CURRENT_DESKTOP=GNOME gnome-control-center";
@@ -28,11 +28,10 @@ lib.mkIf (config.work.user.enable && (config.desktop-environment.hypr.enable
         };
 
         ".config/swaync/config.json" = {
-          source =
-            if (config.desktop-environment.hyprland.dual-monitor.enable) then
-              ../../../applications/configs/swaync/config-dual.json
-            else
-              ../../../applications/configs/swaync/config.json;
+          source = if (config.desktop.hyprland.dual-monitor.enable) then
+            ../../../applications/configs/swaync/config-dual.json
+          else
+            ../../../applications/configs/swaync/config.json;
           recursive = true;
         }; # Add swaync config file
 

@@ -25,5 +25,5 @@
     ./system/users
   ];
 
-  config.system.stateVersion = config.state-version;
+  config.system.stateVersion = config.system.state-version;
 }

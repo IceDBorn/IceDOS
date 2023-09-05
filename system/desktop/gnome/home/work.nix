@@ -1,8 +1,8 @@
 { config, lib, ... }:
 
-lib.mkIf config.work.user.enable {
-  home-manager.users.${config.work.user.username} =
-    lib.mkIf config.desktop-environment.gnome.enable {
+lib.mkIf config.system.user.work.enable {
+  home-manager.users.${config.system.user.work.username} =
+    lib.mkIf config.desktop.gnome.enable {
 
       dconf.settings = {
         "org/gnome/desktop/input-sources" = {
@@ -16,12 +16,11 @@ lib.mkIf config.work.user.enable {
           # Enable clock seconds
           clock-show-seconds = true;
           # Disable date
-          clock-show-date = config.desktop-environment.gnome.clock-date.enable;
+          clock-show-date = config.desktop.gnome.clock-date.enable;
           # Show the battery percentage when on a laptop
-          show-battery-percentage = config.laptop.enable;
+          show-battery-percentage = config.hardware.laptop.enable;
           # Access the activity overview by moving the mouse to the top-left corner
-          enable-hot-corners =
-            config.desktop-environment.gnome.hot-corners.enable;
+          enable-hot-corners = config.desktop.gnome.hot-corners.enable;
         };
 
         # Disable lockscreen notifications
@@ -72,22 +71,21 @@ lib.mkIf config.work.user.enable {
           # Set enabled gnome extensions
           enabled-extensions =
             [ "appindicatorsupport@rgcjonas.gmail.com" "pano@elhan.io" ]
-            ++ lib.optional config.desktop-environment.gnome.arcmenu.enable
+            ++ lib.optional config.desktop.gnome.arcmenu.enable
             "arcmenu@arcmenu.com"
-            ++ lib.optional config.desktop-environment.gnome.caffeine.enable
-            "caffeine@patapon.info" ++ lib.optional
-            config.desktop-environment.gnome.dash-to-panel.enable
+            ++ lib.optional config.desktop.gnome.caffeine.enable
+            "caffeine@patapon.info"
+            ++ lib.optional config.desktop.gnome.dash-to-panel.enable
             "dash-to-panel@jderose9.github.com"
-            ++ lib.optional config.desktop-environment.gnome.gsconnect.enable
+            ++ lib.optional config.desktop.gnome.gsconnect.enable
             "gsconnect@andyholmes.github.io";
 
-          favorite-apps =
-            lib.mkIf config.desktop-environment.gnome.pinned-apps.enable [
-              "webstorm.desktop"
-              "slack.desktop"
-              "webcord.desktop"
-              "firefox.desktop"
-            ]; # Set dash to panel pinned apps
+          favorite-apps = lib.mkIf config.desktop.gnome.pinned-apps.enable [
+            "webstorm.desktop"
+            "slack.desktop"
+            "webcord.desktop"
+            "firefox.desktop"
+          ]; # Set dash to panel pinned apps
         };
 
         "org/gnome/shell/keybindings" = {
@@ -120,7 +118,7 @@ lib.mkIf config.work.user.enable {
         "org/gnome/shell/app-switcher" = { current-workspace-only = true; };
 
         "org/gnome/shell/extensions/caffeine" =
-          lib.mkIf config.desktop-environment.gnome.caffeine.enable {
+          lib.mkIf config.desktop.gnome.caffeine.enable {
             # Remember the user choice
             restore-state = true;
             # Disable icon
@@ -139,7 +137,7 @@ lib.mkIf config.work.user.enable {
         };
 
         "org/gnome/shell/extensions/dash-to-panel" =
-          lib.mkIf config.desktop-environment.gnome.dash-to-panel.enable {
+          lib.mkIf config.desktop.gnome.dash-to-panel.enable {
             panel-element-positions = ''
               {
                 "0": [
@@ -177,35 +175,34 @@ lib.mkIf config.work.user.enable {
           };
 
         "org/gnome/shell/extensions/arcmenu" =
-          lib.mkIf config.desktop-environment.gnome.arcmenu.enable {
+          lib.mkIf config.desktop.gnome.arcmenu.enable {
             distro-icon = 6;
             menu-button-icon = "Distro_Icon"; # Use arch icon
             multi-monitor = true;
             menu-layout = "Windows";
             windows-disable-frequent-apps = true;
             windows-disable-pinned-apps =
-              !config.desktop-environment.gnome.pinned-apps.enable;
-            pinned-app-list =
-              lib.mkIf config.desktop-environment.gnome.pinned-apps.enable [
-                "VSCodium"
-                ""
-                "codium.desktop"
-                "Spotify"
-                ""
-                "spotify.desktop"
-                "Signal"
-                ""
-                "signal-desktop.desktop"
-                "OBS Studio"
-                ""
-                "com.obsproject.Studio.desktop"
-                "Mullvad VPN"
-                ""
-                "mullvad-vpn.desktop"
-                "GNU Image Manipulation Program"
-                ""
-                "gimp.desktop"
-              ]; # Set arc menu pinned apps
+              !config.desktop.gnome.pinned-apps.enable;
+            pinned-app-list = lib.mkIf config.desktop.gnome.pinned-apps.enable [
+              "VSCodium"
+              ""
+              "codium.desktop"
+              "Spotify"
+              ""
+              "spotify.desktop"
+              "Signal"
+              ""
+              "signal-desktop.desktop"
+              "OBS Studio"
+              ""
+              "com.obsproject.Studio.desktop"
+              "Mullvad VPN"
+              ""
+              "mullvad-vpn.desktop"
+              "GNU Image Manipulation Program"
+              ""
+              "gimp.desktop"
+            ]; # Set arc menu pinned apps
           };
       };
     };

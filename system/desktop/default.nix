@@ -20,16 +20,16 @@
       displayManager = {
         gdm = {
           enable = true;
-          autoSuspend = config.desktop-environment.gdm.auto-suspend.enable;
+          autoSuspend = config.desktop.gdm.auto-suspend.enable;
         };
 
-        autoLogin = lib.mkIf config.boot.autologin.enable {
+        autoLogin = lib.mkIf config.desktop.autologin.enable {
           enable = true;
-          user = if (config.main.user.enable
-            && config.boot.autologin.main.user.enable) then
-            config.main.user.username
-          else if (config.work.user.enable) then
-            config.work.user.username
+          user = if (config.system.user.main.enable
+            && config.desktop.autologin.main.user.enable) then
+            config.system.user.main.username
+          else if (config.system.user.work.enable) then
+            config.system.user.work.username
           else
             "";
         };

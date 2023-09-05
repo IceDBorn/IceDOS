@@ -1,344 +1,368 @@
 { lib, ... }:
 
 {
-  options = {
-    state-version = lib.mkOption {
-      type = lib.types.str;
-      default = "23.05";
-    }; # Do not change without checking the docs (config.system.stateVersion)
-
-    efi-mount-path = lib.mkOption {
-      type = lib.types.str;
-      default = "/boot";
-    };
-
-    mounts.enable = lib.mkOption {
-      type = lib.types.bool;
-      default = true;
-    }; # Set to false if hardware/mounts.nix is not correctly configured
-
-    boot = {
-      animation.enable = lib.mkOption {
-        type = lib.types.bool;
-        default = false;
-      }; # Hides startup text and displays a circular loading icon
-
-      autologin = {
-        enable = lib.mkOption {
-          type = lib.types.bool;
-          default = true;
-        };
-
-        main.user.enable = lib.mkOption {
-          type = lib.types.bool;
-          default = true;
-        }; # If false, defaults to work user
+  options = with lib; {
+    applications = {
+      # Extras to use for adwaita for steam theme
+      adwaita-for-steam.extras = mkOption {
+        type = types.str;
+        default =
+          "-e library/hide_whats_new -e library/sidebar_hover -e login/hover_qr -e windowcontrols/hide-close";
       };
 
-      windows-entry = lib.mkOption {
-        type = lib.types.str;
-        default = "0000";
-      }; # Used for rebooting to windows with efibootmgr
-
-      btrfs-compression = {
-        enable = lib.mkOption {
-          type = lib.types.bool;
+      firefox = {
+        gnome-theme.enable = mkOption {
+          type = types.bool;
           default = true;
         };
 
-        root.enable = lib.mkOption {
-          type = lib.types.bool;
+        privacy.enable = mkOption {
+          type = types.bool;
           default = true;
-        }; # /
+        };
 
-        mounts.enable = lib.mkOption {
-          type = lib.types.bool;
-          default = true;
-        }; # Mounted drives
-      }; # Btrfs compression
-    };
+        # Sites to launch on Firefox PWAs
+        pwas.sites = mkOption {
+          type = types.str;
+          default =
+            "https://mail.tutanota.com https://icedborn.github.io/icedchat https://discord.com/app";
+        };
+      };
 
-    gc = {
-      generations = lib.mkOption {
-        type = lib.types.str;
-        default = "10";
-      }; # Number of generations that will always be kept
-
-      days = lib.mkOption {
-        type = lib.types.str;
-        default = "0";
-      }; # Number of days before a generation can be deleted
-    };
-
-    # Declare users
-    main.user = {
-      enable = lib.mkOption {
-        type = lib.types.bool;
+      # Hide kitty top bar
+      kitty.hide-decorations = mkOption {
+        type = types.bool;
         default = true;
-      };
-
-      username = lib.mkOption {
-        type = lib.types.str;
-        default = "icedborn";
-      };
-
-      description = lib.mkOption {
-        type = lib.types.str;
-        default = "IceDBorn";
-      };
-
-      github = {
-        username = lib.mkOption {
-          type = lib.types.str;
-          default = "IceDBorn";
-        };
-
-        email = lib.mkOption {
-          type = lib.types.str;
-          default = "github.envenomed@dralias.com";
-        };
-      };
-    };
-
-    work.user = {
-      enable = lib.mkOption {
-        type = lib.types.bool;
-        default = false;
-      };
-
-      username = lib.mkOption {
-        type = lib.types.str;
-        default = "work";
-      };
-
-      description = lib.mkOption {
-        type = lib.types.str;
-        default = "Work";
-      };
-
-      github = {
-        username = lib.mkOption {
-          type = lib.types.str;
-          default = "IceDBorn";
-        };
-
-        email = lib.mkOption {
-          type = lib.types.str;
-          default = "github.envenomed@dralias.com";
-        };
-      };
-    };
-
-    amd = {
-      gpu.enable = lib.mkOption {
-        type = lib.types.bool;
-        default = true;
-      };
-
-      cpu = {
-        enable = lib.mkOption {
-          type = lib.types.bool;
-          default = true;
-        };
-
-        undervolt = {
-          enable = lib.mkOption {
-            type = lib.types.bool;
-            default = true;
-          };
-
-          value = lib.mkOption {
-            type = lib.types.str;
-            # Pstate 0, 1.25 voltage, 4200 clock speed
-            default = "-p 0 -v 30 -f A8";
-          };
-        };
-      };
-    };
-
-    nvidia = {
-      enable = lib.mkOption {
-        type = lib.types.bool;
-        default = false;
-      };
-
-      power-limit = {
-        enable = lib.mkOption {
-          type = lib.types.bool;
-          default = true;
-        };
-
-        value = lib.mkOption {
-          type = lib.types.str;
-          default = "242"; # RTX 3070
-        };
-      };
-    };
-
-    intel.enable = lib.mkOption {
-      type = lib.types.bool;
-      default = false;
-    };
-
-    laptop = {
-      enable = lib.mkOption {
-        type = lib.types.bool;
-        default = false;
-      };
-
-      auto-cpufreq.enable = lib.mkOption {
-        type = lib.types.bool;
-        default = true;
-      };
-    };
-
-    virtualisation-settings = {
-      docker.enable = lib.mkOption {
-        type = lib.types.bool;
-        default = true;
-      }; # Container manager
-
-      libvirtd.enable = lib.mkOption {
-        type = lib.types.bool;
-        default = true;
-      }; # A daemon that manages virtual machines
-
-      lxd.enable = lib.mkOption {
-        type = lib.types.bool;
-        default = true;
-      }; # Container daemon
-
-      spiceUSBRedirection.enable = lib.mkOption {
-        type = lib.types.bool;
-        default = true;
-      }; # Passthrough USB devices to vms
-
-      waydroid.enable = lib.mkOption {
-        type = lib.types.bool;
-        default = true;
-      }; # Android container
-    };
-
-    desktop-environment = {
-      gnome = {
-        enable = lib.mkOption {
-          type = lib.types.bool;
-          default = false;
-        };
-
-        arcmenu.enable = lib.mkOption {
-          type = lib.types.bool;
-          default = false;
-        };
-
-        caffeine.enable = lib.mkOption {
-          type = lib.types.bool;
-          default = true;
-        };
-
-        clock-date.enable = lib.mkOption {
-          type = lib.types.bool;
-          default = false;
-        };
-
-        dash-to-panel.enable = lib.mkOption {
-          type = lib.types.bool;
-          default = false;
-        };
-
-        gsconnect.enable = lib.mkOption {
-          type = lib.types.bool;
-          default = true;
-        };
-
-        hot-corners.enable = lib.mkOption {
-          type = lib.types.bool;
-          default = false;
-        };
-
-        pinned-apps.enable = lib.mkOption {
-          type = lib.types.bool;
-          default = false;
-        }; # Whether to set (or unset) gnome's and arcmenu's pinned apps
-
-        startup-items.enable = lib.mkOption {
-          type = lib.types.bool;
-          default = false;
-        };
-      };
-
-      hypr = {
-        enable = lib.mkOption {
-          type = lib.types.bool;
-          default = true;
-        };
-      };
-
-      hyprland = {
-        enable = lib.mkOption {
-          type = lib.types.bool;
-          default = true;
-        };
-
-        dual-monitor.enable = lib.mkOption {
-          type = lib.types.bool;
-          default = true;
-        };
       };
 
       steam = {
-        beta.enable = lib.mkOption {
-          type = lib.types.bool;
+        beta.enable = mkOption {
+          type = types.bool;
           default = true;
         };
 
-        session.enable = lib.mkOption {
-          type = lib.types.bool;
+        session.enable = mkOption {
+          type = types.bool;
           default = true;
         };
       };
+    };
 
-      gdm.auto-suspend.enable = lib.mkOption {
-        type = lib.types.bool;
+    boot = {
+      # Hides startup text and displays a circular loading icon
+      animation.enable = mkOption {
+        type = types.bool;
         default = false;
       };
+
+      efi-mount-path = mkOption {
+        type = types.str;
+        default = "/boot";
+      };
+
+      # Used for rebooting to windows with efibootmgr
+      windows-entry = mkOption {
+        type = types.str;
+        default = "0000";
+      };
     };
 
-    firefox = {
-      privacy.enable = lib.mkOption {
-        type = lib.types.bool;
+    desktop = {
+      autologin = {
+        enable = mkOption {
+          type = types.bool;
+          default = true;
+        };
+
+        # If false, defaults to work user
+        main.user.enable = mkOption {
+          type = types.bool;
+          default = true;
+        };
+      };
+
+      gdm.auto-suspend.enable = mkOption {
+        type = types.bool;
+        default = false;
+      };
+
+      gnome = {
+        enable = mkOption {
+          type = types.bool;
+          default = false;
+        };
+
+        arcmenu.enable = mkOption {
+          type = types.bool;
+          default = false;
+        };
+
+        caffeine.enable = mkOption {
+          type = types.bool;
+          default = true;
+        };
+
+        clock-date.enable = mkOption {
+          type = types.bool;
+          default = false;
+        };
+
+        dash-to-panel.enable = mkOption {
+          type = types.bool;
+          default = false;
+        };
+
+        gsconnect.enable = mkOption {
+          type = types.bool;
+          default = true;
+        };
+
+        hot-corners.enable = mkOption {
+          type = types.bool;
+          default = false;
+        };
+
+        # Whether to set (or unset) gnome's and arcmenu's pinned apps
+        pinned-apps.enable = mkOption {
+          type = types.bool;
+          default = false;
+        };
+
+        startup-items.enable = mkOption {
+          type = types.bool;
+          default = false;
+        };
+      };
+
+      hypr.enable = mkOption {
+        type = types.bool;
         default = true;
       };
 
-      gnome-theme.enable = lib.mkOption {
-        type = lib.types.bool;
+      hyprland = {
+        enable = mkOption {
+          type = types.bool;
+          default = true;
+        };
+
+        dual-monitor.enable = mkOption {
+          type = types.bool;
+          default = false;
+        };
+      };
+    };
+
+    hardware = {
+      btrfs-compression = {
+        enable = mkOption {
+          type = types.bool;
+          default = true;
+        };
+
+        # Use btrfs compression for mounted drives
+        mounts.enable = mkOption {
+          type = types.bool;
+          default = true;
+        };
+
+        # Use btrfs compression for root
+        root.enable = mkOption {
+          type = types.bool;
+          default = true;
+        };
+      };
+
+      cpu = {
+        amd = {
+          enable = mkOption {
+            type = types.bool;
+            default = true;
+          };
+
+          undervolt = {
+            enable = mkOption {
+              type = types.bool;
+              default = true;
+            };
+
+            value = mkOption {
+              type = types.str;
+              # Pstate 0, 1.25 voltage, 4200 clock speed
+              default = "-p 0 -v 30 -f A8";
+            };
+          };
+        };
+
+        intel.enable = mkOption {
+          type = types.bool;
+          default = false;
+        };
+      };
+
+      gpu = {
+        amd.enable = mkOption {
+          type = types.bool;
+          default = true;
+        };
+
+        nvidia = {
+          enable = mkOption {
+            type = types.bool;
+            default = false;
+          };
+
+          power-limit = {
+            enable = mkOption {
+              type = types.bool;
+              default = true;
+            };
+
+            # RTX 3070
+            value = mkOption {
+              type = types.str;
+              default = "242";
+            };
+          };
+        };
+      };
+
+      laptop = {
+        enable = mkOption {
+          type = types.bool;
+          default = false;
+        };
+
+        auto-cpufreq.enable = mkOption {
+          type = types.bool;
+          default = true;
+        };
+      };
+
+      # Set to false if hardware/mounts.nix is not correctly configured
+      mounts.enable = mkOption {
+        type = types.bool;
         default = true;
       };
 
-      # Sites to launch on Firefox PWAs
-      pwas.sites = lib.mkOption {
-        type = lib.types.str;
-        default =
-          "https://mail.tutanota.com https://icedborn.github.io/icedchat https://discord.com/app";
+      virtualisation = {
+        # Container manager
+        docker.enable = mkOption {
+          type = types.bool;
+          default = true;
+        };
+
+        # A daemon that manages virtual machines
+        libvirtd.enable = mkOption {
+          type = types.bool;
+          default = true;
+        };
+
+        # Container daemon
+        lxd.enable = mkOption {
+          type = types.bool;
+          default = true;
+        };
+
+        # Passthrough USB devices to vms
+        spiceUSBRedirection.enable = mkOption {
+          type = types.bool;
+          default = true;
+        };
+
+        # Android container
+        waydroid.enable = mkOption {
+          type = types.bool;
+          default = true;
+        };
+      };
+
+      # use self-built version of xpadneo to fix some controller issues
+      xpadneo-unstable.enable = mkOption {
+        type = types.bool;
+        default = true;
       };
     };
 
-    xpadneo-unstable.enable = lib.mkOption {
-      type = lib.types.bool;
-      default = true;
-    }; # use self-built version of xpadneo to fix some controller issues
+    system = {
+      gc = {
+        # Number of days before a generation can be deleted
+        days = mkOption {
+          type = types.str;
+          default = "0";
+        };
 
-    # Hide kitty top bar
-    kitty.hide-decorations = lib.mkOption {
-      type = lib.types.bool;
-      default = true;
-    };
+        # Number of generations that will always be kept
+        generations = mkOption {
+          type = types.str;
+          default = "10";
+        };
+      };
 
-    # Extras to use for adwaita for steam theme
-    adwaita-for-steam.extras = lib.mkOption {
-      type = lib.types.str;
-      default =
-        "-e library/hide_whats_new -e library/sidebar_hover -e login/hover_qr -e windowcontrols/hide-close";
+      user = {
+        main = {
+          enable = mkOption {
+            type = types.bool;
+            default = true;
+          };
+
+          username = mkOption {
+            type = types.str;
+            default = "icedborn";
+          };
+
+          description = mkOption {
+            type = types.str;
+            default = "IceDBorn";
+          };
+
+          git = {
+            username = mkOption {
+              type = types.str;
+              default = "IceDBorn";
+            };
+
+            email = mkOption {
+              type = types.str;
+              default = "github.envenomed@dralias.com";
+            };
+          };
+        };
+
+        work = {
+          enable = mkOption {
+            type = types.bool;
+            default = false;
+          };
+
+          username = mkOption {
+            type = types.str;
+            default = "work";
+          };
+
+          description = mkOption {
+            type = types.str;
+            default = "Work";
+          };
+
+          git = {
+            username = mkOption {
+              type = types.str;
+              default = "IceDBorn";
+            };
+
+            email = mkOption {
+              type = types.str;
+              default = "github.envenomed@dralias.com";
+            };
+          };
+        };
+      };
+
+      # Do not change without checking the docs (config.system.stateVersion)
+      state-version = mkOption {
+        type = types.str;
+        default = "23.05";
+      };
     };
   };
 }

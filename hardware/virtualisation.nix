@@ -2,16 +2,16 @@
 
 {
   virtualisation = {
-    docker.enable = config.virtualisation-settings.docker.enable;
-    libvirtd.enable = config.virtualisation-settings.libvirtd.enable;
-    lxd.enable = config.virtualisation-settings.lxd.enable;
+    docker.enable = config.hardware.virtualisation.docker.enable;
+    libvirtd.enable = config.hardware.virtualisation.libvirtd.enable;
+    lxd.enable = config.hardware.virtualisation.lxd.enable;
     spiceUSBRedirection.enable =
-      config.virtualisation-settings.spiceUSBRedirection.enable;
-    waydroid.enable = config.virtualisation-settings.waydroid.enable;
+      config.hardware.virtualisation.spiceUSBRedirection.enable;
+    waydroid.enable = config.hardware.virtualisation.waydroid.enable;
   };
 
   environment.systemPackages = with pkgs;
-    lib.mkIf config.virtualisation-settings.docker.enable [
+    lib.mkIf config.hardware.virtualisation.docker.enable [
       docker # Containers
       distrobox # Wrapper around docker to create and start linux containers
     ];

@@ -6,12 +6,12 @@ let
     (builtins.readFile ../scripts/trim-generations.sh);
 
   nix-gc = pkgs.writeShellScriptBin "nix-gc" ''
-    gens=${config.gc.generations} ;
-    days=${config.gc.days} ;
+    gens=${config.system.gc.generations} ;
+    days=${config.system.gc.days} ;
     trim-generations ''${1:-$gens} ''${2:-$days} user ;
     trim-generations ''${1:-$gens} ''${2:-$days} home-manager ;
-    sudo -H -u ${config.work.user.username} env Gens="''${1:-$gens}" Days="''${2:-$days}" bash -c 'trim-generations $Gens $Days user' ;
-    sudo -H -u ${config.work.user.username} env Gens="''${1:-$gens}" Days="''${2:-$days}" bash -c 'trim-generations $Gens $Days home-manager' ;
+    sudo -H -u ${config.system.user.work.username} env Gens="''${1:-$gens}" Days="''${2:-$days}" bash -c 'trim-generations $Gens $Days user' ;
+    sudo -H -u ${config.system.user.work.username} env Gens="''${1:-$gens}" Days="''${2:-$days}" bash -c 'trim-generations $Gens $Days home-manager' ;
     sudo trim-generations ''${1:-$gens} ''${2:-$days} system ;
     nix-store --gc
   '';
@@ -191,7 +191,7 @@ in {
           pkgs.mpvScripts.mpris # Allow control with standard media keys
           pkgs.mpvScripts.thumbfast # Thumbnailer
           pkgs.mpvScripts.uosc # Feature-rich minimalist proximity-based UI
-        ] ++ lib.optional config.desktop-environment.gnome.enable
+        ] ++ lib.optional config.desktop.gnome.enable
           pkgs.mpvScripts.inhibit-gnome; # Prevent gnome screen blanking while playing media
       };
     })

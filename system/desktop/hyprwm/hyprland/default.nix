@@ -4,12 +4,12 @@
   imports =
     [ ./home/main.nix ./home/work.nix ]; # Setup home manager for hyprland
 
-  programs.hyprland = lib.mkIf config.desktop-environment.hyprland.enable {
+  programs.hyprland = lib.mkIf config.desktop.hyprland.enable {
     enable = true;
-    enableNvidiaPatches = config.nvidia.enable;
+    enableNvidiaPatches = config.hardware.gpu.nvidia.enable;
   };
 
-  environment = lib.mkIf config.desktop-environment.hyprland.enable {
+  environment = lib.mkIf config.desktop.hyprland.enable {
     systemPackages = with pkgs; [
       (callPackage
         ../../../applications/self-built/hyprland-per-window-layout.nix { })
@@ -29,7 +29,7 @@
       wlogout # Logout screen
     ];
 
-    etc = lib.mkIf config.desktop-environment.hyprland.enable {
+    etc = lib.mkIf config.desktop.hyprland.enable {
       "wlogout-icons".source = "${pkgs.wlogout}/share/wlogout/icons";
     };
   };

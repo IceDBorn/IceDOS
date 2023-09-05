@@ -1,6 +1,6 @@
 { pkgs, lib, config, ... }:
 
-lib.mkIf config.amd.cpu.enable {
+lib.mkIf config.hardware.cpu.amd.enable {
   boot = lib.mkMerge [
     {
       kernelModules = [ "msr" ];
@@ -16,19 +16,20 @@ lib.mkIf config.amd.cpu.enable {
   hardware.cpu.amd.updateMicrocode = true;
 
   # Ryzen cpu control
-  systemd.services.zenstates = lib.mkIf config.amd.cpu.undervolt.enable {
-    enable = true;
-    description = "Ryzen Undervolt";
-    after = [ "syslog.target" "systemd-modules-load.service" ];
+  systemd.services.zenstates =
+    lib.mkIf config.hardware.cpu.amd.undervolt.enable {
+      enable = true;
+      description = "Ryzen Undervolt";
+      after = [ "syslog.target" "systemd-modules-load.service" ];
 
-    unitConfig = { ConditionPathExists = "${pkgs.zenstates}/bin/zenstates"; };
+      unitConfig = { ConditionPathExists = "${pkgs.zenstates}/bin/zenstates"; };
 
-    serviceConfig = {
-      User = "root";
-      ExecStart =
-        "${pkgs.zenstates}/bin/zenstates ${config.amd.cpu.undervolt.value}";
+      serviceConfig = {
+        User = "root";
+        ExecStart =
+          "${pkgs.zenstates}/bin/zenstates ${config.hardware.cpu.amd.undervolt.value}";
+      };
+
+      wantedBy = [ "multi-user.target" ];
     };
-
-    wantedBy = [ "multi-user.target" ];
-  };
 }

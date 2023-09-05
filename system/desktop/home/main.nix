@@ -1,7 +1,7 @@
 { config, pkgs, lib, ... }:
 
-lib.mkIf config.main.user.enable {
-  home-manager.users.${config.main.user.username} = {
+lib.mkIf config.system.user.main.enable {
+  home-manager.users.${config.system.user.main.username} = {
     gtk = {
       enable = true;
       theme.name = "Adwaita-dark";
@@ -27,7 +27,7 @@ lib.mkIf config.main.user.enable {
       desktopEntries = {
         pwas = {
           exec =
-            "firefox --no-remote -P PWAs --name pwas ${config.firefox.pwas.sites}";
+            "firefox --no-remote -P PWAs --name pwas ${config.applications.firefox.pwas.sites}";
           icon = "firefox-nightly";
           name = "Firefox PWAs";
           terminal = false;

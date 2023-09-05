@@ -1,8 +1,8 @@
 # PACKAGES INSTALLED ON MAIN USER
 { config, pkgs, lib, ... }:
 
-lib.mkIf config.main.user.enable {
-  users.users.${config.main.user.username}.packages = with pkgs; [
+lib.mkIf config.system.user.main.enable {
+  users.users.${config.system.user.main.username}.packages = with pkgs; [
     bottles # Wine manager
     cemu # Wii U Emulator
     duckstation # PS1 Emulator
@@ -25,11 +25,10 @@ lib.mkIf config.main.user.enable {
   ];
 
   # Wayland microcompositor
-  programs.gamescope =
-    lib.mkIf (!config.desktop-environment.steam.session.enable) {
-      enable = true;
-      capSysNice = true;
-    };
+  programs.gamescope = lib.mkIf (!config.applications.steam.session.enable) {
+    enable = true;
+    capSysNice = true;
+  };
 
   services = {
     tailscale.enable = true;

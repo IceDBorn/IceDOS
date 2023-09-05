@@ -9,7 +9,7 @@
     };
 
     xpadneo.enable =
-      !config.xpadneo-unstable.enable; # Enable XBOX Gamepad bluetooth driver
+      !config.hardware.xpadneo-unstable.enable; # Enable XBOX Gamepad bluetooth driver
     bluetooth.enable = true;
     uinput.enable = true; # Enable uinput support
   };
@@ -35,13 +35,13 @@
     kernelModules = [
       "v4l2loopback" # Virtual camera
       "uinput"
-    ] ++ lib.optional config.xpadneo-unstable.enable "hid_xpadneo";
+    ] ++ lib.optional config.hardware.xpadneo-unstable.enable "hid_xpadneo";
 
     kernelParams =
       [ "clearcpuid=514" ]; # Fixes certain wine games crash on launch
 
     extraModulePackages = with config.boot.kernelPackages;
-      [ v4l2loopback ] ++ lib.optional config.xpadneo-unstable.enable
+      [ v4l2loopback ] ++ lib.optional config.hardware.xpadneo-unstable.enable
       (callPackage ../system/applications/self-built/xpadneo.nix { });
 
     kernel.sysctl = {
@@ -49,8 +49,8 @@
     }; # Fixes crash when loading maps in CS2
   };
 
-  fileSystems = lib.mkIf (config.boot.btrfs-compression.enable
-    && config.boot.btrfs-compression.root.enable) {
+  fileSystems = lib.mkIf (config.hardware.btrfs-compression.enable
+    && config.hardware.btrfs-compression.root.enable) {
       "/".options = [ "compress=zstd" ];
     };
 

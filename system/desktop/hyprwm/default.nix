@@ -6,14 +6,14 @@
     ./home/work.nix
   ]; # Setup home manager for hypr and hyprland
 
-  programs = lib.mkIf (config.desktop-environment.hyprland.enable
-    || config.desktop-environment.hypr.enable) {
+  programs =
+    lib.mkIf (config.desktop.hyprland.enable || config.desktop.hypr.enable) {
       nm-applet.enable = true; # Network manager tray icon
       kdeconnect.enable = true; # Connect phone to PC
     };
 
-  environment = lib.mkIf (config.desktop-environment.hyprland.enable
-    || config.desktop-environment.hypr.enable) {
+  environment =
+    lib.mkIf (config.desktop.hyprland.enable || config.desktop.hypr.enable) {
       systemPackages = with pkgs; [
         baobab # Disk usage analyser
         blueberry # Bluetooth manager
@@ -34,8 +34,8 @@
         swaynotificationcenter # Notification daemon
       ];
 
-      etc = lib.mkIf (config.desktop-environment.hyprland.enable
-        || config.desktop-environment.hypr.enable) {
+      etc = lib.mkIf
+        (config.desktop.hyprland.enable || config.desktop.hypr.enable) {
           "polkit-gnome".source =
             "${pkgs.polkit_gnome}/libexec/polkit-gnome-authentication-agent-1";
           "kdeconnectd".source =
@@ -43,15 +43,16 @@
         };
     };
 
-  services = lib.mkIf (config.desktop-environment.hyprland.enable
-    || config.desktop-environment.hypr.enable) {
+  services =
+    lib.mkIf (config.desktop.hyprland.enable || config.desktop.hypr.enable) {
       dbus.enable = true;
       gvfs.enable = true; # Needed for nautilus
     };
 
-  security.polkit.enable = lib.mkIf (config.desktop-environment.hyprland.enable
-    || config.desktop-environment.hypr.enable) true;
+  security.polkit.enable =
+    lib.mkIf (config.desktop.hyprland.enable || config.desktop.hypr.enable)
+    true;
 
-  xdg.portal.extraPortals = lib.mkIf (!config.desktop-environment.gnome.enable)
+  xdg.portal.extraPortals = lib.mkIf (!config.desktop.gnome.enable)
     [ pkgs.xdg-desktop-portal-gtk ]; # Needed for steam file picker
 }

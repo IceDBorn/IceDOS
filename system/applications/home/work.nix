@@ -1,13 +1,13 @@
 { config, pkgs, lib, ... }:
 
-lib.mkIf config.work.user.enable {
-  home-manager.users.${config.work.user.username} = {
+lib.mkIf config.system.user.work.enable {
+  home-manager.users.${config.system.user.work.username} = {
     programs = {
       git = {
         enable = true;
         # Git config
-        userName = "${config.work.user.github.username}";
-        userEmail = "${config.work.user.github.email}";
+        userName = "${config.system.user.work.git.username}";
+        userEmail = "${config.system.user.work.git.email}";
       };
 
       kitty = {
@@ -18,7 +18,10 @@ lib.mkIf config.work.user.enable {
           cursor_shape = "beam";
           enable_audio_bell = "no";
           hide_window_decorations =
-            if (config.kitty.hide-decorations) then "yes" else "no";
+            if (config.applications.kitty.hide-decorations) then
+              "yes"
+            else
+              "no";
           update_check_interval = "0";
           copy_on_select = "no";
           wayland_titlebar_color = "background";
@@ -71,7 +74,7 @@ lib.mkIf config.work.user.enable {
 
       # Add user.js
       ".mozilla/firefox/privacy/user.js" = {
-        source = if (config.firefox.privacy.enable) then
+        source = if (config.applications.firefox.privacy.enable) then
           "${(pkgs.callPackage ../self-built/arkenfox-userjs.nix { })}/user.js"
         else
           ../configs/firefox/user.js;
@@ -80,14 +83,14 @@ lib.mkIf config.work.user.enable {
 
       # Install firefox gnome theme
       ".mozilla/firefox/privacy/chrome/firefox-gnome-theme" =
-        lib.mkIf config.firefox.gnome-theme.enable {
+        lib.mkIf config.applications.firefox.gnome-theme.enable {
           source = pkgs.callPackage ../self-built/firefox-gnome-theme.nix { };
           recursive = true;
         };
 
       # Import firefox gnome theme userChrome.css or disable WebRTC indicator
       ".mozilla/firefox/privacy/chrome/userChrome.css" = {
-        text = if config.firefox.gnome-theme.enable then
+        text = if config.applications.firefox.gnome-theme.enable then
           ''@import "firefox-gnome-theme/userChrome.css"''
         else
           "#webrtcIndicator { display: none }";
@@ -96,7 +99,7 @@ lib.mkIf config.work.user.enable {
 
       # Import firefox gnome theme userContent.css
       ".mozilla/firefox/privacy/chrome/userContent.css" =
-        lib.mkIf config.firefox.gnome-theme.enable {
+        lib.mkIf config.applications.firefox.gnome-theme.enable {
           text = ''@import "firefox-gnome-theme/userContent.css"'';
           recursive = true;
         };

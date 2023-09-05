@@ -1,6 +1,6 @@
 { config, lib, ... }:
 
-lib.mkIf config.desktop-environment.steam.session.enable {
+lib.mkIf config.applications.steam.session.enable {
   jovian.steam = {
     enable = true;
     useStockEnvironment = true;

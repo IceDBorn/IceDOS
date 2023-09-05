@@ -1,6 +1,6 @@
 { pkgs, lib, config, ... }:
 
-lib.mkIf config.amd.gpu.enable {
+lib.mkIf config.hardware.gpu.amd.enable {
   boot.initrd.kernelModules = [ "amdgpu" ]; # Use the amdgpu drivers upon boot
 
   programs.corectrl = {

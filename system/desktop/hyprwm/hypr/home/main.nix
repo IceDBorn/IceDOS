@@ -1,7 +1,7 @@
 { config, lib, ... }:
 
-lib.mkIf (config.main.user.enable && config.desktop-environment.hypr.enable) {
-  home-manager.users.${config.main.user.username} = {
+lib.mkIf (config.system.user.main.enable && config.desktop.hypr.enable) {
+  home-manager.users.${config.system.user.main.username} = {
     home.file = {
       ".config/hypr/hypr.conf" = {
         source = ../../../../applications/configs/hypr/hypr.conf;
