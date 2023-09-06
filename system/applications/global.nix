@@ -71,6 +71,7 @@ in {
     mousai # Song recognizer
     mpv # Video player
     mullvad-vpn # VPN Client
+    ncdu # Terminal disk analyzer
     neovim # Terminal text editor
     newsflash # RSS reader
     nix-gc # Garbage collect old nix generations
