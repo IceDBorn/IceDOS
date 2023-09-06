@@ -47,6 +47,7 @@
     lib.mkIf (config.desktop.hyprland.enable || config.desktop.hypr.enable) {
       dbus.enable = true;
       gvfs.enable = true; # Needed for nautilus
+      gnome.gnome-keyring.enable = true;
     };
 
   security.polkit.enable =
