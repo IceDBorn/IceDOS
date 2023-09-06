@@ -132,6 +132,19 @@
           type = types.bool;
           default = false;
         };
+
+        workspaces = {
+          dynamic-workspaces.enable = mkOption {
+            type = types.bool;
+            default = true;
+          };
+
+          # Determines the maximum number of workspaces when dynamic workspaces are disabled
+          max-workspaces = mkOption {
+            type = types.str;
+            default = "1";
+          };
+        };
       };
 
       hypr.enable = mkOption {

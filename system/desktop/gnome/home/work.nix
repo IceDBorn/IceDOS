@@ -29,8 +29,7 @@ lib.mkIf config.system.user.work.enable {
         "org/gnome/desktop/wm/preferences" = {
           # Disable application is ready notification
           focus-new-windows = "strict";
-          # Set number of workspaces
-          num-workspaces = 1;
+          num-workspaces = config.desktop.gnome.workspaces.number;
         };
 
         # Disable mouse acceleration
@@ -54,8 +53,7 @@ lib.mkIf config.system.user.work.enable {
         "org/gnome/mutter" = {
           # Enable fractional scaling
           experimental-features = [ "scale-monitor-framebuffer" ];
-          # Disable dynamic workspaces
-          dynamic-workspaces = false;
+          dynamic-workspaces = config.desktop.gnome.workspaces.dynamic.enable;
         };
 
         "org/gnome/settings-daemon/plugins/power" = {
