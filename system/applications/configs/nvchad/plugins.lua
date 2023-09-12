@@ -4,15 +4,15 @@ local plugins = {
     lazy = false,
     cmd = { "NvimTreeToggle", "NvimTreeFocus" },
     init = function()
-      require("core.utils").load_mappings "nvimtree"
+      require("core.utils").load_mappings("nvimtree")
     end,
     config = function(_)
       local nvimtree_side = "left"
       dofile(vim.g.base46_cache .. "nvimtree")
-      require("nvim-tree").setup {
+      require("nvim-tree").setup({
         filters = {
           dotfiles = false,
-          exclude = { vim.fn.stdpath "config" .. "/lua/custom" },
+          exclude = { vim.fn.stdpath("config") .. "/lua/custom" },
         },
         disable_netrw = true,
         hijack_netrw = true,
@@ -41,7 +41,7 @@ local plugins = {
             resize_window = true,
           },
           change_dir = {
-            global = true
+            global = true,
           },
         },
         renderer = {
@@ -86,7 +86,7 @@ local plugins = {
             },
           },
         },
-      }
+      })
       vim.g.nvimtree_side = nvimtree_side
     end,
   },
@@ -94,19 +94,19 @@ local plugins = {
     "rmagatti/auto-session",
     lazy = false,
     config = function()
-      require("auto-session").setup {
-        auto_session_allowed_dirs = { "~/git/*", },
-        auto_session_suppress_dirs = { "~/*", },
+      require("auto-session").setup({
+        auto_session_allowed_dirs = { "~/git/*" },
+        auto_session_suppress_dirs = { "~/*" },
         pre_save_cmds = { "tabdo NvimTreeClose" },
         post_save_cmds = { "tabdo NvimTreeOpen" },
         post_open_cmds = { "tabdo NvimTreeOpen" },
-        post_restore_cmds = { "tabdo NvimTreeOpen", vim.cmd('silent! bufdo e') },
+        post_restore_cmds = { "tabdo NvimTreeOpen", vim.cmd("silent! bufdo e") },
         cwd_change_handling = {
           restore_upcoming_session = true,
           pre_cwd_changed_hook = nil,
           post_cwd_changed_hook = nil,
         },
-      }
+      })
     end,
   },
   {
@@ -166,27 +166,14 @@ local plugins = {
     "williamboman/mason.nvim",
     opts = {
       ensure_installed = {
-        "bash-language-server",
-        "beautysh",
-        "black",
         "clang-format",
         "clangd",
         "csharp-language-server",
-        "dockerfile-language-server",
         "eslint-lsp",
         "gersemi",
         "html-lsp",
         "jdtls",
-        "jedi-language-server",
-        "lua-language-server",
-        "marksman",
         "neocmakelsp",
-        "nil",
-        "prettier",
-        "rust-analyzer",
-        "rustfmt",
-        "stylua",
-        "typescript-language-server",
       },
     },
   },
@@ -195,12 +182,12 @@ local plugins = {
     dependencies = {
       "jose-elias-alvarez/null-ls.nvim",
       config = function()
-      require "custom.configs.null-ls"
+        require("custom.configs.null-ls")
       end,
     },
     config = function()
-      require "plugins.configs.lspconfig"
-      require "custom.configs.lspconfig"
+      require("plugins.configs.lspconfig")
+      require("custom.configs.lspconfig")
     end,
   },
 }

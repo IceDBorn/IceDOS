@@ -22,89 +22,106 @@ let
   lout = pkgs.writeShellScriptBin "lout" ''
     pkill -KILL -u $USER
   '';
+
+  nvchadDeps = with pkgs; [
+    beautysh # Bash formatter
+    black # Python formatter
+    lua-language-server # Lua language server
+    marksman # Markdown language server
+    nil # Nix language server
+    nodePackages.bash-language-server # Bash Language server
+    nodePackages.dockerfile-language-server-nodejs # Dockerfiles language server
+    nodePackages.prettier # Javascript/Typescript formatter
+    nodePackages.typescript-language-server # Typescript language server
+    python3Packages.jedi-language-server # Python language server
+    rust-analyzer # Rust language server
+    rustfmt # Rust formatter
+    stylua # Lua formatter
+  ];
 in {
   boot.kernelPackages = pkgs.linuxPackages_zen; # Use ZEN linux kernel
 
-  environment.systemPackages = with pkgs; [
-    (callPackage ./self-built/apx.nix { }) # Package manager using distrobox
-    (callPackage ./self-built/webcord { }) # An open source discord client
-    (firefox.override {
-      extraNativeMessagingHosts =
-        [ inputs.pipewire-screenaudio.packages.${pkgs.system}.default ];
-    }) # Browser
-    (pkgs.wrapOBS {
-      plugins = with pkgs.obs-studio-plugins; [ obs-pipewire-audio-capture ];
-    }) # Pipewire audio plugin for OBS Studio
-    android-tools # Tools for debugging android devices
-    appimage-run # Appimage runner
-    aria # Terminal downloader with multiple connections support
-    bat # Better cat command
-    bless # HEX Editor
-    btop # System monitor
-    cargo # Rust package manager
-    clamav # Antivirus
-    curtail # Image compressor
-    dotnet-sdk_7 # SDK for .net
-    easyeffects # Pipewire effects manager
-    efibootmgr # Edit EFI entries
-    endeavour # Tasks
-    fd # Find alternative
-    feh # Minimal image viewer
-    fragments # Bittorrent client following Gnome UI standards
-    gcc # C++ compiler
-    gdtoolkit # Tools for gdscript
-    gimp # Image editor
-    git # Distributed version control system
-    gnome.gnome-boxes # VM manager
-    gping # ping with a graph
-    gthumb # Image viewer
-    helvum # Pipewire patchbay
-    iotas # Notes
-    jc # JSON parser
-    jq # JSON parser
-    killall # Tool to kill all programs matching process name
-    kitty # Terminal
-    lazygit # Git CLI UI
-    libnotify # Send desktop notifications
-    lout # Logout from any shell
-    lsd # Better ls command
-    mousai # Song recognizer
-    mpv # Video player
-    mullvad-vpn # VPN Client
-    ncdu # Terminal disk analyzer
-    neovim # Terminal text editor
-    newsflash # RSS reader
-    nix-gc # Garbage collect old nix generations
-    nixfmt # A nix formatter
-    nodejs # Node package manager
-    ntfs3g # Support NTFS drives
-    obs-studio # Recording/Livestream
-    onlyoffice-bin # Microsoft Office alternative for Linux
-    p7zip # 7zip
-    pitivi # Video editor
-    pulseaudio # Various pulseaudio tools
-    python3 # Python
-    ranger # Terminal file manager
-    ripgrep # Silver searcher grep
-    rnnoise-plugin # A real-time noise suppression plugin
-    signal-desktop # Encrypted messaging platform
-    sunshine # Remote desktop
-    tmux # Terminal multiplexer
-    tree # Display folder content at a tree format
-    trim-generations # Smarter old nix generations cleaner
-    unrar # Support opening rar files
-    unzip # An extraction utility
-    vpn-exclude # Run shell with another gateway and IP
-    vscodium # All purpose IDE
-    warp # File sync
-    wget # Terminal downloader
-    wine # Compatibility layer capable of running Windows applications
-    winetricks # Wine prefix settings manager
-    woeusb # Windows ISO Burner
-    xorg.xhost # Use x.org server with distrobox
-    youtube-dl # Video downloader
-    zenstates # Ryzen CPU controller
-  ];
+  environment.systemPackages = with pkgs;
+    [
+      (callPackage ./self-built/apx.nix { }) # Package manager using distrobox
+      (callPackage ./self-built/webcord { }) # An open source discord client
+      (firefox.override {
+        extraNativeMessagingHosts =
+          [ inputs.pipewire-screenaudio.packages.${pkgs.system}.default ];
+      }) # Browser
+      (pkgs.wrapOBS {
+        plugins = with pkgs.obs-studio-plugins; [ obs-pipewire-audio-capture ];
+      }) # Pipewire audio plugin for OBS Studio
+      android-tools # Tools for debugging android devices
+      appimage-run # Appimage runner
+      aria # Terminal downloader with multiple connections support
+      bat # Better cat command
+      bless # HEX Editor
+      btop # System monitor
+      cargo # Rust package manager
+      clamav # Antivirus
+      curtail # Image compressor
+      dotnet-sdk_7 # SDK for .net
+      easyeffects # Pipewire effects manager
+      efibootmgr # Edit EFI entries
+      endeavour # Tasks
+      fd # Find alternative
+      feh # Minimal image viewer
+      fragments # Bittorrent client following Gnome UI standards
+      gcc # C++ compiler
+      gdtoolkit # Tools for gdscript
+      gimp # Image editor
+      git # Distributed version control system
+      gnome.gnome-boxes # VM manager
+      gping # ping with a graph
+      gthumb # Image viewer
+      helvum # Pipewire patchbay
+      iotas # Notes
+      jc # JSON parser
+      jq # JSON parser
+      killall # Tool to kill all programs matching process name
+      kitty # Terminal
+      lazygit # Git CLI UI
+      libnotify # Send desktop notifications
+      lout # Logout from any shell
+      lsd # Better ls command
+      mousai # Song recognizer
+      mpv # Video player
+      mullvad-vpn # VPN Client
+      ncdu # Terminal disk analyzer
+      neovim # Terminal text editor
+      newsflash # RSS reader
+      nix-gc # Garbage collect old nix generations
+      nixfmt # A nix formatter
+      nodejs # Node package manager
+      ntfs3g # Support NTFS drives
+      obs-studio # Recording/Livestream
+      onlyoffice-bin # Microsoft Office alternative for Linux
+      p7zip # 7zip
+      pitivi # Video editor
+      pulseaudio # Various pulseaudio tools
+      python3 # Python
+      ranger # Terminal file manager
+      ripgrep # Silver searcher grep
+      rnnoise-plugin # A real-time noise suppression plugin
+      signal-desktop # Encrypted messaging platform
+      sunshine # Remote desktop
+      tmux # Terminal multiplexer
+      tree # Display folder content at a tree format
+      trim-generations # Smarter old nix generations cleaner
+      unrar # Support opening rar files
+      unzip # An extraction utility
+      vpn-exclude # Run shell with another gateway and IP
+      vscodium # All purpose IDE
+      warp # File sync
+      wget # Terminal downloader
+      wine # Compatibility layer capable of running Windows applications
+      winetricks # Wine prefix settings manager
+      woeusb # Windows ISO Burner
+      xorg.xhost # Use x.org server with distrobox
+      youtube-dl # Video downloader
+      zenstates # Ryzen CPU controller
+    ] ++ nvchadDeps;
 
   users.defaultUserShell = pkgs.zsh; # Use ZSH shell for all users
 
