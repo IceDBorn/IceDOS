@@ -166,8 +166,6 @@ local plugins = {
     "williamboman/mason.nvim",
     opts = {
       ensure_installed = {
-        "clang-format",
-        "clangd",
         "csharp-language-server",
         "eslint-lsp",
         "gersemi",

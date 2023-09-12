@@ -26,6 +26,7 @@ let
   nvchadDeps = with pkgs; [
     beautysh # Bash formatter
     black # Python formatter
+    libclang # C language server and formatter
     lua-language-server # Lua language server
     marksman # Markdown language server
     nil # Nix language server
