@@ -167,9 +167,7 @@ local plugins = {
     opts = {
       ensure_installed = {
         "csharp-language-server",
-        "eslint-lsp",
         "gersemi",
-        "html-lsp",
         "jdtls",
         "neocmakelsp",
       },

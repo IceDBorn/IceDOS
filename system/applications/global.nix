@@ -34,6 +34,7 @@ let
     nodePackages.dockerfile-language-server-nodejs # Dockerfiles language server
     nodePackages.prettier # Javascript/Typescript formatter
     nodePackages.typescript-language-server # Typescript language server
+    nodePackages.vscode-langservers-extracted # HTML, CSS, Eslint, Json language servers
     python3Packages.jedi-language-server # Python language server
     rust-analyzer # Rust language server
     rustfmt # Rust formatter
