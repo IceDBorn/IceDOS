@@ -23,6 +23,17 @@ let
     pkill -KILL -u $USER
   '';
 
+  codingDeps = with pkgs; [
+    cargo # Rust package manager
+    dotnet-sdk_7 # SDK for .net
+    gcc # C++ compiler
+    gdtoolkit # Tools for gdscript
+    nixfmt # A nix formatter
+    nodejs # Node package manager
+    python3 # Python
+    vscodium # All purpose IDE
+  ];
+
   nvchadDeps = with pkgs; [
     beautysh # Bash formatter
     black # Python formatter
@@ -60,18 +71,14 @@ in {
       bat # Better cat command
       bless # HEX Editor
       btop # System monitor
-      cargo # Rust package manager
       clamav # Antivirus
       curtail # Image compressor
-      dotnet-sdk_7 # SDK for .net
       easyeffects # Pipewire effects manager
       efibootmgr # Edit EFI entries
       endeavour # Tasks
       fd # Find alternative
       feh # Minimal image viewer
       fragments # Bittorrent client following Gnome UI standards
-      gcc # C++ compiler
-      gdtoolkit # Tools for gdscript
       gimp # Image editor
       git # Distributed version control system
       gnome.gnome-boxes # VM manager
@@ -94,15 +101,12 @@ in {
       neovim # Terminal text editor
       newsflash # RSS reader
       nix-gc # Garbage collect old nix generations
-      nixfmt # A nix formatter
-      nodejs # Node package manager
       ntfs3g # Support NTFS drives
       obs-studio # Recording/Livestream
       onlyoffice-bin # Microsoft Office alternative for Linux
       p7zip # 7zip
       pitivi # Video editor
       pulseaudio # Various pulseaudio tools
-      python3 # Python
       ranger # Terminal file manager
       ripgrep # Silver searcher grep
       rnnoise-plugin # A real-time noise suppression plugin
@@ -114,7 +118,6 @@ in {
       unrar # Support opening rar files
       unzip # An extraction utility
       vpn-exclude # Run shell with another gateway and IP
-      vscodium # All purpose IDE
       warp # File sync
       wget # Terminal downloader
       wine # Compatibility layer capable of running Windows applications
@@ -123,7 +126,7 @@ in {
       xorg.xhost # Use x.org server with distrobox
       youtube-dl # Video downloader
       zenstates # Ryzen CPU controller
-    ] ++ nvchadDeps;
+    ] ++ codingDeps ++ nvchadDeps;
 
   users.defaultUserShell = pkgs.zsh; # Use ZSH shell for all users
 
