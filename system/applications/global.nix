@@ -107,7 +107,6 @@ in {
       onlyoffice-bin # Microsoft Office alternative for Linux
       p7zip # 7zip
       pitivi # Video editor
-      pulseaudio # Various pulseaudio tools
       ranger # Terminal file manager
       rnnoise-plugin # A real-time noise suppression plugin
       signal-desktop # Encrypted messaging platform
