@@ -19,7 +19,6 @@ lib.mkIf config.system.user.main.enable {
     steam # Gaming platform
     steamtinkerlaunch # General tweaks for games
     stremio # Straming platform
-    sunshine # Remote gaming
     tailscale # VPN with P2P support
     yuzu-early-access # Nintendo Switch emulator
   ];

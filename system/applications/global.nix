@@ -88,6 +88,7 @@ in {
     ripgrep # Silver searcher grep
     rnnoise-plugin # A real-time noise suppression plugin
     signal-desktop # Encrypted messaging platform
+    sunshine # Remote desktop
     tmux # Terminal multiplexer
     tree # Display folder content at a tree format
     trim-generations # Smarter old nix generations cleaner
@@ -175,6 +176,15 @@ in {
           amd_performance_level = "high";
         };
       };
+    };
+  };
+
+  security.wrappers = {
+    sunshine = {
+      owner = "root";
+      group = "root";
+      source = "${pkgs.sunshine}/bin/sunshine";
+      capabilities = "cap_sys_admin+p";
     };
   };
 
