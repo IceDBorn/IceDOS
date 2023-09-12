@@ -37,9 +37,11 @@ let
   nvchadDeps = with pkgs; [
     beautysh # Bash formatter
     black # Python formatter
+    lazygit # Git CLI UI
     libclang # C language server and formatter
     lua-language-server # Lua language server
     marksman # Markdown language server
+    neovim # Terminal text editor
     nil # Nix language server
     nodePackages.bash-language-server # Bash Language server
     nodePackages.dockerfile-language-server-nodejs # Dockerfiles language server
@@ -47,6 +49,7 @@ let
     nodePackages.typescript-language-server # Typescript language server
     nodePackages.vscode-langservers-extracted # HTML, CSS, Eslint, Json language servers
     python3Packages.jedi-language-server # Python language server
+    ripgrep # Silver searcher grep
     rust-analyzer # Rust language server
     rustfmt # Rust formatter
     stylua # Lua formatter
@@ -90,7 +93,6 @@ in {
       jq # JSON parser
       killall # Tool to kill all programs matching process name
       kitty # Terminal
-      lazygit # Git CLI UI
       libnotify # Send desktop notifications
       lout # Logout from any shell
       lsd # Better ls command
@@ -98,7 +100,6 @@ in {
       mpv # Video player
       mullvad-vpn # VPN Client
       ncdu # Terminal disk analyzer
-      neovim # Terminal text editor
       newsflash # RSS reader
       nix-gc # Garbage collect old nix generations
       ntfs3g # Support NTFS drives
@@ -108,7 +109,6 @@ in {
       pitivi # Video editor
       pulseaudio # Various pulseaudio tools
       ranger # Terminal file manager
-      ripgrep # Silver searcher grep
       rnnoise-plugin # A real-time noise suppression plugin
       signal-desktop # Encrypted messaging platform
       sunshine # Remote desktop
