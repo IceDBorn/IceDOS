@@ -163,17 +163,6 @@ local plugins = {
     },
   },
   {
-    "williamboman/mason.nvim",
-    opts = {
-      ensure_installed = {
-        "csharp-language-server",
-        "gersemi",
-        "jdtls",
-        "neocmakelsp",
-      },
-    },
-  },
-  {
     "neovim/nvim-lspconfig",
     dependencies = {
       "jose-elias-alvarez/null-ls.nvim",
