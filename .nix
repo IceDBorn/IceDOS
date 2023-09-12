@@ -3,13 +3,6 @@
 {
   options = with lib; {
     applications = {
-      # Extras to use for adwaita for steam theme
-      adwaita-for-steam.extras = mkOption {
-        type = types.str;
-        default =
-          "-e library/hide_whats_new -e library/sidebar_hover -e login/hover_qr -e windowcontrols/hide-close";
-      };
-
       firefox = {
         gnome-theme.enable = mkOption {
           type = types.bool;
@@ -36,6 +29,13 @@
       };
 
       steam = {
+        # Extras to use for adwaita for steam theme
+        adwaita-for-steam.extras = mkOption {
+          type = types.str;
+          default =
+            "-e library/hide_whats_new -e login/hover_qr -e windowcontrols/hide-close";
+        };
+
         beta.enable = mkOption {
           type = types.bool;
           default = true;
