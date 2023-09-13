@@ -1,27 +1,31 @@
 # PACKAGES INSTALLED ON MAIN USER
 { config, pkgs, lib, ... }:
 
-lib.mkIf config.system.user.main.enable {
-  users.users.${config.system.user.main.username}.packages = with pkgs; [
-    bottles # Wine manager
+let
+  emulators = with pkgs; [
     cemu # Wii U Emulator
     duckstation # PS1 Emulator
-    godot_4 # Game engine
-    heroic # Epic Games Launcher for Linux
-    input-remapper # Remap input device controls
-    papermc # Minecraft server
     pcsx2 # PS2 Emulator
     ppsspp # PSP Emulator
-    prismlauncher # Minecraft launcher
-    protontricks # Winetricks for proton prefixes
     rpcs3 # PS3 Emulator
-    scanmem # Cheat engine for linux
-    steam # Gaming platform
-    steamtinkerlaunch # General tweaks for games
-    stremio # Straming platform
-    tailscale # VPN with P2P support
     yuzu-early-access # Nintendo Switch emulator
   ];
+in lib.mkIf config.system.user.main.enable {
+  users.users.${config.system.user.main.username}.packages = with pkgs;
+    [
+      bottles # Wine manager
+      godot_4 # Game engine
+      heroic # Epic Games Launcher for Linux
+      input-remapper # Remap input device controls
+      papermc # Minecraft server
+      prismlauncher # Minecraft launcher
+      protontricks # Winetricks for proton prefixes
+      scanmem # Cheat engine for linux
+      steam # Gaming platform
+      steamtinkerlaunch # General tweaks for games
+      stremio # Straming platform
+      tailscale # VPN with P2P support
+    ] ++ emulators;
 
   # Wayland microcompositor
   programs.gamescope = lib.mkIf (!config.applications.steam.session.enable) {
