@@ -213,6 +213,15 @@ in {
     clamav.updater.enable = true;
     openssh.enable = true;
     tailscale.enable = true;
+    udev.packages = [
+      (pkgs.writeTextFile {
+        name = "sunshine_udev";
+        text = ''
+          KERNEL=="uinput", SUBSYSTEM=="misc", OPTIONS+="static_node=uinput", TAG+="uaccess"
+        '';
+        destination = "/etc/udev/rules.d/85-sunshine.rules";
+      }) # Needed for sunshine input to work
+    ];
   };
 
   nixpkgs.overlays = [
