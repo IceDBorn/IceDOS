@@ -27,7 +27,6 @@ in lib.mkIf config.system.user.main.enable {
       input-remapper # Remap input device controls
       scanmem # Cheat engine for linux
       stremio # Straming platform
-      tailscale # VPN with P2P support
     ] ++ emulators ++ gaming;
 
   # Wayland microcompositor
@@ -37,7 +36,6 @@ in lib.mkIf config.system.user.main.enable {
   };
 
   services = {
-    tailscale.enable = true;
     input-remapper = {
       enable = true;
       enableUdevRules = true;

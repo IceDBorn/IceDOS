@@ -98,7 +98,6 @@ in {
       lsd # Better ls command
       mousai # Song recognizer
       mpv # Video player
-      mullvad-vpn # VPN Client
       ncdu # Terminal disk analyzer
       newsflash # RSS reader
       nix-gc # Garbage collect old nix generations
@@ -111,6 +110,7 @@ in {
       rnnoise-plugin # A real-time noise suppression plugin
       signal-desktop # Encrypted messaging platform
       sunshine # Remote desktop
+      tailscale # VPN with P2P support
       tmux # Terminal multiplexer
       tree # Display folder content at a tree format
       trim-generations # Smarter old nix generations cleaner
@@ -210,9 +210,9 @@ in {
   };
 
   services = {
-    openssh.enable = true;
-    mullvad-vpn.enable = true;
     clamav.updater.enable = true;
+    openssh.enable = true;
+    tailscale.enable = true;
   };
 
   nixpkgs.overlays = [
