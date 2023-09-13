@@ -10,22 +10,25 @@ let
     rpcs3 # PS3 Emulator
     yuzu-early-access # Nintendo Switch emulator
   ];
+
+  gaming = with pkgs; [
+    heroic # Epic Games Launcher for Linux
+    papermc # Minecraft server
+    prismlauncher # Minecraft launcher
+    protontricks # Winetricks for proton prefixes
+    steam # Gaming platform
+    steamtinkerlaunch # General tweaks for games
+  ];
 in lib.mkIf config.system.user.main.enable {
   users.users.${config.system.user.main.username}.packages = with pkgs;
     [
       bottles # Wine manager
       godot_4 # Game engine
-      heroic # Epic Games Launcher for Linux
       input-remapper # Remap input device controls
-      papermc # Minecraft server
-      prismlauncher # Minecraft launcher
-      protontricks # Winetricks for proton prefixes
       scanmem # Cheat engine for linux
-      steam # Gaming platform
-      steamtinkerlaunch # General tweaks for games
       stremio # Straming platform
       tailscale # VPN with P2P support
-    ] ++ emulators;
+    ] ++ emulators ++ gaming;
 
   # Wayland microcompositor
   programs.gamescope = lib.mkIf (!config.applications.steam.session.enable) {
