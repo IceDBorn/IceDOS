@@ -112,6 +112,7 @@ in {
       sunshine # Remote desktop
       tailscale # VPN with P2P support
       tmux # Terminal multiplexer
+      trayscale # Tailscale GUI
       tree # Display folder content at a tree format
       trim-generations # Smarter old nix generations cleaner
       unrar # Support opening rar files
