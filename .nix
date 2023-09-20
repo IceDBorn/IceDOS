@@ -41,6 +41,12 @@
           default = true;
         };
 
+        # Workaround for slow steam downloads
+        downloads-workaround.enable = mkOption {
+          type = types.bool;
+          default = true;
+        };
+
         session.enable = mkOption {
           type = types.bool;
           default = true;

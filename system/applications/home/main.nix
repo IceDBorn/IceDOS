@@ -190,6 +190,15 @@ lib.mkIf config.system.user.main.enable {
           recursive = true;
         };
 
+      # Enable slow steam downloads workaround
+      ".local/share/Steam/steam_dev.cfg" =
+        lib.mkIf config.applications.steam.downloads-workaround.enable {
+          text = ''
+            @nClientDownloadEnableHTTP2PlatformLinux 0
+            @fDownloadRateImprovementToAddAnotherConnection 1.0
+          '';
+        };
+
       # Add custom mangohud config for CS:GO
       ".config/MangoHud/csgo_linux64.conf" = {
         text = ''
