@@ -3,8 +3,9 @@
 lib.mkIf config.hardware.cpu.amd.enable {
   boot = lib.mkMerge [
     {
-      kernelModules = [ "msr" ];
-    } # Needed for zenstates
+      kernelModules = [ "msr" "zenpower" ];
+      extraModulePackages = with config.boot.kernelPackages; [ zenpower ];
+    }
 
     # for older kernels, see https://github.com/NixOS/nixos-hardware/blob/c256df331235ce369fdd49c00989fdaa95942934/common/cpu/amd/pstate.nix
     (lib.mkIf
