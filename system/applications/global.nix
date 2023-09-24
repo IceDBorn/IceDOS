@@ -126,6 +126,7 @@ in {
       xorg.xhost # Use x.org server with distrobox
       youtube-dl # Video downloader
       zenstates # Ryzen CPU controller
+      scrcpy
     ] ++ codingDeps ++ nvchadDeps;
 
   users.defaultUserShell = pkgs.zsh; # Use ZSH shell for all users
@@ -163,8 +164,9 @@ in {
         ping = "gping"; # ping with a graph
         reboot-windows =
           "sudo efibootmgr --bootnext ${config.boot.windows-entry} && reboot"; # Reboot to windows
-        rebuild =
-          "(cd $(head -1 /etc/nixos/.configuration-location) 2> /dev/null || (echo 'Configuration path is invalid. Run rebuild.sh manually to update the path!' && false) && bash rebuild.sh)"; # Rebuild the system configuration
+        rebuild = "(cd ${
+            builtins.readFile ../../.configuration-location
+          } 2> /dev/null || (echo 'Configuration path is invalid. Run rebuild.sh manually to update the path!' && false) && bash rebuild.sh)"; # Rebuild the system configuration
         restart-pipewire =
           "systemctl --user restart pipewire"; # Restart pipewire
         server = "ssh server@192.168.1.2"; # Connect to local server

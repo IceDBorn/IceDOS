@@ -11,6 +11,9 @@ chmod 444 hardware-configuration.nix
 git add --intent-to-add hardware-configuration.nix
 git update-index --skip-worktree hardware-configuration.nix
 
+git add --intent-to-add .configuration-location
+git update-index --skip-worktree .configuration-location
+
 # Build the configuration
 sudo nixos-rebuild switch --flake .
 rm -f hardware-configuration.nix
