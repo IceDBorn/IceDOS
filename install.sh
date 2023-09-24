@@ -30,7 +30,7 @@ then
         done <<< "$USERS"
     fi
 
-    bash ./build.sh
+    bash build.sh
 
     if [ -f "$HOME/.nix-successful-build" ]
     then
