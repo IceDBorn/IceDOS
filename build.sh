@@ -22,5 +22,9 @@ git update-index --skip-worktree .configuration-location
 # Build the configuration
 sudo nixos-rebuild switch --flake .
 
+# Untrack files
+git rm --cached --sparse hardware-configuration.nix
+git rm --cached --sparse .configuration-location
+
 # Delete the copied hardware-configuration.nix
 rm -f hardware-configuration.nix
