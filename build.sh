@@ -8,8 +8,9 @@ printf "$PWD" > .configuration-location
 [ -f "hardware-configuration.nix" ] && rm -f hardware-configuration.nix
 cp /etc/nixos/hardware-configuration.nix ./
 
-# Set to read-only as the user should update the original file
+# Set files to read-only
 chmod 444 hardware-configuration.nix
+chmod 444 .configuration-location
 
 # Fool flake to use untracked files
 # Source: Development tricks - https://nixos.wiki/wiki/Flakes
@@ -26,5 +27,6 @@ sudo nixos-rebuild switch --flake .
 git rm --cached --sparse hardware-configuration.nix
 git rm --cached --sparse .configuration-location
 
-# Delete the copied hardware-configuration.nix
+# Delete files
 rm -f hardware-configuration.nix
+rm -f .configuration-location
