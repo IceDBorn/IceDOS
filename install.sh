@@ -17,16 +17,6 @@ echo "Hello $username!"
 read -r -p "Have you customized the setup to your needs? [y/N] " response
 if [[ "$response" =~ ^([yY][eE][sS]|[yY])$ ]]
 then
-    # Add configuration files to the appropriate path
-    sudo cp -r bootloader /etc/nixos
-    sudo cp -r hardware /etc/nixos
-    sudo cp -r system /etc/nixos
-    sudo cp .configuration-location /etc/nixos
-    sudo cp .nix /etc/nixos
-    sudo cp configuration.nix /etc/nixos
-    sudo cp flake.lock /etc/nixos
-    sudo cp flake.nix /etc/nixos
-
     USERS=$(cut -d: -f1,3 /etc/passwd | grep -E ':[0-9]{4}$' | cut -d: -f1) # Get all users
 
     if [ -z "$USERS" ]
@@ -40,8 +30,16 @@ then
         done <<< "$USERS"
     fi
 
+    [ -f "hardware-configuration.nix" ] && rm -f hardware-configuration.nix
+    cp /etc/nixos/hardware-configuration.nix ./
+    chmod 444 hardware-configuration.nix
+
+    git add --intent-to-add hardware-configuration.nix
+    git update-index --skip-worktree hardware-configuration.nix
+
     # Build the configuration
-    sudo nixos-rebuild switch
+    sudo nixos-rebuild switch --flake .
+    rm -f hardware-configuration.nix
 
     if [ -f "$HOME/.nix-successful-build" ]
     then
