@@ -2,7 +2,7 @@
 
 # cd into script's folder
 cd "$(cd "$(dirname "$0")" && pwd)" || exit
-pwd > .configuration-location
+printf "$PWD" > .configuration-location
 
 [ -f "hardware-configuration.nix" ] && rm -f hardware-configuration.nix
 cp /etc/nixos/hardware-configuration.nix ./
