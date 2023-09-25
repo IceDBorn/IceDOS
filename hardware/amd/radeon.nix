@@ -26,7 +26,7 @@ lib.mkIf config.hardware.gpu.amd.enable {
 
   environment.systemPackages = with pkgs; [
     nvtop-amd # GPU task manager
-    lact
+    lact # GPU overclocking tool
   ];
 
   # We are creating the lact daemon service manually because the provided one hangs
