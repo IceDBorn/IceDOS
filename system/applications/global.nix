@@ -108,6 +108,7 @@ in {
       pitivi # Video editor
       ranger # Terminal file manager
       rnnoise-plugin # A real-time noise suppression plugin
+      scrcpy # Remotely use android
       signal-desktop # Encrypted messaging platform
       sunshine # Remote desktop
       tailscale # VPN with P2P support
@@ -126,7 +127,6 @@ in {
       xorg.xhost # Use x.org server with distrobox
       youtube-dl # Video downloader
       zenstates # Ryzen CPU controller
-      scrcpy
     ] ++ codingDeps ++ nvchadDeps;
 
   users.defaultUserShell = pkgs.zsh; # Use ZSH shell for all users
