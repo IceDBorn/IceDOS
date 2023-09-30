@@ -37,8 +37,13 @@
       "uinput"
     ] ++ lib.optional config.hardware.xpadneo-unstable.enable "hid_xpadneo";
 
-    kernelParams =
-      [ "clearcpuid=514" ]; # Fixes certain wine games crash on launch
+    kernelParams = [
+      # Fixes certain wine games crash on launch
+      "clearcpuid=514"
+    ] ++ lib.optional config.hardware.monitors.main.enable
+      "video=${config.hardware.monitors.main.name}:${config.hardware.monitors.main.resolution}@${config.hardware.monitors.main.refresh-rate}"
+      ++ lib.optional config.hardware.monitors.secondary.enable
+      "video=${config.hardware.monitors.secondary.name}:${config.hardware.monitors.secondary.resolution}@${config.hardware.monitors.secondary.refresh-rate}";
 
     extraModulePackages = with config.boot.kernelPackages;
       [ v4l2loopback ] ++ lib.optional config.hardware.xpadneo-unstable.enable

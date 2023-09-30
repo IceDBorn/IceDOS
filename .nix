@@ -257,6 +257,53 @@
         };
       };
 
+      monitors = {
+        main = {
+          enable = mkOption {
+            type = types.bool;
+            default = true;
+          };
+
+          name = mkOption {
+            type = types.str;
+            default = "DP-1";
+          };
+
+          resolution = mkOption {
+            type = types.str;
+            default = "1920x1080";
+          };
+
+          refresh-rate = mkOption {
+            type = types.str;
+            default = "144";
+          };
+        };
+
+        secondary = {
+          enable = mkOption {
+            type = types.bool;
+            default = true;
+          };
+
+          name = mkOption {
+            type = types.str;
+            default = "DP-2";
+          };
+
+          resolution = mkOption {
+            type = types.str;
+            default = "1280x1024";
+          };
+
+          refresh-rate = mkOption {
+            type = types.str;
+            default = "75";
+          };
+
+        };
+      };
+
       # Set to false if hardware/mounts.nix is not correctly configured
       mounts.enable = mkOption {
         type = types.bool;
