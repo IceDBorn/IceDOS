@@ -21,7 +21,7 @@ git add --intent-to-add .configuration-location
 git update-index --skip-worktree .configuration-location
 
 # Build the configuration
-sudo nixos-rebuild switch --flake .
+sudo nixos-rebuild switch --impure --flake .
 
 # Untrack files
 git rm --cached --sparse hardware-configuration.nix

@@ -1,7 +1,14 @@
 # ## DESKTOP POWERED BY GNOME ###
 { pkgs, config, lib, ... }:
+let
+  selectedUser = if (config.system.user.main.enable) then
+    config.system.user.main.username
+  else
+    config.system.user.work.username;
 
-{
+  monitorsConfig = pkgs.writeText "gdm_monitors.xml"
+    (builtins.readFile /home/${selectedUser}/.config/monitors.xml);
+in {
   imports = [ ./home/main.nix ./home/work.nix ]; # Setup home manager
 
   # Set your time zone
@@ -46,6 +53,11 @@
       pulse.enable = true;
     };
   };
+
+  # Set GDM monitors config, matching the main user's config
+  systemd.tmpfiles.rules =
+    lib.mkIf (config.system.user.main.enable || config.system.user.work.enable)
+    [ "L+ /run/gdm/.config/monitors.xml - - - - ${monitorsConfig}" ];
 
   # Workaround for GDM autologin
   systemd.services = {
