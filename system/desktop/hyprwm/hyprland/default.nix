@@ -11,9 +11,8 @@
 
   environment = lib.mkIf config.desktop.hyprland.enable {
     systemPackages = with pkgs; [
-      (callPackage
-        ../../../applications/self-built/hyprland-per-window-layout.nix { })
       clipman # Clipboard manager for wayland
+      hyprland-per-window-layout # Per window layout
       hyprpaper # Wallpaper daemon
       rofi-wayland # App launcher
       slurp # Monitor selector
