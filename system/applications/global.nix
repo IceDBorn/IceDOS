@@ -2,6 +2,16 @@
 { pkgs, config, inputs, lib, ... }:
 
 let
+  configuration-location = builtins.readFile ../../.configuration-location;
+
+  rebuild = pkgs.writeShellScriptBin "rebuild" ''
+    # Navigate to configuration directory
+    cd ${configuration-location} 2> /dev/null || (echo 'Configuration path is invalid. Run build.sh manually to update the path!' && exit 2)
+
+    # Build the configuration
+    bash build.sh
+  '';
+
   trim-generations = pkgs.writeShellScriptBin "trim-generations"
     (builtins.readFile ../scripts/trim-generations.sh);
 
@@ -108,6 +118,7 @@ in {
       p7zip # 7zip
       pitivi # Video editor
       ranger # Terminal file manager
+      rebuild # Rebuild the system configuration
       rnnoise-plugin # A real-time noise suppression plugin
       scrcpy # Remotely use android
       signal-desktop # Encrypted messaging platform
@@ -165,9 +176,6 @@ in {
         ping = "gping"; # ping with a graph
         reboot-windows =
           "sudo efibootmgr --bootnext ${config.boot.windows-entry} && reboot"; # Reboot to windows
-        rebuild = "(cd ${
-            builtins.readFile ../../.configuration-location
-          } 2> /dev/null || (echo 'Configuration path is invalid. Run build.sh manually to update the path!' && false) && bash build.sh)"; # Rebuild the system configuration
         restart-pipewire =
           "systemctl --user restart pipewire"; # Restart pipewire
         server = "ssh server@192.168.1.2"; # Connect to local server
