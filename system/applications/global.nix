@@ -96,6 +96,7 @@ in {
       libnotify # Send desktop notifications
       lout # Logout from any shell
       lsd # Better ls command
+      mission-center # Task manager
       mousai # Song recognizer
       mpv # Video player
       ncdu # Terminal disk analyzer
