@@ -50,7 +50,7 @@ execute () {
 
     cd $PWD
     echo $COMMAND
-    if [ -n /$COMMAND ]; then
+    if [ ! '$COMMAND' -eq '' ]; then
       $COMMAND
     else
       $DEFAULT_SHELL
