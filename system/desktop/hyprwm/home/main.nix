@@ -24,7 +24,8 @@ lib.mkIf (config.system.user.main.enable
 
         # Add swaync config file
         ".config/swaync/config.json".source =
-          if (config.desktop.hyprland.dual-monitor.enable) then
+          if (config.hardware.monitors.main.enable
+            && config.hardware.monitors.secondary.enable) then
             ../../../applications/configs/swaync/config-dual.json
           else
             ../../../applications/configs/swaync/config.json;

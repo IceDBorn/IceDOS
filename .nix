@@ -158,16 +158,9 @@
         default = true;
       };
 
-      hyprland = {
-        enable = mkOption {
-          type = types.bool;
-          default = true;
-        };
-
-        dual-monitor.enable = mkOption {
-          type = types.bool;
-          default = true;
-        };
+      hyprland.enable = mkOption {
+        type = types.bool;
+        default = true;
       };
     };
 
