@@ -350,6 +350,12 @@
     };
 
     system = {
+      # Location of the config
+      configuration-location = mkOption {
+        type = types.str;
+        default = builtins.readFile ./.configuration-location;
+      };
+
       gc = {
         # Number of days before a generation can be deleted
         days = mkOption {

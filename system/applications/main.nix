@@ -2,26 +2,8 @@
 { config, pkgs, lib, ... }:
 
 let
-  configuration-location = builtins.readFile ../../.configuration-location;
-
-  update = pkgs.writeShellScriptBin "update" ''
-    stashLock=$(git stash push -m "flake.lock@$(date +%A-%d-%B-%T)" flake.lock > /dev/null)
-      # Navigate to configuration directory
-      cd ${configuration-location} 2> /dev/null || (echo 'Configuration path is invalid. Run build.sh manually to update the path!' && exit 2)
-
-      # Stash the flake lock file
-      if [ $(git stash list | wc -l) -eq 0 ]; then
-        $stashLock
-      else
-        [ -n "$(git diff stash flake.lock)" ] && $stashLock
-      fi
-
-      nix flake update && bash build.sh
-      apx --aur upgrade
-      bash ~/.config/zsh/proton-ge-updater.sh
-      bash ~/.config/zsh/steam-library-patcher.sh
-      bash ~/.config/zsh/update-codium-extensions.sh
-  '';
+  # Rebuild the system configuration
+  update = pkgs.writeShellScriptBin "update" "rebuild 1 1";
 
   emulators = with pkgs; [
     cemu # Wii U Emulator
@@ -40,6 +22,8 @@ let
     steam # Gaming platform
     steamtinkerlaunch # General tweaks for games
   ];
+
+  shellScripts = [ update ];
 in lib.mkIf config.system.user.main.enable {
   users.users.${config.system.user.main.username}.packages = with pkgs;
     [
@@ -49,7 +33,7 @@ in lib.mkIf config.system.user.main.enable {
       scanmem # Cheat engine for linux
       stremio # Straming platform
       update # Update the system configuration
-    ] ++ emulators ++ gaming;
+    ] ++ emulators ++ gaming ++ shellScripts;
 
   # Wayland microcompositor
   programs.gamescope = lib.mkIf (!config.applications.steam.session.enable) {
