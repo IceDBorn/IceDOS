@@ -1,7 +1,7 @@
 # Caution ⚠️
 
-- Do not forget to go through .nix, configuration.nix and edit and comment out (#) anything you don't want to setup!
-- mounts.nix can break your system! Be sure to edit it accordingly or disable it!
+- Do not forget to go through [.nix](https://github.com/IceDBorn/IceDOS/blob/main/.nix), [configuration.nix](https://github.com/IceDBorn/IceDOS/blob/main/configuration.nix) and edit and comment out (#) anything you don't want to setup!
+- [hardware/mounts.nix](https://github.com/IceDBorn/IceDOS/blob/main/hardware/mounts.nix) can break your system! Be sure to edit it accordingly or [disable it](https://github.com/IceDBorn/IceDOS/blob/087d7884d501f5660e8368ed349561c2d83ddf04/.nix#L310)!
 
 # Install
 
@@ -19,12 +19,4 @@ Solution:
 
 ```
 git rm --cached --sparse .configuration-location
-```
-
-### error: Entry 'hardware-configuration.nix' not uptodate. Cannot merge.
-
-Solution:
-
-```
-git rm --cached --sparse hardware-configuration.nix
 ```
