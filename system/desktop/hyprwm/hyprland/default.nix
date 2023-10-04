@@ -1,8 +1,13 @@
 { lib, config, pkgs, ... }:
 
 {
-  imports =
-    [ ./home/main.nix ./home/work.nix ]; # Setup home manager for hyprland
+  imports = [
+    # Setup home manager for hyprland
+    ./home/main.nix
+    ./home/work.nix
+    # Setup hyprland config
+    ./config.nix
+  ];
 
   programs.hyprland = lib.mkIf config.desktop.hyprland.enable {
     enable = true;

@@ -3,13 +3,8 @@
 lib.mkIf (config.system.user.work.enable && config.desktop.hyprland.enable) {
   home-manager.users.${config.system.user.work.username} = {
     home.file = {
-      ".config/hypr/hyprland.conf" = {
-        source = if (config.desktop.hyprland.dual-monitor.enable) then
-          ../../../../applications/configs/hyprland/hyprland-dual.conf
-        else
-          ../../../../applications/configs/hyprland/hyprland.conf;
-        recursive = true;
-      }; # Add hyprland config
+      # Add hyprland config
+      ".config/hypr/hyprland.conf" = { text = config.desktop.hyprland.config; };
 
       # Add waybar config files
       ".config/waybar/config" = {
@@ -43,10 +38,7 @@ lib.mkIf (config.system.user.work.enable && config.desktop.hyprland.enable) {
         recursive = true;
       };
 
-      ".config/hypr/hyprpaper.jpg" = {
-        source = ../../../../applications/configs/hyprland/hyprpaper.jpg;
-        recursive = true;
-      };
+      ".config/hypr/hyprpaper.jpg" = { source = ../configs/hyprpaper.jpg; };
 
       ".config/zsh/vpn-watcher.sh" = {
         source = ../../../../scripts/vpn-watcher.sh;

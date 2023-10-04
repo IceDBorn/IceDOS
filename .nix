@@ -271,12 +271,17 @@
 
           resolution = mkOption {
             type = types.str;
-            default = "1920x1080";
+            default = "1920x1080@144";
           };
 
-          refresh-rate = mkOption {
+          position = mkOption {
             type = types.str;
-            default = "144";
+            default = "0x0";
+          };
+
+          scaling = mkOption {
+            type = types.str;
+            default = "1";
           };
         };
 
@@ -293,14 +298,18 @@
 
           resolution = mkOption {
             type = types.str;
-            default = "1280x1024";
+            default = "1280x1024@75";
           };
 
-          refresh-rate = mkOption {
+          position = mkOption {
             type = types.str;
-            default = "75";
+            default = "1920x0";
           };
 
+          scaling = mkOption {
+            type = types.str;
+            default = "1";
+          };
         };
       };
 
