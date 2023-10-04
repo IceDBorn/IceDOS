@@ -17,28 +17,21 @@ lib.mkIf (config.system.user.work.enable
 
       home.file = {
         # Add rofi config files
-        ".config/rofi/config.rasi" = {
-          source = ../../../applications/configs/rofi/config.rasi;
+        ".config/rofi" = {
+          source = ../../../applications/configs/rofi;
           recursive = true;
         };
 
-        ".config/rofi/theme.rasi" = {
-          source = ../../../applications/configs/rofi/theme.rasi;
-          recursive = true;
-        };
-
-        ".config/swaync/config.json" = {
-          source = if (config.desktop.hyprland.dual-monitor.enable) then
+        # Add swaync config file
+        ".config/swaync/config.json".source =
+          if (config.desktop.hyprland.dual-monitor.enable) then
             ../../../applications/configs/swaync/config-dual.json
           else
             ../../../applications/configs/swaync/config.json;
-          recursive = true;
-        }; # Add swaync config file
 
-        ".config/swaync/style.css" = {
-          source = ../../../applications/configs/swaync/style.css;
-          recursive = true;
-        }; # Add swaync styles file
+        # Add swaync styles file
+        ".config/swaync/style.css".source =
+          ../../../applications/configs/swaync/style.css;
       };
     };
   }

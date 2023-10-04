@@ -57,29 +57,21 @@ lib.mkIf config.system.user.work.enable {
 
     home.file = {
       # Add zsh theme to zsh directory
-      ".config/zsh/zsh-theme.zsh" = {
-        source = ../configs/zsh-theme.zsh;
-        recursive = true;
-      };
+      ".config/zsh/zsh-theme.zsh" = { source = ../configs/zsh-theme.zsh; };
 
       # Add update-codium-extensions to zsh directory
-      ".config/zsh/update-codium-extensions.sh" = {
-        source = ../../scripts/update-codium-extensions.sh;
-        recursive = true;
-      };
+      ".config/zsh/update-codium-extensions.sh".source =
+        ../../scripts/update-codium-extensions.sh;
 
-      ".config/VSCodium/User/settings.json" = {
-        source = ../configs/vscodium.json;
-      }; # Add vscodium config
+      # Add vscodium config
+      ".config/VSCodium/User/settings.json".source = ../configs/vscodium.json;
 
       # Add user.js
-      ".mozilla/firefox/privacy/user.js" = {
-        source = if (config.applications.firefox.privacy.enable) then
+      ".mozilla/firefox/privacy/user.js".source =
+        if (config.applications.firefox.privacy.enable) then
           "${(pkgs.callPackage ../self-built/arkenfox-userjs.nix { })}/user.js"
         else
           ../configs/firefox/user.js;
-        recursive = true;
-      };
 
       # Install firefox gnome theme
       ".mozilla/firefox/privacy/chrome/firefox-gnome-theme" =
@@ -89,27 +81,19 @@ lib.mkIf config.system.user.work.enable {
         };
 
       # Import firefox gnome theme userChrome.css or disable WebRTC indicator
-      ".mozilla/firefox/privacy/chrome/userChrome.css" = {
-        text = if config.applications.firefox.gnome-theme.enable then
+      ".mozilla/firefox/privacy/chrome/userChrome.css".text =
+        if config.applications.firefox.gnome-theme.enable then
           ''@import "firefox-gnome-theme/userChrome.css"''
         else
           "#webrtcIndicator { display: none }";
-        recursive = true;
-      };
 
       # Import firefox gnome theme userContent.css
-      ".mozilla/firefox/privacy/chrome/userContent.css" =
-        lib.mkIf config.applications.firefox.gnome-theme.enable {
-          text = ''@import "firefox-gnome-theme/userContent.css"'';
-          recursive = true;
-        };
+      ".mozilla/firefox/privacy/chrome/userContent.css".text =
+        ''@import "firefox-gnome-theme/userContent.css"'';
 
       # Create second firefox profile for pwas
-      ".mozilla/firefox/pwas/user.js" = {
-        source =
-          "${(pkgs.callPackage ../self-built/arkenfox-userjs.nix { })}/user.js";
-        recursive = true;
-      };
+      ".mozilla/firefox/pwas/user.js".source =
+        "${(pkgs.callPackage ../self-built/arkenfox-userjs.nix { })}/user.js";
 
       ".mozilla/firefox/pwas/chrome" = {
         source = pkgs.callPackage ../self-built/firefox-cascade.nix { };
@@ -117,16 +101,11 @@ lib.mkIf config.system.user.work.enable {
       };
 
       # Add noise suppression microphone
-      ".config/pipewire/pipewire.conf.d/99-input-denoising.conf" = {
-        source = ../configs/pipewire.conf;
-        recursive = true;
-      };
+      ".config/pipewire/pipewire.conf.d/99-input-denoising.conf".source =
+        ../configs/pipewire.conf;
 
       # Add btop config
-      ".config/btop/btop.conf" = {
-        source = ../configs/btop.conf;
-        recursive = true;
-      };
+      ".config/btop/btop.conf".source = ../configs/btop.conf;
 
       # Add nvchad
       ".config/nvim" = {
@@ -141,10 +120,7 @@ lib.mkIf config.system.user.work.enable {
       };
 
       # Add tmux config
-      ".config/tmux/tmux.conf" = {
-        source = ../configs/tmux.conf;
-        recursive = true;
-      };
+      ".config/tmux/tmux.conf".source = ../configs/tmux.conf;
 
       ".config/tmux/tpm" = {
         source = "${(pkgs.callPackage ../self-built/tpm.nix { })}";
@@ -157,10 +133,8 @@ lib.mkIf config.system.user.work.enable {
         recursive = true;
       };
 
-      ".bashrc" = {
-        text = "";
-        recursive = true;
-      }; # Avoid file not found errors for bash
+      # Avoid file not found errors for bash
+      ".bashrc".text = "";
     };
   };
 }
