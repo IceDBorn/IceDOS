@@ -4,6 +4,7 @@
   imports = [
     ./home/main.nix
     ./home/work.nix
+    ../../applications/configs/swaync/config.nix
   ]; # Setup home manager for hypr and hyprland
 
   programs =

@@ -23,11 +23,7 @@ lib.mkIf (config.system.user.work.enable
         };
 
         # Add swaync config file
-        ".config/swaync/config.json".source =
-          if (config.desktop.hyprland.dual-monitor.enable) then
-            ../../../applications/configs/swaync/config-dual.json
-          else
-            ../../../applications/configs/swaync/config.json;
+        ".config/swaync/config.json".text = config.applications.swaync.config;
 
         # Add swaync styles file
         ".config/swaync/style.css".source =
