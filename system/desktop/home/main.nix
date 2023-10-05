@@ -25,6 +25,7 @@ lib.mkIf config.system.user.main.enable {
 
     xdg = {
       desktopEntries = {
+        # Firefox PWA
         pwas = {
           exec =
             "firefox --no-remote -P PWAs --name pwas ${config.applications.firefox.pwas.sites}";
@@ -32,7 +33,16 @@ lib.mkIf config.system.user.main.enable {
           name = "Firefox PWAs";
           terminal = false;
           type = "Application";
-        }; # Firefox PWA
+        };
+
+        # Run signal without a tray icon
+        signal = {
+          exec = "signal-desktop --hide-tray-icon";
+          icon = "signal-desktop";
+          name = "Signal - No tray";
+          terminal = false;
+          type = "Application";
+        };
       };
 
       mimeApps = {
