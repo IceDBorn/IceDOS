@@ -20,3 +20,7 @@ Solution:
 ```
 git rm --cached --sparse .configuration-location
 ```
+
+# Preview
+
+![image](https://github.com/IceDBorn/IceDOS/assets/51162078/f13ef5d0-a318-455b-90c7-f8817bcdb72a)
