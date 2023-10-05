@@ -6,7 +6,7 @@
     ./home/main.nix
     ./home/work.nix
     # Setup hyprland config
-    ./config.nix
+    ./configs/config.nix
   ];
 
   programs.hyprland = lib.mkIf config.desktop.hyprland.enable {
