@@ -23,4 +23,4 @@ git rm --cached --sparse .configuration-location
 
 # Preview
 
-![image](https://github.com/IceDBorn/IceDOS/assets/51162078/f13ef5d0-a318-455b-90c7-f8817bcdb72a)
+![image](https://github.com/IceDBorn/IceDOS/assets/51162078/80e89e81-9a2a-4ca6-807c-91d925204a8a)
