@@ -60,7 +60,6 @@ lib.mkIf config.system.user.main.enable {
           offset_x = 5;
           offset_y = 5;
           text_color = "FFFFFF";
-          time = true;
           toggle_fps_limit = "Ctrl_L+Shift_L+F1";
           vram_color = "FFFFFF";
           vsync = 1;
