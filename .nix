@@ -264,7 +264,12 @@
 
           resolution = mkOption {
             type = types.str;
-            default = "1920x1080@144";
+            default = "1920x1080";
+          };
+
+          refresh-rate = mkOption {
+            type = types.str;
+            default = "144";
           };
 
           position = mkOption {
@@ -291,7 +296,12 @@
 
           resolution = mkOption {
             type = types.str;
-            default = "1280x1024@75";
+            default = "1280x1024";
+          };
+
+          refresh-rate = mkOption {
+            type = types.str;
+            default = "75";
           };
 
           position = mkOption {
