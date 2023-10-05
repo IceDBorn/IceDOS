@@ -44,7 +44,7 @@ lib.mkIf config.system.user.main.enable {
           cpu_temp = true;
           engine_color = "FFFFFF";
           engine_short_names = true;
-          font_size = 15;
+          font_size = 18;
           fps_color = "FFFFFF";
           fps_limit = "${config.hardware.monitors.main.refresh-rate},60,0";
           frame_timing = false;
