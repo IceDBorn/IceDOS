@@ -2,8 +2,10 @@
 { config, pkgs, lib, ... }:
 
 let
+  stashLock = if (config.system.update.stash-flake-lock) then "1" else "0";
+
   # Rebuild the system configuration
-  update = pkgs.writeShellScriptBin "update" "rebuild 1 1";
+  update = pkgs.writeShellScriptBin "update" "rebuild 1 ${stashLock} 1";
 
   emulators = with pkgs; [
     cemu # Wii U Emulator

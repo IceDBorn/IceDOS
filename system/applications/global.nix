@@ -24,6 +24,7 @@ let
     # Arguments for update and main user specific commands
     ARG1=''${1:-0}
     ARG2=''${2:-0}
+    ARG3=''${3:-0}
 
     # Stash flake.lock
     function stashLock() {
@@ -37,16 +38,18 @@ let
     # Update specific commands
     if [ $ARG1 -eq 1 ]; then
       # Stash the flake lock file
-      if [ $(git stash list | wc -l) -eq 0 ]; then
-        stashLock
-      else
-        [ -n "$(git diff stash flake.lock)" ] && stashLock
+      if [ $ARG2 -eq 1 ]; then
+        if [ $(git stash list | wc -l) -eq 0 ]; then
+          stashLock
+        else
+          [ -n "$(git diff stash flake.lock)" ] && stashLock
+        fi
       fi
 
       nix flake update && bash build.sh
 
       # Main user specific update commands
-      if [ $ARG2 -eq 1 ]; then
+      if [ $ARG3 -eq 1 ]; then
         bash ~/.config/zsh/proton-ge-updater.sh
         bash ~/.config/zsh/steam-library-patcher.sh
       fi

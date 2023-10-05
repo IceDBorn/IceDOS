@@ -372,6 +372,11 @@
         };
       };
 
+      update.stash-flake-lock = mkOption {
+        type = types.bool;
+        default = true;
+      };
+
       user = {
         main = {
           enable = mkOption {
