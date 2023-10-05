@@ -145,7 +145,6 @@ in {
       efibootmgr # Edit EFI entries
       endeavour # Tasks
       fd # Find alternative
-      feh # Minimal image viewer
       fragments # Bittorrent client following Gnome UI standards
       gimp # Image editor
       git # Distributed version control system

@@ -113,10 +113,12 @@ in {
         #Desktop usage
         bind = $mainMod, R, exec, rofi -show drun
         bind = $mainMod, V, exec, clipman pick -t rofi
-        bind = , Print, exec, grim -o $(hyprctl -j monitors | jq -r '.[] | select(.focused) | .name') - | wl-copy
-        bind = SHIFT, Print, exec, grim -o $(hyprctl -j monitors | jq -r '.[] | select(.focused) | .name') - | swappy -f -
-        bind = $mainMod, Print, exec, grim -o $(hyprctl -j monitors | jq -r '.[] | select(.focused) | .name') /tmp/grim.png && feh /tmp/grim.png & grim -g "$(slurp)" - | wl-copy && killall .feh-wrapped
-        bind = $mainMod SHIFT, Print, exec, grim -o $(hyprctl -j monitors | jq -r '.[] | select(.focused) | .name') /tmp/grim.png && feh /tmp/grim.png & grim -g "$(slurp)" /tmp/grim.png && killall .feh-wrapped && swappy -f /tmp/grim.png
+        bind = , Print, exec, grimblast copy output
+        bind = SHIFT, Print, exec, grimblast edit output
+        bind = $mainMod, Print, exec, grimblast --freeze copy area
+        bind = $mainMod SHIFT, Print, exec, grimblast --freeze edit area
+        bind = ALT, Print, exec, grimblast copy
+        bind = $mainMod ALT, Print, exec, grimblast edit
         bind = $mainMod, L, exec, wlogout
         bind = $mainMod, N, exec, swaync-client -t -sw
         bind = $mainMod SHIFT, N, exec, swaync-client -d -sw

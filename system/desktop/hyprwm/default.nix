@@ -18,6 +18,7 @@
       systemPackages = with pkgs; [
         baobab # Disk usage analyser
         blueberry # Bluetooth manager
+        feh # Minimal image viewer
         gnome-online-accounts # Nextcloud integration
         gnome.file-roller # Archive file manager
         gnome.gnome-calculator # Calculator

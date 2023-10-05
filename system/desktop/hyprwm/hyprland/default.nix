@@ -16,6 +16,7 @@
 
   environment = lib.mkIf config.desktop.hyprland.enable {
     systemPackages = with pkgs; [
+      grimblast # Screenshot tool
       clipman # Clipboard manager for wayland
       hyprland-per-window-layout # Per window layout
       hyprpaper # Wallpaper daemon
