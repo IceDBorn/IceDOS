@@ -10,10 +10,12 @@
       url = "github:nix-community/home-manager";
       inputs.nixpkgs.follows = "nixpkgs";
     };
+
+    phps.url = "github:fossar/nix-phps";
   };
 
   outputs = { self, nixpkgs, hyprland, home-manager, nur, pipewire-screenaudio
-    , steam-session }@inputs: {
+    , steam-session, phps }@inputs: {
       nixosConfigurations.nixos = nixpkgs.lib.nixosSystem {
         system = "x86_64-linux";
         specialArgs = { inherit inputs; };
