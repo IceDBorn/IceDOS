@@ -201,7 +201,7 @@ in {
         ${workspaceRules}
 
         # Maximize apps
-        windowrulev2 = maximize, class:^(firefox|startup-nvchad|Steam|startup-kitty|io.missioncenter.MissionCenter)$, floating:0
+        windowrulev2 = maximize, class:^(firefox|startup-nvchad|Steam|startup-kitty|io.missioncenter.MissionCenter|pwas)$, floating:0
         windowrulev2 = maximize, title:^(Steam)$
         windowrulev2 = noborder, fullscreen:1 # Hide maximized window borders
 
