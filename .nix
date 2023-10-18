@@ -18,7 +18,7 @@
         pwas.sites = mkOption {
           type = types.str;
           default =
-            "https://mail.tutanota.com https://icedborn.github.io/icedchat https://discord.com/app";
+            "https://mail.tutanota.com https://icedborn.github.io/icedchat https://discord.com/app https://dtekteam.slack.com/";
         };
       };
 
