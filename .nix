@@ -420,7 +420,7 @@
         work = {
           enable = mkOption {
             type = types.bool;
-            default = false;
+            default = true;
           };
 
           username = mkOption {
