@@ -227,7 +227,7 @@ in {
         # Tray applications
         exec-once = kdeconnect-indicator & clipman clear --all & wl-paste -t text --watch clipman store & nm-applet --indicator
         # Standard applications
-        exec-once = firefox & nautilus -w & nautilus -w & firefox --no-remote -P PWAs --name pwas https://mail.tutanota.com ${config.applications.firefox.pwas.sites} & steam
+        exec-once = firefox & nautilus -w & nautilus -w & firefox --no-remote -P PWAs --name pwas ${config.applications.firefox.pwas.sites} & steam
         # Terminals/Task managers/IDEs
         exec-once = kitty --class startup-nvchad tmux new -s nvchad nvim & kitty --class startup-kitty tmux new -s terminals \; split-window -v \; select-pane -U \; split-window -h \; select-pane -D & missioncenter
       '';
