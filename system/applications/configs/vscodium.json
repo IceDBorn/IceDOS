@@ -1,4 +1,7 @@
 {
+  "[javascript]": {
+    "editor.defaultFormatter": "esbenp.prettier-vscode"
+  },
   "diffEditor.ignoreTrimWhitespace": false,
   "editor.fontFamily": "'JetBrainsMono Nerd Font', 'Droid Sans Mono', 'monospace', monospace",
   "editor.fontLigatures": true,
