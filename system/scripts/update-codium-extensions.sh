@@ -13,6 +13,7 @@ EXTENSIONS=(
     "gruntfuggly.todo-tree"
     "jnoortheen.nix-ide"
     "markwylde.vscode-filesize"
+    "mblode.twig-language-2"
     "ms-vscode.references-view"
     "nico-castell.linux-desktop-file"
     "paragdiwan.gitpatch"
