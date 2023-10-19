@@ -9,7 +9,7 @@ let
   shellScripts = [ update ];
 
   gitLocation = "/home/${config.system.user.work.username}/git";
-  projectName = "smart-trade";
+  projectName = "fromcreta";
 in lib.mkIf config.system.user.work.enable {
   users.users.${config.system.user.work.username}.packages = with pkgs;
     [
@@ -25,7 +25,7 @@ in lib.mkIf config.system.user.work.enable {
     httpd = {
       enable = true;
       user = config.system.user.work.username;
-      phpPackage = inputs.phps.packages.x86_64-linux.php74;
+      phpPackage = inputs.phps.packages.x86_64-linux.php73;
       enablePHP = true;
       virtualHosts = {
         localhost = {
