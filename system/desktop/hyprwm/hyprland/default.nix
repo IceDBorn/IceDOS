@@ -9,7 +9,16 @@ let
   '';
 
   swaylockconf = pkgs.writeShellScriptBin "swaylockconf" ''
-    swaylock --clock --indicator-idle-visible --fade-in 1 --grace 2 --screenshots --effect-blur 5x5 --inside-color 00000088 --text-color F --ring-color F
+    swaylock --clock \
+    --indicator-idle-visible \
+    --fade-in 1 \
+    --grace 2 \
+    --screenshots \
+    --effect-blur 5x5 \
+    --inside-color 00000088 \
+    --text-color F \
+    --ring-color F \
+    --effect-vignette 0.5:0.5
   '';
 in {
   imports = [
