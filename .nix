@@ -61,9 +61,28 @@
         default = false;
       };
 
-      efi-mount-path = mkOption {
-        type = types.str;
-        default = "/boot";
+      grub = {
+        enable = mkOption {
+          type = types.bool;
+          default = false;
+        };
+
+        device = mkOption {
+          type = types.str;
+          default = "/dev/sda";
+        };
+      };
+
+      systemd-boot = {
+        enable = mkOption {
+          type = types.bool;
+          default = true;
+        };
+
+        efi-mount-path = mkOption {
+          type = types.str;
+          default = "/boot";
+        };
       };
 
       # Used for rebooting to windows with efibootmgr
