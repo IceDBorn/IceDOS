@@ -4,6 +4,7 @@ POSITIONAL_ARGS=()
 
 FLAG_USE_ANY_NS=0
 FLAG_CREATE_NEW_NS=0
+FLAG_DETACH=0
 FLAG_USE_CONFIG_FILE=0
 
 while [[ $# -gt 0 ]]; do
@@ -14,6 +15,10 @@ while [[ $# -gt 0 ]]; do
       ;;
     -n|--new)
       FLAG_CREATE_NEW_NS=1
+      shift
+      ;;
+    -d|--detach)
+      FLAG_DETACH=1
       shift
       ;;
     -c|--config-file)
@@ -182,6 +187,10 @@ execute () {
     fi
   "
 }
+
+if [ "$FLAG_DETACH" -eq 1 ]; then
+  exit
+fi
 
 sudo bash -c "
   $(for x in $TO_EXPORT_ENV; do printf '%q=%q ' "$x" "${!x}"; done;)
