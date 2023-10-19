@@ -128,6 +128,11 @@ _log EXISTING_NAMESPACES=$EXISTING_NAMESPACES
 if [ "$FLAG_CREATE_NEW_NS" -eq 1 ]; then
   create_namespace_interactive
 elif [ "`printf "$EXISTING_NAMESPACES" | wc -c`" -eq 0 ]; then
+  if [ "$FLAG_USE_ANY_NS" -eq 1 ]; then
+    echo "Could not a find an existing NS to enter" > /dev/stderr
+    exit 1
+  fi
+
   _log There are no Network namespaces available.
   _log Creating new one ...
 
