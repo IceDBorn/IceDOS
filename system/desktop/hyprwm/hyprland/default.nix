@@ -37,6 +37,7 @@ in {
   environment = lib.mkIf config.desktop.hyprland.enable {
     systemPackages = with pkgs; [
       clipman # Clipboard manager for wayland
+      gnome.gnome-calendar # Calendar
       grimblast # Screenshot tool
       hyprland-per-window-layout # Per window layout
       hyprpaper # Wallpaper daemon
