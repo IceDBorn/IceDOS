@@ -316,6 +316,11 @@
         };
       };
 
+      networking.hosts.enable = mkOption {
+        type = types.bool;
+        default = false;
+      };
+
       # Set to false if hardware/mounts.nix is not correctly configured
       mounts.enable = mkOption {
         type = types.bool;
