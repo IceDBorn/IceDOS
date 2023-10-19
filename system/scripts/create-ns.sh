@@ -142,7 +142,7 @@ else
   printf "Namespace number:"
   read number
 
-  if [ "$number" -eq "n" ]; then
+  if [ "$number" == "n" ]; then
     create_namespace_interactive
   else
     echo "Selected $number"
