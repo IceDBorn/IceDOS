@@ -41,7 +41,8 @@
     "interval": 1,
     "format": "{:%H:%M:%S}",
     "tooltip-format": "{:%A, %B %d, %Y}",
-    "max-length": 25
+    "max-length": 25,
+    "on-click": "gnome-calendar"
   },
 
   "pulseaudio": {
