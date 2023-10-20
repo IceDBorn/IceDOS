@@ -5,11 +5,11 @@ let
   stashLock = if (config.system.update.stash-flake-lock) then "1" else "0";
 
   # Rebuild the system configuration
-  update = pkgs.writeShellScriptBin "update" "rebuild 1 ${stashLock} 0";
+  update = pkgs.writeShellScriptBin "update" "rebuild 1 ${stashLock} 0 0";
   shellScripts = [ update ];
 
   gitLocation = "/home/${config.system.user.work.username}/git/";
-  projectName = "smart-trade";
+  multiStoreProject = "smart-trade";
 in lib.mkIf config.system.user.work.enable {
   users.users.${config.system.user.work.username}.packages = with pkgs;
     [
@@ -31,7 +31,7 @@ in lib.mkIf config.system.user.work.enable {
           ServerName ${config.system.user.work.username}.localhost
           ServerAdmin ${config.system.user.work.username}@localhost
           DocumentRoot ${gitLocation}
-          Alias /burkani ${gitLocation}${projectName}
+          Alias /burkani ${gitLocation}${multiStoreProject}
           <Directory ${gitLocation}>
             AllowOverride all
             Options Indexes FollowSymLinks MultiViews

@@ -22,9 +22,10 @@ let
   # Rebuild the system configuration
   rebuild = pkgs.writeShellScriptBin "rebuild" ''
     # Arguments for update and main user specific commands
-    ARG1=''${1:-0}
-    ARG2=''${2:-0}
-    ARG3=''${3:-0}
+    ARG1=''${1:-0} # Update
+    ARG2=''${2:-0} # Stash
+    ARG3=''${3:-0} # Main user
+    ARG4=''${4:-0} # apx
 
     # Stash flake.lock
     function stashLock() {
@@ -54,9 +55,13 @@ let
         bash ~/.config/zsh/steam-library-patcher.sh
       fi
 
+      # Update apx packages
+      if [ $ARG4 -eq 1 ]; then
+        apx --aur upgrade
+      fi
+
       # Update commands for all users
       bash ~/.config/zsh/update-codium-extensions.sh
-      apx --aur upgrade
     else
       bash build.sh
     fi
