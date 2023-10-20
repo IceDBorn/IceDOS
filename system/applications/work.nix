@@ -10,6 +10,10 @@ let
 
   gitLocation = "/home/${config.system.user.work.username}/git/";
   multiStoreProject = "smart-trade";
+  httpdAliases = ''
+    Alias /burkani ${gitLocation}${multiStoreProject}
+    Alias /beoambalaza ${gitLocation}${multiStoreProject}
+  '';
 in lib.mkIf config.system.user.work.enable {
   users.users.${config.system.user.work.username}.packages = with pkgs;
     [
@@ -31,7 +35,7 @@ in lib.mkIf config.system.user.work.enable {
           ServerName ${config.system.user.work.username}.localhost
           ServerAdmin ${config.system.user.work.username}@localhost
           DocumentRoot ${gitLocation}
-          Alias /burkani ${gitLocation}${multiStoreProject}
+          ${httpdAliases}
           <Directory ${gitLocation}>
             AllowOverride all
             Options Indexes FollowSymLinks MultiViews
