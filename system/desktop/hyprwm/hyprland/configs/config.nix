@@ -206,6 +206,10 @@ in {
         windowrulev2 = maximize, title:^(Steam)$
         windowrulev2 = noborder, fullscreen:1 # Hide maximized window borders
 
+        # Inhibit idle for apps
+        windowrulev2 = idleinhibit focus, class:^(steam_app_.*)$
+        windowrulev2 = idleinhibit fullscreen, class:^(firefox|pwas)$
+
         # Tile apps
         windowrulev2 = tile, class:^(Godot.*|Steam|steam_app_.*|photoshop\.exe)$
         windowrulev2 = tile, title:^(.*Steam[A-Za-z0-9\s]*)$
