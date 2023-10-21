@@ -9,7 +9,8 @@ let
   '';
 
   swaylockconf = pkgs.writeShellScriptBin "swaylockconf" ''
-    swaylock --clock \
+    swaylock --daemonize \
+    --clock \
     --indicator-idle-visible \
     --fade-in 1 \
     --grace 2 \
