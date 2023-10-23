@@ -58,7 +58,7 @@ in {
             },
             "title": {
               "text": "Notifications",
-              "clear-all-button": false,
+              "clear-all-button": true,
               "button-text": "Clear All"
             },
             "dnd": {
