@@ -76,6 +76,7 @@ let
     (builtins.readFile ../scripts/create-ns.sh);
 
   codingDeps = with pkgs; [
+    bruno # API explorer
     cargo # Rust package manager
     dotnet-sdk_7 # SDK for .net
     gcc # C++ compiler
