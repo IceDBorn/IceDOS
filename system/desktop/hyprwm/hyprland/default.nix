@@ -1,10 +1,10 @@
 { lib, config, pkgs, ... }:
 let
   swayidleconf = pkgs.writeShellScriptBin "swayidleconf" ''
-    swayidle -w timeout 300 'swaylockconf' \
-            timeout 900 'hyprctl dispatch dpms off'  \
+    swayidle -w timeout 180 'swaylockconf' \
+            timeout 300 'hyprctl dispatch dpms off'  \
             resume 'hyprctl dispatch dpms on' \
-            timeout 3600 'systemctl suspend' \
+            timeout 900 'systemctl suspend' \
             before-sleep 'swaylockconf' &
   '';
 
@@ -12,14 +12,14 @@ let
     swaylock --daemonize \
     --clock \
     --indicator-idle-visible \
-    --fade-in 1 \
-    --grace 2 \
+    --fade-in 4 \
+    --grace 5 \
     --screenshots \
-    --effect-blur 5x5 \
-    --inside-color 00000088 \
+    --effect-blur 10x10 \
+    --inside-color 00000000 \
     --text-color F \
     --ring-color F \
-    --effect-vignette 0.5:0.5
+    --effect-vignette 0.2:0.2
   '';
 in {
   imports = [
