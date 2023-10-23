@@ -19,6 +19,7 @@ in lib.mkIf config.system.user.work.enable {
     [
       apacheHttpd # HTTP Server
       beekeeper-studio # Database manager
+      bruno # API explorer
       google-chrome-dev # Dev browser
       php # Programming language for websites
       phpPackages.composer # Package manager for PHP
