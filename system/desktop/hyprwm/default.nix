@@ -22,6 +22,7 @@
         gnome-online-accounts # Nextcloud integration
         gnome.file-roller # Archive file manager
         gnome.gnome-calculator # Calculator
+        gnome.gnome-clocks # Clock
         gnome.gnome-control-center # Gnome settings
         gnome.gnome-disk-utility # Disks manager
         gnome.gnome-keyring # Keyring daemon
