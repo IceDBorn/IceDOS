@@ -207,7 +207,7 @@ in {
         windowrulev2 = noborder, fullscreen:1 # Hide maximized window borders
 
         # Inhibit idle for apps
-        windowrulev2 = idleinhibit focus, class:^(steam_app_.*)$
+        windowrulev2 = idleinhibit focus, class:^(steam_app_.*|org.gnome.clocks)$
         windowrulev2 = idleinhibit fullscreen, class:^(firefox|pwas)$
 
         # Tile apps
