@@ -201,14 +201,12 @@ in {
         # Move apps to workspaces
         ${workspaceRules}
 
-        # Maximize apps
-        windowrulev2 = maximize, class:^(firefox|startup-nvchad|Steam|startup-kitty|io.missioncenter.MissionCenter|pwas)$, floating:0
-        windowrulev2 = maximize, title:^(Steam)$
-        windowrulev2 = noborder, fullscreen:1 # Hide maximized window borders
+        # Hide maximized window borders
+        windowrulev2 = noborder, fullscreen:1
 
         # Inhibit idle for apps
         windowrulev2 = idleinhibit focus, class:^(steam_app_.*|org.gnome.clocks)$
-        windowrulev2 = idleinhibit fullscreen, class:^(firefox|pwas)$
+        windowrulev2 = idleinhibit fullscreen, class:^(.*)$
 
         # Tile apps
         windowrulev2 = tile, class:^(Godot.*|Steam|steam_app_.*|photoshop\.exe)$
