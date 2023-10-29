@@ -53,9 +53,12 @@
       gnome.gnome-keyring.enable = true;
     };
 
-  security.polkit.enable =
-    lib.mkIf (config.desktop.hyprland.enable || config.desktop.hypr.enable)
-    true;
+  security = {
+    polkit.enable =
+      lib.mkIf (config.desktop.hyprland.enable || config.desktop.hypr.enable)
+      true;
+    pam.services.login.enableGnomeKeyring = true;
+  };
 
   xdg.portal.extraPortals = lib.mkIf (!config.desktop.gnome.enable)
     [ pkgs.xdg-desktop-portal-gtk ]; # Needed for steam file picker
