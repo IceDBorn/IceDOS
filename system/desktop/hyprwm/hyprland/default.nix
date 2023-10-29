@@ -26,8 +26,9 @@ in {
     # Setup home manager for hyprland
     ./home/main.nix
     ./home/work.nix
-    # Setup hyprland config
+    # Setup hyprland configs
     ./configs/config.nix
+    ./configs/waybar/config.nix
   ];
 
   programs.hyprland = lib.mkIf config.desktop.hyprland.enable {
