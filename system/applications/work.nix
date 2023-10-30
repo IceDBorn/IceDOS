@@ -18,7 +18,7 @@ in lib.mkIf config.system.user.work.enable {
   users.users.${config.system.user.work.username}.packages = with pkgs;
     [
       apacheHttpd # HTTP Server
-      beekeeper-studio # Database manager
+      dbeaver # Database manager
       google-chrome-dev # Dev browser
       php # Programming language for websites
       phpPackages.composer # Package manager for PHP
