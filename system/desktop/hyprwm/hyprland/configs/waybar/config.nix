@@ -4,6 +4,7 @@ let
     interface=`nmcli d show | jc --nmcli | jq -rc '[.[] | select(.ip4_gateway != null) | { "connection": .connection, "ip4_gateway": .ip4_gateway }][0]'`
     interfaceName=`echo "$interface" | jq -r ".connection"`
     interfaceGateway=`echo "$interface" | jq -r ".ip4_gateway"`
+
     if [ "$interfaceGateway" = '192.168.1.1' ]; then
       nmcli con mod "$interfaceName" ipv4.gateway 192.168.1.2
     else
@@ -22,7 +23,7 @@ let
 
       vpnState=`
         curl -sS --connect-timeout 5 \
-        https://am.i.mullvad.net/check-ip/$(curl -sS4 --connect-timeout 1 \
+        https://am.i.mullvad.net/check-ip/$(curl -sS4 --connect-timeout 3 \
         https://ifconfig.me/ip || printf '0.0.0.0') | \
         jq '.mullvad_exit_ip' || exit | grep true \
       `
