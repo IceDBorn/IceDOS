@@ -115,7 +115,7 @@ let
     [
       # Browser with pipewire-screenaudio connector json
       (firefox.override {
-        extraNativeMessagingHosts =
+        nativeMessagingHosts =
           [ inputs.pipewire-screenaudio.packages.${pkgs.system}.default ];
       })
     ];
