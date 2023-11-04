@@ -128,10 +128,10 @@ let
       })
     ];
 
-  selfBuilt = with pkgs; [
-    (callPackage ./self-built/apx.nix { }) # Package manager using distrobox
-    (callPackage ./self-built/webcord { }) # An open source discord client
-  ];
+  selfBuilt = with pkgs;
+    [
+      (callPackage ./self-built/apx.nix { }) # Package manager using distrobox
+    ];
 
   shellScripts = [ lout nix-gc rebuild trim-generations vpn-exclude ];
 in {
