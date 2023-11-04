@@ -80,7 +80,7 @@ let
     cargo # Rust package manager
     dotnet-sdk_7 # SDK for .net
     gcc # C++ compiler
-    gdtoolkit # Tools for gdscript
+    # gdtoolkit # Tools for gdscript
     nixfmt # A nix formatter
     nodejs # Node package manager
     python3 # Python
