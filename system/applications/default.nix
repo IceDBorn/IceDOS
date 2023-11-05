@@ -26,6 +26,6 @@
 
   nixpkgs.config = {
     allowUnfree = true; # Allow proprietary packages
-    permittedInsecurePackages = [ "openssl-1.1.1v" ];
+    permittedInsecurePackages = [ "electron-24.8.6" ];
   };
 }
