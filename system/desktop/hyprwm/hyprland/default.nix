@@ -1,14 +1,66 @@
 { lib, config, pkgs, ... }:
 let
+  inhibit-lock = pkgs.writeScriptBin "inhibit-lock" ''
+    #!/usr/bin/env wpexec
+    local INPUT = "Stream/Input/Audio"
+    local OUTPUT = "Stream/Output/Audio"
+    local FIREFOX_CALL = "AudioCallbackDriver"
+    local INHIBIT_LOCK = false
+
+    local nodeManager = ObjectManager({
+      Interest({
+        type = "node",
+        Constraint({ "media.class", "in-list", OUTPUT, INPUT }),
+      }),
+    })
+
+    local linkManager = ObjectManager({
+      Interest({
+        type = "link",
+      }),
+    })
+
+    local function hasActiveLinks(nodeId, linkType)
+      local constraint = Constraint({ linkType, "=", tostring(nodeId) })
+      for link in linkManager:iterate({ type = "link", constraint }) do
+        if link.state == "active" then
+          return true
+        end
+      end
+      return false
+    end
+
+    nodeManager:connect("installed", function(nodeManager)
+      for node in nodeManager:iterate() do
+        local mediaName = node.properties["media.name"]
+        local mediaClass = node.properties["media.class"]
+        if mediaName ~= FIREFOX_CALL or mediaClass == INPUT then
+          if hasActiveLinks(node.bound_id, "link.input.node") or hasActiveLinks(node.bound_id, "link.output.node") then
+            INHIBIT_LOCK = true
+            break
+          end
+        end
+      end
+
+      print(INHIBIT_LOCK)
+      Core.quit()
+    end)
+
+    linkManager:activate()
+    nodeManager:activate()
+  '';
+
   swayidleconf = pkgs.writeShellScriptBin "swayidleconf" ''
     swayidle -w timeout 180 'swaylockconf' \
-            timeout 300 'hyprctl dispatch dpms off'  \
+            timeout 300 'if [ `inhibit-lock` = "false" ]; then hyprctl dispatch dpms off; fi'  \
             resume 'hyprctl dispatch dpms on' \
-            timeout 900 'systemctl suspend' \
+            timeout 900 'if [ `inhibit-lock` = "false" ]; then systemctl suspend; fi' \
             before-sleep 'swaylockconf' &
   '';
 
   swaylockconf = pkgs.writeShellScriptBin "swaylockconf" ''
+    if [ `inhibit-lock` = "true" ]; then exit; fi
+
     swaylock --daemonize \
     --clock \
     --indicator-idle-visible \
@@ -43,6 +95,7 @@ in {
       grimblast # Screenshot tool
       hyprland-per-window-layout # Per window layout
       hyprpaper # Wallpaper daemon
+      inhibit-lock # Script to check if pipewire has active links
       rofi-wayland # App launcher
       slurp # Monitor selector
       swayidle # Idle inhibitor
