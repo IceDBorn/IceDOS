@@ -218,8 +218,8 @@
 
             value = mkOption {
               type = types.str;
-              # Pstate 0, 1.25 voltage, 4200 clock speed
-              default = "-p 0 -v 30 -f A8";
+              # Pstate 0, 1.175 voltage, 4000 clock speed
+              default = "-p 0 -v 3C -f A0";
             };
           };
         };
