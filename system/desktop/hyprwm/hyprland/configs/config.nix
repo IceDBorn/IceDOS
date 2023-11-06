@@ -208,7 +208,7 @@ in {
         windowrulev2 = idleinhibit focus, class:^(steam_app_.*|org\.gnome\.clocks)$
 
         # Tile apps
-        windowrulev2 = tile, class:^(Godot.*|Steam|steam_app_.*|photoshop\.exe)$
+        windowrulev2 = tile, class:^(Godot.*|Steam|steam_app_.*|photoshop\.exe|DesktopEditors)$
         windowrulev2 = tile, title:^(.*Steam[A-Za-z0-9\s]*)$
 
         # Float apps
