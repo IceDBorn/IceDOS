@@ -45,6 +45,8 @@ lib.mkIf config.system.user.main.enable {
         "org/gnome/desktop/sound" = { event-sounds = false; };
 
         "org/gnome/mutter" = {
+          # Enable window snapping to the edges of the screen
+          edge-tiling = true;
           # Enable fractional scaling
           experimental-features = [ "scale-monitor-framebuffer" ];
           dynamic-workspaces =
