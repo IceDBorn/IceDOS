@@ -5,7 +5,11 @@ let
   stashLock = if (config.system.update.stash-flake-lock) then "1" else "0";
 
   # Rebuild the system configuration
-  update = pkgs.writeShellScriptBin "update" "rebuild 1 ${stashLock} 0 0";
+  update = pkgs.writeShellScriptBin "update" "rebuild 1 ${stashLock} 0 1";
+
+  # Packages to add for a fork of the config
+  myPackages = with pkgs; [ ];
+
   shellScripts = [ update ];
 
   gitLocation = "/home/${config.system.user.work.username}/git/";
@@ -22,7 +26,7 @@ in lib.mkIf config.system.user.work.enable {
       google-chrome # Dev browser
       php # Programming language for websites
       phpPackages.composer # Package manager for PHP
-    ] ++ shellScripts;
+    ] ++ myPackages ++ shellScripts;
 
   services = {
     httpd = {
