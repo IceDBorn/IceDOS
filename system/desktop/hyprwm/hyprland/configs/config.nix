@@ -105,6 +105,10 @@ in {
           new_is_master = true
         }
 
+        xwayland {
+          use_nearest_neighbor = false
+        }
+
         ### KEYBINDINGS ###
 
         # Set mod key to Super
