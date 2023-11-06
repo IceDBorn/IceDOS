@@ -25,6 +25,9 @@ let
     steamtinkerlaunch # General tweaks for games
   ];
 
+  # Packages to add for a fork of the config
+  myPackages = with pkgs; [ ];
+
   shellScripts = [ update ];
 in lib.mkIf config.system.user.main.enable {
   users.users.${config.system.user.main.username}.packages = with pkgs;
@@ -35,7 +38,7 @@ in lib.mkIf config.system.user.main.enable {
       scanmem # Cheat engine for linux
       stremio # Straming platform
       update # Update the system configuration
-    ] ++ emulators ++ gaming ++ shellScripts;
+    ] ++ emulators ++ gaming ++ myPackages ++ shellScripts;
 
   # Wayland microcompositor
   programs.gamescope = lib.mkIf (!config.applications.steam.session.enable) {
