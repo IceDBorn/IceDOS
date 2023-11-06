@@ -17,6 +17,7 @@ lib.mkIf config.system.user.work.enable {
           clock-show-seconds = true;
           # Disable date
           clock-show-date = config.desktop.gnome.clock-date.enable;
+          clock-show-weekday = config.desktop.gnome.clock-weekday.enable;
           # Show the battery percentage when on a laptop
           show-battery-percentage = config.hardware.laptop.enable;
           # Access the activity overview by moving the mouse to the top-left corner
