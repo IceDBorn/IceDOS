@@ -6,6 +6,7 @@ lib.mkIf config.system.user.work.enable {
       git = {
         enable = true;
         # Git config
+        extraConfig = { pull.rebase = true; };
         userName = "${config.system.user.work.git.username}";
         userEmail = "${config.system.user.work.git.email}";
       };

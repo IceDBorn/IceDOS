@@ -153,7 +153,6 @@ in {
       fd # Find alternative
       fragments # Bittorrent client following Gnome UI standards
       gimp # Image editor
-      git # Distributed version control system
       gnome.gnome-boxes # VM manager
       gping # ping with a graph
       gthumb # Image viewer
