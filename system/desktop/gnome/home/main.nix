@@ -28,6 +28,8 @@ lib.mkIf config.system.user.main.enable {
         "org/gnome/desktop/notifications" = { show-in-lock-screen = false; };
 
         "org/gnome/desktop/wm/preferences" = {
+          # Buttons to show in titlebars
+          button-layout = config.desktop.gnome.titlebar-layout;
           # Disable application is ready notification
           focus-new-windows = "strict";
           num-workspaces = config.desktop.gnome.workspaces.max-workspaces;

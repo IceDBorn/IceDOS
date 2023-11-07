@@ -163,6 +163,12 @@
           default = false;
         };
 
+        # Options: 'minimize', 'maximize', 'close', 'spacer'(adds space between buttons), ':'(left-center-right separator)
+        titlebar-layout = mkOption {
+          type = types.str;
+          default = "appmenu:close";
+        };
+
         workspaces = {
           dynamic-workspaces.enable = mkOption {
             type = types.bool;
