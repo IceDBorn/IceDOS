@@ -37,7 +37,6 @@ in lib.mkIf config.system.user.main.enable {
       input-remapper # Remap input device controls
       scanmem # Cheat engine for linux
       stremio # Straming platform
-      update # Update the system configuration
     ] ++ emulators ++ gaming ++ myPackages ++ shellScripts;
 
   # Wayland microcompositor
