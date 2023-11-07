@@ -68,7 +68,7 @@ let
     --grace 5 \
     --screenshots \
     --effect-blur 10x10 \
-    --inside-color 00000000 \
+    --inside-color 00000055 \
     --text-color F \
     --ring-color F \
     --effect-vignette 0.2:0.2
