@@ -33,7 +33,7 @@ let
     }
 
     # Navigate to configuration directory
-    cd ${config.system.configuration-location} 2> /dev/null ||
+    cd ${config.system.configurationLocation} 2> /dev/null ||
     (echo 'Configuration path is invalid. Run build.sh manually to update the path!' && false) &&
 
     # Update specific commands
@@ -80,7 +80,7 @@ let
     cargo # Rust package manager
     dotnet-sdk_7 # SDK for .net
     gcc # C++ compiler
-    gdtoolkit # Tools for gdscript
+    # gdtoolkit # Tools for gdscript
     nixfmt # A nix formatter
     nodejs # Node package manager
     python3 # Python
@@ -115,7 +115,7 @@ let
     [
       # Browser with pipewire-screenaudio connector json
       (firefox.override {
-        extraNativeMessagingHosts =
+        nativeMessagingHosts =
           [ inputs.pipewire-screenaudio.packages.${pkgs.system}.default ];
       })
     ];
@@ -128,10 +128,10 @@ let
       })
     ];
 
-  selfBuilt = with pkgs; [
-    (callPackage ./self-built/apx.nix { }) # Package manager using distrobox
-    (callPackage ./self-built/webcord { }) # An open source discord client
-  ];
+  selfBuilt = with pkgs;
+    [
+      (callPackage ./self-built/apx.nix { }) # Package manager using distrobox
+    ];
 
   shellScripts = [ lout nix-gc rebuild trim-generations vpn-exclude ];
 in {
@@ -153,7 +153,6 @@ in {
       fd # Find alternative
       fragments # Bittorrent client following Gnome UI standards
       gimp # Image editor
-      git # Distributed version control system
       gnome.gnome-boxes # VM manager
       gping # ping with a graph
       gthumb # Image viewer
@@ -170,6 +169,7 @@ in {
       mpv # Video player
       ncdu # Terminal disk analyzer
       newsflash # RSS reader
+      nix-health # Check system health
       ntfs3g # Support NTFS drives
       obs-studio # Recording/Livestream
       onlyoffice-bin # Microsoft Office alternative for Linux
@@ -200,6 +200,8 @@ in {
   users.defaultUserShell = pkgs.zsh; # Use ZSH shell for all users
 
   programs = {
+    direnv.enable = true;
+
     zsh = {
       enable = true;
       # Enable oh my zsh and it's plugins
@@ -231,7 +233,7 @@ in {
         n = "tmux a -t nvchad || tmux new -s nvchad nvim"; # Nvchad
         ping = "gping"; # ping with a graph
         reboot-windows =
-          "sudo efibootmgr --bootnext ${config.boot.windows-entry} && reboot"; # Reboot to windows
+          "sudo efibootmgr --bootnext ${config.boot.windowsEntry} && reboot"; # Reboot to windows
         restart-pipewire =
           "systemctl --user restart pipewire"; # Restart pipewire
         server = "ssh server@192.168.1.2"; # Connect to local server

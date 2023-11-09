@@ -23,13 +23,13 @@
         gnomeExtensions.pano # Next-gen Clipboard manager
         gnome-extension-manager # Gnome extensions manager and downloader
         gnomeExtensions.quick-settings-tweaker
-      ] ++ lib.optional config.desktop.gnome.arcmenu.enable
+      ] ++ lib.optional config.desktop.gnome.arcmenu
       gnomeExtensions.arcmenu # Start menu
-      ++ lib.optional config.desktop.gnome.caffeine.enable
+      ++ lib.optional config.desktop.gnome.caffeine
       gnomeExtensions.caffeine # Disable auto suspend and screen blank
-      ++ lib.optional config.desktop.gnome.dash-to-panel.enable
+      ++ lib.optional config.desktop.gnome.dashToPanel
       gnomeExtensions.dash-to-panel # An icon taskbar for gnome
-      ++ lib.optional config.desktop.gnome.gsconnect.enable
+      ++ lib.optional config.desktop.gnome.gsconnect
       gnomeExtensions.gsconnect # KDE Connect implementation for gnome
     else
       [ ]);

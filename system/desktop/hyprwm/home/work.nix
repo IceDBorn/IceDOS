@@ -1,7 +1,7 @@
 { config, lib, ... }:
 
 lib.mkIf (config.system.user.work.enable
-  && (config.desktop.hypr.enable || config.desktop.hyprland.enable)) {
+  && (config.desktop.hypr || config.desktop.hyprland.enable)) {
     home-manager.users.${config.system.user.work.username} = {
       # Gnome control center running in Hypr WMs
       xdg.desktopEntries.gnome-control-center = {

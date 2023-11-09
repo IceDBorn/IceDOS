@@ -6,6 +6,7 @@ lib.mkIf config.system.user.main.enable {
       git = {
         enable = true;
         # Git config
+        extraConfig = { pull.rebase = true; };
         userName = "${config.system.user.main.git.username}";
         userEmail = "${config.system.user.main.git.email}";
       };
@@ -18,7 +19,7 @@ lib.mkIf config.system.user.main.enable {
           cursor_shape = "beam";
           enable_audio_bell = "no";
           hide_window_decorations =
-            if (config.applications.kitty.hide-decorations) then
+            if (config.applications.kitty.hideDecorations) then
               "yes"
             else
               "no";
@@ -46,7 +47,7 @@ lib.mkIf config.system.user.main.enable {
           engine_short_names = true;
           font_size = 18;
           fps_color = "FFFFFF";
-          fps_limit = "${config.hardware.monitors.main.refresh-rate},60,0";
+          fps_limit = "${config.hardware.monitors.main.refreshRate},60,0";
           frame_timing = false;
           frametime = false;
           gl_vsync = 0;
@@ -114,28 +115,28 @@ lib.mkIf config.system.user.main.enable {
 
       # Add user.js
       ".mozilla/firefox/privacy/user.js".source =
-        if (config.applications.firefox.privacy.enable) then
+        if (config.applications.firefox.privacy) then
           "${(pkgs.callPackage ../self-built/arkenfox-userjs.nix { })}/user.js"
         else
           ../configs/firefox/user.js;
 
       # Install firefox gnome theme
       ".mozilla/firefox/privacy/chrome/firefox-gnome-theme" =
-        lib.mkIf config.applications.firefox.gnome-theme.enable {
+        lib.mkIf config.applications.firefox.gnomeTheme {
           source = pkgs.callPackage ../self-built/firefox-gnome-theme.nix { };
           recursive = true;
         };
 
       # Import firefox gnome theme userChrome.css or disable WebRTC indicator
       ".mozilla/firefox/privacy/chrome/userChrome.css".text =
-        if config.applications.firefox.gnome-theme.enable then
+        if config.applications.firefox.gnomeTheme then
           ''@import "firefox-gnome-theme/userChrome.css"''
         else
           "#webrtcIndicator { display: none }";
 
       # Import firefox gnome theme userContent.css
       ".mozilla/firefox/privacy/chrome/userContent.css".text =
-        lib.mkIf config.applications.firefox.gnome-theme.enable
+        lib.mkIf config.applications.firefox.gnomeTheme
         ''@import "firefox-gnome-theme/userContent.css"'';
 
       # Create second firefox profile for pwas
@@ -166,8 +167,8 @@ lib.mkIf config.system.user.main.enable {
 
       # Enable steam beta
       ".local/share/Steam/package/beta" =
-        lib.mkIf (config.applications.steam.beta.enable) {
-          text = if (config.applications.steam.session.enable) then
+        lib.mkIf (config.applications.steam.beta) {
+          text = if (config.applications.steam.session) then
             "steamdeck_publicbeta"
           else
             "publicbeta";
@@ -175,7 +176,7 @@ lib.mkIf config.system.user.main.enable {
 
       # Enable slow steam downloads workaround
       ".local/share/Steam/steam_dev.cfg".text =
-        lib.mkIf config.applications.steam.downloads-workaround.enable ''
+        lib.mkIf config.applications.steam.downloadsWorkaround ''
           @nClientDownloadEnableHTTP2PlatformLinux 0
           @fDownloadRateImprovementToAddAnotherConnection 1.0
         '';
@@ -186,11 +187,19 @@ lib.mkIf config.system.user.main.enable {
         recursive = true;
       };
 
-      ".config/nvim/lua/custom" = {
-        source = ../configs/nvchad;
+      ".config/nvim/lua/custom/configs" = {
+        source = ../configs/nvchad/configs;
         recursive = true;
-        force = true;
       };
+
+      ".config/nvim/lua/custom/chadrc.lua".source =
+        ../configs/nvchad/chadrc.lua;
+      ".config/nvim/lua/custom/mappings.lua".source =
+        ../configs/nvchad/mappings.lua;
+      ".config/nvim/lua/custom/plugins.lua".source =
+        ../configs/nvchad/plugins.lua;
+      ".config/nvim/lua/custom/init.lua".text =
+        config.applications.nvchad.initLua;
 
       # Add tmux
       ".config/tmux/tmux.conf".source = ../configs/tmux.conf;

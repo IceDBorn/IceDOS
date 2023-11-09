@@ -7,10 +7,8 @@ lib.mkIf (config.system.user.work.enable && config.desktop.hyprland.enable) {
       ".config/hypr/hyprland.conf".text = "${config.desktop.hyprland.config}";
 
       # Add waybar config files
-      ".config/waybar" = {
-        source = ../../../../applications/configs/waybar;
-        recursive = true;
-      };
+      ".config/waybar/config".text = config.desktop.hyprland.waybar.config;
+      ".config/waybar/style.css".source = ../configs/waybar/style.css;
 
       # Add wlogout config files
       ".config/wlogout" = {
@@ -26,9 +24,6 @@ lib.mkIf (config.system.user.work.enable && config.desktop.hyprland.enable) {
       '';
 
       ".config/hypr/hyprpaper.jpg".source = ../configs/hyprpaper.jpg;
-
-      # Add vpn watcher script
-      ".config/zsh/vpn-watcher.sh".source = ../../../../scripts/vpn-watcher.sh;
     };
   };
 }

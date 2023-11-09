@@ -16,20 +16,23 @@ lib.mkIf config.system.user.work.enable {
           # Enable clock seconds
           clock-show-seconds = true;
           # Disable date
-          clock-show-date = config.desktop.gnome.clock-date.enable;
+          clock-show-date = config.desktop.gnome.clockDate;
+          clock-show-weekday = config.desktop.gnome.clockWeekday;
           # Show the battery percentage when on a laptop
           show-battery-percentage = config.hardware.laptop.enable;
           # Access the activity overview by moving the mouse to the top-left corner
-          enable-hot-corners = config.desktop.gnome.hot-corners.enable;
+          enable-hot-corners = config.desktop.gnome.hotCorners;
         };
 
         # Disable lockscreen notifications
         "org/gnome/desktop/notifications" = { show-in-lock-screen = false; };
 
         "org/gnome/desktop/wm/preferences" = {
+          # Buttons to show in titlebars
+          button-layout = config.desktop.gnome.titlebarLayout;
           # Disable application is ready notification
           focus-new-windows = "strict";
-          num-workspaces = config.desktop.gnome.workspaces.max-workspaces;
+          num-workspaces = config.desktop.gnome.workspaces.maxWorkspaces;
         };
 
         # Disable mouse acceleration
@@ -51,10 +54,12 @@ lib.mkIf config.system.user.work.enable {
         "org/gnome/desktop/sound" = { event-sounds = false; };
 
         "org/gnome/mutter" = {
+          # Enable window snapping to the edges of the screen
+          edge-tiling = true;
           # Enable fractional scaling
           experimental-features = [ "scale-monitor-framebuffer" ];
           dynamic-workspaces =
-            config.desktop.gnome.workspaces.dynamic-workspaces.enable;
+            config.desktop.gnome.workspaces.dynamicWorkspaces;
         };
 
         "org/gnome/settings-daemon/plugins/power" = {
@@ -72,16 +77,16 @@ lib.mkIf config.system.user.work.enable {
             "appindicatorsupport@rgcjonas.gmail.com"
             "pano@elhan.io"
             "quick-settings-tweaks@qwreey"
-          ] ++ lib.optional config.desktop.gnome.arcmenu.enable
+          ] ++ lib.optional config.desktop.gnome.arcmenu
             "arcmenu@arcmenu.com"
-            ++ lib.optional config.desktop.gnome.caffeine.enable
+            ++ lib.optional config.desktop.gnome.caffeine
             "caffeine@patapon.info"
-            ++ lib.optional config.desktop.gnome.dash-to-panel.enable
+            ++ lib.optional config.desktop.gnome.dashToPanel
             "dash-to-panel@jderose9.github.com"
-            ++ lib.optional config.desktop.gnome.gsconnect.enable
+            ++ lib.optional config.desktop.gnome.gsconnect
             "gsconnect@andyholmes.github.io";
 
-          favorite-apps = lib.mkIf config.desktop.gnome.pinned-apps.enable [
+          favorite-apps = lib.mkIf config.desktop.gnome.pinnedApps [
             "webstorm.desktop"
             "slack.desktop"
             "webcord.desktop"
@@ -119,7 +124,7 @@ lib.mkIf config.system.user.work.enable {
         "org/gnome/shell/app-switcher" = { current-workspace-only = true; };
 
         "org/gnome/shell/extensions/caffeine" =
-          lib.mkIf config.desktop.gnome.caffeine.enable {
+          lib.mkIf config.desktop.gnome.caffeine {
             # Remember the user choice
             restore-state = true;
             # Disable icon
@@ -138,7 +143,7 @@ lib.mkIf config.system.user.work.enable {
         };
 
         "org/gnome/shell/extensions/dash-to-panel" =
-          lib.mkIf config.desktop.gnome.dash-to-panel.enable {
+          lib.mkIf config.desktop.gnome.dashToPanel {
             panel-element-positions = ''
               {
                 "0": [
@@ -176,15 +181,15 @@ lib.mkIf config.system.user.work.enable {
           };
 
         "org/gnome/shell/extensions/arcmenu" =
-          lib.mkIf config.desktop.gnome.arcmenu.enable {
+          lib.mkIf config.desktop.gnome.arcmenu {
             distro-icon = 6;
             menu-button-icon = "Distro_Icon"; # Use arch icon
             multi-monitor = true;
             menu-layout = "Windows";
             windows-disable-frequent-apps = true;
             windows-disable-pinned-apps =
-              !config.desktop.gnome.pinned-apps.enable;
-            pinned-app-list = lib.mkIf config.desktop.gnome.pinned-apps.enable [
+              !config.desktop.gnome.pinnedApps;
+            pinned-app-list = lib.mkIf config.desktop.gnome.pinnedApps [
               "VSCodium"
               ""
               "codium.desktop"

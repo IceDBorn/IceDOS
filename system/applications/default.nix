@@ -8,6 +8,8 @@
     # Home manager specific stuff
     ./home/main.nix
     ./home/work.nix
+    # Nvchad
+    ./configs/nvchad/init.nix
   ];
 
   nix = {
@@ -26,6 +28,6 @@
 
   nixpkgs.config = {
     allowUnfree = true; # Allow proprietary packages
-    permittedInsecurePackages = [ "openssl-1.1.1v" ];
+    permittedInsecurePackages = [ "electron-24.8.6" ];
   };
 }

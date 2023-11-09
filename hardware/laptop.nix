@@ -1,7 +1,7 @@
 { pkgs, lib, config, ... }:
 
 lib.mkIf config.hardware.laptop.enable {
-  services.auto-cpufreq.enable = config.hardware.laptop.auto-cpufreq.enable;
+  services.auto-cpufreq.enable = config.hardware.laptop.autoCpuFreq;
   environment.systemPackages = [ pkgs.brightnessctl ];
 
   hardware.nvidia.prime = lib.mkIf config.hardware.gpu.nvidia.enable {

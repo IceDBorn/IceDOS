@@ -28,7 +28,7 @@ in {
         ### MONITORS ###
 
         # See available monitors with 'hyprctl monitors'
-        monitor = ${config.hardware.monitors.main.name},${config.hardware.monitors.main.resolution}@${config.hardware.monitors.main.refresh-rate},${config.hardware.monitors.main.position},${config.hardware.monitors.main.scaling}
+        monitor = ${config.hardware.monitors.main.name},${config.hardware.monitors.main.resolution}@${config.hardware.monitors.main.refreshRate},${config.hardware.monitors.main.position},${config.hardware.monitors.main.scaling}
         workspace = 1, monitor:${config.hardware.monitors.main.name}, default:true
         workspace = 2, monitor:${config.hardware.monitors.main.name}
         workspace = 3, monitor:${config.hardware.monitors.main.name}
@@ -40,7 +40,7 @@ in {
         workspace = 9, monitor:${config.hardware.monitors.main.name}
         workspace = 10, monitor:${config.hardware.monitors.main.name}
 
-        monitor = ${config.hardware.monitors.secondary.name},${config.hardware.monitors.secondary.resolution}@${config.hardware.monitors.secondary.refresh-rate},${config.hardware.monitors.secondary.position},${config.hardware.monitors.secondary.scaling}
+        monitor = ${config.hardware.monitors.secondary.name},${config.hardware.monitors.secondary.resolution}@${config.hardware.monitors.secondary.refreshRate},${config.hardware.monitors.secondary.position},${config.hardware.monitors.secondary.scaling}
         workspace = 11, monitor:${config.hardware.monitors.secondary.name}, default:true
         workspace = 12, monitor:${config.hardware.monitors.secondary.name}
         workspace = 13, monitor:${config.hardware.monitors.secondary.name}
@@ -103,6 +103,10 @@ in {
 
         master {
           new_is_master = true
+        }
+
+        xwayland {
+          use_nearest_neighbor = false
         }
 
         ### KEYBINDINGS ###
@@ -201,17 +205,14 @@ in {
         # Move apps to workspaces
         ${workspaceRules}
 
-        # Maximize apps
-        windowrulev2 = maximize, class:^(firefox|startup-nvchad|Steam|startup-kitty|io.missioncenter.MissionCenter|pwas)$, floating:0
-        windowrulev2 = maximize, title:^(Steam)$
-        windowrulev2 = noborder, fullscreen:1 # Hide maximized window borders
+        # Hide maximized window borders
+        windowrulev2 = noborder, fullscreen:1
 
         # Inhibit idle for apps
-        windowrulev2 = idleinhibit focus, class:^(steam_app_.*|org.gnome.clocks)$
-        windowrulev2 = idleinhibit fullscreen, class:^(firefox|pwas)$
+        windowrulev2 = idleinhibit focus, class:^(steam_app_.*|org\.gnome\.clocks)$
 
         # Tile apps
-        windowrulev2 = tile, class:^(Godot.*|Steam|steam_app_.*|photoshop\.exe)$
+        windowrulev2 = tile, class:^(Godot.*|Steam|steam_app_.*|photoshop\.exe|DesktopEditors)$
         windowrulev2 = tile, title:^(.*Steam[A-Za-z0-9\s]*)$
 
         # Float apps

@@ -6,6 +6,7 @@ lib.mkIf config.system.user.work.enable {
       git = {
         enable = true;
         # Git config
+        extraConfig = { pull.rebase = true; };
         userName = "${config.system.user.work.git.username}";
         userEmail = "${config.system.user.work.git.email}";
       };
@@ -18,7 +19,7 @@ lib.mkIf config.system.user.work.enable {
           cursor_shape = "beam";
           enable_audio_bell = "no";
           hide_window_decorations =
-            if (config.applications.kitty.hide-decorations) then
+            if (config.applications.kitty.hideDecorations) then
               "yes"
             else
               "no";
@@ -71,21 +72,21 @@ lib.mkIf config.system.user.work.enable {
 
       # Add user.js
       ".mozilla/firefox/privacy/user.js".source =
-        if (config.applications.firefox.privacy.enable) then
+        if (config.applications.firefox.privacy) then
           "${(pkgs.callPackage ../self-built/arkenfox-userjs.nix { })}/user.js"
         else
           ../configs/firefox/user.js;
 
       # Install firefox gnome theme
       ".mozilla/firefox/privacy/chrome/firefox-gnome-theme" =
-        lib.mkIf config.applications.firefox.gnome-theme.enable {
+        lib.mkIf config.applications.firefox.gnomeTheme {
           source = pkgs.callPackage ../self-built/firefox-gnome-theme.nix { };
           recursive = true;
         };
 
       # Import firefox gnome theme userChrome.css or disable WebRTC indicator
       ".mozilla/firefox/privacy/chrome/userChrome.css".text =
-        if config.applications.firefox.gnome-theme.enable then
+        if config.applications.firefox.gnomeTheme then
           ''@import "firefox-gnome-theme/userChrome.css"''
         else
           "#webrtcIndicator { display: none }";
@@ -116,11 +117,19 @@ lib.mkIf config.system.user.work.enable {
         recursive = true;
       };
 
-      ".config/nvim/lua/custom" = {
-        source = ../configs/nvchad;
+      ".config/nvim/lua/custom/configs" = {
+        source = ../configs/nvchad/configs;
         recursive = true;
-        force = true;
       };
+
+      ".config/nvim/lua/custom/chadrc.lua".source =
+        ../configs/nvchad/chadrc.lua;
+      ".config/nvim/lua/custom/mappings.lua".source =
+        ../configs/nvchad/mappings.lua;
+      ".config/nvim/lua/custom/plugins.lua".source =
+        ../configs/nvchad/plugins.lua;
+      ".config/nvim/lua/custom/init.lua".text =
+        config.applications.nvchad.initLua;
 
       # Add tmux
       ".config/tmux/tmux.conf".source = ../configs/tmux.conf;

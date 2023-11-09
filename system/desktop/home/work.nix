@@ -25,6 +25,15 @@ lib.mkIf config.system.user.work.enable {
 
     xdg = {
       desktopEntries = {
+        # dbeaver on Xwayland (fix scaling issues)
+        dbeaver = {
+          exec = "env GDK_BACKEND=x11 dbeaver";
+          icon = "dbeaver";
+          name = "dbeaver - X11";
+          terminal = false;
+          type = "Application";
+        };
+
         # Firefox PWA
         pwas = {
           exec =
