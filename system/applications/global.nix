@@ -33,7 +33,7 @@ let
     }
 
     # Navigate to configuration directory
-    cd ${config.system.configuration-location} 2> /dev/null ||
+    cd ${config.system.configurationLocation} 2> /dev/null ||
     (echo 'Configuration path is invalid. Run build.sh manually to update the path!' && false) &&
 
     # Update specific commands
@@ -233,7 +233,7 @@ in {
         n = "tmux a -t nvchad || tmux new -s nvchad nvim"; # Nvchad
         ping = "gping"; # ping with a graph
         reboot-windows =
-          "sudo efibootmgr --bootnext ${config.boot.windows-entry} && reboot"; # Reboot to windows
+          "sudo efibootmgr --bootnext ${config.boot.windowsEntry} && reboot"; # Reboot to windows
         restart-pipewire =
           "systemctl --user restart pipewire"; # Restart pipewire
         server = "ssh server@192.168.1.2"; # Connect to local server

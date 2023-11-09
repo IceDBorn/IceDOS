@@ -8,13 +8,13 @@
   ]; # Setup home manager for hypr and hyprland
 
   programs =
-    lib.mkIf (config.desktop.hyprland.enable || config.desktop.hypr.enable) {
+    lib.mkIf (config.desktop.hyprland.enable || config.desktop.hypr) {
       nm-applet.enable = true; # Network manager tray icon
       kdeconnect.enable = true; # Connect phone to PC
     };
 
   environment =
-    lib.mkIf (config.desktop.hyprland.enable || config.desktop.hypr.enable) {
+    lib.mkIf (config.desktop.hyprland.enable || config.desktop.hypr) {
       systemPackages = with pkgs; [
         baobab # Disk usage analyser
         blueberry # Bluetooth manager
@@ -38,7 +38,7 @@
       ];
 
       etc = lib.mkIf
-        (config.desktop.hyprland.enable || config.desktop.hypr.enable) {
+        (config.desktop.hyprland.enable || config.desktop.hypr) {
           "polkit-gnome".source =
             "${pkgs.polkit_gnome}/libexec/polkit-gnome-authentication-agent-1";
           "kdeconnectd".source =
@@ -47,7 +47,7 @@
     };
 
   services =
-    lib.mkIf (config.desktop.hyprland.enable || config.desktop.hypr.enable) {
+    lib.mkIf (config.desktop.hyprland.enable || config.desktop.hypr) {
       dbus.enable = true;
       gvfs.enable = true; # Needed for nautilus
       gnome.gnome-keyring.enable = true;
@@ -55,7 +55,7 @@
 
   security = {
     polkit.enable =
-      lib.mkIf (config.desktop.hyprland.enable || config.desktop.hypr.enable)
+      lib.mkIf (config.desktop.hyprland.enable || config.desktop.hypr)
       true;
     pam.services.login.enableGnomeKeyring = true;
   };
