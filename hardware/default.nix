@@ -9,7 +9,7 @@
     };
 
     xpadneo.enable =
-      !config.hardware.xpadneo-unstable.enable; # Enable XBOX Gamepad bluetooth driver
+      !config.hardware.xpadneoUnstable; # Enable XBOX Gamepad bluetooth driver
     bluetooth.enable = true;
     uinput.enable = true; # Enable uinput support
   };
@@ -38,18 +38,18 @@
     kernelModules = [
       "v4l2loopback" # Virtual camera
       "uinput"
-    ] ++ lib.optional config.hardware.xpadneo-unstable.enable "hid_xpadneo";
+    ] ++ lib.optional config.hardware.xpadneoUnstable "hid_xpadneo";
 
     kernelParams = [
       # Fixes certain wine games crash on launch
       "clearcpuid=514"
     ] ++ lib.optional config.hardware.monitors.main.enable
-      "video=${config.hardware.monitors.main.name}:${config.hardware.monitors.main.resolution}@${config.hardware.monitors.main.refresh-rate}"
+      "video=${config.hardware.monitors.main.name}:${config.hardware.monitors.main.resolution}@${config.hardware.monitors.main.refreshRate}"
       ++ lib.optional config.hardware.monitors.secondary.enable
-      "video=${config.hardware.monitors.secondary.name}:${config.hardware.monitors.secondary.resolution}@${config.hardware.monitors.secondary.refresh-rate}";
+      "video=${config.hardware.monitors.secondary.name}:${config.hardware.monitors.secondary.resolution}@${config.hardware.monitors.secondary.refreshRate}";
 
     extraModulePackages = with config.boot.kernelPackages;
-      [ v4l2loopback ] ++ lib.optional config.hardware.xpadneo-unstable.enable
+      [ v4l2loopback ] ++ lib.optional config.hardware.xpadneoUnstable
       (callPackage ../system/applications/self-built/xpadneo.nix { });
 
     kernel.sysctl = {
@@ -57,8 +57,8 @@
     }; # Fixes crash when loading maps in CS2
   };
 
-  fileSystems = lib.mkIf (config.hardware.btrfs-compression.enable
-    && config.hardware.btrfs-compression.root.enable) {
+  fileSystems = lib.mkIf (config.hardware.btrfsCompression.enable
+    && config.hardware.btrfsCompression.root) {
       "/".options = [ "compress=zstd" ];
     };
 

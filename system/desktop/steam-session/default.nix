@@ -1,5 +1,5 @@
 { config, lib, ... }:
 
-lib.mkIf config.applications.steam.session.enable {
+lib.mkIf config.applications.steam.session {
   jovian.steam.enable = true;
 }

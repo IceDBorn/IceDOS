@@ -4,12 +4,12 @@
   options = with lib; {
     applications = {
       firefox = {
-        gnome-theme.enable = mkOption {
+        gnomeTheme = mkOption {
           type = types.bool;
           default = true;
         };
 
-        privacy.enable = mkOption {
+        privacy = mkOption {
           type = types.bool;
           default = true;
         };
@@ -28,31 +28,31 @@
       };
 
       # Hide kitty top bar
-      kitty.hide-decorations = mkOption {
+      kitty.hideDecorations = mkOption {
         type = types.bool;
         default = true;
       };
 
       steam = {
         # Extras to use for adwaita for steam theme
-        adwaita-for-steam.extras = mkOption {
+        adwaitaForSteam.extras = mkOption {
           type = types.str;
           default =
             "-e library/hide_whats_new -e login/hover_qr -e windowcontrols/hide-close";
         };
 
-        beta.enable = mkOption {
+        beta = mkOption {
           type = types.bool;
           default = true;
         };
 
         # Workaround for slow steam downloads
-        downloads-workaround.enable = mkOption {
+        downloadsWorkaround = mkOption {
           type = types.bool;
           default = true;
         };
 
-        session.enable = mkOption {
+        session = mkOption {
           type = types.bool;
           default = true;
         };
@@ -61,7 +61,7 @@
 
     boot = {
       # Hides startup text and displays a circular loading icon
-      animation.enable = mkOption {
+      animation = mkOption {
         type = types.bool;
         default = false;
       };
@@ -91,7 +91,7 @@
       };
 
       # Used for rebooting to windows with efibootmgr
-      windows-entry = mkOption {
+      windowsEntry = mkOption {
         type = types.str;
         default = "0000";
       };
@@ -111,9 +111,9 @@
         };
       };
 
-      gdm.auto-suspend.enable = mkOption {
+      gdm.autoSuspend = mkOption {
         type = types.bool;
-        default = false;
+        default = true;
       };
 
       gnome = {
@@ -122,73 +122,73 @@
           default = false;
         };
 
-        arcmenu.enable = mkOption {
+        arcmenu = mkOption {
           type = types.bool;
           default = false;
         };
 
-        caffeine.enable = mkOption {
+        caffeine = mkOption {
           type = types.bool;
           default = true;
         };
 
-        clock-date.enable = mkOption {
+        clockDate = mkOption {
           type = types.bool;
           default = false;
         }; # Show the month and day of the month on the clock
 
-        clock-weekday.enable = mkOption {
+        clockWeekday = mkOption {
           type = types.bool;
           default = false;
         }; # Show the day of the week on the clock
 
-        dash-to-panel.enable = mkOption {
+        dashToPanel = mkOption {
           type = types.bool;
           default = false;
         };
 
-        gsconnect.enable = mkOption {
+        gsconnect = mkOption {
           type = types.bool;
           default = true;
         };
 
-        hot-corners.enable = mkOption {
+        hotCorners = mkOption {
           type = types.bool;
           default = false;
         };
 
         # Whether to set (or unset) gnome's and arcmenu's pinned apps
-        pinned-apps.enable = mkOption {
+        pinnedApps = mkOption {
           type = types.bool;
           default = false;
         };
 
-        startup-items.enable = mkOption {
+        startupItems = mkOption {
           type = types.bool;
           default = false;
         };
 
         # Options: 'minimize', 'maximize', 'close', 'spacer'(adds space between buttons), ':'(left-center-right separator)
-        titlebar-layout = mkOption {
+        titlebarLayout = mkOption {
           type = types.str;
           default = "appmenu:close";
         };
 
         workspaces = {
-          dynamic-workspaces.enable = mkOption {
+          dynamicWorkspaces = mkOption {
             type = types.bool;
             default = true;
           };
 
           # Determines the maximum number of workspaces when dynamic workspaces are disabled
-          max-workspaces = mkOption {
+          maxWorkspaces = mkOption {
             type = types.str;
             default = "1";
           };
         };
       };
 
-      hypr.enable = mkOption {
+      hypr = mkOption {
         type = types.bool;
         default = true;
       };
@@ -200,20 +200,20 @@
     };
 
     hardware = {
-      btrfs-compression = {
+      btrfsCompression = {
         enable = mkOption {
           type = types.bool;
           default = true;
         };
 
         # Use btrfs compression for mounted drives
-        mounts.enable = mkOption {
+        mounts = mkOption {
           type = types.bool;
           default = true;
         };
 
         # Use btrfs compression for root
-        root.enable = mkOption {
+        root = mkOption {
           type = types.bool;
           default = true;
         };
@@ -247,7 +247,7 @@
       };
 
       gpu = {
-        amd.enable = mkOption {
+        amd = mkOption {
           type = types.bool;
           default = true;
         };
@@ -258,7 +258,7 @@
             default = false;
           };
 
-          power-limit = {
+          powerLimit = {
             enable = mkOption {
               type = types.bool;
               default = true;
@@ -279,7 +279,7 @@
           default = false;
         };
 
-        auto-cpufreq.enable = mkOption {
+        autoCpuFreq = mkOption {
           type = types.bool;
           default = true;
         };
@@ -302,7 +302,7 @@
             default = "1920x1080";
           };
 
-          refresh-rate = mkOption {
+          refreshRate = mkOption {
             type = types.str;
             default = "144";
           };
@@ -334,7 +334,7 @@
             default = "1280x1024";
           };
 
-          refresh-rate = mkOption {
+          refreshRate = mkOption {
             type = types.str;
             default = "75";
           };
@@ -357,45 +357,45 @@
       };
 
       # Set to false if hardware/mounts.nix is not correctly configured
-      mounts.enable = mkOption {
+      mounts = mkOption {
         type = types.bool;
         default = true;
       };
 
       virtualisation = {
         # Container manager
-        docker.enable = mkOption {
+        docker = mkOption {
           type = types.bool;
           default = true;
         };
 
         # A daemon that manages virtual machines
-        libvirtd.enable = mkOption {
+        libvirtd = mkOption {
           type = types.bool;
           default = true;
         };
 
         # Container daemon
-        lxd.enable = mkOption {
+        lxd = mkOption {
           type = types.bool;
           default = true;
         };
 
         # Passthrough USB devices to vms
-        spiceUSBRedirection.enable = mkOption {
+        spiceUSBRedirection = mkOption {
           type = types.bool;
           default = true;
         };
 
         # Android container
-        waydroid.enable = mkOption {
+        waydroid = mkOption {
           type = types.bool;
           default = true;
         };
       };
 
       # use self-built version of xpadneo to fix some controller issues
-      xpadneo-unstable.enable = mkOption {
+      xpadneoUnstable = mkOption {
         type = types.bool;
         default = true;
       };
@@ -403,7 +403,7 @@
 
     system = {
       # Location of the config
-      configuration-location = mkOption {
+      configurationLocation = mkOption {
         type = types.str;
         default = builtins.readFile ./.configuration-location;
       };
@@ -422,7 +422,7 @@
         };
       };
 
-      update.stash-flake-lock = mkOption {
+      update.stashFlakeLock = mkOption {
         type = types.bool;
         default = true;
       };
@@ -488,7 +488,7 @@
       };
 
       # Do not change without checking the docs (config.system.stateVersion)
-      state-version = mkOption {
+      version = mkOption {
         type = types.str;
         default = "23.05";
       };

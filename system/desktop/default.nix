@@ -18,7 +18,7 @@
       displayManager = {
         gdm = {
           enable = true;
-          autoSuspend = config.desktop.gdm.auto-suspend.enable;
+          autoSuspend = config.desktop.gdm.autoSuspend;
         };
 
         autoLogin = lib.mkIf config.desktop.autologin.enable {

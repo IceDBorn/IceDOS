@@ -13,7 +13,7 @@ in lib.mkIf config.hardware.gpu.nvidia.enable {
   hardware.nvidia.modesetting.enable = true; # Required for wayland
 
   virtualisation.docker.enableNvidia =
-    true; # Enable nvidia gpu acceleration for docker
+    config.hardware.virtualisation.docker; # Enable nvidia gpu acceleration for docker
 
   environment.systemPackages =
     [ pkgs.nvtop-nvidia ] # Monitoring tool for nvidia GPUs
@@ -22,7 +22,7 @@ in lib.mkIf config.hardware.gpu.nvidia.enable {
 
   # Set nvidia gpu power limit
   systemd.services.nv-power-limit =
-    lib.mkIf config.hardware.gpu.nvidia.power-limit.enable {
+    lib.mkIf config.hardware.gpu.nvidia.powerLimit.enable {
       enable = true;
       description = "Nvidia power limit control";
       after = [ "syslog.target" "systemd-modules-load.service" ];

@@ -28,7 +28,7 @@ in {
         ### MONITORS ###
 
         # See available monitors with 'hyprctl monitors'
-        monitor = ${config.hardware.monitors.main.name},${config.hardware.monitors.main.resolution}@${config.hardware.monitors.main.refresh-rate},${config.hardware.monitors.main.position},${config.hardware.monitors.main.scaling}
+        monitor = ${config.hardware.monitors.main.name},${config.hardware.monitors.main.resolution}@${config.hardware.monitors.main.refreshRate},${config.hardware.monitors.main.position},${config.hardware.monitors.main.scaling}
         workspace = 1, monitor:${config.hardware.monitors.main.name}, default:true
         workspace = 2, monitor:${config.hardware.monitors.main.name}
         workspace = 3, monitor:${config.hardware.monitors.main.name}
@@ -40,7 +40,7 @@ in {
         workspace = 9, monitor:${config.hardware.monitors.main.name}
         workspace = 10, monitor:${config.hardware.monitors.main.name}
 
-        monitor = ${config.hardware.monitors.secondary.name},${config.hardware.monitors.secondary.resolution}@${config.hardware.monitors.secondary.refresh-rate},${config.hardware.monitors.secondary.position},${config.hardware.monitors.secondary.scaling}
+        monitor = ${config.hardware.monitors.secondary.name},${config.hardware.monitors.secondary.resolution}@${config.hardware.monitors.secondary.refreshRate},${config.hardware.monitors.secondary.position},${config.hardware.monitors.secondary.scaling}
         workspace = 11, monitor:${config.hardware.monitors.secondary.name}, default:true
         workspace = 12, monitor:${config.hardware.monitors.secondary.name}
         workspace = 13, monitor:${config.hardware.monitors.secondary.name}

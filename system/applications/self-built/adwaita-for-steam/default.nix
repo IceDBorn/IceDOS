@@ -19,6 +19,6 @@ stdenvNoCC.mkDerivation rec {
 
   installPhase = ''
     mkdir -p $out/build
-    NIX_OUT="$out" python install.py ${config.applications.steam.adwaita-for-steam.extras}
+    NIX_OUT="$out" python install.py ${config.applications.steam.adwaitaForSteam.extras}
   '';
 }

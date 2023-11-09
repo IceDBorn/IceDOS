@@ -30,6 +30,6 @@
     initrd.secrets =
       lib.mkIf config.boot.grub.enable { "/crypto_keyfile.bin" = null; };
 
-    plymouth.enable = config.boot.animation.enable;
+    plymouth.enable = config.boot.animation;
   };
 }

@@ -2,7 +2,7 @@
 { config, pkgs, lib, inputs, ... }:
 
 let
-  stashLock = if (config.system.update.stash-flake-lock) then "1" else "0";
+  stashLock = if (config.system.update.stashFlakeLock) then "1" else "0";
 
   # Rebuild the system configuration
   update = pkgs.writeShellScriptBin "update" "rebuild 1 ${stashLock} 0 1";

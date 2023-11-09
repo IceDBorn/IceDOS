@@ -2,7 +2,7 @@
 
 lib.mkIf config.system.user.main.enable {
   home-manager.users.${config.system.user.main.username}.home.file = lib.mkIf
-    (config.desktop.gnome.enable && config.desktop.gnome.startup-items.enable) {
+    (config.desktop.gnome.enable && config.desktop.gnome.startupItems) {
       # Add signal to startup
       ".config/autostart/signal-desktop.desktop" = {
         text = ''

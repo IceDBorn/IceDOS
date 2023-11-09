@@ -2,7 +2,7 @@
 { config, pkgs, lib, ... }:
 
 let
-  stashLock = if (config.system.update.stash-flake-lock) then "1" else "0";
+  stashLock = if (config.system.update.stashFlakeLock) then "1" else "0";
 
   # Rebuild the system configuration
   update = pkgs.writeShellScriptBin "update" "rebuild 1 ${stashLock} 1 1";
@@ -40,7 +40,7 @@ in lib.mkIf config.system.user.main.enable {
     ] ++ emulators ++ gaming ++ myPackages ++ shellScripts;
 
   # Wayland microcompositor
-  programs.gamescope = lib.mkIf (!config.applications.steam.session.enable) {
+  programs.gamescope = lib.mkIf (!config.applications.steam.session) {
     enable = true;
     capSysNice = true;
   };
