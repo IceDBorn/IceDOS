@@ -32,7 +32,7 @@ in lib.mkIf config.system.user.work.enable {
     httpd = {
       enable = true;
       user = config.system.user.work.username;
-      phpPackage = inputs.phps.packages.x86_64-linux.php74;
+      phpPackage = inputs.phps.packages.x86_64-linux.php73;
       enablePHP = true;
       extraConfig = ''
         <VirtualHost *:80>
