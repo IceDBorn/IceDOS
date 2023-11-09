@@ -8,6 +8,8 @@
     # Home manager specific stuff
     ./home/main.nix
     ./home/work.nix
+    # Nvchad
+    ./configs/nvchad/init.nix
   ];
 
   nix = {

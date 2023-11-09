@@ -22,6 +22,11 @@
         };
       };
 
+      nvchad.formatOnSave = mkOption {
+        type = types.bool;
+        default = true;
+      };
+
       # Hide kitty top bar
       kitty.hide-decorations = mkOption {
         type = types.bool;

@@ -187,11 +187,19 @@ lib.mkIf config.system.user.main.enable {
         recursive = true;
       };
 
-      ".config/nvim/lua/custom" = {
-        source = ../configs/nvchad;
+      ".config/nvim/lua/custom/configs" = {
+        source = ../configs/nvchad/configs;
         recursive = true;
-        force = true;
       };
+
+      ".config/nvim/lua/custom/chadrc.lua".source =
+        ../configs/nvchad/chadrc.lua;
+      ".config/nvim/lua/custom/mappings.lua".source =
+        ../configs/nvchad/mappings.lua;
+      ".config/nvim/lua/custom/plugins.lua".source =
+        ../configs/nvchad/plugins.lua;
+      ".config/nvim/lua/custom/init.lua".text =
+        config.applications.nvchad.initLua;
 
       # Add tmux
       ".config/tmux/tmux.conf".source = ../configs/tmux.conf;
