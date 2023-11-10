@@ -53,8 +53,11 @@
       (callPackage ../system/applications/self-built/xpadneo.nix { });
 
     kernel.sysctl = {
+      # Fixes crash when loading maps in CS2
       "vm.max_map_count" = 262144;
-    }; # Fixes crash when loading maps in CS2
+      # Disable ipv6 for all interfaces
+      "net.ipv6.conf.all.disable_ipv6" = !config.hardware.networking.ipv6;
+    };
   };
 
   fileSystems = lib.mkIf (config.hardware.btrfsCompression.enable
