@@ -157,6 +157,7 @@ local plugins = {
         "python",
         "rust",
         "tsx",
+        "twig",
         "typescript",
         "vim",
       },
