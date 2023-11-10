@@ -13,10 +13,27 @@ let
   shellScripts = [ update ];
 
   gitLocation = "/home/${config.system.user.work.username}/git/";
-  multiStoreProject = "smart-trade";
+
+  multiStoreProject = {
+    vaza = {
+      folder = "smart-trade";
+
+      aliases = {
+        one = "burkani";
+        two = "beoambalaza";
+      };
+    };
+
+    tosupermou = {
+      folder = "tosupermou";
+      alias = "tosupermoureal";
+    };
+  };
+
   httpdAliases = ''
-    Alias /burkani ${gitLocation}${multiStoreProject}
-    Alias /beoambalaza ${gitLocation}${multiStoreProject}
+    Alias /${multiStoreProject.vaza.aliases.one} ${gitLocation}${multiStoreProject.vaza.folder}
+    Alias /${multiStoreProject.vaza.aliases.two} ${gitLocation}${multiStoreProject.vaza.folder}
+    Alias /${multiStoreProject.tosupermou.alias} ${gitLocation}${multiStoreProject.tosupermou.folder}
   '';
 in lib.mkIf config.system.user.work.enable {
   users.users.${config.system.user.work.username}.packages = with pkgs;
