@@ -81,6 +81,7 @@ let
     dotnet-sdk_7 # SDK for .net
     gcc # C++ compiler
     # gdtoolkit # Tools for gdscript
+    gnumake # A tool to control the generation of non-source files from sources
     nixfmt # A nix formatter
     nodejs # Node package manager
     python3 # Python
