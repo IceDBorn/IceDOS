@@ -2,22 +2,27 @@ local M = {}
 
 M.abc = {
   v = {
-    [ "<Tab>" ] = { ">gv", "Indent" },
-    [ "<S-Tab>" ] = { "<gv", "Unindent" },
-    [ "<leader>s" ] = { "<ESC> <cmd> Sort <CR>", "Sort selection" },
+    ["<Tab>"] = { ">gv", "Indent" },
+    ["<S-Tab>"] = { "<gv", "Unindent" },
+    ["<leader>s"] = { "<ESC> <cmd> Sort <CR>", "Sort selection" },
   },
   n = {
-    [ "<leader>fr" ] = { "<cmd> Spectre<CR>", "Find and Replace" },
-    [ "<leader>ff" ] = { "<cmd> Telescope live_grep<CR>", "Find" },
-    [ "<leader>gg" ] = { "<cmd> LazyGit <CR>", "Source control" },
-    [ "C-h" ] = { "<cmd> TmuxNavigateLeft <CR>", "Focus left" },
-    [ "C-l" ] = { "<cmd> TmuxNavigateRight <CR>", "Focus right" },
-    [ "C-j" ] = { "<cmd> TmuxNavigateDown <CR>", "Focus down" },
-    [ "C-k" ] = { "<cmd> TmuxNavigateUp <CR>", "Focus up" },
+    ["<leader>cs"] = { "<cmd> lua formatBuffer() <CR>", "Format document" },
+    ["<leader>fr"] = { "<cmd> Spectre <CR>", "Find and Replace" },
+    ["<leader>ff"] = { "<cmd> Telescope live_grep <CR>", "Find" },
+    ["<leader>gg"] = { "<cmd> LazyGit <CR>", "Source control" },
+    ["C-h"] = { "<cmd> TmuxNavigateLeft <CR>", "Focus left" },
+    ["C-l"] = { "<cmd> TmuxNavigateRight <CR>", "Focus right" },
+    ["C-j"] = { "<cmd> TmuxNavigateDown <CR>", "Focus down" },
+    ["C-k"] = { "<cmd> TmuxNavigateUp <CR>", "Focus up" },
   },
   i = {
-    [ "jk" ] = { "<ESC>", "Escape insert mode" , opts = { nowait = true }},
-  }
+    ["jk"] = { "<ESC>", "Escape insert mode", opts = { nowait = true } },
+  },
 }
+
+function formatBuffer()
+  vim.lsp.buf.format({ async = true })
+end
 
 return M
