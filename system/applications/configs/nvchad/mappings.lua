@@ -7,7 +7,6 @@ M.abc = {
     ["<leader>s"] = { "<ESC> <cmd> Sort <CR>", "Sort selection" },
   },
   n = {
-    ["<leader>cs"] = { "<cmd> lua formatBuffer() <CR>", "Format document" },
     ["<leader>fr"] = { "<cmd> Spectre <CR>", "Find and Replace" },
     ["<leader>ff"] = { "<cmd> Telescope live_grep <CR>", "Find" },
     ["<leader>gg"] = { "<cmd> LazyGit <CR>", "Source control" },
@@ -20,9 +19,5 @@ M.abc = {
     ["jk"] = { "<ESC>", "Escape insert mode", opts = { nowait = true } },
   },
 }
-
-function formatBuffer()
-  vim.lsp.buf.format({ async = true })
-end
 
 return M
