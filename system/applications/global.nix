@@ -251,9 +251,11 @@ in {
           "ssh -f server@192.168.1.2 'mullvad connect && sleep 1 && mullvad status'"; # Connect to VPN
       };
 
+      # Commands to run on zsh shell initialization
       interactiveShellInit = ''
         source ~/.config/zsh/zsh-theme.zsh
-        unsetopt PROMPT_SP''; # Commands to run on zsh shell initialization
+        export EDITOR=nvim
+        unsetopt PROMPT_SP'';
     };
 
     # Enable gamemode and set custom settings

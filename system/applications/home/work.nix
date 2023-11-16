@@ -146,7 +146,7 @@ lib.mkIf config.system.user.work.enable {
       };
 
       # Avoid file not found errors for bash
-      ".bashrc".text = "";
+      ".bashrc".text = "export EDITOR=nvim";
     };
   };
 }
