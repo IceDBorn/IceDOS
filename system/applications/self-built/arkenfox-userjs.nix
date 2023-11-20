@@ -2,13 +2,13 @@
 
 stdenvNoCC.mkDerivation rec {
   name = "arkenfox-userjs";
-  version = "118.0";
+  version = "119.0";
 
   src = fetchFromGitHub {
     owner = "arkenfox";
     repo = "user.js";
     rev = version;
-    sha256 = "/wW55BnbryBleWOvIGPA+QgeL28TN8lSuTwiFXTp9ss=";
+    sha256 = "MAerYaRbaQBqS8WJ3eaq6uxVqQg8diymPbLCU72nDjM=";
   };
 
   preferLocalBuild = true;
