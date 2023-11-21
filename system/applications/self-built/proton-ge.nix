@@ -2,7 +2,7 @@
 
 stdenvNoCC.mkDerivation rec {
   name = "proton-ge";
-  version = "8-23";
+  version = "8-25";
 
   src = builtins.fetchTarball {
     url =
