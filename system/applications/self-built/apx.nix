@@ -11,7 +11,7 @@ buildGoModule rec {
     sha256 = "5yIRK0VRm1YXff08vSxVmQ9jgVLjedFDR6XcoA3Jb18=";
   };
 
-  vendorSha256 = null;
+  vendorHash = null;
 
   installPhase = ''
     install -D $GOPATH/bin/apx $out/bin/apx
