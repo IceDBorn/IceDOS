@@ -35,7 +35,7 @@ in lib.mkIf config.hardware.gpu.nvidia.enable {
       serviceConfig = {
         User = "root";
         ExecStart =
-          "${config.boot.kernelPackages.nvidia_x11.bin}/bin/nvidia-smi  --power-limit=${config.hardware.gpu.nvidia.power-limit.value}";
+          "${config.boot.kernelPackages.nvidia_x11.bin}/bin/nvidia-smi  --power-limit=${config.hardware.gpu.nvidia.powerLimit.value}";
       };
 
       wantedBy = [ "multi-user.target" ];
