@@ -459,7 +459,7 @@
 
             email = mkOption {
               type = types.str;
-              default = "github.envenomed@dralias.com";
+              default = "git.outsider841@simplelogin.fr";
             };
           };
         };
@@ -488,7 +488,7 @@
 
             email = mkOption {
               type = types.str;
-              default = "github.envenomed@dralias.com";
+              default = "git.outsider841@simplelogin.fr";
             };
           };
         };
