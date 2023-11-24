@@ -92,4 +92,7 @@
     cantarell-fonts
     (nerdfonts.override { fonts = [ "JetBrainsMono" ]; })
   ];
+
+  # Use the first portal implementation found in lexicographical order
+  xdg.portal.config.common.default = "*";
 }
