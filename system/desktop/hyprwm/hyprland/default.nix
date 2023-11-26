@@ -83,10 +83,7 @@ in {
     ./configs/waybar/config.nix
   ];
 
-  programs.hyprland = lib.mkIf config.desktop.hyprland.enable {
-    enable = true;
-    enableNvidiaPatches = config.hardware.gpu.nvidia.enable;
-  };
+  programs.hyprland.enable = config.desktop.hyprland.enable;
 
   environment = lib.mkIf config.desktop.hyprland.enable {
     systemPackages = with pkgs; [
