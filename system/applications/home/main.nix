@@ -19,10 +19,7 @@ lib.mkIf config.system.user.main.enable {
           cursor_shape = "beam";
           enable_audio_bell = "no";
           hide_window_decorations =
-            if (config.applications.kitty.hideDecorations) then
-              "yes"
-            else
-              "no";
+            if (config.applications.kitty.hideDecorations) then "yes" else "no";
           update_check_interval = "0";
           copy_on_select = "no";
           wayland_titlebar_color = "background";
@@ -109,6 +106,8 @@ lib.mkIf config.system.user.main.enable {
 
       # Add vscodium config
       ".config/VSCodium/User/settings.json".source = ../configs/vscodium.json;
+      ".config/VSCodiumIDE/User/settings.json".source =
+        ../configs/vscodium.json;
 
       # Set firefox to privacy profile
       ".mozilla/firefox/profiles.ini".source = ../configs/firefox/profiles.ini;

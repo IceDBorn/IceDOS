@@ -25,6 +25,16 @@ lib.mkIf config.system.user.work.enable {
 
     xdg = {
       desktopEntries = {
+        # Codium profile used a an IDE
+        codiumIDE = {
+          exec =
+            "codium --user-data-dir /home/${config.system.user.work.username}/.config/VSCodiumIDE";
+          icon = "codium";
+          name = "Codium IDE";
+          terminal = false;
+          type = "Application";
+        };
+
         # dbeaver on Xwayland (fix scaling issues)
         dbeaver = {
           exec = "env GDK_BACKEND=x11 dbeaver";

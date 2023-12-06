@@ -25,6 +25,16 @@ lib.mkIf config.system.user.main.enable {
 
     xdg = {
       desktopEntries = {
+        # Codium profile used a an IDE
+        codiumIDE = {
+          exec =
+            "codium --user-data-dir /home/${config.system.user.main.username}/.config/VSCodiumIDE";
+          icon = "codium";
+          name = "Codium IDE";
+          terminal = false;
+          type = "Application";
+        };
+
         # Firefox PWA
         pwas = {
           exec =
