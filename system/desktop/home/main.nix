@@ -24,6 +24,9 @@ lib.mkIf config.system.user.main.enable {
     };
 
     xdg = {
+      # Force creation of mimeapps
+      configFile."mimeapps.list".force = true;
+
       desktopEntries = {
         # Codium profile used a an IDE
         codiumIDE = {
@@ -55,6 +58,7 @@ lib.mkIf config.system.user.main.enable {
         };
       };
 
+      # Default apps
       mimeApps = {
         enable = true;
 
@@ -77,7 +81,7 @@ lib.mkIf config.system.user.main.enable {
           "x-scheme-handler/about" = "firefox.desktop";
           "x-scheme-handler/unknown" = "firefox.desktop";
         };
-      }; # Default apps
+      };
     };
 
     home.file = {
