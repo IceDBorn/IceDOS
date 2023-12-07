@@ -210,6 +210,15 @@ lib.mkIf config.system.user.work.enable {
               "gimp.desktop"
             ]; # Set arc menu pinned apps
           };
+
+        "org/gnome/shell/extensions/pano" = {
+          history-length = 100;
+          paste-on-select = false;
+          play-audio-on-copy = false;
+          send-notification-on-copy = false;
+          show-indicator = false;
+          wiggle-indicator = false;
+        };
       };
     };
 }
