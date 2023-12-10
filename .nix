@@ -429,6 +429,11 @@
         };
       };
 
+      swappiness = mkOption {
+        type = types.str;
+        default = "60";
+      };
+
       update.stashFlakeLock = mkOption {
         type = types.bool;
         default = true;

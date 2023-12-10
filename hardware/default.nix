@@ -57,6 +57,8 @@
       "vm.max_map_count" = 262144;
       # Disable ipv6 for all interfaces
       "net.ipv6.conf.all.disable_ipv6" = !config.hardware.networking.ipv6;
+      # Set agressiveness of swap usage
+      "vm.swappiness" = config.system.swappiness;
     };
   };
 
