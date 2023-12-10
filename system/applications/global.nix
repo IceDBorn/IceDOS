@@ -166,6 +166,7 @@ in {
       libnotify # Send desktop notifications
       lsd # Better ls command
       mission-center # Task manager
+      moonlight-qt # Remote streaming
       mousai # Song recognizer
       mpv # Video player
       ncdu # Terminal disk analyzer
