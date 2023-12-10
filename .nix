@@ -52,9 +52,28 @@
           default = true;
         };
 
-        session = mkOption {
-          type = types.bool;
-          default = true;
+        session = {
+          enable = mkOption {
+            type = types.bool;
+            default = true;
+          };
+
+          autoStart = {
+            enable = mkOption {
+              type = types.bool;
+              default = false;
+            };
+
+            desktopSession = mkOption {
+              type = types.str;
+              default = "hyprland";
+            };
+          };
+
+          steamdeck = mkOption {
+            type = types.bool;
+            default = false;
+          };
         };
       };
     };
@@ -111,9 +130,16 @@
         };
       };
 
-      gdm.autoSuspend = mkOption {
-        type = types.bool;
-        default = true;
+      gdm = {
+        enable = mkOption {
+          type = types.bool;
+          default = true;
+        };
+
+        autoSuspend = mkOption {
+          type = types.bool;
+          default = true;
+        };
       };
 
       gnome = {
@@ -441,7 +467,7 @@
 
       home = mkOption {
         type = types.str;
-        default = "/mnt/sd/home";
+        default = "/home";
       };
 
       swappiness = mkOption {

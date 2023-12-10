@@ -17,7 +17,7 @@
 
       displayManager = {
         gdm = {
-          enable = true;
+          enable = config.desktop.gdm.enable;
           autoSuspend = config.desktop.gdm.autoSuspend;
         };
 

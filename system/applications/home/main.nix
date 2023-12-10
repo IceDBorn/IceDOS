@@ -167,7 +167,7 @@ lib.mkIf config.system.user.main.enable {
       # Enable steam beta
       ".local/share/Steam/package/beta" =
         lib.mkIf (config.applications.steam.beta) {
-          text = if (config.applications.steam.session) then
+          text = if (config.applications.steam.session.enable) then
             "steamdeck_publicbeta"
           else
             "publicbeta";

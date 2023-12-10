@@ -40,7 +40,7 @@ in lib.mkIf config.system.user.main.enable {
     ] ++ emulators ++ gaming ++ myPackages ++ shellScripts;
 
   # Wayland microcompositor
-  programs.gamescope = lib.mkIf (!config.applications.steam.session) {
+  programs.gamescope = lib.mkIf (!config.applications.steam.session.enable) {
     enable = true;
     capSysNice = true;
   };
