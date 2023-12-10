@@ -12,7 +12,8 @@ let
 
   shellScripts = [ update ];
 
-  gitLocation = "/home/${config.system.user.work.username}/git/";
+  gitLocation =
+    "${config.system.home}/${config.system.user.work.username}/git/";
 
   multiStoreProject = {
     vaza = {

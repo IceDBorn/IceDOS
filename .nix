@@ -429,6 +429,11 @@
         };
       };
 
+      home = mkOption {
+        type = types.str;
+        default = "/mnt/sd/home";
+      };
+
       swappiness = mkOption {
         type = types.str;
         default = "60";

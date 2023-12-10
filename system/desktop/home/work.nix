@@ -31,7 +31,7 @@ lib.mkIf config.system.user.work.enable {
         # Codium profile used a an IDE
         codiumIDE = {
           exec =
-            "codium --user-data-dir /home/${config.system.user.work.username}/.config/VSCodiumIDE";
+            "codium --user-data-dir ${config.system.home}/${config.system.user.work.username}/.config/VSCodiumIDE";
           icon = "codium";
           name = "Codium IDE";
           terminal = false;
