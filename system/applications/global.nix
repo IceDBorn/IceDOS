@@ -136,7 +136,8 @@ let
 
   shellScripts = [ lout nix-gc rebuild trim-generations vpn-exclude ];
 in {
-  boot.kernelPackages = pkgs.linuxPackages_zen; # Use ZEN linux kernel
+  boot.kernelPackages = lib.mkIf (!config.applications.steam.session.steamdeck)
+    pkgs.linuxPackages_zen; # Use ZEN linux kernel
 
   environment.systemPackages = with pkgs;
     [
