@@ -316,6 +316,11 @@
             type = types.str;
             default = "1";
           };
+
+          rotation = mkOption {
+            type = types.str;
+            default = "0";
+          };
         };
 
         secondary = {
@@ -347,6 +352,11 @@
           scaling = mkOption {
             type = types.str;
             default = "1";
+          };
+
+          rotation = mkOption {
+            type = types.str;
+            default = "0";
           };
         };
       };
