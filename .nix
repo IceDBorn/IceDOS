@@ -189,6 +189,11 @@
           default = false;
         };
 
+        powerButtonAction = mkOption {
+          type = types.str;
+          default = "interactive";
+        };
+
         startupItems = mkOption {
           type = types.bool;
           default = false;
