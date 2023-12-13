@@ -28,6 +28,5 @@
 
   nixpkgs.config = {
     allowUnfree = true; # Allow proprietary packages
-    permittedInsecurePackages = [ "electron-24.8.6" ];
   };
 }
