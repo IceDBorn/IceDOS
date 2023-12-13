@@ -92,7 +92,10 @@ lib.mkIf config.system.user.work.enable {
 
       # Import firefox gnome theme userContent.css
       ".mozilla/firefox/privacy/chrome/userContent.css".text =
-        ''@import "firefox-gnome-theme/userContent.css"'';
+        if config.applications.firefox.gnomeTheme then
+          ''@import "firefox-gnome-theme/userContent.css"''
+        else
+          "";
 
       # Create second firefox profile for pwas
       ".mozilla/firefox/pwas/user.js".source =
