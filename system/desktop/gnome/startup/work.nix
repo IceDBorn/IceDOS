@@ -3,7 +3,7 @@
 lib.mkIf config.system.user.work.enable {
   home-manager.users.${config.system.user.work.username}.home.file = lib.mkIf
     (config.desktop.gnome.enable && config.desktop.gnome.startupItems) {
-      # Add signal to startup
+      # Add slack to startup
       ".config/autostart/slack.desktop" = {
         text = ''
           [Desktop Entry]
