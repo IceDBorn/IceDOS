@@ -3,8 +3,9 @@
 lib.mkIf config.hardware.gpu.amd {
   boot = {
     initrd.kernelModules = [ "amdgpu" ]; # Use the amdgpu drivers upon boot
-    kernelParams = [ "amdgpu.ppfeaturemask=0xffffffff" ]; # Unlock all gpu controls
-  }
+    kernelParams =
+      [ "amdgpu.ppfeaturemask=0xffffffff" ]; # Unlock all gpu controls
+  };
 
   environment.systemPackages = with pkgs; [
     nvtop-amd # GPU task manager
