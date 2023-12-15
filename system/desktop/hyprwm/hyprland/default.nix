@@ -100,6 +100,7 @@ in {
       swayidleconf # Configure swayidle
       swaylock-effects # Lock
       swaylockconf # Configure swaylock
+      swayosd # Notifications for volume, caps lock etc.
       waybar # Status bar
       wdisplays # Displays manager
       wl-clipboard # Clipboard daemon
@@ -109,6 +110,28 @@ in {
     etc = lib.mkIf config.desktop.hyprland.enable {
       "wlogout-icons".source = "${pkgs.wlogout}/share/wlogout/icons";
     };
+  };
+
+  systemd.services.swayosd-input = {
+    enable = true;
+    description =
+      "SwayOSD LibInput backend for listening to certain keys like CapsLock, ScrollLock, VolumeUp, etc...";
+    after = [ "graphical.target" ];
+
+    unitConfig = {
+      ConditionPathExists = "${pkgs.swayosd}/bin/swayosd-libinput-backend";
+      PartOf = [ "graphical.target" ];
+    };
+
+    serviceConfig = {
+      User = "root";
+      Type = "dbus";
+      BusName = "org.erikreider.swayosd";
+      ExecStart = "${pkgs.swayosd}/bin/swayosd-libinput-backend";
+      Restart = "on-failure";
+    };
+
+    wantedBy = [ "graphical.target" ];
   };
 
   # Needed for unlocking to work
