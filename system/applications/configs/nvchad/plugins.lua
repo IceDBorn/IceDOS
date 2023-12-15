@@ -176,5 +176,6 @@ local plugins = {
       require("custom.configs.lspconfig")
     end,
   },
+  { "luckasRanarison/tree-sitter-hypr" },
 }
 return plugins
