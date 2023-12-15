@@ -92,6 +92,7 @@ in {
       grimblast # Screenshot tool
       hyprland-per-window-layout # Per window layout
       hyprpaper # Wallpaper daemon
+      hyprpicker # Color picker
       inhibit-lock # Script to check if pipewire has active links
       rofi-wayland # App launcher
       slurp # Monitor selector
