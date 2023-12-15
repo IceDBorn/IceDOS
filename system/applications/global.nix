@@ -287,6 +287,7 @@ in {
     clamav.updater.enable = true;
     openssh.enable = true;
     tailscale.enable = true;
+    fwupd.enable = true;
     udev.packages = with pkgs; [
       (writeTextFile {
         name = "sunshine_udev";
