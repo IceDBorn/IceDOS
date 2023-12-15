@@ -110,9 +110,6 @@ in {
     };
   };
 
-  # Needed for hyprland flake
-  disabledModules = [ "programs/hyprland.nix" ];
-
   # Needed for unlocking to work
   security.pam.services.swaylock.text = ''
     # Account management.
