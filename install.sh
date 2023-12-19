@@ -1,8 +1,7 @@
-#!/bin/bash
+#!/usr/bin/env bash
 
 # cd into script's folder
 cd "$(cd "$(dirname "$0")" && pwd)" || exit
-pwd > .configuration-location
 
 RED='\033[0;31m'
 NC='\033[0m'
@@ -17,7 +16,7 @@ echo "Hello $username!"
 read -r -p "Have you customized the setup to your needs? [y/N] " response
 if [[ "$response" =~ ^([yY][eE][sS]|[yY])$ ]]
 then
-    sudo nixos-rebuild switch --impure --flake .
+    bash build.sh
 
     if [ -f "$HOME/.nix-successful-build" ]
     then
