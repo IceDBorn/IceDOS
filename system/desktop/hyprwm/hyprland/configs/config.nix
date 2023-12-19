@@ -1,4 +1,4 @@
-{ config, lib, ... }:
+{ config, lib, pkgs, inputs, ... }:
 let
   workspaceRules = if (config.hardware.monitors.main.enable
     && config.hardware.monitors.secondary.enable) then ''
@@ -237,6 +237,39 @@ in {
         exec-once = firefox & nautilus -w & nautilus -w & firefox --no-remote -P PWAs --name pwas ${config.applications.firefox.pwas.sites} & steam
         # Terminals/Task managers/IDEs
         exec-once = kitty --class startup-nvchad tmux new -s nvchad nvim & kitty --class startup-kitty tmux new -s terminals \; split-window -v \; select-pane -U \; split-window -h \; select-pane -D & missioncenter
+
+
+        ### PLUGINS ###
+        # when enter overview, you can use left-button to jump, right-button to kill or use keybind
+        plugin = ${inputs.hycov.packages.${pkgs.system}.hycov}/lib/libhycov.so
+        # bind key to toggle overview
+        bind = ALT,tab,hycov:toggleoverview
+
+        # The direction switch shortcut key binding.
+        # calculate the window closest to the direction to switch focus.
+        # This keybind is applicable not only to the overview  but also to the general layout
+        bind=ALT,left,hycov:movefocus,l
+        bind=ALT,right,hycov:movefocus,r
+        bind=ALT,up,hycov:movefocus,u
+        bind=ALT,down,hycov:movefocus,d
+
+        plugin {
+            hycov {
+                overview_gappo = 10 # gas width from screem
+                overview_gappi = 10 # gas width from clients
+                hotarea_size = 10 # hotarea size in bottom left,10x10
+                enable_hotarea = 1 # enable mouse cursor hotarea
+                swipe_fingers = 4 # finger number of gesture,move any directory
+                move_focus_distance = 100 # distance for movefocus,only can use 3 finger to move
+                enable_gesture = 0 # enable gesture
+                disable_workspace_change = 0 # disable workspace change when in overview mode
+                disable_spawn = 0 # disable bind exec when in overview mode
+                auto_exit = 1 # enable auto exit when no client in overview
+                auto_fullscreen = 1 # auto make active window maximize after exit overview
+                only_active_workspace = 1 # only overview the active workspace
+            }
+        }
+
       '';
     };
   };

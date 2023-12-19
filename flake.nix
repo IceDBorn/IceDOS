@@ -11,11 +11,16 @@
       inputs.nixpkgs.follows = "nixpkgs";
     };
 
+    hycov = {
+      url = "github:DreamMaoMao/hycov";
+      inputs.hyprland.follows = "hyprland";
+    };
+
     phps.url = "github:fossar/nix-phps";
   };
 
   outputs = { self, nixpkgs, hyprland, home-manager, nur, pipewire-screenaudio
-    , steam-session, phps }@inputs: {
+    , steam-session, phps, hycov }@inputs: {
       nixosConfigurations.${nixpkgs.lib.fileContents "/etc/hostname"} =
         nixpkgs.lib.nixosSystem {
           system = "x86_64-linux";

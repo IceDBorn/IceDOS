@@ -1,4 +1,4 @@
-{ lib, config, pkgs, ... }:
+{ lib, config, pkgs, inputs, ... }:
 let
   inhibit-lock = pkgs.writeScriptBin "inhibit-lock" ''
     #!/usr/bin/env wpexec
@@ -94,6 +94,7 @@ in {
       hyprpaper # Wallpaper daemon
       hyprpicker # Color picker
       inhibit-lock # Script to check if pipewire has active links
+      inputs.hycov.packages.${pkgs.system}.hycov # Alt tab functionality
       rofi-wayland # App launcher
       slurp # Monitor selector
       swayidle # Idle inhibitor
