@@ -110,7 +110,10 @@ lib.mkIf config.system.user.main.enable {
         ../configs/vscodium.json;
 
       # Set firefox to privacy profile
-      ".mozilla/firefox/profiles.ini".source = ../configs/firefox/profiles.ini;
+      ".mozilla/firefox/profiles.ini" = {
+        source = ../configs/firefox/profiles.ini;
+        force = true;
+      };
 
       # Add user.js
       ".mozilla/firefox/privacy/user.js".source =

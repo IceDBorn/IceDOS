@@ -20,6 +20,14 @@
         system = "x86_64-linux";
         specialArgs = { inherit inputs; };
         modules = [
+          {
+            options = with nixpkgs.lib; {
+              configurationLocation = mkOption {
+                type = types.str;
+                default = toString ./.;
+              };
+            };
+          }
           nur.nixosModules.nur
           home-manager.nixosModules.home-manager
           hyprland.nixosModules.default
