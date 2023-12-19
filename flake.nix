@@ -25,7 +25,8 @@
               options = with nixpkgs.lib; {
                 configurationLocation = mkOption {
                   type = types.str;
-                  default = toString ./.;
+                  default =
+                    nixpkgs.lib.fileContents "/tmp/.configuration-location";
                 };
               };
             }

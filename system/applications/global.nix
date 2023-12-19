@@ -34,7 +34,7 @@ let
 
     # Navigate to configuration directory
     cd ${config.configurationLocation} 2> /dev/null ||
-    (echo 'Configuration path is invalid. Manually run "sudo nixos-rebuild switch --impure --flake ." inside the configuration directory to update the path!' && false) &&
+    (echo 'Configuration path is invalid. Manually run build.sh inside the configuration directory to update the path!' && false) &&
 
     # Update specific commands
     if [ $ARG1 -eq 1 ]; then
@@ -47,7 +47,7 @@ let
         fi
       fi
 
-      nix flake update && sudo nixos-rebuild switch --impure --flake .
+      nix flake update && bash build.sh
 
       # Main user specific update commands
       if [ $ARG3 -eq 1 ]; then
@@ -63,7 +63,7 @@ let
       # Update commands for all users
       bash ~/.config/zsh/update-codium-extensions.sh
     else
-      sudo nixos-rebuild switch --impure --flake .
+      bash build.sh
     fi
   '';
 
