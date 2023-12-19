@@ -31,8 +31,12 @@
     }
   ];
 
-  networking.extraHosts =
-    lib.mkIf config.hardware.networking.hosts.enable "192.168.2.99 git.dtek.gr";
+  networking = {
+    hostName = "${config.hardware.networking.hostname}";
+
+    extraHosts = lib.mkIf config.hardware.networking.hosts.enable
+      "192.168.2.99 git.dtek.gr";
+  };
 
   boot = {
     kernelModules = [

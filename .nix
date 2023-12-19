@@ -393,6 +393,11 @@
       };
 
       networking = {
+        hostname = mkOption {
+          type = types.str;
+          default = "desktop";
+        };
+
         hosts.enable = mkOption {
           type = types.bool;
           default = false;
