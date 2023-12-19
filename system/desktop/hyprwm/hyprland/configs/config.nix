@@ -210,7 +210,7 @@ in {
         windowrulev2 = noborder, fullscreen:1
 
         # Inhibit idle for apps
-        windowrulev2 = idleinhibit focus, class:^(steam_app_.*|org\.gnome\.clocks)$
+        windowrulev2 = idleinhibit focus, class:^(org\.gnome\.clocks|Steam|steam|steam_app_.*)$
 
         # Tile apps
         windowrulev2 = tile, class:^(Godot.*|Steam|steam_app_.*|photoshop\.exe|DesktopEditors)$
