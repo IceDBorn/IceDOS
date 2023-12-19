@@ -30,7 +30,6 @@
         gnome.nautilus # File manager
         grim # Screenshot tool
         networkmanagerapplet # Network manager tray icon
-        pavucontrol # Sound manager
         polkit_gnome # Polkit manager
         rofi-wayland # App launcher
         swappy # Edit screenshots
