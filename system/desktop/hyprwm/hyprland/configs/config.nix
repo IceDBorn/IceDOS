@@ -267,6 +267,7 @@ in {
                 auto_exit = 1 # enable auto exit when no client in overview
                 auto_fullscreen = 1 # auto make active window maximize after exit overview
                 only_active_workspace = 1 # only overview the active workspace
+                enable_alt_release_exit = 1 # Traditional alt tab functionality
             }
         }
 
