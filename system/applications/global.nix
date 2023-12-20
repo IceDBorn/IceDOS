@@ -80,7 +80,7 @@ let
     cargo # Rust package manager
     dotnet-sdk_7 # SDK for .net
     gcc # C++ compiler
-    # gdtoolkit # Tools for gdscript
+    gdtoolkit # Tools for gdscript
     gnumake # A tool to control the generation of non-source files from sources
     nixfmt # A nix formatter
     nodejs # Node package manager
@@ -102,14 +102,19 @@ let
     nil # Nix language server
     nodePackages.bash-language-server # Bash Language server
     nodePackages.dockerfile-language-server-nodejs # Dockerfiles language server
+    nodePackages.intelephense # PHP language server
     nodePackages.prettier # Javascript/Typescript formatter
     nodePackages.typescript-language-server # Typescript language server
     nodePackages.vscode-langservers-extracted # HTML, CSS, Eslint, Json language servers
+    phpPackages.phpstan # PHP Static Analysis Tool
     python3Packages.jedi-language-server # Python language server
     ripgrep # Silver searcher grep
     rust-analyzer # Rust language server
     rustfmt # Rust formatter
+    shellcheck # Shell script analysis tool
     stylua # Lua formatter
+    tailwindcss-language-server # Tailwind language server
+    tree-sitter # Parser generator tool and an incremental parsing library
   ];
 
   packageOverrides = with pkgs;

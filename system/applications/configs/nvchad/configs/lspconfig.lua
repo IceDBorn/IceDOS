@@ -10,12 +10,14 @@ local servers = {
   "eslint",
   "gdscript",
   "html",
+  "intelephense",
   "jedi_language_server",
   "jsonls",
   "lua_ls",
   "marksman",
   "nil_ls",
   "rust_analyzer",
+  "tailwindcss",
   "tsserver",
 }
 
