@@ -254,6 +254,7 @@ in {
             enable_hotarea = 1
             hotarea_size = 10
             move_focus_distance = 100
+            only_active_monitor = 1
             only_active_workspace = 1
             overview_gappi = 10
             overview_gappo = 10
@@ -261,12 +262,11 @@ in {
           }
         }
 
-        bind = ALT,tab,hycov:toggleoverview
-        bind = $mainMod ALT,hycov:toggleoverview,forceall
-        bind = ALT,left,hycov:movefocus,l
-        bind = ALT,right,hycov:movefocus,r
-        bind = ALT,up,hycov:movefocus,u
-        bind = ALT,down,hycov:movefocus,d
+        bind = ALT, tab, hycov:toggleoverview
+        bind = ALT, left, hycov:movefocus, l
+        bind = ALT, right, hycov:movefocus, r
+        bind = ALT, up, hycov:movefocus, u
+        bind = ALT, down, hycov:movefocus, d
       '';
     };
   };
