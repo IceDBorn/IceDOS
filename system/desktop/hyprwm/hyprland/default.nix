@@ -1,78 +1,28 @@
 { lib, config, pkgs, inputs, ... }:
 let
-  inhibit-lock = pkgs.writeScriptBin "inhibit-lock" ''
-    #!/usr/bin/env wpexec
-    local INPUT = "Stream/Input/Audio"
-    local OUTPUT = "Stream/Output/Audio"
-    local FIREFOX_CALL = "AudioCallbackDriver"
-    local INHIBIT_LOCK = false
+  cpu-watcher = import modules/cpu-watcher.nix {
+    pkgs = pkgs;
+    config = config;
+  };
 
-    local nodeManager = ObjectManager({
-      Interest({
-        type = "node",
-        Constraint({ "media.class", "in-list", OUTPUT, INPUT }),
-      }),
-    })
+  disk-watcher = import modules/disk-watcher.nix {
+    pkgs = pkgs;
+    config = config;
+  };
 
-    local linkManager = ObjectManager({
-      Interest({
-        type = "link",
-      }),
-    })
+  network-watcher = import modules/network-watcher.nix {
+    pkgs = pkgs;
+    config = config;
+  };
 
-    local function hasActiveLinks(nodeId, linkType)
-      local constraint = Constraint({ linkType, "=", tostring(nodeId) })
-      for link in linkManager:iterate({ type = "link", constraint }) do
-        if link.state == "active" then
-          return true
-        end
-      end
-      return false
-    end
+  pipewire-watcher = import modules/pipewire-watcher.nix { pkgs = pkgs; };
 
-    nodeManager:connect("installed", function(nodeManager)
-      for node in nodeManager:iterate() do
-        local mediaName = node.properties["media.name"]
-        local mediaClass = node.properties["media.class"]
-        if mediaName ~= FIREFOX_CALL or mediaClass == INPUT then
-          if hasActiveLinks(node.bound_id, "link.input.node") or hasActiveLinks(node.bound_id, "link.output.node") then
-            INHIBIT_LOCK = true
-            break
-          end
-        end
-      end
+  swayidle-wrapper = import modules/swayidle-wrapper.nix {
+    pkgs = pkgs;
+    config = config;
+  };
 
-      print(INHIBIT_LOCK)
-      Core.quit()
-    end)
-
-    linkManager:activate()
-    nodeManager:activate()
-  '';
-
-  swayidleconf = pkgs.writeShellScriptBin "swayidleconf" ''
-    swayidle -w timeout 180 'swaylockconf' \
-            timeout 300 'if [ `inhibit-lock` = "false" ]; then hyprctl dispatch dpms off; fi'  \
-            resume 'hyprctl dispatch dpms on' \
-            timeout 900 'if [ `inhibit-lock` = "false" ]; then systemctl suspend; fi' \
-            before-sleep 'swaylockconf' &
-  '';
-
-  swaylockconf = pkgs.writeShellScriptBin "swaylockconf" ''
-    if [ `inhibit-lock` = "true" ]; then exit; fi
-
-    swaylock --daemonize \
-    --clock \
-    --indicator-idle-visible \
-    --fade-in 4 \
-    --grace 5 \
-    --screenshots \
-    --effect-blur 10x10 \
-    --inside-color 00000055 \
-    --text-color F \
-    --ring-color F \
-    --effect-vignette 0.2:0.2
-  '';
+  swaylock-wrapper = import modules/swaylock-wrapper.nix { pkgs = pkgs; };
 in {
   imports = [
     # Setup home manager for hyprland
@@ -88,20 +38,24 @@ in {
   environment = lib.mkIf config.desktop.hyprland.enable {
     systemPackages = with pkgs; [
       clipman # Clipboard manager for wayland
+      cpu-watcher # Script to check if cpu has a usage above given number
+      disk-watcher # Script to check if any disk has a read/write usage above given numbers
       gnome.gnome-calendar # Calendar
       grimblast # Screenshot tool
       hyprland-per-window-layout # Per window layout
       hyprpaper # Wallpaper daemon
       hyprpicker # Color picker
-      inhibit-lock # Script to check if pipewire has active links
       inputs.hycov.packages.${pkgs.system}.hycov # Alt tab functionality
+      network-watcher # Script to check if network has a usage above given number
+      pipewire-watcher # Script to check if pipewire has active links
       rofi-wayland # App launcher
       slurp # Monitor selector
       swayidle # Idle inhibitor
-      swayidleconf # Configure swayidle
+      swayidle-wrapper # Wrap swayidle
       swaylock-effects # Lock
-      swaylockconf # Configure swaylock
+      swaylock-wrapper # Wrap swaylock
       swayosd # Notifications for volume, caps lock etc.
+      sysstat # Needed for disk-watcher
       waybar # Status bar
       wdisplays # Displays manager
       wl-clipboard # Clipboard daemon

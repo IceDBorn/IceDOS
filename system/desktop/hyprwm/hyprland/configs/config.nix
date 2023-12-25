@@ -123,7 +123,7 @@ in {
         bind = $mainMod SHIFT, Print, exec, grimblast --freeze edit area
         bind = ALT, Print, exec, grimblast copy
         bind = $mainMod ALT, Print, exec, grimblast edit
-        bind = $mainMod, L, exec, swaylockconf
+        bind = $mainMod, L, exec, swaylock-wrapper lock force
         bind = $mainMod SHIFT, L, exec, wlogout
         bind = $mainMod, N, exec, swaync-client -t -sw
         bind = $mainMod SHIFT, N, exec, swaync-client -d -sw
@@ -230,7 +230,7 @@ in {
         windowrulev2 = noinitialfocus, class:^(steam)$, title:^(notificationtoasts.*)$, floating:1
 
         # Basic functionalities
-        exec-once = sleep 2 && waybar & sleep 2 && hyprctl reload & /etc/polkit-gnome & swaync & hyprpaper & /etc/kdeconnectd & hyprland-per-window-layout & swayidleconf & swayosd
+        exec-once = sleep 2 && waybar & sleep 2 && hyprctl reload & /etc/polkit-gnome & swaync & hyprpaper & /etc/kdeconnectd & hyprland-per-window-layout & swayidle-wrapper & swayosd
         # Tray applications
         exec-once = kdeconnect-indicator & clipman clear --all & wl-paste -t text --watch clipman store & nm-applet --indicator
         # Standard applications
