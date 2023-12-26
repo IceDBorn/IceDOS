@@ -46,6 +46,7 @@
 
     kernelParams = [
       # Fixes certain wine games crash on launch
+      "transparent_hugepage=always"
       "clearcpuid=514"
     ] ++ lib.optional config.hardware.monitors.main.enable
       "video=${config.hardware.monitors.main.name}:${config.hardware.monitors.main.resolution}@${config.hardware.monitors.main.refreshRate},rotate=${config.hardware.monitors.main.rotation}"
@@ -63,6 +64,8 @@
       "net.ipv6.conf.all.disable_ipv6" = !config.hardware.networking.ipv6;
       # Set agressiveness of swap usage
       "vm.swappiness" = config.system.swappiness;
+      "vm.compaction_proactiveness" = 0;
+      "vm.page_lock_unfairness" = 1;
     };
   };
 
