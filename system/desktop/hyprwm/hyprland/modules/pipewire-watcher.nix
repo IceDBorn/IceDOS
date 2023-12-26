@@ -3,7 +3,7 @@ pkgs.writeScriptBin "pipewire-watcher" ''
   #!/usr/bin/env wpexec
   local INPUT = "Stream/Input/Audio"
   local OUTPUT = "Stream/Output/Audio"
-  local FIREFOX_CALL = "AudioCallbackDriver"
+  local TO_IGNORE = "Discord"
   local INHIBIT_LOCK = false
 
   local nodeManager = ObjectManager({
@@ -33,7 +33,7 @@ pkgs.writeScriptBin "pipewire-watcher" ''
     for node in nodeManager:iterate() do
       local mediaName = node.properties["media.name"]
       local mediaClass = node.properties["media.class"]
-      if mediaName ~= FIREFOX_CALL or mediaClass == INPUT then
+      if not string.find(mediaName, TO_IGNORE) or mediaClass == INPUT then
         if hasActiveLinks(node.bound_id, "link.input.node") or hasActiveLinks(node.bound_id, "link.output.node") then
           INHIBIT_LOCK = true
           break
