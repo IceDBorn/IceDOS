@@ -513,7 +513,7 @@
 
       swappiness = mkOption {
         type = types.str;
-        default = "60";
+        default = "1";
       };
 
       update.stashFlakeLock = mkOption {
