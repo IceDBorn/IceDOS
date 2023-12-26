@@ -45,8 +45,8 @@
     ] ++ lib.optional config.hardware.xpadneoUnstable "hid_xpadneo";
 
     kernelParams = [
-      # Fixes certain wine games crash on launch
       "transparent_hugepage=always"
+      # Fixes certain wine games crash on launch
       "clearcpuid=514"
     ] ++ lib.optional config.hardware.monitors.main.enable
       "video=${config.hardware.monitors.main.name}:${config.hardware.monitors.main.resolution}@${config.hardware.monitors.main.refreshRate},rotate=${config.hardware.monitors.main.rotation}"
@@ -75,4 +75,10 @@
     };
 
   services.fstrim.enable = true; # Enable SSD TRIM
+
+  # More sysctl params to set
+  system.activationScripts.sysfs.text = ''
+    echo advise > /sys/kernel/mm/transparent_hugepage/shmem_enabled
+    echo 0 > /sys/kernel/mm/transparent_hugepage/khugepaged/defrag
+  '';
 }
