@@ -1,11 +1,6 @@
-{ config, ... }:
+{ config, inputs, ... }:
 
-let
-  master-channel = builtins.fetchTarball
-    "https://github.com/NixOS/nixpkgs/archive/master.tar.gz";
-  small-channel = builtins.fetchTarball
-    "https://github.com/NixOS/nixpkgs/archive/nixos-unstable-small.tar.gz";
-in {
+{
   imports = [
     ./global.nix # Packages installed globally
     ./main.nix # Packages installed for main user
@@ -32,12 +27,13 @@ in {
   };
 
   nixpkgs.config = {
-    allowUnfree = true; # Allow proprietary packages
+    # Allow proprietary packages
+    allowUnfree = true;
 
-    # Ex. pkgs.master.firefox
+    # Add extra channels (Ex. pkgs.master.firefox)
     packageOverrides = pkgs: {
-      master = import master-channel { config = config.nixpkgs.config; };
-      small = import small-channel { config = config.nixpkgs.config; };
+      master = import inputs.master { config = config.nixpkgs.config; };
+      small = import inputs.small { config = config.nixpkgs.config; };
     };
   };
 }

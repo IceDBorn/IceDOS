@@ -1,45 +1,56 @@
 {
   inputs = {
-    hyprland.url = "github:hyprwm/Hyprland";
-    nixpkgs.url = "github:NixOS/nixpkgs/nixos-unstable";
-    nur.url = "github:nix-community/NUR";
-    pipewire-screenaudio.url = "github:IceDBorn/pipewire-screenaudio";
-    steam-session.url = "github:Jovian-Experiments/Jovian-NixOS";
+    # Update channels
+    master.url = "github:NixOS/nixpkgs/master";
+    small.url = "github:NixOS/nixpkgs/nixos-unstable-small";
+    unstable.url = "github:NixOS/nixpkgs/nixos-unstable";
 
+    # Modules
     home-manager = {
       url = "github:nix-community/home-manager";
-      inputs.nixpkgs.follows = "nixpkgs";
+      inputs.nixpkgs.follows = "unstable";
     };
 
+    nur.url = "github:nix-community/NUR";
+    steam-session.url = "github:Jovian-Experiments/Jovian-NixOS";
+
+    # Apps
     hycov = {
       url = "github:DreamMaoMao/hycov";
       inputs.hyprland.follows = "hyprland";
     };
 
+    hyprland.url = "github:hyprwm/Hyprland";
     phps.url = "github:fossar/nix-phps";
+    pipewire-screenaudio.url = "github:IceDBorn/pipewire-screenaudio";
   };
 
-  outputs = { self, nixpkgs, hyprland, home-manager, nur, pipewire-screenaudio
-    , steam-session, phps, hycov }@inputs: {
-      nixosConfigurations.${nixpkgs.lib.fileContents "/etc/hostname"} =
-        nixpkgs.lib.nixosSystem {
+  outputs = { self, master, small, unstable, home-manager, nur, steam-session
+    , hycov, hyprland, phps, pipewire-screenaudio }@inputs: {
+      nixosConfigurations.${unstable.lib.fileContents "/etc/hostname"} =
+        unstable.lib.nixosSystem {
           system = "x86_64-linux";
           specialArgs = { inherit inputs; };
           modules = [
+            # Read configuration location
             {
-              options = with nixpkgs.lib; {
+              options = with unstable.lib; {
                 configurationLocation = mkOption {
                   type = types.str;
                   default =
-                    nixpkgs.lib.fileContents "/tmp/.configuration-location";
+                    unstable.lib.fileContents "/tmp/.configuration-location";
                 };
               };
             }
+
+            # External modules
             nur.nixosModules.nur
             home-manager.nixosModules.home-manager
             hyprland.nixosModules.default
             steam-session.nixosModules.default
-            ./configuration.nix
+
+            # Internal modules
+            ./modules.nix
           ];
         };
     };
