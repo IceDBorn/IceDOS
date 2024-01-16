@@ -76,9 +76,10 @@ lib.mkIf config.system.user.main.enable {
           "text/html" = "firefox.desktop";
           "text/plain" = "codium.desktop";
           "video/mp4" = "mpv.desktop";
+          "video/x-matroska" = "mpv.desktop";
+          "x-scheme-handler/about" = "firefox.desktop";
           "x-scheme-handler/http" = "firefox.desktop";
           "x-scheme-handler/https" = "firefox.desktop";
-          "x-scheme-handler/about" = "firefox.desktop";
           "x-scheme-handler/unknown" = "firefox.desktop";
         };
       };
