@@ -244,6 +244,8 @@ in {
         ping = "gping"; # ping with a graph
         reboot-windows =
           "sudo efibootmgr --bootnext ${config.boot.windowsEntry} && reboot"; # Reboot to windows
+        repair-store =
+          "nix-store --verify --check-contents --repair"; # Verifies integrity and repairs internal nix inconsistencies
         restart-pipewire =
           "systemctl --user restart pipewire"; # Restart pipewire
         server = "ssh server@192.168.1.2"; # Connect to local server
