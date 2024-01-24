@@ -73,6 +73,7 @@ in {
           ],
 
           "bluetooth": {
+            "format": "<span foreground='red'>󰂲</span>",
             "format-on": "󰂯",
             "format-off": "<span foreground='red'>󰂲</span>",
             "format-disabled": "󰂲",
