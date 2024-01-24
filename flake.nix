@@ -3,6 +3,7 @@
     # Update channels
     master.url = "github:NixOS/nixpkgs/master";
     small.url = "github:NixOS/nixpkgs/nixos-unstable-small";
+    stable.url = "github:NixOS/nixpkgs/23.11";
     unstable.url = "github:NixOS/nixpkgs/nixos-unstable";
 
     # Modules
@@ -25,8 +26,8 @@
     pipewire-screenaudio.url = "github:IceDBorn/pipewire-screenaudio";
   };
 
-  outputs = { self, master, small, unstable, home-manager, nur, steam-session
-    , hycov, hyprland, phps, pipewire-screenaudio }@inputs: {
+  outputs = { self, master, small, stable, unstable, home-manager, nur
+    , steam-session, hycov, hyprland, phps, pipewire-screenaudio }@inputs: {
       nixosConfigurations.${unstable.lib.fileContents "/etc/hostname"} =
         unstable.lib.nixosSystem {
           system = "x86_64-linux";

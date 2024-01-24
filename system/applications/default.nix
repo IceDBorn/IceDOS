@@ -34,6 +34,7 @@
     packageOverrides = pkgs: {
       master = import inputs.master { config = config.nixpkgs.config; };
       small = import inputs.small { config = config.nixpkgs.config; };
+      stable = import inputs.stable { config = config.nixpkgs.config; };
     };
   };
 }
