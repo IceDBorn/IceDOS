@@ -96,7 +96,8 @@ in {
             "format": "{:%H:%M:%S}",
             "tooltip-format": "{:%A, %B %d, %Y}",
             "max-length": 25,
-            "on-click": "gnome-clocks"
+            "on-click": "gnome-clocks",
+            "on-click-right": "gnome-calendar"
           },
 
           "pulseaudio": {
