@@ -1,6 +1,7 @@
 {
   inputs = {
     # Update channels
+    chaotic.url = "github:chaotic-cx/nyx/nyxpkgs-unstable";
     master.url = "github:NixOS/nixpkgs/master";
     small.url = "github:NixOS/nixpkgs/nixos-unstable-small";
     stable.url = "github:NixOS/nixpkgs/23.11";
@@ -26,7 +27,7 @@
     pipewire-screenaudio.url = "github:IceDBorn/pipewire-screenaudio";
   };
 
-  outputs = { self, master, small, stable, unstable, home-manager, nur
+  outputs = { self, chaotic, master, small, stable, unstable, home-manager, nur
     , steam-session, hycov, hyprland, phps, pipewire-screenaudio }@inputs: {
       nixosConfigurations.${unstable.lib.fileContents "/etc/hostname"} =
         unstable.lib.nixosSystem {
@@ -45,9 +46,10 @@
             }
 
             # External modules
-            nur.nixosModules.nur
+            chaotic.nixosModules.default
             home-manager.nixosModules.home-manager
             hyprland.nixosModules.default
+            nur.nixosModules.nur
             steam-session.nixosModules.default
 
             # Internal modules
