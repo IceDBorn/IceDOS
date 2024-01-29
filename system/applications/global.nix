@@ -141,7 +141,8 @@ let
 
   shellScripts = [ lout nix-gc rebuild trim-generations vpn-exclude ];
 in {
-  boot.kernelPackages = lib.mkIf (!config.applications.steam.session.steamdeck)
+  boot.kernelPackages = lib.mkIf (!config.applications.steam.session.steamdeck
+    && builtins.pathExists /etc/icedos-version)
     pkgs.linuxPackages_cachyos; # Use CachyOS optimized linux kernel
 
   environment.systemPackages = with pkgs;

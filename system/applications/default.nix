@@ -39,6 +39,6 @@
   };
 
   # Versioning system
-  environment.etc."icedos-${config.system.config.version}".text =
+  environment.etc."icedos-version".text =
     config.system.config.version;
 }
