@@ -37,4 +37,8 @@
       stable = import inputs.stable { config = config.nixpkgs.config; };
     };
   };
+
+  # Versioning system
+  environment.etc."icedos-${config.system.config.version}".text =
+    config.system.config.version;
 }

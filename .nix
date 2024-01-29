@@ -492,6 +492,11 @@
     };
 
     system = {
+      config.version = mkOption {
+        type = types.str;
+        default = "1.0.0";
+      };
+
       gc = {
         # Number of days before a generation can be deleted
         days = mkOption {
