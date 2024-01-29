@@ -158,6 +158,7 @@ in {
       efibootmgr # Edit EFI entries
       endeavour # Tasks
       fd # Find alternative
+      flowblade # Video editor
       fragments # Bittorrent client following Gnome UI standards
       gimp # Image editor
       gnome.gnome-boxes # VM manager
@@ -181,9 +182,8 @@ in {
       ntfs3g # Support NTFS drives
       obs-studio # Recording/Livestream
       onlyoffice-bin # Microsoft Office alternative for Linux
-      pavucontrol # Sound manager
       p7zip # 7zip
-      pitivi # Video editor
+      pavucontrol # Sound manager
       ranger # Terminal file manager
       rnnoise-plugin # A real-time noise suppression plugin
       scrcpy # Remotely use android
