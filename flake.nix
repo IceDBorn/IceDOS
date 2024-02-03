@@ -17,6 +17,7 @@
       inputs.nixpkgs.follows = "unstable";
     };
 
+    nerivations.url = "github:icedborn/nerivations";
     nur.url = "github:nix-community/NUR";
 
     steam-session = {
@@ -35,8 +36,9 @@
     pipewire-screenaudio.url = "github:IceDBorn/pipewire-screenaudio";
   };
 
-  outputs = { self, chaotic, master, small, stable, unstable, home-manager, nur
-    , steam-session, hycov, hyprland, phps, pipewire-screenaudio }@inputs: {
+  outputs = { self, chaotic, master, small, stable, unstable, home-manager
+    , nerivations, nur, steam-session, hycov, hyprland, phps
+    , pipewire-screenaudio }@inputs: {
       nixosConfigurations.${unstable.lib.fileContents "/etc/hostname"} =
         unstable.lib.nixosSystem {
           system = "x86_64-linux";
@@ -57,6 +59,7 @@
             chaotic.nixosModules.default
             home-manager.nixosModules.home-manager
             hyprland.nixosModules.default
+            nerivations.nixosModules.default
             nur.nixosModules.nur
             steam-session.nixosModules.default
 

@@ -125,7 +125,7 @@ lib.mkIf config.system.user.main.enable {
       # Install firefox gnome theme
       ".mozilla/firefox/privacy/chrome/firefox-gnome-theme" =
         lib.mkIf config.applications.firefox.gnomeTheme {
-          source = pkgs.callPackage ../self-built/firefox-gnome-theme.nix { };
+          source = pkgs.firefox-gnome-theme;
           recursive = true;
         };
 
@@ -148,7 +148,7 @@ lib.mkIf config.system.user.main.enable {
         "${(pkgs.callPackage ../self-built/arkenfox-userjs.nix { })}/user.js";
 
       ".mozilla/firefox/pwas/chrome" = {
-        source = pkgs.callPackage ../self-built/firefox-cascade.nix { };
+        source = pkgs.firefox-cascade;
         recursive = true;
       };
 
@@ -187,7 +187,7 @@ lib.mkIf config.system.user.main.enable {
 
       # Add nvchad
       ".config/nvim" = {
-        source = "${(pkgs.callPackage ../self-built/nvchad.nix { })}";
+        source = pkgs.nvchad;
         recursive = true;
       };
 
@@ -209,7 +209,7 @@ lib.mkIf config.system.user.main.enable {
       ".config/tmux/tmux.conf".source = ../configs/tmux.conf;
 
       ".config/tmux/tpm" = {
-        source = "${(pkgs.callPackage ../self-built/tpm.nix { })}";
+        source = pkgs.tpm;
         recursive = true;
       };
 

@@ -322,6 +322,5 @@ in {
   # Symlink files and folders to /etc
   environment.etc."rnnoise-plugin/librnnoise_ladspa.so".source =
     "${pkgs.rnnoise-plugin}/lib/ladspa/librnnoise_ladspa.so";
-  environment.etc."proton-ge-nix".source =
-    "${(pkgs.callPackage self-built/proton-ge.nix { })}/";
+  environment.etc."proton-ge-nix".source = pkgs.proton-ge;
 }
