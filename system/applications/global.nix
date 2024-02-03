@@ -168,6 +168,7 @@ in {
       killall # Tool to kill all programs matching process name
       kitty # Terminal
       libnotify # Send desktop notifications
+      logseq # Note taking with nodes
       lsd # Better ls command
       mission-center # Task manager
       moonlight-qt # Remote streaming
