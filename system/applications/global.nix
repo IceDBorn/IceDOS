@@ -57,7 +57,7 @@ let
 
       # Update apx packages
       if [ $ARG4 -eq 1 ]; then
-        apx --aur upgrade
+        # apx --aur upgrade
       fi
 
       # Update commands for all users
@@ -222,7 +222,7 @@ in {
 
       # Aliases
       shellAliases = {
-        apx = "apx --aur"; # Use arch as the base apx container
+        # apx = "apx --aur"; # Use arch as the base apx container
         aria2c = "aria2c -j 16 -s 16"; # Download with aria using best settings
         btrfs-compress =
           "sudo btrfs filesystem defrag -czstd -r -v"; # Compress given path with zstd
