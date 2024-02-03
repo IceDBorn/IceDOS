@@ -5,7 +5,11 @@
     master.url = "github:NixOS/nixpkgs/master";
     small.url = "github:NixOS/nixpkgs/nixos-unstable-small";
     stable.url = "github:NixOS/nixpkgs/23.11";
-    unstable.url = "github:NixOS/nixpkgs/nixos-unstable";
+
+    unstable = {
+      follows = "chaotic/nixpkgs";
+      url = "github:NixOS/nixpkgs/nixos-unstable";
+    };
 
     # Modules
     home-manager = {
@@ -14,7 +18,11 @@
     };
 
     nur.url = "github:nix-community/NUR";
-    steam-session.url = "github:Jovian-Experiments/Jovian-NixOS";
+
+    steam-session = {
+      follows = "chaotic/jovian";
+      url = "github:Jovian-Experiments/Jovian-NixOS";
+    };
 
     # Apps
     hycov = {
