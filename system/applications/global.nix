@@ -134,11 +134,6 @@ let
       })
     ];
 
-  selfBuilt = with pkgs;
-    [
-      (callPackage ./self-built/apx.nix { }) # Package manager using distrobox
-    ];
-
   shellScripts = [ lout nix-gc rebuild trim-generations vpn-exclude ];
 in {
   boot.kernelPackages = lib.mkIf (!config.applications.steam.session.steamdeck
@@ -149,6 +144,7 @@ in {
     [
       android-tools # Tools for debugging android devices
       appimage-run # Appimage runner
+      apx # Distro containers
       aria # Terminal downloader with multiple connections support
       bat # Better cat command
       bless # HEX Editor
@@ -206,7 +202,7 @@ in {
       youtube-dl # Video downloader
       zenstates # Ryzen CPU controller
     ] ++ codingDeps ++ nvchadDeps ++ myPackages ++ packageOverrides
-    ++ packageWraps ++ shellScripts ++ selfBuilt;
+    ++ packageWraps ++ shellScripts;
 
   users.defaultUserShell = pkgs.zsh; # Use ZSH shell for all users
 
@@ -328,6 +324,4 @@ in {
     "${pkgs.rnnoise-plugin}/lib/ladspa/librnnoise_ladspa.so";
   environment.etc."proton-ge-nix".source =
     "${(pkgs.callPackage self-built/proton-ge.nix { })}/";
-  environment.etc."apx/config.json".source =
-    "${(pkgs.callPackage self-built/apx.nix { })}/etc/apx/config.json";
 }
