@@ -15,13 +15,13 @@ let
   gitLocation =
     "${config.system.home}/${config.system.user.work.username}/git/";
 
-  multiStoreProject = {
+  multiStoreProjects = {
     vaza = {
       folder = "vaza";
 
       aliases = {
         one = "burkani";
-        two = "beoambalaza";
+        two = "beo";
       };
     };
 
@@ -37,10 +37,10 @@ let
   };
 
   httpdAliases = ''
-    Alias /${multiStoreProject.vaza.aliases.one} ${gitLocation}${multiStoreProject.vaza.folder}
-    Alias /${multiStoreProject.vaza.aliases.two} ${gitLocation}${multiStoreProject.vaza.folder}
-    Alias /${multiStoreProject.tosupermou.alias} ${gitLocation}${multiStoreProject.tosupermou.folder}
-    Alias /${multiStoreProject.papiros.alias} ${gitLocation}${multiStoreProject.papiros.folder}
+    Alias /${multiStoreProjects.vaza.aliases.one} ${gitLocation}${multiStoreProjects.vaza.folder}
+    Alias /${multiStoreProjects.vaza.aliases.two} ${gitLocation}${multiStoreProjects.vaza.folder}
+    Alias /${multiStoreProjects.tosupermou.alias} ${gitLocation}${multiStoreProjects.tosupermou.folder}
+    Alias /${multiStoreProjects.papiros.alias} ${gitLocation}${multiStoreProjects.papiros.folder}
   '';
 in lib.mkIf config.system.user.work.enable {
   users.users.${config.system.user.work.username}.packages = with pkgs;
@@ -80,5 +80,4 @@ in lib.mkIf config.system.user.work.enable {
       package = pkgs.mysql;
     };
   };
-
 }
