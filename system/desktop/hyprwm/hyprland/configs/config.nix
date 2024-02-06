@@ -263,6 +263,7 @@ in {
         }
 
         bind = ALT, tab, hycov:toggleoverview
+        bind = $mainMod, tab, hycov:toggleoverview, forceall
         bind = ALT, left, hycov:movefocus, l
         bind = ALT, right, hycov:movefocus, r
         bind = ALT, up, hycov:movefocus, u
