@@ -54,8 +54,8 @@ in {
       default = ''
         {
           "layer": "top",
-          "modules-left": ["hyprland/workspaces"],
-          "modules-center": ["hyprland/window"],
+          "modules-left": ["hyprland/window"],
+          "modules-center": ["hyprland/workspaces"] ,
           "modules-right": [
             "tray",
             "custom/vpn",
