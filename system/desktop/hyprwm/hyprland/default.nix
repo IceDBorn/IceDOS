@@ -67,7 +67,7 @@ in {
     };
   };
 
-  systemd.services.swayosd-input = {
+  systemd.services.swayosd-input = lib.mkIf config.desktop.hyprland.enable {
     enable = true;
     description =
       "SwayOSD LibInput backend for listening to certain keys like CapsLock, ScrollLock, VolumeUp, etc...";
