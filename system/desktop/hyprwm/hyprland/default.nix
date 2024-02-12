@@ -42,6 +42,7 @@ in {
       disk-watcher # Script to check if any disk has a read/write usage above given numbers
       gnome.gnome-calendar # Calendar
       grimblast # Screenshot tool
+      hyprfreeze # Script to freeze active hyprland window
       hyprland-per-window-layout # Per window layout
       hyprpaper # Wallpaper daemon
       hyprpicker # Color picker

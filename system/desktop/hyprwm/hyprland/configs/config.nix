@@ -128,6 +128,7 @@ in {
         bind = $mainMod, N, exec, swaync-client -t -sw
         bind = $mainMod SHIFT, N, exec, swaync-client -d -sw
         bind = $mainMod, C, exec, hyprpicker --autocopy
+        bind = $mainMod SHIFT, P, exec, hyprfreeze -a
 
         # Window control
         bind = $mainMod, Q, killactive
