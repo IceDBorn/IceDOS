@@ -71,10 +71,6 @@ let
   trim-generations = pkgs.writeShellScriptBin "trim-generations"
     (builtins.readFile ../scripts/trim-generations.sh);
 
-  # Run a shell or command with another namespace
-  vpn-exclude = pkgs.writeShellScriptBin "vpn-exclude"
-    (builtins.readFile ../scripts/create-ns.sh);
-
   codingDeps = with pkgs; [
     bruno # API explorer
     cargo # Rust package manager
@@ -134,7 +130,13 @@ let
       })
     ];
 
-  shellScripts = [ lout nix-gc rebuild trim-generations vpn-exclude ];
+  shellScripts = [
+    lout
+    nix-gc
+    rebuild
+    trim-generations
+    inputs.shell-in-netns.packages.${pkgs.system}.default
+  ];
 in {
   boot.kernelPackages = lib.mkIf (!config.applications.steam.session.steamdeck
     && builtins.pathExists /etc/icedos-version)
