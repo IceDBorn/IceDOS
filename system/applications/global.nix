@@ -25,7 +25,6 @@ let
     ARG1=''${1:-0} # Update
     ARG2=''${2:-0} # Stash
     ARG3=''${3:-0} # Main user
-    ARG4=''${4:-0} # apx
 
     # Stash flake.lock
     function stashLock() {
@@ -54,11 +53,6 @@ let
         bash ~/.config/zsh/proton-ge-updater.sh
         bash ~/.config/zsh/steam-library-patcher.sh
       fi
-
-      # Update apx packages
-      # if [ $ARG4 -eq 1 ]; then
-      #   apx --aur upgrade
-      # fi
 
       # Update commands for all users
       bash ~/.config/zsh/update-codium-extensions.sh
@@ -146,7 +140,6 @@ in {
     [
       android-tools # Tools for debugging android devices
       appimage-run # Appimage runner
-      apx # Distro containers
       aria # Terminal downloader with multiple connections support
       bat # Better cat command
       bless # HEX Editor
@@ -225,7 +218,6 @@ in {
 
       # Aliases
       shellAliases = {
-        # apx = "apx --aur"; # Use arch as the base apx container
         aria2c = "aria2c -j 16 -s 16"; # Download with aria using best settings
         btrfs-compress =
           "sudo btrfs filesystem defrag -czstd -r -v"; # Compress given path with zstd

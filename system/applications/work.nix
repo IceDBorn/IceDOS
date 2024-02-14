@@ -5,7 +5,7 @@ let
   stashLock = if (config.system.update.stashFlakeLock) then "1" else "0";
 
   # Rebuild the system configuration
-  update = pkgs.writeShellScriptBin "update" "rebuild 1 ${stashLock} 0 1";
+  update = pkgs.writeShellScriptBin "update" "rebuild 1 ${stashLock} 0";
 
   # Packages to add for a fork of the config
   myPackages = with pkgs; [ ];
