@@ -521,9 +521,9 @@
         default = "1";
       };
 
-      update.stashFlakeLock = mkOption {
-        type = types.bool;
-        default = true;
+      update.stash = mkOption {
+        type = types.str;
+        default = "true";
       };
 
       user = {

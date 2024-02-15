@@ -92,10 +92,6 @@ lib.mkIf config.system.user.main.enable {
       # Add zsh theme to zsh directory
       ".config/zsh/zsh-theme.zsh".source = ../configs/zsh-theme.zsh;
 
-      # Add proton-ge-updater script to zsh directory
-      ".config/zsh/proton-ge-updater.sh".source =
-        ../../scripts/proton-ge-updater.sh;
-
       # Add steam-library-patcher to zsh directory
       ".config/zsh/steam-library-patcher.sh".source =
         ../../scripts/steam-library-patcher.sh;

@@ -4,8 +4,14 @@
 let
   stashLock = if (config.system.update.stashFlakeLock) then "1" else "0";
 
-  # Rebuild the system configuration
-  update = pkgs.writeShellScriptBin "update" "rebuild 1 ${stashLock} 0";
+  # Update the system configuration
+  update = import modules/rebuild.nix {
+    inherit pkgs config;
+    command = "update";
+    update = "true";
+    stash = config.system.update.stash;
+    main = "false";
+  };
 
   # Packages to add for a fork of the config
   myPackages = with pkgs; [ ];

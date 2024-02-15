@@ -19,47 +19,13 @@ let
     nix-store --gc
   '';
 
-  # Rebuild the system configuration
-  rebuild = pkgs.writeShellScriptBin "rebuild" ''
-    # Arguments for update and main user specific commands
-    ARG1=''${1:-0} # Update
-    ARG2=''${2:-0} # Stash
-    ARG3=''${3:-0} # Main user
-
-    # Stash flake.lock
-    function stashLock() {
-      git stash store $(git stash create) -m "flake.lock@$(date +%A-%d-%B-%T)"
-    }
-
-    # Navigate to configuration directory
-    cd ${config.configurationLocation} 2> /dev/null ||
-    (echo 'Configuration path is invalid. Manually run build.sh inside the configuration directory to update the path!' && false) &&
-
-    # Update specific commands
-    if [ $ARG1 -eq 1 ]; then
-      # Stash the flake lock file
-      if [ $ARG2 -eq 1 ]; then
-        if [ $(git stash list | wc -l) -eq 0 ]; then
-          stashLock
-        else
-          [ -n "$(git diff stash flake.lock)" ] && stashLock
-        fi
-      fi
-
-      nix flake update && bash build.sh
-
-      # Main user specific update commands
-      if [ $ARG3 -eq 1 ]; then
-        bash ~/.config/zsh/proton-ge-updater.sh
-        bash ~/.config/zsh/steam-library-patcher.sh
-      fi
-
-      # Update commands for all users
-      bash ~/.config/zsh/update-codium-extensions.sh
-    else
-      bash build.sh
-    fi
-  '';
+  rebuild = import modules/rebuild.nix {
+    inherit pkgs config;
+    command = "rebuild";
+    update = "false";
+    stash = "false";
+    main = "false";
+  };
 
   # Trim NixOS generations
   trim-generations = pkgs.writeShellScriptBin "trim-generations"
@@ -303,5 +269,4 @@ in {
   # Symlink files and folders to /etc
   environment.etc."rnnoise-plugin/librnnoise_ladspa.so".source =
     "${pkgs.rnnoise-plugin}/lib/ladspa/librnnoise_ladspa.so";
-  environment.etc."proton-ge-nix".source = pkgs.proton-ge;
 }
