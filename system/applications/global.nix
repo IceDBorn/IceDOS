@@ -222,12 +222,7 @@ in {
         btrfs-compress =
           "sudo btrfs filesystem defrag -czstd -r -v"; # Compress given path with zstd
         cat = "bat"; # Better cat command
-        chmod = "sudo chmod"; # It's a command that I always execute with sudo
-        clear-keys =
-          "sudo rm -rf ~/ local/share/keyrings/* ~/ local/share/kwalletd/*"; # Clear system keys
         cp = "rsync -rP"; # Copy command with details
-        desktop-files-list =
-          "ls -l /run/current-system/sw/share/applications"; # Show desktop files location
         list-packages =
           "nix-store --query --requisites /run/current-system | cut -d- -f2- | sort | uniq"; # List installed nix packages
         ls = "lsd"; # Better ls command
@@ -240,17 +235,8 @@ in {
           "nix-store --verify --check-contents --repair"; # Verifies integrity and repairs inconsistencies between Nix database and store
         restart-pipewire =
           "systemctl --user restart pipewire"; # Restart pipewire
-        server = "ssh server@192.168.1.2"; # Connect to local server
         ssh = "TERM=xterm-256color ssh"; # SSH with colors
-        steam-link =
-          "killall steam 2> /dev/null ; while ps axg | grep -vw grep | grep -w steam > /dev/null; do sleep 1; done && (nohup steam -pipewire > /dev/null &) 2> /dev/null"; # Kill existing steam process and relaunch steam with the pipewire flag
         v = "nvim"; # Neovim
-        vpn = "ssh -f server@192.168.1.2 'mullvad status'"; # Show VPN status
-        vpn-btop = "ssh -t server@192.168.1.2 'bpytop'"; # Show VPN bpytop
-        vpn-off =
-          "ssh -f server@192.168.1.2 'mullvad disconnect && sleep 1 && mullvad status'"; # Disconnect from VPN
-        vpn-on =
-          "ssh -f server@192.168.1.2 'mullvad connect && sleep 1 && mullvad status'"; # Connect to VPN
       };
 
       # Commands to run on zsh shell initialization
