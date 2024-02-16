@@ -8,7 +8,7 @@ in {
   imports = [ modules/deckbd-wrapper.nix ];
 
   jovian = {
-    decky-loader.enable = cfg.enable;
+    decky-loader.enable = cfg.decky;
 
     devices.steamdeck = lib.mkIf cfg.steamdeck {
       enable = true;
