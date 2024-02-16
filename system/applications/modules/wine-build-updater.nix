@@ -1,11 +1,12 @@
 { pkgs, name, buildPath, installPath, message, type }:
 pkgs.writeShellScriptBin "update-${name}" ''
+  mkdir -p "${installPath}"
+
   currentVersion=$(cat "${buildPath}/version" | grep -oE 'GE-${type}+[0-9]+-[0-9]+')
   installedVersions=$(ls "${installPath}" | grep "GE" 2> /dev/null)
 
   function install () {
     echo "updating ${message}..."
-    mkdir -p "${installPath}"
     cp -r ${buildPath} "${installPath}/$currentVersion"
   }
 

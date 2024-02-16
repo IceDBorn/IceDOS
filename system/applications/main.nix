@@ -2,7 +2,7 @@
 { config, pkgs, lib, ... }:
 
 let
-  install-proton-ge = import modules/wine-build-installer.nix {
+  install-proton-ge = import modules/wine-build-updater.nix {
     inherit pkgs;
     name = "proton-ge";
     buildPath = "${pkgs.proton-ge-custom}/bin";
@@ -12,7 +12,7 @@ let
     type = "Proton";
   };
 
-  install-wine-ge = import modules/wine-build-installer.nix {
+  install-wine-ge = import modules/wine-build-updater.nix {
     inherit pkgs;
     name = "wine-ge";
     buildPath = "${pkgs.wine-ge}/bin";
