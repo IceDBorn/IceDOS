@@ -17,7 +17,7 @@
       inputs.nixpkgs.follows = "unstable";
     };
 
-    nerivations.url = "github:icedborn/nerivations";
+    nerivations.url = "github:icedborn/nerivations/deck-luks-test";
     nur.url = "github:nix-community/NUR";
 
     steam-session = {

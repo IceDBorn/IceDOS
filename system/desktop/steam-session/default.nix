@@ -1,10 +1,16 @@
 { config, lib, ... }:
 
-lib.mkIf config.applications.steam.session.enable {
-  jovian = {
-    decky-loader.enable = true;
+let
+  cfg = config.applications.steam.session;
+  steamUser = config.system.user.main.username;
+in {
+  # Unlock password using steam deck controller
+  imports = [ modules/deckbd-wrapper.nix ];
 
-    devices.steamdeck = lib.mkIf config.applications.steam.session.steamdeck {
+  jovian = {
+    decky-loader.enable = cfg.enable;
+
+    devices.steamdeck = lib.mkIf cfg.steamdeck {
       enable = true;
       enableGyroDsuService = true;
       autoUpdate = true;
@@ -12,10 +18,9 @@ lib.mkIf config.applications.steam.session.enable {
 
     steam = {
       enable = true;
-      autoStart = config.applications.steam.session.autoStart.enable;
-      desktopSession =
-        config.applications.steam.session.autoStart.desktopSession;
-      user = config.system.user.main.username;
+      autoStart = cfg.autoStart.enable;
+      desktopSession = cfg.autoStart.desktopSession;
+      user = steamUser;
     };
   };
 }
