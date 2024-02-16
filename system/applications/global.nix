@@ -24,7 +24,6 @@ let
     command = "rebuild";
     update = "false";
     stash = "false";
-    main = "false";
   };
 
   # Trim NixOS generations

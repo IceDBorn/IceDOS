@@ -92,10 +92,6 @@ lib.mkIf config.system.user.main.enable {
       # Add zsh theme to zsh directory
       ".config/zsh/zsh-theme.zsh".source = ../configs/zsh-theme.zsh;
 
-      # Add steam-library-patcher to zsh directory
-      ".config/zsh/steam-library-patcher.sh".source =
-        ../../scripts/steam-library-patcher.sh;
-
       # Add update-codium-extensions to zsh directory
       ".config/zsh/update-codium-extensions.sh".source =
         ../../scripts/update-codium-extensions.sh;

@@ -8,7 +8,7 @@ let
     buildPath = "${pkgs.proton-ge-custom}/bin";
     installPath =
       "/home/${config.system.user.main.username}/.local/share/Steam/compatibilitytools.d";
-    message = "Proton GE";
+    message = "proton ge";
     type = "Proton";
   };
 
@@ -18,8 +18,14 @@ let
     buildPath = "${pkgs.wine-ge}/bin";
     installPath =
       "/home/${config.system.user.main.username}/.local/share/bottles/runners";
-    message = "Wine GE";
+    message = "wine ge";
     type = "Wine";
+  };
+
+  steam-library-patcher = import modules/steam-library-patcher.nix {
+    inherit pkgs;
+    steamPath =
+      "/home/${config.system.user.main.username}/.local/share/Steam/steamui/css/";
   };
 
   # Update the system configuration
@@ -28,7 +34,6 @@ let
     command = "update";
     update = "true";
     stash = config.system.update.stash;
-    main = "true";
   };
 
   emulators = with pkgs; [
@@ -52,7 +57,8 @@ let
   # Packages to add for a fork of the config
   myPackages = with pkgs; [ ];
 
-  shellScripts = [ update install-wine-ge install-proton-ge ];
+  shellScripts =
+    [ update install-wine-ge install-proton-ge steam-library-patcher ];
 in lib.mkIf config.system.user.main.enable {
   users.users.${config.system.user.main.username}.packages = with pkgs;
     [

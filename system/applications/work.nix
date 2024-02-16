@@ -10,7 +10,6 @@ let
     command = "update";
     update = "true";
     stash = config.system.update.stash;
-    main = "false";
   };
 
   # Packages to add for a fork of the config

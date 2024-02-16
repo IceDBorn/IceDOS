@@ -4,7 +4,7 @@ pkgs.writeShellScriptBin "install-${name}" ''
   installedVersions=$(ls "${installPath}" | grep "GE" 2> /dev/null)
 
   function install () {
-    echo "Updating ${message}..."
+    echo "updating ${message}..."
     mkdir -p "${installPath}"
     cp -r ${buildPath} "${installPath}/$currentVersion"
   }
