@@ -26,10 +26,9 @@ pkgs.writeShellScriptBin "${command}" ''
 
     nix flake update && bash build.sh
 
-    runCommand install-proton-ge
-    runCommand install-wine-ge
-
-    bash ~/.config/zsh/update-codium-extensions.sh
+    runCommand update-proton-ge
+    runCommand update-wine-ge
+    runCommand update-codium-extensions
   else
     bash build.sh
   fi

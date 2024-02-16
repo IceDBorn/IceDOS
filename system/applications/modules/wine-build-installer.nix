@@ -1,5 +1,5 @@
 { pkgs, name, buildPath, installPath, message, type }:
-pkgs.writeShellScriptBin "install-${name}" ''
+pkgs.writeShellScriptBin "update-${name}" ''
   currentVersion=$(cat "${buildPath}/version" | grep -oE 'GE-${type}+[0-9]+-[0-9]+')
   installedVersions=$(ls "${installPath}" | grep "GE" 2> /dev/null)
 

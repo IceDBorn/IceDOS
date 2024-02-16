@@ -26,6 +26,9 @@ let
     stash = "false";
   };
 
+  update-codium-extensions =
+    import modules/codium-extension-updater.nix { inherit pkgs; };
+
   # Trim NixOS generations
   trim-generations = pkgs.writeShellScriptBin "trim-generations"
     (builtins.readFile ../scripts/trim-generations.sh);
@@ -90,11 +93,12 @@ let
     ];
 
   shellScripts = [
+    inputs.shell-in-netns.packages.${pkgs.system}.default
     lout
     nix-gc
     rebuild
     trim-generations
-    inputs.shell-in-netns.packages.${pkgs.system}.default
+    update-codium-extensions
   ];
 in {
   boot.kernelPackages = lib.mkIf (!config.applications.steam.session.steamdeck

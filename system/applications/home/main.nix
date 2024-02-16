@@ -92,10 +92,6 @@ lib.mkIf config.system.user.main.enable {
       # Add zsh theme to zsh directory
       ".config/zsh/zsh-theme.zsh".source = ../configs/zsh-theme.zsh;
 
-      # Add update-codium-extensions to zsh directory
-      ".config/zsh/update-codium-extensions.sh".source =
-        ../../scripts/update-codium-extensions.sh;
-
       # Add vscodium config
       ".config/VSCodium/User/settings.json".source = ../configs/vscodium.json;
       ".config/VSCodiumIDE/User/settings.json".source =
