@@ -148,14 +148,15 @@ lib.mkIf config.system.user.main.enable {
       ".config/btop/btop.conf".source = ../configs/btop.conf;
 
       # Add adwaita steam skin
-      ".local/share/Steam/steamui" = {
-        source = "${
-            (pkgs.callPackage ../self-built/adwaita-for-steam {
-              config = config;
-            })
-          }/build";
-        recursive = true;
-      };
+      ".local/share/Steam/steamui" =
+        lib.mkIf config.applications.steam.adwaitaForSteam.enable {
+          source = "${
+              (pkgs.callPackage ../self-built/adwaita-for-steam {
+                config = config;
+              })
+            }/build";
+          recursive = true;
+        };
 
       # Enable steam beta
       ".local/share/Steam/package/beta" =
