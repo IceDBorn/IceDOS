@@ -70,6 +70,11 @@
             };
           };
 
+          decky = mkOption {
+            type = types.bool;
+            default = true;
+          };
+
           steamdeck = mkOption {
             type = types.bool;
             default = false;
