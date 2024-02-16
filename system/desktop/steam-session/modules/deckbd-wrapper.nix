@@ -21,7 +21,7 @@ in lib.mkIf enable {
       done
 
       if [ ! "$DECKBD_RETRIES" -eq "0" ]; then
-        echo "starting deckbd...\n"
+        echo -en "starting deckbd...\n"
         ${deckbd} &
         DECKBD_PID=$!
       fi
