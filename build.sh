@@ -1,3 +1,6 @@
+EXTRAS="/etc/nixos/extras.nix"
+
+[ ! -f "$EXTRAS" ] && echo "{}" | sudo tee "$EXTRAS" > /dev/null
 
 # Save current directory into a file
 printf "$PWD" > /tmp/.configuration-location

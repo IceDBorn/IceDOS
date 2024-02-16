@@ -3,7 +3,9 @@
 {
   imports = [
     # Auto-generated configuration by NixOS
-    ./hardware/hardware-configuration.nix
+    ./hardware/nixos/hardware-configuration.nix
+    ./hardware/nixos/extras.nix
+
     # Custom configuration
     ./.nix
     ./bootloader
