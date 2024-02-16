@@ -57,8 +57,9 @@ let
   # Packages to add for a fork of the config
   myPackages = with pkgs; [ ];
 
-  shellScripts =
-    [ update install-wine-ge install-proton-ge steam-library-patcher ];
+  shellScripts = [ update install-wine-ge install-proton-ge ]
+    ++ lib.optional config.applications.steam.adwaitaForSteam.enable
+    steam-library-patcher;
 in lib.mkIf config.system.user.main.enable {
   users.users.${config.system.user.main.username}.packages = with pkgs;
     [
