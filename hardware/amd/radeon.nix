@@ -1,6 +1,7 @@
 { pkgs, lib, config, ... }:
 
-lib.mkIf config.hardware.gpu.amd {
+let cfg = config.hardware.gpu.amd;
+in lib.mkIf cfg {
   boot = {
     initrd.kernelModules = [ "amdgpu" ]; # Use the amdgpu drivers upon boot
     kernelParams =
