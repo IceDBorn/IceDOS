@@ -1,22 +1,23 @@
 { config, lib, ... }:
 
-{
+let cfg = config.boot;
+in {
   boot = {
     loader = {
-      efi = lib.mkIf config.boot.systemd-boot.enable {
+      efi = lib.mkIf cfg.systemd-boot.enable {
         canTouchEfiVariables = true;
-        efiSysMountPoint = config.boot.systemd-boot.efi-mount-path;
+        efiSysMountPoint = cfg.systemd-boot.mountPoint;
       };
 
-      grub = lib.mkIf config.boot.grub.enable {
+      grub = lib.mkIf cfg.grub.enable {
         enable = true;
-        device = config.boot.grub.device;
+        device = cfg.grub.device;
         useOSProber = true;
         enableCryptodisk = true;
         configurationLimit = 10;
       };
 
-      systemd-boot = lib.mkIf config.boot.systemd-boot.enable {
+      systemd-boot = lib.mkIf cfg.systemd-boot.enable {
         enable = true;
         configurationLimit = 10;
         # Select the highest resolution for the bootloader
@@ -27,9 +28,8 @@
       timeout = 1;
     };
 
-    initrd.secrets =
-      lib.mkIf config.boot.grub.enable { "/crypto_keyfile.bin" = null; };
+    initrd.secrets = lib.mkIf cfg.grub.enable { "/crypto_keyfile.bin" = null; };
 
-    plymouth.enable = config.boot.animation;
+    plymouth.enable = cfg.animation;
   };
 }

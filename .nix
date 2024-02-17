@@ -115,7 +115,7 @@
           default = true;
         };
 
-        efi-mount-path = mkOption {
+        mountPoint = mkOption {
           type = types.str;
           default = "/boot";
         };
