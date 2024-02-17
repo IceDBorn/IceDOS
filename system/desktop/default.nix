@@ -33,7 +33,7 @@
         };
       };
 
-      layout = "us,gr";
+      xkb.layout = "us,gr";
     };
 
     # Enable sound with pipewire
