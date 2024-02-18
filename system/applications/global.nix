@@ -60,6 +60,7 @@ let
     nil # Nix language server
     nodePackages.bash-language-server # Bash Language server
     nodePackages.dockerfile-language-server-nodejs # Dockerfiles language server
+    nodePackages.eslint # An AST-based pattern checker for JavaScript
     nodePackages.intelephense # PHP language server
     nodePackages.prettier # Javascript/Typescript formatter
     nodePackages.typescript-language-server # Typescript language server
