@@ -6,7 +6,7 @@
     # Setup home manager for gnome
     ./home.nix
     # Startup programs
-    ./startup
+    ./startup.nix
   ];
 
   services.xserver.desktopManager.gnome.enable =
