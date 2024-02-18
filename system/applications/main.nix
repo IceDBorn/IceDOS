@@ -60,6 +60,7 @@ let
   shellScripts = [ update install-wine-ge install-proton-ge ]
     ++ lib.optional config.applications.steam.adwaitaForSteam.enable
     steam-library-patcher;
+  adwaitaForSteam = config.applications.steam.adwaitaForSteam;
 in lib.mkIf config.system.user.main.enable {
   users.users.${config.system.user.main.username}.packages = with pkgs;
     [
@@ -82,4 +83,6 @@ in lib.mkIf config.system.user.main.enable {
       enableUdevRules = true;
     };
   };
+
+  nerivations.adwaita-for-steam.extras = adwaitaForSteam.extras;
 }
