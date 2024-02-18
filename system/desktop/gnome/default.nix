@@ -4,9 +4,9 @@
 {
   imports = [
     # Setup home manager for gnome
-    ./home/main.nix
-    ./home/work.nix
-    ./startup # Startup programs
+    ./home.nix
+    # Startup programs
+    ./startup
   ];
 
   services.xserver.desktopManager.gnome.enable =
