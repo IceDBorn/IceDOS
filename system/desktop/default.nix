@@ -1,6 +1,6 @@
 # ## DESKTOP POWERED BY GNOME ###
 { pkgs, config, lib, ... }: {
-  imports = [ ./home/main.nix ./home/work.nix ]; # Setup home manager
+  imports = [ ./home.nix ]; # Setup home manager
 
   # Set your time zone
   time.timeZone = "Europe/Bucharest";
