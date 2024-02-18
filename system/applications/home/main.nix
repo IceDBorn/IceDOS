@@ -106,7 +106,7 @@ lib.mkIf config.system.user.main.enable {
       # Add user.js
       ".mozilla/firefox/privacy/user.js".source =
         if (config.applications.firefox.privacy) then
-          "${(pkgs.callPackage ../self-built/arkenfox-userjs.nix { })}/user.js"
+          "${pkgs.arkenfox-userjs}/user.js"
         else
           ../configs/firefox/user.js;
 
@@ -133,7 +133,7 @@ lib.mkIf config.system.user.main.enable {
 
       # Create second firefox profile for pwas
       ".mozilla/firefox/pwas/user.js".source =
-        "${(pkgs.callPackage ../self-built/arkenfox-userjs.nix { })}/user.js";
+        "${pkgs.arkenfox-userjs}/user.js";
 
       ".mozilla/firefox/pwas/chrome" = {
         source = pkgs.firefox-cascade;
