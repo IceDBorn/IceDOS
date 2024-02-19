@@ -25,8 +25,6 @@ in {
     desktop.hyprland.config = mkOption {
       type = types.str;
       default = ''
-        ### MONITORS ###
-
         # See available monitors with 'hyprctl monitors'
         monitor = ${config.hardware.monitors.main.name},${config.hardware.monitors.main.resolution}@${config.hardware.monitors.main.refreshRate},${config.hardware.monitors.main.position},${config.hardware.monitors.main.scaling}
         workspace = 1, monitor:${config.hardware.monitors.main.name}, default:true
@@ -51,8 +49,6 @@ in {
         workspace = 18, monitor:${config.hardware.monitors.secondary.name}
         workspace = 19, monitor:${config.hardware.monitors.secondary.name}
         workspace = 20, monitor:${config.hardware.monitors.secondary.name}
-
-        ### CONFIGURATION ###
 
         env = WLR_DRM_NO_ATOMIC,1
 
@@ -108,8 +104,6 @@ in {
         xwayland {
           use_nearest_neighbor = false
         }
-
-        ### KEYBINDINGS ###
 
         # Set mod key to Super
         $mainMod = SUPER
@@ -202,8 +196,6 @@ in {
         bindm = $mainMod, mouse:272, movewindow
         bindm = $mainMod, mouse:273, resizewindow
 
-        ### APPS ###
-
         # Move apps to workspaces
         ${workspaceRules}
 
@@ -240,7 +232,6 @@ in {
         exec-once = kitty --class startup-nvchad tmux new -s nvchad nvim & kitty --class startup-kitty tmux new -s terminals \; split-window -v \; select-pane -U \; split-window -h \; select-pane -D & missioncenter
 
 
-        ### PLUGINS ###
         plugin = ${inputs.hycov.packages.${pkgs.system}.hycov}/lib/libhycov.so
 
         plugin {

@@ -6,8 +6,7 @@
     ./main.nix # Packages installed for main user
     ./work.nix # Packages installed for work user
     # Home manager specific stuff
-    ./home/main.nix
-    ./home/work.nix
+    ./home.nix
     # Nvchad
     ./configs/nvchad/init.nix
   ];
@@ -39,6 +38,5 @@
   };
 
   # Versioning system
-  environment.etc."icedos-version".text =
-    config.system.config.version;
+  environment.etc."icedos-version".text = config.system.config.version;
 }
