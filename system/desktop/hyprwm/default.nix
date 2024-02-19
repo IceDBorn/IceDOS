@@ -2,10 +2,10 @@
 
 {
   imports = [
-    ./home/main.nix
-    ./home/work.nix
+    # Setup home manager for hypr and hyprland
+    ./home.nix
     ./configs/swaync/config.nix
-  ]; # Setup home manager for hypr and hyprland
+  ];
 
   programs = lib.mkIf (config.desktop.hyprland.enable || config.desktop.hypr) {
     nm-applet.enable = true; # Network manager tray icon
