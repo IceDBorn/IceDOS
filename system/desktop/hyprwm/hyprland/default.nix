@@ -26,8 +26,7 @@ let
 in {
   imports = [
     # Setup home manager for hyprland
-    ./home/main.nix
-    ./home/work.nix
+    ./home.nix
     # Setup hyprland configs
     ./configs/config.nix
     ./configs/waybar/config.nix
