@@ -1,15 +1,14 @@
 { pkgs, lib, config, ... }:
 
 {
-  imports = [ ./home/main.nix ./home/work.nix ]; # Setup home manager for hypr
+  # Setup home manager for hypr
+  imports = [ ./home.nix ];
 
-  services.xserver.displayManager.session =
-    lib.mkIf config.desktop.hypr [{
-      manage = "desktop";
-      name = "Hypr";
-      start = "Hypr";
-    }];
+  services.xserver.displayManager.session = lib.mkIf config.desktop.hypr [{
+    manage = "desktop";
+    name = "Hypr";
+    start = "Hypr";
+  }];
 
-  environment.systemPackages =
-    lib.mkIf config.desktop.hypr [ pkgs.hypr ];
+  environment.systemPackages = lib.mkIf config.desktop.hypr [ pkgs.hypr ];
 }
