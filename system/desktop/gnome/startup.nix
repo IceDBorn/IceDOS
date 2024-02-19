@@ -14,7 +14,7 @@ in {
         (config.desktop.gnome.enable && config.desktop.gnome.startupItems) {
           # Add signal to startup
           ".config/autostart/signal-desktop.desktop" =
-            lib.mkIf (user == "main") {
+            lib.mkIf (user != "work") {
               text = ''
                 [Desktop Entry]
                 Exec=signal-desktop
@@ -27,7 +27,7 @@ in {
             };
 
           # Add steam to startup
-          ".config/autostart/steam.desktop" = lib.mkIf (user == "main") {
+          ".config/autostart/steam.desktop" = lib.mkIf (user != "work") {
             text = ''
               [Desktop Entry]
               Exec=steam
