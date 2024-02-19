@@ -3,7 +3,7 @@
 let
   cfg = config.applications.steam.session;
   steamUser = config.system.user.main.username;
-  amdGpu = config.hardware.gpu.amd.enable;
+  hasAmdGpu = config.hardware.gpu.amd;
 in {
   # Unlock password using steam deck controller
   imports = [ modules/deckbd-wrapper.nix ];
@@ -24,7 +24,7 @@ in {
       user = steamUser;
     };
 
-    hardware.has.amd.gpu = (cfg.enable && amdGpu);
+    hardware.has.amd.gpu = (cfg.enable && hasAmdGpu);
     steamos.useSteamOSConfig = cfg.enable;
   };
 }
