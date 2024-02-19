@@ -7,6 +7,10 @@ let
   cfg = config.hardware.monitors;
   pwas = config.applications.firefox.pwas.sites;
   hycov = inputs.hycov.packages.${pkgs.system}.hycov;
+  deckRotation = if (config.applications.steam.session.steamdeck) then
+    ",transform,3"
+  else
+    "";
 in {
   home-manager.users = let
     users = lib.filter (user: config.system.user.${user}.enable == true)
@@ -50,7 +54,7 @@ in {
     in {
       ${username}.home.file.".config/hypr/hyprland.conf".text = ''
         # See available monitors with 'hyprctl monitors'
-        monitor = ${cfg.main.name},${cfg.main.resolution}@${cfg.main.refreshRate},${cfg.main.position},${cfg.main.scaling}
+        monitor = ${cfg.main.name},${cfg.main.resolution}@${cfg.main.refreshRate},${cfg.main.position},${cfg.main.scaling}${deckRotation}
         workspace = 1, monitor:${cfg.main.name}, default:true
         workspace = 2, monitor:${cfg.main.name}
         workspace = 3, monitor:${cfg.main.name}
