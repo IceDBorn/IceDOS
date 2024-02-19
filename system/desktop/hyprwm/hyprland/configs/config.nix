@@ -1,54 +1,78 @@
-{ config, lib, pkgs, inputs, ... }:
-let
-  workspaceRules = if (config.hardware.monitors.main.enable
-    && config.hardware.monitors.secondary.enable) then ''
-      windowrulev2 = workspace 1 silent, class:^(firefox)$
-      windowrulev2 = workspace 2 silent, class:^(startup-nvchad)$
-      windowrulev2 = workspace 3 silent, class:^(Steam|steam|steam_app_.*)$, title:^((?!notificationtoasts.*).)*$
-      windowrulev2 = workspace 3 silent, title:^(.*Steam[A-Za-z0-9\s]*)$
-      windowrulev2 = workspace 11 silent, class:^(WebCord|Signal|pwas)$
-      windowrulev2 = workspace 12 silent, class:^(org\.gnome\.Nautilus)$
-      windowrulev2 = workspace 13 silent, class:^(io.missioncenter.MissionCenter)$ # Task manager
-      windowrulev2 = workspace 14 silent, class:^(startup-kitty)$ # Terminal
-    '' else ''
-      windowrulev2 = workspace 1 silent, class:^(firefox)$
-      windowrulev2 = workspace 2 silent, class:^(startup-nvchad)$
-      windowrulev2 = workspace 3 silent, class:^(WebCord|Signal|pwas)$
-      windowrulev2 = workspace 4 silent, class:^(Steam|steam|steam_app_.*)$, title:^((?!notificationtoasts.*).)*$
-      windowrulev2 = workspace 4 silent, title:^(.*Steam[A-Za-z0-9\s]*)$
-      windowrulev2 = workspace 5 silent, class:^(org\.gnome\.Nautilus)$
-      windowrulev2 = workspace 6 silent, class:^(io.missioncenter.MissionCenter)$ # Task Manager
-      windowrulev2 = workspace 7 silent, class:^(startup-kitty)$ # Terminal
-    '';
-in {
-  options = with lib; {
-    desktop.hyprland.config = mkOption {
-      type = types.str;
-      default = ''
-        # See available monitors with 'hyprctl monitors'
-        monitor = ${config.hardware.monitors.main.name},${config.hardware.monitors.main.resolution}@${config.hardware.monitors.main.refreshRate},${config.hardware.monitors.main.position},${config.hardware.monitors.main.scaling}
-        workspace = 1, monitor:${config.hardware.monitors.main.name}, default:true
-        workspace = 2, monitor:${config.hardware.monitors.main.name}
-        workspace = 3, monitor:${config.hardware.monitors.main.name}
-        workspace = 4, monitor:${config.hardware.monitors.main.name}
-        workspace = 5, monitor:${config.hardware.monitors.main.name}
-        workspace = 6, monitor:${config.hardware.monitors.main.name}
-        workspace = 7, monitor:${config.hardware.monitors.main.name}
-        workspace = 8, monitor:${config.hardware.monitors.main.name}
-        workspace = 9, monitor:${config.hardware.monitors.main.name}
-        workspace = 10, monitor:${config.hardware.monitors.main.name}
+{ config, lib, inputs, pkgs, ... }:
 
-        monitor = ${config.hardware.monitors.secondary.name},${config.hardware.monitors.secondary.resolution}@${config.hardware.monitors.secondary.refreshRate},${config.hardware.monitors.secondary.position},${config.hardware.monitors.secondary.scaling}
-        workspace = 11, monitor:${config.hardware.monitors.secondary.name}, default:true
-        workspace = 12, monitor:${config.hardware.monitors.secondary.name}
-        workspace = 13, monitor:${config.hardware.monitors.secondary.name}
-        workspace = 14, monitor:${config.hardware.monitors.secondary.name}
-        workspace = 15, monitor:${config.hardware.monitors.secondary.name}
-        workspace = 16, monitor:${config.hardware.monitors.secondary.name}
-        workspace = 17, monitor:${config.hardware.monitors.secondary.name}
-        workspace = 18, monitor:${config.hardware.monitors.secondary.name}
-        workspace = 19, monitor:${config.hardware.monitors.secondary.name}
-        workspace = 20, monitor:${config.hardware.monitors.secondary.name}
+let
+  mapAttrsAndKeys = callback: list:
+    (lib.foldl' (acc: value: acc // (callback value)) { } list);
+
+  cfg = config.hardware.monitors;
+  pwas = config.applications.firefox.pwas.sites;
+  hycov = inputs.hycov.packages.${pkgs.system}.hycov;
+in {
+  home-manager.users = let
+    users = lib.filter (user: config.system.user.${user}.enable == true)
+      (lib.attrNames config.system.user);
+  in mapAttrsAndKeys (user:
+    let
+      username = config.system.user.${user}.username;
+      singleMonWRules = if (user != "work") then ''
+        windowrulev2 = workspace 1 silent, class:^(firefox)$
+        windowrulev2 = workspace 2 silent, class:^(startup-nvchad)$
+        windowrulev2 = workspace 3 silent, class:^(WebCord|Signal|pwas)$
+        windowrulev2 = workspace 4 silent, class:^(Steam|steam|steam_app_.*)$, title:^((?!notificationtoasts.*).)*$
+        windowrulev2 = workspace 4 silent, title:^(.*Steam[A-Za-z0-9\s]*)$
+        windowrulev2 = workspace 5 silent, class:^(org\.gnome\.Nautilus)$
+        windowrulev2 = workspace 6 silent, class:^(io.missioncenter.MissionCenter)$ # Task Manager
+        windowrulev2 = workspace 7 silent, class:^(startup-kitty)$ # Terminal
+      '' else ''
+        windowrulev2 = workspace 1 silent, class:^(firefox)$
+        windowrulev2 = workspace 2 silent, class:^(startup-nvchad)$
+        windowrulev2 = workspace 3 silent, class:^(WebCord|Signal|pwas)$
+        windowrulev2 = workspace 4 silent, class:^(org\.gnome\.Nautilus)$
+        windowrulev2 = workspace 5 silent, class:^(io.missioncenter.MissionCenter)$ # Task Manager
+        windowrulev2 = workspace 6 silent, class:^(startup-kitty)$ # Terminal
+      '';
+
+      dualMonWRules = ''
+        windowrulev2 = workspace 1 silent, class:^(firefox)$
+        windowrulev2 = workspace 2 silent, class:^(startup-nvchad)$
+        windowrulev2 = workspace 3 silent, class:^(Steam|steam|steam_app_.*)$, title:^((?!notificationtoasts.*).)*$
+        windowrulev2 = workspace 3 silent, title:^(.*Steam[A-Za-z0-9\s]*)$
+        windowrulev2 = workspace 11 silent, class:^(WebCord|Signal|pwas)$
+        windowrulev2 = workspace 12 silent, class:^(org\.gnome\.Nautilus)$
+        windowrulev2 = workspace 13 silent, class:^(io.missioncenter.MissionCenter)$ # Task manager
+        windowrulev2 = workspace 14 silent, class:^(startup-kitty)$ # Terminal
+      '';
+
+      finalWRules = if (cfg.main.enable && cfg.secondary.enable) then
+        dualMonWRules
+      else
+        singleMonWRules;
+    in {
+      ${username}.home.file.".config/hypr/hyprland.conf".text = ''
+        # See available monitors with 'hyprctl monitors'
+        monitor = ${cfg.main.name},${cfg.main.resolution}@${cfg.main.refreshRate},${cfg.main.position},${cfg.main.scaling}
+        workspace = 1, monitor:${cfg.main.name}, default:true
+        workspace = 2, monitor:${cfg.main.name}
+        workspace = 3, monitor:${cfg.main.name}
+        workspace = 4, monitor:${cfg.main.name}
+        workspace = 5, monitor:${cfg.main.name}
+        workspace = 6, monitor:${cfg.main.name}
+        workspace = 7, monitor:${cfg.main.name}
+        workspace = 8, monitor:${cfg.main.name}
+        workspace = 9, monitor:${cfg.main.name}
+        workspace = 10, monitor:${cfg.main.name}
+
+        monitor = ${cfg.secondary.name},${cfg.secondary.resolution}@${cfg.secondary.refreshRate},${cfg.secondary.position},${cfg.secondary.scaling}
+        workspace = 11, monitor:${cfg.secondary.name}, default:true
+        workspace = 12, monitor:${cfg.secondary.name}
+        workspace = 13, monitor:${cfg.secondary.name}
+        workspace = 14, monitor:${cfg.secondary.name}
+        workspace = 15, monitor:${cfg.secondary.name}
+        workspace = 16, monitor:${cfg.secondary.name}
+        workspace = 17, monitor:${cfg.secondary.name}
+        workspace = 18, monitor:${cfg.secondary.name}
+        workspace = 19, monitor:${cfg.secondary.name}
+        workspace = 20, monitor:${cfg.secondary.name}
 
         env = WLR_DRM_NO_ATOMIC,1
 
@@ -197,7 +221,7 @@ in {
         bindm = $mainMod, mouse:273, resizewindow
 
         # Move apps to workspaces
-        ${workspaceRules}
+        ${finalWRules}
 
         # Hide maximized window borders
         windowrulev2 = noborder, fullscreen:1
@@ -227,12 +251,12 @@ in {
         # Tray applications
         exec-once = kdeconnect-indicator & clipman clear --all & wl-paste -t text --watch clipman store & nm-applet --indicator
         # Standard applications
-        exec-once = firefox & nautilus -w & nautilus -w & firefox --no-remote -P PWAs --name pwas ${config.applications.firefox.pwas.sites} & steam
+        exec-once = firefox & nautilus -w & nautilus -w & firefox --no-remote -P PWAs --name pwas ${pwas} & steam
         # Terminals/Task managers/IDEs
         exec-once = kitty --class startup-nvchad tmux new -s nvchad nvim & kitty --class startup-kitty tmux new -s terminals \; split-window -v \; select-pane -U \; split-window -h \; select-pane -D & missioncenter
 
 
-        plugin = ${inputs.hycov.packages.${pkgs.system}.hycov}/lib/libhycov.so
+        plugin = ${hycov}/lib/libhycov.so
 
         plugin {
           hycov {
@@ -261,6 +285,5 @@ in {
         bind = ALT, up, hycov:movefocus, u
         bind = ALT, down, hycov:movefocus, d
       '';
-    };
-  };
+    }) users;
 }

@@ -12,10 +12,6 @@ in {
     in {
       ${username} = lib.mkIf config.desktop.hyprland.enable {
         home.file = {
-          # Add hyprland config
-          ".config/hypr/hyprland.conf".text =
-            "${config.desktop.hyprland.config}";
-
           # Add wlogout config files
           ".config/wlogout" = {
             source = configs/wlogout;
