@@ -16,10 +16,6 @@ in {
           ".config/hypr/hyprland.conf".text =
             "${config.desktop.hyprland.config}";
 
-          # Add waybar config files
-          ".config/waybar/config".text = config.desktop.hyprland.waybar.config;
-          ".config/waybar/style.css".source = configs/waybar/style.css;
-
           # Add wlogout config files
           ".config/wlogout" = {
             source = configs/wlogout;
