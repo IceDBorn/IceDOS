@@ -31,13 +31,6 @@ in {
               source = configs/rofi;
               recursive = true;
             };
-
-            # Add swaync config file
-            ".config/swaync/config.json".text =
-              config.applications.swaync.config;
-
-            # Add swaync styles file
-            ".config/swaync/style.css".source = configs/swaync/style.css;
           };
         };
     }) users;
