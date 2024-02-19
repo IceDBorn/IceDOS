@@ -188,23 +188,22 @@ in {
 
       # Aliases
       shellAliases = {
-        aria2c = "aria2c -j 16 -s 16"; # Download with aria using best settings
-        btrfs-compress =
+        a2c = "aria2c -j 16 -s 16"; # Download with aria using best settings
+        bcompress =
           "sudo btrfs filesystem defrag -czstd -r -v"; # Compress given path with zstd
         cat = "bat"; # Better cat command
         cp = "rsync -rP"; # Copy command with details
-        list-packages =
+        l-pkgs =
           "nix-store --query --requisites /run/current-system | cut -d- -f2- | sort | uniq"; # List installed nix packages
         ls = "lsd"; # Better ls command
-        mva = "rsync -rP --remove-source-files"; # Move command with details
+        mv = "rsync -rP --remove-source-files"; # Move command with details
         n = "tmux a -t nvchad || tmux new -s nvchad nvim"; # Nvchad
         ping = "gping"; # ping with a graph
-        reboot-windows =
-          "sudo efibootmgr --bootnext ${config.boot.windowsEntry} && reboot"; # Reboot to windows
-        repair-store =
+        r-pipewire = "systemctl --user restart pipewire"; # Restart pipewire
+        r-store =
           "nix-store --verify --check-contents --repair"; # Verifies integrity and repairs inconsistencies between Nix database and store
-        restart-pipewire =
-          "systemctl --user restart pipewire"; # Restart pipewire
+        r-windows =
+          "sudo efibootmgr --bootnext ${config.boot.windowsEntry} && reboot"; # Reboot to windows
         ssh = "TERM=xterm-256color ssh"; # SSH with colors
         v = "nvim"; # Neovim
       };
