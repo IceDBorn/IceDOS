@@ -1,5 +1,8 @@
 { config, lib, ... }:
 let
+  mapAttrsAndKeys = callback: list:
+    (lib.foldl' (acc: value: acc // (callback value)) { } list);
+
   formatOnSave = if (config.applications.nvchad.formatOnSave) then ''
     -- Format on sav
     vim.cmd [[
@@ -11,11 +14,14 @@ let
   '' else
     "";
 in {
-  options = with lib; {
-    applications.nvchad.initLua = mkOption {
-      type = types.str;
-      default = ''
-        -- Enable blinking
+  home-manager.users = let
+    users = lib.filter (user: config.system.user.${user}.enable == true)
+      (lib.attrNames config.system.user);
+  in mapAttrsAndKeys (user:
+    let username = config.system.user.${user}.username;
+    in {
+      ${username}.home.file.".config/nvim/lua/custom/init.lua".text = ''
+          -- Enable blinking
         vim.o.guicursor =
           "a:ver25-blinkwait700-blinkoff400-blinkon250-Cursor/lCursor,n-v:block,r-cr:hor25,o:hor50,sm:block-blinkwait175-blinkoff150-blinkon175"
 
@@ -31,6 +37,5 @@ in {
 
         ${formatOnSave}
       '';
-    };
-  };
+    }) users;
 }

@@ -201,8 +201,6 @@ in {
             configs/nvchad/mappings.lua;
           ".config/nvim/lua/custom/plugins.lua".source =
             configs/nvchad/plugins.lua;
-          ".config/nvim/lua/custom/init.lua".text =
-            config.applications.nvchad.initLua;
 
           # Add tmux
           ".config/tmux/tmux.conf".source = configs/tmux.conf;
