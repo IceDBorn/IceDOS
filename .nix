@@ -595,6 +595,11 @@
               default = "git.outsider841@simplelogin.fr";
             };
           };
+
+          httpd = mkOption {
+            type = types.bool;
+            default = true;
+          };
         };
       };
 

@@ -2,6 +2,7 @@
 { config, pkgs, lib, inputs, ... }:
 
 let
+  cfg = config.system.user.work;
   stashLock = if (config.system.update.stashFlakeLock) then "1" else "0";
 
   # Update the system configuration
@@ -17,8 +18,7 @@ let
 
   shellScripts = [ update ];
 
-  gitLocation =
-    "${config.system.home}/${config.system.user.work.username}/git/";
+  gitLocation = "${config.system.home}/${cfg.username}/git/";
 
   multiStoreProjects = {
     vaza = {
@@ -47,17 +47,16 @@ let
     Alias /${multiStoreProjects.tosupermou.alias} ${gitLocation}${multiStoreProjects.tosupermou.folder}
     Alias /${multiStoreProjects.papiros.alias} ${gitLocation}${multiStoreProjects.papiros.folder}
   '';
-in lib.mkIf config.system.user.work.enable {
-  users.users.${config.system.user.work.username}.packages = with pkgs;
+in lib.mkIf cfg.enable {
+  users.users.${cfg.username}.packages = with pkgs;
     [
-      apacheHttpd # HTTP Server
       dbeaver # Database manager
       google-chrome # Dev browser
       php # Programming language for websites
       phpPackages.composer # Package manager for PHP
-    ] ++ myPackages ++ shellScripts;
+    ] ++ myPackages ++ shellScripts ++ lib.optional cfg.httpd apacheHttpd;
 
-  services = {
+  services = lib.mkIf cfg.httpd {
     httpd = {
       enable = true;
       user = config.system.user.work.username;
