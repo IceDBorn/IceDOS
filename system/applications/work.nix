@@ -5,6 +5,12 @@ let
   cfg = config.system.user.work;
   stashLock = if (config.system.update.stashFlakeLock) then "1" else "0";
 
+  sail = import modules/run-command.nix {
+    inherit pkgs;
+    name = "sail";
+    command = "vendor/bin/sail";
+  };
+
   # Update the system configuration
   update = import modules/rebuild.nix {
     inherit pkgs config;
@@ -16,7 +22,7 @@ let
   # Packages to add for a fork of the config
   myPackages = with pkgs; [ ];
 
-  shellScripts = [ update ];
+  shellScripts = [ sail update ];
 
   gitLocation = "${config.system.home}/${cfg.username}/git/";
 

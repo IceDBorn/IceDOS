@@ -26,12 +26,12 @@ let
     stash = "false";
   };
 
-  update-codium-extensions =
-    import modules/codium-extension-updater.nix { inherit pkgs; };
-
   # Trim NixOS generations
   trim-generations = pkgs.writeShellScriptBin "trim-generations"
     (builtins.readFile ../scripts/trim-generations.sh);
+
+  update-codium-extensions =
+    import modules/codium-extension-updater.nix { inherit pkgs; };
 
   codingDeps = with pkgs; [
     bruno # API explorer
