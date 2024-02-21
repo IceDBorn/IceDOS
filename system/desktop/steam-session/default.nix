@@ -25,5 +25,7 @@ in {
     };
 
     hardware.has.amd.gpu = (cfg.enable && hasAmdGpu);
+
+    steamos.useSteamOSConfig = cfg.enable;
   };
 }
