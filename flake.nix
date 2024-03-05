@@ -27,7 +27,7 @@
 
     # Apps
     hycov = {
-      url = "github:DreamMaoMao/hycov";
+      url = "github:IceDBorn/hycov";
       inputs.hyprland.follows = "hyprland";
     };
 
