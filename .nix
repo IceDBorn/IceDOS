@@ -416,12 +416,12 @@
 
           resolution = mkOption {
             type = types.str;
-            default = "1280x1024";
+            default = "1360x768";
           };
 
           refreshRate = mkOption {
             type = types.str;
-            default = "75";
+            default = "60";
           };
 
           position = mkOption {
@@ -431,7 +431,7 @@
 
           scaling = mkOption {
             type = types.str;
-            default = "1";
+            default = "0.8";
           };
 
           rotation = mkOption {
