@@ -42,7 +42,6 @@ let
     pcsx2 # PS2 Emulator
     ppsspp # PSP Emulator
     rpcs3 # PS3 Emulator
-    yuzu-early-access # Nintendo Switch emulator
   ];
 
   gaming = with pkgs; [
