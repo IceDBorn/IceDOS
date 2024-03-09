@@ -1,4 +1,5 @@
-{ lib, config, pkgs, inputs, ... }:
+{ pkgs, config, lib, inputs, ... }:
+
 let
   cpu-watcher = import modules/cpu-watcher.nix {
     pkgs = pkgs;
@@ -23,23 +24,42 @@ let
   };
 
   swaylock-wrapper = import modules/swaylock-wrapper.nix { pkgs = pkgs; };
+
+  cfg = config.desktop.hyprland;
+  gnome = config.desktop.gnome;
 in {
   imports = [
-    # Setup home manager for hyprland
+    # Setup home manager for hypr and hyprland
     ./home.nix
-    # Setup hyprland configs
+    ./configs/swaync/config.nix
     ./configs/config.nix
     ./configs/waybar/config.nix
   ];
 
-  programs.hyprland.enable = config.desktop.hyprland.enable;
+  programs = lib.mkIf (cfg.enable) {
+    nm-applet.enable = true; # Network manager tray icon
+    kdeconnect.enable = true; # Connect phone to PC
+    hyprland.enable = true;
+  };
 
-  environment = lib.mkIf config.desktop.hyprland.enable {
+  environment = lib.mkIf (cfg.enable) {
     systemPackages = with pkgs; [
+      baobab # Disk usage analyser
       clipman # Clipboard manager for wayland
       cpu-watcher # Script to check if cpu has a usage above given number
       disk-watcher # Script to check if any disk has a read/write usage above given numbers
+      feh # Minimal image viewer
+      gnome-online-accounts # Nextcloud integration
+      gnome.file-roller # Archive file manager
+      gnome.gnome-calculator # Calculator
       gnome.gnome-calendar # Calendar
+      gnome.gnome-clocks # Clock
+      gnome.gnome-control-center # Gnome settings
+      gnome.gnome-disk-utility # Disks manager
+      gnome.gnome-keyring # Keyring daemon
+      gnome.gnome-themes-extra # Adwaita GTK theme
+      gnome.nautilus # File manager
+      grim # Screenshot tool
       grimblast # Screenshot tool
       hyprfreeze # Script to freeze active hyprland window
       hyprland-per-window-layout # Per window layout
@@ -47,13 +67,19 @@ in {
       hyprpicker # Color picker
       inputs.hycov.packages.${pkgs.system}.hycov # Alt tab functionality
       network-watcher # Script to check if network has a usage above given number
+      networkmanagerapplet # Network manager tray icon
+      overskride # Bluetooth manager
       pipewire-watcher # Script to check if pipewire has active links
+      polkit_gnome # Polkit manager
+      rofi-wayland # App launcher
       rofi-wayland # App launcher
       slurp # Monitor selector
+      swappy # Edit screenshots
       swayidle # Idle inhibitor
       swayidle-wrapper # Wrap swayidle
       swaylock-effects # Lock
       swaylock-wrapper # Wrap swaylock
+      swaynotificationcenter # Notification daemon
       swayosd # Notifications for volume, caps lock etc.
       sysstat # Needed for disk-watcher
       waybar # Status bar
@@ -62,12 +88,44 @@ in {
       wlogout # Logout screen
     ];
 
-    etc = lib.mkIf config.desktop.hyprland.enable {
+    etc = lib.mkIf (cfg.enable) {
+      "polkit-gnome".source =
+        "${pkgs.polkit_gnome}/libexec/polkit-gnome-authentication-agent-1";
+      "kdeconnectd".source =
+        "${pkgs.libsForQt5.kdeconnect-kde}/libexec/kdeconnectd";
       "wlogout-icons".source = "${pkgs.wlogout}/share/wlogout/icons";
     };
   };
 
-  systemd.services.swayosd-input = lib.mkIf config.desktop.hyprland.enable {
+  services = lib.mkIf (cfg.enable) {
+    dbus.enable = true;
+    gvfs.enable = true; # Needed for nautilus
+    gnome.gnome-keyring.enable = true;
+  };
+
+  security = lib.mkIf (cfg.enable) {
+    polkit.enable = true;
+    pam.services.login.enableGnomeKeyring = true;
+
+    # Needed for unlocking to work
+    pam.services.swaylock.text = ''
+      # Account management.
+      account required pam_unix.so
+
+      # Authentication management.
+      auth sufficient pam_unix.so   likeauth try_first_pass
+      auth required pam_deny.so
+
+      # Password management.
+      password sufficient pam_unix.so nullok sha512
+
+      # Session management.
+      session required pam_env.so conffile=/etc/pam/environment readenv=0
+      session required pam_unix.so
+    '';
+  };
+
+  systemd.services.swayosd-input = lib.mkIf (cfg.enable) {
     enable = true;
     description =
       "SwayOSD LibInput backend for listening to certain keys like CapsLock, ScrollLock, VolumeUp, etc...";
@@ -89,24 +147,10 @@ in {
     wantedBy = [ "graphical.target" ];
   };
 
-  # Needed for unlocking to work
-  security.pam.services.swaylock.text = ''
-    # Account management.
-    account required pam_unix.so
+  xdg.portal.extraPortals = lib.mkIf (!gnome.enable && cfg.enable)
+    [ pkgs.xdg-desktop-portal-gtk ]; # Needed for steam file picker
 
-    # Authentication management.
-    auth sufficient pam_unix.so   likeauth try_first_pass
-    auth required pam_deny.so
-
-    # Password management.
-    password sufficient pam_unix.so nullok sha512
-
-    # Session management.
-    session required pam_env.so conffile=/etc/pam/environment readenv=0
-    session required pam_unix.so
-  '';
-
-  nix.settings = {
+  nix.settings = lib.mkIf (cfg.enable) {
     substituters = [ "https://hyprland.cachix.org" ];
     trusted-public-keys =
       [ "hyprland.cachix.org-1:a7pgxzMz7+chwVL3/pzj6jIBMioiJM7ypFP8PwtkuGc=" ];

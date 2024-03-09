@@ -1,9 +1,10 @@
 { pkgs, config }:
-pkgs.writeShellScriptBin "disk-watcher" ''
+let threshold = config.desktop.hyprland.lock.diskUsageThreshold;
+in pkgs.writeShellScriptBin "disk-watcher" ''
   DISKS=($(lsblk -d -io NAME | tail -n +2))
   READ_QUERY=".sysstat.hosts[].statistics[].disk[].MB_read"
   WRITE_QUERY=".sysstat.hosts[].statistics[].disk[].MB_wrtn"
-  DISK_THRESHOLD=${config.desktop.hyprland.lock.diskUsageThreshold}
+  DISK_THRESHOLD=${threshold}
 
   diskstats () {
     iostat -d -m -z -o JSON "$1"

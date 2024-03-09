@@ -19,9 +19,7 @@
     ./hardware/virtualisation.nix
     ./system/desktop
     ./system/desktop/gnome
-    ./system/desktop/hyprwm
-    ./system/desktop/hyprwm/hypr
-    ./system/desktop/hyprwm/hyprland
+    ./system/desktop/hyprland
     ./system/desktop/steam-session
     ./system/applications
     ./system/users

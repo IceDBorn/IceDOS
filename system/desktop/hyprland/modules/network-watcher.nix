@@ -1,6 +1,7 @@
 { pkgs, config }:
-pkgs.writeShellScriptBin "network-watcher" ''
-  NETWORK_THRESHOLD=${config.desktop.hyprland.lock.networkUsageThreshold}
+let threshold = config.desktop.hyprland.lock.networkUsageThreshold;
+in pkgs.writeShellScriptBin "network-watcher" ''
+  NETWORK_THRESHOLD=${threshold}
   INTERFACE=$(ip route | head -n 1 | grep -oP 'dev \K\S+')
   NETWORK_USAGE=($(awk '{if(l1){print ($2-l1),($10-l2)} else{l1=$2; l2=$10;}}' \
       <(grep "$INTERFACE" /proc/net/dev) <(sleep 1; grep "$INTERFACE" /proc/net/dev)))
