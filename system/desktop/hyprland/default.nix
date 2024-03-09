@@ -26,7 +26,6 @@ let
   swaylock-wrapper = import modules/swaylock-wrapper.nix { pkgs = pkgs; };
 
   cfg = config.desktop.hyprland;
-  gnome = config.desktop.gnome;
 in {
   imports = [
     # Setup home manager for hypr and hyprland
@@ -147,7 +146,8 @@ in {
     wantedBy = [ "graphical.target" ];
   };
 
-  xdg.portal.extraPortals = lib.mkIf (!gnome.enable && cfg.enable)
+  xdg.portal.extraPortals =
+    lib.mkIf (!config.desktop.gnome.enable && cfg.enable)
     [ pkgs.xdg-desktop-portal-gtk ]; # Needed for steam file picker
 
   nix.settings = lib.mkIf (cfg.enable) {
