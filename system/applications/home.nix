@@ -120,7 +120,7 @@ in {
             if (config.applications.firefox.privacy) then
               "${pkgs.arkenfox-userjs}/user.js"
             else
-              ../configs/firefox/user.js;
+              configs/firefox/user.js;
 
           # Install firefox gnome theme
           ".mozilla/firefox/privacy/chrome/firefox-gnome-theme" =
