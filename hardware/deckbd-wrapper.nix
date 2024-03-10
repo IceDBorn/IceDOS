@@ -2,8 +2,8 @@
 
 let
   deckbd = "${pkgs.deckbd}/bin/deckbd";
-  enable = config.applications.steam.session.steamdeck;
-in lib.mkIf enable {
+  cfg = config.applications.steam.session;
+in lib.mkIf (cfg.enable && cfg.steamdeck) {
   boot.initrd = {
     preLVMCommands = ''
       DECKBD_RETRIES=10
@@ -13,7 +13,7 @@ in lib.mkIf enable {
         sleep 1
 
         if [ "$DECKBD_RETRIES" -eq "1" ]; then
-          echo -en "\rwaiting for deck controller to appear, $DECKBD_RETRIES retry remaining...   \n"
+          echo -en "\rwaiting for deck controller to appear, $DECKBD_RETRIES retry remaining...  "
         else
           echo -en "\rwaiting for deck controller to appear, $DECKBD_RETRIES retries remaining..."
         fi
@@ -21,7 +21,7 @@ in lib.mkIf enable {
       done
 
       if [ ! "$DECKBD_RETRIES" -eq "0" ]; then
-        echo -en "starting deckbd...\n"
+        echo -en "\nstarting deckbd...\n"
         ${deckbd} &
         DECKBD_PID=$!
       fi

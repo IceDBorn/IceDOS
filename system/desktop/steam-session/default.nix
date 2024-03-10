@@ -5,9 +5,6 @@ let
   steamUser = config.system.user.main.username;
   hasAmdGpu = config.hardware.gpu.amd;
 in {
-  # Unlock password using steam deck controller
-  imports = [ modules/deckbd-wrapper.nix ];
-
   jovian = {
     decky-loader.enable = (cfg.enable && cfg.decky);
 
