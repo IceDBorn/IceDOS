@@ -83,56 +83,35 @@ in {
           env = WLR_DRM_NO_ATOMIC,1
 
           general {
-            border_size = 1
-            no_border_on_floating = false
+            allow_tearing = true
+            col.active_border = rgb(505050)
+            col.inactive_border = rgb(000000)
+            cursor_inactive_timeout = 10
             gaps_in = 0
             gaps_out = 0
-            col.inactive_border = rgb(000000)
-            col.active_border = rgb(505050)
-            layout = dwindle
             resize_on_border = true
-            allow_tearing = true
           }
 
           decoration {
-            rounding = 5
             drop_shadow = false
-          }
-
-          animations {
-            enabled = yes
-            bezier = myBezier, 0.05, 0.9, 0.1, 1.05
-            animation = windows, 1, 7, myBezier
-            animation = windowsOut, 1, 7, default, popin 80%
-            animation = border, 1, 10, default
-            animation = fade, 1, 7, default
-            animation = workspaces, 1, 6, default
+            rounding = 5
           }
 
           input {
+            accel_profile = flat
+            follow_mouse = 2
             kb_layout = us,gr
-            kb_options = grp:win_space_toggle # Change input language with Win + Space
-            follow_mouse = 2 # Focus mouse on other windows on hover but not the keyboard
-            force_no_accel = true
+            kb_options = grp:win_space_toggle
           }
 
           misc {
+            col.splash = rgb(000000)
             disable_hyprland_logo = true
             disable_splash_rendering = true
+            key_press_enables_dpms = true
+            mouse_move_enables_dpms = true
+            new_window_takes_over_fullscreen = 1
             vrr = 2
-          }
-
-          dwindle {
-            pseudotile = yes
-            preserve_split = yes
-          }
-
-          master {
-            new_is_master = true
-          }
-
-          xwayland {
-            use_nearest_neighbor = false
           }
 
           # Set mod key to Super
