@@ -8,10 +8,10 @@
 
     # Custom configuration
     ./.nix
-    ./bootloader
     ./hardware # Enable various hardware capabilities
     ./hardware/amd/radeon.nix
     ./hardware/amd/ryzen.nix
+    ./hardware/bootloader.nix
     ./hardware/deckbd-wrapper.nix
     ./hardware/intel.nix
     ./hardware/laptop.nix
