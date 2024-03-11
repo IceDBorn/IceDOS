@@ -28,7 +28,7 @@ let
 
   # Trim NixOS generations
   trim-generations = pkgs.writeShellScriptBin "trim-generations"
-    (builtins.readFile ../scripts/trim-generations.sh);
+    (builtins.readFile ../../scripts/trim-generations.sh);
 
   update-codium-extensions =
     import modules/codium-extension-updater.nix { inherit pkgs; };

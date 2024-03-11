@@ -8,7 +8,7 @@
 ```bash
 git clone https://github.com/IceDBorn/IceDOS
 cd IceDOS
-bash install.sh
+bash scripts/install.sh
 ```
 
 # Preview

@@ -16,12 +16,12 @@ echo "Hello $username!"
 read -r -p "Have you customized the setup to your needs? [y/N] " response
 if [[ "$response" =~ ^([yY][eE][sS]|[yY])$ ]]
 then
-    bash build.sh
+    bash scripts/build.sh
 
     if [ -f "$HOME/.nix-successful-build" ]
     then
         echo "Nix generation was successful!"
-        bash system/scripts/reboot.sh
+        bash scripts/reboot.sh
     else
         echo "Nix generation was not successful!"
     fi

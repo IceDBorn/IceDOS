@@ -13,7 +13,7 @@ pkgs.writeShellScriptBin "${command}" ''
 
   # Navigate to configuration directory
   cd ${config.configurationLocation} 2> /dev/null ||
-  (echo 'warning: configuration path is invalid, run build.sh located inside the configuration directory to update the path.' && false) &&
+  (echo 'warning: configuration path is invalid, run build.sh located inside the configuration scripts directory to update the path.' && false) &&
 
   if ${update}; then
     if ${stash}; then
@@ -24,13 +24,13 @@ pkgs.writeShellScriptBin "${command}" ''
       fi
     fi
 
-    nix flake update && bash build.sh
+    nix flake update && bash scripts/build.sh
 
     runCommand update-proton-ge
     runCommand update-wine-ge
     runCommand update-codium-extensions
   else
-    bash build.sh
+    bash scripts/build.sh
   fi
 
   runCommand patch-steam-library
