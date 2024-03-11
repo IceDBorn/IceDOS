@@ -27,7 +27,7 @@ pkgs.writeShellScriptBin "swaylock-wrapper" ''
   if [ `cpu-watcher` = "true" ]; then exit; fi
   if [ `disk-watcher` = "true" ]; then exit; fi
 
-  if [[ "$1" == "suspend" ]]; then
-    systemctl suspend
-  fi
+  # if [[ "$1" == "suspend" ]]; then
+  #   systemctl suspend
+  # fi
 ''
