@@ -12,7 +12,7 @@
   services.xserver.desktopManager.gnome.enable =
     config.desktop.gnome.enable; # Install gnome
 
-  programs.dconf.enable = config.desktop.gnome.enable;
+  programs.dconf.enable = lib.mkIf (config.desktop.gnome.enable) true;
 
   environment.systemPackages = with pkgs;
     (if (config.desktop.gnome.enable) then

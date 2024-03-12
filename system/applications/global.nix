@@ -123,7 +123,6 @@ in {
       flowblade # Video editor
       fragments # Bittorrent client following Gnome UI standards
       gimp # Image editor
-      gnome.gnome-boxes # VM manager
       gping # ping with a graph
       gthumb # Image viewer
       helvum # Pipewire patchbay

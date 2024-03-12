@@ -11,8 +11,10 @@
   };
 
   environment.systemPackages = with pkgs;
-    lib.mkIf config.hardware.virtualisation.docker [
+    lib.mkIf (config.hardware.virtualisation.docker) [
       docker # Containers
       distrobox # Wrapper around docker to create and start linux containers
     ];
+
+  programs.virt-manager.enable = config.hardware.virtualisation.libvirtd;
 }
