@@ -23,7 +23,7 @@
     ./system/desktop/gnome
     ./system/desktop/hyprland
     ./system/desktop/steam-session
-    ./system/users
+    ./system/users.nix
   ];
 
   config.system.stateVersion = config.system.version;

@@ -18,7 +18,7 @@ if [[ "$response" =~ ^([yY][eE][sS]|[yY])$ ]]
 then
     bash scripts/build.sh
 
-    if [ -f "$HOME/.nix-successful-build" ]
+    if [ -f "etc/icedos-version" ]
     then
         echo "Nix generation was successful!"
         bash scripts/reboot.sh
