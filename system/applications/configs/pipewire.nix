@@ -1,4 +1,4 @@
-{ config, pkgs, lib, ... }:
+{ lib, config, pkgs, ... }:
 
 let
   mapAttrsAndKeys = callback: list:

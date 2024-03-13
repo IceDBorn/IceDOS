@@ -238,12 +238,17 @@
         };
 
         lock = {
+          secondsToLowerBrightness = mkOption {
+            type = types.str;
+            default = "60";
+          };
+
           secondsToLock = mkOption {
             type = types.str;
             default = "180";
           };
 
-          secondsToDisableMonitor = mkOption {
+          secondsToDisableMonitors = mkOption {
             type = types.str;
             default = "300";
           };
