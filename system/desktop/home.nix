@@ -100,8 +100,9 @@ in {
               "image/svg+xml" = "org.gnome.gThumb.desktop";
               "text/html" = "firefox.desktop";
               "text/plain" = "codium.desktop";
-              "video/mp4" = "mpv.desktop";
-              "video/x-matroska" = "mpv.desktop";
+              "video/mp4" = "io.github.celluloid_player.Celluloid.desktop";
+              "video/x-matroska" =
+                "io.github.celluloid_player.Celluloid.desktop";
               "x-scheme-handler/about" = "firefox.desktop";
               "x-scheme-handler/http" = "firefox.desktop";
               "x-scheme-handler/https" = "firefox.desktop";
