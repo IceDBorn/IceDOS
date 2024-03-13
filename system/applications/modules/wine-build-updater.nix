@@ -1,13 +1,14 @@
 { pkgs, name, buildPath, installPath, message, type }:
 pkgs.writeShellScriptBin "update-${name}" ''
-  mkdir -p "${installPath}"
+  mkdir -p -m 755 "${installPath}"
 
   currentVersion=$(cat "${buildPath}/version" | grep -oE 'GE-${type}+[0-9]+-[0-9]+')
   installedVersions=$(ls "${installPath}" | grep "GE" 2> /dev/null)
 
-  function install () {
+  function installBuild () {
     echo "updating ${message}..."
-    cp -r ${buildPath} "${installPath}/$currentVersion"
+    cd "${buildPath}"
+    find . -type f -exec install -Dm 755 -o "$USER" {} "${installPath}/$currentVersion"/{} \;
   }
 
   if [ ! -z "$installedVersions" ]
@@ -20,5 +21,5 @@ pkgs.writeShellScriptBin "update-${name}" ''
       done <<< "$installedVersions"
   fi
 
-  install
+  installBuild
 ''
