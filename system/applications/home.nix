@@ -152,10 +152,6 @@ in {
             recursive = true;
           };
 
-          # Add noise suppression microphone
-          ".config/pipewire/pipewire.conf.d/99-input-denoising.conf".source =
-            configs/pipewire.conf;
-
           # Add btop config
           ".config/btop/btop.conf".source = configs/btop.conf;
 

@@ -102,6 +102,8 @@ let
     update-codium-extensions
   ];
 in {
+  imports = [ configs/pipewire.nix ];
+
   boot.kernelPackages = lib.mkIf (!config.applications.steam.session.steamdeck
     && builtins.pathExists /etc/icedos-version)
     pkgs.linuxPackages_cachyos; # Use CachyOS optimized linux kernel
@@ -270,8 +272,4 @@ in {
 
   nerivations.arkenfox-userjs.userjs =
     builtins.readFile ./configs/firefox/user-overrides.js;
-
-  # Symlink files and folders to /etc
-  environment.etc."rnnoise-plugin/librnnoise_ladspa.so".source =
-    "${pkgs.rnnoise-plugin}/lib/ladspa/librnnoise_ladspa.so";
 }
