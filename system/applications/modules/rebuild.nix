@@ -11,6 +11,9 @@ pkgs.writeShellScriptBin "${command}" ''
     fi
   }
 
+  # Retain sudo
+  trap "exit" INT TERM; trap "kill 0" EXIT; sudo -v || exit $?; sleep 1; while true; do sleep 60; sudo -nv; done 2>/dev/null &
+
   # Navigate to configuration directory
   cd ${config.configurationLocation} 2> /dev/null ||
   (echo 'warning: configuration path is invalid, run build.sh located inside the configuration scripts directory to update the path.' && false) &&
@@ -24,13 +27,13 @@ pkgs.writeShellScriptBin "${command}" ''
       fi
     fi
 
-    nix flake update && bash scripts/build.sh
+    nix flake update && sudo bash scripts/build.sh
 
     runCommand update-proton-ge
     runCommand update-wine-ge
     runCommand update-codium-extensions
   else
-    bash scripts/build.sh
+    sudo bash scripts/build.sh
   fi
 
   runCommand patch-steam-library

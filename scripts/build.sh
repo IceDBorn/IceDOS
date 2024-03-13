@@ -1,9 +1,11 @@
 EXTRAS="/etc/nixos/extras.nix"
+CONFIG="/tmp/configuration-location"
 
-[ ! -f "$EXTRAS" ] && echo "{}" | sudo tee "$EXTRAS" > /dev/null
+[ ! -f "$EXTRAS" ] && echo "{}" | tee "$EXTRAS" > /dev/null
 
 # Save current directory into a file
-printf "$PWD" > /tmp/.configuration-location
+[ -f "$CONFIG" ] && rm "$CONFIG"
+printf "$PWD" > "$CONFIG"
 
 # Build the system configuration
-sudo nixos-rebuild switch --impure --flake .#"$(cat /etc/hostname)"
+nixos-rebuild switch --impure --flake .#"$(cat /etc/hostname)"

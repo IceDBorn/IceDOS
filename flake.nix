@@ -51,7 +51,7 @@
                 configurationLocation = mkOption {
                   type = types.str;
                   default =
-                    unstable.lib.fileContents "/tmp/.configuration-location";
+                    unstable.lib.fileContents "/tmp/configuration-location";
                 };
               };
             }
