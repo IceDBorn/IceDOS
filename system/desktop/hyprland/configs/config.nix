@@ -119,7 +119,7 @@ in {
 
           #Desktop usage
           bind = $mainMod, R, exec, rofi -show drun
-          bind = $mainMod, V, exec, clipman pick -t rofi
+          bind = $mainMod, V, exec, rofi -modi clipboard:cliphist-rofi-img -show clipboard -show-icons
           bind = , Print, exec, grimblast copy output
           bind = SHIFT, Print, exec, grimblast edit output
           bind = $mainMod, Print, exec, grimblast --freeze copy area
@@ -234,7 +234,7 @@ in {
           # Basic functionalities
           exec-once = sleep 2 && waybar & sleep 2 && hyprctl reload & /etc/polkit-gnome & swaync & hyprpaper & /etc/kdeconnectd & hyprland-per-window-layout & hypridle & swayosd
           # Tray applications
-          exec-once = kdeconnect-indicator & clipman clear --all & wl-paste -t text --watch clipman store & nm-applet --indicator
+          exec-once = kdeconnect-indicator & cliphist wipe & wl-paste --type text --watch cliphist store & wl-paste --type image --watch cliphist store & nm-applet --indicator
           # Standard applications
           exec-once = firefox & nautilus -w & nautilus -w & firefox --no-remote -P PWAs --name pwas ${pwas} & steam
           # Terminals/Task managers/IDEs

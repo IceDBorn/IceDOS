@@ -40,7 +40,8 @@ in {
     systemPackages = with pkgs; [
       baobab # Disk usage analyser
       brightnessctl # Brightness control
-      clipman # Clipboard manager for wayland
+      cliphist # Clipboard manager for wayland
+      cliphist-rofi-img # Image support for cliphist
       cpu-watcher # Script to check if cpu has a usage above given number
       disk-watcher # Script to check if any disk has a read/write usage above given numbers
       feh # Minimal image viewer
