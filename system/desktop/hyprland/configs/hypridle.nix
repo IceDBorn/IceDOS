@@ -26,12 +26,12 @@ in {
         }
 
         listener {
-            timeout = ${cfg.secondsToLock}
+            timeout = ${config.desktop.secondsToLock}
             on-timeout = swaylock-wrapper lock
         }
 
         listener {
-            timeout = ${cfg.secondsToDisableMonitors}
+            timeout = ${config.desktop.secondsToDisableMonitors}
             on-timeout = swaylock-wrapper off
             on-resume = hyprctl dispatch dpms on
         }

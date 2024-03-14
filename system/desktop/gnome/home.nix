@@ -24,8 +24,8 @@ in {
             # Enable clock seconds
             clock-show-seconds = true;
             # Disable date
-            clock-show-date = config.desktop.gnome.clockDate;
-            clock-show-weekday = config.desktop.gnome.clockWeekday;
+            clock-show-date = config.desktop.gnome.clock.date;
+            clock-show-weekday = config.desktop.gnome.clock.weekday;
             # Show the battery percentage when on a laptop
             show-battery-percentage = config.hardware.laptop.enable;
             # Access the activity overview by moving the mouse to the top-left corner
@@ -50,13 +50,14 @@ in {
           "org/gnome/desktop/privacy" = { remember-recent-files = false; };
 
           # Turn off screen
-          "org/gnome/desktop/session" =
-            lib.mkIf (user == "work") { idle-delay = 270; };
+          "org/gnome/desktop/session" = lib.mkIf config.desktop.gnome.enable {
+            idle-delay = config.desktop.secondsToDisableMonitors;
+          };
 
           # Disable screen lock
           "org/gnome/desktop/screensaver" = {
-            lock-enabled = (user == "work");
-            lock-delay = 30;
+            lock-enabled = config.desktop.gnome.enable;
+            lock-delay = config.desktop.secondsToLock;
           };
 
           # Disable system sounds
@@ -86,12 +87,11 @@ in {
               "appindicatorsupport@rgcjonas.gmail.com"
               "pano@elhan.io"
               "quick-settings-tweaks@qwreey"
-            ] ++ lib.optional config.desktop.gnome.arcmenu "arcmenu@arcmenu.com"
-              ++ lib.optional config.desktop.gnome.caffeine
-              "caffeine@patapon.info"
-              ++ lib.optional config.desktop.gnome.dashToPanel
+            ] ++ lib.optional config.desktop.gnome.extensions.arcmenu
+              "arcmenu@arcmenu.com"
+              ++ lib.optional config.desktop.gnome.extensions.dashToPanel
               "dash-to-panel@jderose9.github.com"
-              ++ lib.optional config.desktop.gnome.gsconnect
+              ++ lib.optional config.desktop.gnome.extensions.gsconnect
               "gsconnect@andyholmes.github.io";
 
             favorite-apps = lib.mkIf config.desktop.gnome.pinnedApps [
@@ -130,18 +130,6 @@ in {
           # Limit app switcher to current workspace
           "org/gnome/shell/app-switcher" = { current-workspace-only = true; };
 
-          "org/gnome/shell/extensions/caffeine" =
-            lib.mkIf config.desktop.gnome.caffeine {
-              # Remember the user choice
-              restore-state = true;
-              # Disable icon
-              show-indicator = false;
-              # Disable auto suspend and lock
-              user-enabled = true;
-              # Disable notifications
-              show-notifications = false;
-            };
-
           "org/gnome/shell/extensions/clipboard-indicator" = {
             # Remove whitespace before and after the text
             strip-text = true;
@@ -150,7 +138,7 @@ in {
           };
 
           "org/gnome/shell/extensions/dash-to-panel" =
-            lib.mkIf config.desktop.gnome.dashToPanel {
+            lib.mkIf config.desktop.gnome.extensions.dashToPanel {
               panel-element-positions = ''
                 {
                   "0": [
@@ -188,7 +176,7 @@ in {
             };
 
           "org/gnome/shell/extensions/arcmenu" =
-            lib.mkIf config.desktop.gnome.arcmenu {
+            lib.mkIf config.desktop.gnome.extensions.arcmenu {
               distro-icon = 6;
               menu-button-icon = "Distro_Icon"; # Use arch icon
               multi-monitor = true;
