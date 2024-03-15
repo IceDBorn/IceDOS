@@ -568,6 +568,20 @@
               default = "git.outsider841@simplelogin.fr";
             };
           };
+
+          desktop = {
+            idle = {
+              lock = mkOption {
+                type = types.bool;
+                default = true;
+              };
+
+              disableMonitors = mkOption {
+                type = types.bool;
+                default = true;
+              };
+            };
+          };
         };
 
         work = {
@@ -601,6 +615,20 @@
           httpd = mkOption {
             type = types.bool;
             default = true;
+          };
+
+          desktop = {
+            idle = {
+              lock = mkOption {
+                type = types.bool;
+                default = true;
+              };
+
+              disableMonitors = mkOption {
+                type = types.bool;
+                default = true;
+              };
+            };
           };
         };
       };

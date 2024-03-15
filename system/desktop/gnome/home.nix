@@ -50,13 +50,14 @@ in {
           "org/gnome/desktop/privacy" = { remember-recent-files = false; };
 
           # Turn off screen
-          "org/gnome/desktop/session" = lib.mkIf config.desktop.gnome.enable {
-            idle-delay = config.desktop.secondsToDisableMonitors;
+          "org/gnome/desktop/session" = {
+            idle-delay =
+              config.system.user.${user}.desktop.idle.disableMonitors;
           };
 
-          # Disable screen lock
+          # Set screen lock
           "org/gnome/desktop/screensaver" = {
-            lock-enabled = config.desktop.gnome.enable;
+            lock-enabled = config.system.user.${user}.desktop.idle.lock;
             lock-delay = config.desktop.secondsToLock;
           };
 
