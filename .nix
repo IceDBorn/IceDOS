@@ -154,16 +154,6 @@
         };
       };
 
-      secondsToLock = mkOption {
-        type = types.str;
-        default = "180";
-      };
-
-      secondsToDisableMonitors = mkOption {
-        type = types.str;
-        default = "300";
-      };
-
       gnome = {
         enable = mkOption {
           type = types.bool;
@@ -253,11 +243,6 @@
           secondsToLowerBrightness = mkOption {
             type = types.str;
             default = "60";
-          };
-
-          secondsToSuspend = mkOption {
-            type = types.str;
-            default = "900";
           };
 
           # CPU usage to inhibit lock in percentage
@@ -568,6 +553,46 @@
               default = "git.outsider841@simplelogin.fr";
             };
           };
+
+          desktop = {
+            idle = {
+              lock = {
+                enable = mkOption {
+                  type = types.bool;
+                  default = true;
+                };
+
+                seconds = mkOption {
+                  type = types.str;
+                  default = "180";
+                };
+              };
+
+              disableMonitors = {
+                enable = mkOption {
+                  type = types.bool;
+                  default = true;
+                };
+
+                seconds = mkOption {
+                  type = types.str;
+                  default = "300";
+                };
+              };
+
+              suspend = {
+                enable = mkOption {
+                  type = types.bool;
+                  default = true;
+                };
+
+                seconds = mkOption {
+                  type = types.str;
+                  default = "900";
+                };
+              };
+            };
+          };
         };
 
         work = {
@@ -601,6 +626,46 @@
           httpd = mkOption {
             type = types.bool;
             default = true;
+          };
+
+          desktop = {
+            idle = {
+              lock = {
+                enable = mkOption {
+                  type = types.bool;
+                  default = true;
+                };
+
+                seconds = mkOption {
+                  type = types.str;
+                  default = "180";
+                };
+              };
+
+              disableMonitors = {
+                enable = mkOption {
+                  type = types.bool;
+                  default = true;
+                };
+
+                seconds = mkOption {
+                  type = types.str;
+                  default = "300";
+                };
+              };
+
+              suspend = {
+                enable = mkOption {
+                  type = types.bool;
+                  default = true;
+                };
+
+                seconds = mkOption {
+                  type = types.str;
+                  default = "900";
+                };
+              };
+            };
           };
         };
       };
