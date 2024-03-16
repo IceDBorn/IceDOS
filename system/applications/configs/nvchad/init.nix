@@ -19,10 +19,10 @@ let
     "";
 in {
   home-manager.users = let
-    users =
-      filter (user: cfg.system.user.${user}.enable == true) (attrNames cfg);
+    users = filter (user: cfg.system.user.${user}.enable == true)
+      (attrNames cfg.system.user);
   in mapAttrsAndKeys (user:
-    let username = cfg.system.user.${user}.username;
+    let username = config.icedos.system.user.${user}.username;
     in {
       ${username}.home.file.".config/nvim/lua/custom/init.lua".text = ''
           -- Enable blinking
