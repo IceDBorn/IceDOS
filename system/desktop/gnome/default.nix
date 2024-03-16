@@ -1,7 +1,10 @@
-# ## DESKTOP POWERED BY GNOME ###
 { pkgs, config, lib, ... }:
 
-{
+let
+  inherit (lib) mkIf optional;
+
+  cfg = config.icedos.desktop.gnome;
+in {
   imports = [
     # Setup home manager for gnome
     ./home.nix
@@ -9,13 +12,12 @@
     ./startup.nix
   ];
 
-  services.xserver.desktopManager.gnome.enable =
-    config.desktop.gnome.enable; # Install gnome
+  services.xserver.desktopManager.gnome.enable = cfg.enable; # Install gnome
 
-  programs.dconf.enable = lib.mkIf (config.desktop.gnome.enable) true;
+  programs.dconf.enable = mkIf (cfg.enable) true;
 
   environment.systemPackages = with pkgs;
-    (if (config.desktop.gnome.enable) then
+    (if (cfg.enable) then
       [
         gnome.dconf-editor # Edit gnome's dconf
         gnome.gnome-tweaks # Tweaks missing from pure gnome
@@ -23,17 +25,17 @@
         gnomeExtensions.pano # Next-gen Clipboard manager
         gnome-extension-manager # Gnome extensions manager and downloader
         gnomeExtensions.quick-settings-tweaker
-      ] ++ lib.optional config.desktop.gnome.extensions.arcmenu
-      gnomeExtensions.arcmenu # Start menu
-      ++ lib.optional config.desktop.gnome.extensions.dashToPanel
+      ]
+      ++ optional (cfg.extensions.arcmenu) gnomeExtensions.arcmenu # Start menu
+      ++ optional (cfg.extensions.dashToPanel)
       gnomeExtensions.dash-to-panel # An icon taskbar for gnome
-      ++ lib.optional config.desktop.gnome.extensions.gsconnect
+      ++ optional (cfg.extensions.gsconnect)
       gnomeExtensions.gsconnect # KDE Connect implementation for gnome
     else
       [ ]);
 
   environment.gnome.excludePackages = with pkgs;
-    lib.mkIf config.desktop.gnome.enable [
+    mkIf (cfg.enable) [
       epiphany # Web browser
       evince # Document viewer
       gnome-console # Terminal

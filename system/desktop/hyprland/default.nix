@@ -1,6 +1,10 @@
 { pkgs, config, lib, inputs, ... }:
 
 let
+  inherit (lib) mkIf;
+
+  cfg = config.icedos;
+
   cpu-watcher = import modules/cpu-watcher.nix {
     pkgs = pkgs;
     config = config;
@@ -20,7 +24,6 @@ let
 
   hyprlock-wrapper = import modules/hyprlock-wrapper.nix { pkgs = pkgs; };
 
-  cfg = config.desktop.hyprland;
 in {
   imports = [
     ./configs/config.nix
@@ -30,13 +33,13 @@ in {
     ./home.nix
   ];
 
-  programs = lib.mkIf (cfg.enable) {
+  programs = mkIf (cfg.desktop.hyprland.enable) {
     nm-applet.enable = true; # Network manager tray icon
     kdeconnect.enable = true; # Connect phone to PC
     hyprland.enable = true;
   };
 
-  environment = lib.mkIf (cfg.enable) {
+  environment = mkIf (cfg.desktop.hyprland.enable) {
     systemPackages = with pkgs; [
       baobab # Disk usage analyser
       brightnessctl # Brightness control
@@ -83,7 +86,7 @@ in {
       wlogout # Logout screen
     ];
 
-    etc = lib.mkIf (cfg.enable) {
+    etc = mkIf (cfg.desktop.hyprland.enable) {
       "polkit-gnome".source =
         "${pkgs.polkit_gnome}/libexec/polkit-gnome-authentication-agent-1";
       "kdeconnectd".source =
@@ -92,18 +95,18 @@ in {
     };
   };
 
-  services = lib.mkIf (cfg.enable) {
+  services = mkIf (cfg.desktop.hyprland.enable) {
     dbus.enable = true;
     gvfs.enable = true; # Needed for nautilus
     gnome.gnome-keyring.enable = true;
   };
 
-  security = lib.mkIf (cfg.enable) {
+  security = mkIf (cfg.desktop.hyprland.enable) {
     polkit.enable = true;
     pam.services.login.enableGnomeKeyring = true;
   };
 
-  systemd.services.swayosd-input = lib.mkIf (cfg.enable) {
+  systemd.services.swayosd-input = mkIf (cfg.desktop.hyprland.enable) {
     enable = true;
     description =
       "SwayOSD LibInput backend for listening to certain keys like CapsLock, ScrollLock, VolumeUp, etc...";
@@ -126,10 +129,10 @@ in {
   };
 
   xdg.portal.extraPortals =
-    lib.mkIf (!config.desktop.gnome.enable && cfg.enable)
+    mkIf (!cfg.desktop.gnome.enable && cfg.desktop.hyprland.enable)
     [ pkgs.xdg-desktop-portal-gtk ]; # Needed for steam file picker
 
-  nix.settings = lib.mkIf (cfg.enable) {
+  nix.settings = mkIf (cfg.desktop.hyprland.enable) {
     substituters = [ "https://hyprland.cachix.org" ];
     trusted-public-keys =
       [ "hyprland.cachix.org-1:a7pgxzMz7+chwVL3/pzj6jIBMioiJM7ypFP8PwtkuGc=" ];

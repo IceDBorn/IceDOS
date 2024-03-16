@@ -1,17 +1,20 @@
 { config, lib, ... }:
 
 let
+  inherit (lib) attrNames filter foldl' mkIf;
+
+  cfg = config.icedos;
+
   mapAttrsAndKeys = callback: list:
-    (lib.foldl' (acc: value: acc // (callback value)) { } list);
-  cfg = config.desktop.hyprland;
+    (foldl' (acc: value: acc // (callback value)) { } list);
 in {
   home-manager.users = let
-    users = lib.filter (user: config.system.user.${user}.enable == true)
-      (lib.attrNames config.system.user);
+    users = filter (user: cfg.system.user.${user}.enable == true)
+      (attrNames cfg.system.user);
   in mapAttrsAndKeys (user:
-    let username = config.system.user.${user}.username;
+    let username = cfg.system.user.${user}.username;
     in {
-      ${username} = lib.mkIf (cfg.enable) {
+      ${username} = mkIf (cfg.desktop.hyprland.enable) {
         # Gnome control center running in Hypr WMs
         xdg.desktopEntries.gnome-control-center = {
           exec = "env XDG_CURRENT_DESKTOP=GNOME gnome-control-center";

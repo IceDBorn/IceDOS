@@ -1,5 +1,10 @@
-# ## DESKTOP POWERED BY GNOME ###
-{ pkgs, config, lib, ... }: {
+{ pkgs, config, lib, ... }:
+
+let
+  inherit (lib) makeSearchPathOutput mkIf;
+
+  cfg = config.icedos;
+in {
   imports = [ ./home.nix ]; # Setup home manager
 
   # Set your time zone
@@ -17,17 +22,17 @@
 
       displayManager = {
         gdm = {
-          enable = config.desktop.gdm.enable;
-          autoSuspend = config.desktop.gdm.autoSuspend;
+          enable = cfg.desktop.gdm.enable;
+          autoSuspend = cfg.desktop.gdm.autoSuspend;
         };
 
-        autoLogin = lib.mkIf config.desktop.autologin.enable {
+        autoLogin = mkIf (cfg.desktop.autologin.enable) {
           enable = true;
-          user = if (config.system.user.main.enable
-            && config.desktop.autologin.main.user.enable) then
-            config.system.user.main.username
-          else if (config.system.user.work.enable) then
-            config.system.user.work.username
+          user = if (cfg.system.user.main.enable
+            && cfg.desktop.autologin.main.user.enable) then
+            cfg.system.user.main.username
+          else if (cfg.system.user.work.enable) then
+            cfg.system.user.work.username
           else
             "";
         };
@@ -77,8 +82,7 @@
       DEFAULT_BROWSER = "${pkgs.firefox}/bin/firefox";
       # Fix nautilus not displaying audio/video information in properties https://github.com/NixOS/nixpkgs/issues/53631
       GST_PLUGIN_SYSTEM_PATH_1_0 =
-        lib.makeSearchPathOutput "lib" "lib/gstreamer-1.0"
-        (with pkgs.gst_all_1; [
+        makeSearchPathOutput "lib" "lib/gstreamer-1.0" (with pkgs.gst_all_1; [
           gst-plugins-good
           gst-plugins-bad
           gst-plugins-ugly

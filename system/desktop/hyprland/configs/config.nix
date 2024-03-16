@@ -1,24 +1,25 @@
 { config, lib, inputs, pkgs, ... }:
 
 let
-  mapAttrsAndKeys = callback: list:
-    (lib.foldl' (acc: value: acc // (callback value)) { } list);
+  inherit (lib) attrNames filter foldl' mkIf;
 
-  cfg = config.desktop.hyprland;
-  monitors = config.hardware.monitors;
-  pwas = config.applications.firefox.pwas.sites;
+  cfg = config.icedos;
+  monitors = cfg.hardware.monitors;
+  pwas = cfg.applications.firefox.pwas.sites;
+
+  mapAttrsAndKeys = callback: list:
+    (foldl' (acc: value: acc // (callback value)) { } list);
+
   hycov = inputs.hycov.packages.${pkgs.system}.hycov;
-  deckRotation = if (config.applications.steam.session.steamdeck) then
-    ",transform,3"
-  else
-    "";
+  deckRotation =
+    if (cfg.applications.steam.session.steamdeck) then ",transform,3" else "";
 in {
   home-manager.users = let
-    users = lib.filter (user: config.system.user.${user}.enable == true)
-      (lib.attrNames config.system.user);
+    users = filter (user: cfg.system.user.${user}.enable == true)
+      (attrNames cfg.system.user);
   in mapAttrsAndKeys (user:
     let
-      username = config.system.user.${user}.username;
+      username = cfg.system.user.${user}.username;
       singleMonWRules = if (user != "work") then ''
         windowrulev2 = workspace 1 silent, class:^(firefox)$
         windowrulev2 = workspace 2 silent, class:^(startup-nvchad)$
@@ -53,7 +54,7 @@ in {
       else
         singleMonWRules;
     in {
-      ${username} = lib.mkIf (cfg.enable) {
+      ${username} = mkIf (cfg.desktop.hyprland.enable) {
         home.file.".config/hypr/hyprland.conf".text = ''
           # See available monitors with 'hyprctl monitors'
           monitor = ${monitors.main.name},${monitors.main.resolution}@${monitors.main.refreshRate},${monitors.main.position},${monitors.main.scaling}${deckRotation}

@@ -2,8 +2,12 @@
 { config, pkgs, lib, inputs, ... }:
 
 let
-  cfg = config.system.user.work;
-  stashLock = if (config.system.update.stashFlakeLock) then "1" else "0";
+  inherit (lib) mkIf optional;
+
+  cfg = config.icedos;
+  username = cfg.system.user.work.username;
+
+  stashLock = if (cfg.system.update.stashFlakeLock) then "1" else "0";
 
   sail = import modules/run-command.nix {
     inherit pkgs;
@@ -16,7 +20,7 @@ let
     inherit pkgs config;
     command = "update";
     update = "true";
-    stash = config.system.update.stash;
+    stash = cfg.system.update.stash;
   };
 
   # Packages to add for a fork of the config
@@ -24,7 +28,7 @@ let
 
   shellScripts = [ sail update ];
 
-  gitLocation = "${config.system.home}/${cfg.username}/git/";
+  gitLocation = "${cfg.system.home}/${username}/git/";
 
   multiStoreProjects = {
     vaza = {
@@ -53,25 +57,26 @@ let
     Alias /${multiStoreProjects.tosupermou.alias} ${gitLocation}${multiStoreProjects.tosupermou.folder}
     Alias /${multiStoreProjects.papiros.alias} ${gitLocation}${multiStoreProjects.papiros.folder}
   '';
-in lib.mkIf cfg.enable {
-  users.users.${cfg.username}.packages = with pkgs;
+in mkIf (cfg.system.user.work.enable) {
+  users.users.${username}.packages = with pkgs;
     [
       dbeaver # Database manager
       google-chrome # Dev browser
       php # Programming language for websites
       phpPackages.composer # Package manager for PHP
-    ] ++ myPackages ++ shellScripts ++ lib.optional cfg.httpd apacheHttpd;
+    ] ++ myPackages ++ shellScripts
+    ++ optional (cfg.system.user.work.httpd) apacheHttpd;
 
-  services = lib.mkIf cfg.httpd {
+  services = mkIf (cfg.system.user.work.httpd) {
     httpd = {
       enable = true;
-      user = config.system.user.work.username;
+      user = username;
       phpPackage = inputs.phps.packages.x86_64-linux.php73;
       enablePHP = true;
       extraConfig = ''
         <VirtualHost *:80>
-          ServerName ${config.system.user.work.username}.localhost
-          ServerAdmin ${config.system.user.work.username}@localhost
+          ServerName ${username}.localhost
+          ServerAdmin ${username}@localhost
           DocumentRoot ${gitLocation}
           ${httpdAliases}
           <Directory ${gitLocation}>

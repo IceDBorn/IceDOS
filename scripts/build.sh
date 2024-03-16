@@ -8,4 +8,4 @@ CONFIG="/tmp/configuration-location"
 printf "$PWD" > "$CONFIG"
 
 # Build the system configuration
-nixos-rebuild switch --impure --flake .#"$(cat /etc/hostname)"
+nixos-rebuild switch --show-trace --impure --flake .#"$(cat /etc/hostname)"

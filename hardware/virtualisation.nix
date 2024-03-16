@@ -1,20 +1,23 @@
 { pkgs, config, lib, ... }:
 
-{
+let
+  inherit (lib) mkIf;
+
+  cfg = config.icedos.hardware.virtualisation;
+in {
   virtualisation = {
-    docker.enable = config.hardware.virtualisation.docker;
-    libvirtd.enable = config.hardware.virtualisation.libvirtd;
-    lxd.enable = config.hardware.virtualisation.lxd;
-    spiceUSBRedirection.enable =
-      config.hardware.virtualisation.spiceUSBRedirection;
-    waydroid.enable = config.hardware.virtualisation.waydroid;
+    docker.enable = cfg.docker;
+    libvirtd.enable = cfg.libvirtd;
+    lxd.enable = cfg.lxd;
+    spiceUSBRedirection.enable = cfg.spiceUSBRedirection;
+    waydroid.enable = cfg.waydroid;
   };
 
   environment.systemPackages = with pkgs;
-    lib.mkIf (config.hardware.virtualisation.docker) [
+    mkIf (cfg.docker) [
       docker # Containers
       distrobox # Wrapper around docker to create and start linux containers
     ];
 
-  programs.virt-manager.enable = config.hardware.virtualisation.libvirtd;
+  programs.virt-manager.enable = cfg.libvirtd;
 }

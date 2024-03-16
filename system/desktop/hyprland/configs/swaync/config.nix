@@ -1,22 +1,26 @@
 { config, lib, ... }:
 let
-  mapAttrsAndKeys = callback: list:
-    (lib.foldl' (acc: value: acc // (callback value)) { } list);
+  inherit (lib) attrNames filter foldl';
 
-  workspace = if (config.hardware.monitors.main.enable
-    && config.hardware.monitors.secondary.enable) then
+  cfg = config.icedos;
+
+  mapAttrsAndKeys = callback: list:
+    (foldl' (acc: value: acc // (callback value)) { } list);
+
+  workspace = if (cfg.hardware.monitors.main.enable
+    && cfg.hardware.monitors.secondary.enable) then
     "11"
   else
     "3";
 in {
   home-manager.users = let
-    users = lib.filter (user: config.system.user.${user}.enable == true)
-      (lib.attrNames config.system.user);
+    users = filter (user: cfg.system.user.${user}.enable == true)
+      (attrNames cfg.system.user);
   in mapAttrsAndKeys (user:
-    let username = config.system.user.${user}.username;
+    let username = cfg.system.user.${user}.username;
     in {
       ${username}.home.file = {
-        ".config/swaync/config.json".text = ''
+        ".config/swaync/cfg.json".text = ''
           {
             "scripts": {
               "messengers": {

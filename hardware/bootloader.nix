@@ -1,15 +1,18 @@
 { config, lib, ... }:
 
-let cfg = config.boot;
+let
+  inherit (lib) mkIf;
+
+  cfg = config.icedos.boot;
 in {
   boot = {
     loader = {
-      efi = lib.mkIf cfg.systemd-boot.enable {
+      efi = mkIf (cfg.systemd-boot.enable) {
         canTouchEfiVariables = true;
         efiSysMountPoint = cfg.systemd-boot.mountPoint;
       };
 
-      grub = lib.mkIf cfg.grub.enable {
+      grub = mkIf (cfg.grub.enable) {
         enable = true;
         device = cfg.grub.device;
         useOSProber = true;
@@ -17,7 +20,7 @@ in {
         configurationLimit = 10;
       };
 
-      systemd-boot = lib.mkIf cfg.systemd-boot.enable {
+      systemd-boot = mkIf (cfg.systemd-boot.enable) {
         enable = true;
         configurationLimit = 10;
         # Select the highest resolution for the bootloader
@@ -28,7 +31,7 @@ in {
       timeout = 1;
     };
 
-    initrd.secrets = lib.mkIf cfg.grub.enable { "/crypto_keyfile.bin" = null; };
+    initrd.secrets = mkIf (cfg.grub.enable) { "/crypto_keyfile.bin" = null; };
 
     plymouth.enable = cfg.animation;
   };

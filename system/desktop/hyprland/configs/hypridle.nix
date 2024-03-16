@@ -1,38 +1,41 @@
 { lib, config, ... }:
 
 let
-  mapAttrsAndKeys = callback: list:
-    (lib.foldl' (acc: value: acc // (callback value)) { } list);
+  inherit (lib) attrNames filter foldl';
 
+  cfg = config.icedos;
+
+  mapAttrsAndKeys = callback: list:
+    (foldl' (acc: value: acc // (callback value)) { } list);
 in {
   home-manager.users = let
-    users = lib.filter (user: config.system.user.${user}.enable == true)
-      (lib.attrNames config.system.user);
+    users = filter (user: cfg.system.user.${user}.enable == true)
+      (attrNames cfg.system.user);
   in mapAttrsAndKeys (user:
     let
-      username = config.system.user.${user}.username;
-      cfg = config.system.user.${user}.desktop.idle;
+      username = cfg.system.user.${user}.username;
+      idle = cfg.system.user.${user}.desktop.idle;
 
-      lock = if (cfg.lock.enable) then ''
+      lock = if (idle.lock.enable) then ''
         listener {
-            timeout = ${cfg.lock.seconds}
+            timeout = ${idle.lock.seconds}
             on-timeout = hyprlock-wrapper lock
         }
       '' else
         "";
 
-      disableMonitors = if (cfg.disableMonitors.enable) then ''
+      disableMonitors = if (idle.disableMonitors.enable) then ''
         listener {
-            timeout = ${cfg.disableMonitors.seconds}
+            timeout = ${idle.disableMonitors.seconds}
             on-timeout = hyprlock-wrapper off
             on-resume = hyprctl dispatch dpms on
         }
       '' else
         "";
 
-      suspend = if (cfg.suspend.enable) then ''
+      suspend = if (idle.suspend.enable) then ''
         listener {
-            timeout = ${cfg.suspend.seconds}
+            timeout = ${idle.suspend.seconds}
             on-timeout = hyprlock-wrapper suspend
         }
       '' else
@@ -47,7 +50,7 @@ in {
 
         # Lower brightness
         listener {
-            timeout = ${config.desktop.hyprland.lock.secondsToLowerBrightness}
+            timeout = ${cfg.desktop.hyprland.lock.secondsToLowerBrightness}
             on-timeout = brightnessctl -s set 10 && brightnessctl -sd rgb:kbd_backlight set 0
             on-resume = brightnessctl -r && brightnessctl -rd rgb:kbd_backlight
         }

@@ -1,16 +1,20 @@
 { config, lib, ... }:
 
 let
+  inherit (lib) attrNames filter foldl' mkIf optional;
+
+  cfg = config.icedos;
+
   mapAttrsAndKeys = callback: list:
-    (lib.foldl' (acc: value: acc // (callback value)) { } list);
+    (foldl' (acc: value: acc // (callback value)) { } list);
 in {
   home-manager.users = let
-    users = lib.filter (user: config.system.user.${user}.enable == true)
-      (lib.attrNames config.system.user);
+    users = filter (user: cfg.system.user.${user}.enable == true)
+      (attrNames cfg.system.user);
   in mapAttrsAndKeys (user:
-    let username = config.system.user.${user}.username;
+    let username = cfg.system.user.${user}.username;
     in {
-      ${username} = lib.mkIf config.desktop.gnome.enable {
+      ${username} = mkIf (cfg.desktop.gnome.enable) {
 
         dconf.settings = {
           "org/gnome/desktop/input-sources" = {
@@ -24,12 +28,12 @@ in {
             # Enable clock seconds
             clock-show-seconds = true;
             # Disable date
-            clock-show-date = config.desktop.gnome.clock.date;
-            clock-show-weekday = config.desktop.gnome.clock.weekday;
+            clock-show-date = cfg.desktop.gnome.clock.date;
+            clock-show-weekday = cfg.desktop.gnome.clock.weekday;
             # Show the battery percentage when on a laptop
-            show-battery-percentage = config.hardware.laptop.enable;
+            show-battery-percentage = cfg.hardware.laptop.enable;
             # Access the activity overview by moving the mouse to the top-left corner
-            enable-hot-corners = config.desktop.gnome.hotCorners;
+            enable-hot-corners = cfg.desktop.gnome.hotCorners;
           };
 
           # Disable lockscreen notifications
@@ -37,10 +41,10 @@ in {
 
           "org/gnome/desktop/wm/preferences" = {
             # Buttons to show in titlebars
-            button-layout = config.desktop.gnome.titlebarLayout;
+            button-layout = cfg.desktop.gnome.titlebarLayout;
             # Disable application is ready notification
             focus-new-windows = "strict";
-            num-workspaces = config.desktop.gnome.workspaces.maxWorkspaces;
+            num-workspaces = cfg.desktop.gnome.workspaces.maxWorkspaces;
           };
 
           # Disable mouse acceleration
@@ -52,16 +56,16 @@ in {
           # Turn off screen
           "org/gnome/desktop/session" = {
             idle-delay =
-              if (config.system.user.${user}.desktop.idle.disableMonitors.enable) then
-                config.system.user.${user}.desktop.idle.disableMonitors.seconds
+              if (cfg.system.user.${user}.desktop.idle.disableMonitors.enable) then
+                cfg.system.user.${user}.desktop.idle.disableMonitors.seconds
               else
                 0;
           };
 
           # Set screen lock
           "org/gnome/desktop/screensaver" = {
-            lock-enabled = config.system.user.${user}.desktop.idle.lock.enable;
-            lock-delay = config.system.user.${user}.desktop.idle.lock.seconds;
+            lock-enabled = cfg.system.user.${user}.desktop.idle.lock.enable;
+            lock-delay = cfg.system.user.${user}.desktop.idle.lock.seconds;
           };
 
           # Disable system sounds
@@ -72,22 +76,21 @@ in {
             edge-tiling = true;
             # Enable fractional scaling
             experimental-features = [ "scale-monitor-framebuffer" ];
-            dynamic-workspaces =
-              config.desktop.gnome.workspaces.dynamicWorkspaces;
+            dynamic-workspaces = cfg.desktop.gnome.workspaces.dynamicWorkspaces;
           };
 
           "org/gnome/settings-daemon/plugins/power" = {
             # Auto suspend
             sleep-inactive-ac-type =
-              if (config.system.user.${user}.desktop.idle.suspend.enable) then
+              if (cfg.system.user.${user}.desktop.idle.suspend.enable) then
                 "suspend"
               else
                 "nothing";
             # Auto suspend timeout
             sleep-inactive-ac-timeout =
-              config.system.user.${user}.desktop.idle.suspend.seconds;
+              cfg.system.user.${user}.desktop.idle.suspend.seconds;
             # Power button shutdown
-            power-button-action = config.desktop.gnome.powerButtonAction;
+            power-button-action = cfg.desktop.gnome.powerButtonAction;
           };
 
           "org/gnome/shell" = {
@@ -98,14 +101,14 @@ in {
               "appindicatorsupport@rgcjonas.gmail.com"
               "pano@elhan.io"
               "quick-settings-tweaks@qwreey"
-            ] ++ lib.optional config.desktop.gnome.extensions.arcmenu
+            ] ++ optional (cfg.desktop.gnome.extensions.arcmenu)
               "arcmenu@arcmenu.com"
-              ++ lib.optional config.desktop.gnome.extensions.dashToPanel
+              ++ optional (cfg.desktop.gnome.extensions.dashToPanel)
               "dash-to-panel@jderose9.github.com"
-              ++ lib.optional config.desktop.gnome.extensions.gsconnect
+              ++ optional (cfg.desktop.gnome.extensions.gsconnect)
               "gsconnect@andyholmes.github.io";
 
-            favorite-apps = lib.mkIf config.desktop.gnome.pinnedApps [
+            favorite-apps = mkIf (cfg.desktop.gnome.pinnedApps) [
               "webstorm.desktop"
               "webcord.desktop"
               "firefox.desktop"
@@ -149,7 +152,7 @@ in {
           };
 
           "org/gnome/shell/extensions/dash-to-panel" =
-            lib.mkIf config.desktop.gnome.extensions.dashToPanel {
+            mkIf (cfg.desktop.gnome.extensions.dashToPanel) {
               panel-element-positions = ''
                 {
                   "0": [
@@ -187,14 +190,14 @@ in {
             };
 
           "org/gnome/shell/extensions/arcmenu" =
-            lib.mkIf config.desktop.gnome.extensions.arcmenu {
+            mkIf (cfg.desktop.gnome.extensions.arcmenu) {
               distro-icon = 6;
               menu-button-icon = "Distro_Icon"; # Use arch icon
               multi-monitor = true;
               menu-layout = "Windows";
               windows-disable-frequent-apps = true;
-              windows-disable-pinned-apps = !config.desktop.gnome.pinnedApps;
-              pinned-app-list = lib.mkIf config.desktop.gnome.pinnedApps [
+              windows-disable-pinned-apps = !cfg.desktop.gnome.pinnedApps;
+              pinned-app-list = mkIf (cfg.desktop.gnome.pinnedApps) [
                 "VSCodium"
                 ""
                 "codium.desktop"

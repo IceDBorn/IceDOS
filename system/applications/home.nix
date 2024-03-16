@@ -1,14 +1,18 @@
 { config, pkgs, lib, ... }:
 
 let
+  inherit (lib) attrNames filter foldl' mkIf;
+
+  cfg = config.icedos;
+
   mapAttrsAndKeys = callback: list:
-    (lib.foldl' (acc: value: acc // (callback value)) { } list);
+    (foldl' (acc: value: acc // (callback value)) { } list);
 in {
   home-manager.users = let
-    users = lib.filter (user: config.system.user.${user}.enable == true)
-      (lib.attrNames config.system.user);
+    users = filter (user: cfg.system.user.${user}.enable == true)
+      (attrNames cfg.system.user);
   in mapAttrsAndKeys (user:
-    let username = config.system.user.${user}.username;
+    let username = cfg.system.user.${user}.username;
     in {
       ${username} = {
         programs = {
@@ -16,8 +20,8 @@ in {
             enable = true;
             # Git config
             extraConfig = { pull.rebase = true; };
-            userName = "${config.system.user.${user}.git.username}";
-            userEmail = "${config.system.user.${user}.git.email}";
+            userName = "${cfg.system.user.${user}.git.username}";
+            userEmail = "${cfg.system.user.${user}.git.email}";
           };
 
           kitty = {
@@ -28,7 +32,7 @@ in {
               cursor_shape = "beam";
               enable_audio_bell = "no";
               hide_window_decorations =
-                if (config.applications.kitty.hideDecorations) then
+                if (cfg.applications.kitty.hideDecorations) then
                   "yes"
                 else
                   "no";
@@ -46,9 +50,9 @@ in {
             # Mangohud config
             settings = {
               background_alpha = 0;
-              battery = config.hardware.laptop.enable;
-              battery_icon = config.hardware.laptop.enable;
-              battery_time = config.hardware.laptop.enable;
+              battery = cfg.hardware.laptop.enable;
+              battery_icon = cfg.hardware.laptop.enable;
+              battery_time = cfg.hardware.laptop.enable;
               cpu_color = "FFFFFF";
               cpu_power = true;
               cpu_temp = true;
@@ -56,7 +60,7 @@ in {
               engine_short_names = true;
               font_size = 18;
               fps_color = "FFFFFF";
-              fps_limit = "${config.hardware.monitors.main.refreshRate},60,0";
+              fps_limit = "${cfg.hardware.monitors.main.refreshRate},60,0";
               frame_timing = false;
               frametime = false;
               gl_vsync = 0;
@@ -117,28 +121,28 @@ in {
 
           # Add user.js
           ".mozilla/firefox/privacy/user.js".source =
-            if (config.applications.firefox.privacy) then
+            if (cfg.applications.firefox.privacy) then
               "${pkgs.arkenfox-userjs}/user.js"
             else
               configs/firefox/user.js;
 
           # Install firefox gnome theme
           ".mozilla/firefox/privacy/chrome/firefox-gnome-theme" =
-            lib.mkIf config.applications.firefox.gnomeTheme {
+            mkIf (cfg.applications.firefox.gnomeTheme) {
               source = pkgs.firefox-gnome-theme;
               recursive = true;
             };
 
           # Import firefox gnome theme userChrome.css or disable WebRTC indicator
           ".mozilla/firefox/privacy/chrome/userChrome.css".text =
-            if config.applications.firefox.gnomeTheme then
+            if (cfg.applications.firefox.gnomeTheme) then
               ''@import "firefox-gnome-theme/userChrome.css"''
             else
               "#webrtcIndicator { display: none }";
 
           # Import firefox gnome theme userContent.css
           ".mozilla/firefox/privacy/chrome/userContent.css".text =
-            if config.applications.firefox.gnomeTheme then
+            if cfg.applications.firefox.gnomeTheme then
               ''@import "firefox-gnome-theme/userContent.css"''
             else
               "";
@@ -156,24 +160,24 @@ in {
           ".config/btop/btop.conf".source = configs/btop.conf;
 
           # Add adwaita steam skin
-          ".local/share/Steam/steamui" = lib.mkIf (user != "work"
-            && config.applications.steam.adwaitaForSteam.enable) {
+          ".local/share/Steam/steamui" = mkIf
+            (user != "work" && cfg.applications.steam.adwaitaForSteam.enable) {
               source = "${pkgs.adwaita-for-steam}/build";
               recursive = true;
             };
 
           # Enable steam beta
           ".local/share/Steam/package/beta" =
-            lib.mkIf (user != "work" && config.applications.steam.beta) {
-              text = if (config.applications.steam.session.enable) then
+            mkIf (user != "work" && cfg.applications.steam.beta) {
+              text = if (cfg.applications.steam.session.enable) then
                 "steamdeck_publicbeta"
               else
                 "publicbeta";
             };
 
           # Enable slow steam downloads workaround
-          ".local/share/Steam/steam_dev.cfg" = lib.mkIf
-            (user != "work" && config.applications.steam.downloadsWorkaround) {
+          ".local/share/Steam/steam_dev.cfg" = mkIf
+            (user != "work" && cfg.applications.steam.downloadsWorkaround) {
               text = ''
                 @nClientDownloadEnableHTTP2PlatformLinux 0
                 @fDownloadRateImprovementToAddAnotherConnection 1.0

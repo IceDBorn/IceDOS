@@ -2,6 +2,10 @@
 { pkgs, config, inputs, lib, ... }:
 
 let
+  inherit (lib) mkIf;
+
+  cfg = config.icedos;
+
   # Logout from any shell
   lout = pkgs.writeShellScriptBin "lout" ''
     pkill -KILL -u $USER
@@ -9,12 +13,12 @@ let
 
   # Garbage collect the nix store
   nix-gc = pkgs.writeShellScriptBin "nix-gc" ''
-    gens=${config.system.gc.generations} ;
-    days=${config.system.gc.days} ;
+    gens=${cfg.system.gc.generations} ;
+    days=${cfg.system.gc.days} ;
     trim-generations ''${1:-$gens} ''${2:-$days} user ;
     trim-generations ''${1:-$gens} ''${2:-$days} home-manager ;
-    sudo -H -u ${config.system.user.work.username} env Gens="''${1:-$gens}" Days="''${2:-$days}" bash -c 'trim-generations $Gens $Days user' ;
-    sudo -H -u ${config.system.user.work.username} env Gens="''${1:-$gens}" Days="''${2:-$days}" bash -c 'trim-generations $Gens $Days home-manager' ;
+    sudo -H -u ${cfg.system.user.work.username} env Gens="''${1:-$gens}" Days="''${2:-$days}" bash -c 'trim-generations $Gens $Days user' ;
+    sudo -H -u ${cfg.system.user.work.username} env Gens="''${1:-$gens}" Days="''${2:-$days}" bash -c 'trim-generations $Gens $Days home-manager' ;
     sudo trim-generations ''${1:-$gens} ''${2:-$days} system ;
     nix-store --gc
   '';
@@ -104,7 +108,7 @@ let
 in {
   imports = [ configs/pipewire.nix ];
 
-  boot.kernelPackages = lib.mkIf (!config.applications.steam.session.steamdeck
+  boot.kernelPackages = mkIf (!cfg.applications.steam.session.steamdeck
     && builtins.pathExists /etc/icedos-version)
     pkgs.linuxPackages_cachyos; # Use CachyOS optimized linux kernel
 
@@ -204,7 +208,7 @@ in {
         r-store =
           "nix-store --verify --check-contents --repair"; # Verifies integrity and repairs inconsistencies between Nix database and store
         r-windows =
-          "sudo efibootmgr --bootnext ${config.boot.windowsEntry} && reboot"; # Reboot to windows
+          "sudo efibootmgr --bootnext ${cfg.boot.windowsEntry} && reboot"; # Reboot to windows
         ssh = "TERM=xterm-256color ssh"; # SSH with colors
         v = "nvim"; # Neovim
       };

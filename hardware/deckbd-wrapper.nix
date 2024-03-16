@@ -1,9 +1,12 @@
 { pkgs, lib, config, ... }:
 
 let
+  inherit (lib) mkIf;
+
+  cfg = config.icedos.applications.steam.session;
+
   deckbd = "${pkgs.deckbd}/bin/deckbd";
-  cfg = config.applications.steam.session;
-in lib.mkIf (cfg.enable && cfg.steamdeck) {
+in mkIf (cfg.enable && cfg.steamdeck) {
   boot.initrd = {
     preLVMCommands = ''
       DECKBD_RETRIES=10
