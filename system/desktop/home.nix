@@ -1,13 +1,17 @@
 { config, pkgs, lib, ... }:
 let
+  inherit (lib) attrNames filter foldl' mkIf;
+
+  cfg = config.icedos;
+
   mapAttrsAndKeys = callback: list:
-    (lib.foldl' (acc: value: acc // (callback value)) { } list);
+    (foldl' (acc: value: acc // (callback value)) { } list);
 in {
   home-manager.users = let
-    users = lib.filter (user: config.system.user.${user}.enable == true)
-      (lib.attrNames config.system.user);
+    users = filter (user: cfg.system.user.${user}.enable == true)
+      (attrNames cfg.system.user);
   in mapAttrsAndKeys (user:
-    let username = config.system.user.${user}.username;
+    let username = cfg.system.user.${user}.username;
     in {
       ${username} = {
         gtk = {
@@ -39,7 +43,7 @@ in {
             # Codium profile used a an IDE
             codiumIDE = {
               exec =
-                "codium --user-data-dir ${config.system.home}/${username}/.config/VSCodiumIDE";
+                "codium --user-data-dir ${cfg.system.home}/${username}/.config/VSCodiumIDE";
               icon = "codium";
               name = "Codium IDE";
               terminal = false;
@@ -47,7 +51,7 @@ in {
             };
 
             # dbeaver on Xwayland (fix scaling issues)
-            dbeaver = lib.mkIf (user == "work") {
+            dbeaver = mkIf (user == "work") {
               exec = "env GDK_BACKEND=x11 dbeaver";
               icon = "dbeaver";
               name = "dbeaver - X11";
@@ -58,7 +62,7 @@ in {
             # Firefox PWA
             pwas = {
               exec =
-                "firefox --no-remote -P PWAs --name pwas ${config.applications.firefox.pwas.sites}";
+                "firefox --no-remote -P PWAs --name pwas ${cfg.applications.firefox.pwas.sites}";
               icon = "firefox-nightly";
               name = "Firefox PWAs";
               terminal = false;
@@ -75,7 +79,7 @@ in {
             };
 
             # Force slack to use window decorations
-            slack = lib.mkIf (user == "work") {
+            slack = mkIf (user == "work") {
               name = "Slack";
               exec = "slack --enable-features=WaylandWindowDecorations";
               icon = "slack";

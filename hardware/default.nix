@@ -1,6 +1,11 @@
 { lib, config, pkgs, ... }:
 
-{
+let
+  inherit (lib) mkIf optional;
+
+  cfg = config.icedos;
+  monitors = cfg.hardware.monitors;
+in {
   hardware = {
     opengl = {
       enable = true;
@@ -9,7 +14,7 @@
     };
 
     xpadneo.enable =
-      !config.hardware.xpadneoUnstable; # Enable XBOX Gamepad bluetooth driver
+      !cfg.hardware.xpadneoUnstable; # Enable XBOX Gamepad bluetooth driver
     bluetooth.enable = true;
     uinput.enable = true; # Enable uinput support
   };
@@ -32,45 +37,45 @@
   ];
 
   networking = {
-    hostName = "${config.hardware.networking.hostname}";
+    hostName = "${cfg.hardware.networking.hostname}";
 
-    extraHosts = lib.mkIf config.hardware.networking.hosts.enable
-      "192.168.2.99 git.dtek.gr";
+    extraHosts =
+      mkIf (cfg.hardware.networking.hosts.enable) "192.168.2.99 git.dtek.gr";
   };
 
   boot = {
     kernelModules = [
       "v4l2loopback" # Virtual camera
       "uinput"
-    ] ++ lib.optional config.hardware.xpadneoUnstable "hid_xpadneo";
+    ] ++ optional (cfg.hardware.xpadneoUnstable) "hid_xpadneo";
 
     kernelParams = [
       "transparent_hugepage=always"
       # Fixes certain wine games crash on launch
       "clearcpuid=514"
-    ] ++ lib.optional config.hardware.monitors.main.enable
-      "video=${config.hardware.monitors.main.name}:${config.hardware.monitors.main.resolution}@${config.hardware.monitors.main.refreshRate},rotate=${config.hardware.monitors.main.rotation}"
-      ++ lib.optional config.hardware.monitors.secondary.enable
-      "video=${config.hardware.monitors.secondary.name}:${config.hardware.monitors.secondary.resolution}@${config.hardware.monitors.secondary.refreshRate},rotate=${config.hardware.monitors.secondary.rotation}";
+    ] ++ optional (monitors.main.enable)
+      "video=${monitors.main.name}:${monitors.main.resolution}@${monitors.main.refreshRate},rotate=${monitors.main.rotation}"
+      ++ optional (monitors.secondary.enable)
+      "video=${monitors.secondary.name}:${monitors.secondary.resolution}@${monitors.secondary.refreshRate},rotate=${monitors.secondary.rotation}";
 
     extraModulePackages = with config.boot.kernelPackages;
       [ pkgs.v4l2loopback-git ]
-      ++ lib.optional config.hardware.xpadneoUnstable pkgs.xpadneo-git;
+      ++ optional (cfg.hardware.xpadneoUnstable) pkgs.xpadneo-git;
 
     kernel.sysctl = {
       # Fixes crash when loading maps in CS2
       "vm.max_map_count" = 262144;
       # Disable ipv6 for all interfaces
-      "net.ipv6.conf.all.disable_ipv6" = !config.hardware.networking.ipv6;
+      "net.ipv6.conf.all.disable_ipv6" = !cfg.hardware.networking.ipv6;
       # Set agressiveness of swap usage
-      "vm.swappiness" = config.system.swappiness;
+      "vm.swappiness" = cfg.system.swappiness;
       "vm.compaction_proactiveness" = 0;
       "vm.page_lock_unfairness" = 1;
     };
   };
 
-  fileSystems = lib.mkIf (config.hardware.btrfsCompression.enable
-    && config.hardware.btrfsCompression.root) {
+  fileSystems = mkIf (cfg.hardware.btrfsCompression.enable
+    && cfg.hardware.btrfsCompression.root) {
       "/".options = [ "compress=zstd" ];
     };
 

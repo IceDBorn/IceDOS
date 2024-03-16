@@ -1,6 +1,7 @@
 { config, ... }:
 
-{
-  hardware.cpu.intel.updateMicrocode = config.hardware.cpu.intel.enable;
-  services.throttled.enable = config.hardware.cpu.intel.enable;
+let cfg = config.icedos.hardware.cpu.intel.enable;
+in {
+  hardware.cpu.intel.updateMicrocode = cfg;
+  services.throttled.enable = cfg;
 }

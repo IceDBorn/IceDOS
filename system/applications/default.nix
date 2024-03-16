@@ -1,6 +1,7 @@
 { config, inputs, ... }:
 
-{
+let cfg = config.icedos.system.config;
+in {
   imports = [
     ./global.nix # Packages installed globally
     ./main.nix # Packages installed for main user
@@ -38,5 +39,5 @@
   };
 
   # Versioning system
-  environment.etc."icedos-version".text = config.system.config.version;
+  environment.etc."icedos-version".text = cfg.version;
 }

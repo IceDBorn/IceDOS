@@ -1,6 +1,7 @@
 { config, ... }:
 
-{
+let cfg = config.icedos.system;
+in {
   imports = [
     # Auto-generated configuration by NixOS
     ./hardware/nixos/hardware-configuration.nix
@@ -26,5 +27,5 @@
     ./system/users.nix
   ];
 
-  config.system.stateVersion = config.system.version;
+  config.system.stateVersion = cfg.version;
 }

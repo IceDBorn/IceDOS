@@ -1,9 +1,13 @@
 { config, lib, ... }:
 let
-  mapAttrsAndKeys = callback: list:
-    (lib.foldl' (acc: value: acc // (callback value)) { } list);
+  inherit (lib) attrNames filter foldl';
 
-  formatOnSave = if (config.applications.nvchad.formatOnSave) then ''
+  cfg = config.icedos;
+
+  mapAttrsAndKeys = callback: list:
+    (foldl' (acc: value: acc // (callback value)) { } list);
+
+  formatOnSave = if (cfg.applications.nvchad.formatOnSave) then ''
     -- Format on sav
     vim.cmd [[
         augroup format_on_save
@@ -15,10 +19,10 @@ let
     "";
 in {
   home-manager.users = let
-    users = lib.filter (user: config.system.user.${user}.enable == true)
-      (lib.attrNames config.system.user);
+    users =
+      filter (user: cfg.system.user.${user}.enable == true) (attrNames cfg);
   in mapAttrsAndKeys (user:
-    let username = config.system.user.${user}.username;
+    let username = cfg.system.user.${user}.username;
     in {
       ${username}.home.file.".config/nvim/lua/custom/init.lua".text = ''
           -- Enable blinking

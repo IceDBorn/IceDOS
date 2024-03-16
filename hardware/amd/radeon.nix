@@ -1,7 +1,10 @@
 { pkgs, lib, config, ... }:
 
-let cfg = config.hardware.gpu.amd;
-in lib.mkIf cfg {
+let
+  inherit (lib) mkIf;
+
+  cfg = config.icedos.hardware.gpu.amd;
+in mkIf (cfg) {
   boot = {
     initrd.kernelModules = [ "amdgpu" ]; # Use the amdgpu drivers upon boot
     kernelParams =

@@ -1,16 +1,20 @@
 { pkgs, lib, config, ... }:
 let
+  inherit (lib) attrNames filter foldl';
+
+  cfg = config.icedos;
+
   mapAttrsAndKeys = callback: list:
-    (lib.foldl' (acc: value: acc // (callback value)) { } list);
+    (foldl' (acc: value: acc // (callback value)) { } list);
 
   vpn-toggle = import modules/vpn-watcher.nix { inherit pkgs; };
   vpn-watcher = import modules/vpn-toggle.nix { inherit pkgs; };
 in {
   home-manager.users = let
-    users = lib.filter (user: config.system.user.${user}.enable == true)
-      (lib.attrNames config.system.user);
+    users = filter (user: cfg.system.user.${user}.enable == true)
+      (attrNames cfg.system.user);
   in mapAttrsAndKeys (user:
-    let username = config.system.user.${user}.username;
+    let username = cfg.system.user.${user}.username;
     in {
       ${username}.home = {
         packages = with pkgs; [ vpn-toggle vpn-watcher psmisc ];

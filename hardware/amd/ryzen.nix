@@ -1,18 +1,19 @@
 { pkgs, lib, config, ... }:
 
 let
-  cfg = config.hardware.cpu.amd;
-  kernelPackages = config.boot.kernelPackages;
-in lib.mkIf cfg.enable {
+  inherit (lib) mkIf;
+
+  cfg = config.icedos.hardware.cpu.amd;
+in mkIf (cfg.enable) {
   boot = {
     kernelModules = [ "msr" "zenpower" ];
-    extraModulePackages = with kernelPackages; [ zenpower ];
+    extraModulePackages = with config.boot.kernelPackages; [ zenpower ];
   };
 
   hardware.cpu.amd.updateMicrocode = true;
 
   # Ryzen cpu control
-  systemd.services.zenstates = lib.mkIf cfg.undervolt.enable {
+  systemd.services.zenstates = mkIf (cfg.undervolt.enable) {
     enable = true;
     description = "Ryzen Undervolt";
     after = [ "syslog.target" "systemd-modules-load.service" ];

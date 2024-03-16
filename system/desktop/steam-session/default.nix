@@ -1,28 +1,31 @@
 { config, lib, ... }:
 
 let
-  cfg = config.applications.steam.session;
-  steamUser = config.system.user.main.username;
-  hasAmdGpu = config.hardware.gpu.amd;
+  inherit (lib) mkIf;
+
+  cfg = config.icedos;
+  session = cfg.applications.steam.session;
+  steamUser = cfg.system.user.main.username;
+  hasAmdGpu = cfg.hardware.gpu.amd;
 in {
   jovian = {
-    decky-loader.enable = (cfg.enable && cfg.decky);
+    decky-loader.enable = (session.enable && session.decky);
 
-    devices.steamdeck = lib.mkIf (cfg.enable && cfg.steamdeck) {
+    devices.steamdeck = mkIf (session.enable && session.steamdeck) {
       enable = true;
       enableGyroDsuService = true;
       autoUpdate = true;
     };
 
-    steam = lib.mkIf cfg.enable {
+    steam = mkIf (session.enable) {
       enable = true;
-      autoStart = cfg.autoStart.enable;
-      desktopSession = cfg.autoStart.desktopSession;
+      autoStart = session.autoStart.enable;
+      desktopSession = session.autoStart.desktopSession;
       user = steamUser;
     };
 
-    hardware.has.amd.gpu = (cfg.enable && hasAmdGpu);
+    hardware.has.amd.gpu = (session.enable && hasAmdGpu);
 
-    steamos.useSteamOSConfig = cfg.enable;
+    steamos.useSteamOSConfig = session.enable;
   };
 }

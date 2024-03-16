@@ -1,5 +1,7 @@
 { pkgs, config }:
-let threshold = config.desktop.hyprland.lock.networkUsageThreshold;
+let
+  cfg = config.icedos;
+  threshold = cfg.desktop.hyprland.lock.networkUsageThreshold;
 in pkgs.writeShellScriptBin "network-watcher" ''
   NETWORK_THRESHOLD=${threshold}
   INTERFACE=$(ip route | head -n 1 | grep -oP 'dev \K\S+')

@@ -2,12 +2,16 @@
 { config, pkgs, lib, ... }:
 
 let
+  inherit (lib) mkIf optional;
+
+  cfg = config.icedos;
+  username = cfg.system.user.main.username;
+
   install-proton-ge = import modules/wine-build-updater.nix {
     inherit pkgs;
     name = "proton-ge";
     buildPath = "${pkgs.proton-ge-custom}/bin";
-    installPath =
-      "/home/${config.system.user.main.username}/.local/share/Steam/compatibilitytools.d";
+    installPath = "/home/${username}/.local/share/Steam/compatibilitytools.d";
     message = "proton ge";
     type = "Proton";
   };
@@ -16,16 +20,14 @@ let
     inherit pkgs;
     name = "wine-ge";
     buildPath = "${pkgs.wine-ge}/bin";
-    installPath =
-      "/home/${config.system.user.main.username}/.local/share/bottles/runners";
+    installPath = "/home/${username}/.local/share/bottles/runners";
     message = "wine ge";
     type = "Wine";
   };
 
   steam-library-patcher = import modules/steam-library-patcher.nix {
     inherit pkgs;
-    steamPath =
-      "/home/${config.system.user.main.username}/.local/share/Steam/steamui/css/";
+    steamPath = "/home/${username}/.local/share/Steam/steamui/css/";
   };
 
   # Update the system configuration
@@ -33,7 +35,7 @@ let
     inherit pkgs config;
     command = "update";
     update = "true";
-    stash = config.system.update.stash;
+    stash = cfg.system.update.stash;
   };
 
   emulators = with pkgs; [
@@ -57,11 +59,11 @@ let
   myPackages = with pkgs; [ ];
 
   shellScripts = [ update install-wine-ge install-proton-ge ]
-    ++ lib.optional config.applications.steam.adwaitaForSteam.enable
+    ++ optional (cfg.applications.steam.adwaitaForSteam.enable)
     steam-library-patcher;
-  adwaitaForSteam = config.applications.steam.adwaitaForSteam;
-in lib.mkIf config.system.user.main.enable {
-  users.users.${config.system.user.main.username}.packages = with pkgs;
+  adwaitaForSteam = cfg.applications.steam.adwaitaForSteam;
+in mkIf (cfg.system.user.main.enable) {
+  users.users.${username}.packages = with pkgs;
     [
       bottles # Wine manager
       godot_4 # Game engine
@@ -71,7 +73,7 @@ in lib.mkIf config.system.user.main.enable {
     ] ++ emulators ++ gaming ++ myPackages ++ shellScripts;
 
   # Wayland microcompositor
-  programs.gamescope = lib.mkIf (!config.applications.steam.session.enable) {
+  programs.gamescope = mkIf (!cfg.applications.steam.session.enable) {
     enable = true;
     capSysNice = true;
   };

@@ -1,23 +1,25 @@
 { config, lib, ... }:
 
 let
+  inherit (lib) attrNames filter foldl';
+
+  cfg = config.icedos.system;
+
   mapAttrsAndKeys = callback: list:
-    (lib.foldl' (acc: value: acc // (callback value)) { } list);
-  users = lib.filter (user: config.system.user.${user}.enable == true)
-    (lib.attrNames config.system.user);
+    (foldl' (acc: value: acc // (callback value)) { } list);
+  users = filter (user: cfg.user.${user}.enable == true) (attrNames cfg.user);
 in {
   nix.settings.trusted-users = [ "root" ]
-    ++ (lib.foldl' (acc: user: acc ++ [ config.system.user.${user}.username ])
-      [ ] users);
+    ++ (foldl' (acc: user: acc ++ [ cfg.user.${user}.username ]) [ ] users);
 
   users.users = mapAttrsAndKeys (user:
     let
-      username = config.system.user.${user}.username;
-      description = config.system.user.${user}.description;
+      username = cfg.user.${user}.username;
+      description = cfg.user.${user}.description;
     in {
       ${username} = {
         createHome = true;
-        home = "${config.system.home}/${username}";
+        home = "${cfg.home}/${username}";
         useDefaultShell = true;
         # Default password used for first login, change later using passwd
         password = "1";
@@ -28,6 +30,6 @@ in {
     }) users;
 
   home-manager.users = mapAttrsAndKeys (user:
-    let username = config.system.user.${user}.username;
-    in { ${username}.home.stateVersion = config.system.version; }) users;
+    let username = cfg.user.${user}.username;
+    in { ${username}.home.stateVersion = cfg.version; }) users;
 }
