@@ -62,7 +62,7 @@ in {
             # Firefox PWA
             pwas = {
               exec =
-                "firefox --no-remote -P PWAs --name pwas ${cfg.applications.firefox.pwas.sites}";
+                "firefox --no-remote -P PWAs --name pwas ${config.icedos.applications.firefox.pwas}";
               icon = "firefox-nightly";
               name = "Firefox PWAs";
               terminal = false;

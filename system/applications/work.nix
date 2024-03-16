@@ -64,8 +64,7 @@ in mkIf (cfg.user.work.enable) {
       google-chrome # Dev browser
       php # Programming language for websites
       phpPackages.composer # Package manager for PHP
-    ] ++ myPackages ++ shellScripts
-    ++ optional (cfg.user.work.httpd) apacheHttpd;
+    ] ++ myPackages ++ shellScripts;
 
   services = {
     httpd = {

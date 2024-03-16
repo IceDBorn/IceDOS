@@ -30,10 +30,9 @@ let
     stash = "false";
   };
 
-  # Trim NixOS generations
-
   toggle-service = import modules/toggle-service.nix { inherit pkgs; };
 
+  # Trim NixOS generations
   trim-generations = pkgs.writeShellScriptBin "trim-generations"
     (builtins.readFile ../../scripts/trim-generations.sh);
 

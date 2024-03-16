@@ -2,28 +2,25 @@
 
 let
   inherit (lib) mkIf;
-
   cfg = config.icedos;
 
-  cpu-watcher = import modules/cpu-watcher.nix {
-    pkgs = pkgs;
-    config = config;
-  };
+  cpu-watcher = import modules/cpu-watcher.nix { inherit pkgs config; };
+  disk-watcher = import modules/disk-watcher.nix { inherit pkgs config; };
 
-  disk-watcher = import modules/disk-watcher.nix {
-    pkgs = pkgs;
-    config = config;
-  };
+  hyprland-startup =
+    import modules/hyprland-startup.nix { inherit pkgs config; };
 
-  network-watcher = import modules/network-watcher.nix {
-    pkgs = pkgs;
-    config = config;
-  };
+  hyprlock-wrapper = import modules/hyprlock-wrapper.nix { inherit pkgs; };
+  network-watcher = import modules/network-watcher.nix { inherit pkgs config; };
+  pipewire-watcher = import modules/pipewire-watcher.nix { inherit pkgs; };
 
-  pipewire-watcher = import modules/pipewire-watcher.nix { pkgs = pkgs; };
-
-  hyprlock-wrapper = import modules/hyprlock-wrapper.nix { pkgs = pkgs; };
-
+  shellScripts = [
+    cpu-watcher # Script to check if cpu has a usage above given number
+    disk-watcher # Script to check if any disk has a read/write usage above given numbers
+    hyprland-startup # Startup script
+    hyprlock-wrapper # Wrap hyprlock
+    pipewire-watcher # Script to check if pipewire has active links
+  ];
 in {
   imports = [
     ./configs/config.nix
@@ -40,59 +37,47 @@ in {
   };
 
   environment = mkIf (cfg.desktop.hyprland.enable) {
-    systemPackages = with pkgs; [
-      baobab # Disk usage analyser
-      brightnessctl # Brightness control
-      cliphist # Clipboard manager for wayland
-      cliphist-rofi-img # Image support for cliphist
-      cpu-watcher # Script to check if cpu has a usage above given number
-      disk-watcher # Script to check if any disk has a read/write usage above given numbers
-      feh # Minimal image viewer
-      gnome-online-accounts # Nextcloud integration
-      gnome.file-roller # Archive file manager
-      gnome.gnome-calculator # Calculator
-      gnome.gnome-calendar # Calendar
-      gnome.gnome-clocks # Clock
-      gnome.gnome-control-center # Gnome settings
-      gnome.gnome-disk-utility # Disks manager
-      gnome.gnome-keyring # Keyring daemon
-      gnome.gnome-themes-extra # Adwaita GTK theme
-      gnome.nautilus # File manager
-      grim # Screenshot tool
-      grimblast # Screenshot tool
-      hyprfreeze # Script to freeze active hyprland window
-      hypridle # Idle inhibitor
-      hyprland-per-window-layout # Per window layout
-      hyprlock # Lock
-      hyprlock-wrapper # Wrap hyprlock
-      hyprpaper # Wallpaper daemon
-      hyprpicker # Color picker
-      inputs.hycov.packages.${pkgs.system}.hycov # Alt tab functionality
-      network-watcher # Script to check if network has a usage above given number
-      networkmanagerapplet # Network manager tray icon
-      overskride # Bluetooth manager
-      pipewire-watcher # Script to check if pipewire has active links
-      polkit_gnome # Polkit manager
-      rofi-wayland # App launcher
-      rofi-wayland # App launcher
-      slurp # Monitor selector
-      swappy # Edit screenshots
-      swaynotificationcenter # Notification daemon
-      swayosd # Notifications for volume, caps lock etc.
-      sysstat # Needed for disk-watcher
-      waybar # Status bar
-      wdisplays # Displays manager
-      wl-clipboard # Clipboard daemon
-      wlogout # Logout screen
-    ];
-
-    etc = mkIf (cfg.desktop.hyprland.enable) {
-      "polkit-gnome".source =
-        "${pkgs.polkit_gnome}/libexec/polkit-gnome-authentication-agent-1";
-      "kdeconnectd".source =
-        "${pkgs.libsForQt5.kdeconnect-kde}/libexec/kdeconnectd";
-      "wlogout-icons".source = "${pkgs.wlogout}/share/wlogout/icons";
-    };
+    systemPackages = with pkgs;
+      [
+        baobab # Disk usage analyser
+        brightnessctl # Brightness control
+        cliphist # Clipboard manager for wayland
+        cliphist-rofi-img # Image support for cliphist with rofi
+        feh # Minimal image viewer
+        gnome-online-accounts # Nextcloud integration
+        gnome.file-roller # Archive file manager
+        gnome.gnome-calculator # Calculator
+        gnome.gnome-calendar # Calendar
+        gnome.gnome-clocks # Clock
+        gnome.gnome-control-center # Gnome settings
+        gnome.gnome-disk-utility # Disks manager
+        gnome.gnome-keyring # Keyring daemon
+        gnome.gnome-themes-extra # Adwaita GTK theme
+        gnome.nautilus # File manager
+        grim # Screenshot tool
+        grimblast # Screenshot tool
+        hyprfreeze # Script to freeze active hyprland window
+        hypridle # Idle inhibitor
+        hyprland-per-window-layout # Per window layout
+        hyprlock # Lock
+        hyprpaper # Wallpaper daemon
+        hyprpicker # Color picker
+        inputs.hycov.packages.${pkgs.system}.hycov # Alt tab functionality
+        network-watcher # Script to check if network has a usage above given number
+        networkmanagerapplet # Network manager tray icon
+        overskride # Bluetooth manager
+        polkit_gnome # Polkit manager
+        rofi-wayland # App launcher
+        slurp # Monitor selector
+        swappy # Edit screenshots
+        swaynotificationcenter # Notification daemon
+        swayosd # Notifications for volume, caps lock etc.
+        sysstat # Needed for disk-watcher
+        waybar # Status bar
+        wdisplays # Displays manager
+        wl-clipboard # Clipboard daemon
+        wlogout # Logout screen
+      ] ++ shellScripts;
   };
 
   services = mkIf (cfg.desktop.hyprland.enable) {

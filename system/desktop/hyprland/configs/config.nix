@@ -22,31 +22,31 @@ in {
       username = cfg.system.user.${user}.username;
       singleMonWRules = if (user != "work") then ''
         windowrulev2 = workspace 1 silent, class:^(firefox)$
-        windowrulev2 = workspace 2 silent, class:^(startup-nvchad)$
+        windowrulev2 = workspace 2 silent, class:^(nvchad)$
         windowrulev2 = workspace 3 silent, class:^(WebCord|Signal|pwas)$
         windowrulev2 = workspace 4 silent, class:^(Steam|steam|steam_app_.*)$, title:^((?!notificationtoasts.*).)*$
         windowrulev2 = workspace 4 silent, title:^(.*Steam[A-Za-z0-9\s]*)$
         windowrulev2 = workspace 5 silent, class:^(org\.gnome\.Nautilus)$
-        windowrulev2 = workspace 6 silent, class:^(io.missioncenter.MissionCenter)$ # Task Manager
-        windowrulev2 = workspace 7 silent, class:^(startup-kitty)$ # Terminal
+        windowrulev2 = workspace 6 silent, class:^(task-managers)$ # Task Manager
+        windowrulev2 = workspace 7 silent, class:^(terminals)$ # Terminal
       '' else ''
         windowrulev2 = workspace 1 silent, class:^(firefox)$
-        windowrulev2 = workspace 2 silent, class:^(startup-nvchad)$
+        windowrulev2 = workspace 2 silent, class:^(nvchad)$
         windowrulev2 = workspace 3 silent, class:^(WebCord|Signal|pwas)$
         windowrulev2 = workspace 4 silent, class:^(org\.gnome\.Nautilus)$
-        windowrulev2 = workspace 5 silent, class:^(io.missioncenter.MissionCenter)$ # Task Manager
-        windowrulev2 = workspace 6 silent, class:^(startup-kitty)$ # Terminal
+        windowrulev2 = workspace 5 silent, class:^(task-managers)$ # Task Manager
+        windowrulev2 = workspace 6 silent, class:^(terminals)$ # Terminal
       '';
 
       dualMonWRules = ''
         windowrulev2 = workspace 1 silent, class:^(firefox)$
-        windowrulev2 = workspace 2 silent, class:^(startup-nvchad)$
+        windowrulev2 = workspace 2 silent, class:^(nvchad)$
         windowrulev2 = workspace 3 silent, class:^(Steam|steam|steam_app_.*)$, title:^((?!notificationtoasts.*).)*$
         windowrulev2 = workspace 3 silent, title:^(.*Steam[A-Za-z0-9\s]*)$
         windowrulev2 = workspace 11 silent, class:^(WebCord|Signal|pwas)$
         windowrulev2 = workspace 12 silent, class:^(org\.gnome\.Nautilus)$
-        windowrulev2 = workspace 13 silent, class:^(io.missioncenter.MissionCenter)$ # Task manager
-        windowrulev2 = workspace 14 silent, class:^(startup-kitty)$ # Terminal
+        windowrulev2 = workspace 13 silent, class:^(task-managers)$ # Task manager
+        windowrulev2 = workspace 14 silent, class:^(terminals)$ # Terminal
       '';
 
       finalWRules = if (monitors.main.enable && monitors.secondary.enable) then
@@ -233,14 +233,7 @@ in {
           windowrulev2 = noinitialfocus, class:^(steam)$, title:^(notificationtoasts.*)$, floating:1
 
           # Basic functionalities
-          exec-once = sleep 2 && waybar & sleep 2 && hyprctl reload & /etc/polkit-gnome & swaync & hyprpaper & /etc/kdeconnectd & hyprland-per-window-layout & hypridle & swayosd
-          # Tray applications
-          exec-once = kdeconnect-indicator & cliphist wipe & wl-paste --type text --watch cliphist store & wl-paste --type image --watch cliphist store & nm-applet --indicator
-          # Standard applications
-          exec-once = firefox & nautilus -w & nautilus -w & firefox --no-remote -P PWAs --name pwas ${pwas} & steam
-          # Terminals/Task managers/IDEs
-          exec-once = kitty --class startup-nvchad tmux new -s nvchad nvim & kitty --class startup-kitty tmux new -s terminals \; split-window -v \; select-pane -U \; split-window -h \; select-pane -D & missioncenter
-
+          exec-once = hyprland-startup
 
           plugin = ${hycov}/lib/libhycov.so
 

@@ -16,7 +16,7 @@
           };
 
           # Sites to launch on Firefox PWAs
-          pwas.sites = mkOption {
+          pwas = mkOption {
             type = types.str;
             default =
               "https://app.tuta.com https://icedborn.github.io/icedchat https://discord.com/app https://dtekteam.slack.com/ https://web.skype.com/";
@@ -618,11 +618,11 @@
                 default = "IceDBorn";
               };
 
-            email = mkOption {
-              type = types.str;
-              default = "git.outsider841@simplelogin.fr";
+              email = mkOption {
+                type = types.str;
+                default = "git.outsider841@simplelogin.fr";
+              };
             };
-          };
 
             desktop = {
               idle = {

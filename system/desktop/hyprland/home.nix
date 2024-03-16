@@ -1,4 +1,4 @@
-{ config, lib, ... }:
+{ config, lib, pkgs, ... }:
 
 let
   inherit (lib) attrNames filter foldl' mkIf;
@@ -38,6 +38,11 @@ in {
           # Add wlogout config files
           ".config/wlogout" = {
             source = configs/wlogout;
+            recursive = true;
+          };
+
+          ".config/wlogout/icons" = {
+            source = "${pkgs.wlogout}/share/wlogout/icons";
             recursive = true;
           };
 
