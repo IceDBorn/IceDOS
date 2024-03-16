@@ -4,10 +4,10 @@
 let
   inherit (lib) mkIf optional;
 
-  cfg = config.icedos;
-  username = cfg.system.user.work.username;
+  cfg = config.icedos.system;
+  username = cfg.user.work.username;
 
-  stashLock = if (cfg.system.update.stashFlakeLock) then "1" else "0";
+  stashLock = if (cfg.update.stashFlakeLock) then "1" else "0";
 
   sail = import modules/run-command.nix {
     inherit pkgs;
@@ -20,7 +20,7 @@ let
     inherit pkgs config;
     command = "update";
     update = "true";
-    stash = cfg.system.update.stash;
+    stash = cfg.update.stash;
   };
 
   # Packages to add for a fork of the config
@@ -28,7 +28,7 @@ let
 
   shellScripts = [ sail update ];
 
-  gitLocation = "${cfg.system.home}/${username}/git/";
+  gitLocation = "${cfg.home}/${username}/git/";
 
   multiStoreProjects = {
     vaza = {
@@ -57,7 +57,7 @@ let
     Alias /${multiStoreProjects.tosupermou.alias} ${gitLocation}${multiStoreProjects.tosupermou.folder}
     Alias /${multiStoreProjects.papiros.alias} ${gitLocation}${multiStoreProjects.papiros.folder}
   '';
-in mkIf (cfg.system.user.work.enable) {
+in mkIf (cfg.user.work.enable) {
   users.users.${username}.packages = with pkgs;
     [
       dbeaver # Database manager
@@ -65,9 +65,9 @@ in mkIf (cfg.system.user.work.enable) {
       php # Programming language for websites
       phpPackages.composer # Package manager for PHP
     ] ++ myPackages ++ shellScripts
-    ++ optional (cfg.system.user.work.httpd) apacheHttpd;
+    ++ optional (cfg.user.work.httpd) apacheHttpd;
 
-  services = mkIf (cfg.system.user.work.httpd) {
+  services = mkIf (cfg.user.work.httpd) {
     httpd = {
       enable = true;
       user = username;
