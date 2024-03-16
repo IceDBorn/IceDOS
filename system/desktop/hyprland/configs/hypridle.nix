@@ -26,18 +26,20 @@ in {
         }
 
         listener {
-            timeout = ${config.desktop.secondsToLock}
+            timeout = ${config.system.user.${user}.desktop.idle.lock.seconds}
             on-timeout = swaylock-wrapper lock
         }
 
         listener {
-            timeout = ${config.desktop.secondsToDisableMonitors}
+            timeout = ${
+              config.system.user.${user}.desktop.idle.disableMonitors.seconds
+            }
             on-timeout = swaylock-wrapper off
             on-resume = hyprctl dispatch dpms on
         }
 
         listener {
-            timeout = ${cfg.secondsToSuspend}
+            timeout = ${config.system.user.${user}.desktop.idle.suspend.seconds}
             on-timeout = swaylock-wrapper suspend
         }
       '';

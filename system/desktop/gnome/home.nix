@@ -52,13 +52,16 @@ in {
           # Turn off screen
           "org/gnome/desktop/session" = {
             idle-delay =
-              config.system.user.${user}.desktop.idle.disableMonitors;
+              if (config.system.user.${user}.desktop.idle.disableMonitors.enable) then
+                config.system.user.${user}.desktop.idle.disableMonitors.seconds
+              else
+                0;
           };
 
           # Set screen lock
           "org/gnome/desktop/screensaver" = {
-            lock-enabled = config.system.user.${user}.desktop.idle.lock;
-            lock-delay = config.desktop.secondsToLock;
+            lock-enabled = config.system.user.${user}.desktop.idle.lock.enable;
+            lock-delay = config.system.user.${user}.desktop.idle.lock.seconds;
           };
 
           # Disable system sounds
@@ -74,8 +77,15 @@ in {
           };
 
           "org/gnome/settings-daemon/plugins/power" = {
-            # Disable auto suspend
-            sleep-inactive-ac-type = "nothing";
+            # Auto suspend
+            sleep-inactive-ac-type =
+              if (config.system.user.${user}.desktop.idle.suspend.enable) then
+                "suspend"
+              else
+                "nothing";
+            # Auto suspend timeout
+            sleep-inactive-ac-timeout =
+              config.system.user.${user}.desktop.idle.suspend.seconds;
             # Power button shutdown
             power-button-action = config.desktop.gnome.powerButtonAction;
           };
