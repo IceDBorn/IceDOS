@@ -67,7 +67,7 @@ in mkIf (cfg.user.work.enable) {
     ] ++ myPackages ++ shellScripts
     ++ optional (cfg.user.work.httpd) apacheHttpd;
 
-  services = mkIf (cfg.user.work.httpd) {
+  services = {
     httpd = {
       enable = true;
       user = username;

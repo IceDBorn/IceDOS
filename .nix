@@ -618,16 +618,11 @@
                 default = "IceDBorn";
               };
 
-              email = mkOption {
-                type = types.str;
-                default = "git.outsider841@simplelogin.fr";
-              };
+            email = mkOption {
+              type = types.str;
+              default = "git.outsider841@simplelogin.fr";
             };
-
-            httpd = mkOption {
-              type = types.bool;
-              default = true;
-            };
+          };
 
             desktop = {
               idle = {

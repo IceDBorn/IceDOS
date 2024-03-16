@@ -31,6 +31,9 @@ let
   };
 
   # Trim NixOS generations
+
+  toggle-service = import modules/toggle-service.nix { inherit pkgs; };
+
   trim-generations = pkgs.writeShellScriptBin "trim-generations"
     (builtins.readFile ../../scripts/trim-generations.sh);
 
@@ -102,6 +105,7 @@ let
     lout
     nix-gc
     rebuild
+    toggle-service
     trim-generations
     update-codium-extensions
   ];
