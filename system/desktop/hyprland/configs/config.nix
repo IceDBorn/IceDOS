@@ -126,7 +126,7 @@ in {
           bind = $mainMod SHIFT, Print, exec, grimblast --freeze edit area
           bind = ALT, Print, exec, grimblast copy
           bind = $mainMod ALT, Print, exec, grimblast edit
-          bind = $mainMod, L, exec, swaylock-wrapper lock force
+          bind = $mainMod, L, exec, hyprlock-wrapper lock force
           bind = $mainMod SHIFT, L, exec, wlogout
           bind = $mainMod, N, exec, swaync-client -t -sw
           bind = $mainMod SHIFT, N, exec, swaync-client -d -sw

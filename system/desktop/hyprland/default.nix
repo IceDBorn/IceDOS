@@ -18,7 +18,7 @@ let
 
   pipewire-watcher = import modules/pipewire-watcher.nix { pkgs = pkgs; };
 
-  swaylock-wrapper = import modules/swaylock-wrapper.nix { pkgs = pkgs; };
+  hyprlock-wrapper = import modules/hyprlock-wrapper.nix { pkgs = pkgs; };
 
   cfg = config.desktop.hyprland;
 in {
@@ -60,6 +60,8 @@ in {
       hyprfreeze # Script to freeze active hyprland window
       hypridle # Idle inhibitor
       hyprland-per-window-layout # Per window layout
+      hyprlock # Lock
+      hyprlock-wrapper # Wrap hyprlock
       hyprpaper # Wallpaper daemon
       hyprpicker # Color picker
       inputs.hycov.packages.${pkgs.system}.hycov # Alt tab functionality
@@ -72,8 +74,6 @@ in {
       rofi-wayland # App launcher
       slurp # Monitor selector
       swappy # Edit screenshots
-      swaylock-effects # Lock
-      swaylock-wrapper # Wrap swaylock
       swaynotificationcenter # Notification daemon
       swayosd # Notifications for volume, caps lock etc.
       sysstat # Needed for disk-watcher
@@ -101,23 +101,6 @@ in {
   security = lib.mkIf (cfg.enable) {
     polkit.enable = true;
     pam.services.login.enableGnomeKeyring = true;
-
-    # Needed for unlocking to work
-    pam.services.swaylock.text = ''
-      # Account management.
-      account required pam_unix.so
-
-      # Authentication management.
-      auth sufficient pam_unix.so   likeauth try_first_pass
-      auth required pam_deny.so
-
-      # Password management.
-      password sufficient pam_unix.so nullok sha512
-
-      # Session management.
-      session required pam_env.so conffile=/etc/pam/environment readenv=0
-      session required pam_unix.so
-    '';
   };
 
   systemd.services.swayosd-input = lib.mkIf (cfg.enable) {

@@ -46,6 +46,9 @@ in {
           '';
 
           ".config/hypr/hyprpaper.jpg".source = configs/hyprpaper.jpg;
+
+          # Add hyprlock configuration
+          ".config/hypr/hyprlock.conf".source = configs/hyprlock.conf;
         };
       };
     }) users;
