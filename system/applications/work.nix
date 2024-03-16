@@ -62,7 +62,7 @@ in lib.mkIf cfg.enable {
       phpPackages.composer # Package manager for PHP
     ] ++ myPackages ++ shellScripts ++ lib.optional cfg.httpd apacheHttpd;
 
-  services = lib.mkIf cfg.httpd {
+  services = {
     httpd = {
       enable = true;
       user = config.system.user.work.username;
