@@ -11,7 +11,7 @@ in {
   jovian = {
     decky-loader.enable = (session.enable && session.decky);
 
-    devices.steamdeck = mkIf (session.enable && session.steamdeck) {
+    devices.steamdeck = mkIf (cfg.hardware.steamdeck) {
       enable = true;
       enableGyroDsuService = true;
       autoUpdate = true;

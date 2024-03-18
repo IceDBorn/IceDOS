@@ -82,11 +82,6 @@
               type = types.bool;
               default = true;
             };
-
-            steamdeck = mkOption {
-              type = types.bool;
-              default = false;
-            };
           };
         };
       };
@@ -450,6 +445,11 @@
         mounts = mkOption {
           type = types.bool;
           default = true;
+        };
+
+        steamdeck = mkOption {
+          type = types.bool;
+          default = false;
         };
 
         virtualisation = {

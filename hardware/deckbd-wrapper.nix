@@ -3,10 +3,10 @@
 let
   inherit (lib) mkIf;
 
-  cfg = config.icedos.applications.steam.session;
+  cfg = config.icedos.hardware;
 
   deckbd = "${pkgs.deckbd}/bin/deckbd";
-in mkIf (cfg.enable && cfg.steamdeck) {
+in mkIf (cfg.steamdeck) {
   boot.initrd = {
     preLVMCommands = ''
       DECKBD_RETRIES=10

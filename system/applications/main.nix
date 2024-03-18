@@ -51,7 +51,6 @@ let
     papermc # Minecraft server
     prismlauncher # Minecraft launcher
     protontricks # Winetricks for proton prefixes
-    steam # Gaming platform
     steamtinkerlaunch # General tweaks for games
   ];
 
@@ -73,9 +72,18 @@ in mkIf (cfg.system.user.main.enable) {
     ] ++ emulators ++ gaming ++ myPackages ++ shellScripts;
 
   # Wayland microcompositor
-  programs.gamescope = mkIf (!cfg.applications.steam.session.enable) {
-    enable = true;
-    capSysNice = true;
+  programs = {
+    gamescope = mkIf (!cfg.applications.steam.session.enable) {
+      enable = true;
+      capSysNice = true;
+    };
+
+    steam = {
+      enable = true;
+
+      # Needed for steam controller to work on wayland compositors when the steam client is open
+      extest.enable = cfg.hardware.steamdeck;
+    };
   };
 
   services = {

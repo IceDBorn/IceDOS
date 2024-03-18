@@ -11,8 +11,7 @@ let
     (foldl' (acc: value: acc // (callback value)) { } list);
 
   hycov = inputs.hycov.packages.${pkgs.system}.hycov;
-  deckRotation =
-    if (cfg.applications.steam.session.steamdeck) then ",transform,3" else "";
+  deckRotation = if (cfg.hardware.steamdeck) then ",transform,3" else "";
 in {
   home-manager.users = let
     users = filter (user: cfg.system.user.${user}.enable == true)
