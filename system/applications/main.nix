@@ -1,5 +1,5 @@
 # PACKAGES INSTALLED ON MAIN USER
-{ config, pkgs, lib, ... }:
+{ config, pkgs, lib, inputs, ... }:
 
 let
   inherit (lib) mkIf optional;
@@ -39,11 +39,12 @@ let
   };
 
   emulators = with pkgs; [
-    cemu # Wii U Emulator
-    duckstation # PS1 Emulator
-    pcsx2 # PS2 Emulator
-    ppsspp # PSP Emulator
-    rpcs3 # PS3 Emulator
+    cemu # Wii U
+    duckstation # PS1
+    inputs.suyu.packages.${pkgs.system}.suyu # Switch
+    pcsx2 # PS2
+    ppsspp # PSP
+    rpcs3 # PS3
   ];
 
   gaming = with pkgs; [

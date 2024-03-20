@@ -31,15 +31,16 @@
       inputs.hyprland.follows = "hyprland";
     };
 
-    shell-in-netns.url = "github:jim3692/shell-in-netns";
     hyprland.url = "github:hyprwm/Hyprland";
     phps.url = "github:fossar/nix-phps";
     pipewire-screenaudio.url = "github:IceDBorn/pipewire-screenaudio";
+    shell-in-netns.url = "github:jim3692/shell-in-netns";
+    suyu.url = "git+https:///codeberg.org/K900/yuzu-flake";
   };
 
   outputs = { self, chaotic, master, small, stable, unstable, home-manager
     , nerivations, nur, steam-session, hycov, hyprland, phps
-    , pipewire-screenaudio, shell-in-netns }@inputs: {
+    , pipewire-screenaudio, shell-in-netns, suyu }@inputs: {
       nixosConfigurations.${unstable.lib.fileContents "/etc/hostname"} =
         unstable.lib.nixosSystem {
           system = "x86_64-linux";
