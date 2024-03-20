@@ -3,12 +3,11 @@
 let
   inherit (lib) attrNames filter foldl' mkIf;
 
-  cfg = config.icedos;
-  monitors = cfg.hardware.monitors;
-  pwas = cfg.applications.firefox.pwas.sites;
-
   mapAttrsAndKeys = callback: list:
     (foldl' (acc: value: acc // (callback value)) { } list);
+
+  cfg = config.icedos;
+  monitors = cfg.hardware.monitors;
 
   hycov = inputs.hycov.packages.${pkgs.system}.hycov;
   deckRotation = if (cfg.hardware.steamdeck) then ",transform,3" else "";
