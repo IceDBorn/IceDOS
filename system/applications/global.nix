@@ -30,7 +30,7 @@ let
     stash = "false";
   };
 
-  toggle-service = import modules/toggle-service.nix { inherit pkgs; };
+  toggle-services = import modules/toggle-services.nix { inherit pkgs; };
 
   # Trim NixOS generations
   trim-generations = pkgs.writeShellScriptBin "trim-generations"
@@ -104,7 +104,7 @@ let
     lout
     nix-gc
     rebuild
-    toggle-service
+    toggle-services
     trim-generations
     update-codium-extensions
   ];
