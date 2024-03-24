@@ -9,6 +9,12 @@ let
 
   vpn-toggle = import modules/vpn-watcher.nix { inherit pkgs; };
   vpn-watcher = import modules/vpn-toggle.nix { inherit pkgs; };
+
+  battery = if (cfg.hardware.laptop.enable) then ''
+    "custom/separator",
+    "battery",
+  '' else
+    "";
 in {
   home-manager.users = let
     users = filter (user: cfg.system.user.${user}.enable == true)
@@ -38,9 +44,17 @@ in {
                 "custom/separator",
                 "clock",
                 "custom/notification",
+                ${battery}
                 "custom/separator",
                 "custom/power",
               ],
+
+              "battery": {
+                "interval": 60,
+                "format": "{icon}",
+                "format-icons": ["", "", "", "", ""],
+                "tooltip-format": "{capacity}% {timeTo}",
+              },
 
               "bluetooth": {
                 "format": "<span foreground='red'>󰂲</span>",

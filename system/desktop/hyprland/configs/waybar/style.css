@@ -20,7 +20,6 @@ window#waybar {
   margin: 0 2.5px 0 2.5px;
 }
 
-#battery,
 #bluetooth,
 #custom-media,
 #custom-menu,
@@ -39,6 +38,11 @@ window#waybar {
 
 #clock {
   padding: 0 10px 0 10px;
+  font-weight: bold;
+}
+
+#battery {
+  padding: 0 20px 0 10px;
   font-weight: bold;
 }
 
