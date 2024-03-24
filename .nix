@@ -36,7 +36,7 @@
         # Hide kitty top bar
         kitty.hideDecorations = mkOption {
           type = types.bool;
-          default = true;
+          default = false;
         };
 
         steam = {
@@ -68,13 +68,13 @@
           session = {
             enable = mkOption {
               type = types.bool;
-              default = false;
+              default = true;
             };
 
             autoStart = {
               enable = mkOption {
                 type = types.bool;
-                default = false;
+                default = true;
               };
 
               desktopSession = mkOption {
@@ -133,7 +133,7 @@
         autologin = {
           enable = mkOption {
             type = types.bool;
-            default = true;
+            default = false;
           };
 
           # If false, defaults to work user
@@ -146,7 +146,7 @@
         gdm = {
           enable = mkOption {
             type = types.bool;
-            default = true;
+            default = false;
           };
 
           autoSuspend = mkOption {
@@ -303,7 +303,7 @@
             undervolt = {
               enable = mkOption {
                 type = types.bool;
-                default = true;
+                default = false;
               };
 
               value = mkOption {
@@ -350,12 +350,12 @@
         laptop = {
           enable = mkOption {
             type = types.bool;
-            default = false;
+            default = true;
           };
 
           autoCpuFreq = mkOption {
             type = types.bool;
-            default = true;
+            default = false;
           };
         };
 
@@ -368,17 +368,17 @@
 
             name = mkOption {
               type = types.str;
-              default = "DP-1";
+              default = "eDP-1";
             };
 
             resolution = mkOption {
               type = types.str;
-              default = "1920x1080";
+              default = "800x1280";
             };
 
             refreshRate = mkOption {
               type = types.str;
-              default = "144";
+              default = "60";
             };
 
             position = mkOption {
@@ -400,7 +400,7 @@
           secondary = {
             enable = mkOption {
               type = types.bool;
-              default = true;
+              default = false;
             };
 
             name = mkOption {
@@ -438,7 +438,7 @@
         networking = {
           hostname = mkOption {
             type = types.str;
-            default = "desktop";
+            default = "deck";
           };
 
           hosts.enable = mkOption {
@@ -455,12 +455,12 @@
         # Set to false if hardware/mounts.nix is not correctly configured
         mounts = mkOption {
           type = types.bool;
-          default = true;
+          default = false;
         };
 
         steamdeck = mkOption {
           type = types.bool;
-          default = false;
+          default = true;
         };
 
         virtualisation = {
@@ -546,12 +546,12 @@
 
             username = mkOption {
               type = types.str;
-              default = "icedborn";
+              default = "deck";
             };
 
             description = mkOption {
               type = types.str;
-              default = "IceDBorn";
+              default = "Deck";
             };
 
             git = {
