@@ -119,13 +119,6 @@ in {
             force = true;
           };
 
-          # Add user.js
-          ".mozilla/firefox/privacy/user.js".source =
-            if (cfg.applications.firefox.privacy) then
-              "${pkgs.arkenfox-userjs}/user.js"
-            else
-              configs/firefox/user.js;
-
           # Install firefox gnome theme
           ".mozilla/firefox/privacy/chrome/firefox-gnome-theme" =
             mkIf (cfg.applications.firefox.gnomeTheme) {
@@ -146,10 +139,6 @@ in {
               ''@import "firefox-gnome-theme/userContent.css"''
             else
               "";
-
-          # Create second firefox profile for pwas
-          ".mozilla/firefox/pwas/user.js".source =
-            "${pkgs.arkenfox-userjs}/user.js";
 
           ".mozilla/firefox/pwas/chrome" = {
             source = pkgs.firefox-cascade;

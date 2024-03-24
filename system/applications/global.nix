@@ -262,7 +262,4 @@ in {
       logitech-udev-rules # Needed for solaar to work
     ];
   };
-
-  nerivations.arkenfox-userjs.userjs =
-    builtins.readFile ./configs/firefox/user-overrides.js;
 }

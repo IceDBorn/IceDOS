@@ -10,6 +10,11 @@
             default = true;
           };
 
+          overrides = mkOption {
+            type = types.bool;
+            default = true;
+          };
+
           privacy = mkOption {
             type = types.bool;
             default = true;
