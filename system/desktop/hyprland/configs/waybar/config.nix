@@ -28,6 +28,7 @@ in {
               "modules-right": [
                 "tray",
                 "custom/vpn",
+                "idle_inhibitor",
                 "custom/separator",
                 "bluetooth",
                 "custom/separator",
@@ -118,6 +119,7 @@ in {
                 "format": "•",
                 "tooltip": false
               },
+
               "custom/notification": {
                 "tooltip": false,
                 "format": "{icon}",
@@ -131,6 +133,14 @@ in {
                 "exec-if": "which swaync-client",
                 "exec": "swaync-client -swb",
                 "escape": true
+              },
+
+              "idle_inhibitor": {
+                "format": "{icon}",
+                "format-icons": {
+                  "activated": "󰅶",
+                  "deactivated": "󰾪"
+                }
               },
             }
           '';
