@@ -10,8 +10,9 @@ let
   vpn-toggle = import modules/vpn-watcher.nix { inherit pkgs; };
   vpn-watcher = import modules/vpn-toggle.nix { inherit pkgs; };
 
-  battery = if (cfg.hardware.laptop.enable) then ''
+  laptop = if (cfg.hardware.laptop.enable) then ''
     "custom/separator",
+    "backlight",
     "battery",
   '' else
     "";
@@ -44,10 +45,17 @@ in {
                 "custom/separator",
                 "clock",
                 "custom/notification",
-                ${battery}
+                ${laptop}
                 "custom/separator",
                 "custom/power",
               ],
+
+              "backlight": {
+                "device": "${cfg.desktop.hyprland.backlight}",
+                "format": "{icon}",
+                "format-icons": ["󰃞", "󰃝", "󰃟", "󰃠"],
+                "tooltip-format": "{percent}%"
+              },
 
               "battery": {
                 "interval": 60,
@@ -106,7 +114,6 @@ in {
                 "format": "{}",
                 "format-en": "US",
                 "format-gr": "GR",
-                "on-click": "hyprctl switchxkblayout kingston-hyperx-alloy-fps-pro-mechanical-gaming-keyboard-1 next"
               },
 
               "hyprland/window": {

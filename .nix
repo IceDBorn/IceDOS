@@ -240,6 +240,12 @@
             default = true;
           };
 
+          # Find backlight unit using brightnessctl
+          backlight = mkOption {
+            type = types.str;
+            default = "amdgpu_bl0";
+          };
+
           lock = {
             secondsToLowerBrightness = mkOption {
               type = types.str;

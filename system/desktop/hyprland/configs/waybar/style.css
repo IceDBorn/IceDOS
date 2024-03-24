@@ -20,6 +20,7 @@ window#waybar {
   margin: 0 2.5px 0 2.5px;
 }
 
+#backlight,
 #bluetooth,
 #custom-media,
 #custom-menu,
