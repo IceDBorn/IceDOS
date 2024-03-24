@@ -30,8 +30,8 @@ window#waybar {
 #memory,
 #mode,
 #network,
-#pulseaudio,
-#pulseaudio.muted #temperature,
+#wireplumber,
+#wireplumber.muted #temperature,
 #tray,
 #window {
   padding: 0 10px;

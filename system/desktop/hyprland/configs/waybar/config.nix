@@ -33,7 +33,7 @@ in {
                 "custom/separator",
                 "hyprland/language",
                 "custom/separator",
-                "pulseaudio",
+                "wireplumber",
                 "custom/separator",
                 "clock",
                 "custom/notification",
@@ -70,16 +70,11 @@ in {
                 "on-click-right": "gnome-calendar"
               },
 
-              "pulseaudio": {
+              "wireplumber": {
                 "format": "{icon}  {volume}",
                 "format-muted": "󰝟",
-                "format-icons": {
-                  "headphone": "󰋋",
-                  "headset": "󰋎",
-                  "phone": "",
-                  "car": "󰄋",
-                  "default": ["󰕿", "󰖀", "󰕾"]
-                },
+                "format-icons":  ["󰕿", "󰖀", "󰕾"],
+                "reverse-scrolling": 1,
                 "scroll-step": 5,
                 "on-click": "pavucontrol"
               },
