@@ -1,5 +1,20 @@
 #!/usr/bin/env bash
 
+handleReboot() {
+    echo "Rebooting, abort by pressing 'CTRL + C'"
+    for i in {10..1}
+    do
+        if [ "$i" -eq "1" ]; then
+            echo -en "\rRebooting in $i second... "
+        else
+            echo -en "\rRebooting in $i seconds..."
+        fi
+        sleep 1
+    done
+
+    reboot
+}
+
 # cd into script's folder
 cd "$(cd "$(dirname "$0")" && pwd)" || exit
 
@@ -16,7 +31,7 @@ echo "Hello $username!"
 read -r -p "Have you customized the setup to your needs? [y/N] " response
 if [[ "$response" =~ ^([yY][eE][sS]|[yY])$ ]]
 then
-    bash scripts/build.sh
+    handleReboot
 
     if [ -f "etc/icedos-version" ]
     then
@@ -27,6 +42,6 @@ then
     fi
 else
     printf "You really should:
-  - Edit .nix, configuration.nix and comment out anything you do not want to setup.
+    - Edit .nix, configuration.nix and comment out anything you do not want to setup.
     - Edit mounts.nix or disable it.$RED$BOLD An invalid mounts.nix configuration can break your system!$NC$NORMAL\n"
 fi
