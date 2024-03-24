@@ -41,7 +41,7 @@ let
   emulators = with pkgs; [
     cemu # Wii U
     duckstation # PS1
-    inputs.suyu.packages.${pkgs.system}.suyu # Switch
+    inputs.yuzu.packages.${pkgs.system}.early-access # Switch
     pcsx2 # PS2
     ppsspp # PSP
     rpcs3 # PS3
