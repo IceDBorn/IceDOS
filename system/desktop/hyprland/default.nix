@@ -27,6 +27,7 @@ in {
     ./configs/hypridle.nix
     ./configs/swaync/config.nix
     ./configs/waybar/config.nix
+    ./configs/wleave/style.nix
     ./home.nix
   ];
 
@@ -76,7 +77,7 @@ in {
         waybar # Status bar
         wdisplays # Displays manager
         wl-clipboard # Clipboard daemon
-        wlogout # Logout screen
+        wleave # Logout screen
       ] ++ shellScripts;
   };
 

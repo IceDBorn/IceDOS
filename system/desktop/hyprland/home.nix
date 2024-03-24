@@ -35,16 +35,8 @@ in {
             recursive = true;
           };
 
-          # Add wlogout config files
-          ".config/wlogout" = {
-            source = configs/wlogout;
-            recursive = true;
-          };
-
-          ".config/wlogout/icons" = {
-            source = "${pkgs.wlogout}/share/wlogout/icons";
-            recursive = true;
-          };
+          # Add wleave layout
+          ".config/wleave/layout" = { source = configs/wleave/layout; };
 
           # Add hyprpaper config files
           ".config/hypr/hyprpaper.conf".text = ''

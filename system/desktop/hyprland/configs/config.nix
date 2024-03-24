@@ -126,7 +126,7 @@ in {
           bind = ALT, Print, exec, grimblast copy
           bind = $mainMod ALT, Print, exec, grimblast edit
           bind = $mainMod, L, exec, hyprlock-wrapper lock force
-          bind = $mainMod SHIFT, L, exec, wlogout
+          bind = $mainMod SHIFT, L, exec, wleave
           bind = $mainMod, N, exec, swaync-client -t -sw
           bind = $mainMod SHIFT, N, exec, swaync-client -d -sw
           bind = $mainMod, C, exec, hyprpicker --autocopy
@@ -230,7 +230,6 @@ in {
           # Remove initial focus from apps
           windowrulev2 = noinitialfocus, class:^(steam)$, title:^(notificationtoasts.*)$, floating:1
 
-          # Basic functionalities
           exec-once = hyprland-startup
 
           plugin = ${hycov}/lib/libhycov.so
