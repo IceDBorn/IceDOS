@@ -44,6 +44,15 @@ window#waybar {
   padding-right: 2px;
 }
 
+#backlight {
+  padding-right: 4px;
+}
+
+#battery {
+  margin-left: 10px;
+  padding-right: 9px;
+}
+
 #custom-power {
   font-size: 12px;
   margin-right: 15px;

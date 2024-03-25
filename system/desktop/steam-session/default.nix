@@ -1,4 +1,4 @@
-{ config, lib, ... }:
+{ lib, config, pkgs, ... }:
 
 let
   inherit (lib) mkIf;
@@ -9,7 +9,10 @@ let
   hasAmdGpu = cfg.hardware.gpu.amd;
 in {
   jovian = {
-    decky-loader.enable = (session.enable && session.decky);
+    decky-loader = {
+      enable = (session.enable && session.decky);
+      package = pkgs.decky-loader-prerelease;
+    };
 
     devices.steamdeck = mkIf (cfg.hardware.steamdeck) {
       enable = true;
