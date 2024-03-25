@@ -94,7 +94,7 @@ in {
               },
 
               "wireplumber": {
-                "format": "{icon}  {volume}",
+                "format": "{icon} {volume}",
                 "format-muted": "󰝟",
                 "format-icons":  ["󰕿", "󰖀", "󰕾"],
                 "reverse-scrolling": 1,
@@ -119,7 +119,7 @@ in {
               "hyprland/window": {
                 "format": "{}",
                 "separate-outputs": true,
-                "max-length": 40
+                "max-length": 42
               },
 
               "custom/power": {
@@ -161,7 +161,8 @@ in {
                 "format-icons": {
                   "activated": "󰅶",
                   "deactivated": "󰾪"
-                }
+                },
+                "tooltip": false
               },
             }
           '';
