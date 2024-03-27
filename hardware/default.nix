@@ -1,4 +1,4 @@
-{ lib, config, pkgs, ... }:
+{ lib, config, ... }:
 
 let
   inherit (lib) mkIf optional;
@@ -13,8 +13,7 @@ in {
         true; # Support Direct Rendering for 32-bit applications (such as Wine) on 64-bit systems
     };
 
-    xpadneo.enable =
-      !cfg.hardware.xpadneoUnstable; # Enable XBOX Gamepad bluetooth driver
+    xpadneo.enable = true; # Enable XBOX Gamepad bluetooth driver
     bluetooth.enable = true;
     uinput.enable = true; # Enable uinput support
   };
@@ -44,10 +43,9 @@ in {
   };
 
   boot = {
-    kernelModules = [
-      "v4l2loopback" # Virtual camera
-      "uinput"
-    ] ++ optional (cfg.hardware.xpadneoUnstable) "hid_xpadneo";
+    # Virtual camera
+    kernelModules = [ "v4l2loopback" ];
+    extraModulePackages = with config.boot.kernelPackages; [ v4l2loopback ];
 
     kernelParams = [
       "transparent_hugepage=always"
@@ -57,10 +55,6 @@ in {
       "video=${monitors.main.name}:${monitors.main.resolution}@${monitors.main.refreshRate},rotate=${monitors.main.rotation}"
       ++ optional (monitors.secondary.enable)
       "video=${monitors.secondary.name}:${monitors.secondary.resolution}@${monitors.secondary.refreshRate},rotate=${monitors.secondary.rotation}";
-
-    extraModulePackages = with config.boot.kernelPackages;
-      [ v4l2loopback ]
-      ++ optional (cfg.hardware.xpadneoUnstable) pkgs.xpadneo-git;
 
     kernel.sysctl = {
       # Fixes crash when loading maps in CS2
