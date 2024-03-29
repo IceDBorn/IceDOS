@@ -63,7 +63,6 @@ in {
         hyprlock # Lock
         hyprpaper # Wallpaper daemon
         hyprpicker # Color picker
-        inputs.hycov.packages.${pkgs.system}.hycov # Alt tab functionality
         network-watcher # Script to check if network has a usage above given number
         networkmanagerapplet # Network manager tray icon
         overskride # Bluetooth manager

@@ -26,11 +26,6 @@
     };
 
     # Apps
-    hycov = {
-      url = "github:IceDBorn/hycov";
-      inputs.hyprland.follows = "hyprland";
-    };
-
     hyprland.url = "github:hyprwm/Hyprland";
     phps.url = "github:fossar/nix-phps";
     pipewire-screenaudio.url = "github:IceDBorn/pipewire-screenaudio";
@@ -39,8 +34,8 @@
   };
 
   outputs = { self, chaotic, master, small, stable, unstable, home-manager
-    , nerivations, nur, steam-session, hycov, hyprland, phps
-    , pipewire-screenaudio, shell-in-netns, yuzu }@inputs: {
+    , nerivations, nur, steam-session, hyprland, phps, pipewire-screenaudio
+    , shell-in-netns, yuzu }@inputs: {
       nixosConfigurations.${unstable.lib.fileContents "/etc/hostname"} =
         unstable.lib.nixosSystem {
           system = "x86_64-linux";

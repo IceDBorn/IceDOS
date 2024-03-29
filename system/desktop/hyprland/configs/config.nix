@@ -1,4 +1,4 @@
-{ config, lib, inputs, pkgs, ... }:
+{ config, lib, ... }:
 
 let
   inherit (lib) attrNames filter foldl' mkIf;
@@ -9,7 +9,6 @@ let
   cfg = config.icedos;
   monitors = cfg.hardware.monitors;
 
-  hycov = inputs.hycov.packages.${pkgs.system}.hycov;
   deckRotation = if (cfg.hardware.steamdeck) then ",transform,3" else "";
 in {
   home-manager.users = let
@@ -231,35 +230,6 @@ in {
           windowrulev2 = noinitialfocus, class:^(steam)$, title:^(notificationtoasts.*)$, floating:1
 
           exec-once = hyprland-startup
-
-          plugin = ${hycov}/lib/libhycov.so
-
-          plugin {
-            hycov {
-              alt_toggle_auto_next = 1
-              auto_exit = 1
-              auto_fullscreen = 1
-              disable_spawn = 0
-              disable_workspace_change = 0
-              enable_alt_release_exit = 1
-              enable_gesture = 0
-              enable_hotarea = 1
-              hotarea_size = 10
-              move_focus_distance = 100
-              only_active_monitor = 1
-              only_active_workspace = 1
-              overview_gappi = 10
-              overview_gappo = 10
-              swipe_fingers = 4
-            }
-          }
-
-          bind = ALT, tab, hycov:toggleoverview
-          bind = $mainMod, tab, hycov:toggleoverview, forceall
-          bind = ALT, left, hycov:movefocus, l
-          bind = ALT, right, hycov:movefocus, r
-          bind = ALT, up, hycov:movefocus, u
-          bind = ALT, down, hycov:movefocus, d
         '';
       };
     }) users;
