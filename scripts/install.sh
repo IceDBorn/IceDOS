@@ -31,12 +31,12 @@ echo "Hello $username!"
 read -r -p "Have you customized the setup to your needs? [y/N] " response
 if [[ "$response" =~ ^([yY][eE][sS]|[yY])$ ]]
 then
-    handleReboot
+    sudo bash build.sh
 
     if [ -f "etc/icedos-version" ]
     then
         echo "Nix generation was successful!"
-        bash scripts/reboot.sh
+        handleReboot
     else
         echo "Nix generation was not successful!"
     fi
