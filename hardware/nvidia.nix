@@ -22,7 +22,7 @@ in mkIf (cfg.hardware.gpu.nvidia.enable) {
     cfg.hardware.virtualisation.docker; # Enable nvidia gpu acceleration for docker
 
   environment.systemPackages =
-    [ pkgs.nvtop-nvidia ] # Monitoring tool for nvidia GPUs
+    [ pkgs.nvtopPackages.nvidia ] # Monitoring tool for nvidia GPUs
     ++ optional (cfg.hardware.laptop.enable)
     nvidia-offload; # Use nvidia-offload to launch programs using the nvidia GPU
 
