@@ -12,7 +12,7 @@ in mkIf (cfg) {
   };
 
   environment.systemPackages = with pkgs; [
-    nvtop-amd # GPU task manager
+    nvtopPackages.amd # GPU task manager
     lact # GPU overclocking tool
   ];
 
