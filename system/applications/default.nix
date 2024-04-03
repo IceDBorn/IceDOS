@@ -3,6 +3,7 @@
 let cfg = config.icedos.system.config;
 in {
   imports = [
+    ./configs/codium.nix
     ./configs/firefox/user.js.nix
     ./configs/nvchad/init.nix
     ./global.nix

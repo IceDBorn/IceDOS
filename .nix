@@ -28,11 +28,6 @@
           };
         };
 
-        nvchad.formatOnSave = mkOption {
-          type = types.bool;
-          default = true;
-        };
-
         # Hide kitty top bar
         kitty.hideDecorations = mkOption {
           type = types.bool;
@@ -554,15 +549,34 @@
               default = "IceDBorn";
             };
 
-            git = {
-              username = mkOption {
-                type = types.str;
-                default = "IceDBorn";
+            applications = {
+              codium = {
+                formatOnSave = mkOption {
+                  type = types.str;
+                  default = "true";
+                };
+
+                formatOnPaste = mkOption {
+                  type = types.str;
+                  default = "true";
+                };
               };
 
-              email = mkOption {
-                type = types.str;
-                default = "git.outsider841@simplelogin.fr";
+              git = {
+                username = mkOption {
+                  type = types.str;
+                  default = "IceDBorn";
+                };
+
+                email = mkOption {
+                  type = types.str;
+                  default = "git.outsider841@simplelogin.fr";
+                };
+              };
+
+              nvchad.formatOnSave = mkOption {
+                type = types.bool;
+                default = true;
               };
             };
 
@@ -623,15 +637,34 @@
               default = "Work";
             };
 
-            git = {
-              username = mkOption {
-                type = types.str;
-                default = "IceDBorn";
+            applications = {
+              codium = {
+                formatOnSave = mkOption {
+                  type = types.str;
+                  default = "false";
+                };
+
+                formatOnPaste = mkOption {
+                  type = types.str;
+                  default = "false";
+                };
               };
 
-              email = mkOption {
-                type = types.str;
-                default = "git.outsider841@simplelogin.fr";
+              git = {
+                username = mkOption {
+                  type = types.str;
+                  default = "IceDBorn";
+                };
+
+                email = mkOption {
+                  type = types.str;
+                  default = "git.outsider841@simplelogin.fr";
+                };
+              };
+
+              nvchad.formatOnSave = mkOption {
+                type = types.bool;
+                default = false;
               };
             };
 

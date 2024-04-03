@@ -6,23 +6,24 @@ let
 
   mapAttrsAndKeys = callback: list:
     (foldl' (acc: value: acc // (callback value)) { } list);
-
-  formatOnSave = if (cfg.applications.nvchad.formatOnSave) then ''
-    -- Format on sav
-    vim.cmd [[
-        augroup format_on_save
-          autocmd!
-          autocmd BufWritePre * lua vim.lsp.buf.format({ async = true })
-        augroup end
-    ]]
-  '' else
-    "";
 in {
   home-manager.users = let
     users = filter (user: cfg.system.user.${user}.enable == true)
       (attrNames cfg.system.user);
   in mapAttrsAndKeys (user:
-    let username = cfg.system.user.${user}.username;
+    let
+      username = cfg.system.user.${user}.username;
+
+      formatOnSave = if (cfg.system.user.${user}.applications.nvchad.formatOnSave) then ''
+        -- Format on sav
+        vim.cmd [[
+            augroup format_on_save
+              autocmd!
+              autocmd BufWritePre * lua vim.lsp.buf.format({ async = true })
+            augroup end
+        ]]
+      '' else
+        "";
     in {
       ${username}.home.file.".config/nvim/lua/custom/init.lua".text = ''
           -- Enable blinking

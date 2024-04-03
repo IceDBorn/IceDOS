@@ -20,8 +20,8 @@ in {
             enable = true;
             # Git config
             extraConfig = { pull.rebase = true; };
-            userName = "${cfg.system.user.${user}.git.username}";
-            userEmail = "${cfg.system.user.${user}.git.email}";
+            userName = "${cfg.system.user.${user}.applications.git.username}";
+            userEmail = "${cfg.system.user.${user}.applications.git.email}";
           };
 
           kitty = {
@@ -107,11 +107,6 @@ in {
         home.file = {
           # Add zsh theme to zsh directory
           ".config/zsh/zsh-theme.zsh".source = configs/zsh-theme.zsh;
-
-          # Add vscodium config
-          ".config/VSCodium/User/settings.json".source = configs/vscodium.json;
-          ".config/VSCodiumIDE/User/settings.json".source =
-            configs/vscodium.json;
 
           # Set firefox to privacy profile
           ".mozilla/firefox/profiles.ini" = {
