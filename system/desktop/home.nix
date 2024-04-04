@@ -23,7 +23,7 @@ in {
 
         dconf.settings = {
           # Enable dark mode
-          "org/gnome/desktop/interface" = { color-scheme = "prefer-dark"; };
+          "org/gnome/desktop/interface".color-scheme = "prefer-dark";
 
           # Nautilus
           "org/gnome/nautilus/preferences" = {
