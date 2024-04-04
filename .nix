@@ -378,7 +378,7 @@
 
             position = mkOption {
               type = types.str;
-              default = "0x0";
+              default = "1360x0";
             };
 
             scaling = mkOption {
@@ -392,7 +392,7 @@
             };
           };
 
-          secondary = {
+          second = {
             enable = mkOption {
               type = types.bool;
               default = true;
@@ -400,7 +400,7 @@
 
             name = mkOption {
               type = types.str;
-              default = "DP-2";
+              default = "HDMI-A-1";
             };
 
             resolution = mkOption {
@@ -415,12 +415,49 @@
 
             position = mkOption {
               type = types.str;
-              default = "1920x0";
+              default = "0x0";
             };
 
             scaling = mkOption {
               type = types.str;
-              default = "0.8";
+              default = "1";
+            };
+
+            rotation = mkOption {
+              type = types.str;
+              default = "0";
+            };
+          };
+
+          third = {
+            enable = mkOption {
+              type = types.bool;
+              default = true;
+            };
+
+            name = mkOption {
+              type = types.str;
+              default = "DP-2";
+            };
+
+            resolution = mkOption {
+              type = types.str;
+              default = "1280x1024";
+            };
+
+            refreshRate = mkOption {
+              type = types.str;
+              default = "75";
+            };
+
+            position = mkOption {
+              type = types.str;
+              default = "3280x0";
+            };
+
+            scaling = mkOption {
+              type = types.str;
+              default = "1";
             };
 
             rotation = mkOption {

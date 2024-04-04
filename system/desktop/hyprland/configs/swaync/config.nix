@@ -8,7 +8,7 @@ let
     (foldl' (acc: value: acc // (callback value)) { } list);
 
   workspace = if (cfg.hardware.monitors.main.enable
-    && cfg.hardware.monitors.secondary.enable) then
+    && cfg.hardware.monitors.second.enable) then
     "11"
   else
     "3";

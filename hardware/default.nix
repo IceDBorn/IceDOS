@@ -53,8 +53,10 @@ in {
       "clearcpuid=514"
     ] ++ optional (monitors.main.enable)
       "video=${monitors.main.name}:${monitors.main.resolution}@${monitors.main.refreshRate},rotate=${monitors.main.rotation}"
-      ++ optional (monitors.secondary.enable)
-      "video=${monitors.secondary.name}:${monitors.secondary.resolution}@${monitors.secondary.refreshRate},rotate=${monitors.secondary.rotation}";
+      ++ optional (monitors.second.enable)
+      "video=${monitors.second.name}:${monitors.second.resolution}@${monitors.second.refreshRate},rotate=${monitors.second.rotation}"
+      ++ optional (monitors.third.enable)
+      "video=${monitors.third.name}:${monitors.third.resolution}@${monitors.third.refreshRate},rotate=${monitors.third.rotation}";
 
     kernel.sysctl = {
       # Fixes crash when loading maps in CS2

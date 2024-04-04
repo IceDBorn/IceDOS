@@ -46,8 +46,24 @@ in {
         windowrulev2 = workspace 14 silent, class:^(terminals)$ # Terminal
       '';
 
-      finalWRules = if (monitors.main.enable && monitors.secondary.enable) then
+      tripleMonWRules = ''
+        windowrulev2 = workspace 1 silent, class:^(firefox)$
+        windowrulev2 = workspace 2 silent, class:^(nvchad)$
+        windowrulev2 = workspace 3 silent, class:^(steam_app_.*)$, title:^((?!notificationtoasts.*).)*$
+        windowrulev2 = workspace 21 silent, class:^(Steam|steam)$, title:^((?!notificationtoasts.*).)*$
+        windowrulev2 = workspace 21 silent, title:^(.*Steam[A-Za-z0-9\s]*)$
+        windowrulev2 = workspace 11 silent, class:^(WebCord|Signal|pwas)$
+        windowrulev2 = workspace 12 silent, class:^(org\.gnome\.Nautilus)$
+        windowrulev2 = workspace 13 silent, class:^(task-managers)$ # Task manager
+        windowrulev2 = workspace 14 silent, class:^(terminals)$ # Terminal
+      '';
+
+      finalWRules = if (monitors.main.enable && monitors.second.enable
+        && !monitors.third.enable) then
         dualMonWRules
+      else if (monitors.main.enable && monitors.second.enable
+        && monitors.third.enable) then
+        tripleMonWRules
       else
         singleMonWRules;
     in {
@@ -66,17 +82,29 @@ in {
           workspace = 9, monitor:${monitors.main.name}
           workspace = 10, monitor:${monitors.main.name}
 
-          monitor = ${monitors.secondary.name},${monitors.secondary.resolution}@${monitors.secondary.refreshRate},${monitors.secondary.position},${monitors.secondary.scaling}
-          workspace = 11, monitor:${monitors.secondary.name}, default:true
-          workspace = 12, monitor:${monitors.secondary.name}
-          workspace = 13, monitor:${monitors.secondary.name}
-          workspace = 14, monitor:${monitors.secondary.name}
-          workspace = 15, monitor:${monitors.secondary.name}
-          workspace = 16, monitor:${monitors.secondary.name}
-          workspace = 17, monitor:${monitors.secondary.name}
-          workspace = 18, monitor:${monitors.secondary.name}
-          workspace = 19, monitor:${monitors.secondary.name}
-          workspace = 20, monitor:${monitors.secondary.name}
+          monitor = ${monitors.second.name},${monitors.second.resolution}@${monitors.second.refreshRate},${monitors.second.position},${monitors.second.scaling}
+          workspace = 11, monitor:${monitors.second.name}, default:true
+          workspace = 12, monitor:${monitors.second.name}
+          workspace = 13, monitor:${monitors.second.name}
+          workspace = 14, monitor:${monitors.second.name}
+          workspace = 15, monitor:${monitors.second.name}
+          workspace = 16, monitor:${monitors.second.name}
+          workspace = 17, monitor:${monitors.second.name}
+          workspace = 18, monitor:${monitors.second.name}
+          workspace = 19, monitor:${monitors.second.name}
+          workspace = 20, monitor:${monitors.second.name}
+
+          monitor = ${monitors.third.name},${monitors.third.resolution}@${monitors.third.refreshRate},${monitors.third.position},${monitors.third.scaling}
+          workspace = 21, monitor:${monitors.third.name}, default:true
+          workspace = 22, monitor:${monitors.third.name}
+          workspace = 23, monitor:${monitors.third.name}
+          workspace = 24, monitor:${monitors.third.name}
+          workspace = 25, monitor:${monitors.third.name}
+          workspace = 26, monitor:${monitors.third.name}
+          workspace = 27, monitor:${monitors.third.name}
+          workspace = 28, monitor:${monitors.third.name}
+          workspace = 29, monitor:${monitors.third.name}
+          workspace = 30, monitor:${monitors.third.name}
 
           env = WLR_DRM_NO_ATOMIC,1
 
@@ -162,16 +190,27 @@ in {
           bind = $mainMod, 8, workspace, 8
           bind = $mainMod, 9, workspace, 9
           bind = $mainMod, 0, workspace, 10
-          bind = $mainMod ALT, 1, workspace, 11
-          bind = $mainMod ALT, 2, workspace, 12
-          bind = $mainMod ALT, 3, workspace, 13
-          bind = $mainMod ALT, 4, workspace, 14
-          bind = $mainMod ALT, 5, workspace, 15
-          bind = $mainMod ALT, 6, workspace, 16
-          bind = $mainMod ALT, 7, workspace, 17
-          bind = $mainMod ALT, 8, workspace, 18
-          bind = $mainMod ALT, 9, workspace, 19
-          bind = $mainMod ALT, 0, workspace, 20
+          bind = $mainMod CTRL, 1, workspace, 11
+          bind = $mainMod CTRL, 2, workspace, 12
+          bind = $mainMod CTRL, 3, workspace, 13
+          bind = $mainMod CTRL, 4, workspace, 14
+          bind = $mainMod CTRL, 5, workspace, 15
+          bind = $mainMod CTRL, 6, workspace, 16
+          bind = $mainMod CTRL, 7, workspace, 17
+          bind = $mainMod CTRL, 8, workspace, 18
+          bind = $mainMod CTRL, 9, workspace, 19
+          bind = $mainMod CTRL, 0, workspace, 20
+          bind = $mainMod ALT, 1, workspace, 21
+          bind = $mainMod ALT, 2, workspace, 22
+          bind = $mainMod ALT, 3, workspace, 23
+          bind = $mainMod ALT, 4, workspace, 24
+          bind = $mainMod ALT, 5, workspace, 25
+          bind = $mainMod ALT, 6, workspace, 26
+          bind = $mainMod ALT, 7, workspace, 27
+          bind = $mainMod ALT, 8, workspace, 28
+          bind = $mainMod ALT, 9, workspace, 29
+          bind = $mainMod ALT, 0, workspace, 30
+
 
           # Move active window to a workspace with mod key + SHIFT + [0-9]
           bind = $mainMod SHIFT, 1, movetoworkspace, 1
@@ -184,16 +223,26 @@ in {
           bind = $mainMod SHIFT, 8, movetoworkspace, 8
           bind = $mainMod SHIFT, 9, movetoworkspace, 9
           bind = $mainMod SHIFT, 0, movetoworkspace, 10
-          bind = $mainMod SHIFT ALT, 1, movetoworkspace, 11
-          bind = $mainMod SHIFT ALT, 2, movetoworkspace, 12
-          bind = $mainMod SHIFT ALT, 3, movetoworkspace, 13
-          bind = $mainMod SHIFT ALT, 4, movetoworkspace, 14
-          bind = $mainMod SHIFT ALT, 5, movetoworkspace, 15
-          bind = $mainMod SHIFT ALT, 6, movetoworkspace, 16
-          bind = $mainMod SHIFT ALT, 7, movetoworkspace, 17
-          bind = $mainMod SHIFT ALT, 8, movetoworkspace, 18
-          bind = $mainMod SHIFT ALT, 9, movetoworkspace, 19
-          bind = $mainMod SHIFT ALT, 0, movetoworkspace, 20
+          bind = $mainMod SHIFT CTRL, 1, movetoworkspace, 11
+          bind = $mainMod SHIFT CTRL, 2, movetoworkspace, 12
+          bind = $mainMod SHIFT CTRL, 3, movetoworkspace, 13
+          bind = $mainMod SHIFT CTRL, 4, movetoworkspace, 14
+          bind = $mainMod SHIFT CTRL, 5, movetoworkspace, 15
+          bind = $mainMod SHIFT CTRL, 6, movetoworkspace, 16
+          bind = $mainMod SHIFT CTRL, 7, movetoworkspace, 17
+          bind = $mainMod SHIFT CTRL, 8, movetoworkspace, 18
+          bind = $mainMod SHIFT CTRL, 9, movetoworkspace, 19
+          bind = $mainMod SHIFT CTRL, 0, movetoworkspace, 20
+          bind = $mainMod SHIFT ALT, 1, movetoworkspace, 21
+          bind = $mainMod SHIFT ALT, 2, movetoworkspace, 22
+          bind = $mainMod SHIFT ALT, 3, movetoworkspace, 23
+          bind = $mainMod SHIFT ALT, 4, movetoworkspace, 24
+          bind = $mainMod SHIFT ALT, 5, movetoworkspace, 25
+          bind = $mainMod SHIFT ALT, 6, movetoworkspace, 26
+          bind = $mainMod SHIFT ALT, 7, movetoworkspace, 27
+          bind = $mainMod SHIFT ALT, 8, movetoworkspace, 28
+          bind = $mainMod SHIFT ALT, 9, movetoworkspace, 29
+          bind = $mainMod SHIFT ALT, 0, movetoworkspace, 30
 
           # Scroll through existing workspaces with mod key + scroll
           bind = $mainMod, mouse_down, workspace, e-1
