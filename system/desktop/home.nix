@@ -22,17 +22,26 @@ in {
         }; # Change GTK themes
 
         dconf.settings = {
+          # Enable dark mode
+          "org/gnome/desktop/interface" = { color-scheme = "prefer-dark"; };
+
+          # Nautilus
           "org/gnome/nautilus/preferences" = {
             always-use-location-entry = true;
-          }; # Nautilus path bar is always editable
+          };
 
           "org/gtk/gtk4/settings/file-chooser" = {
             sort-directories-first = true;
-          }; # Nautilus sorts directories first
+            show-hidden = true;
+          };
 
-          "org/gnome/desktop/interface" = {
-            color-scheme = "prefer-dark";
-          }; # Enable dark mode
+          # GTK file picker
+          "org/gtk/settings/file-chooser" = {
+            sort-directories-first = true;
+            date-format = "with-time";
+            show-type-column = false;
+            show-hidden = true;
+          };
         };
 
         xdg = {
