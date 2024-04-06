@@ -1,4 +1,9 @@
-{ pkgs, lib, config, ... }:
+{
+  pkgs,
+  lib,
+  config,
+  ...
+}:
 
 let
   inherit (lib) mkIf;
@@ -6,7 +11,8 @@ let
   cfg = config.icedos.hardware;
 
   deckbd = "${pkgs.deckbd}/bin/deckbd";
-in mkIf (cfg.steamdeck) {
+in
+mkIf (cfg.steamdeck) {
   boot.initrd = {
     preLVMCommands = ''
       DECKBD_RETRIES=10
@@ -34,6 +40,10 @@ in mkIf (cfg.steamdeck) {
       [ $DECKBD_PID ] && kill $DECKBD_PID
     '';
 
-    kernelModules = [ "uinput" "evdev" "hid_steam" ];
+    kernelModules = [
+      "uinput"
+      "evdev"
+      "hid_steam"
+    ];
   };
 }

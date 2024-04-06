@@ -5,12 +5,12 @@ let
 
   cfg = config.icedos;
   monitors = cfg.hardware.monitors;
-in {
+in
+{
   hardware = {
     opengl = {
       enable = true;
-      driSupport32Bit =
-        true; # Support Direct Rendering for 32-bit applications (such as Wine) on 64-bit systems
+      driSupport32Bit = true; # Support Direct Rendering for 32-bit applications (such as Wine) on 64-bit systems
     };
 
     xpadneo.enable = true; # Enable XBOX Gamepad bluetooth driver
@@ -38,8 +38,7 @@ in {
   networking = {
     hostName = "${cfg.hardware.networking.hostname}";
 
-    extraHosts =
-      mkIf (cfg.hardware.networking.hosts.enable) "192.168.2.99 git.dtek.gr";
+    extraHosts = mkIf (cfg.hardware.networking.hosts.enable) "192.168.2.99 git.dtek.gr";
   };
 
   boot = {
@@ -47,16 +46,15 @@ in {
     kernelModules = [ "v4l2loopback" ];
     extraModulePackages = with config.boot.kernelPackages; [ v4l2loopback ];
 
-    kernelParams = [
-      "transparent_hugepage=always"
-      # Fixes certain wine games crash on launch
-      "clearcpuid=514"
-    ] ++ optional (monitors.main.enable)
-      "video=${monitors.main.name}:${monitors.main.resolution}@${monitors.main.refreshRate},rotate=${monitors.main.rotation}"
-      ++ optional (monitors.second.enable)
-      "video=${monitors.second.name}:${monitors.second.resolution}@${monitors.second.refreshRate},rotate=${monitors.second.rotation}"
-      ++ optional (monitors.third.enable)
-      "video=${monitors.third.name}:${monitors.third.resolution}@${monitors.third.refreshRate},rotate=${monitors.third.rotation}";
+    kernelParams =
+      [
+        "transparent_hugepage=always"
+        # Fixes certain wine games crash on launch
+        "clearcpuid=514"
+      ]
+      ++ optional (monitors.main.enable) "video=${monitors.main.name}:${monitors.main.resolution}@${monitors.main.refreshRate},rotate=${monitors.main.rotation}"
+      ++ optional (monitors.second.enable) "video=${monitors.second.name}:${monitors.second.resolution}@${monitors.second.refreshRate},rotate=${monitors.second.rotation}"
+      ++ optional (monitors.third.enable) "video=${monitors.third.name}:${monitors.third.resolution}@${monitors.third.refreshRate},rotate=${monitors.third.rotation}";
 
     kernel.sysctl = {
       # Fixes crash when loading maps in CS2
@@ -70,10 +68,9 @@ in {
     };
   };
 
-  fileSystems = mkIf (cfg.hardware.btrfsCompression.enable
-    && cfg.hardware.btrfsCompression.root) {
-      "/".options = [ "compress=zstd" ];
-    };
+  fileSystems = mkIf (cfg.hardware.btrfsCompression.enable && cfg.hardware.btrfsCompression.root) {
+    "/".options = [ "compress=zstd" ];
+  };
 
   services.fstrim.enable = true; # Enable SSD TRIM
 

@@ -1,12 +1,21 @@
-{ pkgs, lib, config, ... }:
+{
+  pkgs,
+  lib,
+  config,
+  ...
+}:
 
 let
   inherit (lib) mkIf;
 
   cfg = config.icedos.hardware.cpu.amd;
-in mkIf (cfg.enable) {
+in
+mkIf (cfg.enable) {
   boot = {
-    kernelModules = [ "msr" "zenpower" ];
+    kernelModules = [
+      "msr"
+      "zenpower"
+    ];
     extraModulePackages = with config.boot.kernelPackages; [ zenpower ];
   };
 
@@ -16,9 +25,14 @@ in mkIf (cfg.enable) {
   systemd.services.zenstates = mkIf (cfg.undervolt.enable) {
     enable = true;
     description = "Ryzen Undervolt";
-    after = [ "syslog.target" "systemd-modules-load.service" ];
+    after = [
+      "syslog.target"
+      "systemd-modules-load.service"
+    ];
 
-    unitConfig = { ConditionPathExists = "${pkgs.zenstates}/bin/zenstates"; };
+    unitConfig = {
+      ConditionPathExists = "${pkgs.zenstates}/bin/zenstates";
+    };
 
     serviceConfig = {
       User = "root";

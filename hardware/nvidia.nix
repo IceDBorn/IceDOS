@@ -1,4 +1,9 @@
-{ config, pkgs, lib, ... }:
+{
+  config,
+  pkgs,
+  lib,
+  ...
+}:
 let
   inherit (lib) mkIf optional;
 
@@ -13,31 +18,34 @@ let
     export __VK_LAYER_NV_optimus=NVIDIA_only
     exec "$@"
   '';
-in mkIf (cfg.hardware.gpu.nvidia.enable) {
+in
+mkIf (cfg.hardware.gpu.nvidia.enable) {
   services.xserver.videoDrivers = [ "nvidia" ]; # Install the nvidia drivers
 
   hardware.nvidia.modesetting.enable = true; # Required for wayland
 
-  virtualisation.docker.enableNvidia =
-    cfg.hardware.virtualisation.docker; # Enable nvidia gpu acceleration for docker
+  virtualisation.docker.enableNvidia = cfg.hardware.virtualisation.docker; # Enable nvidia gpu acceleration for docker
 
   environment.systemPackages =
     [ pkgs.nvtopPackages.nvidia ] # Monitoring tool for nvidia GPUs
-    ++ optional (cfg.hardware.laptop.enable)
-    nvidia-offload; # Use nvidia-offload to launch programs using the nvidia GPU
+    ++ optional (cfg.hardware.laptop.enable) nvidia-offload; # Use nvidia-offload to launch programs using the nvidia GPU
 
   # Set nvidia gpu power limit
   systemd.services.nv-power-limit = mkIf (powerLimit.enable) {
     enable = true;
     description = "Nvidia power limit control";
-    after = [ "syslog.target" "systemd-modules-load.service" ];
+    after = [
+      "syslog.target"
+      "systemd-modules-load.service"
+    ];
 
-    unitConfig = { ConditionPathExists = "${nvidia_x11}/bin/nvidia-smi"; };
+    unitConfig = {
+      ConditionPathExists = "${nvidia_x11}/bin/nvidia-smi";
+    };
 
     serviceConfig = {
       User = "root";
-      ExecStart =
-        "${nvidia_x11}/bin/nvidia-smi --power-limit=${powerLimit.value}";
+      ExecStart = "${nvidia_x11}/bin/nvidia-smi --power-limit=${powerLimit.value}";
     };
 
     wantedBy = [ "multi-user.target" ];

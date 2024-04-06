@@ -4,7 +4,8 @@ let
   inherit (lib) mkIf;
 
   cfg = config.icedos.boot;
-in {
+in
+{
   boot = {
     loader = {
       efi = mkIf (cfg.systemd-boot.enable) {

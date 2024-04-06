@@ -1,14 +1,19 @@
-{ pkgs, lib, config, ... }:
+{
+  pkgs,
+  lib,
+  config,
+  ...
+}:
 
 let
   inherit (lib) mkIf;
 
   cfg = config.icedos.hardware.gpu.amd;
-in mkIf (cfg) {
+in
+mkIf (cfg) {
   boot = {
     initrd.kernelModules = [ "amdgpu" ]; # Use the amdgpu drivers upon boot
-    kernelParams =
-      [ "amdgpu.ppfeaturemask=0xffffffff" ]; # Unlock all gpu controls
+    kernelParams = [ "amdgpu.ppfeaturemask=0xffffffff" ]; # Unlock all gpu controls
   };
 
   environment.systemPackages = with pkgs; [
@@ -20,9 +25,14 @@ in mkIf (cfg) {
   systemd.services.lactd = {
     enable = true;
     description = "Radeon GPU monitor";
-    after = [ "syslog.target" "systemd-modules-load.service" ];
+    after = [
+      "syslog.target"
+      "systemd-modules-load.service"
+    ];
 
-    unitConfig = { ConditionPathExists = "${pkgs.lact}/bin/lact"; };
+    unitConfig = {
+      ConditionPathExists = "${pkgs.lact}/bin/lact";
+    };
 
     serviceConfig = {
       User = "root";
