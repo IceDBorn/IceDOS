@@ -1,5 +1,10 @@
-# PACKAGES INSTALLED ON ALL USERS
-{ pkgs, config, inputs, lib, ... }:
+{
+  pkgs,
+  config,
+  inputs,
+  lib,
+  ...
+}:
 
 let
   inherit (lib) mkIf;
@@ -33,11 +38,11 @@ let
   toggle-services = import modules/toggle-services.nix { inherit pkgs; };
 
   # Trim NixOS generations
-  trim-generations = pkgs.writeShellScriptBin "trim-generations"
-    (builtins.readFile ../../scripts/trim-generations.sh);
+  trim-generations = pkgs.writeShellScriptBin "trim-generations" (
+    builtins.readFile ../../scripts/trim-generations.sh
+  );
 
-  update-codium-extensions =
-    import modules/codium-extension-updater.nix { inherit pkgs; };
+  update-codium-extensions = import modules/codium-extension-updater.nix { inherit pkgs; };
 
   codingDeps = with pkgs; [
     bruno # API explorer
@@ -46,7 +51,7 @@ let
     gcc # C++ compiler
     gdtoolkit # Tools for gdscript
     gnumake # A tool to control the generation of non-source files from sources
-    nixfmt # A nix formatter
+    nixfmt-rfc-style # A nix formatter
     nodejs # Node package manager
     python3 # Python
     vscodium # All purpose IDE
@@ -82,22 +87,17 @@ let
     tree-sitter # Parser generator tool and an incremental parsing library
   ];
 
-  packageOverrides = with pkgs;
-    [
-      # Browser with pipewire-screenaudio connector json
-      (firefox.override {
-        nativeMessagingHosts =
-          [ inputs.pipewire-screenaudio.packages.${pkgs.system}.default ];
-      })
-    ];
+  packageOverrides = with pkgs; [
+    # Browser with pipewire-screenaudio connector json
+    (firefox.override {
+      nativeMessagingHosts = [ inputs.pipewire-screenaudio.packages.${pkgs.system}.default ];
+    })
+  ];
 
-  packageWraps = with pkgs;
-    [
-      # Pipewire audio plugin for OBS Studio
-      (pkgs.wrapOBS {
-        plugins = with pkgs.obs-studio-plugins; [ obs-pipewire-audio-capture ];
-      })
-    ];
+  packageWraps = with pkgs; [
+    # Pipewire audio plugin for OBS Studio
+    (pkgs.wrapOBS { plugins = with pkgs.obs-studio-plugins; [ obs-pipewire-audio-capture ]; })
+  ];
 
   shellScripts = [
     inputs.shell-in-netns.packages.${pkgs.system}.default
@@ -108,14 +108,16 @@ let
     trim-generations
     update-codium-extensions
   ];
-in {
+in
+{
   imports = [ configs/pipewire.nix ];
 
-  boot.kernelPackages =
-    mkIf (!cfg.hardware.steamdeck && builtins.pathExists /etc/icedos-version)
-    pkgs.linuxPackages_cachyos; # Use CachyOS optimized linux kernel
+  boot.kernelPackages = mkIf (
+    !cfg.hardware.steamdeck && builtins.pathExists /etc/icedos-version
+  ) pkgs.linuxPackages_cachyos; # Use CachyOS optimized linux kernel
 
-  environment.systemPackages = with pkgs;
+  environment.systemPackages =
+    with pkgs;
     [
       android-tools # Tools for debugging android devices
       appimage-run # Appimage runner
@@ -175,8 +177,13 @@ in {
       xorg.xhost # Use x.org server with distrobox
       youtube-dl # Video downloader
       zenstates # Ryzen CPU controller
-    ] ++ codingDeps ++ nvchadDeps ++ myPackages ++ packageOverrides
-    ++ packageWraps ++ shellScripts;
+    ]
+    ++ codingDeps
+    ++ nvchadDeps
+    ++ myPackages
+    ++ packageOverrides
+    ++ packageWraps
+    ++ shellScripts;
 
   users.defaultUserShell = pkgs.zsh; # Use ZSH shell for all users
 
@@ -188,7 +195,12 @@ in {
       # Enable oh my zsh and it's plugins
       ohMyZsh = {
         enable = true;
-        plugins = [ "git" "npm" "sudo" "systemd" ];
+        plugins = [
+          "git"
+          "npm"
+          "sudo"
+          "systemd"
+        ];
       };
       autosuggestions.enable = true;
 
@@ -197,21 +209,17 @@ in {
       # Aliases
       shellAliases = {
         a2c = "aria2c -j 16 -s 16"; # Download with aria using best settings
-        bcompress =
-          "sudo btrfs filesystem defrag -czstd -r -v"; # Compress given path with zstd
+        bcompress = "sudo btrfs filesystem defrag -czstd -r -v"; # Compress given path with zstd
         cat = "bat"; # Better cat command
         cp = "rsync -rP"; # Copy command with details
-        l-pkgs =
-          "nix-store --query --requisites /run/current-system | cut -d- -f2- | sort | uniq"; # List installed nix packages
+        l-pkgs = "nix-store --query --requisites /run/current-system | cut -d- -f2- | sort | uniq"; # List installed nix packages
         ls = "lsd"; # Better ls command
         mv = "rsync -rP --remove-source-files"; # Move command with details
         n = "tmux a -t nvchad || tmux new -s nvchad nvim"; # Nvchad
         ping = "gping"; # ping with a graph
         r-pipewire = "systemctl --user restart pipewire"; # Restart pipewire
-        r-store =
-          "nix-store --verify --check-contents --repair"; # Verifies integrity and repairs inconsistencies between Nix database and store
-        r-windows =
-          "sudo efibootmgr --bootnext ${cfg.boot.windowsEntry} && reboot"; # Reboot to windows
+        r-store = "nix-store --verify --check-contents --repair"; # Verifies integrity and repairs inconsistencies between Nix database and store
+        r-windows = "sudo efibootmgr --bootnext ${cfg.boot.windowsEntry} && reboot"; # Reboot to windows
         ssh = "TERM=xterm-256color ssh"; # SSH with colors
         v = "nvim"; # Neovim
       };
