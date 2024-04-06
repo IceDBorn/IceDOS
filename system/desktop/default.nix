@@ -1,10 +1,16 @@
-{ pkgs, config, lib, ... }:
+{
+  pkgs,
+  config,
+  lib,
+  ...
+}:
 
 let
   inherit (lib) makeSearchPathOutput mkIf;
 
   cfg = config.icedos;
-in {
+in
+{
   imports = [ ./home.nix ]; # Setup home manager
 
   # Set your time zone
@@ -28,13 +34,13 @@ in {
 
         autoLogin = mkIf (cfg.desktop.autologin.enable) {
           enable = true;
-          user = if (cfg.system.user.main.enable
-            && cfg.desktop.autologin.main.user.enable) then
-            cfg.system.user.main.username
-          else if (cfg.system.user.work.enable) then
-            cfg.system.user.work.username
-          else
-            "";
+          user =
+            if (cfg.system.user.main.enable && cfg.desktop.autologin.main.user.enable) then
+              cfg.system.user.main.username
+            else if (cfg.system.user.work.enable) then
+              cfg.system.user.work.username
+            else
+              "";
         };
       };
 
@@ -58,16 +64,14 @@ in {
 
   sound.enable = true;
   hardware.pulseaudio.enable = false;
-  security.rtkit.enable =
-    true; # Enable service which hands out realtime scheduling priority to user processes on demand, required by pipewire
+  security.rtkit.enable = true; # Enable service which hands out realtime scheduling priority to user processes on demand, required by pipewire
 
   networking = {
     networkmanager.enable = true;
     firewall.enable = false;
   };
 
-  security.sudo.extraConfig =
-    "Defaults pwfeedback"; # Show asterisks when typing sudo password
+  security.sudo.extraConfig = "Defaults pwfeedback"; # Show asterisks when typing sudo password
 
   environment = {
     # Packages to install for all window manager/desktop environments
@@ -81,13 +85,15 @@ in {
       # Set Firefox as default browser for Electron apps
       DEFAULT_BROWSER = "${pkgs.firefox}/bin/firefox";
       # Fix nautilus not displaying audio/video information in properties https://github.com/NixOS/nixpkgs/issues/53631
-      GST_PLUGIN_SYSTEM_PATH_1_0 =
-        makeSearchPathOutput "lib" "lib/gstreamer-1.0" (with pkgs.gst_all_1; [
+      GST_PLUGIN_SYSTEM_PATH_1_0 = makeSearchPathOutput "lib" "lib/gstreamer-1.0" (
+        with pkgs.gst_all_1;
+        [
           gst-plugins-good
           gst-plugins-bad
           gst-plugins-ugly
           gst-libav
-        ]); # Fix from https://github.com/NixOS/nixpkgs/issues/195936#issuecomment-1366902737
+        ]
+      ); # Fix from https://github.com/NixOS/nixpkgs/issues/195936#issuecomment-1366902737
     };
   };
 

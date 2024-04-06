@@ -1,4 +1,9 @@
-{ lib, config, pkgs, ... }:
+{
+  lib,
+  config,
+  pkgs,
+  ...
+}:
 
 let
   inherit (lib) mkIf;
@@ -7,7 +12,8 @@ let
   session = cfg.applications.steam.session;
   steamUser = cfg.system.user.main.username;
   hasAmdGpu = cfg.hardware.gpu.amd;
-in {
+in
+{
   jovian = {
     decky-loader = {
       enable = (session.enable && session.decky);
