@@ -2,7 +2,8 @@
 let
   cfg = config.icedos;
   threshold = cfg.desktop.hyprland.lock.networkUsageThreshold;
-in pkgs.writeShellScriptBin "network-watcher" ''
+in
+pkgs.writeShellScriptBin "network-watcher" ''
   NETWORK_THRESHOLD=${threshold}
   INTERFACE=$(ip route | head -n 1 | grep -oP 'dev \K\S+')
   NETWORK_USAGE=($(awk '{if(l1){print ($2-l1),($10-l2)} else{l1=$2; l2=$10;}}' \

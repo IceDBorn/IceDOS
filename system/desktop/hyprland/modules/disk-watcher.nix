@@ -2,7 +2,8 @@
 let
   cfg = config.icedos;
   threshold = cfg.desktop.hyprland.lock.diskUsageThreshold;
-in pkgs.writeShellScriptBin "disk-watcher" ''
+in
+pkgs.writeShellScriptBin "disk-watcher" ''
   DISKS=($(lsblk -d -io NAME | tail -n +2))
   READ_QUERY=".sysstat.hosts[].statistics[].disk[].MB_read"
   WRITE_QUERY=".sysstat.hosts[].statistics[].disk[].MB_wrtn"

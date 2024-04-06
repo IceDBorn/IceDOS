@@ -1,4 +1,9 @@
-{ pkgs, config, lib, inputs, ... }:
+{
+  pkgs,
+  config,
+  lib,
+  ...
+}:
 
 let
   inherit (lib) mkIf;
@@ -7,8 +12,7 @@ let
   cpu-watcher = import modules/cpu-watcher.nix { inherit pkgs config; };
   disk-watcher = import modules/disk-watcher.nix { inherit pkgs config; };
 
-  hyprland-startup =
-    import modules/hyprland-startup.nix { inherit pkgs config; };
+  hyprland-startup = import modules/hyprland-startup.nix { inherit pkgs config; };
 
   hyprlock-wrapper = import modules/hyprlock-wrapper.nix { inherit pkgs; };
   network-watcher = import modules/network-watcher.nix { inherit pkgs config; };
@@ -21,7 +25,8 @@ let
     hyprlock-wrapper # Wrap hyprlock
     pipewire-watcher # Script to check if pipewire has active links
   ];
-in {
+in
+{
   imports = [
     ./configs/config.nix
     ./configs/hypridle.nix
@@ -38,7 +43,8 @@ in {
   };
 
   environment = mkIf (cfg.desktop.hyprland.enable) {
-    systemPackages = with pkgs;
+    systemPackages =
+      with pkgs;
       [
         baobab # Disk usage analyser
         brightnessctl # Brightness control
@@ -77,7 +83,8 @@ in {
         wdisplays # Displays manager
         wl-clipboard # Clipboard daemon
         wleave # Logout screen
-      ] ++ shellScripts;
+      ]
+      ++ shellScripts;
   };
 
   services = mkIf (cfg.desktop.hyprland.enable) {
@@ -93,8 +100,7 @@ in {
 
   systemd.services.swayosd-input = mkIf (cfg.desktop.hyprland.enable) {
     enable = true;
-    description =
-      "SwayOSD LibInput backend for listening to certain keys like CapsLock, ScrollLock, VolumeUp, etc...";
+    description = "SwayOSD LibInput backend for listening to certain keys like CapsLock, ScrollLock, VolumeUp, etc...";
     after = [ "graphical.target" ];
 
     unitConfig = {
@@ -113,13 +119,12 @@ in {
     wantedBy = [ "graphical.target" ];
   };
 
-  xdg.portal.extraPortals =
-    mkIf (!cfg.desktop.gnome.enable && cfg.desktop.hyprland.enable)
-    [ pkgs.xdg-desktop-portal-gtk ]; # Needed for steam file picker
+  xdg.portal.extraPortals = mkIf (!cfg.desktop.gnome.enable && cfg.desktop.hyprland.enable) [
+    pkgs.xdg-desktop-portal-gtk
+  ]; # Needed for steam file picker
 
   nix.settings = mkIf (cfg.desktop.hyprland.enable) {
     substituters = [ "https://hyprland.cachix.org" ];
-    trusted-public-keys =
-      [ "hyprland.cachix.org-1:a7pgxzMz7+chwVL3/pzj6jIBMioiJM7ypFP8PwtkuGc=" ];
+    trusted-public-keys = [ "hyprland.cachix.org-1:a7pgxzMz7+chwVL3/pzj6jIBMioiJM7ypFP8PwtkuGc=" ];
   };
 }
