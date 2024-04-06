@@ -1,4 +1,11 @@
-{ pkgs, name, buildPath, installPath, message, type }:
+{
+  pkgs,
+  name,
+  buildPath,
+  installPath,
+  message,
+  type,
+}:
 pkgs.writeShellScriptBin "update-${name}" ''
   mkdir -p -m 755 "${installPath}"
 

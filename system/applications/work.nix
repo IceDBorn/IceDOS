@@ -1,13 +1,17 @@
 # PACKAGES INSTALLED ON WORK USER
-{ config, pkgs, lib, inputs, ... }:
+{
+  config,
+  pkgs,
+  lib,
+  inputs,
+  ...
+}:
 
 let
-  inherit (lib) mkIf optional;
+  inherit (lib) mkIf;
 
   cfg = config.icedos.system;
   username = cfg.user.work.username;
-
-  stashLock = if (cfg.update.stashFlakeLock) then "1" else "0";
 
   sail = import modules/run-command.nix {
     inherit pkgs;
@@ -26,7 +30,10 @@ let
   # Packages to add for a fork of the config
   myPackages = with pkgs; [ ];
 
-  shellScripts = [ sail update ];
+  shellScripts = [
+    sail
+    update
+  ];
 
   gitLocation = "${cfg.home}/${username}/git/";
 
@@ -57,14 +64,18 @@ let
     Alias /${multiStoreProjects.tosupermou.alias} ${gitLocation}${multiStoreProjects.tosupermou.folder}
     Alias /${multiStoreProjects.papiros.alias} ${gitLocation}${multiStoreProjects.papiros.folder}
   '';
-in mkIf (cfg.user.work.enable) {
-  users.users.${username}.packages = with pkgs;
+in
+mkIf (cfg.user.work.enable) {
+  users.users.${username}.packages =
+    with pkgs;
     [
       dbeaver # Database manager
       google-chrome # Dev browser
       php # Programming language for websites
       phpPackages.composer # Package manager for PHP
-    ] ++ myPackages ++ shellScripts;
+    ]
+    ++ myPackages
+    ++ shellScripts;
 
   services = {
     httpd = {

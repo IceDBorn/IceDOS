@@ -1,7 +1,9 @@
 { config, inputs, ... }:
 
-let cfg = config.icedos.system.config;
-in {
+let
+  cfg = config.icedos.system.config;
+in
+{
   imports = [
     ./configs/codium.nix
     ./configs/firefox/user.js.nix
@@ -16,7 +18,10 @@ in {
     settings = {
       # Use hard links to save space (slows down package manager)
       auto-optimise-store = true;
-      experimental-features = [ "nix-command" "flakes" ]; # Enable flakes
+      experimental-features = [
+        "nix-command"
+        "flakes"
+      ]; # Enable flakes
     };
 
     # Automatic garbage collection

@@ -1,4 +1,10 @@
-{ pkgs, config, command, update, stash }:
+{
+  pkgs,
+  config,
+  command,
+  update,
+  stash,
+}:
 pkgs.writeShellScriptBin "${command}" ''
   function stash() {
     git stash store $(git stash create) -m "flake.lock@$(date +%A-%d-%B-%T)"

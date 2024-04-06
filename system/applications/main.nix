@@ -1,5 +1,11 @@
 # PACKAGES INSTALLED ON MAIN USER
-{ config, pkgs, lib, inputs, ... }:
+{
+  config,
+  pkgs,
+  lib,
+  inputs,
+  ...
+}:
 
 let
   inherit (lib) mkIf optional;
@@ -58,19 +64,27 @@ let
   # Packages to add for a fork of the config
   myPackages = with pkgs; [ ];
 
-  shellScripts = [ update install-wine-ge install-proton-ge ]
-    ++ optional (cfg.applications.steam.adwaitaForSteam.enable)
-    steam-library-patcher;
+  shellScripts = [
+    update
+    install-wine-ge
+    install-proton-ge
+  ] ++ optional (cfg.applications.steam.adwaitaForSteam.enable) steam-library-patcher;
   adwaitaForSteam = cfg.applications.steam.adwaitaForSteam;
-in mkIf (cfg.system.user.main.enable) {
-  users.users.${username}.packages = with pkgs;
+in
+mkIf (cfg.system.user.main.enable) {
+  users.users.${username}.packages =
+    with pkgs;
     [
       bottles # Wine manager
       godot_4 # Game engine
       input-remapper # Remap input device controls
       scanmem # Cheat engine for linux
       stremio # Straming platform
-    ] ++ emulators ++ gaming ++ myPackages ++ shellScripts;
+    ]
+    ++ emulators
+    ++ gaming
+    ++ myPackages
+    ++ shellScripts;
 
   # Wayland microcompositor
   programs = {
