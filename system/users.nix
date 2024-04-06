@@ -5,18 +5,21 @@ let
 
   cfg = config.icedos.system;
 
-  mapAttrsAndKeys = callback: list:
-    (foldl' (acc: value: acc // (callback value)) { } list);
+  mapAttrsAndKeys = callback: list: (foldl' (acc: value: acc // (callback value)) { } list);
   users = filter (user: cfg.user.${user}.enable == true) (attrNames cfg.user);
-in {
-  nix.settings.trusted-users = [ "root" ]
-    ++ (foldl' (acc: user: acc ++ [ cfg.user.${user}.username ]) [ ] users);
+in
+{
+  nix.settings.trusted-users = [
+    "root"
+  ] ++ (foldl' (acc: user: acc ++ [ cfg.user.${user}.username ]) [ ] users);
 
-  users.users = mapAttrsAndKeys (user:
+  users.users = mapAttrsAndKeys (
+    user:
     let
       username = cfg.user.${user}.username;
       description = cfg.user.${user}.description;
-    in {
+    in
+    {
       ${username} = {
         createHome = true;
         home = "${cfg.home}/${username}";
@@ -25,11 +28,24 @@ in {
         password = "1";
         isNormalUser = true;
         description = "${description}";
-        extraGroups = [ "networkmanager" "wheel" "kvm" "docker" "input" ];
+        extraGroups = [
+          "networkmanager"
+          "wheel"
+          "kvm"
+          "docker"
+          "input"
+        ];
       };
-    }) users;
+    }
+  ) users;
 
-  home-manager.users = mapAttrsAndKeys (user:
-    let username = cfg.user.${user}.username;
-    in { ${username}.home.stateVersion = cfg.version; }) users;
+  home-manager.users = mapAttrsAndKeys (
+    user:
+    let
+      username = cfg.user.${user}.username;
+    in
+    {
+      ${username}.home.stateVersion = cfg.version;
+    }
+  ) users;
 }
