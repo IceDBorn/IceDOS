@@ -1,21 +1,29 @@
 { config, lib, ... }:
 
 let
-  inherit (lib) attrNames filter foldl' mkIf optional;
+  inherit (lib)
+    attrNames
+    filter
+    foldl'
+    mkIf
+    ;
 
   cfg = config.icedos;
 
-  mapAttrsAndKeys = callback: list:
-    (foldl' (acc: value: acc // (callback value)) { } list);
-in {
-  home-manager.users = let
-    users = filter (user: cfg.system.user.${user}.enable == true)
-      (attrNames cfg.system.user);
-  in mapAttrsAndKeys (user:
-    let username = cfg.system.user.${user}.username;
-    in {
-      ${username}.home.file =
-        mkIf (cfg.desktop.gnome.enable && cfg.desktop.gnome.startupItems) {
+  mapAttrsAndKeys = callback: list: (foldl' (acc: value: acc // (callback value)) { } list);
+in
+{
+  home-manager.users =
+    let
+      users = filter (user: cfg.system.user.${user}.enable == true) (attrNames cfg.system.user);
+    in
+    mapAttrsAndKeys (
+      user:
+      let
+        username = cfg.system.user.${user}.username;
+      in
+      {
+        ${username}.home.file = mkIf (cfg.desktop.gnome.enable && cfg.desktop.gnome.startupItems) {
           # Add signal to startup
           ".config/autostart/signal-desktop.desktop" = mkIf (user != "work") {
             text = ''
@@ -54,5 +62,6 @@ in {
             '';
           };
         };
-    }) users;
+      }
+    ) users;
 }

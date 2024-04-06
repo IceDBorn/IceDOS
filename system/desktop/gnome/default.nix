@@ -1,10 +1,16 @@
-{ pkgs, config, lib, ... }:
+{
+  pkgs,
+  config,
+  lib,
+  ...
+}:
 
 let
   inherit (lib) mkIf optional;
 
   cfg = config.icedos.desktop.gnome;
-in {
+in
+{
   imports = [
     # Setup home manager for gnome
     ./home.nix
@@ -16,25 +22,27 @@ in {
 
   programs.dconf.enable = mkIf (cfg.enable) true;
 
-  environment.systemPackages = with pkgs;
-    (if (cfg.enable) then
-      [
-        gnome.dconf-editor # Edit gnome's dconf
-        gnome.gnome-tweaks # Tweaks missing from pure gnome
-        gnomeExtensions.appindicator # Tray icons for gnome
-        gnomeExtensions.pano # Next-gen Clipboard manager
-        gnome-extension-manager # Gnome extensions manager and downloader
-        gnomeExtensions.quick-settings-tweaker
-      ]
-      ++ optional (cfg.extensions.arcmenu) gnomeExtensions.arcmenu # Start menu
-      ++ optional (cfg.extensions.dashToPanel)
-      gnomeExtensions.dash-to-panel # An icon taskbar for gnome
-      ++ optional (cfg.extensions.gsconnect)
-      gnomeExtensions.gsconnect # KDE Connect implementation for gnome
-    else
-      [ ]);
+  environment.systemPackages =
+    with pkgs;
+    (
+      if (cfg.enable) then
+        [
+          gnome.dconf-editor # Edit gnome's dconf
+          gnome.gnome-tweaks # Tweaks missing from pure gnome
+          gnomeExtensions.appindicator # Tray icons for gnome
+          gnomeExtensions.pano # Next-gen Clipboard manager
+          gnome-extension-manager # Gnome extensions manager and downloader
+          gnomeExtensions.quick-settings-tweaker
+        ]
+        ++ optional (cfg.extensions.arcmenu) gnomeExtensions.arcmenu # Start menu
+        ++ optional (cfg.extensions.dashToPanel) gnomeExtensions.dash-to-panel # An icon taskbar for gnome
+        ++ optional (cfg.extensions.gsconnect) gnomeExtensions.gsconnect # KDE Connect implementation for gnome
+      else
+        [ ]
+    );
 
-  environment.gnome.excludePackages = with pkgs;
+  environment.gnome.excludePackages =
+    with pkgs;
     mkIf (cfg.enable) [
       epiphany # Web browser
       evince # Document viewer
