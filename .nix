@@ -23,8 +23,7 @@
           # Sites to launch on Firefox PWAs
           pwas = mkOption {
             type = types.str;
-            default =
-              "https://app.tuta.com https://icedborn.github.io/icedchat https://discord.com/app https://dtekteam.slack.com/ https://web.skype.com/";
+            default = "https://app.tuta.com https://icedborn.github.io/icedchat https://discord.com/app https://dtekteam.slack.com/ https://web.skype.com/";
           };
         };
 
@@ -44,8 +43,7 @@
             # https://github.com/tkashkin/Adwaita-for-Steam/tree/master/adwaita/extras
             extras = mkOption {
               type = types.str;
-              default =
-                "-e library/hide_whats_new -e login/hover_qr -e windowcontrols/hide-close";
+              default = "-e library/hide_whats_new -e login/hover_qr -e windowcontrols/hide-close";
             };
           };
 
@@ -171,7 +169,6 @@
               type = types.bool;
               default = true;
             };
-
           };
 
           # Show the month and day of the month on the clock
