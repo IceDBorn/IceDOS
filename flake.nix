@@ -32,35 +32,50 @@
     yuzu.url = "git+https:///codeberg.org/K900/yuzu-flake";
   };
 
-  outputs = { self, chaotic, master, small, stable, unstable, home-manager
-    , nerivations, steam-session, hyprland, phps, pipewire-screenaudio
-    , shell-in-netns, yuzu }@inputs: {
-      nixosConfigurations.${unstable.lib.fileContents "/etc/hostname"} =
-        unstable.lib.nixosSystem {
-          system = "x86_64-linux";
-          specialArgs = { inherit inputs; };
-          modules = [
-            # Read configuration location
-            {
-              options = with unstable.lib; {
-                configurationLocation = mkOption {
-                  type = types.str;
-                  default =
-                    unstable.lib.fileContents "/tmp/configuration-location";
-                };
-              };
-            }
-
-            # External modules
-            chaotic.nixosModules.default
-            home-manager.nixosModules.home-manager
-            hyprland.nixosModules.default
-            nerivations.nixosModules.default
-            steam-session.nixosModules.default
-
-            # Internal modules
-            ./modules.nix
-          ];
+  outputs =
+    {
+      self,
+      chaotic,
+      master,
+      small,
+      stable,
+      unstable,
+      home-manager,
+      nerivations,
+      steam-session,
+      hyprland,
+      phps,
+      pipewire-screenaudio,
+      shell-in-netns,
+      yuzu,
+    }@inputs:
+    {
+      nixosConfigurations.${unstable.lib.fileContents "/etc/hostname"} = unstable.lib.nixosSystem {
+        system = "x86_64-linux";
+        specialArgs = {
+          inherit inputs;
         };
+        modules = [
+          # Read configuration location
+          {
+            options = with unstable.lib; {
+              configurationLocation = mkOption {
+                type = types.str;
+                default = unstable.lib.fileContents "/tmp/configuration-location";
+              };
+            };
+          }
+
+          # External modules
+          chaotic.nixosModules.default
+          home-manager.nixosModules.home-manager
+          hyprland.nixosModules.default
+          nerivations.nixosModules.default
+          steam-session.nixosModules.default
+
+          # Internal modules
+          ./modules.nix
+        ];
+      };
     };
 }
