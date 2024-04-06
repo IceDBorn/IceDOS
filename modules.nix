@@ -1,14 +1,16 @@
 { config, ... }:
 
-let cfg = config.icedos.system;
-in {
+let
+  cfg = config.icedos.system;
+in
+{
   imports = [
     # Auto-generated configuration by NixOS
     ./hardware/nixos/hardware-configuration.nix
     ./hardware/nixos/extras.nix
 
     # Custom configuration
-    ./.nix
+    ./options.nix
     ./hardware # Enable various hardware capabilities
     ./hardware/amd/radeon.nix
     ./hardware/amd/ryzen.nix
