@@ -523,12 +523,6 @@
             default = true;
           };
         };
-
-        # use self-built version of xpadneo to fix some controller issues
-        xpadneoUnstable = mkOption {
-          type = types.bool;
-          default = true;
-        };
       };
 
       system = {
