@@ -1,4 +1,7 @@
 { pkgs, config }:
+let
+  monitor = config.icedos.hardware.monitors.main.name;
+in
 pkgs.writeShellScriptBin "hyprland-startup" ''
   run () {
     pidof $1 || $1 $2 &
@@ -16,6 +19,7 @@ pkgs.writeShellScriptBin "hyprland-startup" ''
   sleep 2 && run waybar
   wl-paste --type image --watch cliphist store &
   wl-paste --type text --watch cliphist store &
+  xrandr --output "${monitor}" --primary
 
   # Tray applications
   nm-applet --indicator &
