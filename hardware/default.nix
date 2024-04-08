@@ -57,8 +57,8 @@ in
       ++ optional (monitors.third.enable) "video=${monitors.third.name}:${monitors.third.resolution}@${monitors.third.refreshRate},rotate=${monitors.third.rotation}";
 
     kernel.sysctl = {
-      # Fixes crash when loading maps in CS2
-      "vm.max_map_count" = 262144;
+      # Fixes crashes or start-up issues for games
+      "vm.max_map_count" = 1048576;
       # Disable ipv6 for all interfaces
       "net.ipv6.conf.all.disable_ipv6" = !cfg.hardware.networking.ipv6;
       # Set agressiveness of swap usage
