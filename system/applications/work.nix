@@ -37,33 +37,34 @@ let
 
   gitLocation = "${cfg.home}/${username}/git/";
 
-  multiStoreProjects = {
-    vaza = {
+  storeAliases = {
+    burkani = {
+       folder = "vaza";
+      alias = "burkani";
+    };
+
+    beo = {
       folder = "vaza";
+      alias = "beo";
+     };
 
-      aliases = {
-        one = "burkani";
-        two = "beo";
-      };
-    };
+    tosupermoureal = {
+       folder = "tosupermou";
+      alias = "tsm";
+     };
 
-    tosupermou = {
-      folder = "tosupermou";
-      alias = "tosupermoureal";
-    };
+    bookmarkt = {
+       folder = "papiros";
+      alias = "book";
+     };
+   };
 
-    papiros = {
-      folder = "papiros";
-      alias = "bookmarkt";
-    };
-  };
-
-  httpdAliases = ''
-    Alias /${multiStoreProjects.vaza.aliases.one} ${gitLocation}${multiStoreProjects.vaza.folder}
-    Alias /${multiStoreProjects.vaza.aliases.two} ${gitLocation}${multiStoreProjects.vaza.folder}
-    Alias /${multiStoreProjects.tosupermou.alias} ${gitLocation}${multiStoreProjects.tosupermou.folder}
-    Alias /${multiStoreProjects.papiros.alias} ${gitLocation}${multiStoreProjects.papiros.folder}
-  '';
+   httpdAliases = ''
+    Alias /${storeAliases.burkani.alias} ${gitLocation}${storeAliases.burkani.folder}
+    Alias /${storeAliases.beo.alias} ${gitLocation}${storeAliases.beo.folder}
+    Alias /${storeAliases.tosupermoureal.alias} ${gitLocation}${storeAliases.tosupermoureal.folder}
+    Alias /${storeAliases.bookmarkt.alias} ${gitLocation}${storeAliases.bookmarkt.folder}
+   '';
 in
 mkIf (cfg.user.work.enable) {
   users.users.${username}.packages =
@@ -81,7 +82,7 @@ mkIf (cfg.user.work.enable) {
     httpd = {
       enable = true;
       user = username;
-      phpPackage = inputs.phps.packages.x86_64-linux.php73;
+      phpPackage = inputs.phps.packages.x86_64-linux.php74;
       enablePHP = true;
       extraConfig = ''
         <VirtualHost *:80>
