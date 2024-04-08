@@ -119,7 +119,6 @@ in
   environment.systemPackages =
     with pkgs;
     [
-      android-tools # Tools for debugging android devices
       appimage-run # Appimage runner
       aria # Terminal downloader with multiple connections support
       bat # Better cat command
@@ -188,6 +187,7 @@ in
   users.defaultUserShell = pkgs.zsh; # Use ZSH shell for all users
 
   programs = {
+    adb.enable = true;
     direnv.enable = true;
 
     zsh = {

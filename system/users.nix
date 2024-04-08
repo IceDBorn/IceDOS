@@ -29,11 +29,12 @@ in
         isNormalUser = true;
         description = "${description}";
         extraGroups = [
-          "networkmanager"
-          "wheel"
-          "kvm"
+          "adbusers"
           "docker"
           "input"
+          "kvm"
+          "networkmanager"
+          "wheel"
         ];
       };
     }
