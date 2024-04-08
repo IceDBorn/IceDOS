@@ -211,6 +211,9 @@ in {
           bind = $mainMod ALT, 9, workspace, 29
           bind = $mainMod ALT, 0, workspace, 30
 
+          # Switch to prev/next workspace
+          bind = $mainMod ALT, left, workspace, e-1
+          bind = $mainMod ALT, right, workspace, e+1
 
           # Move active window to a workspace with mod key + SHIFT + [0-9]
           bind = $mainMod SHIFT, 1, movetoworkspace, 1
@@ -243,6 +246,10 @@ in {
           bind = $mainMod SHIFT ALT, 8, movetoworkspace, 28
           bind = $mainMod SHIFT ALT, 9, movetoworkspace, 29
           bind = $mainMod SHIFT ALT, 0, movetoworkspace, 30
+
+          # Move active windows to prev/next workspace
+          bind = $mainMod SHIFT ALT, left, movetoworkspace, e-1
+          bind = $mainMod SHIFT ALT, right, movetoworkspace, e+1
 
           # Scroll through existing workspaces with mod key + scroll
           bind = $mainMod, mouse_down, workspace, e-1
