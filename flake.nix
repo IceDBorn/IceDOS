@@ -2,26 +2,23 @@
   inputs = {
     # Update channels
     chaotic.url = "github:chaotic-cx/nyx/nyxpkgs-unstable";
-    master.url = "github:NixOS/nixpkgs/master";
-    small.url = "github:NixOS/nixpkgs/nixos-unstable-small";
-    stable.url = "github:NixOS/nixpkgs/23.11";
 
-    unstable = {
-      follows = "chaotic/nixpkgs";
+    nixpkgs = {
       url = "github:NixOS/nixpkgs/nixos-unstable";
+      follows = "chaotic/nixpkgs";
     };
 
     # Modules
     home-manager = {
       url = "github:nix-community/home-manager";
-      inputs.nixpkgs.follows = "unstable";
+      inputs.nixpkgs.follows = "nixpkgs";
     };
 
     nerivations.url = "github:icedborn/nerivations";
 
     steam-session = {
-      follows = "chaotic/jovian";
       url = "github:Jovian-Experiments/Jovian-NixOS";
+      follows = "chaotic/jovian";
     };
 
     # Apps
@@ -36,10 +33,7 @@
     {
       self,
       chaotic,
-      master,
-      small,
-      stable,
-      unstable,
+      nixpkgs,
       home-manager,
       nerivations,
       steam-session,
@@ -50,21 +44,32 @@
       yuzu,
     }@inputs:
     {
-      nixosConfigurations.${unstable.lib.fileContents "/etc/hostname"} = unstable.lib.nixosSystem {
+      nixosConfigurations.${nixpkgs.lib.fileContents "/etc/hostname"} = nixpkgs.lib.nixosSystem {
         system = "x86_64-linux";
+
         specialArgs = {
           inherit inputs;
         };
+
         modules = [
           # Read configuration location
-          {
-            options = with unstable.lib; {
-              configurationLocation = mkOption {
-                type = types.str;
-                default = unstable.lib.fileContents "/tmp/configuration-location";
+          (
+            { lib, ... }:
+            let
+              inherit (lib) mkOption types fileContents;
+            in
+            {
+              options = {
+                configurationLocation = mkOption {
+                  type = types.str;
+                  default = fileContents "/tmp/configuration-location";
+                };
               };
-            };
-          }
+            }
+          )
+
+          # Internal modules
+          ./modules.nix
 
           # External modules
           chaotic.nixosModules.default
@@ -72,9 +77,6 @@
           hyprland.nixosModules.default
           nerivations.nixosModules.default
           steam-session.nixosModules.default
-
-          # Internal modules
-          ./modules.nix
         ];
       };
     };
