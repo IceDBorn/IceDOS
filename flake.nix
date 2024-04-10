@@ -14,7 +14,10 @@
       inputs.nixpkgs.follows = "nixpkgs";
     };
 
-    nerivations.url = "github:icedborn/nerivations";
+    nerivations = {
+      url = "github:icedborn/nerivations";
+      inputs.nixpkgs.follows = "nixpkgs";
+    };
 
     steam-session = {
       url = "github:Jovian-Experiments/Jovian-NixOS";
@@ -23,10 +26,26 @@
 
     # Apps
     hyprland.url = "github:hyprwm/Hyprland";
-    phps.url = "github:fossar/nix-phps";
-    pipewire-screenaudio.url = "github:IceDBorn/pipewire-screenaudio";
-    shell-in-netns.url = "github:jim3692/shell-in-netns";
-    yuzu.url = "git+https:///codeberg.org/K900/yuzu-flake";
+
+    phps = {
+      url = "github:fossar/nix-phps";
+      inputs.nixpkgs.follows = "nixpkgs";
+    };
+
+    pipewire-screenaudio = {
+      url = "github:IceDBorn/pipewire-screenaudio";
+      inputs.nixpkgs.follows = "nixpkgs";
+    };
+
+    shell-in-netns = {
+      url = "github:jim3692/shell-in-netns";
+      inputs.nixpkgs.follows = "nixpkgs";
+    };
+
+    yuzu = {
+      url = "git+https:///codeberg.org/K900/yuzu-flake";
+      inputs.nixpkgs.follows = "nixpkgs";
+    };
   };
 
   outputs =
@@ -59,11 +78,9 @@
               inherit (lib) mkOption types fileContents;
             in
             {
-              options = {
-                configurationLocation = mkOption {
-                  type = types.str;
-                  default = fileContents "/tmp/configuration-location";
-                };
+              options.icedos.configurationLocation = mkOption {
+                type = types.str;
+                default = fileContents "/tmp/configuration-location";
               };
             }
           )

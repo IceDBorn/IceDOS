@@ -21,7 +21,7 @@ pkgs.writeShellScriptBin "${command}" ''
   trap "exit" INT TERM; trap "kill 0" EXIT; sudo -v || exit $?; sleep 1; while true; do sleep 60; sudo -nv; done 2>/dev/null &
 
   # Navigate to configuration directory
-  cd ${config.configurationLocation} 2> /dev/null ||
+  cd ${config.icedos.configurationLocation} 2> /dev/null ||
   (echo 'warning: configuration path is invalid, run build.sh located inside the configuration scripts directory to update the path.' && false) &&
 
   if ${update}; then
