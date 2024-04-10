@@ -339,16 +339,9 @@
           };
         };
 
-        laptop = {
-          enable = mkOption {
-            type = types.bool;
-            default = false;
-          };
-
-          autoCpuFreq = mkOption {
-            type = types.bool;
-            default = true;
-          };
+        laptop.enable = mkOption {
+          type = types.bool;
+          default = false;
         };
 
         monitors = {

@@ -11,8 +11,15 @@ let
   cfg = config.icedos.hardware;
 in
 mkIf (cfg.laptop.enable) {
-  services.auto-cpufreq.enable = cfg.laptop.autoCpuFreq;
-  environment.systemPackages = [ pkgs.brightnessctl ];
+  services = {
+    cpupower-gui.enable = true;
+    upower.enable = true;
+  };
+
+  environment.systemPackages = with pkgs; [
+    brightnessctl
+    cpupower-gui
+  ];
 
   hardware.nvidia.prime = mkIf (cfg.gpu.nvidia.enable) {
     offload.enable = true;
