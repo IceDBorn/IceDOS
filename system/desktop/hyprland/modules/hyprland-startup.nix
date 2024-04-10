@@ -20,6 +20,7 @@ pkgs.writeShellScriptBin "hyprland-startup" ''
   wl-paste --type image --watch cliphist store &
   wl-paste --type text --watch cliphist store &
   xrandr --output "${monitor}" --primary
+  run poweralertd
 
   # Tray applications
   nm-applet --indicator &

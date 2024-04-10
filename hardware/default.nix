@@ -72,7 +72,10 @@ in
     "/".options = [ "compress=zstd" ];
   };
 
-  services.fstrim.enable = true; # Enable SSD TRIM
+  services = {
+    fstrim.enable = true; # Enable SSD TRIM
+    upower.enable = true; # Enable power management
+  };
 
   # More sysctl params to set
   system.activationScripts.sysfs.text = ''

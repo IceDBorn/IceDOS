@@ -73,6 +73,7 @@ in
         networkmanagerapplet # Network manager tray icon
         overskride # Bluetooth manager
         polkit_gnome # Polkit manager
+        poweralertd # Battery level alerts
         rofi-wayland # App launcher
         slurp # Monitor selector
         swappy # Edit screenshots

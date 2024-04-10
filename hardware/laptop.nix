@@ -11,10 +11,7 @@ let
   cfg = config.icedos.hardware;
 in
 mkIf (cfg.laptop.enable) {
-  services = {
-    cpupower-gui.enable = true;
-    upower.enable = true;
-  };
+  services.cpupower-gui.enable = true;
 
   environment.systemPackages = with pkgs; [
     brightnessctl
