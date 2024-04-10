@@ -1,7 +1,8 @@
 let
-  cfg = import ./options.nix { lib = import <nixpkgs/lib>; };
+  cfg = (import ./options.nix { lib = import <nixpkgs/lib>; }).options.icedos;
 
-  pwas = cfg.options.icedos.applications.firefox.pwas.default;
+  steam-session = cfg.applications.steam.session.enable.default;
+  hyprland = cfg.desktop.hyprland.enable.default;
 in
 {
   flake.nix = ''
@@ -26,13 +27,27 @@ in
           inputs.nixpkgs.follows = "nixpkgs";
         };
 
-        steam-session = {
-          url = "github:Jovian-Experiments/Jovian-NixOS";
-          follows = "chaotic/jovian";
-        };
+        ${
+          if (steam-session) then
+            ''
+              steam-session = {
+                url = "github:Jovian-Experiments/Jovian-NixOS";
+                follows = "chaotic/jovian";
+              };
+            ''
+          else
+            ""
+        }
 
         # Apps
-        hyprland.url = "github:hyprwm/Hyprland";
+        ${
+          if (hyprland) then
+            ''
+              hyprland.url = "github:hyprwm/Hyprland";
+            ''
+          else
+            ""
+        }
 
         phps = {
           url = "github:fossar/nix-phps";
@@ -62,12 +77,12 @@ in
           nixpkgs,
           home-manager,
           nerivations,
-          steam-session,
-          hyprland,
           phps,
           pipewire-screenaudio,
           shell-in-netns,
           yuzu,
+          ${(if (steam-session) then ''steam-session,'' else "")}
+          ${(if (hyprland) then ''hyprland,'' else "")}
         }@inputs:
         {
           nixosConfigurations.''${nixpkgs.lib.fileContents "/etc/hostname"} = nixpkgs.lib.nixosSystem {
@@ -98,9 +113,31 @@ in
               # External modules
               chaotic.nixosModules.default
               home-manager.nixosModules.home-manager
-              hyprland.nixosModules.default
               nerivations.nixosModules.default
-              steam-session.nixosModules.default
+
+              ${
+                (
+                  if (steam-session) then
+                    ''
+                      steam-session.nixosModules.default
+                      ./system/desktop/steam-session
+                    ''
+                  else
+                    ""
+                )
+              }
+
+              ${
+                (
+                  if (hyprland) then
+                    ''
+                      hyprland.nixosModules.default
+                      ./system/desktop/hyprland
+                    ''
+                  else
+                    ""
+                )
+              }
             ];
           };
         };

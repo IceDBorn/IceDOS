@@ -24,8 +24,6 @@ in
     ./system/applications
     ./system/desktop
     ./system/desktop/gnome
-    ./system/desktop/hyprland
-    ./system/desktop/steam-session
     ./system/users.nix
   ];
 

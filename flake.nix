@@ -19,11 +19,6 @@
       inputs.nixpkgs.follows = "nixpkgs";
     };
 
-    steam-session = {
-      url = "github:Jovian-Experiments/Jovian-NixOS";
-      follows = "chaotic/jovian";
-    };
-
     # Apps
     hyprland.url = "github:hyprwm/Hyprland";
 
@@ -55,12 +50,12 @@
       nixpkgs,
       home-manager,
       nerivations,
-      steam-session,
-      hyprland,
       phps,
       pipewire-screenaudio,
       shell-in-netns,
       yuzu,
+
+      hyprland,
     }@inputs:
     {
       nixosConfigurations.${nixpkgs.lib.fileContents "/etc/hostname"} = nixpkgs.lib.nixosSystem {
@@ -91,9 +86,10 @@
           # External modules
           chaotic.nixosModules.default
           home-manager.nixosModules.home-manager
-          hyprland.nixosModules.default
           nerivations.nixosModules.default
-          steam-session.nixosModules.default
+
+          hyprland.nixosModules.default
+          ./system/desktop/hyprland
         ];
       };
     };

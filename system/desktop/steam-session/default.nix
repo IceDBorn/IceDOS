@@ -16,7 +16,7 @@ in
 {
   jovian = {
     decky-loader = {
-      enable = (session.enable && session.decky);
+      enable = session.decky;
       package = pkgs.decky-loader-prerelease;
     };
 
@@ -26,15 +26,15 @@ in
       autoUpdate = true;
     };
 
-    steam = mkIf (session.enable) {
+    steam = {
       enable = true;
       autoStart = session.autoStart.enable;
       desktopSession = session.autoStart.desktopSession;
       user = steamUser;
     };
 
-    hardware.has.amd.gpu = (session.enable && hasAmdGpu);
+    hardware.has.amd.gpu = hasAmdGpu;
 
-    steamos.useSteamOSConfig = session.enable;
+    steamos.useSteamOSConfig = true;
   };
 }
