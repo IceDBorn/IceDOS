@@ -142,7 +142,6 @@ in
       jq # JSON parser
       killall # Tool to kill all programs matching process name
       kitty # Terminal
-      libnotify # Send desktop notifications
       logseq # Note taking with nodes
       lsd # Better ls command
       mission-center # Task manager
@@ -173,7 +172,7 @@ in
       wine # Compatibility layer capable of running Windows applications
       winetricks # Wine prefix settings manager
       woeusb # Windows ISO Burner
-      xorg.xhost # Use x.org server with distrobox
+      xorg.xhost # Use x.org server with docker
       youtube-dl # Video downloader
       zenstates # Ryzen CPU controller
     ]

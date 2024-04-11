@@ -78,6 +78,7 @@ in
     systemPackages = with pkgs; [
       bibata-cursors # Material cursors
       gnome.adwaita-icon-theme # GTK theme
+      libnotify # Send desktop notifications
       tela-icon-theme # Icon theme
     ];
 
