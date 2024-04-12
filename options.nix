@@ -548,11 +548,6 @@
           default = "1";
         };
 
-        update.stash = mkOption {
-          type = types.str;
-          default = "true";
-        };
-
         user = {
           main = {
             enable = mkOption {

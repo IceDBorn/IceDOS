@@ -41,7 +41,6 @@ let
     inherit pkgs config;
     command = "update";
     update = "true";
-    stash = cfg.system.update.stash;
   };
 
   emulators = with pkgs; [

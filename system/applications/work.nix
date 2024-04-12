@@ -24,7 +24,6 @@ let
     inherit pkgs config;
     command = "update";
     update = "true";
-    stash = cfg.update.stash;
   };
 
   # Packages to add for a fork of the config
@@ -39,32 +38,32 @@ let
 
   storeAliases = {
     burkani = {
-       folder = "vaza";
+      folder = "vaza";
       alias = "burkani";
     };
 
     beo = {
       folder = "vaza";
       alias = "beo";
-     };
+    };
 
     tosupermoureal = {
-       folder = "tosupermou";
+      folder = "tosupermou";
       alias = "tsm";
-     };
+    };
 
     bookmarkt = {
-       folder = "papiros";
+      folder = "papiros";
       alias = "book";
-     };
-   };
+    };
+  };
 
-   httpdAliases = ''
+  httpdAliases = ''
     Alias /${storeAliases.burkani.alias} ${gitLocation}${storeAliases.burkani.folder}
     Alias /${storeAliases.beo.alias} ${gitLocation}${storeAliases.beo.folder}
     Alias /${storeAliases.tosupermoureal.alias} ${gitLocation}${storeAliases.tosupermoureal.folder}
     Alias /${storeAliases.bookmarkt.alias} ${gitLocation}${storeAliases.bookmarkt.folder}
-   '';
+  '';
 in
 mkIf (cfg.user.work.enable) {
   users.users.${username}.packages =

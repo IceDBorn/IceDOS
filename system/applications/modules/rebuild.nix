@@ -3,11 +3,17 @@
   config,
   command,
   update,
-  stash,
 }:
 pkgs.writeShellScriptBin "${command}" ''
-  function stash() {
-    git stash store $(git stash create) -m "flake.lock@$(date +%A-%d-%B-%T)"
+  function cache() {
+    FILE="$1"
+
+    [ ! -f "$FILE" ] && exit 1
+    mkdir -p .cache
+
+    LASTFILE=$(ls -lt ".cache" | grep "$FILE" | head -2 | tail -1 | awk '{print $9}')
+
+    diff -sq ".cache/$LASTFILE" "$FILE" &> /dev/null || cp "$FILE" ".cache/$FILE-$(date -Is)"
   }
 
   function runCommand() {
@@ -24,16 +30,11 @@ pkgs.writeShellScriptBin "${command}" ''
   cd ${config.icedos.configurationLocation} 2> /dev/null ||
   (echo 'warning: configuration path is invalid, run build.sh located inside the configuration scripts directory to update the path.' && false) &&
 
-  if ${update}; then
-    if ${stash}; then
-      if [ $(git stash list | wc -l) -eq 0 ]; then
-        stash
-      else
-        [ -n "$(git diff stash flake.lock)" ] && stash
-      fi
-    fi
+  cache "flake.nix"
 
+  if ${update}; then
     nix flake update && sudo bash scripts/build.sh
+    cache "flake.lock"
 
     runCommand update-proton-ge
     runCommand update-wine-ge

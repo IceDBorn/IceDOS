@@ -32,7 +32,6 @@ let
     inherit pkgs config;
     command = "rebuild";
     update = "false";
-    stash = "false";
   };
 
   toggle-services = import modules/toggle-services.nix { inherit pkgs; };
