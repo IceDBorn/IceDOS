@@ -23,6 +23,17 @@ in
   };
 
   services = {
+    displayManager.autoLogin = mkIf (cfg.desktop.autologin.enable) {
+      enable = true;
+      user =
+        if (cfg.system.user.main.enable && cfg.desktop.autologin.main.user.enable) then
+          cfg.system.user.main.username
+        else if (cfg.system.user.work.enable) then
+          cfg.system.user.work.username
+        else
+          "";
+    };
+
     xserver = {
       enable = true; # Enable the X11 windowing system
 
@@ -30,17 +41,6 @@ in
         gdm = {
           enable = cfg.desktop.gdm.enable;
           autoSuspend = cfg.desktop.gdm.autoSuspend;
-        };
-
-        autoLogin = mkIf (cfg.desktop.autologin.enable) {
-          enable = true;
-          user =
-            if (cfg.system.user.main.enable && cfg.desktop.autologin.main.user.enable) then
-              cfg.system.user.main.username
-            else if (cfg.system.user.work.enable) then
-              cfg.system.user.work.username
-            else
-              "";
         };
       };
 
