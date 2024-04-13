@@ -38,14 +38,17 @@ let
     update = "true";
   };
 
-  emulators = with pkgs; [
-    cemu # Wii U
-    duckstation # PS1
-    inputs.switch-emulators.packages.${pkgs.system}.suyu # Switch
-    pcsx2 # PS2
-    ppsspp # PSP
-    rpcs3 # PS3
-  ];
+  emulators =
+    with pkgs;
+    [
+      cemu # Wii U
+      duckstation # PS1
+      pcsx2 # PS2
+      ppsspp # PSP
+      rpcs3 # PS3
+    ] # Switch
+    ++ optional (cfg.applications.emulators.switch
+    ) inputs.switch-emulators.packages.${pkgs.system}.suyu;
 
   gaming = with pkgs; [
     heroic # Epic Games Launcher for Linux
