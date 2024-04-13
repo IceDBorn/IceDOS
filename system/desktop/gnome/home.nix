@@ -54,8 +54,6 @@ in
             "org/gnome/desktop/wm/preferences" = {
               # Buttons to show in titlebars
               button-layout = cfg.desktop.gnome.titlebarLayout;
-              # Disable application is ready notification
-              focus-new-windows = "strict";
               num-workspaces = cfg.desktop.gnome.workspaces.maxWorkspaces;
             };
 
