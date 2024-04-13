@@ -34,19 +34,6 @@
         };
 
         steam = {
-          adwaitaForSteam = {
-            enable = mkOption {
-              type = types.bool;
-              default = true;
-            };
-
-            # https://github.com/tkashkin/Adwaita-for-Steam/tree/master/adwaita/extras
-            extras = mkOption {
-              type = types.str;
-              default = "-e library/hide_whats_new -e login/hover_qr -e windowcontrols/hide-close";
-            };
-          };
-
           beta = mkOption {
             type = types.bool;
             default = true;

@@ -154,14 +154,6 @@ in
             # Add btop config
             ".config/btop/btop.conf".source = configs/btop.conf;
 
-            # Add adwaita steam skin
-            ".local/share/Steam/steamui" =
-              mkIf (user != "work" && cfg.applications.steam.adwaitaForSteam.enable)
-                {
-                  source = "${pkgs.adwaita-for-steam}/build";
-                  recursive = true;
-                };
-
             # Enable steam beta
             ".local/share/Steam/package/beta" = mkIf (user != "work" && cfg.applications.steam.beta) {
               text = if (cfg.applications.steam.session.enable) then "steamdeck_publicbeta" else "publicbeta";
