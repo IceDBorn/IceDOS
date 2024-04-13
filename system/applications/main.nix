@@ -46,7 +46,8 @@ let
       pcsx2 # PS2
       ppsspp # PSP
       rpcs3 # PS3
-    ] # Switch
+    ]
+    # Switch
     ++ optional (cfg.applications.emulators.switch
     ) inputs.switch-emulators.packages.${pkgs.system}.suyu;
 
