@@ -572,9 +572,16 @@
                 };
               };
 
-              nvchad.formatOnSave = mkOption {
-                type = types.bool;
-                default = true;
+              nvchad = {
+                enable = mkOption {
+                  type = types.bool;
+                  default = true;
+                };
+
+                formatOnSave = mkOption {
+                  type = types.bool;
+                  default = true;
+                };
               };
             };
 
@@ -660,9 +667,16 @@
                 };
               };
 
-              nvchad.formatOnSave = mkOption {
-                type = types.bool;
-                default = false;
+              nvchad = {
+                enable = mkOption {
+                  type = types.bool;
+                  default = true;
+                };
+
+                formatOnSave = mkOption {
+                  type = types.bool;
+                  default = false;
+                };
               };
             };
 

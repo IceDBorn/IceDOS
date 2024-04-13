@@ -174,7 +174,11 @@ in
             };
 
             # Avoid file not found errors for bash
-            ".bashrc".text = "export EDITOR=nvim";
+            ".bashrc".text =
+              if (cfg.system.user.${user}.applications.nvchad.enable) then
+                "export EDITOR=nvim"
+              else
+                "export EDITOR=codium";
           };
 
           # Set celluloid config file path
