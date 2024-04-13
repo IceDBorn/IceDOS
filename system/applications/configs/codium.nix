@@ -50,6 +50,7 @@ in
             "terminal.integrated.smoothScrolling": true,
             "update.mode": "none",
             "window.menuBarVisibility": "toggle",
+            "window.zoomLevel": 1,
             "workbench.colorTheme": "One Dark Pro Darker",
             "workbench.iconTheme": "material-icon-theme",
             "workbench.list.smoothScrolling": true,
