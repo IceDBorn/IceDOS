@@ -112,13 +112,9 @@ in
           home.file = {
             # New document options for nautilus
             "Templates/new".text = "";
-
             "Templates/new.cfg".text = "";
-
             "Templates/new.ini".text = "";
-
             "Templates/new.sh".text = "";
-
             "Templates/new.txt".text = "";
 
             ".icons/default" = {

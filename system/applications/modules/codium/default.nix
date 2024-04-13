@@ -41,13 +41,17 @@ in
         username = cfg.system.user.${user}.username;
       in
       {
-        # Codium profile used a an IDE
-        ${username}.xdg.desktopEntries.codiumIDE = mkIf (cfg.applications.firefox.enable) {
-          exec = "codium --user-data-dir ${cfg.system.home}/${username}/.config/VSCodiumIDE";
-          icon = "codium";
-          name = "Codium IDE";
-          terminal = false;
-          type = "Application";
+        ${username} = mkIf (cfg.applications.codium) {
+          home.file.".bashrc".text = mkIf (!cfg.applications.nvchad) "export EDITOR=codium";
+
+          # Codium profile used a an IDE
+          xdg.desktopEntries.codiumIDE = {
+            exec = "codium --user-data-dir ${cfg.system.home}/${username}/.config/VSCodiumIDE";
+            icon = "codium";
+            name = "Codium IDE";
+            terminal = false;
+            type = "Application";
+          };
         };
       }
     ) users;
