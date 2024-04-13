@@ -98,16 +98,6 @@ in
                 terminal = false;
                 type = "Application";
               };
-
-              # Force slack to use window decorations
-              slack = mkIf (user == "work") {
-                name = "Slack";
-                exec = "slack --enable-features=WaylandWindowDecorations";
-                icon = "slack";
-                settings = {
-                  StartupWMClass = "slack";
-                };
-              };
             };
 
             # Default apps
