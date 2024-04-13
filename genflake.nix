@@ -64,7 +64,7 @@ in
           inputs.nixpkgs.follows = "nixpkgs";
         };
 
-        yuzu = {
+        switch-emulators = {
           url = "git+https:///codeberg.org/K900/yuzu-flake";
           inputs.nixpkgs.follows = "nixpkgs";
         };
@@ -80,7 +80,7 @@ in
           phps,
           pipewire-screenaudio,
           shell-in-netns,
-          yuzu,
+          switch-emulators,
           ${(if (steam-session) then ''steam-session,'' else "")}
           ${(if (hyprland) then ''hyprland,'' else "")}
         }@inputs:
