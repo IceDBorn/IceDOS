@@ -42,6 +42,4 @@ pkgs.writeShellScriptBin "${command}" ''
   else
     sudo bash scripts/build.sh
   fi
-
-  runCommand patch-steam-library
 ''

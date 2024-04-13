@@ -31,11 +31,6 @@ let
     type = "Wine";
   };
 
-  steam-library-patcher = import modules/steam-library-patcher.nix {
-    inherit pkgs;
-    steamPath = "/home/${username}/.local/share/Steam/steamui/css/";
-  };
-
   # Update the system configuration
   update = import modules/rebuild.nix {
     inherit pkgs config;
