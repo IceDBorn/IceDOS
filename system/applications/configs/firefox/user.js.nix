@@ -64,7 +64,6 @@ let
 
     // Global settings
     user_pref("browser.theme.dark-private-windows", false);
-    user_pref("gnomeTheme.hideWebrtcIndicator", true);
     user_pref("image.jxl.enabled", true); // Enable JPEG XL support
     user_pref("media.ffmpeg.vaapi.enabled", true); // Enable VA-API hard accelaration
     user_pref("svg.context-properties.content.enabled", true);
