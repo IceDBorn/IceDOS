@@ -3,6 +3,7 @@ let
 
   steam-session = cfg.applications.steam.session.enable.default;
   hyprland = cfg.desktop.hyprland.enable.default;
+  switch-emulators = cfg.applications.emulators.switch.default;
 in
 {
   flake.nix = ''
@@ -64,10 +65,17 @@ in
           inputs.nixpkgs.follows = "nixpkgs";
         };
 
-        switch-emulators = {
-          url = "git+https:///codeberg.org/K900/yuzu-flake";
-          inputs.nixpkgs.follows = "nixpkgs";
-        };
+        ${
+          if (switch-emulators) then
+            ''
+              switch-emulators = {
+                url = "git+https:///codeberg.org/K900/yuzu-flake";
+                inputs.nixpkgs.follows = "nixpkgs";
+              };
+            ''
+          else
+            ""
+        }
       };
 
       outputs =
@@ -80,9 +88,9 @@ in
           phps,
           pipewire-screenaudio,
           shell-in-netns,
-          switch-emulators,
           ${(if (steam-session) then ''steam-session,'' else "")}
           ${(if (hyprland) then ''hyprland,'' else "")}
+          ${(if (switch-emulators) then ''switch-emulators,'' else "")}
         }@inputs:
         {
           nixosConfigurations.''${nixpkgs.lib.fileContents "/etc/hostname"} = nixpkgs.lib.nixosSystem {

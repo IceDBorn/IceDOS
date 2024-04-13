@@ -87,6 +87,11 @@ in
             };
           };
         };
+
+        emulators.switch = mkOption {
+          type = types.bool;
+          default = true;
+        };
       };
 
       boot = {
