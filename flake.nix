@@ -53,9 +53,9 @@
       phps,
       pipewire-screenaudio,
       shell-in-netns,
-      switch-emulators,
 
       hyprland,
+      switch-emulators,
     }@inputs:
     {
       nixosConfigurations.${nixpkgs.lib.fileContents "/etc/hostname"} = nixpkgs.lib.nixosSystem {

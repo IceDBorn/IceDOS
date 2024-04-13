@@ -55,9 +55,7 @@ in
     zsh = {
       interactiveShellInit = "export EDITOR=nvim";
 
-      shellAliases = {
-        n = "tmux a -t nvchad || tmux new -s nvchad nvim";
-      };
+      shellAliases.n = "tmux a -t nvchad || tmux new -s nvchad nvim";
     };
   };
 
@@ -85,6 +83,8 @@ in
           ".config/nvim/lua/custom/chadrc.lua".source = ./chadrc.lua;
           ".config/nvim/lua/custom/mappings.lua".source = ./mappings.lua;
           ".config/nvim/lua/custom/plugins.lua".source = ./plugins.lua;
+
+          ".bashrc".text = "export EDITOR=nvim";
         };
       }
     ) users;
