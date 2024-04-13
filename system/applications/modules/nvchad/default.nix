@@ -52,8 +52,12 @@ in
   programs = mkIf (cfg.applications.nvchad) {
     neovim.enable = true;
 
-    zsh.shellAliases = {
-      n = "tmux a -t nvchad || tmux new -s nvchad nvim";
+    zsh = {
+      interactiveShellInit = "export EDITOR=nvim";
+
+      shellAliases = {
+        n = "tmux a -t nvchad || tmux new -s nvchad nvim";
+      };
     };
   };
 
@@ -81,9 +85,6 @@ in
           ".config/nvim/lua/custom/chadrc.lua".source = ./chadrc.lua;
           ".config/nvim/lua/custom/mappings.lua".source = ./mappings.lua;
           ".config/nvim/lua/custom/plugins.lua".source = ./plugins.lua;
-
-          # Avoid file not found errors for bash
-          ".bashrc".text = "export EDITOR=nvim";
         };
       }
     ) users;

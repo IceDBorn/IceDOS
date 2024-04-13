@@ -146,6 +146,9 @@ in
               source = configs/celluloid;
               recursive = true;
             };
+
+            # Avoid file not found errors for bash
+            ".bashrc".text = "";
           };
 
           # Set celluloid config file path

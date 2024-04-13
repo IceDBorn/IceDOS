@@ -11,7 +11,6 @@ let
     filter
     foldl'
     mkIf
-    optional
     ;
 
   cfg = config.icedos;
@@ -29,6 +28,8 @@ in
       vscodium
       update-codium-extensions
     ];
+
+  programs.zsh.interactiveShellInit = mkIf (cfg.applications.codium) "export EDITOR=codium";
 
   home-manager.users =
     let

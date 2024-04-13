@@ -184,7 +184,6 @@ in
       # Commands to run on zsh shell initialization
       interactiveShellInit = ''
         source ~/.config/zsh/zsh-theme.zsh
-        export EDITOR=nvim
         unsetopt PROMPT_SP'';
     };
 
