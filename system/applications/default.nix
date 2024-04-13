@@ -5,10 +5,10 @@ let
 in
 {
   imports = [
-    ./configs/codium.nix
     ./global.nix
     ./home.nix
     ./main.nix
+    ./modules/codium
     ./modules/firefox
     ./modules/nvchad
     ./work.nix

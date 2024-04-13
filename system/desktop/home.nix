@@ -63,15 +63,6 @@ in
             configFile."mimeapps.list".force = true;
 
             desktopEntries = {
-              # Codium profile used a an IDE
-              codiumIDE = {
-                exec = "codium --user-data-dir ${cfg.system.home}/${username}/.config/VSCodiumIDE";
-                icon = "codium";
-                name = "Codium IDE";
-                terminal = false;
-                type = "Application";
-              };
-
               # dbeaver on Xwayland (fix scaling issues)
               dbeaver = mkIf (user == "work") {
                 exec = "env GDK_BACKEND=x11 dbeaver";

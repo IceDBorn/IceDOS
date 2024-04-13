@@ -1,12 +1,17 @@
 { config, lib, ... }:
 let
-  inherit (lib) attrNames filter foldl';
+  inherit (lib)
+    attrNames
+    filter
+    foldl'
+    mkIf
+    ;
 
   cfg = config.icedos;
 
   mapAttrsAndKeys = callback: list: (foldl' (acc: value: acc // (callback value)) { } list);
 in
-{
+mkIf (cfg.applications.codium) {
   home-manager.users =
     let
       users = filter (user: cfg.system.user.${user}.enable == true) (attrNames cfg.system.user);
