@@ -114,6 +114,7 @@ in
                   "appindicatorsupport@rgcjonas.gmail.com"
                   "pano@elhan.io"
                   "quick-settings-tweaks@qwreey"
+                  "user-theme@gnome-shell-extensions.gcampax.github.com"
                 ]
                 ++ optional (cfg.desktop.gnome.extensions.arcmenu) "arcmenu@arcmenu.com"
                 ++ optional (cfg.desktop.gnome.extensions.dashToPanel) "dash-to-panel@jderose9.github.com"
