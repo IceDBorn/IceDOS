@@ -30,7 +30,12 @@ in
         ${username} = {
           gtk = {
             enable = true;
-            theme.name = "Adwaita-dark";
+
+            theme = {
+              name = "adw-gtk3-dark";
+              package = pkgs.adw-gtk3;
+            };
+
             cursorTheme.name = "Bibata-Modern-Classic";
             iconTheme.name = "Tela-black-dark";
           }; # Change GTK themes
