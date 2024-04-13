@@ -62,11 +62,6 @@
                 default = "hyprland";
               };
             };
-
-            decky = mkOption {
-              type = types.bool;
-              default = true;
-            };
           };
         };
       };
