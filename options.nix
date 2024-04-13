@@ -1,5 +1,18 @@
 { lib, ... }:
 
+let
+  users = {
+    main = {
+      username = "icedborn";
+      description = "IceDBorn";
+    };
+
+    work = {
+      username = "work";
+      description = "Work";
+    };
+  };
+in
 {
   options = with lib; {
     icedos = {
@@ -111,10 +124,9 @@
             default = true;
           };
 
-          # If false, defaults to work user
-          main.user.enable = mkOption {
-            type = types.bool;
-            default = true;
+          user = mkOption {
+            type = types.str;
+            default = users.main.username;
           };
         };
 
@@ -539,12 +551,12 @@
 
             username = mkOption {
               type = types.str;
-              default = "icedborn";
+              default = users.main.username;
             };
 
             description = mkOption {
               type = types.str;
-              default = "IceDBorn";
+              default = users.main.description;
             };
 
             applications = {
@@ -627,12 +639,12 @@
 
             username = mkOption {
               type = types.str;
-              default = "work";
+              default = users.work.username;
             };
 
             description = mkOption {
               type = types.str;
-              default = "Work";
+              default = users.work.description;
             };
 
             applications = {

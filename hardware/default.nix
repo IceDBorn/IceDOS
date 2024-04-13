@@ -49,7 +49,7 @@ in
     kernelParams =
       [
         "transparent_hugepage=always"
-        # Fixes certain wine games crash on launch
+        # Disables UMIP which fixes certain games from crashing on launch
         "clearcpuid=514"
       ]
       ++ optional (monitors.main.enable) "video=${monitors.main.name}:${monitors.main.resolution}@${monitors.main.refreshRate},rotate=${monitors.main.rotation}"

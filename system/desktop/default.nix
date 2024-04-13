@@ -23,16 +23,12 @@ in
   };
 
   services = {
-    displayManager.autoLogin = mkIf (cfg.desktop.autologin.enable) {
-      enable = true;
-      user =
-        if (cfg.system.user.main.enable && cfg.desktop.autologin.main.user.enable) then
-          cfg.system.user.main.username
-        else if (cfg.system.user.work.enable) then
-          cfg.system.user.work.username
-        else
-          "";
-    };
+    displayManager.autoLogin =
+      mkIf (cfg.desktop.autologin.enable && !cfg.applications.steam.session.autoStart.enable)
+        {
+          enable = true;
+          user = cfg.desktop.autologin.user;
+        };
 
     xserver = {
       enable = true; # Enable the X11 windowing system
