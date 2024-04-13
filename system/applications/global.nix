@@ -59,33 +59,6 @@ let
   # Packages to add for a fork of the config
   myPackages = with pkgs; [ ];
 
-  nvchadDeps = with pkgs; [
-    beautysh # Bash formatter
-    black # Python formatter
-    lazygit # Git CLI UI
-    libclang # C language server and formatter
-    lua-language-server # Lua language server
-    marksman # Markdown language server
-    neovim # Terminal text editor
-    nil # Nix language server
-    nodePackages.bash-language-server # Bash Language server
-    nodePackages.dockerfile-language-server-nodejs # Dockerfiles language server
-    nodePackages.eslint # An AST-based pattern checker for JavaScript
-    nodePackages.intelephense # PHP language server
-    nodePackages.prettier # Javascript/Typescript formatter
-    nodePackages.typescript-language-server # Typescript language server
-    nodePackages.vscode-langservers-extracted # HTML, CSS, Eslint, Json language servers
-    phpPackages.phpstan # PHP Static Analysis Tool
-    python3Packages.jedi-language-server # Python language server
-    ripgrep # Silver searcher grep
-    rust-analyzer # Rust language server
-    rustfmt # Rust formatter
-    shellcheck # Shell script analysis tool
-    stylua # Lua formatter
-    tailwindcss-language-server # Tailwind language server
-    tree-sitter # Parser generator tool and an incremental parsing library
-  ];
-
   packageWraps = with pkgs; [
     # Pipewire audio plugin for OBS Studio
     (pkgs.wrapOBS { plugins = with pkgs.obs-studio-plugins; [ obs-pipewire-audio-capture ]; })
@@ -169,7 +142,6 @@ in
       zenstates # Ryzen CPU controller
     ]
     ++ codingDeps
-    ++ nvchadDeps
     ++ myPackages
     ++ packageWraps
     ++ shellScripts;
@@ -205,7 +177,6 @@ in
         l-pkgs = "nix-store --query --requisites /run/current-system | cut -d- -f2- | sort | uniq"; # List installed nix packages
         ls = "lsd"; # Better ls command
         mv = "rsync -rP --remove-source-files"; # Move command with details
-        n = "tmux a -t nvchad || tmux new -s nvchad nvim"; # Nvchad
         ping = "gping"; # ping with a graph
         r-pipewire = "systemctl --user restart pipewire"; # Restart pipewire
         r-store = "nix-store --verify --check-contents --repair"; # Verifies integrity and repairs inconsistencies between Nix database and store

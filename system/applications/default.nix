@@ -6,11 +6,11 @@ in
 {
   imports = [
     ./configs/codium.nix
-    ./configs/nvchad/init.nix
     ./global.nix
     ./home.nix
     ./main.nix
     ./modules/firefox
+    ./modules/nvchad
     ./work.nix
   ];
 

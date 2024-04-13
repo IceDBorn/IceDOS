@@ -46,6 +46,11 @@ in
           default = true;
         };
 
+        nvchad = mkOption {
+          type = types.bool;
+          default = true;
+        };
+
         steam = {
           beta = mkOption {
             type = types.bool;
