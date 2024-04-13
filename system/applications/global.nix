@@ -86,13 +86,6 @@ let
     tree-sitter # Parser generator tool and an incremental parsing library
   ];
 
-  packageOverrides = with pkgs; [
-    # Browser with pipewire-screenaudio connector json
-    (firefox.override {
-      nativeMessagingHosts = [ inputs.pipewire-screenaudio.packages.${pkgs.system}.default ];
-    })
-  ];
-
   packageWraps = with pkgs; [
     # Pipewire audio plugin for OBS Studio
     (pkgs.wrapOBS { plugins = with pkgs.obs-studio-plugins; [ obs-pipewire-audio-capture ]; })
@@ -178,7 +171,6 @@ in
     ++ codingDeps
     ++ nvchadDeps
     ++ myPackages
-    ++ packageOverrides
     ++ packageWraps
     ++ shellScripts;
 

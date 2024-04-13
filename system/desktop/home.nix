@@ -81,15 +81,6 @@ in
                 type = "Application";
               };
 
-              # Firefox PWA
-              pwas = {
-                exec = "firefox --no-remote -P PWAs --name pwas ${config.icedos.applications.firefox.pwas}";
-                icon = "firefox-nightly";
-                name = "Firefox PWAs";
-                terminal = false;
-                type = "Application";
-              };
-
               # Run signal without a tray icon
               signal = {
                 exec = "signal-desktop --hide-tray-icon";

@@ -5,6 +5,11 @@
     icedos = {
       applications = {
         firefox = {
+          enable = mkOption {
+            type = types.bool;
+            default = true;
+          };
+
           overrides = mkOption {
             type = types.bool;
             default = true;

@@ -94,8 +94,6 @@ in
 
             zsh = {
               enable = true;
-              # Enable firefox wayland
-              profileExtra = "export MOZ_ENABLE_WAYLAND=1";
 
               # Install powerlevel10k
               plugins = with pkgs; [
@@ -111,20 +109,11 @@ in
                 }
               ];
             };
-
-            # Install gnome extensions using firefox
-            firefox.enableGnomeExtensions = true;
           };
 
           home.file = {
             # Add zsh theme to zsh directory
             ".config/zsh/zsh-theme.zsh".source = configs/zsh-theme.zsh;
-
-            # Set firefox to privacy profile
-            ".mozilla/firefox/profiles.ini" = {
-              source = configs/firefox/profiles.ini;
-              force = true;
-            };
 
             # Add btop config
             ".config/btop/btop.conf".source = configs/btop.conf;

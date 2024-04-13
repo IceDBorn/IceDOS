@@ -83,8 +83,6 @@ in
     ];
 
     sessionVariables = {
-      # Set Firefox as default browser for Electron apps
-      DEFAULT_BROWSER = "${pkgs.firefox}/bin/firefox";
       # Fix nautilus not displaying audio/video information in properties https://github.com/NixOS/nixpkgs/issues/53631
       GST_PLUGIN_SYSTEM_PATH_1_0 = makeSearchPathOutput "lib" "lib/gstreamer-1.0" (
         with pkgs.gst_all_1;
