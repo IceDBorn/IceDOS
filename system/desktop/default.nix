@@ -30,14 +30,13 @@ in
           user = cfg.desktop.autologin.user;
         };
 
-    xserver = {
-      enable = true; # Enable the X11 windowing system
+    xserver = mkIf (!cfg.applications.steam.session.autoStart.enable) {
+      # Enable the X11 windowing system
+      enable = true;
 
-      displayManager = {
-        gdm = {
-          enable = cfg.desktop.gdm.enable;
-          autoSuspend = cfg.desktop.gdm.autoSuspend;
-        };
+      displayManager.gdm = mkIf (cfg.desktop.gdm.enable) {
+        enable = true;
+        autoSuspend = cfg.desktop.gdm.autoSuspend;
       };
 
       xkb.layout = "us,gr";
