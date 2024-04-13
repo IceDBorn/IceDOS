@@ -172,12 +172,6 @@
             default = false;
           };
 
-          # Whether to set (or unset) gnome's and arcmenu's pinned apps
-          pinnedApps = mkOption {
-            type = types.bool;
-            default = false;
-          };
-
           powerButtonAction = mkOption {
             type = types.str;
             default = "interactive";
@@ -579,6 +573,54 @@
             };
 
             desktop = {
+              gnome.pinnedApps = {
+                arcmenu = {
+                  enable = mkOption {
+                    type = types.bool;
+                    default = false;
+                  };
+
+                  list = mkOption {
+                    type = with types; listOf str;
+                    default = [
+                      "Codium IDE"
+                      ""
+                      "codiumIDE.desktop"
+                      "VSCodium"
+                      ""
+                      "codium.desktop"
+                      "Spotify"
+                      ""
+                      "spotify.desktop"
+                      "Mullvad VPN"
+                      ""
+                      "mullvad-vpn.desktop"
+                      "GNU Image Manipulation Program"
+                      ""
+                      "gimp.desktop"
+                    ];
+                  };
+                };
+
+                # Set pinned apps for gnome shell (will be used by dash-to-panel if enabled)
+                shell = {
+                  enable = mkOption {
+                    type = types.bool;
+                    default = false;
+                  };
+
+                  list = mkOption {
+                    type = with types; listOf str;
+                    default = [
+                      "steam.desktop"
+                      "webcord.desktop"
+                      "signal-desktop.desktop"
+                      "firefox.desktop"
+                    ];
+                  };
+                };
+              };
+
               idle = {
                 lock = {
                   enable = mkOption {
@@ -667,6 +709,55 @@
             };
 
             desktop = {
+              gnome.pinnedApps = {
+                arcmenu = {
+                  enable = mkOption {
+                    type = types.bool;
+                    default = false;
+                  };
+
+                  list = mkOption {
+                    type = with types; listOf str;
+                    default = [
+                      "Codium IDE"
+                      ""
+                      "codiumIDE.desktop"
+                      "VSCodium"
+                      ""
+                      "codium.desktop"
+                      "Spotify"
+                      ""
+                      "spotify.desktop"
+                      "Mullvad VPN"
+                      ""
+                      "mullvad-vpn.desktop"
+                      "GNU Image Manipulation Program"
+                      ""
+                      "gimp.desktop"
+                    ];
+                  };
+                };
+
+                # Set pinned apps for gnome shell (will be used by dash-to-panel if enabled)
+                shell = {
+                  enable = mkOption {
+                    type = types.bool;
+                    default = false;
+                  };
+
+                  list = mkOption {
+                    type = with types; listOf str;
+                    default = [
+                      "slack.desktop"
+                      "webcord.desktop"
+                      "signal-desktop.desktop"
+                      "firefox.desktop"
+                      "webstorm.desktop"
+                    ];
+                  };
+                };
+              };
+
               idle = {
                 lock = {
                   enable = mkOption {

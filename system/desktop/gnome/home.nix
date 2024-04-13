@@ -121,11 +121,8 @@ in
                 ++ optional (cfg.desktop.gnome.extensions.dashToPanel) "dash-to-panel@jderose9.github.com"
                 ++ optional (cfg.desktop.gnome.extensions.gsconnect) "gsconnect@andyholmes.github.io";
 
-              favorite-apps = mkIf (cfg.desktop.gnome.pinnedApps) [
-                "webstorm.desktop"
-                "webcord.desktop"
-                "firefox.desktop"
-              ]; # Set dash to panel pinned apps
+              favorite-apps = mkIf (cfg.system.user.${user}.desktop.gnome.pinnedApps.shell.enable
+              ) cfg.system.user.${user}.desktop.gnome.pinnedApps.shell.list;
             };
 
             "org/gnome/shell/keybindings" = {
@@ -207,27 +204,8 @@ in
               multi-monitor = true;
               menu-layout = "Windows";
               windows-disable-frequent-apps = true;
-              windows-disable-pinned-apps = !cfg.desktop.gnome.pinnedApps;
-              pinned-app-list = mkIf (cfg.desktop.gnome.pinnedApps) [
-                "VSCodium"
-                ""
-                "codium.desktop"
-                "Spotify"
-                ""
-                "spotify.desktop"
-                "Signal"
-                ""
-                "signal-desktop.desktop"
-                "OBS Studio"
-                ""
-                "com.obsproject.Studio.desktop"
-                "Mullvad VPN"
-                ""
-                "mullvad-vpn.desktop"
-                "GNU Image Manipulation Program"
-                ""
-                "gimp.desktop"
-              ]; # Set arc menu pinned apps
+              windows-disable-pinned-apps = !cfg.system.user.${user}.desktop.gnome.pinnedApps.arcmenu.enable;
+              pinned-app-list = cfg.system.user.${user}.desktop.gnome.pinnedApps.arcmenu.list;
             };
 
             "org/gnome/shell/extensions/pano" = {
