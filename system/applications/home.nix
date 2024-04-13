@@ -126,11 +126,6 @@ in
               force = true;
             };
 
-            ".mozilla/firefox/pwas/chrome" = {
-              source = pkgs.firefox-cascade;
-              recursive = true;
-            };
-
             # Add btop config
             ".config/btop/btop.conf".source = configs/btop.conf;
 
