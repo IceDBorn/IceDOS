@@ -116,7 +116,6 @@ in
       onlyoffice-bin # Microsoft Office alternative for Linux
       p7zip # 7zip
       pavucontrol # Sound manager
-      ranger # Terminal file manager
       rnnoise-plugin # A real-time noise suppression plugin
       scrcpy # Remotely use android
       signal-desktop # Encrypted messaging platform
@@ -134,6 +133,7 @@ in
       winetricks # Wine prefix settings manager
       woeusb # Windows ISO Burner
       xorg.xhost # Use x.org server with docker
+      yazi # Terminal file manager
       youtube-dl # Video downloader
       zenstates # Ryzen CPU controller
     ]
