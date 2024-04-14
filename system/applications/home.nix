@@ -62,9 +62,9 @@ in
               # Mangohud config
               settings = {
                 background_alpha = 0;
-                battery = cfg.hardware.laptop.enable;
-                battery_icon = cfg.hardware.laptop.enable;
-                battery_time = cfg.hardware.laptop.enable;
+                battery = cfg.hardware.laptop;
+                battery_icon = cfg.hardware.laptop;
+                battery_time = cfg.hardware.laptop;
                 cpu_color = "FFFFFF";
                 cpu_power = true;
                 cpu_temp = true;

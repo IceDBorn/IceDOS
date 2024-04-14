@@ -342,7 +342,7 @@ in
           };
         };
 
-        laptop.enable = mkOption {
+        laptop = mkOption {
           type = types.bool;
           default = false;
         };

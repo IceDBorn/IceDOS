@@ -35,13 +35,16 @@ in
             "org/gnome/desktop/interface" = {
               # Enable dark mode
               color-scheme = "prefer-dark";
+
               # Enable clock seconds
               clock-show-seconds = true;
+
               # Disable date
               clock-show-date = cfg.desktop.gnome.clock.date;
               clock-show-weekday = cfg.desktop.gnome.clock.weekday;
-              # Show the battery percentage when on a laptop
-              show-battery-percentage = cfg.hardware.laptop.enable;
+
+              show-battery-percentage = cfg.hardware.laptop;
+
               # Access the activity overview by moving the mouse to the top-left corner
               enable-hot-corners = cfg.desktop.gnome.hotCorners;
             };

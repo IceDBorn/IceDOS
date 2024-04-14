@@ -22,13 +22,21 @@ in
 mkIf (cfg.hardware.gpu.nvidia.enable) {
   services.xserver.videoDrivers = [ "nvidia" ]; # Install the nvidia drivers
 
-  hardware.nvidia.modesetting.enable = true; # Required for wayland
+  hardware.nvidia = mkIf (cfg.gpu.nvidia.enable) {
+    prime = mkIf (cfg.hardware.laptop) {
+      offload.enable = true;
+      intelBusId = "PCI:0:2:0";
+      nvidiaBusId = "PCI:1:0:0";
+    };
+
+    modesetting.enable = true;
+  };
 
   virtualisation.docker.enableNvidia = cfg.hardware.virtualisation.docker; # Enable nvidia gpu acceleration for docker
 
   environment.systemPackages =
     [ pkgs.nvtopPackages.nvidia ] # Monitoring tool for nvidia GPUs
-    ++ optional (cfg.hardware.laptop.enable) nvidia-offload; # Use nvidia-offload to launch programs using the nvidia GPU
+    ++ optional (cfg.hardware.laptop) nvidia-offload; # Use nvidia-offload to launch programs using the nvidia GPU
 
   # Set nvidia gpu power limit
   systemd.services.nv-power-limit = mkIf (powerLimit.enable) {

@@ -13,16 +13,6 @@ let
 
   vpn-toggle = import modules/vpn-watcher.nix { inherit pkgs; };
   vpn-watcher = import modules/vpn-toggle.nix { inherit pkgs; };
-
-  laptop =
-    if (cfg.hardware.laptop.enable) then
-      ''
-        "custom/separator",
-        "backlight",
-        "battery",
-      ''
-    else
-      "";
 in
 {
   home-manager.users =
@@ -61,7 +51,16 @@ in
                   "custom/separator",
                   "clock",
                   "custom/notification",
-                  ${laptop}
+                  ${
+                    if (cfg.hardware.laptop) then
+                      ''
+                        "custom/separator",
+                        "backlight",
+                        "battery",
+                      ''
+                    else
+                      ""
+                  }
                   "custom/separator",
                   "custom/power",
                 ],

@@ -17,7 +17,6 @@ in
     ./hardware/bootloader.nix
     ./hardware/deckbd-wrapper.nix
     ./hardware/intel.nix
-    ./hardware/laptop.nix
     ./hardware/mounts.nix # Disks to mount on startup
     ./hardware/nvidia.nix
     ./hardware/virtualisation.nix
