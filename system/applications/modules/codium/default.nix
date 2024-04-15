@@ -15,7 +15,7 @@ let
 
   cfg = config.icedos;
 
-  update-codium-extensions = import ./codium-extension-updater.nix { inherit pkgs; };
+  update-codium-extensions = import ./codium-extension-updater.nix { inherit config pkgs; };
 
   mapAttrsAndKeys = callback: list: (foldl' (acc: value: acc // (callback value)) { } list);
 in
