@@ -559,17 +559,24 @@ in
           default = "1.0.0";
         };
 
-        gc = {
-          # Number of days before a generation can be deleted
-          days = mkOption {
-            type = types.str;
-            default = "0";
+        generations = {
+          bootEntries = mkOption {
+            type = types.number;
+            default = 10;
           };
 
-          # Number of generations that will always be kept
-          generations = mkOption {
-            type = types.str;
-            default = "10";
+          garbageCollect = {
+            # Number of days before a generation can be deleted
+            days = mkOption {
+              type = types.str;
+              default = "0";
+            };
+
+            # Number of generations that will always be kept
+            generations = mkOption {
+              type = types.str;
+              default = "10";
+            };
           };
         };
 

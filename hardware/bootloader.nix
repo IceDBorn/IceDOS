@@ -3,27 +3,27 @@
 let
   inherit (lib) mkIf;
 
-  cfg = config.icedos.boot;
+  cfg = config.icedos;
 in
 {
   boot = {
     loader = {
-      efi = mkIf (cfg.systemd-boot.enable) {
+      efi = mkIf (cfg.boot.systemd-boot.enable) {
         canTouchEfiVariables = true;
-        efiSysMountPoint = cfg.systemd-boot.mountPoint;
+        efiSysMountPoint = cfg.boot.systemd-boot.mountPoint;
       };
 
-      grub = mkIf (cfg.grub.enable) {
+      grub = mkIf (cfg.boot.grub.enable) {
         enable = true;
-        device = cfg.grub.device;
+        device = cfg.boot.grub.device;
         useOSProber = true;
         enableCryptodisk = true;
         configurationLimit = 10;
       };
 
-      systemd-boot = mkIf (cfg.systemd-boot.enable) {
+      systemd-boot = mkIf (cfg.boot.systemd-boot.enable) {
         enable = true;
-        configurationLimit = 10;
+        configurationLimit = cfg.system.generations.bootEntries;
         # Select the highest resolution for the bootloader
         consoleMode = "max";
       };
@@ -32,8 +32,8 @@ in
       timeout = 1;
     };
 
-    initrd.secrets = mkIf (cfg.grub.enable) { "/crypto_keyfile.bin" = null; };
+    initrd.secrets = mkIf (cfg.boot.grub.enable) { "/crypto_keyfile.bin" = null; };
 
-    plymouth.enable = cfg.animation;
+    plymouth.enable = cfg.boot.animation;
   };
 }

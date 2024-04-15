@@ -17,16 +17,7 @@ let
   '';
 
   # Garbage collect the nix store
-  nix-gc = pkgs.writeShellScriptBin "nix-gc" ''
-    gens=${cfg.system.gc.generations} ;
-    days=${cfg.system.gc.days} ;
-    trim-generations ''${1:-$gens} ''${2:-$days} user ;
-    trim-generations ''${1:-$gens} ''${2:-$days} home-manager ;
-    sudo -H -u ${cfg.system.user.work.username} env Gens="''${1:-$gens}" Days="''${2:-$days}" bash -c 'trim-generations $Gens $Days user' ;
-    sudo -H -u ${cfg.system.user.work.username} env Gens="''${1:-$gens}" Days="''${2:-$days}" bash -c 'trim-generations $Gens $Days home-manager' ;
-    sudo trim-generations ''${1:-$gens} ''${2:-$days} system ;
-    nix-store --gc
-  '';
+  nix-gc = import modules/nix-gc.nix { inherit config pkgs; };
 
   rebuild = import modules/rebuild.nix {
     inherit pkgs config;
