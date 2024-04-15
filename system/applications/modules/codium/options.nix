@@ -11,7 +11,7 @@ let
 
   mapAttrsAndKeys = callback: list: (foldl' (acc: value: acc // (callback value)) { } list);
 in
-mkIf (cfg.applications.codium) {
+mkIf (cfg.applications.codium.enable) {
   home-manager.users =
     let
       users = filter (user: cfg.system.user.${user}.enable == true) (attrNames cfg.system.user);
@@ -56,7 +56,7 @@ mkIf (cfg.applications.codium) {
             "terminal.integrated.smoothScrolling": true,
             "update.mode": "none",
             "window.menuBarVisibility": "toggle",
-            "window.zoomLevel": 1,
+            "window.zoomLevel": ${cfg.applications.codium.zoomLevel},
             "workbench.colorTheme": "One Dark Pro Darker",
             "workbench.iconTheme": "material-icon-theme",
             "workbench.list.smoothScrolling": true,

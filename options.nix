@@ -17,9 +17,16 @@ in
   options = with lib; {
     icedos = {
       applications = {
-        codium = mkOption {
-          type = types.bool;
-          default = true;
+        codium = {
+          enable = mkOption {
+            type = types.bool;
+            default = true;
+          };
+
+          zoomLevel = mkOption {
+            type = types.str;
+            default = "0";
+          };
         };
 
         firefox = {

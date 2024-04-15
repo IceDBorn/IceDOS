@@ -24,12 +24,12 @@ in
 
   environment.systemPackages =
     with pkgs;
-    mkIf (cfg.applications.codium) [
+    mkIf (cfg.applications.codium.enable) [
       vscodium
       update-codium-extensions
     ];
 
-  programs.zsh.interactiveShellInit = mkIf (cfg.applications.codium) "export EDITOR=codium";
+  programs.zsh.interactiveShellInit = mkIf (cfg.applications.codium.enable) "export EDITOR=codium";
 
   home-manager.users =
     let
@@ -41,7 +41,7 @@ in
         username = cfg.system.user.${user}.username;
       in
       {
-        ${username} = mkIf (cfg.applications.codium) {
+        ${username} = mkIf (cfg.applications.codium.enable) {
           home.file.".bashrc".text = mkIf (!cfg.applications.nvchad) "export EDITOR=codium";
 
           # Codium profile used a an IDE
