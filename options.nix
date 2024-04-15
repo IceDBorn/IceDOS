@@ -570,6 +570,12 @@ in
 
             applications = {
               codium = {
+                # off, afterDelay, onFocusChange, onWindowChange
+                autoSave = mkOption {
+                  type = types.str;
+                  default = "off";
+                };
+
                 formatOnSave = mkOption {
                   type = types.str;
                   default = "true";
@@ -706,6 +712,12 @@ in
 
             applications = {
               codium = {
+                # off, afterDelay, onFocusChange, onWindowChange
+                autoSave = mkOption {
+                  type = types.str;
+                  default = "off";
+                };
+
                 formatOnSave = mkOption {
                   type = types.str;
                   default = "false";

@@ -38,6 +38,7 @@ mkIf (cfg.applications.codium) {
             "editor.renderWhitespace": "trailing",
             "editor.smoothScrolling": true,
             "editor.tabSize": 2,
+            "files.autoSave": "${cfg.system.user.${user}.applications.codium.autoSave}",
             "files.insertFinalNewline": true,
             "files.trimFinalNewlines": true,
             "files.trimTrailingWhitespace": true,
