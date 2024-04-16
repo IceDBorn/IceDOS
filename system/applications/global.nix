@@ -17,7 +17,7 @@ let
   '';
 
   # Garbage collect the nix store
-  nix-gc = import modules/nix-gc.nix { inherit config pkgs; };
+  nix-gc = import modules/nix-gc.nix { inherit config lib pkgs; };
 
   rebuild = import modules/rebuild.nix {
     inherit pkgs config;
