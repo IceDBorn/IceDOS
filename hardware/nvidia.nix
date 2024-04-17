@@ -22,7 +22,7 @@ in
 mkIf (cfg.hardware.gpu.nvidia.enable) {
   services.xserver.videoDrivers = [ "nvidia" ]; # Install the nvidia drivers
 
-  hardware.nvidia = mkIf (cfg.gpu.nvidia.enable) {
+  hardware.nvidia = {
     prime = mkIf (cfg.hardware.laptop) {
       offload.enable = true;
       intelBusId = "PCI:0:2:0";
