@@ -29,7 +29,7 @@ in
       update-codium-extensions
     ];
 
-  programs.zsh.interactiveShellInit = mkIf (cfg.applications.codium.enable) "export EDITOR=codium";
+  programs.zsh.interactiveShellInit = mkIf (cfg.applications.codium.enable && !cfg.applications.nvchad) "export EDITOR=codium";
 
   home-manager.users =
     let
