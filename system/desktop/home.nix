@@ -76,15 +76,6 @@ in
                 terminal = false;
                 type = "Application";
               };
-
-              # Run signal without a tray icon
-              signal = {
-                exec = "signal-desktop --hide-tray-icon";
-                icon = "signal-desktop";
-                name = "Signal - No tray";
-                terminal = false;
-                type = "Application";
-              };
             };
 
             # Default apps
