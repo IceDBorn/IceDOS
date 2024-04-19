@@ -1,10 +1,14 @@
 { lib, config, ... }:
 
 let
-  inherit (lib) mkIf optional;
+  inherit (lib)
+    attrNames
+    concatMapStrings
+    filter
+    mkIf
+    ;
 
   cfg = config.icedos;
-  monitors = cfg.hardware.monitors;
 in
 {
   hardware = {
@@ -46,15 +50,29 @@ in
     kernelModules = [ "v4l2loopback" ];
     extraModulePackages = with config.boot.kernelPackages; [ v4l2loopback ];
 
-    kernelParams =
-      [
-        "transparent_hugepage=always"
-        # Disables UMIP which fixes certain games from crashing on launch
-        "clearcpuid=514"
-      ]
-      ++ optional (monitors.main.enable) "video=${monitors.main.name}:${monitors.main.resolution}@${monitors.main.refreshRate},rotate=${monitors.main.rotation}"
-      ++ optional (monitors.second.enable) "video=${monitors.second.name}:${monitors.second.resolution}@${monitors.second.refreshRate},rotate=${monitors.second.rotation}"
-      ++ optional (monitors.third.enable) "video=${monitors.third.name}:${monitors.third.resolution}@${monitors.third.refreshRate},rotate=${monitors.third.rotation}";
+    kernelParams = [
+      "transparent_hugepage=always"
+
+      # Disables UMIP which fixes certain games from crashing on launch
+      "clearcpuid=514"
+
+      (
+        let
+          monitors = cfg.hardware.monitors;
+          enabledMonitors = filter (monitor: monitors.${monitor}.enable == true) (attrNames monitors);
+        in
+        concatMapStrings (
+          m:
+          let
+            name = monitors.${m}.name;
+            resolution = monitors.${m}.resolution;
+            refreshRate = monitors.${m}.refreshRate;
+            rotation = monitors.${m}.rotation;
+          in
+          "video=${name}:${resolution}@${refreshRate},rotate=${rotation}"
+        ) enabledMonitors
+      )
+    ];
 
     kernel.sysctl = {
       # Fixes crashes or start-up issues for games

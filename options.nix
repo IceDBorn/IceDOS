@@ -386,6 +386,11 @@ in
               default = true;
             };
 
+            deck = mkOption {
+              type = types.bool;
+              default = false;
+            };
+
             name = mkOption {
               type = types.str;
               default = "DP-1";
@@ -423,6 +428,11 @@ in
               default = true;
             };
 
+            deck = mkOption {
+              type = types.bool;
+              default = false;
+            };
+
             name = mkOption {
               type = types.str;
               default = "HDMI-A-1";
@@ -458,6 +468,11 @@ in
             enable = mkOption {
               type = types.bool;
               default = true;
+            };
+
+            deck = mkOption {
+              type = types.bool;
+              default = false;
             };
 
             name = mkOption {
