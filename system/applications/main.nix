@@ -75,6 +75,8 @@ mkIf (cfg.system.user.main.enable) {
       bottles # Wine manager
       godot_4 # Game engine
       input-remapper # Remap input device controls
+      ludusavi # Cloud backup with Nextcloud
+      rclone # Sync to and from nextcloud
       scanmem # Cheat engine for linux
       stremio # Straming platform
     ]
