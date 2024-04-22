@@ -9,7 +9,7 @@ let
 
   cfg = config.icedos;
   powerLimit = cfg.hardware.gpu.nvidia.powerLimit;
-  nvidia_x11 = cfg.boot.kernelPackages.nvidia_x11.bin;
+  nvidia_x11 = config.boot.kernelPackages.nvidia_x11.bin;
 
   nvidia-offload = pkgs.writeShellScriptBin "nvidia-offload" ''
     export __NV_PRIME_RENDER_OFFLOAD=1
