@@ -158,24 +158,24 @@ in
       # Aliases
       shellAliases = {
         a2c = "aria2c -j 16 -s 16"; # Download with aria using best settings
-        bcompress = "sudo btrfs filesystem defrag -czstd -r -v"; # Compress given path with zstd
+        btrfs-compress = "sudo btrfs filesystem defrag -czstd -r -v"; # Compress given path with zstd
         cat = "bat"; # Better cat command
         cp = "rsync -rP"; # Copy command with details
-        l-pkgs = "nix-store --query --requisites /run/current-system | cut -d- -f2- | sort | uniq"; # List installed nix packages
+        list-pkgs = "nix-store --query --requisites /run/current-system | cut -d- -f2- | sort | uniq"; # List installed nix packages
         ls = "lsd"; # Better ls command
         mv = "rsync -rP --remove-source-files"; # Move command with details
-        ping = "gping"; # ping with a graph
-        r-pipewire = "systemctl --user restart pipewire"; # Restart pipewire
-        r-store = "nix-store --verify --check-contents --repair"; # Verifies integrity and repairs inconsistencies between Nix database and store
-        r-windows = "sudo efibootmgr --bootnext ${cfg.boot.windowsEntry} && reboot"; # Reboot to windows
+        ping = "gping"; # Better ping with a graph
+        reboot-uefi = "sudo systemctl reboot --firmware-setup";
+        repair-store = "nix-store --verify --check-contents --repair"; # Verifies integrity and repairs inconsistencies between Nix database and store
+        restart-pipewire = "systemctl --user restart pipewire";
         ssh = "TERM=xterm-256color ssh"; # SSH with colors
-        v = "nvim"; # Neovim
       };
 
       # Commands to run on zsh shell initialization
       interactiveShellInit = ''
         source ~/.config/zsh/zsh-theme.zsh
-        unsetopt PROMPT_SP'';
+        unsetopt PROMPT_SP
+      '';
     };
 
     # Enable gamemode and set custom settings

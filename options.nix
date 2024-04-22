@@ -156,12 +156,6 @@ in
             default = "/boot";
           };
         };
-
-        # Used for rebooting to windows with efibootmgr
-        windowsEntry = mkOption {
-          type = types.str;
-          default = "0000";
-        };
       };
 
       desktop = {

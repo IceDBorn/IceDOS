@@ -50,13 +50,14 @@ in
     ];
 
   programs = mkIf (cfg.applications.nvchad) {
-    neovim.enable = true;
-
-    zsh = {
-      interactiveShellInit = "export EDITOR=nvim";
-
-      shellAliases.n = "tmux a -t nvchad || tmux new -s nvchad nvim";
+    neovim = {
+      enable = true;
+      defaultEditor = true;
+      viAlias = true;
+      vimAlias = true;
     };
+
+    zsh.shellAliases.n = "tmux a -t nvchad || tmux new -s nvchad nvim";
   };
 
   home-manager.users =
