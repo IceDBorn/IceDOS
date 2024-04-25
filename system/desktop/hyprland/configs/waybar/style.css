@@ -17,8 +17,8 @@ window#waybar {
 #workspaces button {
   border-radius: 50%;
   padding-bottom: 0;
-  padding-left: 2px;
-  padding-right: 6px;
+  padding-left: 1px;
+  padding-right: 7px;
   padding-top: 0;
 }
 
@@ -41,7 +41,7 @@ window#waybar {
   font-size: 10px;
   margin-left: 5px;
   margin-top: 3px;
-  padding-right: 2px;
+  padding-right: 3px;
 }
 
 #backlight {
