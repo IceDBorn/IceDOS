@@ -5,11 +5,11 @@ FLAKE="flake.nix"
 [ ! -f "$EXTRAS" ] && echo "{}" | tee "$EXTRAS" > /dev/null
 
 # Save current directory into a file
-[ -f "$CONFIG" ] && rm "$CONFIG"
+[ -f "$CONFIG" ] && rm -f "$CONFIG"
 printf "$PWD" > "$CONFIG"
 
 # Generate flake.nix
-[ -f "$FLAKE" ] && rm "$FLAKE"
+[ -f "$FLAKE" ] && rm -f "$FLAKE"
 nix eval --write-to "$FLAKE" --file "genflake.nix" "$FLAKE"
 nixfmt "$FLAKE"
 
