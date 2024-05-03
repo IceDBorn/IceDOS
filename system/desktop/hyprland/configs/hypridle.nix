@@ -4,7 +4,6 @@ let
   inherit (lib) attrNames filter foldl';
 
   cfg = config.icedos;
-  idle = cfg.system.user.${user}.desktop.idle;
   mapAttrsAndKeys = callback: list: (foldl' (acc: value: acc // (callback value)) { } list);
   monitor = cfg.hardware.monitors.main.name;
 in
@@ -16,6 +15,7 @@ in
     mapAttrsAndKeys (
       user:
       let
+        idle = cfg.system.user.${user}.desktop.idle;
         username = cfg.system.user.${user}.username;
       in
       {
