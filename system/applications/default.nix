@@ -11,6 +11,7 @@ in
     ./modules/codium
     ./modules/firefox
     ./modules/nvchad
+    ./modules/sunshine.nix
     ./work.nix
   ];
 

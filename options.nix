@@ -120,6 +120,11 @@ in
           };
         };
 
+        sunshine.enable = mkOption {
+          type = types.bool;
+          default = true;
+        };
+
         emulators.switch = mkOption {
           type = types.bool;
           default = true;

@@ -111,7 +111,6 @@ in
       scrcpy # Remotely use android
       signal-desktop # Encrypted messaging platform
       solaar # Logitech devices manager
-      sunshine # Remote desktop
       tailscale # VPN with P2P support
       tmux # Terminal multiplexer
       trayscale # Tailscale GUI
@@ -192,28 +191,12 @@ in
     };
   };
 
-  security.wrappers = {
-    sunshine = {
-      owner = "root";
-      group = "root";
-      source = "${pkgs.sunshine}/bin/sunshine";
-      capabilities = "cap_sys_admin+p";
-    };
-  };
-
   services = {
     clamav.updater.enable = true;
     openssh.enable = true;
     tailscale.enable = true;
     fwupd.enable = true;
     udev.packages = with pkgs; [
-      (writeTextFile {
-        name = "sunshine_udev";
-        text = ''
-          KERNEL=="uinput", SUBSYSTEM=="misc", OPTIONS+="static_node=uinput", TAG+="uaccess"
-        '';
-        destination = "/etc/udev/rules.d/85-sunshine.rules";
-      }) # Needed for sunshine input to work
       logitech-udev-rules # Needed for solaar to work
     ];
   };
