@@ -47,6 +47,7 @@ in
       with pkgs;
       [
         baobab # Disk usage analyser
+        blueberry # Bluetooth manager
         brightnessctl # Brightness control
         cliphist # Clipboard manager for wayland
         cliphist-rofi-img # Image support for cliphist with rofi
@@ -71,7 +72,6 @@ in
         hyprpicker # Color picker
         network-watcher # Script to check if network has a usage above given number
         networkmanagerapplet # Network manager tray icon
-        overskride # Bluetooth manager
         polkit_gnome # Polkit manager
         poweralertd # Battery level alerts
         rofi-wayland # App launcher
