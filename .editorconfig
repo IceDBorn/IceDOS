@@ -10,8 +10,7 @@ end_of_line = lf
 insert_final_newline = true
 trim_trailing_whitespace = true
 charset = utf-8
-indent_style = space
-indent_size = 2
+indent_style = tab
 
 # Ignore diffs/patches
 [*.{diff,patch}]
@@ -23,8 +22,7 @@ trim_trailing_whitespace = unset
 
 # Match json/lockfiles/markdown/nix/perl/python/ruby/shell/docbook files, set indent to spaces
 [*.{json,lock,md,nix,pl,pm,py,rb,sh,xml}]
-indent_style = space
-indent_size = 2
+indent_style = tab
 
 # Match docbook files, set indent width of one
 [*.xml]
@@ -40,8 +38,7 @@ indent_size = 2
 
 # Match gemfiles, set indent to spaces with width of two
 [Gemfile]
-indent_size = 2
-indent_style = space
+indent_style = tab
 
 # Disable file types or individual files
 # some of these files may be auto-generated and/or require significant changes
