@@ -62,7 +62,6 @@ in
             allow_tearing = true
             col.active_border = rgb(505050)
             col.inactive_border = rgb(000000)
-            cursor_inactive_timeout = 10
             gaps_in = 0
             gaps_out = 0
             resize_on_border = true
