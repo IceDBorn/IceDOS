@@ -17,6 +17,11 @@ in
   options = with lib; {
     icedos = {
       applications = {
+        android-tools = mkOption {
+          type = types.bool;
+          default = true;
+        };
+
         codium = {
           enable = mkOption {
             type = types.bool;

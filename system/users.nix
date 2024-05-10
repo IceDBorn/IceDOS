@@ -29,7 +29,6 @@ in
         isNormalUser = true;
         description = "${description}";
         extraGroups = [
-          "adbusers"
           "docker"
           "input"
           "kvm"

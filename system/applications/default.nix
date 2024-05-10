@@ -8,6 +8,7 @@ in
     ./global.nix
     ./home.nix
     ./main.nix
+    ./modules/android-tools.nix
     ./modules/codium
     ./modules/firefox
     ./modules/nvchad
