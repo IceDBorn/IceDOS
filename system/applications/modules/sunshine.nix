@@ -6,7 +6,7 @@
 }:
 let
   cfg = config.icedos.applications.sunshine;
-  package = pkgs.sunshine-git;
+  package = pkgs.sunshine;
 in
 lib.mkIf (cfg.enable) {
   environment.systemPackages = [ package ];
