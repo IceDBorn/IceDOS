@@ -67,17 +67,6 @@ in
             # Force creation of mimeapps
             configFile."mimeapps.list".force = true;
 
-            desktopEntries = {
-              # dbeaver on Xwayland (fix scaling issues)
-              dbeaver = mkIf (user == "work") {
-                exec = "env GDK_BACKEND=x11 dbeaver";
-                icon = "dbeaver";
-                name = "dbeaver - X11";
-                terminal = false;
-                type = "Application";
-              };
-            };
-
             # Default apps
             mimeApps = {
               enable = true;
