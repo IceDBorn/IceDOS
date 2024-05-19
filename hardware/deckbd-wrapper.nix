@@ -8,11 +8,11 @@
 let
   inherit (lib) mkIf;
 
-  cfg = config.icedos.hardware;
+  cfg = config.icedos;
 
   deckbd = "${pkgs.deckbd}/bin/deckbd";
 in
-mkIf (cfg.steamdeck) {
+mkIf (cfg.hardware.steamdeck) {
   boot.initrd = {
     preLVMCommands = ''
       DECKBD_RETRIES=10
@@ -46,4 +46,8 @@ mkIf (cfg.steamdeck) {
       "hid_steam"
     ];
   };
+
+  environment.systemPackages = mkIf (cfg.applications.steam.session.enable) [
+    pkgs.steamdeck-firmware
+  ];
 }
