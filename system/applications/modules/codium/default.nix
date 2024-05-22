@@ -29,7 +29,9 @@ in
       update-codium-extensions
     ];
 
-  programs.zsh.interactiveShellInit = mkIf (cfg.applications.codium.enable && !cfg.applications.nvchad) "export EDITOR=codium";
+  programs.zsh.interactiveShellInit = mkIf (
+    cfg.applications.codium.enable && !cfg.applications.nvchad
+  ) "export EDITOR=codium";
 
   home-manager.users =
     let
@@ -44,11 +46,20 @@ in
         ${username} = mkIf (cfg.applications.codium.enable) {
           home.file.".bashrc".text = mkIf (!cfg.applications.nvchad) "export EDITOR=codium";
 
+          # Enable wayland support for codium
+					xdg.desktopEntries.codium = {
+            exec = "codium --enable-features=UseOzonePlatform --ozone-platform=wayland";
+            icon = "codium";
+            name = "VSCodium";
+            terminal = false;
+            type = "Application";
+          };
+
           # Codium profile used a an IDE
           xdg.desktopEntries.codiumIDE = {
-            exec = "codium --user-data-dir ${cfg.system.home}/${username}/.config/VSCodiumIDE";
+            exec = "codium --user-data-dir ${cfg.system.home}/${username}/.config/VSCodiumIDE --enable-features=UseOzonePlatform --ozone-platform=wayland";
             icon = "codium";
-            name = "Codium IDE";
+            name = "VSCodium IDE";
             terminal = false;
             type = "Application";
           };
