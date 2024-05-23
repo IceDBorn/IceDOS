@@ -70,7 +70,6 @@ mkIf (cfg.user.work.enable) {
     with pkgs;
     [
       beekeeper-studio # Database manager
-      google-chrome # Dev browser
       php # Programming language for websites
       phpPackages.composer # Package manager for PHP
     ]
