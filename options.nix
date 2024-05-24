@@ -22,6 +22,11 @@ in
           default = true;
         };
 
+        brave = mkOption {
+          type = types.bool;
+          default = true;
+        };
+
         codium = {
           enable = mkOption {
             type = types.bool;

@@ -9,6 +9,7 @@ in
     ./home.nix
     ./main.nix
     ./modules/android-tools.nix
+    ./modules/brave.nix
     ./modules/codium
     ./modules/firefox
     ./modules/nvchad

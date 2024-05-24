@@ -73,7 +73,6 @@ in
     [
       appimage-run # Appimage runner
       aria # Terminal downloader with multiple connections support
-      brave # Secondary browser
       bat # Better cat command
       bless # HEX Editor
       btop # System monitor
