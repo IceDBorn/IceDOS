@@ -12,7 +12,13 @@ let
 in
 mkIf (cfg.enable) {
   boot = {
+    kernelParams = [
+      "amd-pstate=active"
+      "amd_pstate.shared_mem=1"
+    ];
+
     kernelModules = [
+      "amd-pstate"
       "msr"
       "zenpower"
     ];

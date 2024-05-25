@@ -52,7 +52,6 @@ in
 
     kernelParams = [
       "transparent_hugepage=always"
-
       # Disables UMIP which fixes certain games from crashing on launch
       "clearcpuid=514"
 
