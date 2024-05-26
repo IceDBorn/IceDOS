@@ -45,6 +45,11 @@ in
           if (hyprland) then
             ''
               hyprland.url = "git+https://github.com/hyprwm/Hyprland?submodules=1";
+
+              hyprland-plugins = {
+                url = "github:hyprwm/hyprland-plugins";
+                inputs.hyprland.follows = "hyprland";
+              };
             ''
           else
             ""
@@ -89,7 +94,7 @@ in
           pipewire-screenaudio,
           shell-in-netns,
           ${(if (steam-session) then ''steam-session,'' else "")}
-          ${(if (hyprland) then ''hyprland,'' else "")}
+          ${(if (hyprland) then ''hyprland,hyprland-plugins,'' else "")}
           ${(if (switch-emulators) then ''switch-emulators,'' else "")}
         }@inputs:
         {

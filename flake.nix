@@ -22,6 +22,11 @@
     # Apps
     hyprland.url = "git+https://github.com/hyprwm/Hyprland?submodules=1";
 
+    hyprland-plugins = {
+      url = "github:hyprwm/hyprland-plugins";
+      inputs.hyprland.follows = "hyprland";
+    };
+
     phps = {
       url = "github:fossar/nix-phps";
       inputs.nixpkgs.follows = "nixpkgs";
@@ -55,6 +60,7 @@
       shell-in-netns,
 
       hyprland,
+      hyprland-plugins,
       switch-emulators,
     }@inputs:
     {

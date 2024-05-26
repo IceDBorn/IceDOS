@@ -1,4 +1,10 @@
-{ config, lib, ... }:
+{
+  config,
+  inputs,
+  lib,
+  pkgs,
+  ...
+}:
 
 let
   inherit (lib)
@@ -59,34 +65,34 @@ in
           env = WLR_DRM_NO_ATOMIC,1
 
           general {
-            allow_tearing = true
-            col.active_border = rgb(505050)
-            col.inactive_border = rgb(000000)
-            gaps_in = 0
-            gaps_out = 0
-            resize_on_border = true
+          	allow_tearing = true
+          	col.active_border = rgb(505050)
+          	col.inactive_border = rgb(000000)
+          	gaps_in = 0
+          	gaps_out = 0
+          	resize_on_border = true
           }
 
           decoration {
-            drop_shadow = false
-            rounding = 5
+          	drop_shadow = false
+          	rounding = 5
           }
 
           input {
-            accel_profile = flat
-            follow_mouse = 2
-            kb_layout = us,gr
-            kb_options = grp:win_space_toggle
+          	accel_profile = flat
+          	follow_mouse = 2
+          	kb_layout = us,gr
+          	kb_options = grp:win_space_toggle
           }
 
           misc {
-            col.splash = rgb(000000)
-            disable_hyprland_logo = true
-            disable_splash_rendering = true
-            key_press_enables_dpms = true
-            mouse_move_enables_dpms = true
-            new_window_takes_over_fullscreen = 1
-            vrr = 2
+          	col.splash = rgb(000000)
+          	disable_hyprland_logo = true
+          	disable_splash_rendering = true
+          	key_press_enables_dpms = true
+          	mouse_move_enables_dpms = true
+          	new_window_takes_over_fullscreen = 1
+          	vrr = 2
           }
 
           # Desktop usage
@@ -144,46 +150,46 @@ in
           ${
             if (l == 3) then
               ''
-                windowrulev2 = workspace 1 silent, class:^(firefox)$
-                windowrulev2 = workspace 2 silent, class:^(nvchad)$
-                windowrulev2 = workspace 3 silent, class:^(steam_app_.*)$, title:^((?!notificationtoasts.*).)*$
-                windowrulev2 = workspace 21 silent, class:^(Steam|steam)$, title:^((?!notificationtoasts.*).)*$
-                windowrulev2 = workspace 21 silent, title:^(.*Steam[A-Za-z0-9\s]*)$
-                windowrulev2 = workspace 11 silent, class:^(WebCord|Signal|pwas)$
-                windowrulev2 = workspace 12 silent, class:^(org\.gnome\.Nautilus)$
-                windowrulev2 = workspace 13 silent, class:^(task-managers)$ # Task manager
-                windowrulev2 = workspace 14 silent, class:^(terminals)$ # Terminal
+                	windowrulev2 = workspace 1 silent, class:^(firefox)$
+                	windowrulev2 = workspace 2 silent, class:^(nvchad)$
+                	windowrulev2 = workspace 3 silent, class:^(steam_app_.*)$, title:^((?!notificationtoasts.*).)*$
+                	windowrulev2 = workspace 21 silent, class:^(Steam|steam)$, title:^((?!notificationtoasts.*).)*$
+                	windowrulev2 = workspace 21 silent, title:^(.*Steam[A-Za-z0-9\s]*)$
+                	windowrulev2 = workspace 11 silent, class:^(WebCord|Signal|pwas)$
+                	windowrulev2 = workspace 12 silent, class:^(org\.gnome\.Nautilus)$
+                	windowrulev2 = workspace 13 silent, class:^(task-managers)$ # Task manager
+                	windowrulev2 = workspace 14 silent, class:^(terminals)$ # Terminal
               ''
             else if (l == 2) then
               ''
-                windowrulev2 = workspace 1 silent, class:^(firefox)$
-                windowrulev2 = workspace 2 silent, class:^(nvchad)$
-                windowrulev2 = workspace 3 silent, class:^(Steam|steam|steam_app_.*)$, title:^((?!notificationtoasts.*).)*$
-                windowrulev2 = workspace 3 silent, title:^(.*Steam[A-Za-z0-9\s]*)$
-                windowrulev2 = workspace 11 silent, class:^(WebCord|Signal|pwas)$
-                windowrulev2 = workspace 12 silent, class:^(org\.gnome\.Nautilus)$
-                windowrulev2 = workspace 13 silent, class:^(task-managers)$ # Task manager
-                windowrulev2 = workspace 14 silent, class:^(terminals)$ # Terminal
+                	windowrulev2 = workspace 1 silent, class:^(firefox)$
+                	windowrulev2 = workspace 2 silent, class:^(nvchad)$
+                	windowrulev2 = workspace 3 silent, class:^(Steam|steam|steam_app_.*)$, title:^((?!notificationtoasts.*).)*$
+                	windowrulev2 = workspace 3 silent, title:^(.*Steam[A-Za-z0-9\s]*)$
+                	windowrulev2 = workspace 11 silent, class:^(WebCord|Signal|pwas)$
+                	windowrulev2 = workspace 12 silent, class:^(org\.gnome\.Nautilus)$
+                	windowrulev2 = workspace 13 silent, class:^(task-managers)$ # Task manager
+                	windowrulev2 = workspace 14 silent, class:^(terminals)$ # Terminal
               ''
             else if (user != "work") then
               ''
-                windowrulev2 = workspace 1 silent, class:^(firefox)$
-                windowrulev2 = workspace 2 silent, class:^(nvchad)$
-                windowrulev2 = workspace 3 silent, class:^(WebCord|Signal|pwas)$
-                windowrulev2 = workspace 4 silent, class:^(Steam|steam|steam_app_.*)$, title:^((?!notificationtoasts.*).)*$
-                windowrulev2 = workspace 4 silent, title:^(.*Steam[A-Za-z0-9\s]*)$
-                windowrulev2 = workspace 5 silent, class:^(org\.gnome\.Nautilus)$
-                windowrulev2 = workspace 6 silent, class:^(task-managers)$ # Task Manager
-                windowrulev2 = workspace 7 silent, class:^(terminals)$ # Terminal
+                	windowrulev2 = workspace 1 silent, class:^(firefox)$
+                	windowrulev2 = workspace 2 silent, class:^(nvchad)$
+                	windowrulev2 = workspace 3 silent, class:^(WebCord|Signal|pwas)$
+                	windowrulev2 = workspace 4 silent, class:^(Steam|steam|steam_app_.*)$, title:^((?!notificationtoasts.*).)*$
+                	windowrulev2 = workspace 4 silent, title:^(.*Steam[A-Za-z0-9\s]*)$
+                	windowrulev2 = workspace 5 silent, class:^(org\.gnome\.Nautilus)$
+                	windowrulev2 = workspace 6 silent, class:^(task-managers)$ # Task Manager
+                	windowrulev2 = workspace 7 silent, class:^(terminals)$ # Terminal
               ''
             else
               ''
-                windowrulev2 = workspace 1 silent, class:^(firefox)$
-                windowrulev2 = workspace 2 silent, class:^(nvchad)$
-                windowrulev2 = workspace 3 silent, class:^(WebCord|Signal|pwas)$
-                windowrulev2 = workspace 4 silent, class:^(org\.gnome\.Nautilus)$
-                windowrulev2 = workspace 5 silent, class:^(task-managers)$ # Task Manager
-                windowrulev2 = workspace 6 silent, class:^(terminals)$ # Terminal
+                	windowrulev2 = workspace 1 silent, class:^(firefox)$
+                	windowrulev2 = workspace 2 silent, class:^(nvchad)$
+                	windowrulev2 = workspace 3 silent, class:^(WebCord|Signal|pwas)$
+                	windowrulev2 = workspace 4 silent, class:^(org\.gnome\.Nautilus)$
+                	windowrulev2 = workspace 5 silent, class:^(task-managers)$ # Task Manager
+                	windowrulev2 = workspace 6 silent, class:^(terminals)$ # Terminal
               ''
           }
           # Hide maximized window borders
@@ -210,6 +216,21 @@ in
           windowrulev2 = noinitialfocus, class:^(steam)$, title:^(notificationtoasts.*)$, floating:1
 
           exec-once = hyprland-startup
+
+          plugin = ${inputs.hyprland-plugins.packages.${pkgs.system}.hyprexpo}/lib/libhyprexpo.so
+          bind = $mainMod, TAB, hyprexpo:expo, toggle
+          plugin {
+          	hyprexpo {
+          		columns = 3
+          		gap_size = 5
+          		bg_col = rgb(000000)
+          		workspace_method = center current
+
+          		enable_gesture = true
+          		gesture_distance = 300
+          		gesture_positive = true
+          	}
+          }
         '';
       };
     }
