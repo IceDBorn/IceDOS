@@ -368,6 +368,11 @@ in
               default = false;
             };
 
+						beta = mkOption {
+							type = types.bool;
+							default = false;
+						};
+
             powerLimit = {
               enable = mkOption {
                 type = types.bool;

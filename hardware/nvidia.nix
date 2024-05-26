@@ -30,6 +30,8 @@ mkIf (cfg.hardware.gpu.nvidia.enable) {
     };
 
     modesetting.enable = true;
+
+		package = if (cfg.hardware.gpu.nvidia.beta) then config.boot.kernelPackages.nvidiaPackages.beta else config.boot.kernelPackages.nvidiaPackages.stable;
   };
 
   virtualisation.docker.enableNvidia = cfg.hardware.virtualisation.docker; # Enable nvidia gpu acceleration for docker
