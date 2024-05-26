@@ -74,14 +74,12 @@ in
     ];
 
     kernel.sysctl = {
-      # Fixes crashes or start-up issues for games
-      "vm.max_map_count" = 1048576;
-      # Disable ipv6 for all interfaces
-      "net.ipv6.conf.all.disable_ipv6" = !cfg.hardware.networking.ipv6;
-      # Set agressiveness of swap usage
-      "vm.swappiness" = cfg.system.swappiness;
+      "net.ipv6.conf.all.disable_ipv6" = !cfg.hardware.networking.ipv6; # Disable ipv6 for all interfaces
+      "page-cluster" = 1;
       "vm.compaction_proactiveness" = 0;
+      "vm.max_map_count" = 1048576; # Fixes crashes or start-up issues for games
       "vm.page_lock_unfairness" = 1;
+      "vm.swappiness" = cfg.system.swappiness; # Set agressiveness of swap usage
     };
   };
 
@@ -99,4 +97,9 @@ in
     echo advise > /sys/kernel/mm/transparent_hugepage/shmem_enabled
     echo 0 > /sys/kernel/mm/transparent_hugepage/khugepaged/defrag
   '';
+
+  zramSwap = {
+    enable = true;
+    memoryPercent = 10;
+  };
 }
