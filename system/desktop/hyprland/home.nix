@@ -59,6 +59,8 @@ in
 
             # Add hyprlock configuration
             ".config/hypr/hyprlock.conf".source = configs/hyprlock.conf;
+
+            ".config/hypr/vibrance.glsl".source = configs/vibrance.glsl;
           };
         };
       }

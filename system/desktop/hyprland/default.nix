@@ -11,12 +11,11 @@ let
 
   cpu-watcher = import modules/cpu-watcher.nix { inherit pkgs config; };
   disk-watcher = import modules/disk-watcher.nix { inherit pkgs config; };
-
   hyprland-startup = import modules/hyprland-startup.nix { inherit pkgs config; };
-
   hyprlock-wrapper = import modules/hyprlock-wrapper.nix { inherit pkgs; };
   network-watcher = import modules/network-watcher.nix { inherit pkgs config; };
   pipewire-watcher = import modules/pipewire-watcher.nix { inherit pkgs; };
+  vibrance = import modules/vibrance.nix { inherit pkgs; };
 
   shellScripts = [
     cpu-watcher # Script to check if cpu has a usage above given number
@@ -24,6 +23,7 @@ let
     hyprland-startup # Startup script
     hyprlock-wrapper # Wrap hyprlock
     pipewire-watcher # Script to check if pipewire has active links
+		vibrance # Script to enable vibrance shader
   ];
 in
 {
@@ -70,6 +70,7 @@ in
         hyprlock # Lock
         hyprpaper # Wallpaper daemon
         hyprpicker # Color picker
+				hyprshade # Shader config tool
         network-watcher # Script to check if network has a usage above given number
         networkmanagerapplet # Network manager tray icon
         polkit_gnome # Polkit manager
