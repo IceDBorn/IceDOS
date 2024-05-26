@@ -6,21 +6,21 @@
 }:
 pkgs.writeShellScriptBin "${command}" ''
   function cache() {
-    FILE="$1"
+  	FILE="$1"
 
-    [ ! -f "$FILE" ] && exit 1
-    mkdir -p .cache
+  	[ ! -f "$FILE" ] && exit 1
+  	mkdir -p .cache
 
-    LASTFILE=$(ls -lt ".cache" | grep "$FILE" | head -2 | tail -1 | awk '{print $9}')
+  	LASTFILE=$(ls -lt ".cache" | grep "$FILE" | head -2 | tail -1 | awk '{print $9}')
 
-    diff -sq ".cache/$LASTFILE" "$FILE" &> /dev/null || cp "$FILE" ".cache/$FILE-$(date -Is)"
+  	diff -sq ".cache/$LASTFILE" "$FILE" &> /dev/null || cp "$FILE" ".cache/$FILE-$(date -Is)"
   }
 
   function runCommand() {
-    if command -v "$1" &> /dev/null
-    then
-      "$1"
-    fi
+  	if command -v "$1" &> /dev/null
+  	then
+  		"$1"
+  	fi
   }
 
   # Retain sudo
@@ -33,13 +33,13 @@ pkgs.writeShellScriptBin "${command}" ''
   cache "flake.nix"
 
   if ${update}; then
-    nix flake update && sudo bash scripts/build.sh
-    cache "flake.lock"
+  	nix flake update && cache "flake.lock" || true
+  	sudo bash scripts/build.sh
 
-    runCommand update-proton-ge
-    runCommand update-wine-ge
-    runCommand update-codium-extensions
+  	runCommand update-proton-ge
+  	runCommand update-wine-ge
+  	runCommand update-codium-extensions
   else
-    sudo bash scripts/build.sh
+  	sudo bash scripts/build.sh
   fi
 ''
