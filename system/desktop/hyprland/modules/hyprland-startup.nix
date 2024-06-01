@@ -27,8 +27,8 @@ pkgs.writeShellScriptBin "hyprland-startup" ''
   run kdeconnect-indicator
 
   # Standard applications
-  firefox &
-  firefox --no-remote -P PWAs --name pwas ${config.icedos.applications.firefox.pwas} &
+  librewolf &
+  librewolf-pwas &
   nautilus -w &
   nautilus -w &
   run steam

@@ -150,7 +150,7 @@ in
           ${
             if (l == 3) then
               ''
-                	windowrulev2 = workspace 1 silent, class:^(firefox)$
+                	windowrulev2 = workspace 1 silent, class:^(librewolf)$
                 	windowrulev2 = workspace 2 silent, class:^(nvchad)$
                 	windowrulev2 = workspace 3 silent, class:^(steam_app_.*)$, title:^((?!notificationtoasts.*).)*$
                 	windowrulev2 = workspace 21 silent, class:^(Steam|steam)$, title:^((?!notificationtoasts.*).)*$
@@ -162,7 +162,7 @@ in
               ''
             else if (l == 2) then
               ''
-                	windowrulev2 = workspace 1 silent, class:^(firefox)$
+                	windowrulev2 = workspace 1 silent, class:^(librewolf)$
                 	windowrulev2 = workspace 2 silent, class:^(nvchad)$
                 	windowrulev2 = workspace 3 silent, class:^(Steam|steam|steam_app_.*)$, title:^((?!notificationtoasts.*).)*$
                 	windowrulev2 = workspace 3 silent, title:^(.*Steam[A-Za-z0-9\s]*)$
@@ -173,7 +173,7 @@ in
               ''
             else if (user != "work") then
               ''
-                	windowrulev2 = workspace 1 silent, class:^(firefox)$
+                	windowrulev2 = workspace 1 silent, class:^(librewolf)$
                 	windowrulev2 = workspace 2 silent, class:^(nvchad)$
                 	windowrulev2 = workspace 3 silent, class:^(WebCord|Signal|pwas)$
                 	windowrulev2 = workspace 4 silent, class:^(Steam|steam|steam_app_.*)$, title:^((?!notificationtoasts.*).)*$
@@ -184,7 +184,7 @@ in
               ''
             else
               ''
-                	windowrulev2 = workspace 1 silent, class:^(firefox)$
+                	windowrulev2 = workspace 1 silent, class:^(librewolf)$
                 	windowrulev2 = workspace 2 silent, class:^(nvchad)$
                 	windowrulev2 = workspace 3 silent, class:^(WebCord|Signal|pwas)$
                 	windowrulev2 = workspace 4 silent, class:^(org\.gnome\.Nautilus)$
@@ -207,10 +207,6 @@ in
 
           # Pin floating apps
           windowrulev2 = pin, class:^(feh)$
-
-          # Hide apps
-          windowrulev2 = float, title:^(Firefox — Sharing Indicator|Wine System Tray)$
-          windowrulev2 = size 0 0, title:^(Firefox — Sharing Indicator|Wine System Tray)$
 
           # Remove initial focus from apps
           windowrulev2 = noinitialfocus, class:^(steam)$, title:^(notificationtoasts.*)$, floating:1

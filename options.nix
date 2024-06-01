@@ -64,7 +64,13 @@ in
           };
         };
 
-        firefox = {
+        # Hide kitty top bar
+        kitty.hideDecorations = mkOption {
+          type = types.bool;
+          default = true;
+        };
+
+        librewolf = {
           enable = mkOption {
             type = types.bool;
             default = true;
@@ -80,17 +86,11 @@ in
             default = true;
           };
 
-          # Sites to launch on Firefox PWAs
+          # Sites to launch on Librewolf PWAs
           pwas = mkOption {
             type = types.str;
             default = "https://app.tuta.com https://develop.element.io https://discord.com/app https://dtekteam.slack.com/ https://web.skype.com/";
           };
-        };
-
-        # Hide kitty top bar
-        kitty.hideDecorations = mkOption {
-          type = types.bool;
-          default = true;
         };
 
         nvchad = mkOption {
@@ -368,10 +368,10 @@ in
               default = false;
             };
 
-						beta = mkOption {
-							type = types.bool;
-							default = false;
-						};
+            beta = mkOption {
+              type = types.bool;
+              default = false;
+            };
 
             powerLimit = {
               enable = mkOption {
@@ -716,7 +716,7 @@ in
                       "steam.desktop"
                       "webcord.desktop"
                       "signal-desktop.desktop"
-                      "firefox.desktop"
+                      "librewolf.desktop"
                     ];
                   };
                 };
@@ -858,7 +858,7 @@ in
                       "slack.desktop"
                       "webcord.desktop"
                       "signal-desktop.desktop"
-                      "firefox.desktop"
+                      "librewolf.desktop"
                       "webstorm.desktop"
                     ];
                   };

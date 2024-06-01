@@ -11,7 +11,7 @@ in
     ./modules/android-tools.nix
     ./modules/brave.nix
     ./modules/codium
-    ./modules/firefox
+    ./modules/librewolf
     ./modules/nvchad
     ./modules/sunshine.nix
     ./work.nix
