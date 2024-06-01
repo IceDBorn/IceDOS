@@ -79,6 +79,7 @@ in
       celluloid # Video player
       clamav # Antivirus
       curtail # Image compressor
+      duf # Disk usage utility
       easyeffects # Pipewire effects manager
       efibootmgr # Edit EFI entries
       endeavour # Tasks
@@ -159,6 +160,7 @@ in
         btrfs-compress = "sudo btrfs filesystem defrag -czstd -r -v"; # Compress given path with zstd
         cat = "bat"; # Better cat command
         cp = "rsync -rP"; # Copy command with details
+        df = "duf"; # Better disk usage utility
         list-pkgs = "nix-store --query --requisites /run/current-system | cut -d- -f2- | sort | uniq"; # List installed nix packages
         ls = "lsd"; # Better ls command
         mv = "rsync -rP --remove-source-files"; # Move command with details
