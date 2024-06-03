@@ -1,4 +1,9 @@
-{ lib, config, ... }:
+{
+  config,
+  lib,
+  pkgs,
+  ...
+}:
 
 let
   inherit (lib)
@@ -11,12 +16,14 @@ let
   mapAttrsAndKeys = callback: list: (foldl' (acc: value: acc // (callback value)) { } list);
 
   cfg = config.icedos;
+	firefoxVersion = builtins.substring 0 5 pkgs.firefox.version;
 
   userJs = ''
     // Global settings
     user_pref("browser.download.autohideButton", true);
     user_pref("browser.theme.dark-private-windows", false);
     user_pref("general.autoScroll", true);
+    user_pref("general.useragent.override", "Mozilla/5.0 (X11; Linux x86_64; rv:${firefoxVersion}) Gecko/20100101 Firefox/${firefoxVersion}");
     user_pref("identity.fxaccounts.enabled", true);
     user_pref("image.jxl.enabled", true); // Enable JPEG XL support
     user_pref("media.ffmpeg.vaapi.enabled", true); // Enable VA-API hard accelaration
