@@ -150,46 +150,46 @@ in
           ${
             if (l == 3) then
               ''
-                	windowrulev2 = workspace 1 silent, class:^(librewolf)$
-                	windowrulev2 = workspace 2 silent, class:^(nvchad)$
-                	windowrulev2 = workspace 3 silent, class:^(steam_app_.*)$, title:^((?!notificationtoasts.*).)*$
-                	windowrulev2 = workspace 21 silent, class:^(Steam|steam)$, title:^((?!notificationtoasts.*).)*$
-                	windowrulev2 = workspace 21 silent, title:^(.*Steam[A-Za-z0-9\s]*)$
-                	windowrulev2 = workspace 11 silent, class:^(WebCord|Signal|pwas)$
-                	windowrulev2 = workspace 12 silent, class:^(org\.gnome\.Nautilus)$
-                	windowrulev2 = workspace 13 silent, class:^(task-managers)$ # Task manager
-                	windowrulev2 = workspace 14 silent, class:^(terminals)$ # Terminal
+                windowrulev2 = workspace 1 silent, class:^(librewolf)$
+                windowrulev2 = workspace 2 silent, class:^(nvchad)$
+                windowrulev2 = workspace 3 silent, class:^(steam_app_.*)$, title:^((?!notificationtoasts.*).)*$
+                windowrulev2 = workspace 21 silent, class:^(Steam|steam)$, title:^((?!notificationtoasts.*).)*$
+                windowrulev2 = workspace 21 silent, title:^(.*Steam[A-Za-z0-9\s]*)$
+                windowrulev2 = workspace 11 silent, class:^(WebCord|Signal|pwas)$
+                windowrulev2 = workspace 12 silent, class:^(org\.gnome\.Nautilus)$
+                windowrulev2 = workspace 13 silent, class:^(task-managers)$ # Task manager
+                windowrulev2 = workspace 14 silent, class:^(terminals)$ # Terminal
               ''
             else if (l == 2) then
               ''
-                	windowrulev2 = workspace 1 silent, class:^(librewolf)$
-                	windowrulev2 = workspace 2 silent, class:^(nvchad)$
-                	windowrulev2 = workspace 3 silent, class:^(Steam|steam|steam_app_.*)$, title:^((?!notificationtoasts.*).)*$
-                	windowrulev2 = workspace 3 silent, title:^(.*Steam[A-Za-z0-9\s]*)$
-                	windowrulev2 = workspace 11 silent, class:^(WebCord|Signal|pwas)$
-                	windowrulev2 = workspace 12 silent, class:^(org\.gnome\.Nautilus)$
-                	windowrulev2 = workspace 13 silent, class:^(task-managers)$ # Task manager
-                	windowrulev2 = workspace 14 silent, class:^(terminals)$ # Terminal
+                windowrulev2 = workspace 1 silent, class:^(librewolf)$
+                windowrulev2 = workspace 2 silent, class:^(nvchad)$
+                windowrulev2 = workspace 3 silent, class:^(Steam|steam|steam_app_.*)$, title:^((?!notificationtoasts.*).)*$
+                windowrulev2 = workspace 3 silent, title:^(.*Steam[A-Za-z0-9\s]*)$
+                windowrulev2 = workspace 11 silent, class:^(WebCord|Signal|pwas)$
+                windowrulev2 = workspace 12 silent, class:^(org\.gnome\.Nautilus)$
+                windowrulev2 = workspace 13 silent, class:^(task-managers)$ # Task manager
+                windowrulev2 = workspace 14 silent, class:^(terminals)$ # Terminal
               ''
             else if (user != "work") then
               ''
-                	windowrulev2 = workspace 1 silent, class:^(librewolf)$
-                	windowrulev2 = workspace 2 silent, class:^(nvchad)$
-                	windowrulev2 = workspace 3 silent, class:^(WebCord|Signal|pwas)$
-                	windowrulev2 = workspace 4 silent, class:^(Steam|steam|steam_app_.*)$, title:^((?!notificationtoasts.*).)*$
-                	windowrulev2 = workspace 4 silent, title:^(.*Steam[A-Za-z0-9\s]*)$
-                	windowrulev2 = workspace 5 silent, class:^(org\.gnome\.Nautilus)$
-                	windowrulev2 = workspace 6 silent, class:^(task-managers)$ # Task Manager
-                	windowrulev2 = workspace 7 silent, class:^(terminals)$ # Terminal
+                windowrulev2 = workspace 1 silent, class:^(librewolf)$
+                windowrulev2 = workspace 2 silent, class:^(nvchad)$
+                windowrulev2 = workspace 3 silent, class:^(WebCord|Signal|pwas)$
+                windowrulev2 = workspace 4 silent, class:^(Steam|steam|steam_app_.*)$, title:^((?!notificationtoasts.*).)*$
+                windowrulev2 = workspace 4 silent, title:^(.*Steam[A-Za-z0-9\s]*)$
+                windowrulev2 = workspace 5 silent, class:^(org\.gnome\.Nautilus)$
+                windowrulev2 = workspace 6 silent, class:^(task-managers)$ # Task Manager
+                windowrulev2 = workspace 7 silent, class:^(terminals)$ # Terminal
               ''
             else
               ''
-                	windowrulev2 = workspace 1 silent, class:^(librewolf)$
-                	windowrulev2 = workspace 2 silent, class:^(nvchad)$
-                	windowrulev2 = workspace 3 silent, class:^(WebCord|Signal|pwas)$
-                	windowrulev2 = workspace 4 silent, class:^(org\.gnome\.Nautilus)$
-                	windowrulev2 = workspace 5 silent, class:^(task-managers)$ # Task Manager
-                	windowrulev2 = workspace 6 silent, class:^(terminals)$ # Terminal
+                windowrulev2 = workspace 1 silent, class:^(librewolf)$
+                windowrulev2 = workspace 2 silent, class:^(nvchad)$
+                windowrulev2 = workspace 3 silent, class:^(WebCord|Signal|pwas)$
+                windowrulev2 = workspace 4 silent, class:^(org\.gnome\.Nautilus)$
+                windowrulev2 = workspace 5 silent, class:^(task-managers)$ # Task Manager
+                windowrulev2 = workspace 6 silent, class:^(terminals)$ # Terminal
               ''
           }
           # Hide maximized window borders
@@ -210,6 +210,12 @@ in
 
           # Remove initial focus from apps
           windowrulev2 = noinitialfocus, class:^(steam)$, title:^(notificationtoasts.*)$, floating:1
+
+          # Pin floating apps
+          windowrulev2 = pin, class:(gcr-prompter)
+
+          # Center apps
+          windowrulev2 = center, class:(gcr-prompter)
 
           exec-once = hyprland-startup
 
