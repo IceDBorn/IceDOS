@@ -41,15 +41,13 @@ let
   emulators =
     with pkgs;
     [
-      cemu # Wii U
       duckstation # PS1
       pcsx2 # PS2
       ppsspp # PSP
       rpcs3 # PS3
     ]
-    # Switch
-    ++ optional (cfg.applications.emulators.switch
-    ) inputs.switch-emulators.packages.${pkgs.system}.suyu;
+    ++ optional (cfg.applications.emulators.switch) inputs.switch-emulators.packages.${pkgs.system}.suyu
+    ++ optional (cfg.applications.emulators.wiiu) cemu;
 
   gaming = with pkgs; [
     heroic # Epic Games Launcher for Linux

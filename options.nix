@@ -135,9 +135,16 @@ in
           default = true;
         };
 
-        emulators.switch = mkOption {
-          type = types.bool;
-          default = true;
+        emulators = {
+          switch = mkOption {
+            type = types.bool;
+            default = false;
+          };
+
+          wiiu = mkOption {
+            type = types.bool;
+            default = false;
+          };
         };
       };
 
