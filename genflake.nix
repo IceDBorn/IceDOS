@@ -1,9 +1,10 @@
 let
   cfg = (import ./options.nix { lib = import <nixpkgs/lib>; }).options.icedos;
+  jsonCfg = (import ./options.nix { lib = import <nixpkgs/lib>; }).config.icedos;
 
-  steam-session = cfg.applications.steam.session.enable.default;
+  steam-session = jsonCfg.applications.steam.session.enable;
   hyprland = cfg.desktop.hyprland.enable.default;
-  switch-emulators = cfg.applications.emulators.switch.default;
+  switch-emulators = jsonCfg.applications.emulators.switch;
 in
 {
   flake.nix = ''

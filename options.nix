@@ -17,134 +17,45 @@ in
   options = with lib; {
     icedos = {
       applications = {
-        android-tools = mkOption {
-          type = types.bool;
-          default = true;
-        };
-
-        brave = mkOption {
-          type = types.bool;
-          default = true;
-        };
+        android-tools = mkOption { type = types.bool; };
+        brave = mkOption { type = types.bool; };
 
         codium = {
-          enable = mkOption {
-            type = types.bool;
-            default = true;
-          };
-
-          extensions = mkOption {
-            type = types.str;
-            default = ''
-              "codezombiech.gitignore"
-              "dbaeumer.vscode-eslint"
-              "donjayamanne.githistory"
-              "eamodio.gitlens"
-              "editorconfig.editorconfig"
-              "esbenp.prettier-vscode"
-              "formulahendry.auto-close-tag"
-              "formulahendry.code-runner"
-              "gruntfuggly.todo-tree"
-              "jnoortheen.nix-ide"
-              "markwylde.vscode-filesize"
-              "mblode.twig-language-2"
-              "ms-vscode.references-view"
-              "nico-castell.linux-desktop-file"
-              "paragdiwan.gitpatch"
-              "pkief.material-icon-theme"
-              "timonwong.shellcheck"
-              "zhuangtongfa.material-theme"
-              "ziyasal.vscode-open-in-github"
-            '';
-          };
-
-          zoomLevel = mkOption {
-            type = types.str;
-            default = "0";
-          };
+          enable = mkOption { type = types.bool; };
+          extensions = mkOption { type = with types; listOf str; };
+          zoomLevel = mkOption { type = types.number; };
         };
 
-        # Hide kitty top bar
-        kitty.hideDecorations = mkOption {
-          type = types.bool;
-          default = true;
-        };
+        kitty.hideDecorations = mkOption { type = types.bool; };
 
         librewolf = {
-          enable = mkOption {
-            type = types.bool;
-            default = true;
-          };
-
-          overrides = mkOption {
-            type = types.bool;
-            default = true;
-          };
-
-          privacy = mkOption {
-            type = types.bool;
-            default = true;
-          };
-
-          # Sites to launch on Librewolf PWAs
-          pwas = mkOption {
-            type = types.str;
-            default = "https://app.tuta.com https://develop.element.io https://discord.com/app https://dtekteam.slack.com/ https://web.skype.com/";
-          };
+          enable = mkOption { type = types.bool; };
+          overrides = mkOption { type = types.bool; };
+          privacy = mkOption { type = types.bool; };
+          pwas = mkOption { type = with types; listOf str; };
         };
 
-        nvchad = mkOption {
-          type = types.bool;
-          default = true;
-        };
+        nvchad = mkOption { type = types.bool; };
 
         steam = {
-          beta = mkOption {
-            type = types.bool;
-            default = true;
-          };
-
-          # Workaround for slow steam downloads
-          downloadsWorkaround = mkOption {
-            type = types.bool;
-            default = true;
-          };
+          beta = mkOption { type = types.bool; };
+          downloadsWorkaround = mkOption { type = types.bool; };
 
           session = {
-            enable = mkOption {
-              type = types.bool;
-              default = false;
-            };
+            enable = mkOption { type = types.bool; };
 
             autoStart = {
-              enable = mkOption {
-                type = types.bool;
-                default = false;
-              };
-
-              desktopSession = mkOption {
-                type = types.str;
-                default = "hyprland";
-              };
+              enable = mkOption { type = types.bool; };
+              desktopSession = mkOption { type = types.str; };
             };
           };
         };
 
-        sunshine.enable = mkOption {
-          type = types.bool;
-          default = true;
-        };
+        sunshine = mkOption { type = types.bool; };
 
         emulators = {
-          switch = mkOption {
-            type = types.bool;
-            default = false;
-          };
-
-          wiiu = mkOption {
-            type = types.bool;
-            default = false;
-          };
+          switch = mkOption { type = types.bool; };
+          wiiu = mkOption { type = types.bool; };
         };
       };
 
@@ -921,4 +832,6 @@ in
       };
     };
   };
+
+  config = builtins.fromJSON (lib.fileContents ./config.json);
 }
