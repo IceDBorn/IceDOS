@@ -56,7 +56,7 @@ mkIf (cfg.applications.codium.enable) {
             "terminal.integrated.smoothScrolling": true,
             "update.mode": "none",
             "window.menuBarVisibility": "toggle",
-            "window.zoomLevel": ${cfg.applications.codium.zoomLevel},
+            "window.zoomLevel": ${builtins.toString (cfg.applications.codium.zoomLevel)},
             "workbench.colorTheme": "One Dark Pro Darker",
             "workbench.iconTheme": "material-icon-theme",
             "workbench.list.smoothScrolling": true,

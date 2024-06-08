@@ -8,7 +8,7 @@ let
   cfg = config.icedos.applications.sunshine;
   package = pkgs.sunshine;
 in
-lib.mkIf (cfg.enable) {
+lib.mkIf (cfg) {
   environment.systemPackages = [ package ];
 
   security.wrappers.sunshine = {
