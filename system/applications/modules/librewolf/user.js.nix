@@ -77,7 +77,7 @@ mkIf (cfg.applications.librewolf.enable) {
         username = cfg.system.user.${user}.username;
       in
       {
-        ${username} = mkIf (cfg.desktop.hyprland.enable) {
+        ${username} = {
           home.file.".librewolf/default/user.js".text = userJs;
           home.file.".librewolf/pwas/user.js".text = userJs;
         };
