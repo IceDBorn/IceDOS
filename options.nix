@@ -59,35 +59,17 @@ in
         };
       };
 
-      boot = {
-        # Hides startup text and displays a circular loading icon
-        animation = mkOption {
-          type = types.bool;
-          default = false;
-        };
+      bootloader = {
+        animation = mkOption { type = types.bool; };
 
         grub = {
-          enable = mkOption {
-            type = types.bool;
-            default = false;
-          };
-
-          device = mkOption {
-            type = types.str;
-            default = "/dev/sda";
-          };
+          enable = mkOption { type = types.bool; };
+          device = mkOption { type = types.str; };
         };
 
         systemd-boot = {
-          enable = mkOption {
-            type = types.bool;
-            default = true;
-          };
-
-          mountPoint = mkOption {
-            type = types.str;
-            default = "/boot";
-          };
+          enable = mkOption { type = types.bool; };
+          mountPoint = mkOption { type = types.str; };
         };
       };
 
