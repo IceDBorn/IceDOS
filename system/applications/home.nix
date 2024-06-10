@@ -58,13 +58,13 @@ in
             };
 
             mangohud = {
-              enable = true;
-              # Mangohud config
+              enable = (user != "work");
+
               settings = {
                 background_alpha = 0;
-                battery = cfg.hardware.laptop;
-                battery_icon = cfg.hardware.laptop;
-                battery_time = cfg.hardware.laptop;
+                battery = (cfg.hardware.laptop || cfg.hardware.steamdeck);
+                battery_icon = (cfg.hardware.laptop || cfg.hardware.steamdeck);
+                battery_time = (cfg.hardware.laptop || cfg.hardware.steamdeck);
                 cpu_color = "FFFFFF";
                 cpu_power = true;
                 cpu_temp = true;
