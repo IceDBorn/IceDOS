@@ -82,7 +82,7 @@
         "autoSuspend": true
       },
       "gnome": {
-        "enable": true,
+        "enable": false,
         "extensions": {
           "arcmenu": false,
           "dashToPanel": false,
