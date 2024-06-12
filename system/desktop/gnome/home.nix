@@ -57,7 +57,7 @@ in
             "org/gnome/desktop/wm/preferences" = {
               # Buttons to show in titlebars
               button-layout = cfg.desktop.gnome.titlebarLayout;
-              num-workspaces = cfg.desktop.gnome.workspaces.maxWorkspaces;
+              num-workspaces = builtins.toString (cfg.desktop.gnome.workspaces.maxWorkspaces);
             };
 
             # Disable mouse acceleration

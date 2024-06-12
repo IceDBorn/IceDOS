@@ -28,7 +28,7 @@ in
 
           # Lower brightness
           listener {
-              timeout = ${cfg.desktop.hyprland.lock.secondsToLowerBrightness}
+              timeout = ${builtins.toString (cfg.desktop.hyprland.lock.secondsToLowerBrightness)}
               on-timeout = brightnessctl -s set 10 && brightnessctl -sd rgb:kbd_backlight set 0
               on-resume = brightnessctl -r && brightnessctl -rd rgb:kbd_backlight
           }

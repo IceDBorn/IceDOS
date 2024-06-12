@@ -1,7 +1,7 @@
 { pkgs, config }:
 let
   cfg = config.icedos;
-  threshold = cfg.desktop.hyprland.lock.diskUsageThreshold;
+  threshold = builtins.toString (cfg.desktop.hyprland.lock.diskUsageThreshold);
 in
 pkgs.writeShellScriptBin "disk-watcher" ''
   DISKS=($(lsblk -d -io NAME | tail -n +2))

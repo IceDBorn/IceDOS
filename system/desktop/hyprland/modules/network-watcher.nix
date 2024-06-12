@@ -1,7 +1,7 @@
 { pkgs, config }:
 let
   cfg = config.icedos;
-  threshold = cfg.desktop.hyprland.lock.networkUsageThreshold;
+  threshold = builtins.toString (cfg.desktop.hyprland.lock.networkUsageThreshold);
 in
 pkgs.writeShellScriptBin "network-watcher" ''
   NETWORK_THRESHOLD=${threshold}

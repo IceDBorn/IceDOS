@@ -75,136 +75,49 @@ in
 
       desktop = {
         autologin = {
-          enable = mkOption {
-            type = types.bool;
-            default = true;
-          };
-
-          user = mkOption {
-            type = types.str;
-            default = users.main.username;
-          };
+          enable = mkOption { type = types.bool; };
+          user = mkOption { type = types.str; };
         };
 
         gdm = {
-          enable = mkOption {
-            type = types.bool;
-            default = true;
-          };
-
-          autoSuspend = mkOption {
-            type = types.bool;
-            default = true;
-          };
+          enable = mkOption { type = types.bool; };
+          autoSuspend = mkOption { type = types.bool; };
         };
 
         gnome = {
-          enable = mkOption {
-            type = types.bool;
-            default = false;
-          };
+          enable = mkOption { type = types.bool; };
 
           extensions = {
-            arcmenu = mkOption {
-              type = types.bool;
-              default = false;
-            };
-
-            dashToPanel = mkOption {
-              type = types.bool;
-              default = false;
-            };
-
-            gsconnect = mkOption {
-              type = types.bool;
-              default = true;
-            };
+            arcmenu = mkOption { type = types.bool; };
+            dashToPanel = mkOption { type = types.bool; };
+            gsconnect = mkOption { type = types.bool; };
           };
 
-          # Show the month and day of the month on the clock
           clock = {
-            date = mkOption {
-              type = types.bool;
-              default = false;
-            };
-
-            # Show the day of the week on the clock
-            weekday = mkOption {
-              type = types.bool;
-              default = false;
-            };
+            date = mkOption { type = types.bool; };
+            weekday = mkOption { type = types.bool; };
           };
 
-          hotCorners = mkOption {
-            type = types.bool;
-            default = false;
-          };
-
-          powerButtonAction = mkOption {
-            type = types.str;
-            default = "interactive";
-          };
-
-          startupItems = mkOption {
-            type = types.bool;
-            default = false;
-          };
-
-          # Options: 'minimize', 'maximize', 'close', 'spacer'(adds space between buttons), ':'(left-center-right separator)
-          titlebarLayout = mkOption {
-            type = types.str;
-            default = "appmenu:close";
-          };
+          hotCorners = mkOption { type = types.bool; };
+          powerButtonAction = mkOption { type = types.str; };
+          startupItems = mkOption { type = types.bool; };
+          titlebarLayout = mkOption { type = types.str; };
 
           workspaces = {
-            dynamicWorkspaces = mkOption {
-              type = types.bool;
-              default = true;
-            };
-
-            # Determines the maximum number of workspaces when dynamic workspaces are disabled
-            maxWorkspaces = mkOption {
-              type = types.str;
-              default = "1";
-            };
+            dynamicWorkspaces = mkOption { type = types.bool; };
+            maxWorkspaces = mkOption { type = types.number; };
           };
         };
 
         hyprland = {
-          enable = mkOption {
-            type = types.bool;
-            default = true;
-          };
-
-          # Find backlight unit using brightnessctl
-          backlight = mkOption {
-            type = types.str;
-            default = "amdgpu_bl0";
-          };
+          enable = mkOption { type = types.bool; };
+          backlight = mkOption { type = types.str; };
 
           lock = {
-            secondsToLowerBrightness = mkOption {
-              type = types.str;
-              default = "60";
-            };
-
-            # CPU usage to inhibit lock in percentage
-            cpuUsageThreshold = mkOption {
-              type = types.str;
-              default = "60";
-            };
-
-            # Disk usage to inhibit lock in MB/s
-            diskUsageThreshold = mkOption {
-              type = types.str;
-              default = "10";
-            };
-
-            # Network usage to inhibit lock in bytes/s
-            networkUsageThreshold = mkOption {
-              type = types.str;
-              default = "1000000";
-            };
+            secondsToLowerBrightness = mkOption { type = types.number; };
+            cpuUsageThreshold = mkOption { type = types.number; };
+            diskUsageThreshold = mkOption { type = types.number; };
+            networkUsageThreshold = mkOption { type = types.number; };
           };
         };
       };

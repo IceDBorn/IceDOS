@@ -71,6 +71,46 @@
         "enable": true,
         "mountPoint": "/boot"
       }
+    },
+    "desktop": {
+      "autologin": {
+        "enable": true,
+        "user": "icedborn"
+      },
+      "gdm": {
+        "enable": true,
+        "autoSuspend": true
+      },
+      "gnome": {
+        "enable": true,
+        "extensions": {
+          "arcmenu": false,
+          "dashToPanel": false,
+          "gsconnect": true
+        },
+        "clock": {
+          "date": false,
+          "weekday": false
+        },
+        "hotCorners": false,
+        "powerButtonAction": "interactive",
+        "startupItems": false,
+        "titlebarLayout": "appmenu:close",
+        "workspaces": {
+          "dynamicWorkspaces": true,
+          "maxWorkspaces": 1
+        }
+      },
+      "hyprland": {
+        "enable": true,
+        "backlight": "amdgpu_bl0",
+        "lock": {
+          "secondsToLowerBrightness": 60,
+          "cpuUsageThreshold": 60,
+          "diskUsageThreshold": 10,
+          "networkUsageThreshold": 1000000
+        }
+      }
     }
   }
 }

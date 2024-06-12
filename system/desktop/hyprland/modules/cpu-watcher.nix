@@ -1,7 +1,7 @@
 { pkgs, config }:
 let
   cfg = config.icedos;
-  threshold = cfg.desktop.hyprland.lock.cpuUsageThreshold;
+  threshold = builtins.toString (cfg.desktop.hyprland.lock.cpuUsageThreshold);
 in
 pkgs.writeShellScriptBin "cpu-watcher" ''
   UTILIZATION="$((100-$(vmstat 1 2|tail -1|awk '{print $15}')))"
