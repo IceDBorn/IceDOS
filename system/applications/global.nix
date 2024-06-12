@@ -37,7 +37,7 @@ let
     cargo # Rust package manager
     dotnet-sdk_7 # SDK for .net
     gcc # C++ compiler
-    gdtoolkit # Tools for gdscript
+    gdtoolkit_4 # Tools for gdscript
     gnumake # A tool to control the generation of non-source files from sources
     nixfmt-rfc-style # A nix formatter
     nodejs # Node package manager

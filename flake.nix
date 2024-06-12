@@ -41,11 +41,6 @@
       url = "github:jim3692/shell-in-netns";
       inputs.nixpkgs.follows = "nixpkgs";
     };
-
-    switch-emulators = {
-      url = "git+https:///codeberg.org/K900/yuzu-flake";
-      inputs.nixpkgs.follows = "nixpkgs";
-    };
   };
 
   outputs =
@@ -61,7 +56,7 @@
 
       hyprland,
       hyprland-plugins,
-      switch-emulators,
+
     }@inputs:
     {
       nixosConfigurations.${nixpkgs.lib.fileContents "/etc/hostname"} = nixpkgs.lib.nixosSystem {
