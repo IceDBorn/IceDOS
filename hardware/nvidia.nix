@@ -8,7 +8,7 @@ let
   inherit (lib) mkIf optional;
 
   cfg = config.icedos;
-  powerLimit = cfg.hardware.gpu.nvidia.powerLimit;
+  powerLimit = cfg.hardware.gpus.nvidia.powerLimit;
   nvidia_x11 = config.boot.kernelPackages.nvidia_x11.bin;
 
   nvidia-offload = pkgs.writeShellScriptBin "nvidia-offload" ''
@@ -19,11 +19,11 @@ let
     exec "$@"
   '';
 in
-mkIf (cfg.hardware.gpu.nvidia.enable) {
+mkIf (cfg.hardware.gpus.nvidia.enable) {
   services.xserver.videoDrivers = [ "nvidia" ]; # Install the nvidia drivers
 
   hardware.nvidia = {
-    prime = mkIf (cfg.hardware.laptop) {
+    prime = mkIf (cfg.hardware.devices.laptop) {
       offload.enable = true;
       intelBusId = "PCI:0:2:0";
       nvidiaBusId = "PCI:1:0:0";
@@ -31,14 +31,14 @@ mkIf (cfg.hardware.gpu.nvidia.enable) {
 
     modesetting.enable = true;
 
-		package = if (cfg.hardware.gpu.nvidia.beta) then config.boot.kernelPackages.nvidiaPackages.beta else config.boot.kernelPackages.nvidiaPackages.stable;
+		package = if (cfg.hardware.gpus.nvidia.beta) then config.boot.kernelPackages.nvidiaPackages.beta else config.boot.kernelPackages.nvidiaPackages.stable;
   };
 
   virtualisation.docker.enableNvidia = cfg.hardware.virtualisation.docker; # Enable nvidia gpu acceleration for docker
 
   environment.systemPackages =
     [ pkgs.nvtopPackages.nvidia ] # Monitoring tool for nvidia GPUs
-    ++ optional (cfg.hardware.laptop) nvidia-offload; # Use nvidia-offload to launch programs using the nvidia GPU
+    ++ optional (cfg.hardware.devices.laptop) nvidia-offload; # Use nvidia-offload to launch programs using the nvidia GPU
 
   # Set nvidia gpu power limit
   systemd.services.nv-power-limit = mkIf (powerLimit.enable) {
@@ -55,7 +55,7 @@ mkIf (cfg.hardware.gpu.nvidia.enable) {
 
     serviceConfig = {
       User = "root";
-      ExecStart = "${nvidia_x11}/bin/nvidia-smi --power-limit=${powerLimit.value}";
+      ExecStart = "${nvidia_x11}/bin/nvidia-smi --power-limit=${builtins.toString (powerLimit.value)}";
     };
 
     wantedBy = [ "multi-user.target" ];

@@ -62,9 +62,9 @@ in
 
               settings = {
                 background_alpha = 0;
-                battery = (cfg.hardware.laptop || cfg.hardware.steamdeck);
-                battery_icon = (cfg.hardware.laptop || cfg.hardware.steamdeck);
-                battery_time = (cfg.hardware.laptop || cfg.hardware.steamdeck);
+                battery = (cfg.hardware.devices.laptop || cfg.hardware.devices.steamdeck);
+                battery_icon = (cfg.hardware.devices.laptop || cfg.hardware.devices.steamdeck);
+                battery_time = (cfg.hardware.devices.laptop || cfg.hardware.devices.steamdeck);
                 cpu_color = "FFFFFF";
                 cpu_power = true;
                 cpu_temp = true;
@@ -72,7 +72,7 @@ in
                 engine_short_names = true;
                 font_size = 18;
                 fps_color = "FFFFFF";
-                fps_limit = "${cfg.hardware.monitors.main.refreshRate},60,0";
+                fps_limit = "${builtins.toString (cfg.hardware.monitors.main.refreshRate)},60,0";
                 frame_timing = false;
                 frametime = false;
                 gl_vsync = 0;

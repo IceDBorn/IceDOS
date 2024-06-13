@@ -43,7 +43,7 @@ in
               clock-show-date = cfg.desktop.gnome.clock.date;
               clock-show-weekday = cfg.desktop.gnome.clock.weekday;
 
-              show-battery-percentage = cfg.hardware.laptop;
+              show-battery-percentage = cfg.hardware.devices.laptop;
 
               # Access the activity overview by moving the mouse to the top-left corner
               enable-hot-corners = cfg.desktop.gnome.hotCorners;

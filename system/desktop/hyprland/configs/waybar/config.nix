@@ -52,7 +52,7 @@ in
                   "clock",
                   "custom/notification",
                   ${
-                    if (cfg.hardware.laptop) then
+                    if (cfg.hardware.devices.laptop) then
                       ''
                         "custom/separator",
                         "backlight",

@@ -1,7 +1,7 @@
 { config, ... }:
 
 let
-  cfg = config.icedos.hardware.cpu.intel.enable;
+  cfg = config.icedos.hardware.cpus.intel;
 in
 {
   hardware.cpu.intel.updateMicrocode = cfg;

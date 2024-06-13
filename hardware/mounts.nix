@@ -4,7 +4,7 @@ let
   inherit (lib) mkIf;
 
   cfg = config.icedos.hardware;
-  btrfsCompression = cfg.btrfsCompression;
+  btrfsCompression = cfg.btrfs.compression;
 in
 mkIf (cfg.mounts) {
   fileSystems."/mnt/games" = {

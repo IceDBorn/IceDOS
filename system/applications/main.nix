@@ -94,7 +94,7 @@ mkIf (cfg.system.user.main.enable) {
       enable = true;
 
       # Needed for steam controller to work on wayland compositors when the steam client is open
-      extest.enable = cfg.hardware.steamdeck;
+      extest.enable = cfg.hardware.devices.steamdeck;
     };
   };
 

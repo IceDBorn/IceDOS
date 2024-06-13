@@ -8,7 +8,7 @@
 let
   inherit (lib) mkIf;
 
-  cfg = config.icedos.hardware.cpu.amd;
+  cfg = config.icedos.hardware.cpus.amd;
 in
 mkIf (cfg.enable) {
   boot = {

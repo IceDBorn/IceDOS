@@ -42,7 +42,7 @@ in
   networking = {
     hostName = "${cfg.hardware.networking.hostname}";
 
-    extraHosts = mkIf (cfg.hardware.networking.hosts.enable) "192.168.2.99 git.dtek.gr";
+    extraHosts = mkIf (cfg.hardware.networking.hosts) "192.168.2.99 git.dtek.gr";
   };
 
   boot = {
@@ -65,8 +65,8 @@ in
           let
             name = monitors.${m}.name;
             resolution = monitors.${m}.resolution;
-            refreshRate = monitors.${m}.refreshRate;
-            rotation = monitors.${m}.rotation;
+            refreshRate = builtins.toString (monitors.${m}.refreshRate);
+            rotation = builtins.toString (monitors.${m}.rotation);
           in
           "video=${name}:${resolution}@${refreshRate},rotate=${rotation}"
         ) enabledMonitors
@@ -83,7 +83,7 @@ in
     };
   };
 
-  fileSystems = mkIf (cfg.hardware.btrfsCompression.enable && cfg.hardware.btrfsCompression.root) {
+  fileSystems = mkIf (cfg.hardware.btrfs.compression.enable && cfg.hardware.btrfs.compression.root) {
     "/".options = [ "compress=zstd" ];
   };
 

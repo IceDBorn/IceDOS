@@ -8,7 +8,7 @@
 let
   inherit (lib) mkIf;
 
-  cfg = config.icedos.hardware.gpu.amd;
+  cfg = config.icedos.hardware.gpus.amd;
 in
 mkIf (cfg) {
   boot = {

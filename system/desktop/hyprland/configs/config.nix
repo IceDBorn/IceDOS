@@ -36,9 +36,9 @@ in
             let
               name = monitors.${m}.name;
               resolution = monitors.${m}.resolution;
-              refreshRate = monitors.${m}.refreshRate;
-              position = monitors.${m}.position;
-              scaling = monitors.${m}.scaling;
+              refreshRate = builtins.toString (monitors.${m}.refreshRate);
+              position = builtins.toString (monitors.${m}.position);
+              scaling = builtins.toString (monitors.${m}.scaling);
               deckRotation = if (monitors.${m}.deck) then ",transform,3" else "";
 
               extraBind =

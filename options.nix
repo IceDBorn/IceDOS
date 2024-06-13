@@ -123,275 +123,96 @@ in
       };
 
       hardware = {
-        btrfsCompression = {
-          enable = mkOption {
-            type = types.bool;
-            default = true;
-          };
-
-          # Use btrfs compression for mounted drives
-          mounts = mkOption {
-            type = types.bool;
-            default = true;
-          };
-
-          # Use btrfs compression for root
-          root = mkOption {
-            type = types.bool;
-            default = true;
-          };
+        btrfs.compression = {
+          enable = mkOption { type = types.bool; };
+          mounts = mkOption { type = types.bool; };
+          root = mkOption { type = types.bool; };
         };
 
-        cpu = {
+        cpus = {
           amd = {
-            enable = mkOption {
-              type = types.bool;
-              default = true;
-            };
+            enable = mkOption { type = types.bool; };
 
             undervolt = {
-              enable = mkOption {
-                type = types.bool;
-                default = true;
-              };
-
-              value = mkOption {
-                type = types.str;
-                # Pstate 0, 1.175 voltage, 4000 clock speed
-                default = "-p 0 -v 3C -f A0";
-              };
+              enable = mkOption { type = types.bool; };
+              value = mkOption { type = types.str; };
             };
           };
 
-          intel.enable = mkOption {
+          intel = mkOption {
             type = types.bool;
             default = false;
           };
         };
 
-        gpu = {
-          amd = mkOption {
-            type = types.bool;
-            default = true;
-          };
-
-          nvidia = {
-            enable = mkOption {
-              type = types.bool;
-              default = false;
-            };
-
-            beta = mkOption {
-              type = types.bool;
-              default = false;
-            };
-
-            powerLimit = {
-              enable = mkOption {
-                type = types.bool;
-                default = true;
-              };
-
-              # RTX 3070
-              value = mkOption {
-                type = types.str;
-                default = "242";
-              };
-            };
-          };
+        devices = {
+          laptop = mkOption { type = types.bool; };
+          steamdeck = mkOption { type = types.bool; };
         };
 
-        laptop = mkOption {
-          type = types.bool;
-          default = false;
+        gpus = {
+          amd = mkOption { type = types.bool; };
+
+          nvidia = {
+            enable = mkOption { type = types.bool; };
+            beta = mkOption { type = types.bool; };
+
+            powerLimit = {
+              enable = mkOption { type = types.bool; };
+              value = mkOption { type = types.number; };
+            };
+          };
         };
 
         monitors = {
           main = {
-            enable = mkOption {
-              type = types.bool;
-              default = true;
-            };
-
-            deck = mkOption {
-              type = types.bool;
-              default = false;
-            };
-
-            name = mkOption {
-              type = types.str;
-              default = "DP-1";
-            };
-
-            resolution = mkOption {
-              type = types.str;
-              default = "1920x1080";
-            };
-
-            refreshRate = mkOption {
-              type = types.str;
-              default = "144";
-            };
-
-            position = mkOption {
-              type = types.str;
-              default = "1360x0";
-            };
-
-            scaling = mkOption {
-              type = types.str;
-              default = "1";
-            };
-
-            rotation = mkOption {
-              type = types.str;
-              default = "0";
-            };
+            enable = mkOption { type = types.bool; };
+            deck = mkOption { type = types.bool; };
+            name = mkOption { type = types.str; };
+            resolution = mkOption { type = types.str; };
+            refreshRate = mkOption { type = types.number; };
+            position = mkOption { type = types.str; };
+            scaling = mkOption { type = types.number; };
+            rotation = mkOption { type = types.number; };
           };
 
           second = {
-            enable = mkOption {
-              type = types.bool;
-              default = true;
-            };
-
-            deck = mkOption {
-              type = types.bool;
-              default = false;
-            };
-
-            name = mkOption {
-              type = types.str;
-              default = "HDMI-A-1";
-            };
-
-            resolution = mkOption {
-              type = types.str;
-              default = "1360x768";
-            };
-
-            refreshRate = mkOption {
-              type = types.str;
-              default = "60";
-            };
-
-            position = mkOption {
-              type = types.str;
-              default = "0x0";
-            };
-
-            scaling = mkOption {
-              type = types.str;
-              default = "1";
-            };
-
-            rotation = mkOption {
-              type = types.str;
-              default = "0";
-            };
+            enable = mkOption { type = types.bool; };
+            deck = mkOption { type = types.bool; };
+            name = mkOption { type = types.str; };
+            resolution = mkOption { type = types.str; };
+            refreshRate = mkOption { type = types.number; };
+            position = mkOption { type = types.str; };
+            scaling = mkOption { type = types.number; };
+            rotation = mkOption { type = types.number; };
           };
 
           third = {
-            enable = mkOption {
-              type = types.bool;
-              default = true;
-            };
-
-            deck = mkOption {
-              type = types.bool;
-              default = false;
-            };
-
-            name = mkOption {
-              type = types.str;
-              default = "DP-2";
-            };
-
-            resolution = mkOption {
-              type = types.str;
-              default = "1280x1024";
-            };
-
-            refreshRate = mkOption {
-              type = types.str;
-              default = "75";
-            };
-
-            position = mkOption {
-              type = types.str;
-              default = "3280x0";
-            };
-
-            scaling = mkOption {
-              type = types.str;
-              default = "1";
-            };
-
-            rotation = mkOption {
-              type = types.str;
-              default = "0";
-            };
+            enable = mkOption { type = types.bool; };
+            deck = mkOption { type = types.bool; };
+            name = mkOption { type = types.str; };
+            resolution = mkOption { type = types.str; };
+            refreshRate = mkOption { type = types.number; };
+            position = mkOption { type = types.str; };
+            scaling = mkOption { type = types.number; };
+            rotation = mkOption { type = types.number; };
           };
         };
 
         networking = {
-          hostname = mkOption {
-            type = types.str;
-            default = "desktop";
-          };
-
-          hosts.enable = mkOption {
-            type = types.bool;
-            default = false;
-          };
-
-          ipv6 = mkOption {
-            type = types.bool;
-            default = false;
-          };
+          hostname = mkOption { type = types.str; };
+          hosts = mkOption { type = types.bool; };
+          ipv6 = mkOption { type = types.bool; };
         };
 
-        # Set to false if hardware/mounts.nix is not correctly configured
-        mounts = mkOption {
-          type = types.bool;
-          default = true;
-        };
-
-        steamdeck = mkOption {
-          type = types.bool;
-          default = false;
-        };
+        mounts = mkOption { type = types.bool; };
 
         virtualisation = {
-          # Container manager
-          docker = mkOption {
-            type = types.bool;
-            default = true;
-          };
-
-          # A daemon that manages virtual machines
-          libvirtd = mkOption {
-            type = types.bool;
-            default = true;
-          };
-
-          # Container daemon
-          lxd = mkOption {
-            type = types.bool;
-            default = true;
-          };
-
-          # Passthrough USB devices to vms
-          spiceUSBRedirection = mkOption {
-            type = types.bool;
-            default = true;
-          };
-
-          # Android container
-          waydroid = mkOption {
-            type = types.bool;
-            default = true;
-          };
+          docker = mkOption { type = types.bool; };
+          libvirtd = mkOption { type = types.bool; };
+          lxd = mkOption { type = types.bool; };
+          spiceUSBRedirection = mkOption { type = types.bool; };
+          waydroid = mkOption { type = types.bool; };
         };
       };
 

@@ -111,6 +111,85 @@
           "networkUsageThreshold": 1000000
         }
       }
+    },
+    "hardware": {
+      "btrfs": {
+        "compression": {
+          "enable": true,
+          "mounts": true,
+          "root": true
+        }
+      },
+      "cpus": {
+        "amd": {
+          "enable": true,
+          "undervolt": {
+            "enable": true,
+            "value": "-p 0 -v 3C -f A0"
+          }
+        },
+        "intel": false
+      },
+      "devices": {
+        "laptop": false,
+        "steamdeck": false
+      },
+      "gpus": {
+        "amd": true,
+        "nvidia": {
+          "enable": false,
+          "beta": false,
+          "powerLimit": {
+            "enable": true,
+            "value": 242
+          }
+        }
+      },
+      "monitors": {
+        "main": {
+          "enable": true,
+          "deck": false,
+          "name": "DP-1",
+          "resolution": "1920x1080",
+          "refreshRate": 144,
+          "position": "1360x0",
+          "scaling": 1,
+          "rotation": 0
+        },
+        "second": {
+          "enable": true,
+          "deck": false,
+          "name": "HDMI-A-1",
+          "resolution": "1360x768",
+          "refreshRate": 60,
+          "position": "0x0",
+          "scaling": 1,
+          "rotation": 0
+        },
+        "third": {
+          "enable": true,
+          "deck": false,
+          "name": "DP-2",
+          "resolution": "1280x1024",
+          "refreshRate": 75,
+          "position": "3280x0",
+          "scaling": 1,
+          "rotation": 0
+        }
+      },
+      "networking": {
+        "hostname": "desktop",
+        "hosts": false,
+        "ipv6": false
+      },
+      "mounts": true,
+      "virtualisation": {
+        "docker": true,
+        "libvirtd": true,
+        "lxd": true,
+        "spiceUSBRedirection": true,
+        "waydroid": true
+      }
     }
   }
 }

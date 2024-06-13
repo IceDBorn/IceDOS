@@ -12,7 +12,7 @@ let
 
   deckbd = "${pkgs.deckbd}/bin/deckbd";
 in
-mkIf (cfg.hardware.steamdeck) {
+mkIf (cfg.hardware.devices.steamdeck) {
   boot.initrd = {
     preLVMCommands = ''
       DECKBD_RETRIES=10
