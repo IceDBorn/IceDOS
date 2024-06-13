@@ -19,13 +19,13 @@ let
   l = lib.lists.length (enabledMonitors);
   mapAttrsAndKeys = callback: list: (foldl' (acc: value: acc // (callback value)) { } list);
   monitors = cfg.hardware.monitors;
-  users = filter (user: cfg.system.user.${user}.enable == true) (attrNames cfg.system.user);
+  users = filter (user: cfg.system.users.${user}.enable == true) (attrNames cfg.system.users);
 in
 {
   home-manager.users = mapAttrsAndKeys (
     user:
     let
-      username = cfg.system.user.${user}.username;
+      username = cfg.system.users.${user}.username;
     in
     {
       ${username} = mkIf (cfg.desktop.hyprland.enable) {

@@ -79,7 +79,7 @@ in
       "vm.compaction_proactiveness" = 0;
       "vm.max_map_count" = 1048576; # Fixes crashes or start-up issues for games
       "vm.page_lock_unfairness" = 1;
-      "vm.swappiness" = cfg.system.swappiness; # Set agressiveness of swap usage
+      "vm.swappiness" = builtins.toString (cfg.system.swappiness); # Set agressiveness of swap usage
     };
   };
 

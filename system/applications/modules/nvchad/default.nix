@@ -62,12 +62,12 @@ in
 
   home-manager.users =
     let
-      users = filter (user: cfg.system.user.${user}.enable == true) (attrNames cfg.system.user);
+      users = filter (user: cfg.system.users.${user}.enable == true) (attrNames cfg.system.users);
     in
     mapAttrsAndKeys (
       user:
       let
-        username = cfg.system.user.${user}.username;
+        username = cfg.system.users.${user}.username;
       in
       {
         ${username}.home.file = mkIf (cfg.applications.nvchad) {

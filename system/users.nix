@@ -6,18 +6,18 @@ let
   cfg = config.icedos.system;
 
   mapAttrsAndKeys = callback: list: (foldl' (acc: value: acc // (callback value)) { } list);
-  users = filter (user: cfg.user.${user}.enable == true) (attrNames cfg.user);
+  users = filter (user: cfg.users.${user}.enable == true) (attrNames cfg.users);
 in
 {
   nix.settings.trusted-users = [
     "root"
-  ] ++ (foldl' (acc: user: acc ++ [ cfg.user.${user}.username ]) [ ] users);
+  ] ++ (foldl' (acc: user: acc ++ [ cfg.users.${user}.username ]) [ ] users);
 
   users.users = mapAttrsAndKeys (
     user:
     let
-      username = cfg.user.${user}.username;
-      description = cfg.user.${user}.description;
+      username = cfg.users.${user}.username;
+      description = cfg.users.${user}.description;
     in
     {
       ${username} = {
@@ -42,7 +42,7 @@ in
   home-manager.users = mapAttrsAndKeys (
     user:
     let
-      username = cfg.user.${user}.username;
+      username = cfg.users.${user}.username;
     in
     {
       ${username}.home.stateVersion = cfg.version;

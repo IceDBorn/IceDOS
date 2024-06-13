@@ -8,8 +8,8 @@ let
   inherit (lib) attrNames filter strings;
   cfg = config.icedos.system;
 
-  gens = cfg.generations.garbageCollect.generations;
-  days = cfg.generations.garbageCollect.days;
+  gens = builtins.toString (cfg.generations.garbageCollect.generations);
+  days = builtins.toString (cfg.generations.garbageCollect.days);
 in
 pkgs.writeShellScriptBin "nix-gc" ''
   # Retain sudo
@@ -18,12 +18,12 @@ pkgs.writeShellScriptBin "nix-gc" ''
   # Garbage collect user profiles
   ${
     let
-      users = filter (user: cfg.user.${user}.enable == true) (attrNames cfg.user);
+      users = filter (user: cfg.users.${user}.enable == true) (attrNames cfg.users);
     in
     strings.concatMapStrings (
       user:
       let
-        username = cfg.user.${user}.username;
+        username = cfg.users.${user}.username;
       in
       ''
         sudo -H -u "${username}" env Gens="''${1:-${gens}}" Days="''${2:-${days}}" bash -c 'trim-generations "$Gens" "$Days" "user"'

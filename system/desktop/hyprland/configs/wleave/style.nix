@@ -1,66 +1,81 @@
-{ lib, config, pkgs, ... }:
+{
+  lib,
+  config,
+  pkgs,
+  ...
+}:
 
 let
-  inherit (lib) attrNames filter foldl' mkIf;
+  inherit (lib)
+    attrNames
+    filter
+    foldl'
+    mkIf
+    ;
 
-  mapAttrsAndKeys = callback: list:
-    (foldl' (acc: value: acc // (callback value)) { } list);
+  mapAttrsAndKeys = callback: list: (foldl' (acc: value: acc // (callback value)) { } list);
 
   cfg = config.icedos;
-in {
-  home-manager.users = let
-    users = filter (user: cfg.system.user.${user}.enable == true)
-      (attrNames cfg.system.user);
-  in mapAttrsAndKeys (user:
-    let username = cfg.system.user.${user}.username;
-    in {
-      ${username} = mkIf (cfg.desktop.hyprland.enable) {
-        home.file.".config/wleave/style.css".text = ''
-          * {
-            background-image: none;
-          }
+in
+{
+  home-manager.users =
+    let
+      users = filter (user: cfg.system.users.${user}.enable == true) (attrNames cfg.system.users);
+    in
+    mapAttrsAndKeys (
+      user:
+      let
+        username = cfg.system.users.${user}.username;
+      in
+      {
+        ${username} = mkIf (cfg.desktop.hyprland.enable) {
+          home.file.".config/wleave/style.css".text = ''
+            * {
+              background-image: none;
+            }
 
-          window {
-            background-color: rgba(12, 12, 12, 0.5);
-          }
+            window {
+              background-color: rgba(12, 12, 12, 0.5);
+            }
 
-          button {
-            color: #FBFBFB;
-            background-color: #1E1E1E;
-            background-repeat: no-repeat;
-            background-position: center;
-            border-radius: 20px;
-          }
+            button {
+              color: #FBFBFB;
+              background-color: #1E1E1E;
+              background-repeat: no-repeat;
+              background-position: center;
+              border-radius: 20px;
+            }
 
-          button:focus, button:active, button:hover {
-            background-color: #2A2A2A;
-            outline-style: none;
-          }
+            button:focus, button:active, button:hover {
+              background-color: #2A2A2A;
+              outline-style: none;
+            }
 
-          #lock {
-            background-image: image(url("${pkgs.wleave}/share/wleave/icons/lock.svg"));
-          }
+            #lock {
+              background-image: image(url("${pkgs.wleave}/share/wleave/icons/lock.svg"));
+            }
 
-          #logout {
-            background-image: image(url("${pkgs.wleave}/share/wleave/icons/logout.svg"));
-          }
+            #logout {
+              background-image: image(url("${pkgs.wleave}/share/wleave/icons/logout.svg"));
+            }
 
-          #suspend {
-            background-image: image(url("${pkgs.wleave}/share/wleave/icons/suspend.svg"));
-          }
+            #suspend {
+              background-image: image(url("${pkgs.wleave}/share/wleave/icons/suspend.svg"));
+            }
 
-          #hibernate {
-            background-image: image(url("${pkgs.wleave}/share/wleave/icons/hibernate.svg"));
-          }
+            #hibernate {
+              background-image: image(url("${pkgs.wleave}/share/wleave/icons/hibernate.svg"));
+            }
 
-          #shutdown {
-            background-image: image(url("${pkgs.wleave}/share/wleave/icons/shutdown.svg"));
-          }
+            #shutdown {
+              background-image: image(url("${pkgs.wleave}/share/wleave/icons/shutdown.svg"));
+            }
 
-          #reboot {
-            background-image: image(url("${pkgs.wleave}/share/wleave/icons/reboot.svg"));
-          }
-        '';
-      };
-    }) users;
+            #reboot {
+              background-image: image(url("${pkgs.wleave}/share/wleave/icons/reboot.svg"));
+            }
+          '';
+        };
+      }
+    ) users;
 }

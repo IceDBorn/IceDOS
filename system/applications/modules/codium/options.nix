@@ -2,6 +2,7 @@
 let
   inherit (lib)
     attrNames
+    boolToString
     filter
     foldl'
     mkIf
@@ -14,12 +15,12 @@ in
 mkIf (cfg.applications.codium.enable) {
   home-manager.users =
     let
-      users = filter (user: cfg.system.user.${user}.enable == true) (attrNames cfg.system.user);
+      users = filter (user: cfg.system.users.${user}.enable == true) (attrNames cfg.system.users);
     in
     mapAttrsAndKeys (
       user:
       let
-        username = cfg.system.user.${user}.username;
+        username = cfg.system.users.${user}.username;
 
         settings = ''
           {
@@ -32,13 +33,17 @@ mkIf (cfg.applications.codium.enable) {
             "diffEditor.ignoreTrimWhitespace": false,
             "editor.fontFamily": "'JetBrainsMono Nerd Font', 'Droid Sans Mono', 'monospace', monospace",
             "editor.fontLigatures": true,
-            "editor.formatOnPaste": ${cfg.system.user.${user}.applications.codium.formatOnPaste},
-            "editor.formatOnSave": ${cfg.system.user.${user}.applications.codium.formatOnSave},
+            "editor.formatOnPaste": ${
+              boolToString (cfg.system.users.${user}.applications.codium.formatOnPaste)
+            },
+            "editor.formatOnSave": ${
+              boolToString (cfg.system.users.${user}.applications.codium.formatOnSave)
+            },
             "editor.minimap.enabled": false,
             "editor.renderWhitespace": "trailing",
             "editor.smoothScrolling": true,
             "editor.tabSize": 2,
-            "files.autoSave": "${cfg.system.user.${user}.applications.codium.autoSave}",
+            "files.autoSave": "${cfg.system.users.${user}.applications.codium.autoSave}",
             "files.insertFinalNewline": true,
             "files.trimFinalNewlines": true,
             "files.trimTrailingWhitespace": true,

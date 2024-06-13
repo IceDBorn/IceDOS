@@ -16,12 +16,12 @@ in
 {
   home-manager.users =
     let
-      users = filter (user: cfg.system.user.${user}.enable == true) (attrNames cfg.system.user);
+      users = filter (user: cfg.system.users.${user}.enable == true) (attrNames cfg.system.users);
     in
     mapAttrsAndKeys (
       user:
       let
-        username = cfg.system.user.${user}.username;
+        username = cfg.system.users.${user}.username;
       in
       {
         ${username} = mkIf (cfg.desktop.gnome.enable) {
@@ -73,16 +73,16 @@ in
             # Turn off screen
             "org/gnome/desktop/session" = {
               idle-delay =
-                if (cfg.system.user.${user}.desktop.idle.disableMonitors.enable) then
-                  cfg.system.user.${user}.desktop.idle.disableMonitors.seconds
+                if (cfg.system.users.${user}.desktop.idle.disableMonitors.enable) then
+                  builtins.toString (cfg.system.users.${user}.desktop.idle.disableMonitors.seconds)
                 else
                   0;
             };
 
             # Set screen lock
             "org/gnome/desktop/screensaver" = {
-              lock-enabled = cfg.system.user.${user}.desktop.idle.lock.enable;
-              lock-delay = cfg.system.user.${user}.desktop.idle.lock.seconds;
+              lock-enabled = cfg.system.users.${user}.desktop.idle.lock.enable;
+              lock-delay = builtins.toString (cfg.system.users.${user}.desktop.idle.lock.seconds);
             };
 
             # Disable system sounds
@@ -101,9 +101,11 @@ in
             "org/gnome/settings-daemon/plugins/power" = {
               # Auto suspend
               sleep-inactive-ac-type =
-                if (cfg.system.user.${user}.desktop.idle.suspend.enable) then "suspend" else "nothing";
+                if (cfg.system.users.${user}.desktop.idle.suspend.enable) then "suspend" else "nothing";
               # Auto suspend timeout
-              sleep-inactive-ac-timeout = cfg.system.user.${user}.desktop.idle.suspend.seconds;
+              sleep-inactive-ac-timeout = builtins.toString (
+                cfg.system.users.${user}.desktop.idle.suspend.seconds
+              );
               # Power button shutdown
               power-button-action = cfg.desktop.gnome.powerButtonAction;
             };
@@ -123,8 +125,8 @@ in
                 ++ optional (cfg.desktop.gnome.extensions.dashToPanel) "dash-to-panel@jderose9.github.com"
                 ++ optional (cfg.desktop.gnome.extensions.gsconnect) "gsconnect@andyholmes.github.io";
 
-              favorite-apps = mkIf (cfg.system.user.${user}.desktop.gnome.pinnedApps.shell.enable
-              ) cfg.system.user.${user}.desktop.gnome.pinnedApps.shell.list;
+              favorite-apps = mkIf (cfg.system.users.${user}.desktop.gnome.pinnedApps.shell.enable
+              ) cfg.system.users.${user}.desktop.gnome.pinnedApps.shell.list;
             };
 
             "org/gnome/shell/keybindings" = {
@@ -206,8 +208,8 @@ in
               multi-monitor = true;
               menu-layout = "Windows";
               windows-disable-frequent-apps = true;
-              windows-disable-pinned-apps = !cfg.system.user.${user}.desktop.gnome.pinnedApps.arcmenu.enable;
-              pinned-app-list = cfg.system.user.${user}.desktop.gnome.pinnedApps.arcmenu.list;
+              windows-disable-pinned-apps = !cfg.system.users.${user}.desktop.gnome.pinnedApps.arcmenu.enable;
+              pinned-app-list = cfg.system.users.${user}.desktop.gnome.pinnedApps.arcmenu.list;
             };
 
             "org/gnome/shell/extensions/pano" = {

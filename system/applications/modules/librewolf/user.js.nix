@@ -16,7 +16,7 @@ let
   mapAttrsAndKeys = callback: list: (foldl' (acc: value: acc // (callback value)) { } list);
 
   cfg = config.icedos;
-	firefoxVersion = builtins.substring 0 5 pkgs.firefox.version;
+  firefoxVersion = builtins.substring 0 5 pkgs.firefox.version;
 
   userJs = ''
     // Global settings
@@ -69,12 +69,12 @@ in
 mkIf (cfg.applications.librewolf.enable) {
   home-manager.users =
     let
-      users = filter (user: cfg.system.user.${user}.enable == true) (attrNames cfg.system.user);
+      users = filter (user: cfg.system.users.${user}.enable == true) (attrNames cfg.system.users);
     in
     mapAttrsAndKeys (
       user:
       let
-        username = cfg.system.user.${user}.username;
+        username = cfg.system.users.${user}.username;
       in
       {
         ${username} = {

@@ -9,15 +9,15 @@ in
 {
   home-manager.users =
     let
-      users = filter (user: cfg.system.user.${user}.enable == true) (attrNames cfg.system.user);
+      users = filter (user: cfg.system.users.${user}.enable == true) (attrNames cfg.system.users);
     in
     mapAttrsAndKeys (
       user:
       let
-        username = cfg.system.user.${user}.username;
+        username = cfg.system.users.${user}.username;
 
         formatOnSave =
-          if (cfg.system.user.${user}.applications.nvchad.formatOnSave) then
+          if (cfg.system.users.${user}.applications.nvchad.formatOnSave) then
             ''
               -- Format on sav
               vim.cmd [[

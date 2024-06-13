@@ -10,7 +10,7 @@ let
   cfg = config.icedos;
 
   mapAttrsAndKeys = callback: list: (foldl' (acc: value: acc // (callback value)) { } list);
-  users = filter (user: cfg.system.user.${user}.enable == true) (attrNames cfg.system.user);
+  users = filter (user: cfg.system.users.${user}.enable == true) (attrNames cfg.system.users);
 in
 mkIf (cfg.applications.android-tools) {
   programs.adb.enable = true;
@@ -18,7 +18,7 @@ mkIf (cfg.applications.android-tools) {
   users.users = mapAttrsAndKeys (
     user:
     let
-      username = cfg.system.user.${user}.username;
+      username = cfg.system.users.${user}.username;
     in
     {
       ${username}.extraGroups = [ "adbusers" ];

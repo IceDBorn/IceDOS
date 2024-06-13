@@ -10,13 +10,13 @@ in
 {
   home-manager.users =
     let
-      users = filter (user: cfg.system.user.${user}.enable == true) (attrNames cfg.system.user);
+      users = filter (user: cfg.system.users.${user}.enable == true) (attrNames cfg.system.users);
     in
     mapAttrsAndKeys (
       user:
       let
-        idle = cfg.system.user.${user}.desktop.idle;
-        username = cfg.system.user.${user}.username;
+        idle = cfg.system.users.${user}.desktop.idle;
+        username = cfg.system.users.${user}.username;
       in
       {
         ${username}.home.file.".config/hypr/hypridle.conf".text = ''
@@ -37,7 +37,7 @@ in
             if (idle.lock.enable) then
               ''
                 listener {
-                    timeout = ${idle.lock.seconds}
+                    timeout = ${builtins.toString (idle.lock.seconds)}
                     on-timeout = hyprlock-wrapper lock
                 }
               ''
@@ -49,7 +49,7 @@ in
             if (idle.disableMonitors.enable) then
               ''
                 listener {
-                    timeout = ${idle.disableMonitors.seconds}
+                    timeout = ${builtins.toString (idle.disableMonitors.seconds)}
                     on-timeout = hyprlock-wrapper off
                     on-resume = hyprctl dispatch dpms on
                 }
@@ -62,7 +62,7 @@ in
             if (idle.suspend.enable) then
               ''
                 listener {
-                    timeout = ${idle.suspend.seconds}
+                    timeout = ${builtins.toString (idle.suspend.seconds)}
                     on-timeout = hyprlock-wrapper suspend
                 }
               ''

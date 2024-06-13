@@ -11,7 +11,7 @@ let
   inherit (lib) mkIf optional;
 
   cfg = config.icedos;
-  username = cfg.system.user.main.username;
+  username = cfg.system.users.main.username;
 
   install-proton-ge = import modules/wine-build-updater.nix {
     inherit pkgs;
@@ -66,7 +66,7 @@ let
     install-proton-ge
   ];
 in
-mkIf (cfg.system.user.main.enable) {
+mkIf (cfg.system.users.main.enable) {
   users.users.${username}.packages =
     with pkgs;
     [

@@ -65,7 +65,7 @@ let
     Alias /${storeAliases.bookmarkt.alias} ${gitLocation}${storeAliases.bookmarkt.folder}
   '';
 in
-mkIf (cfg.user.work.enable) {
+mkIf (cfg.users.work.enable) {
   users.users.${username}.packages =
     with pkgs;
     [

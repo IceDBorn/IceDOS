@@ -1,18 +1,5 @@
 { lib, ... }:
 
-let
-  users = {
-    main = {
-      username = "icedborn";
-      description = "IceDBorn";
-    };
-
-    work = {
-      username = "work";
-      description = "Work";
-    };
-  };
-in
 {
   options = with lib; {
     icedos = {
@@ -217,334 +204,127 @@ in
       };
 
       system = {
-        config.version = mkOption {
-          type = types.str;
-          default = "1.0.0";
-        };
+        config.version = mkOption { type = types.str; };
 
         generations = {
-          bootEntries = mkOption {
-            type = types.number;
-            default = 10;
-          };
+          bootEntries = mkOption { type = types.number; };
 
           garbageCollect = {
-            # Number of days before a generation can be deleted
-            days = mkOption {
-              type = types.str;
-              default = "0";
-            };
-
-            # Number of generations that will always be kept
-            generations = mkOption {
-              type = types.str;
-              default = "10";
-            };
+            days = mkOption { type = types.number; };
+            generations = mkOption { type = types.number; };
           };
         };
 
-        home = mkOption {
-          type = types.str;
-          default = "/home";
-        };
+        home = mkOption { type = types.str; };
 
-        swappiness = mkOption {
-          type = types.str;
-          default = "1";
-        };
+        swappiness = mkOption { type = types.number; };
 
-        user = {
+        users = {
           main = {
-            enable = mkOption {
-              type = types.bool;
-              default = true;
-            };
-
-            username = mkOption {
-              type = types.str;
-              default = users.main.username;
-            };
-
-            description = mkOption {
-              type = types.str;
-              default = users.main.description;
-            };
+            enable = mkOption { type = types.bool; };
+            username = mkOption { type = types.str; };
+            description = mkOption { type = types.str; };
 
             applications = {
               codium = {
-                # off, afterDelay, onFocusChange, onWindowChange
-                autoSave = mkOption {
-                  type = types.str;
-                  default = "off";
-                };
-
-                formatOnSave = mkOption {
-                  type = types.str;
-                  default = "true";
-                };
-
-                formatOnPaste = mkOption {
-                  type = types.str;
-                  default = "true";
-                };
+                autoSave = mkOption { type = types.str; };
+                formatOnSave = mkOption { type = types.bool; };
+                formatOnPaste = mkOption { type = types.bool; };
               };
 
               git = {
-                username = mkOption {
-                  type = types.str;
-                  default = "IceDBorn";
-                };
-
-                email = mkOption {
-                  type = types.str;
-                  default = "git.outsider841@simplelogin.fr";
-                };
+                username = mkOption { type = types.str; };
+                email = mkOption { type = types.str; };
               };
 
-              nvchad.formatOnSave = mkOption {
-                type = types.bool;
-                default = true;
-              };
+              nvchad.formatOnSave = mkOption { type = types.bool; };
             };
 
             desktop = {
               gnome.pinnedApps = {
                 arcmenu = {
-                  enable = mkOption {
-                    type = types.bool;
-                    default = false;
-                  };
-
-                  list = mkOption {
-                    type = with types; listOf str;
-                    default = [
-                      "Codium IDE"
-                      ""
-                      "codiumIDE.desktop"
-                      "VSCodium"
-                      ""
-                      "codium.desktop"
-                      "Spotify"
-                      ""
-                      "spotify.desktop"
-                      "Mullvad VPN"
-                      ""
-                      "mullvad-vpn.desktop"
-                      "GNU Image Manipulation Program"
-                      ""
-                      "gimp.desktop"
-                    ];
-                  };
+                  enable = mkOption { type = types.bool; };
+                  list = mkOption { type = with types; listOf str; };
                 };
 
-                # Set pinned apps for gnome shell (will be used by dash-to-panel if enabled)
                 shell = {
-                  enable = mkOption {
-                    type = types.bool;
-                    default = false;
-                  };
-
-                  list = mkOption {
-                    type = with types; listOf str;
-                    default = [
-                      "steam.desktop"
-                      "webcord.desktop"
-                      "signal-desktop.desktop"
-                      "librewolf.desktop"
-                    ];
-                  };
+                  enable = mkOption { type = types.bool; };
+                  list = mkOption { type = with types; listOf str; };
                 };
               };
 
               idle = {
                 lock = {
-                  enable = mkOption {
-                    type = types.bool;
-                    default = true;
-                  };
-
-                  seconds = mkOption {
-                    type = types.str;
-                    default = "180";
-                  };
+                  enable = mkOption { type = types.bool; };
+                  seconds = mkOption { type = types.number; };
                 };
 
                 disableMonitors = {
-                  enable = mkOption {
-                    type = types.bool;
-                    default = true;
-                  };
-
-                  seconds = mkOption {
-                    type = types.str;
-                    default = "300";
-                  };
+                  enable = mkOption { type = types.bool; };
+                  seconds = mkOption { type = types.number; };
                 };
 
                 suspend = {
-                  enable = mkOption {
-                    type = types.bool;
-                    default = true;
-                  };
-
-                  seconds = mkOption {
-                    type = types.str;
-                    default = "900";
-                  };
+                  enable = mkOption { type = types.bool; };
+                  seconds = mkOption { type = types.number; };
                 };
               };
             };
           };
 
           work = {
-            enable = mkOption {
-              type = types.bool;
-              default = false;
-            };
-
-            username = mkOption {
-              type = types.str;
-              default = users.work.username;
-            };
-
-            description = mkOption {
-              type = types.str;
-              default = users.work.description;
-            };
+            enable = mkOption { type = types.bool; };
+            username = mkOption { type = types.str; };
+            description = mkOption { type = types.str; };
 
             applications = {
               codium = {
-                # off, afterDelay, onFocusChange, onWindowChange
-                autoSave = mkOption {
-                  type = types.str;
-                  default = "off";
-                };
-
-                formatOnSave = mkOption {
-                  type = types.str;
-                  default = "false";
-                };
-
-                formatOnPaste = mkOption {
-                  type = types.str;
-                  default = "false";
-                };
+                autoSave = mkOption { type = types.str; };
+                formatOnSave = mkOption { type = types.bool; };
+                formatOnPaste = mkOption { type = types.bool; };
               };
 
               git = {
-                username = mkOption {
-                  type = types.str;
-                  default = "IceDBorn";
-                };
-
-                email = mkOption {
-                  type = types.str;
-                  default = "git.outsider841@simplelogin.fr";
-                };
+                username = mkOption { type = types.str; };
+                email = mkOption { type = types.str; };
               };
 
-              nvchad.formatOnSave = mkOption {
-                type = types.bool;
-                default = false;
-              };
+              nvchad.formatOnSave = mkOption { type = types.bool; };
             };
 
             desktop = {
               gnome.pinnedApps = {
                 arcmenu = {
-                  enable = mkOption {
-                    type = types.bool;
-                    default = false;
-                  };
-
-                  list = mkOption {
-                    type = with types; listOf str;
-                    default = [
-                      "Codium IDE"
-                      ""
-                      "codiumIDE.desktop"
-                      "VSCodium"
-                      ""
-                      "codium.desktop"
-                      "Spotify"
-                      ""
-                      "spotify.desktop"
-                      "Mullvad VPN"
-                      ""
-                      "mullvad-vpn.desktop"
-                      "GNU Image Manipulation Program"
-                      ""
-                      "gimp.desktop"
-                    ];
-                  };
+                  enable = mkOption { type = types.bool; };
+                  list = mkOption { type = with types; listOf str; };
                 };
-
-                # Set pinned apps for gnome shell (will be used by dash-to-panel if enabled)
                 shell = {
-                  enable = mkOption {
-                    type = types.bool;
-                    default = false;
-                  };
-
-                  list = mkOption {
-                    type = with types; listOf str;
-                    default = [
-                      "slack.desktop"
-                      "webcord.desktop"
-                      "signal-desktop.desktop"
-                      "librewolf.desktop"
-                      "webstorm.desktop"
-                    ];
-                  };
+                  enable = mkOption { type = types.bool; };
+                  list = mkOption { type = with types; listOf str; };
                 };
               };
 
               idle = {
                 lock = {
-                  enable = mkOption {
-                    type = types.bool;
-                    default = true;
-                  };
-
-                  seconds = mkOption {
-                    type = types.str;
-                    default = "180";
-                  };
+                  enable = mkOption { type = types.bool; };
+                  seconds = mkOption { type = types.number; };
                 };
 
                 disableMonitors = {
-                  enable = mkOption {
-                    type = types.bool;
-                    default = true;
-                  };
-
-                  seconds = mkOption {
-                    type = types.str;
-                    default = "300";
-                  };
+                  enable = mkOption { type = types.bool; };
+                  seconds = mkOption { type = types.number; };
                 };
 
                 suspend = {
-                  enable = mkOption {
-                    type = types.bool;
-                    default = true;
-                  };
-
-                  seconds = mkOption {
-                    type = types.str;
-                    default = "900";
-                  };
+                  enable = mkOption { type = types.bool; };
+                  seconds = mkOption { type = types.number; };
                 };
               };
             };
           };
         };
 
-        # Do not change without checking the docs (config.system.stateVersion)
-        version = mkOption {
-          type = types.str;
-          default = "23.05";
-        };
+        version = mkOption { type = types.str; };
       };
     };
   };

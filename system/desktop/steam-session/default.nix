@@ -5,7 +5,7 @@ let
 
   cfg = config.icedos;
   session = cfg.applications.steam.session;
-  steamUser = cfg.system.user.main.username;
+  steamUser = cfg.system.users.main.username;
   hasAmdGpu = cfg.hardware.gpus.amd;
 in
 {

@@ -8,7 +8,7 @@
 let
   inherit (lib) attrNames filter foldl';
 
-  cfg = config.icedos.system.user;
+  cfg = config.icedos.system.users;
 
   mapAttrsAndKeys = callback: list: (foldl' (acc: value: acc // (callback value)) { } list);
 in

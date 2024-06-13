@@ -190,6 +190,153 @@
         "spiceUSBRedirection": true,
         "waydroid": true
       }
+    },
+    "system": {
+      "config": { "version": "1.0.0" },
+      "generations": {
+        "bootEntries": 10,
+        "garbageCollect": {
+          "days": 0,
+          "generations": 10
+        }
+      },
+      "home": "/home",
+      "swappiness": 1,
+      "users": {
+        "main": {
+          "enable": true,
+          "username": "icedborn",
+          "description": "IceDBorn",
+          "applications": {
+            "codium": {
+              "autoSave": "off",
+              "formatOnSave": true,
+              "formatOnPaste": true
+            },
+            "git": {
+              "username": "IceDBorn",
+              "email": "git.outsider841@simplelogin.fr"
+            },
+            "nvchad": { "formatOnSave": true }
+          },
+          "desktop": {
+            "gnome": {
+              "pinnedApps": {
+                "arcmenu": {
+                  "enable": false,
+                  "list": [
+                    "Codium IDE",
+                    "",
+                    "codiumIDE.desktop",
+                    "VSCodium",
+                    "",
+                    "codium.desktop",
+                    "Spotify",
+                    "",
+                    "spotify.desktop",
+                    "Mullvad VPN",
+                    "",
+                    "mullvad-vpn.desktop",
+                    "GNU Image Manipulation Program",
+                    "",
+                    "gimp.desktop"
+                  ]
+                },
+                "shell": {
+                  "enable": false,
+                  "list": [
+                    "steam.desktop",
+                    "webcord.desktop",
+                    "signal-desktop.desktop",
+                    "librewolf.desktop"
+                  ]
+                }
+              }
+            },
+            "idle": {
+              "lock": {
+                "enable": true,
+                "seconds": 180
+              },
+              "disableMonitors": {
+                "enable": true,
+                "seconds": 300
+              },
+              "suspend": {
+                "enable": true,
+                "seconds": 900
+              }
+            }
+          }
+        },
+        "work": {
+          "enable": false,
+          "username": "work",
+          "description": "Work",
+          "applications": {
+            "codium": {
+              "autoSave": "off",
+              "formatOnSave": false,
+              "formatOnPaste": false
+            },
+            "git": {
+              "username": "IceDBorn",
+              "email": "git.outsider841@simplelogin.fr"
+            },
+            "nvchad": { "formatOnSave": false }
+          },
+          "desktop": {
+            "gnome": {
+              "pinnedApps": {
+                "arcmenu": {
+                  "enable": false,
+                  "list": [
+                    "Codium IDE",
+                    "",
+                    "codiumIDE.desktop",
+                    "VSCodium",
+                    "",
+                    "codium.desktop",
+                    "Spotify",
+                    "",
+                    "spotify.desktop",
+                    "Mullvad VPN",
+                    "",
+                    "mullvad-vpn.desktop",
+                    "GNU Image Manipulation Program",
+                    "",
+                    "gimp.desktop"
+                  ]
+                },
+                "shell": {
+                  "enable": false,
+                  "list": [
+                    "steam.desktop",
+                    "webcord.desktop",
+                    "signal-desktop.desktop",
+                    "librewolf.desktop"
+                  ]
+                }
+              }
+            },
+            "idle": {
+              "lock": {
+                "enable": true,
+                "seconds": 180
+              },
+              "disableMonitors": {
+                "enable": true,
+                "seconds": 300
+              },
+              "suspend": {
+                "enable": true,
+                "seconds": 900
+              }
+            }
+          }
+        }
+      },
+      "version": "23.05"
     }
   }
 }
