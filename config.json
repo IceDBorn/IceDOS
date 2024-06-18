@@ -48,9 +48,9 @@
         "beta": true,
         "downloadsWorkaround": true,
         "session": {
-          "enable": false,
+          "enable": true,
           "autoStart": {
-            "enable": false,
+            "enable": true,
             "desktopSession": "hyprland"
           }
         }
@@ -74,7 +74,7 @@
     },
     "desktop": {
       "autologin": {
-        "enable": true,
+        "enable": false,
         "user": "icedborn"
       },
       "gdm": {
@@ -124,15 +124,15 @@
         "amd": {
           "enable": true,
           "undervolt": {
-            "enable": true,
+            "enable": false,
             "value": "-p 0 -v 3C -f A0"
           }
         },
         "intel": false
       },
       "devices": {
-        "laptop": false,
-        "steamdeck": false
+        "laptop": true,
+        "steamdeck": true
       },
       "gpus": {
         "amd": true,
@@ -148,16 +148,16 @@
       "monitors": {
         "main": {
           "enable": true,
-          "deck": false,
-          "name": "DP-1",
-          "resolution": "1920x1080",
-          "refreshRate": 144,
-          "position": "1360x0",
+          "deck": true,
+          "name": "eDP-1",
+          "resolution": "800x1280",
+          "refreshRate": 60,
+          "position": "0x0",
           "scaling": 1,
           "rotation": 0
         },
         "second": {
-          "enable": true,
+          "enable": false,
           "deck": false,
           "name": "HDMI-A-1",
           "resolution": "1360x768",
@@ -167,7 +167,7 @@
           "rotation": 0
         },
         "third": {
-          "enable": true,
+          "enable": false,
           "deck": false,
           "name": "DP-2",
           "resolution": "1280x1024",
@@ -178,11 +178,11 @@
         }
       },
       "networking": {
-        "hostname": "desktop",
+        "hostname": "deck",
         "hosts": false,
         "ipv6": false
       },
-      "mounts": true,
+      "mounts": false,
       "virtualisation": {
         "docker": true,
         "libvirtd": true,
