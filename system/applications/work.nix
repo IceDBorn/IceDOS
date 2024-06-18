@@ -11,7 +11,7 @@ let
   inherit (lib) mkIf;
 
   cfg = config.icedos.system;
-  username = cfg.user.work.username;
+  username = cfg.users.work.username;
 
   sail = import modules/run-command.nix {
     inherit pkgs;
