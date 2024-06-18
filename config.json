@@ -55,7 +55,7 @@
           }
         }
       },
-      "sunshine": true,
+      "sunshine": false,
       "emulators": {
         "switch": false,
         "wiiu": false
@@ -64,18 +64,18 @@
     "bootloader": {
       "animation": false,
       "grub": {
-        "enable": false,
+        "enable": true,
         "device": "/dev/sda"
       },
       "systemd-boot": {
-        "enable": true,
+        "enable": false,
         "mountPoint": "/boot"
       }
     },
     "desktop": {
       "autologin": {
         "enable": true,
-        "user": "icedborn"
+        "user": "work"
       },
       "gdm": {
         "enable": true,
@@ -115,7 +115,7 @@
     "hardware": {
       "btrfs": {
         "compression": {
-          "enable": true,
+          "enable": false,
           "mounts": true,
           "root": true
         }
@@ -149,17 +149,17 @@
         "main": {
           "enable": true,
           "deck": false,
-          "name": "DP-1",
-          "resolution": "1920x1080",
+          "name": "HDMI-A-1",
+          "resolution": "2560x1440",
           "refreshRate": 144,
-          "position": "1360x0",
+          "position": "0x0",
           "scaling": 1,
           "rotation": 0
         },
         "second": {
-          "enable": true,
+          "enable": false,
           "deck": false,
-          "name": "HDMI-A-1",
+          "name": "HDMI-A-2",
           "resolution": "1360x768",
           "refreshRate": 60,
           "position": "0x0",
@@ -167,7 +167,7 @@
           "rotation": 0
         },
         "third": {
-          "enable": true,
+          "enable": false,
           "deck": false,
           "name": "DP-2",
           "resolution": "1280x1024",
@@ -178,11 +178,11 @@
         }
       },
       "networking": {
-        "hostname": "desktop",
-        "hosts": false,
+        "hostname": "desktop-work",
+        "hosts": true,
         "ipv6": false
       },
-      "mounts": true,
+      "mounts": false,
       "virtualisation": {
         "docker": true,
         "libvirtd": true,
@@ -204,7 +204,7 @@
       "swappiness": 1,
       "users": {
         "main": {
-          "enable": true,
+          "enable": false,
           "username": "icedborn",
           "description": "IceDBorn",
           "applications": {
@@ -270,7 +270,7 @@
           }
         },
         "work": {
-          "enable": false,
+          "enable": true,
           "username": "work",
           "description": "Work",
           "applications": {
