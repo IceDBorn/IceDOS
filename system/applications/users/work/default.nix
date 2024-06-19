@@ -8,26 +8,31 @@
 }:
 
 let
-  inherit (lib) mkIf;
+  inherit (lib)
+    foldl'
+    lists
+    mkIf
+    splitString
+    ;
+
+  pkgMapper =
+    pkgList: lists.map (pkgName: foldl' (acc: cur: acc.${cur}) pkgs (splitString "." pkgName)) pkgList;
 
   cfg = config.icedos.system;
   username = cfg.users.work.username;
 
-  sail = import modules/run-command.nix {
+  sail = import ../../modules/run-command.nix {
     inherit pkgs;
     name = "sail";
     command = "vendor/bin/sail";
   };
 
   # Update the system configuration
-  update = import modules/rebuild.nix {
+  update = import ../../modules/rebuild.nix {
     inherit pkgs config;
     command = "update";
     update = "true";
   };
-
-  # Packages to add for a fork of the config
-  myPackages = with pkgs; [ ];
 
   shellScripts = [
     sail
@@ -66,15 +71,7 @@ let
   '';
 in
 mkIf (cfg.users.work.enable) {
-  users.users.${username}.packages =
-    with pkgs;
-    [
-      beekeeper-studio # Database manager
-      php # Programming language for websites
-      phpPackages.composer # Package manager for PHP
-    ]
-    ++ myPackages
-    ++ shellScripts;
+  users.users.${username}.packages = (pkgMapper (lib.importJSON ./packages.json)) ++ shellScripts;
 
   services = {
     httpd = {

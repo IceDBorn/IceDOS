@@ -5,16 +5,15 @@ let
 in
 {
   imports = [
+    ./configs/pipewire.nix
     ./global.nix
     ./home.nix
-    ./main.nix
     ./modules/android-tools.nix
     ./modules/brave.nix
     ./modules/codium
     ./modules/librewolf
     ./modules/nvchad
     ./modules/sunshine.nix
-    ./work.nix
   ];
 
   nix = {
