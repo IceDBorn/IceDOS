@@ -1,5 +1,9 @@
 let
-  cfg = (import ./options.nix { lib = import <nixpkgs/lib>; }).config.icedos;
+  lib = import <nixpkgs/lib>;
+  inherit (lib) attrNames concatImapStrings filter;
+
+  cfg = (import ./options.nix { inherit lib; }).config.icedos;
+  users = filter (user: cfg.system.users.${user}.enable == true) (attrNames cfg.system.users);
 
   steam-session = cfg.applications.steam.session.enable;
   hyprland = cfg.desktop.hyprland.enable;
@@ -93,9 +97,9 @@ in
           phps,
           pipewire-screenaudio,
           shell-in-netns,
-          ${(if (steam-session) then ''steam-session,'' else "")}
-          ${(if (hyprland) then ''hyprland,hyprland-plugins,'' else "")}
-          ${(if (switch-emulators) then ''switch-emulators,'' else "")}
+          ${if (steam-session) then ''steam-session,'' else ""}
+          ${if (hyprland) then ''hyprland,hyprland-plugins,'' else ""}
+          ${if (switch-emulators) then ''switch-emulators,'' else ""}
         }@inputs:
         {
           nixosConfigurations.''${nixpkgs.lib.fileContents "/etc/hostname"} = nixpkgs.lib.nixosSystem {
@@ -129,28 +133,26 @@ in
               nerivations.nixosModules.default
 
               ${
-                (
-                  if (steam-session) then
-                    ''
-                      steam-session.nixosModules.default
-                      ./system/desktop/steam-session
-                    ''
-                  else
-                    ""
-                )
+                if (steam-session) then
+                  ''
+                    steam-session.nixosModules.default
+                    ./system/desktop/steam-session
+                  ''
+                else
+                  ""
               }
 
               ${
-                (
-                  if (hyprland) then
-                    ''
-                      hyprland.nixosModules.default
-                      ./system/desktop/hyprland
-                    ''
-                  else
-                    ""
-                )
+                if (hyprland) then
+                  ''
+                    hyprland.nixosModules.default
+                    ./system/desktop/hyprland
+                  ''
+                else
+                  ""
               }
+
+              ${concatImapStrings (i: user: "./system/applications/users/${user}\n") users}
             ];
           };
         };

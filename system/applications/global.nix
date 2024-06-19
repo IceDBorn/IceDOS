@@ -7,7 +7,15 @@
 }:
 
 let
-  inherit (lib) mkIf;
+  inherit (lib)
+    foldl'
+    lists
+    mkIf
+    splitString
+    ;
+
+  pkgMapper =
+    pkgList: lists.map (pkgName: foldl' (acc: cur: acc.${cur}) pkgs (splitString "." pkgName)) pkgList;
 
   cfg = config.icedos;
 
@@ -32,21 +40,6 @@ let
     builtins.readFile ../../scripts/trim-generations.sh
   );
 
-  codingDeps = with pkgs; [
-    bruno # API explorer
-    cargo # Rust package manager
-    dotnet-sdk_7 # SDK for .net
-    gcc # C++ compiler
-    gdtoolkit_4 # Tools for gdscript
-    gnumake # A tool to control the generation of non-source files from sources
-    nixfmt-rfc-style # A nix formatter
-    nodejs # Node package manager
-    python3 # Python
-  ];
-
-  # Packages to add for a fork of the config
-  myPackages = with pkgs; [ ];
-
   packageWraps = with pkgs; [
     # Pipewire audio plugin for OBS Studio
     (pkgs.wrapOBS { plugins = with pkgs.obs-studio-plugins; [ obs-pipewire-audio-capture ]; })
@@ -62,76 +55,12 @@ let
   ];
 in
 {
-  imports = [ configs/pipewire.nix ];
-
   boot.kernelPackages = mkIf (
     !cfg.hardware.devices.steamdeck && builtins.pathExists /etc/icedos-version
   ) pkgs.linuxPackages_cachyos; # Use CachyOS optimized linux kernel
 
   environment.systemPackages =
-    with pkgs;
-    [
-      appimage-run # Appimage runner
-      aria # Terminal downloader with multiple connections support
-      bat # Better cat command
-      bless # HEX Editor
-      btop # System monitor
-      celluloid # Video player
-      clamav # Antivirus
-      curtail # Image compressor
-      duf # Disk usage utility
-      easyeffects # Pipewire effects manager
-      efibootmgr # Edit EFI entries
-      endeavour # Tasks
-      fd # Find alternative
-      fragments # Bittorrent client following Gnome UI standards
-      gimp # Image editor
-      gping # ping with a graph
-      gthumb # Image viewer
-      helvum # Pipewire patchbay
-      iotas # Notes
-      jc # JSON parser
-      jq # JSON parser
-      killall # Tool to kill all programs matching process name
-      kitty # Terminal
-      logseq # Note taking with nodes
-      lsd # Better ls command
-      mission-center # Task manager
-      moonlight-qt # Remote streaming
-      mousai # Song recognizer
-      ncdu # Terminal disk analyzer
-      newsflash # RSS reader
-      nix-health # Check system health
-      ntfs3g # Support NTFS drives
-      obs-studio # Recording/Livestream
-      onlyoffice-bin # Microsoft Office alternative for Linux
-      p7zip # 7zip
-      pavucontrol # Sound manager
-      pitivi # Video editor
-      rnnoise-plugin # A real-time noise suppression plugin
-      scrcpy # Remotely use android
-      signal-desktop # Encrypted messaging platform
-      solaar # Logitech devices manager
-      tailscale # VPN with P2P support
-      tmux # Terminal multiplexer
-      trayscale # Tailscale GUI
-      tree # Display folder content at a tree format
-      unrar # Support opening rar files
-      unzip # An extraction utility
-      warp # File sync
-      wget # Terminal downloader
-      wine # Compatibility layer capable of running Windows applications
-      winetricks # Wine prefix settings manager
-      woeusb # Windows ISO Burner
-      xorg.xhost # Use x.org server with docker
-      yazi # Terminal file manager
-      youtube-dl # Video downloader
-      zenstates # Ryzen CPU controller
-    ]
-    ++ codingDeps
-    ++ myPackages
-    ++ packageWraps
-    ++ shellScripts;
+    (pkgMapper (lib.importJSON ./packages.json)) ++ packageWraps ++ shellScripts;
 
   users.defaultUserShell = pkgs.zsh; # Use ZSH shell for all users
 

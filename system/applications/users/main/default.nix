@@ -8,12 +8,20 @@
 }:
 
 let
-  inherit (lib) mkIf optional;
+  inherit (lib)
+    foldl'
+    lists
+    mkIf
+    splitString
+    ;
+
+  pkgMapper =
+    pkgList: lists.map (pkgName: foldl' (acc: cur: acc.${cur}) pkgs (splitString "." pkgName)) pkgList;
 
   cfg = config.icedos;
   username = cfg.system.users.main.username;
 
-  install-proton-ge = import modules/wine-build-updater.nix {
+  install-proton-ge = import ../../modules/wine-build-updater.nix {
     inherit pkgs;
     name = "proton-ge";
     buildPath = "${pkgs.proton-ge-custom}/bin";
@@ -22,7 +30,7 @@ let
     type = "Proton";
   };
 
-  install-wine-ge = import modules/wine-build-updater.nix {
+  install-wine-ge = import ../../modules/wine-build-updater.nix {
     inherit pkgs;
     name = "wine-ge";
     buildPath = "${pkgs.wine-ge}/bin";
@@ -32,7 +40,7 @@ let
   };
 
   # Update the system configuration
-  update = import modules/rebuild.nix {
+  update = import ../../modules/rebuild.nix {
     inherit pkgs config;
     command = "update";
     update = "true";
@@ -40,25 +48,9 @@ let
 
   emulators =
     with pkgs;
-    [
-      duckstation # PS1
-      pcsx2 # PS2
-      ppsspp # PSP
-      rpcs3 # PS3
-    ]
+    [ ]
     ++ optional (cfg.applications.emulators.switch) inputs.switch-emulators.packages.${pkgs.system}.suyu
     ++ optional (cfg.applications.emulators.wiiu) cemu;
-
-  gaming = with pkgs; [
-    heroic # Epic Games Launcher for Linux
-    papermc # Minecraft server
-    prismlauncher # Minecraft launcher
-    protontricks # Winetricks for proton prefixes
-    steamtinkerlaunch # General tweaks for games
-  ];
-
-  # Packages to add for a fork of the config
-  myPackages = with pkgs; [ ];
 
   shellScripts = [
     update
@@ -68,20 +60,7 @@ let
 in
 mkIf (cfg.system.users.main.enable) {
   users.users.${username}.packages =
-    with pkgs;
-    [
-      bottles # Wine manager
-      godot_4 # Game engine
-      input-remapper # Remap input device controls
-      ludusavi # Cloud backup with Nextcloud
-      rclone # Sync to and from nextcloud
-      scanmem # Cheat engine for linux
-      stremio # Straming platform
-    ]
-    ++ emulators
-    ++ gaming
-    ++ myPackages
-    ++ shellScripts;
+    (pkgMapper (lib.importJSON ./packages.json)) ++ emulators ++ shellScripts;
 
   # Wayland microcompositor
   programs = {
