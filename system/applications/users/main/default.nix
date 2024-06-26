@@ -12,6 +12,7 @@ let
     foldl'
     lists
     mkIf
+    optional
     splitString
     ;
 
