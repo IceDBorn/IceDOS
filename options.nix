@@ -107,6 +107,9 @@
             networkUsageThreshold = mkOption { type = types.number; };
           };
         };
+
+        plasma = mkOption { type = types.bool; };
+        sddm = mkOption { type = types.bool; };
       };
 
       hardware = {

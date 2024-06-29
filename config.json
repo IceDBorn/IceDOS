@@ -51,7 +51,7 @@
           "enable": false,
           "autoStart": {
             "enable": false,
-            "desktopSession": "hyprland"
+            "desktopSession": "plasma"
           }
         }
       },
@@ -78,7 +78,7 @@
         "user": "icedborn"
       },
       "gdm": {
-        "enable": true,
+        "enable": false,
         "autoSuspend": true
       },
       "gnome": {
@@ -102,7 +102,7 @@
         }
       },
       "hyprland": {
-        "enable": true,
+        "enable": false,
         "backlight": "amdgpu_bl0",
         "lock": {
           "secondsToLowerBrightness": 60,
@@ -110,7 +110,9 @@
           "diskUsageThreshold": 10,
           "networkUsageThreshold": 1000000
         }
-      }
+      },
+      "plasma": true,
+      "sddm": true
     },
     "hardware": {
       "btrfs": {

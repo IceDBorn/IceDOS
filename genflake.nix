@@ -16,6 +16,8 @@ in
         # Update channels
         chaotic.url = "github:chaotic-cx/nyx/nyxpkgs-unstable";
 
+        catppuccin.url = "github:catppuccin/nix";
+
         nixpkgs = {
           url = "github:NixOS/nixpkgs/nixos-unstable";
           follows = "chaotic/nixpkgs";
@@ -97,6 +99,7 @@ in
           phps,
           pipewire-screenaudio,
           shell-in-netns,
+          catppuccin,
           ${if (steam-session) then ''steam-session,'' else ""}
           ${if (hyprland) then ''hyprland,hyprland-plugins,'' else ""}
           ${if (switch-emulators) then ''switch-emulators,'' else ""}
@@ -129,6 +132,7 @@ in
 
               # External modules
               chaotic.nixosModules.default
+              catppuccin.nixosModules.catppuccin
               home-manager.nixosModules.home-manager
               nerivations.nixosModules.default
 

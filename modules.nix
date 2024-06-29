@@ -23,6 +23,7 @@ in
     ./system/applications
     ./system/desktop
     ./system/desktop/gnome
+    ./system/desktop/plasma
     ./system/users.nix
   ];
 

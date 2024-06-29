@@ -3,6 +3,8 @@
     # Update channels
     chaotic.url = "github:chaotic-cx/nyx/nyxpkgs-unstable";
 
+    catppuccin.url = "github:catppuccin/nix";
+
     nixpkgs = {
       url = "github:NixOS/nixpkgs/nixos-unstable";
       follows = "chaotic/nixpkgs";
@@ -20,12 +22,6 @@
     };
 
     # Apps
-    hyprland.url = "git+https://github.com/hyprwm/Hyprland?submodules=1";
-
-    hyprland-plugins = {
-      url = "github:hyprwm/hyprland-plugins";
-      inputs.hyprland.follows = "hyprland";
-    };
 
     phps = {
       url = "github:fossar/nix-phps";
@@ -54,9 +50,7 @@
       phps,
       pipewire-screenaudio,
       shell-in-netns,
-
-      hyprland,
-      hyprland-plugins,
+      catppuccin,
 
     }@inputs:
     {
@@ -87,11 +81,9 @@
 
           # External modules
           chaotic.nixosModules.default
+          catppuccin.nixosModules.catppuccin
           home-manager.nixosModules.home-manager
           nerivations.nixosModules.default
-
-          hyprland.nixosModules.default
-          ./system/desktop/hyprland
 
           ./system/applications/users/main
 
