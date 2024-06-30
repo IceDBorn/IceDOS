@@ -29,7 +29,7 @@
         "zoomLevel": 0
       },
       "kitty": {
-        "hideDecorations": true
+        "hideDecorations": false
       },
       "librewolf": {
         "enable": true,

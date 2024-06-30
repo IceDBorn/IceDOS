@@ -29,9 +29,9 @@ in
       update-codium-extensions
     ];
 
-  programs.zsh.interactiveShellInit = mkIf (
+  environment.variables.EDITOR = mkIf (
     cfg.applications.codium.enable && !cfg.applications.nvchad
-  ) "export EDITOR=codium";
+  ) "codium";
 
   home-manager.users =
     let
@@ -44,8 +44,6 @@ in
       in
       {
         ${username} = mkIf (cfg.applications.codium.enable) {
-          home.file.".bashrc".text = mkIf (!cfg.applications.nvchad) "export EDITOR=codium";
-
           # Enable wayland support for codium
           xdg.desktopEntries.codium = {
             exec = "codium --enable-features=UseOzonePlatform --ozone-platform=wayland";

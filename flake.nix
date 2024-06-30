@@ -41,6 +41,7 @@
       url = "github:jim3692/shell-in-netns";
       inputs.nixpkgs.follows = "nixpkgs";
     };
+
   };
 
   outputs =
@@ -91,6 +92,9 @@
 
           hyprland.nixosModules.default
           ./system/desktop/hyprland
+
+          ./system/applications/users/main
+
         ];
       };
     };
