@@ -34,7 +34,7 @@ pkgs.writeShellScriptBin "${command}" ''
 
   if ${update}; then
   	nix flake update && cache "flake.lock" || true
-  	sudo bash scripts/build.sh
+  	sudo nix-shell scripts/build.sh
 
   	runCommand update-proton-ge
   	runCommand update-wine-ge

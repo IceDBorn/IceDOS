@@ -31,7 +31,7 @@ echo "Hello $username!"
 read -r -p "Have you customized the setup to your needs? [y/N] " response
 if [[ "$response" =~ ^([yY][eE][sS]|[yY])$ ]]
 then
-    sudo bash build.sh
+    sudo nix-shell build.sh
 
     if [ -f "etc/icedos-version" ]
     then

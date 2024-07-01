@@ -1,3 +1,6 @@
+#! /usr/bin/env nix-shell
+#! nix-shell -i bash -p nixfmt git
+
 EXTRAS="/etc/nixos/extras.nix"
 CONFIG="/tmp/configuration-location"
 FLAKE="flake.nix"
@@ -10,7 +13,7 @@ printf "$PWD" > "$CONFIG"
 
 # Generate flake.nix
 [ -f "$FLAKE" ] && rm -f "$FLAKE"
-nix eval --write-to "$FLAKE" --file "genflake.nix" "$FLAKE"
+nix eval --extra-experimental-features nix-command --write-to "$FLAKE" --file "genflake.nix" "$FLAKE"
 nixfmt "$FLAKE"
 
 # Build the system configuration
