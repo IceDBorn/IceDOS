@@ -19,6 +19,8 @@ let
   pkgMapper =
     pkgList: lists.map (pkgName: foldl' (acc: cur: acc.${cur}) pkgs (splitString "." pkgName)) pkgList;
 
+  pkgFile = lib.importTOML ./packages.toml;
+
   cfg = config.icedos;
   username = cfg.system.users.main.username;
 
@@ -49,9 +51,11 @@ let
 
   emulators =
     with pkgs;
-    [ ]
+    (pkgMapper pkgFile.emulators)
     ++ optional (cfg.applications.emulators.switch) inputs.switch-emulators.packages.${pkgs.system}.suyu
     ++ optional (cfg.applications.emulators.wiiu) cemu;
+
+  gaming = (pkgMapper pkgFile.gaming);
 
   shellScripts = [
     update
@@ -61,7 +65,7 @@ let
 in
 mkIf (cfg.system.users.main.enable) {
   users.users.${username}.packages =
-    (pkgMapper (lib.importJSON ./packages.json)) ++ emulators ++ shellScripts;
+    (pkgMapper pkgFile.packages) ++ emulators ++ gaming ++ shellScripts;
 
   # Wayland microcompositor
   programs = {
