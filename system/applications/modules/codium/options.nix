@@ -43,6 +43,7 @@ mkIf (cfg.applications.codium.enable) {
             "editor.renderWhitespace": "trailing",
             "editor.smoothScrolling": true,
             "editor.tabSize": 2,
+            "evenBetterToml.formatter.alignComments": false,
             "files.autoSave": "${cfg.system.users.${user}.applications.codium.autoSave}",
             "files.insertFinalNewline": true,
             "files.trimFinalNewlines": true,

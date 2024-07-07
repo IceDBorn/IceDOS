@@ -1,24 +1,24 @@
 emulators = [
   "duckstation", # PS1
-  "pcsx2",       # PS2
-  "ppsspp",      # PSP
-  "rpcs3",       # PS3
+  "pcsx2", # PS2
+  "ppsspp", # PSP
+  "rpcs3", # PS3
 ]
 
 gaming = [
-  "heroic",            # Cross-platform Epic Games Launcher
-  "ludusavi",          # Game saves cloud backup with Nextcloud
-  "papermc",           # Performance optimized minecraft server
-  "prismlauncher",     # Minecraft launcher
-  "protontricks",      # Winetricks for proton prefixes
-  "rclone",            # Sync to and from nextcloud
+  "heroic", # Cross-platform Epic Games Launcher
+  "ludusavi", # Game saves cloud backup with Nextcloud
+  "papermc", # Performance optimized minecraft server
+  "prismlauncher", # Minecraft launcher
+  "protontricks", # Winetricks for proton prefixes
+  "rclone", # Sync to and from nextcloud
   "steamtinkerlaunch", # General tweaks for games
 ]
 
 packages = [
-  "bottles",        # Wine manager
-  "godot_4",        # Game engine
+  "bottles", # Wine manager
+  "godot_4", # Game engine
   "input-remapper", # Remap input device controls
-  "scanmem",        # Cheat engine like tool for linux
-  "stremio",        # Media streaming platform
+  "scanmem", # Cheat engine like tool for linux
+  "stremio", # Media streaming platform
 ]
