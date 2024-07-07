@@ -1,5 +1,5 @@
 #! /usr/bin/env nix-shell
-#! nix-shell -i bash -p nixfmt git
+#! nix-shell -i bash -p nixfmt-rfc-style git
 
 EXTRAS="/etc/nixos/extras.nix"
 CONFIG="/tmp/configuration-location"
