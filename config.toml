@@ -1,0 +1,320 @@
+[icedos.applications]
+android-tools = true
+brave = true
+nvchad = true
+sunshine = true
+
+[icedos.applications.codium]
+enable = true
+extensions = [
+  "codezombiech.gitignore",
+  "dbaeumer.vscode-eslint",
+  "donjayamanne.githistory",
+  "eamodio.gitlens",
+  "editorconfig.editorconfig",
+  "esbenp.prettier-vscode",
+  "formulahendry.auto-close-tag",
+  "formulahendry.code-runner",
+  "gruntfuggly.todo-tree",
+  "jnoortheen.nix-ide",
+  "markwylde.vscode-filesize",
+  "mblode.twig-language-2",
+  "ms-vscode.references-view",
+  "nico-castell.linux-desktop-file",
+  "paragdiwan.gitpatch",
+  "pkief.material-icon-theme",
+  "tamasfe.even-better-toml",
+  "timonwong.shellcheck",
+  "zhuangtongfa.material-theme",
+  "ziyasal.vscode-open-in-github",
+]
+zoomLevel = 0
+
+[icedos.applications.kitty]
+hideDecorations = false # Hide top bar
+
+[icedos.applications.librewolf]
+enable = true
+overrides = true
+privacy = true
+pwas = [
+  "https://app.tuta.com",
+  "https://develop.element.io",
+  "https://discord.com/app",
+  "https://dtekteam.slack.com/",
+  "https://web.skype.com/",
+] # Sites to launch on Librewolf PWAs
+
+[icedos.applications.steam]
+beta = true
+downloadsWorkaround = true
+
+[icedos.applications.steam.session]
+enable = false
+
+[icedos.applications.steam.session.autoStart]
+enable = false
+desktopSession = "hyprland"
+
+[icedos.applications.emulators]
+switch = false
+wiiu = false
+
+[icedos.bootloader]
+animation = false # Hides linux kernel logs and displays a loading interface based on OEM
+
+[icedos.bootloader.grub]
+enable = false
+device = "/dev/sda"
+
+[icedos.bootloader.systemd-boot]
+enable = true
+mountPoint = "/boot"
+
+[icedos.desktop.autologin]
+enable = true
+user = "icedborn"
+
+[icedos.desktop.gdm]
+enable = true
+autoSuspend = true
+
+[icedos.desktop.gnome]
+enable = false
+hotCorners = false
+powerButtonAction = "interactive"
+startupItems = false
+
+# Options: 'minimize', 'maximize', 'close', 'spacer'(adds space between buttons), ':'(left-center-right separator)
+titlebarLayout = "appmenu:close"
+
+[icedos.desktop.gnome.extensions]
+arcmenu = false
+dashToPanel = false
+gsconnect = true
+
+[icedos.desktop.gnome.clock]
+date = false    # Show the month and day of the month on the clock
+weekday = false # Show the day of the week on the clock
+
+[icedos.desktop.gnome.workspaces]
+dynamicWorkspaces = true
+maxWorkspaces = 1        # Determines the maximum number of workspaces when dynamic workspaces are disabled
+
+[icedos.desktop.hyprland]
+enable = true
+backlight = "amdgpu_bl0" # Find backlight unit using brightnessctl
+
+[icedos.desktop.hyprland.lock]
+secondsToLowerBrightness = 60
+cpuUsageThreshold = 60            # CPU usage to inhibit lock in percentage
+diskUsageThreshold = 10           # Disk usage to inhibit lock in MB/s
+networkUsageThreshold = 1_000_000 # Network usage to inhibit lock in bytes/s
+
+[icedos.hardware]
+mounts = true # Set to false if hardware/mounts.nix is not correctly configured
+
+[icedos.hardware.btrfs.compression]
+enable = true
+mounts = true # Use btrfs compression for mounted drives
+root = true   # Use btrfs compression for / (root)
+
+[icedos.hardware.cpus]
+intel = false
+
+[icedos.hardware.cpus.amd]
+enable = true
+
+[icedos.hardware.cpus.amd.undervolt]
+enable = true
+value = "-p 0 -v 3C -f A0" # Pstate 0, 1.175 voltage, 4000 clock speed
+
+[icedos.hardware.devices]
+laptop = false
+steamdeck = false
+
+[icedos.hardware.gpus]
+amd = true
+
+[icedos.hardware.gpus.nvidia]
+enable = false
+beta = false
+
+[icedos.hardware.gpus.nvidia.powerLimit]
+enable = true
+value = 242
+
+[icedos.hardware.monitors.main]
+enable = true
+deck = false
+name = "DP-1"
+resolution = "1920x1080"
+refreshRate = 144
+position = "1360x0"
+scaling = 1
+rotation = 0
+
+[icedos.hardware.monitors.second]
+enable = true
+deck = false
+name = "HDMI-A-1"
+resolution = "1360x768"
+refreshRate = 60
+position = "0x0"
+scaling = 1
+rotation = 0
+
+[icedos.hardware.monitors.third]
+enable = true
+deck = false
+name = "DP-2"
+resolution = "1280x1024"
+refreshRate = 75
+position = "3280x0"
+scaling = 1
+rotation = 0
+
+[icedos.hardware.networking]
+hostname = "desktop"
+hosts = false
+ipv6 = false
+
+[icedos.hardware.virtualisation]
+docker = true              # Container manager
+libvirtd = true            # A daemon that manages virtual machines
+lxd = true                 # Container daemon
+spiceUSBRedirection = true # Passthrough USB devices to vms
+waydroid = true            # Android container
+
+[icedos.system]
+home = "/home"
+swappiness = 1
+version = "23.05" # Do not change without checking the docs (config.system.stateVersion)
+
+[icedos.system.config]
+version = "1.0.0"
+
+[icedos.system.generations]
+bootEntries = 10
+
+[icedos.system.generations.garbageCollect]
+days = 0         # Number of days before a generation can be deleted
+generations = 10 # Number of generations that will always be kept
+
+[icedos.system.users.main]
+enable = true
+username = "icedborn"
+description = "IceDBorn"
+
+[icedos.system.users.main.applications.codium]
+autoSave = "off"     # off, afterDelay, onFocusChange, onWindowChange
+formatOnSave = true
+formatOnPaste = true
+
+[icedos.system.users.main.applications.git]
+username = "IceDBorn"
+email = "git.outsider841@simplelogin.fr"
+
+[icedos.system.users.main.applications.nvchad]
+formatOnSave = true
+
+[icedos.system.users.main.desktop.gnome.pinnedApps.arcmenu]
+enable = false
+list = [
+  "Codium IDE",
+  "",
+  "codiumIDE.desktop",
+  "VSCodium",
+  "",
+  "codium.desktop",
+  "Spotify",
+  "",
+  "spotify.desktop",
+  "Mullvad VPN",
+  "",
+  "mullvad-vpn.desktop",
+  "GNU Image Manipulation Program",
+  "",
+  "gimp.desktop",
+]
+
+# Set pinned apps for gnome shell (will be used by dash-to-panel if enabled)
+[icedos.system.users.main.desktop.gnome.pinnedApps.shell]
+enable = false
+list = [
+  "steam.desktop",
+  "webcord.desktop",
+  "signal-desktop.desktop",
+  "librewolf.desktop",
+]
+
+[icedos.system.users.main.desktop.idle.lock]
+enable = true
+seconds = 180
+
+[icedos.system.users.main.desktop.idle.disableMonitors]
+enable = true
+seconds = 300
+
+[icedos.system.users.main.desktop.idle.suspend]
+enable = true
+seconds = 900
+
+[icedos.system.users.work]
+enable = false
+username = "work"
+description = "Work"
+
+[icedos.system.users.work.applications.codium]
+autoSave = "off"      # off, afterDelay, onFocusChange, onWindowChange
+formatOnSave = false
+formatOnPaste = false
+
+[icedos.system.users.work.applications.git]
+username = "IceDBorn"
+email = "git.outsider841@simplelogin.fr"
+
+[icedos.system.users.work.applications.nvchad]
+formatOnSave = false
+
+[icedos.system.users.work.desktop.gnome.pinnedApps.arcmenu]
+enable = false
+list = [
+  "Codium IDE",
+  "",
+  "codiumIDE.desktop",
+  "VSCodium",
+  "",
+  "codium.desktop",
+  "Spotify",
+  "",
+  "spotify.desktop",
+  "Mullvad VPN",
+  "",
+  "mullvad-vpn.desktop",
+  "GNU Image Manipulation Program",
+  "",
+  "gimp.desktop",
+]
+
+# Set pinned apps for gnome shell (will be used by dash-to-panel if enabled)
+[icedos.system.users.work.desktop.gnome.pinnedApps.shell]
+enable = false
+list = [
+  "steam.desktop",
+  "webcord.desktop",
+  "signal-desktop.desktop",
+  "librewolf.desktop",
+]
+
+[icedos.system.users.work.desktop.idle.lock]
+enable = true
+seconds = 180
+
+[icedos.system.users.work.desktop.idle.disableMonitors]
+enable = true
+seconds = 300
+
+[icedos.system.users.work.desktop.idle.suspend]
+enable = true
+seconds = 900
