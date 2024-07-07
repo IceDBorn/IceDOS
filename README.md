@@ -13,4 +13,4 @@ bash scripts/install.sh
 
 # Preview
 
-![image](https://github.com/IceDBorn/IceDOS/assets/51162078/80e89e81-9a2a-4ca6-807c-91d925204a8a)
+![image](https://github.com/IceDBorn/IceDOS/assets/51162078/c1f2e730-a7d7-4b8d-abce-2757551ce196)
