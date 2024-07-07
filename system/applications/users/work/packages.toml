@@ -1,1 +1,5 @@
-packages = ["beekeeper-studio", "php", "phpPackages.composer"]
+packages = [
+  "beekeeper-studio",     # SQL client
+  "php",                  # An HTML-embedded scripting language
+  "phpPackages.composer", # Dependency Manager for PHP
+]
