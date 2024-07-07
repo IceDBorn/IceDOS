@@ -6,7 +6,7 @@ This is a NixOS project that aims to create a highly opinionated gaming and gene
 
 - This repository is meant to be used on a fresh install of NixOS. Using it as a flake input is not currently in my needs, and thus not something that's tested or supported.
 - Do not forget to go through [config.toml](https://github.com/IceDBorn/IceDOS/blob/main/config.toml) and set each option to your liking!
-- [hardware/mounts.nix](https://github.com/IceDBorn/IceDOS/blob/main/hardware/mounts.nix) can break your system! Be sure to edit it accordingly or [set if to false](https://github.com/IceDBorn/IceDOS/blob/087d7884d501f5660e8368ed349561c2d83ddf04/.nix#L310)!
+- [hardware/mounts.nix](https://github.com/IceDBorn/IceDOS/blob/main/hardware/mounts.nix) can break your system! Be sure to edit it accordingly or [set it to false](https://github.com/IceDBorn/IceDOS/blob/a86ae01a6103cef4ac26d161cac68ac16bf0067e/config.toml#L115)!
 
 ## Install
 
