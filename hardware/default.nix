@@ -12,9 +12,9 @@ let
 in
 {
   hardware = {
-    opengl = {
+    graphics = {
       enable = true;
-      driSupport32Bit = true; # Support Direct Rendering for 32-bit applications (such as Wine) on 64-bit systems
+      enable32Bit = true; # Support Direct Rendering for 32-bit applications (such as Wine) on 64-bit systems
     };
 
     xpadneo.enable = true; # Enable XBOX Gamepad bluetooth driver

@@ -27,11 +27,11 @@ in
     (
       if (cfg.enable) then
         [
-          gnome.dconf-editor # Edit gnome's dconf
-          gnome.gnome-tweaks # Tweaks missing from pure gnome
+          dconf-editor # Edit gnome's dconf
+          gnome-extension-manager # Gnome extensions manager and downloader
+          gnome-tweaks # Tweaks missing from pure gnome
           gnomeExtensions.appindicator # Tray icons for gnome
           gnomeExtensions.pano # Next-gen Clipboard manager
-          gnome-extension-manager # Gnome extensions manager and downloader
           gnomeExtensions.quick-settings-tweaker
         ]
         ++ optional (cfg.extensions.arcmenu) gnomeExtensions.arcmenu # Start menu
@@ -44,20 +44,20 @@ in
   environment.gnome.excludePackages =
     with pkgs;
     mkIf (cfg.enable) [
+      cheese # Camera
+      eog # Image viewer
       epiphany # Web browser
       evince # Document viewer
+      geary # Email
       gnome-console # Terminal
+      gnome-font-viewer # Font viewer
+      gnome-system-monitor # System monitoring tool
       gnome-text-editor # Text editor
       gnome-tour # Greeter
-      gnome.cheese # Camera
-      gnome.eog # Image viewer
-      gnome.geary # Email
       gnome.gnome-characters # Emojis
-      gnome.gnome-font-viewer # Font viewer
       gnome.gnome-maps # Maps
       gnome.gnome-software # Software center
-      gnome.gnome-system-monitor # System monitoring tool
-      gnome.simple-scan # Scanner
-      gnome.yelp # Help
+      simple-scan # Scanner
+      yelp # Help
     ];
 }

@@ -72,7 +72,7 @@ in
     # Packages to install for all window manager/desktop environments
     systemPackages = with pkgs; [
       bibata-cursors # Material cursors
-      gnome.adwaita-icon-theme # GTK theme
+      adwaita-icon-theme # GTK theme
       libnotify # Send desktop notifications
       tela-icon-theme # Icon theme
     ];

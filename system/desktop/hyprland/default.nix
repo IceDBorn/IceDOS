@@ -23,7 +23,7 @@ let
     hyprland-startup # Startup script
     hyprlock-wrapper # Wrap hyprlock
     pipewire-watcher # Script to check if pipewire has active links
-		vibrance # Script to enable vibrance shader
+    vibrance # Script to enable vibrance shader
   ];
 in
 {
@@ -52,16 +52,15 @@ in
         cliphist # Clipboard manager for wayland
         cliphist-rofi-img # Image support for cliphist with rofi
         feh # Minimal image viewer
+        file-roller # Archive file manager
+        gnome-calculator # Calculator
+        gnome-calendar # Calendar
+        gnome-disk-utility # Disks manager
+        gnome-keyring # Keyring daemon
         gnome-online-accounts # Nextcloud integration
-        gnome.file-roller # Archive file manager
-        gnome.gnome-calculator # Calculator
-        gnome.gnome-calendar # Calendar
+        gnome-themes-extra # Adwaita GTK theme
         gnome.gnome-clocks # Clock
         gnome.gnome-control-center # Gnome settings
-        gnome.gnome-disk-utility # Disks manager
-        gnome.gnome-keyring # Keyring daemon
-        gnome.gnome-themes-extra # Adwaita GTK theme
-        gnome.nautilus # File manager
         grim # Screenshot tool
         grimblast # Screenshot tool
         hyprfreeze # Script to freeze active hyprland window
@@ -70,7 +69,8 @@ in
         hyprlock # Lock
         hyprpaper # Wallpaper daemon
         hyprpicker # Color picker
-				hyprshade # Shader config tool
+        hyprshade # Shader config tool
+        nautilus # File manager
         network-watcher # Script to check if network has a usage above given number
         networkmanagerapplet # Network manager tray icon
         polkit_gnome # Polkit manager
