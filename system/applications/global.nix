@@ -17,7 +17,11 @@ let
   pkgMapper =
     pkgList: lists.map (pkgName: foldl' (acc: cur: acc.${cur}) pkgs (splitString "." pkgName)) pkgList;
 
+  pkgFile = lib.importTOML ./packages.toml;
+
   cfg = config.icedos;
+
+  codingDeps = (pkgMapper pkgFile.codingDeps);
 
   # Logout from any shell
   lout = pkgs.writeShellScriptBin "lout" ''
@@ -60,7 +64,7 @@ in
   ) pkgs.linuxPackages_cachyos; # Use CachyOS optimized linux kernel
 
   environment.systemPackages =
-    (pkgMapper (lib.importJSON ./packages.json)) ++ packageWraps ++ shellScripts;
+    (pkgMapper pkgFile.packages) ++ codingDeps ++ packageWraps ++ shellScripts;
 
   users.defaultUserShell = pkgs.zsh; # Use ZSH shell for all users
 
