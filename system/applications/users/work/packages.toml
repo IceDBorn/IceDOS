@@ -1,0 +1,1 @@
+packages = ["beekeeper-studio", "php", "phpPackages.composer"]

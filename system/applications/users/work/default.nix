@@ -71,7 +71,8 @@ let
   '';
 in
 mkIf (cfg.users.work.enable) {
-  users.users.${username}.packages = (pkgMapper (lib.importJSON ./packages.json)) ++ shellScripts;
+  users.users.${username}.packages =
+    (pkgMapper (lib.importTOML ./packages.toml).packages) ++ shellScripts;
 
   services = {
     httpd = {
