@@ -4,7 +4,7 @@ This is a NixOS configuration project that aims to create a highly opinionated g
 
 ## Caution ⚠️
 
-- This repository is meant to be used on a fresh install of NixOS. Using it as a flake input is not currently in my needs, and thus not something that's tested or supported.
+- This repository is not meant to be used as a flake input, and thus such a use case is not officially supported or tested.
 - Do not forget to go through [config.toml](https://github.com/IceDBorn/IceDOS/blob/main/config.toml) and set each option to your liking!
 - [hardware/mounts.nix](https://github.com/IceDBorn/IceDOS/blob/main/hardware/mounts.nix) can break your system! Be sure to edit it accordingly or [set it to false](https://github.com/IceDBorn/IceDOS/blob/a86ae01a6103cef4ac26d161cac68ac16bf0067e/config.toml#L115)!
 
