@@ -28,6 +28,7 @@ let
 in
 {
   imports = [
+    ../../applications/modules/valent.nix
     ./configs/config.nix
     ./configs/hypridle.nix
     ./configs/swaync/config.nix
@@ -36,13 +37,12 @@ in
     ./home.nix
   ];
 
-  programs = mkIf (cfg.desktop.hyprland.enable) {
+  programs = {
     nm-applet.enable = true; # Network manager tray icon
-    kdeconnect.enable = true; # Connect phone to PC
     hyprland.enable = true;
   };
 
-  environment = mkIf (cfg.desktop.hyprland.enable) {
+  environment = {
     systemPackages =
       with pkgs;
       [
@@ -89,18 +89,18 @@ in
       ++ shellScripts;
   };
 
-  services = mkIf (cfg.desktop.hyprland.enable) {
+  services = {
     dbus.enable = true;
     gvfs.enable = true; # Needed for nautilus
     gnome.gnome-keyring.enable = true;
   };
 
-  security = mkIf (cfg.desktop.hyprland.enable) {
+  security = {
     polkit.enable = true;
     pam.services.login.enableGnomeKeyring = true;
   };
 
-  systemd.services.swayosd-input = mkIf (cfg.desktop.hyprland.enable) {
+  systemd.services.swayosd-input = {
     enable = true;
     description = "SwayOSD LibInput backend for listening to certain keys like CapsLock, ScrollLock, VolumeUp, etc...";
     after = [ "graphical.target" ];
@@ -121,11 +121,10 @@ in
     wantedBy = [ "graphical.target" ];
   };
 
-  xdg.portal.extraPortals = mkIf (!cfg.desktop.gnome.enable && cfg.desktop.hyprland.enable) [
-    pkgs.xdg-desktop-portal-gtk
-  ]; # Needed for steam file picker
+  # Needed for steam file picker
+  xdg.portal.extraPortals = mkIf (!cfg.desktop.gnome.enable) [ pkgs.xdg-desktop-portal-gtk ];
 
-  nix.settings = mkIf (cfg.desktop.hyprland.enable) {
+  nix.settings = {
     substituters = [ "https://hyprland.cachix.org" ];
     trusted-public-keys = [ "hyprland.cachix.org-1:a7pgxzMz7+chwVL3/pzj6jIBMioiJM7ypFP8PwtkuGc=" ];
   };

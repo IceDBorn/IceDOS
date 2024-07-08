@@ -13,6 +13,11 @@
           zoomLevel = mkOption { type = types.number; };
         };
 
+        emulators = {
+          switch = mkOption { type = types.bool; };
+          wiiu = mkOption { type = types.bool; };
+        };
+
         kitty.hideDecorations = mkOption { type = types.bool; };
 
         librewolf = {
@@ -40,10 +45,7 @@
 
         sunshine = mkOption { type = types.bool; };
 
-        emulators = {
-          switch = mkOption { type = types.bool; };
-          wiiu = mkOption { type = types.bool; };
-        };
+        valent.deviceId = mkOption { type = types.str; };
       };
 
       bootloader = {

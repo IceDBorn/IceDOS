@@ -30,6 +30,10 @@ extensions = [
 ]
 zoomLevel = 0
 
+[icedos.applications.emulators]
+switch = false
+wiiu = false
+
 [icedos.applications.kitty]
 hideDecorations = false # Hide top bar
 
@@ -56,9 +60,8 @@ enable = false
 enable = false
 desktopSession = "hyprland"
 
-[icedos.applications.emulators]
-switch = false
-wiiu = false
+[icedos.applications.valent]
+deviceId = "901524a4_c7c0_407e_9903_431abce54131"
 
 [icedos.bootloader]
 animation = false # Hides linux kernel logs and displays a loading interface based on OEM

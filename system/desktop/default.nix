@@ -71,8 +71,9 @@ in
   environment = {
     # Packages to install for all window manager/desktop environments
     systemPackages = with pkgs; [
-      bibata-cursors # Material cursors
       adwaita-icon-theme # GTK theme
+      bibata-cursors # Material cursors
+      dconf-editor # Edit gnome's dconf
       libnotify # Send desktop notifications
       tela-icon-theme # Icon theme
     ];

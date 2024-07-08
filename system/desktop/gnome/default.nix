@@ -27,7 +27,6 @@ in
     (
       if (cfg.enable) then
         [
-          dconf-editor # Edit gnome's dconf
           gnome-extension-manager # Gnome extensions manager and downloader
           gnome-tweaks # Tweaks missing from pure gnome
           gnomeExtensions.appindicator # Tray icons for gnome

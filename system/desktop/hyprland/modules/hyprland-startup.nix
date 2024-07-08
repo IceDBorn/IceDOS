@@ -8,23 +8,22 @@ pkgs.writeShellScriptBin "hyprland-startup" ''
   }
 
   # Basic functionalities
-  run "${pkgs.libsForQt5.kdeconnect-kde}/libexec/kdeconnectd"
   run "${pkgs.polkit_gnome}/libexec/polkit-gnome-authentication-agent-1"
+  run valent
   cliphist wipe
   run hyprland-per-window-layout
   run hyprpaper
   run swaync
   run swayosd
-  sleep 2 && hyprctl reload
-  sleep 2 && run waybar
   wl-paste --type image --watch cliphist store &
   wl-paste --type text --watch cliphist store &
   xrandr --output "${monitor}" --primary
   run poweralertd
+  sleep 1 && hyprctl reload
+  sleep 1 && run waybar
 
   # Tray applications
   nm-applet --indicator &
-  run kdeconnect-indicator
 
   # Standard applications
   librewolf &
@@ -32,6 +31,9 @@ pkgs.writeShellScriptBin "hyprland-startup" ''
   nautilus -w &
   nautilus -w &
   run steam
+  run blueberry
+  run pavucontrol
+  run signal-desktop
 
   # Terminals/Task managers/IDEs
   kitty --class task-managers tmux new -s task-managers nvtop \; split-window -h btop &

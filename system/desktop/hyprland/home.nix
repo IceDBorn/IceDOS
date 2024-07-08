@@ -23,7 +23,7 @@ in
         username = cfg.system.users.${user}.username;
       in
       {
-        ${username} = mkIf (cfg.desktop.hyprland.enable) {
+        ${username} = {
           # Gnome control center running in Hypr WMs
           xdg.desktopEntries.gnome-control-center = {
             exec = "env XDG_CURRENT_DESKTOP=GNOME gnome-control-center";

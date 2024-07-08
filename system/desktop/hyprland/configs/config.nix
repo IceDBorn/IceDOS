@@ -153,12 +153,13 @@ in
                 windowrulev2 = workspace 1 silent, class:^(librewolf)$
                 windowrulev2 = workspace 2 silent, class:^(nvchad)$
                 windowrulev2 = workspace 3 silent, class:^(steam_app_.*)$, title:^((?!notificationtoasts.*).)*$
-                windowrulev2 = workspace 21 silent, class:^(Steam|steam)$, title:^((?!notificationtoasts.*).)*$
-                windowrulev2 = workspace 21 silent, title:^(.*Steam[A-Za-z0-9\s]*)$
                 windowrulev2 = workspace 11 silent, class:^(WebCord|Signal|pwas)$
                 windowrulev2 = workspace 12 silent, class:^(org\.gnome\.Nautilus)$
                 windowrulev2 = workspace 13 silent, class:^(task-managers)$ # Task manager
                 windowrulev2 = workspace 14 silent, class:^(terminals)$ # Terminal
+                windowrulev2 = workspace 21 silent, class:^(Steam|steam)$, title:^((?!notificationtoasts.*).)*$
+                windowrulev2 = workspace 21 silent, title:^(.*Steam[A-Za-z0-9\s]*)$
+                windowrulev2 = workspace 22 silent, class:^(blueberry.py|pavucontrol|valent)$
               ''
             else if (l == 2) then
               ''
