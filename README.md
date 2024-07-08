@@ -22,10 +22,10 @@ bash scripts/install.sh
 
 ## Contributing
 
-Since this is a NixOS configuration tailored to my needs, feature requests and PR acceptance is stricter and on a case-by-case basis. If you want to make a more specific change for your nees, you should fork this repository.
-
 Examples of what probably will/won't be accepted:
 
 ✅ A PR that improves framerate for games in all cases or, if it's unstable, enabled through an option in `config.toml`.
+
+✅ A PR that adds a new desktop environment option and doesn't break existing functionality.
 
 ❌ A PR that adds a package you want to use.
