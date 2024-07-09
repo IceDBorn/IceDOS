@@ -70,7 +70,6 @@ in
         hyprpaper # Wallpaper daemon
         hyprpicker # Color picker
         hyprshade # Shader config tool
-        nautilus # File manager
         network-watcher # Script to check if network has a usage above given number
         networkmanagerapplet # Network manager tray icon
         polkit_gnome # Polkit manager
@@ -91,7 +90,6 @@ in
 
   services = {
     dbus.enable = true;
-    gvfs.enable = true; # Needed for nautilus
     gnome.gnome-keyring.enable = true;
   };
 

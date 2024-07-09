@@ -44,16 +44,6 @@ in
             # Enable dark mode
             "org/gnome/desktop/interface".color-scheme = "prefer-dark";
 
-            # Nautilus
-            "org/gnome/nautilus/preferences" = {
-              always-use-location-entry = true;
-            };
-
-            "org/gtk/gtk4/settings/file-chooser" = {
-              sort-directories-first = true;
-              show-hidden = true;
-            };
-
             # GTK file picker
             "org/gtk/settings/file-chooser" = {
               sort-directories-first = true;
@@ -94,19 +84,10 @@ in
             };
           };
 
-          home.file = {
-            # New document options for nautilus
-            "Templates/new".text = "";
-            "Templates/new.cfg".text = "";
-            "Templates/new.ini".text = "";
-            "Templates/new.sh".text = "";
-            "Templates/new.txt".text = "";
-
-            ".icons/default" = {
-              source = "${pkgs.bibata-cursors}/share/icons/Bibata-Modern-Classic";
-              recursive = true;
-            }; # Set icon theme fot QT apps and Hyprland
-          };
+          home.file.".icons/default" = {
+            source = "${pkgs.bibata-cursors}/share/icons/Bibata-Modern-Classic";
+            recursive = true;
+          }; # Set icon theme fot QT apps and Hyprland
         };
       }
     ) users;
