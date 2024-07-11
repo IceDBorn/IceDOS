@@ -223,23 +223,7 @@ formatOnSave = true
 
 [icedos.system.users.main.desktop.gnome.pinnedApps.arcmenu]
 enable = false
-list = [
-  "Codium IDE",
-  "",
-  "codiumIDE.desktop",
-  "VSCodium",
-  "",
-  "codium.desktop",
-  "Spotify",
-  "",
-  "spotify.desktop",
-  "Mullvad VPN",
-  "",
-  "mullvad-vpn.desktop",
-  "GNU Image Manipulation Program",
-  "",
-  "gimp.desktop",
-]
+list = ["codiumIDE.desktop", "codium.desktop", "mullvad-vpn.desktop"]
 
 # Set pinned apps for gnome shell (will be used by dash-to-panel if enabled)
 [icedos.system.users.main.desktop.gnome.pinnedApps.shell]
@@ -282,23 +266,7 @@ formatOnSave = false
 
 [icedos.system.users.work.desktop.gnome.pinnedApps.arcmenu]
 enable = false
-list = [
-  "Codium IDE",
-  "",
-  "codiumIDE.desktop",
-  "VSCodium",
-  "",
-  "codium.desktop",
-  "Spotify",
-  "",
-  "spotify.desktop",
-  "Mullvad VPN",
-  "",
-  "mullvad-vpn.desktop",
-  "GNU Image Manipulation Program",
-  "",
-  "gimp.desktop",
-]
+list = ["codiumIDE.desktop", "codium.desktop", "mullvad-vpn.desktop"]
 
 # Set pinned apps for gnome shell (will be used by dash-to-panel if enabled)
 [icedos.system.users.work.desktop.gnome.pinnedApps.shell]
