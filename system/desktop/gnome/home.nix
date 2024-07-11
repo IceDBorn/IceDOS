@@ -1,8 +1,14 @@
-{ config, lib, ... }:
+{
+  config,
+  lib,
+  inputs,
+  ...
+}:
 
 let
   inherit (lib)
     attrNames
+    attrsets
     filter
     foldl'
     mkIf
@@ -209,7 +215,14 @@ in
               menu-layout = "Windows";
               windows-disable-frequent-apps = true;
               windows-disable-pinned-apps = !cfg.system.users.${user}.desktop.gnome.pinnedApps.arcmenu.enable;
-              pinned-app-list = cfg.system.users.${user}.desktop.gnome.pinnedApps.arcmenu.list;
+              pinned-apps =
+                with inputs.home-manager.lib.hm.gvariant;
+                (lib.map (s: [
+                  (mkDictionaryEntry [
+                    "id"
+                    s
+                  ])
+                ]) cfg.system.users.${user}.desktop.gnome.pinnedApps.arcmenu.list);
             };
 
             "org/gnome/shell/extensions/pano" = {
