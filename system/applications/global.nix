@@ -59,6 +59,17 @@ let
   ];
 in
 {
+  imports = [
+    ./modules/android-tools.nix
+    ./modules/brave.nix
+    ./modules/clamav.nix
+    ./modules/codium
+    ./modules/gamemode.nix
+    ./modules/librewolf
+    ./modules/nvchad
+    ./modules/sunshine.nix
+  ];
+
   boot.kernelPackages = mkIf (
     !cfg.hardware.devices.steamdeck && builtins.pathExists /etc/icedos-version
   ) pkgs.linuxPackages_cachyos; # Use CachyOS optimized linux kernel
@@ -113,7 +124,6 @@ in
   };
 
   services = {
-    clamav.updater.enable = true;
     openssh.enable = true;
     tailscale.enable = true;
     fwupd.enable = true;

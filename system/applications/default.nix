@@ -8,13 +8,6 @@ in
     ./configs/pipewire.nix
     ./global.nix
     ./home.nix
-    ./modules/android-tools.nix
-    ./modules/brave.nix
-    ./modules/codium
-    ./modules/gamemode.nix
-    ./modules/librewolf
-    ./modules/nvchad
-    ./modules/sunshine.nix
   ];
 
   nix = {

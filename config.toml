@@ -1,6 +1,7 @@
 [icedos.applications]
 android-tools = true
 brave = true
+clamav = false
 nvchad = true
 sunshine = true
 
