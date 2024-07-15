@@ -60,7 +60,6 @@ in
     "autovt@tty1".enable = false;
   };
 
-  sound.enable = true;
   hardware.pulseaudio.enable = false;
   security.rtkit.enable = true; # Enable service which hands out realtime scheduling priority to user processes on demand, required by pipewire
 
