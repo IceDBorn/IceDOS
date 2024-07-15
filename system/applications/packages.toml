@@ -19,7 +19,6 @@ packages = [
   "celluloid", # Video player
   "curtail", # Image compressor
   "duf", # Disk usage utility
-  "easyeffects", # Pipewire effects manager
   "efibootmgr", # Edit EFI entries
   "endeavour", # Tasks
   "fd", # Find alternative
@@ -27,7 +26,6 @@ packages = [
   "gimp", # Image editor
   "gping", # ping with a graph
   "gthumb", # Image viewer
-  "helvum", # Pipewire patchbay
   "iotas", # Notes
   "jc", # JSON parser
   "jq", # JSON parser

@@ -13,6 +13,7 @@ in
 {
   imports = [
     ../applications/modules/nautilus.nix
+    ../applications/modules/pipewire.nix
     ./home.nix # Setup home manager
   ];
 
@@ -44,14 +45,6 @@ in
 
       xkb.layout = "us,gr";
     };
-
-    # Enable sound with pipewire
-    pipewire = {
-      enable = true;
-      alsa.enable = true;
-      alsa.support32Bit = true;
-      pulse.enable = true;
-    };
   };
 
   # Workaround for GDM autologin
@@ -59,10 +52,6 @@ in
     "getty@tty1".enable = false;
     "autovt@tty1".enable = false;
   };
-
-  sound.enable = true;
-  hardware.pulseaudio.enable = false;
-  security.rtkit.enable = true; # Enable service which hands out realtime scheduling priority to user processes on demand, required by pipewire
 
   networking = {
     networkmanager.enable = true;

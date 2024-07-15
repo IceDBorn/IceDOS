@@ -111,7 +111,6 @@ in
         ping = "gping"; # Better ping with a graph
         reboot-uefi = "sudo systemctl reboot --firmware-setup";
         repair-store = "nix-store --verify --check-contents --repair"; # Verifies integrity and repairs inconsistencies between Nix database and store
-        restart-pipewire = "systemctl --user restart pipewire";
         ssh = "TERM=xterm-256color ssh"; # SSH with colors
       };
 

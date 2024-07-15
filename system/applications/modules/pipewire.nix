@@ -13,6 +13,23 @@ let
   mapAttrsAndKeys = callback: list: (foldl' (acc: value: acc // (callback value)) { } list);
 in
 {
+  services.pipewire = {
+    enable = true;
+    alsa.enable = true;
+    alsa.support32Bit = true;
+    pulse.enable = true;
+  };
+
+  programs.zsh.shellAliases.restart-pipewire = "systemctl --user restart pipewire";
+
+  # Enable service which hands out realtime scheduling priority to user processes on demand
+  security.rtkit.enable = true;
+
+  environment.systemPackages = with pkgs; [
+    easyeffects # Effects manager
+    helvum # Pipewire patchbay
+  ];
+
   home-manager.users =
     let
       users = filter (user: cfg.${user}.enable == true) (attrNames cfg);

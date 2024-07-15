@@ -5,7 +5,6 @@ let
 in
 {
   imports = [
-    ./configs/pipewire.nix
     ./global.nix
     ./home.nix
   ];
@@ -14,10 +13,12 @@ in
     settings = {
       # Use hard links to save space (slows down package manager)
       auto-optimise-store = true;
+
+      # Enable flakes
       experimental-features = [
         "nix-command"
         "flakes"
-      ]; # Enable flakes
+      ];
     };
 
     # Automatic garbage collection
