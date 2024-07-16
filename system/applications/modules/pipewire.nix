@@ -25,10 +25,8 @@ in
   # Enable service which hands out realtime scheduling priority to user processes on demand
   security.rtkit.enable = true;
 
-  environment.systemPackages = with pkgs; [
-    easyeffects # Effects manager
-    helvum # Pipewire patchbay
-  ];
+  # Pipewire patchbay
+  environment.systemPackages = [ pkgs.helvum ];
 
   home-manager.users =
     let
