@@ -28,6 +28,8 @@ in
   # Pipewire patchbay
   environment.systemPackages = [ pkgs.helvum ];
 
+  hardware.pulseaudio.enable = false;
+
   home-manager.users =
     let
       users = filter (user: cfg.${user}.enable == true) (attrNames cfg);
