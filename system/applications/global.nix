@@ -61,6 +61,7 @@ in
 {
   imports = [
     ./modules/android-tools.nix
+    ./modules/aria2c.nix
     ./modules/brave.nix
     ./modules/clamav.nix
     ./modules/codium
@@ -100,7 +101,6 @@ in
 
       # Aliases
       shellAliases = {
-        a2c = "aria2c -j 16 -s 16"; # Download with aria using best settings
         btrfs-compress = "sudo btrfs filesystem defrag -czstd -r -v"; # Compress given path with zstd
         cat = "bat"; # Better cat command
         cp = "rsync -rP"; # Copy command with details
