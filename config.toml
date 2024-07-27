@@ -151,7 +151,7 @@ value = 242
 [icedos.hardware.monitors.main]
 enable = true
 deck = false
-name = "DP-1"
+name = "DP-3"
 resolution = "1920x1080"
 refreshRate = 144
 position = "1360x0"
