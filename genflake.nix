@@ -136,7 +136,6 @@ in
                 if (steam-session) then
                   ''
                     steam-session.nixosModules.default
-                    ./system/desktop/steam-session
                   ''
                 else
                   ""

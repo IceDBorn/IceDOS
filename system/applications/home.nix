@@ -118,21 +118,6 @@ in
             # Add btop config
             ".config/btop/btop.conf".source = configs/btop.conf;
 
-            # Enable steam beta
-            ".local/share/Steam/package/beta" = mkIf (user != "work" && cfg.applications.steam.beta) {
-              text = if (cfg.applications.steam.session.enable) then "steamdeck_publicbeta" else "publicbeta";
-            };
-
-            # Enable slow steam downloads workaround
-            ".local/share/Steam/steam_dev.cfg" =
-              mkIf (user != "work" && cfg.applications.steam.downloadsWorkaround)
-                {
-                  text = ''
-                    @nClientDownloadEnableHTTP2PlatformLinux 0
-                    @fDownloadRateImprovementToAddAnotherConnection 1.0
-                  '';
-                };
-
             # Add tmux
             ".config/tmux/tmux.conf".source = configs/tmux.conf;
 

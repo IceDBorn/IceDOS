@@ -73,13 +73,6 @@ mkIf (cfg.system.users.main.enable) {
       enable = true;
       capSysNice = true;
     };
-
-    steam = {
-      enable = true;
-
-      # Needed for steam controller to work on wayland compositors when the steam client is open
-      extest.enable = cfg.hardware.devices.steamdeck;
-    };
   };
 
   services = {

@@ -31,6 +31,7 @@
         nvchad = mkOption { type = types.bool; };
 
         steam = {
+          enable = mkOption { type = types.bool; };
           beta = mkOption { type = types.bool; };
           downloadsWorkaround = mkOption { type = types.bool; };
 

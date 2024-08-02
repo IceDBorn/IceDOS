@@ -51,6 +51,7 @@ pwas = [
 ] # Sites to launch on Librewolf PWAs
 
 [icedos.applications.steam]
+enable = true
 beta = true
 downloadsWorkaround = true
 

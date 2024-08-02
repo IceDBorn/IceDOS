@@ -65,6 +65,7 @@ in
     ./modules/libvirtd.nix
     ./modules/nvchad
     ./modules/podman.nix
+    ./modules/steam.nix
     ./modules/sunshine.nix
     ./modules/waydroid.nix
   ];

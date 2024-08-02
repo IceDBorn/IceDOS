@@ -12,7 +12,6 @@ gaming = [
   "prismlauncher", # Minecraft launcher
   "protontricks", # Winetricks for proton prefixes
   "rclone", # Sync to and from nextcloud
-  "steamtinkerlaunch", # General tweaks for games
 ]
 
 packages = [
