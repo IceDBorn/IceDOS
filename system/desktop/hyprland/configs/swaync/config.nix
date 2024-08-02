@@ -7,7 +7,7 @@ let
   mapAttrsAndKeys = callback: list: (foldl' (acc: value: acc // (callback value)) { } list);
 
   workspace =
-    if (cfg.hardware.monitors.main.enable && cfg.hardware.monitors.second.enable) then "11" else "3";
+    if (cfg.hardware.monitors.a.enable && cfg.hardware.monitors.b.enable) then "11" else "3";
 in
 {
   home-manager.users =

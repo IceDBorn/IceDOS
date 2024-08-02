@@ -155,7 +155,7 @@
         };
 
         monitors = {
-          main = {
+          a = {
             enable = mkOption { type = types.bool; };
             deck = mkOption { type = types.bool; };
             name = mkOption { type = types.str; };
@@ -166,7 +166,7 @@
             rotation = mkOption { type = types.number; };
           };
 
-          second = {
+          b = {
             enable = mkOption { type = types.bool; };
             deck = mkOption { type = types.bool; };
             name = mkOption { type = types.str; };
@@ -177,7 +177,18 @@
             rotation = mkOption { type = types.number; };
           };
 
-          third = {
+          c = {
+            enable = mkOption { type = types.bool; };
+            deck = mkOption { type = types.bool; };
+            name = mkOption { type = types.str; };
+            resolution = mkOption { type = types.str; };
+            refreshRate = mkOption { type = types.number; };
+            position = mkOption { type = types.str; };
+            scaling = mkOption { type = types.number; };
+            rotation = mkOption { type = types.number; };
+          };
+
+          d = {
             enable = mkOption { type = types.bool; };
             deck = mkOption { type = types.bool; };
             name = mkOption { type = types.str; };

@@ -1,6 +1,6 @@
 { pkgs, config }:
 let
-  monitor = config.icedos.hardware.monitors.main.name;
+  monitor = config.icedos.hardware.monitors.a.name;
 in
 pkgs.writeShellScriptBin "hyprland-startup" ''
   run () {

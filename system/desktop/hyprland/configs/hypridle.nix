@@ -5,7 +5,7 @@ let
 
   cfg = config.icedos;
   mapAttrsAndKeys = callback: list: (foldl' (acc: value: acc // (callback value)) { } list);
-  monitor = cfg.hardware.monitors.main.name;
+  monitor = cfg.hardware.monitors.a.name;
 in
 {
   home-manager.users =

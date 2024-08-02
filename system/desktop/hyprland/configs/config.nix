@@ -11,11 +11,16 @@ let
     attrNames
     filter
     foldl'
+    lists
     mkIf
     ;
 
   cfg = config.icedos;
-  enabledMonitors = filter (monitor: monitors.${monitor}.enable == true) (attrNames monitors);
+
+  enabledMonitors = lists.naturalSort (
+    filter (monitor: monitors.${monitor}.enable == true) (attrNames monitors)
+  );
+
   l = lib.lists.length (enabledMonitors);
   mapAttrsAndKeys = callback: list: (foldl' (acc: value: acc // (callback value)) { } list);
   monitors = cfg.hardware.monitors;
@@ -42,7 +47,9 @@ in
               deckRotation = if (monitors.${m}.deck) then ",transform,3" else "";
 
               extraBind =
-                if (i == 3) then
+                if (i == 4) then
+                  "Z"
+                else if (i == 3) then
                   "ALT"
                 else if (i == 2) then
                   "CTRL"
@@ -148,7 +155,7 @@ in
           bindm = $mainMod, mouse:273, resizewindow
 
           ${
-            if (l == 3) then
+            if (l >= 3) then
               ''
                 windowrulev2 = workspace 1 silent, class:^(librewolf)$
                 windowrulev2 = workspace 2 silent, class:^(nvchad)$
