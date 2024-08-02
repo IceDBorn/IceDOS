@@ -7,10 +7,11 @@
 
 let
   inherit (lib) mkIf;
-  cfg = config.icedos.hardware.virtualisation;
+  cfg = config.icedos.hardware.virtualisation.containerManager;
 in
-mkIf (cfg.podman) {
-  virtualisation.podman.enable = true;
+mkIf (cfg.enable) {
+  virtualisation.docker.enable = !cfg.usePodman;
+  virtualisation.podman.enable = cfg.usePodman;
 
   # Wrapper around podman to create and start linux containers
   environment.systemPackages = [ pkgs.distrobox ];

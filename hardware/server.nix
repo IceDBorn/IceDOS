@@ -74,7 +74,7 @@ mkIf (cfg.enable) {
   systemd.network.enable = false;
 
   virtualisation.oci-containers = {
-    backend = "podman";
+    backend = if (config.icedos.hardware.virtualisation.usePodman) then "podman" else "docker";
 
     containers = {
       portainer = {

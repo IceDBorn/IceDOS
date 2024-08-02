@@ -219,8 +219,12 @@
         mounts = mkOption { type = types.bool; };
 
         virtualisation = {
+          containerManager = {
+            enable = mkOption { type = types.bool; };
+            usePodman = mkOption { type = types.str; };
+          };
+
           libvirtd = mkOption { type = types.bool; };
-          podman = mkOption { type = types.bool; };
           waydroid = mkOption { type = types.bool; };
         };
       };

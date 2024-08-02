@@ -203,8 +203,11 @@ ipv6 = false
 
 [icedos.hardware.virtualisation]
 libvirtd = true # A daemon that manages virtual machines
-podman = true # Container manager
 waydroid = true # Android container
+
+[icedos.hardware.containerManager]
+enable = true
+usePodman = true
 
 [icedos.system]
 home = "/home"

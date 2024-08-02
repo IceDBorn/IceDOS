@@ -38,7 +38,16 @@ mkIf (cfg.hardware.gpus.nvidia.enable) {
         config.boot.kernelPackages.nvidiaPackages.stable;
   };
 
-  virtualisation.podman.enableNvidia = cfg.hardware.virtualisation.podman; # Enable nvidia gpu acceleration for podman
+  # Enable nvidia gpu acceleration for containers
+  virtualisation.docker.enableNvidia = (
+    cfg.hardware.virtualisation.containerManager.enable
+    && !cfg.hardware.virtualisation.containerManager.usePodman
+  );
+
+  virtualisation.podman.enableNvidia = (
+    cfg.hardware.virtualisation.containerManager.enable
+    && cfg.hardware.virtualisation.containerManager.usePodman
+  );
 
   environment.systemPackages =
     [ pkgs.nvtopPackages.nvidia ] # Monitoring tool for nvidia GPUs

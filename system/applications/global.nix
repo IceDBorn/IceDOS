@@ -60,11 +60,11 @@ in
     ./modules/brave.nix
     ./modules/clamav.nix
     ./modules/codium
+    ./modules/container-manager.nix
     ./modules/gamemode.nix
     ./modules/librewolf
     ./modules/libvirtd.nix
     ./modules/nvchad
-    ./modules/podman.nix
     ./modules/steam.nix
     ./modules/sunshine.nix
     ./modules/waydroid.nix

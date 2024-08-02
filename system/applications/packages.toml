@@ -58,7 +58,7 @@ packages = [
   "wine", # Compatibility layer capable of running Windows applications
   "winetricks", # Wine prefix settings manager
   "woeusb", # Windows ISO Burner
-  "xorg.xhost", # Use x.org server with podman
+  "xorg.xhost", # Use x.org server with containers
   "yazi", # Terminal file manager
   "zenstates", # Ryzen CPU controller
 ]
