@@ -196,7 +196,6 @@ ipv6 = false
 [icedos.hardware.virtualisation]
 docker = true # Container manager
 libvirtd = true # A daemon that manages virtual machines
-lxd = true # Container daemon
 waydroid = true # Android container
 
 [icedos.system]

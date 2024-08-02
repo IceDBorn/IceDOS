@@ -13,7 +13,6 @@ in
 {
   virtualisation = {
     docker.enable = cfg.docker;
-    lxd.enable = cfg.lxd;
     waydroid.enable = cfg.waydroid;
   };
 
