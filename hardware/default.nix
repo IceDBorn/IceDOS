@@ -40,9 +40,8 @@ in
   ];
 
   networking = {
-    hostName = "${cfg.hardware.networking.hostname}";
-
     extraHosts = mkIf (cfg.hardware.networking.hosts) "192.168.2.99 git.dtek.gr";
+    hostName = "${cfg.hardware.networking.hostname}";
   };
 
   boot = {

@@ -137,6 +137,15 @@
 
         devices = {
           laptop = mkOption { type = types.bool; };
+
+          server = {
+            enable = mkOption { type = types.bool; };
+            dns = mkOption { type = types.str; };
+            gateway = mkOption { type = types.str; };
+            interface = mkOption { type = types.str; };
+            ip = mkOption { type = types.str; };
+          };
+
           steamdeck = mkOption { type = types.bool; };
         };
 

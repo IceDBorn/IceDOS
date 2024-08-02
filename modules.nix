@@ -10,7 +10,6 @@ in
     ./hardware/nixos/extras.nix
 
     # Custom configuration
-    ./options.nix
     ./hardware # Enable various hardware capabilities
     ./hardware/amd/radeon.nix
     ./hardware/amd/ryzen.nix
@@ -19,6 +18,8 @@ in
     ./hardware/intel.nix
     ./hardware/mounts.nix # Disks to mount on startup
     ./hardware/nvidia.nix
+    ./hardware/server.nix
+    ./options.nix
     ./system/applications
     ./system/desktop
     ./system/desktop/gnome
