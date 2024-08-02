@@ -19,7 +19,6 @@ in
     ./hardware/intel.nix
     ./hardware/mounts.nix # Disks to mount on startup
     ./hardware/nvidia.nix
-    ./hardware/virtualisation.nix
     ./system/applications
     ./system/desktop
     ./system/desktop/gnome

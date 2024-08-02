@@ -11,7 +11,5 @@ let
   cfg = config.icedos.hardware.virtualisation;
 in
 {
-  virtualisation = {
-    waydroid.enable = cfg.waydroid;
-  };
+  virtualisation.waydroid.enable = cfg.waydroid;
 }

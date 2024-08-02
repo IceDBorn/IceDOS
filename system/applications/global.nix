@@ -71,6 +71,7 @@ in
     ./modules/nvchad
     ./modules/podman.nix
     ./modules/sunshine.nix
+    ./modules/waydroid.nix
   ];
 
   boot.kernelPackages = mkIf (
