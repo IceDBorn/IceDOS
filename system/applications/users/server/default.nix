@@ -29,6 +29,7 @@ let
   };
 in
 mkIf (cfg.users.server.enable) {
-  users.users.${username}.packages =
-    (pkgMapper (lib.importTOML ./packages.toml).packages) ++ shellScripts;
+  users.users.${username}.packages = (pkgMapper (lib.importTOML ./packages.toml).packages) ++ [
+    update
+  ];
 }
