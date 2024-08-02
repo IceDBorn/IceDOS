@@ -12,14 +12,6 @@ let
 in
 {
   virtualisation = {
-    docker.enable = cfg.docker;
     waydroid.enable = cfg.waydroid;
   };
-
-  environment.systemPackages =
-    with pkgs;
-    mkIf (cfg.docker) [
-      docker # Containers
-      distrobox # Wrapper around docker to create and start linux containers
-    ];
 }

@@ -69,6 +69,7 @@ in
     ./modules/librewolf
     ./modules/libvirtd.nix
     ./modules/nvchad
+    ./modules/podman.nix
     ./modules/sunshine.nix
   ];
 

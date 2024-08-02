@@ -31,10 +31,14 @@ mkIf (cfg.hardware.gpus.nvidia.enable) {
 
     modesetting.enable = true;
 
-		package = if (cfg.hardware.gpus.nvidia.beta) then config.boot.kernelPackages.nvidiaPackages.beta else config.boot.kernelPackages.nvidiaPackages.stable;
+    package =
+      if (cfg.hardware.gpus.nvidia.beta) then
+        config.boot.kernelPackages.nvidiaPackages.beta
+      else
+        config.boot.kernelPackages.nvidiaPackages.stable;
   };
 
-  virtualisation.docker.enableNvidia = cfg.hardware.virtualisation.docker; # Enable nvidia gpu acceleration for docker
+  virtualisation.podman.enableNvidia = cfg.hardware.virtualisation.podman; # Enable nvidia gpu acceleration for podman
 
   environment.systemPackages =
     [ pkgs.nvtopPackages.nvidia ] # Monitoring tool for nvidia GPUs

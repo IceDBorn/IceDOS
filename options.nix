@@ -209,9 +209,8 @@
         mounts = mkOption { type = types.bool; };
 
         virtualisation = {
-          docker = mkOption { type = types.bool; };
           libvirtd = mkOption { type = types.bool; };
-          lxd = mkOption { type = types.bool; };
+          podman = mkOption { type = types.bool; };
           waydroid = mkOption { type = types.bool; };
         };
       };
