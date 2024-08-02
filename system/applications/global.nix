@@ -67,6 +67,7 @@ in
     ./modules/codium
     ./modules/gamemode.nix
     ./modules/librewolf
+    ./modules/libvirtd.nix
     ./modules/nvchad
     ./modules/sunshine.nix
   ];

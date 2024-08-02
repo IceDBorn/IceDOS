@@ -13,7 +13,6 @@ in
 {
   virtualisation = {
     docker.enable = cfg.docker;
-    libvirtd.enable = cfg.libvirtd;
     lxd.enable = cfg.lxd;
     spiceUSBRedirection.enable = cfg.spiceUSBRedirection;
     waydroid.enable = cfg.waydroid;
@@ -25,6 +24,4 @@ in
       docker # Containers
       distrobox # Wrapper around docker to create and start linux containers
     ];
-
-  programs.virt-manager.enable = cfg.libvirtd;
 }
