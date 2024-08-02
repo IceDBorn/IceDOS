@@ -306,3 +306,46 @@ seconds = 300
 [icedos.system.users.work.desktop.idle.suspend]
 enable = true
 seconds = 900
+
+[icedos.system.users.server]
+enable = false
+username = "server"
+description = "Server"
+
+[icedos.system.users.server.applications.codium]
+autoSave = "off" # off, afterDelay, onFocusChange, onWindowChange
+formatOnSave = true
+formatOnPaste = true
+
+[icedos.system.users.server.applications.git]
+username = "IceDBorn"
+email = "git.outsider841@simplelogin.fr"
+
+[icedos.system.users.server.applications.nvchad]
+formatOnSave = true
+
+[icedos.system.users.server.desktop.gnome.pinnedApps.arcmenu]
+enable = false
+list = ["codiumIDE.desktop", "codium.desktop", "mullvad-vpn.desktop"]
+
+# Set pinned apps for gnome shell (will be used by dash-to-panel if enabled)
+[icedos.system.users.server.desktop.gnome.pinnedApps.shell]
+enable = false
+list = [
+  "steam.desktop",
+  "webcord.desktop",
+  "signal-desktop.desktop",
+  "librewolf.desktop",
+]
+
+[icedos.system.users.server.desktop.idle.lock]
+enable = true
+seconds = 180
+
+[icedos.system.users.server.desktop.idle.disableMonitors]
+enable = true
+seconds = 300
+
+[icedos.system.users.server.desktop.idle.suspend]
+enable = true
+seconds = 900

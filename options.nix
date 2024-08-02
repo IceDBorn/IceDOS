@@ -294,6 +294,57 @@
             };
           };
 
+          server = {
+            enable = mkOption { type = types.bool; };
+            username = mkOption { type = types.str; };
+            description = mkOption { type = types.str; };
+
+            applications = {
+              codium = {
+                autoSave = mkOption { type = types.str; };
+                formatOnSave = mkOption { type = types.bool; };
+                formatOnPaste = mkOption { type = types.bool; };
+              };
+
+              git = {
+                username = mkOption { type = types.str; };
+                email = mkOption { type = types.str; };
+              };
+
+              nvchad.formatOnSave = mkOption { type = types.bool; };
+            };
+
+            desktop = {
+              gnome.pinnedApps = {
+                arcmenu = {
+                  enable = mkOption { type = types.bool; };
+                  list = mkOption { type = with types; listOf str; };
+                };
+                shell = {
+                  enable = mkOption { type = types.bool; };
+                  list = mkOption { type = with types; listOf str; };
+                };
+              };
+
+              idle = {
+                lock = {
+                  enable = mkOption { type = types.bool; };
+                  seconds = mkOption { type = types.number; };
+                };
+
+                disableMonitors = {
+                  enable = mkOption { type = types.bool; };
+                  seconds = mkOption { type = types.number; };
+                };
+
+                suspend = {
+                  enable = mkOption { type = types.bool; };
+                  seconds = mkOption { type = types.number; };
+                };
+              };
+            };
+          };
+
           work = {
             enable = mkOption { type = types.bool; };
             username = mkOption { type = types.str; };
