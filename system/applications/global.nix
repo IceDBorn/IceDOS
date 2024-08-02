@@ -7,12 +7,7 @@
 }:
 
 let
-  inherit (lib)
-    foldl'
-    lists
-    mkIf
-    splitString
-    ;
+  inherit (lib) foldl' lists splitString;
 
   pkgMapper =
     pkgList: lists.map (pkgName: foldl' (acc: cur: acc.${cur}) pkgs (splitString "." pkgName)) pkgList;
@@ -74,9 +69,20 @@ in
     ./modules/waydroid.nix
   ];
 
-  boot.kernelPackages = mkIf (
-    !cfg.hardware.devices.steamdeck && builtins.pathExists /etc/icedos-version
-  ) pkgs.linuxPackages_cachyos; # Use CachyOS optimized linux kernel
+  boot.kernelPackages =
+    # Use CachyOS optimized linux kernel
+    if
+      (
+        !cfg.hardware.devices.steamdeck
+        && !cfg.hardware.devices.server.enable
+        && builtins.pathExists /etc/icedos-version
+      )
+    then
+      pkgs.linuxPackages_cachyos
+    else if (cfg.hardware.devices.server.enable) then
+      pkgs.linuxPackages_cachyos-server
+    else
+      pkgs.linuxPackages_zen;
 
   environment.systemPackages =
     (pkgMapper pkgFile.packages) ++ codingDeps ++ packageWraps ++ shellScripts;
