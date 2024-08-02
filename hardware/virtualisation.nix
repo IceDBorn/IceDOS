@@ -14,7 +14,6 @@ in
   virtualisation = {
     docker.enable = cfg.docker;
     lxd.enable = cfg.lxd;
-    spiceUSBRedirection.enable = cfg.spiceUSBRedirection;
     waydroid.enable = cfg.waydroid;
   };
 

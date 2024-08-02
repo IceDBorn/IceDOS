@@ -212,7 +212,6 @@
           docker = mkOption { type = types.bool; };
           libvirtd = mkOption { type = types.bool; };
           lxd = mkOption { type = types.bool; };
-          spiceUSBRedirection = mkOption { type = types.bool; };
           waydroid = mkOption { type = types.bool; };
         };
       };

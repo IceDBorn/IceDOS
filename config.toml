@@ -197,7 +197,6 @@ ipv6 = false
 docker = true # Container manager
 libvirtd = true # A daemon that manages virtual machines
 lxd = true # Container daemon
-spiceUSBRedirection = true # Passthrough USB devices to vms
 waydroid = true # Android container
 
 [icedos.system]

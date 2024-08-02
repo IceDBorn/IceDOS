@@ -5,6 +5,10 @@ let
   cfg = config.icedos.hardware.virtualisation;
 in
 mkIf (cfg.libvirtd) {
-  virtualisation.libvirtd.enable = true;
   programs.virt-manager.enable = true;
+
+  virtualisation = {
+    libvirtd.enable = true;
+    spiceUSBRedirection.enable = true;
+  };
 }
