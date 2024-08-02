@@ -54,7 +54,7 @@ in
   };
 
   networking = {
-    networkmanager.enable = true;
+    networkmanager.enable = !cfg.hardware.devices.server.enable;
     firewall.enable = false;
   };
 
