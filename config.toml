@@ -55,7 +55,7 @@ beta = true
 downloadsWorkaround = true
 
 [icedos.applications.steam.session]
-enable = false
+enable = true
 
 [icedos.applications.steam.session.autoStart]
 enable = false

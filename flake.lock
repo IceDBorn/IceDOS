@@ -487,7 +487,11 @@
         ],
         "phps": "phps",
         "pipewire-screenaudio": "pipewire-screenaudio",
-        "shell-in-netns": "shell-in-netns"
+        "shell-in-netns": "shell-in-netns",
+        "steam-session": [
+          "chaotic",
+          "jovian"
+        ]
       }
     },
     "shell-in-netns": {
