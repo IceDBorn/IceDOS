@@ -5,10 +5,15 @@ let
     attrNames
     concatMapStrings
     filter
+    length
     mkIf
+    optionals
     ;
 
   cfg = config.icedos;
+  monitors = cfg.hardware.monitors;
+  enabledMonitors = filter (monitor: monitors.${monitor}.enable == true) (attrNames monitors);
+  noMonitors = length (enabledMonitors) == 0;
 in
 {
   hardware = {
@@ -49,17 +54,14 @@ in
     kernelModules = [ "v4l2loopback" ];
     extraModulePackages = with config.boot.kernelPackages; [ v4l2loopback ];
 
-    kernelParams = [
-      "transparent_hugepage=always"
-      # Disables UMIP which fixes certain games from crashing on launch
-      "clearcpuid=514"
-
-      (
-        let
-          monitors = cfg.hardware.monitors;
-          enabledMonitors = filter (monitor: monitors.${monitor}.enable == true) (attrNames monitors);
-        in
-        concatMapStrings (
+    kernelParams =
+      [
+        "transparent_hugepage=always"
+        # Disables UMIP which fixes certain games from crashing on launch
+        "clearcpuid=514"
+      ]
+      ++ optionals (!noMonitors) [
+        (concatMapStrings (
           m:
           let
             name = monitors.${m}.name;
@@ -68,9 +70,8 @@ in
             rotation = builtins.toString (monitors.${m}.rotation);
           in
           "video=${name}:${resolution}@${refreshRate},rotate=${rotation}"
-        ) enabledMonitors
-      )
-    ];
+        ) enabledMonitors)
+      ];
 
     kernel.sysctl = {
       "net.ipv6.conf.all.disable_ipv6" = !cfg.hardware.networking.ipv6; # Disable ipv6 for all interfaces
