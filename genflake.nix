@@ -8,6 +8,7 @@ let
   steam-session = cfg.applications.steam.session.enable;
   hyprland = cfg.desktop.hyprland.enable;
   switch-emulators = cfg.applications.emulators.switch;
+  server = cfg.hardware.devices.server.enable;
 in
 {
   flake.nix = ''
@@ -146,6 +147,16 @@ in
                   ''
                     hyprland.nixosModules.default
                     ./system/desktop/hyprland
+                  ''
+                else
+                  ""
+              }
+
+              ${
+                if (!server) then
+                  ''
+                    ./system/desktop
+                    ./system/desktop/gnome
                   ''
                 else
                   ""

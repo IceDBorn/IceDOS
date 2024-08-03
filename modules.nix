@@ -21,8 +21,6 @@ in
     ./hardware/server.nix
     ./options.nix
     ./system/applications
-    ./system/desktop
-    ./system/desktop/gnome
     ./system/users.nix
   ];
 
