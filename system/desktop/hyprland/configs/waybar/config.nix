@@ -1,7 +1,7 @@
 {
-  pkgs,
-  lib,
   config,
+  lib,
+  pkgs,
   ...
 }:
 let
@@ -12,7 +12,7 @@ let
   mapAttrsAndKeys = callback: list: (foldl' (acc: value: acc // (callback value)) { } list);
 
   vpn-toggle = import modules/vpn-watcher.nix { inherit pkgs; };
-  vpn-watcher = import modules/vpn-toggle.nix { inherit pkgs; };
+  vpn-watcher = import modules/vpn-toggle.nix { inherit config pkgs; };
 in
 {
   home-manager.users =
