@@ -221,7 +221,7 @@
         virtualisation = {
           containerManager = {
             enable = mkOption { type = types.bool; };
-            usePodman = mkOption { type = types.str; };
+            usePodman = mkOption { type = types.bool; };
           };
 
           libvirtd = mkOption { type = types.bool; };

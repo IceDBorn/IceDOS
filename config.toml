@@ -205,7 +205,7 @@ ipv6 = false
 libvirtd = true # A daemon that manages virtual machines
 waydroid = true # Android container
 
-[icedos.hardware.containerManager]
+[icedos.hardware.virtualisation.containerManager]
 enable = true
 usePodman = true
 
