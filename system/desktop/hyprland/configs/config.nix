@@ -48,11 +48,11 @@ in
 
               extraBind =
                 if (i == 4) then
-                  "Z"
+                  "CTRL_RIGHT"
                 else if (i == 3) then
                   "ALT"
                 else if (i == 2) then
-                  "CTRL"
+                  "CTRL_LEFT"
                 else
                   "";
             in
