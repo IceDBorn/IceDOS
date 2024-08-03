@@ -25,6 +25,8 @@
           hideDecorations = mkOption { type = types.bool; };
         };
 
+        mangohud = mkOption { type = types.bool; };
+
         librewolf = {
           enable = mkOption { type = types.bool; };
           overrides = mkOption { type = types.bool; };

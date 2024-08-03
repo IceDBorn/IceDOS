@@ -3,6 +3,7 @@ android-tools = true
 brave = true
 celluloid = true
 clamav = false
+mangohud = true
 nvchad = true
 sunshine = true
 

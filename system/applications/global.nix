@@ -66,6 +66,7 @@ in
     ./modules/kitty.nix
     ./modules/librewolf
     ./modules/libvirtd.nix
+    ./modules/mangohud.nix
     ./modules/nvchad
     ./modules/steam.nix
     ./modules/sunshine.nix
