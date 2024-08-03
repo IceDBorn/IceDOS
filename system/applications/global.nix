@@ -92,8 +92,6 @@ in
   environment.systemPackages =
     (pkgMapper pkgFile.packages) ++ codingDeps ++ packageWraps ++ shellScripts;
 
-  users.defaultUserShell = pkgs.zsh; # Use ZSH shell for all users
-
   programs = {
     direnv.enable = true;
   };

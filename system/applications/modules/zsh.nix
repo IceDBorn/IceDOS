@@ -59,7 +59,7 @@ in
 
   programs.zsh = {
     enable = true;
-    # Enable oh my zsh and it's plugins
+
     ohMyZsh = {
       enable = true;
       plugins = [
@@ -73,7 +73,6 @@ in
 
     syntaxHighlighting.enable = true;
 
-    # Aliases
     shellAliases = {
       btrfs-compress = "sudo btrfs filesystem defrag -czstd -r -v"; # Compress given path with zstd
       cat = "bat"; # Better cat command
@@ -88,10 +87,11 @@ in
       ssh = "TERM=xterm-256color ssh"; # SSH with colors
     };
 
-    # Commands to run on zsh shell initialization
     interactiveShellInit = ''
       source ~/.config/zsh/zsh-theme.zsh
       unsetopt PROMPT_SP
     '';
   };
+
+  users.defaultUserShell = pkgs.zsh; # Use ZSH shell for all users
 }
