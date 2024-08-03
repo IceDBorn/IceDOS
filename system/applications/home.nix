@@ -29,18 +29,6 @@ in
       in
       {
         ${username} = {
-          programs = {
-            git = {
-              enable = true;
-              # Git config
-              extraConfig = {
-                pull.rebase = true;
-              };
-              userName = "${cfg.system.users.${user}.applications.git.username}";
-              userEmail = "${cfg.system.users.${user}.applications.git.email}";
-            };
-          };
-
           home.file = {
             # Add btop config
             ".config/btop/btop.conf".source = configs/btop.conf;

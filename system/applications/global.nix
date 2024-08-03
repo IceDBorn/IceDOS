@@ -64,6 +64,7 @@ in
     ./modules/container-manager.nix
     ./modules/gamemode.nix
     ./modules/gdm.nix
+    ./modules/git.nix
     ./modules/kitty.nix
     ./modules/librewolf
     ./modules/libvirtd.nix
