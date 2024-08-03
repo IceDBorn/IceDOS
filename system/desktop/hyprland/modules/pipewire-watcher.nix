@@ -3,10 +3,18 @@ pkgs.writeScriptBin "pipewire-watcher" ''
   #!/usr/bin/env wpexec
   local INPUT = "Stream/Input/Audio"
   local OUTPUT = "Stream/Output/Audio"
-  local TO_IGNORE = {
+  local OUTPUTS_TO_IGNORE = {
     'Discord',
     'Element',
+    'Noise Canceling source',
+    'Peak detect',
   }
+
+  local INPUTS_TO_IGNORE = {
+    'Noise Canceling source',
+    'Peak detect',
+  }
+
   local INHIBIT_LOCK = false
 
   local nodeManager = ObjectManager({
@@ -45,7 +53,7 @@ pkgs.writeScriptBin "pipewire-watcher" ''
     for node in nodeManager:iterate() do
       local mediaName = node.properties["media.name"]
       local mediaClass = node.properties["media.class"]
-      if not hasValue(mediaName, TO_IGNORE) or mediaClass == INPUT then
+      if not hasValue(mediaName, OUTPUTS_TO_IGNORE) or (mediaClass == INPUT and not hasValue(mediaName, INPUTS_TO_IGNORE)) then
         if hasActiveLinks(node.bound_id, "link.input.node") or hasActiveLinks(node.bound_id, "link.output.node") then
           INHIBIT_LOCK = true
           break
