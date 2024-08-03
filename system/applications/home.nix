@@ -41,7 +41,7 @@ in
             };
 
             kitty = {
-              enable = true;
+              enable = (user != "server");
               settings = {
                 background_opacity = "0.8";
                 confirm_os_window_close = "0";
