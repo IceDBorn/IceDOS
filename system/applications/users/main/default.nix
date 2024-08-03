@@ -20,6 +20,7 @@ let
     pkgList: lists.map (pkgName: foldl' (acc: cur: acc.${cur}) pkgs (splitString "." pkgName)) pkgList;
 
   pkgFile = lib.importTOML ./packages.toml;
+  myPackages = (pkgMapper pkgFile.myPackages);
 
   cfg = config.icedos;
   username = cfg.system.users.main.username;
@@ -65,7 +66,7 @@ let
 in
 mkIf (cfg.system.users.main.enable) {
   users.users.${username}.packages =
-    (pkgMapper pkgFile.packages) ++ emulators ++ gaming ++ shellScripts;
+    (pkgMapper pkgFile.packages) ++ myPackages ++ emulators ++ gaming ++ shellScripts;
 
   # Wayland microcompositor
   programs = {

@@ -1,3 +1,5 @@
+myPackages = []
+
 codingDeps = [
   "bruno", # API explorer
   "cargo", # Rust package manager

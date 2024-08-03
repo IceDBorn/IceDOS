@@ -13,6 +13,7 @@ let
     pkgList: lists.map (pkgName: foldl' (acc: cur: acc.${cur}) pkgs (splitString "." pkgName)) pkgList;
 
   pkgFile = lib.importTOML ./packages.toml;
+  myPackages = (pkgMapper pkgFile.myPackages);
 
   cfg = config.icedos;
 
@@ -96,7 +97,7 @@ in
       pkgs.linuxPackages_zen;
 
   environment.systemPackages =
-    (pkgMapper pkgFile.packages) ++ codingDeps ++ packageWraps ++ shellScripts;
+    (pkgMapper pkgFile.packages) ++ myPackages ++ codingDeps ++ packageWraps ++ shellScripts;
 
   programs = {
     direnv.enable = true;

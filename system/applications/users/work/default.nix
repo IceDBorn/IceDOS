@@ -18,6 +18,9 @@ let
   pkgMapper =
     pkgList: lists.map (pkgName: foldl' (acc: cur: acc.${cur}) pkgs (splitString "." pkgName)) pkgList;
 
+  pkgFile = lib.importTOML ./packages.toml;
+  myPackages = (pkgMapper pkgFile.myPackages);
+
   cfg = config.icedos.system;
   username = cfg.users.work.username;
 
@@ -71,8 +74,7 @@ let
   '';
 in
 mkIf (cfg.users.work.enable) {
-  users.users.${username}.packages =
-    (pkgMapper (lib.importTOML ./packages.toml).packages) ++ shellScripts;
+  users.users.${username}.packages = (pkgMapper pkgFile.packages) ++ myPackages ++ shellScripts;
 
   services = {
     httpd = {

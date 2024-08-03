@@ -1,5 +1,7 @@
+myPackages = []
+
 packages = [
-  "beekeeper-studio",     # SQL client
-  "php",                  # An HTML-embedded scripting language
+  "beekeeper-studio", # SQL client
+  "php", # An HTML-embedded scripting language
   "phpPackages.composer", # Dependency Manager for PHP
 ]

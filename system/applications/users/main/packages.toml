@@ -1,3 +1,5 @@
+myPackages = []
+
 emulators = [
   "duckstation", # PS1
   "pcsx2", # PS2
