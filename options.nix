@@ -31,7 +31,11 @@
           enable = mkOption { type = types.bool; };
           overrides = mkOption { type = types.bool; };
           privacy = mkOption { type = types.bool; };
-          pwas = mkOption { type = with types; listOf str; };
+
+          pwas = {
+            enable = mkOption { type = types.bool; };
+            sites = mkOption { type = with types; listOf str; };
+          };
         };
 
         nvchad = mkOption { type = types.bool; };

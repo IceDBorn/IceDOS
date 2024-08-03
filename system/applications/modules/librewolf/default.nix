@@ -12,6 +12,7 @@ let
     filter
     foldl'
     mkIf
+    optional
     ;
 
   cfg = config.icedos;
@@ -31,10 +32,7 @@ in
   # Set as default browser for electron apps
   environment = {
     sessionVariables.DEFAULT_BROWSER = mkIf (cfg.applications.librewolf.enable) "${package}/bin/librewolf";
-    systemPackages = [
-      librewolf-pwas
-      package
-    ];
+    systemPackages = [ package ] ++ optional (cfg.applications.librewolf.pwas.enable) librewolf-pwas;
   };
 
   home-manager.users =
@@ -56,7 +54,7 @@ in
             };
           };
 
-          xdg.desktopEntries.pwas = {
+          xdg.desktopEntries.pwas = mkIf (cfg.applications.librewolf.pwas.enable) {
             exec = "librewolf-pwas";
             icon = "librewolf";
             name = "Librewolf PWAs";
