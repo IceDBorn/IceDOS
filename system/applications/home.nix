@@ -58,7 +58,7 @@ in
             };
 
             mangohud = {
-              enable = (user != "work");
+              enable = (user != "server" && user != "work");
 
               settings = {
                 background_alpha = 0;
