@@ -127,7 +127,7 @@ in
             };
 
             # Add celluloid config file
-            ".config/celluloid" = {
+            ".config/celluloid" = mkIf (!cfg.hardware.devices.server.enable) {
               source = configs/celluloid;
               recursive = true;
             };
@@ -137,7 +137,7 @@ in
           };
 
           # Set celluloid config file path
-          dconf.settings = {
+          dconf.settings = mkIf (!cfg.hardware.devices.server.enable) {
             "io/github/celluloid-player/celluloid" = {
               mpv-config-file = "file:///home/${username}/.config/celluloid/celluloid.conf";
             };
