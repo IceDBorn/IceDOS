@@ -69,6 +69,7 @@ in
         "systemd"
       ];
     };
+
     autosuggestions.enable = true;
 
     syntaxHighlighting.enable = true;

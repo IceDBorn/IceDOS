@@ -40,8 +40,6 @@ in
     firewall.enable = false;
   };
 
-  security.sudo.extraConfig = "Defaults pwfeedback"; # Show asterisks when typing sudo password
-
   environment = {
     # Packages to install for all window manager/desktop environments
     systemPackages = with pkgs; [
