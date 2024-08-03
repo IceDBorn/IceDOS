@@ -4,10 +4,7 @@ let
   cfg = config.icedos.system.config;
 in
 {
-  imports = [
-    ./global.nix
-    ./home.nix
-  ];
+  imports = [ ./global.nix ];
 
   nix = {
     settings = {

@@ -57,7 +57,9 @@ in
   imports = [
     ./modules/android-tools.nix
     ./modules/aria2c.nix
+    ./modules/bash.nix
     ./modules/brave.nix
+    ./modules/btop
     ./modules/celluloid
     ./modules/clamav.nix
     ./modules/codium

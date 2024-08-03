@@ -14,7 +14,6 @@ packages = [
   "appimage-run", # Appimage runner
   "bat", # Better cat command
   "bless", # HEX Editor
-  "btop", # CLI system monitor
   "curtail", # Image compressor
   "duf", # Disk usage utility
   "efibootmgr", # Edit EFI entries

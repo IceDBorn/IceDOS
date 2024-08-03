@@ -6,18 +6,13 @@
 }:
 
 let
-  inherit (lib)
-    attrNames
-    filter
-    foldl'
-    mkIf
-    ;
-
+  inherit (lib) attrNames filter foldl';
   cfg = config.icedos;
-
   mapAttrsAndKeys = callback: list: (foldl' (acc: value: acc // (callback value)) { } list);
 in
 {
+  environment.systemPackages = [ pkgs.btop ];
+
   home-manager.users =
     let
       users = filter (user: cfg.system.users.${user}.enable == true) (attrNames cfg.system.users);
@@ -29,13 +24,7 @@ in
       in
       {
         ${username} = {
-          home.file = {
-            # Add btop config
-            ".config/btop/btop.conf".source = configs/btop.conf;
-
-            # Avoid file not found errors for bash
-            ".bashrc".text = "";
-          };
+          home.file.".config/btop/btop.conf".source = ./btop.conf;
         };
       }
     ) users;
