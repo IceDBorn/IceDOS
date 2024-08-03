@@ -65,6 +65,10 @@ enable = true
 enable = false
 desktopSession = "hyprland"
 
+[icedos.applications.tailscale]
+enable = true
+enableTrayscale = true
+
 [icedos.applications.valent]
 deviceId = "901524a4_c7c0_407e_9903_431abce54131"
 

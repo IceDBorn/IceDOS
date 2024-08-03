@@ -72,6 +72,7 @@ in
     ./modules/nvchad
     ./modules/steam.nix
     ./modules/sunshine.nix
+    ./modules/tailscale.nix
     ./modules/waydroid.nix
     ./modules/zsh.nix
   ];
@@ -100,7 +101,6 @@ in
 
   services = {
     openssh.enable = true;
-    tailscale.enable = true;
     fwupd.enable = true;
     udev.packages = with pkgs; [
       logitech-udev-rules # Needed for solaar to work

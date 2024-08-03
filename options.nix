@@ -53,6 +53,11 @@
 
         sunshine = mkOption { type = types.bool; };
 
+        tailscale = {
+          enable = mkOption { type = types.bool; };
+          enableTrayscale = mkOption { type = types.bool; };
+        };
+
         valent.deviceId = mkOption { type = types.str; };
       };
 
