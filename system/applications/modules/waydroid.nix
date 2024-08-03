@@ -8,7 +8,7 @@
 let
   inherit (lib) mkIf;
 
-  cfg = config.icedos.hardware.virtualisation;
+  cfg = config.icedos.system.virtualisation;
 in
 {
   virtualisation.waydroid.enable = cfg.waydroid;

@@ -40,13 +40,13 @@ mkIf (cfg.hardware.gpus.nvidia.enable) {
 
   # Enable nvidia gpu acceleration for containers
   virtualisation.docker.enableNvidia = (
-    cfg.hardware.virtualisation.containerManager.enable
-    && !cfg.hardware.virtualisation.containerManager.usePodman
+    cfg.system.virtualisation.containerManager.enable
+    && !cfg.system.virtualisation.containerManager.usePodman
   );
 
   virtualisation.podman.enableNvidia = (
-    cfg.hardware.virtualisation.containerManager.enable
-    && cfg.hardware.virtualisation.containerManager.usePodman
+    cfg.system.virtualisation.containerManager.enable
+    && cfg.system.virtualisation.containerManager.usePodman
   );
 
   environment.systemPackages =

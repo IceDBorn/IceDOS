@@ -217,16 +217,6 @@
         };
 
         mounts = mkOption { type = types.bool; };
-
-        virtualisation = {
-          containerManager = {
-            enable = mkOption { type = types.bool; };
-            usePodman = mkOption { type = types.bool; };
-          };
-
-          libvirtd = mkOption { type = types.bool; };
-          waydroid = mkOption { type = types.bool; };
-        };
       };
 
       system = {
@@ -399,6 +389,16 @@
               };
             };
           };
+        };
+
+        virtualisation = {
+          containerManager = {
+            enable = mkOption { type = types.bool; };
+            usePodman = mkOption { type = types.bool; };
+          };
+
+          libvirtd = mkOption { type = types.bool; };
+          waydroid = mkOption { type = types.bool; };
         };
 
         version = mkOption { type = types.str; };

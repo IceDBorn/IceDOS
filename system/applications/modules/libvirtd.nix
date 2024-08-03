@@ -2,7 +2,7 @@
 
 let
   inherit (lib) mkIf;
-  cfg = config.icedos.hardware.virtualisation;
+  cfg = config.icedos.system.virtualisation;
 in
 mkIf (cfg.libvirtd) {
   programs.virt-manager.enable = true;

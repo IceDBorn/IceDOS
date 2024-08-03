@@ -201,14 +201,6 @@ hostname = "desktop"
 hosts = false
 ipv6 = false
 
-[icedos.hardware.virtualisation]
-libvirtd = true # A daemon that manages virtual machines
-waydroid = true # Android container
-
-[icedos.hardware.virtualisation.containerManager]
-enable = true
-usePodman = true
-
 [icedos.system]
 home = "/home"
 swappiness = 1
@@ -352,3 +344,11 @@ seconds = 300
 [icedos.system.users.server.desktop.idle.suspend]
 enable = true
 seconds = 900
+
+[icedos.system.virtualisation]
+libvirtd = true # A daemon that manages virtual machines
+waydroid = true # Android container
+
+[icedos.system.virtualisation.containerManager]
+enable = true
+usePodman = true
