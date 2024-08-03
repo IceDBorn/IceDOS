@@ -31,7 +31,7 @@ mkIf (cfg.applications.celluloid) {
       {
         ${username} = {
           home.file.".config/celluloid" = mkIf (!cfg.hardware.devices.server.enable) {
-            source = ../configs/celluloid;
+            source = ./config;
             recursive = true;
           };
 
