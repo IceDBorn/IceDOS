@@ -33,24 +33,6 @@ in
           enable = true;
           user = cfg.desktop.autologin.user;
         };
-
-    xserver = mkIf (!cfg.applications.steam.session.autoStart.enable) {
-      # Enable the X11 windowing system
-      enable = true;
-
-      displayManager.gdm = mkIf (cfg.desktop.gdm.enable) {
-        enable = true;
-        autoSuspend = cfg.desktop.gdm.autoSuspend;
-      };
-
-      xkb.layout = "us,gr";
-    };
-  };
-
-  # Workaround for GDM autologin
-  systemd.services = {
-    "getty@tty1".enable = false;
-    "autovt@tty1".enable = false;
   };
 
   networking = {
