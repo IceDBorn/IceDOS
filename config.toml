@@ -37,6 +37,7 @@ switch = false
 wiiu = false
 
 [icedos.applications.kitty]
+enable = true
 hideDecorations = false # Hide top bar
 
 [icedos.applications.librewolf]

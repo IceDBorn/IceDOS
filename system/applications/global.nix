@@ -63,6 +63,7 @@ in
     ./modules/codium
     ./modules/container-manager.nix
     ./modules/gamemode.nix
+    ./modules/kitty.nix
     ./modules/librewolf
     ./modules/libvirtd.nix
     ./modules/nvchad

@@ -20,7 +20,10 @@
           wiiu = mkOption { type = types.bool; };
         };
 
-        kitty.hideDecorations = mkOption { type = types.bool; };
+        kitty = {
+          enable = mkOption { type = types.bool; };
+          hideDecorations = mkOption { type = types.bool; };
+        };
 
         librewolf = {
           enable = mkOption { type = types.bool; };
