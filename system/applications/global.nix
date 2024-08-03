@@ -80,7 +80,7 @@ in
       )
     then
       pkgs.linuxPackages_cachyos
-    else if (cfg.hardware.devices.server.enable) then
+    else if (cfg.hardware.devices.server.enable && builtins.pathExists /etc/icedos-version) then
       pkgs.linuxPackages_cachyos-server
     else
       pkgs.linuxPackages_zen;
