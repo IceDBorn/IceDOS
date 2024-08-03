@@ -68,25 +68,6 @@ mkIf (cfg.applications.steam.enable) {
     };
   };
 
-  jovian = mkIf (session.enable) {
-    devices.steamdeck = mkIf (cfg.hardware.devices.steamdeck) {
-      enable = true;
-      enableGyroDsuService = true;
-      autoUpdate = true;
-    };
-
-    steam = {
-      enable = true;
-      autoStart = session.autoStart.enable;
-      desktopSession = session.autoStart.desktopSession;
-      user = cfg.system.users.main.username;
-    };
-
-    hardware.has.amd.gpu = cfg.hardware.gpus.amd;
-
-    steamos.useSteamOSConfig = true;
-  };
-
   # Needed for steam's file picker
   xdg.portal.extraPortals = mkIf (!cfg.desktop.gnome.enable) [ pkgs.xdg-desktop-portal-gtk ];
 }

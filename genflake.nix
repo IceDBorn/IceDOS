@@ -157,6 +157,7 @@ in
                   ''
                     ./system/desktop
                     ./system/desktop/gnome
+                    ./system/desktop/steam-session.nix
                   ''
                 else
                   ""

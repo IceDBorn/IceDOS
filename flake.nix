@@ -96,10 +96,13 @@
           nerivations.nixosModules.default
 
           steam-session.nixosModules.default
-          ./system/desktop/steam-session
 
           hyprland.nixosModules.default
           ./system/desktop/hyprland
+
+          ./system/desktop
+          ./system/desktop/gnome
+          ./system/desktop/steam-session.nix
 
           ./system/applications/users/main
 
