@@ -6,6 +6,7 @@
       applications = {
         android-tools = mkOption { type = types.bool; };
         brave = mkOption { type = types.bool; };
+        celluloid = mkOption { type = types.bool; };
         clamav = mkOption { type = types.bool; }; # Antivirus
 
         codium = {

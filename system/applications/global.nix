@@ -58,6 +58,7 @@ in
     ./modules/android-tools.nix
     ./modules/aria2c.nix
     ./modules/brave.nix
+    ./modules/celluloid.nix
     ./modules/clamav.nix
     ./modules/codium
     ./modules/container-manager.nix

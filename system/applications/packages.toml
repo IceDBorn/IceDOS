@@ -15,7 +15,6 @@ packages = [
   "bat", # Better cat command
   "bless", # HEX Editor
   "btop", # CLI system monitor
-  "celluloid", # Video player
   "curtail", # Image compressor
   "duf", # Disk usage utility
   "efibootmgr", # Edit EFI entries
