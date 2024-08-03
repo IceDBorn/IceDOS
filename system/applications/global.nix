@@ -73,6 +73,7 @@ in
     ./modules/steam.nix
     ./modules/sunshine.nix
     ./modules/tailscale.nix
+    ./modules/tmux
     ./modules/waydroid.nix
     ./modules/zsh.nix
   ];

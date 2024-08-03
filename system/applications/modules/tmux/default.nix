@@ -18,6 +18,7 @@ let
   mapAttrsAndKeys = callback: list: (foldl' (acc: value: acc // (callback value)) { } list);
 in
 {
+  environment.systemPackages = [ pkgs.tmux ];
   home-manager.users =
     let
       users = filter (user: cfg.system.users.${user}.enable == true) (attrNames cfg.system.users);
@@ -30,11 +31,12 @@ in
       {
         ${username} = {
           home.file = {
-            # Add btop config
-            ".config/btop/btop.conf".source = configs/btop.conf;
+            ".config/tmux/tmux.conf".source = ./tmux.conf;
 
-            # Avoid file not found errors for bash
-            ".bashrc".text = "";
+            ".config/tmux/tpm" = {
+              source = pkgs.tpm;
+              recursive = true;
+            };
           };
         };
       }
