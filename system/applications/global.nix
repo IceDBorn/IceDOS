@@ -75,7 +75,7 @@ in
     ./modules/tailscale.nix
     ./modules/tmux
     ./modules/waydroid.nix
-    ./modules/zsh.nix
+    ./modules/zsh
   ];
 
   boot.kernelPackages =
