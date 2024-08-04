@@ -68,6 +68,7 @@ in
     ./modules/gamemode.nix
     ./modules/gdm.nix
     ./modules/git.nix
+    ./modules/kernel.nix
     ./modules/kitty.nix
     ./modules/librewolf
     ./modules/libvirtd.nix
@@ -80,21 +81,6 @@ in
     ./modules/waydroid.nix
     ./modules/zsh
   ];
-
-  boot.kernelPackages =
-    # Use CachyOS optimized linux kernel
-    if
-      (
-        !cfg.hardware.devices.steamdeck
-        && !cfg.hardware.devices.server.enable
-        && builtins.pathExists /etc/icedos-version
-      )
-    then
-      pkgs.linuxPackages_cachyos
-    else if (cfg.hardware.devices.server.enable && builtins.pathExists /etc/icedos-version) then
-      pkgs.linuxPackages_cachyos-server
-    else
-      pkgs.linuxPackages_zen;
 
   environment.systemPackages =
     (pkgMapper pkgFile.packages) ++ myPackages ++ codingDeps ++ packageWraps ++ shellScripts;

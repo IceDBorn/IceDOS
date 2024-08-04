@@ -52,6 +52,8 @@
               enable = mkOption { type = types.bool; };
               desktopSession = mkOption { type = types.str; };
             };
+
+            useValveKernel = mkOption { type = types.bool; };
           };
         };
 

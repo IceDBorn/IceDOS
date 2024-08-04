@@ -63,6 +63,7 @@ downloadsWorkaround = true
 
 [icedos.applications.steam.session]
 enable = true
+useValveKernel = true
 
 [icedos.applications.steam.session.autoStart]
 enable = false
