@@ -79,7 +79,8 @@ mkIf (cfg.applications.librewolf.enable) {
       {
         ${username} = {
           home.file.".librewolf/default/user.js".text = userJs;
-          home.file.".librewolf/pwas/user.js".text = mkIf (cfg.applications.librewolf.pwas.enable) userJs;
+          home.file.".librewolf/pwas/user.js".text =
+            if (cfg.applications.librewolf.pwas.enable) then userJs else "";
         };
       }
     ) users;
