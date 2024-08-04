@@ -134,16 +134,17 @@ in
               nerivations.nixosModules.default
 
               ${
-                if (steam-session) then
+                if (!server && steam-session) then
                   ''
                     steam-session.nixosModules.default
+                    ./system/desktop/steam-session.nix
                   ''
                 else
                   ""
               }
 
               ${
-                if (hyprland) then
+                if (!server && hyprland) then
                   ''
                     hyprland.nixosModules.default
                     ./system/desktop/hyprland
@@ -157,7 +158,6 @@ in
                   ''
                     ./system/desktop
                     ./system/desktop/gnome
-                    ./system/desktop/steam-session.nix
                   ''
                 else
                   ""
