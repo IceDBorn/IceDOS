@@ -36,7 +36,7 @@ pkgs.writeShellScriptBin "hyprland-startup" ''
   run signal-desktop
 
   # Terminals/Task managers/IDEs
-  kitty --class task-managers tmux new -s task-managers nvtop \; split-window -h btop &
+  kitty --class task-managers btop &
   kitty --class terminals tmux new -s terminals \; split-window -v \; select-pane -U \; split-window -h \; select-pane -D &
   kitty --class nvchad tmux new -s nvchad nvim &
 

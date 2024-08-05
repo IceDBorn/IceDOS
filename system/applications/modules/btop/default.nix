@@ -11,7 +11,12 @@ let
   mapAttrsAndKeys = callback: list: (foldl' (acc: value: acc // (callback value)) { } list);
 in
 {
-  environment.systemPackages = [ pkgs.btop ];
+  environment.systemPackages = [
+    (pkgs.btop.override {
+      cudaSupport = cfg.hardware.gpus.nvidia.enable;
+      rocmSupport = cfg.hardware.gpus.amd;
+    })
+  ];
 
   home-manager.users =
     let

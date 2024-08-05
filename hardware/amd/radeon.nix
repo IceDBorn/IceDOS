@@ -16,10 +16,7 @@ mkIf (cfg) {
     kernelParams = [ "amdgpu.ppfeaturemask=0xffffffff" ]; # Unlock all gpu controls
   };
 
-  environment.systemPackages = with pkgs; [
-    nvtopPackages.amd # GPU task manager
-    lact # GPU overclocking tool
-  ];
+  environment.systemPackages = with pkgs; [ lact ]; # GPU overclocking tool
 
   # We are creating the lact daemon service manually because the provided one hangs
   systemd.services.lactd = {

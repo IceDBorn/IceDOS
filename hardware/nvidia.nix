@@ -49,9 +49,7 @@ mkIf (cfg.hardware.gpus.nvidia.enable) {
     && cfg.system.virtualisation.containerManager.usePodman
   );
 
-  environment.systemPackages =
-    [ pkgs.nvtopPackages.nvidia ] # Monitoring tool for nvidia GPUs
-    ++ optional (cfg.hardware.devices.laptop) nvidia-offload; # Use nvidia-offload to launch programs using the nvidia GPU
+  environment.systemPackages = [ ] ++ optional (cfg.hardware.devices.laptop) nvidia-offload; # Use nvidia-offload to launch programs using the nvidia GPU
 
   # Set nvidia gpu power limit
   systemd.services.nv-power-limit = mkIf (powerLimit.enable) {
