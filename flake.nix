@@ -33,8 +33,8 @@
     };
 
     phps = {
-      url = "github:fossar/nix-phps";
-      inputs.nixpkgs.follows = "nixpkgs";
+      url = "github:fossar/nix-phps/5c2a9bf0246b7f38b7ca737f0f1f36d5b45ae15a";
+      inputs.nixpkgs.url = "github:NixOS/nixpkgs/b73c2221a46c13557b1b3be9c2070cc42cf01eb3";
     };
 
     pipewire-screenaudio = {
