@@ -1,11 +1,11 @@
 [icedos.applications]
-android-tools = true
+android-tools = false
 brave = true
 celluloid = true
 clamav = false
-mangohud = true
+mangohud = false
 nvchad = true
-sunshine = true
+sunshine = false
 
 [icedos.applications.codium]
 enable = true
@@ -57,7 +57,7 @@ sites = [
 ]
 
 [icedos.applications.steam]
-enable = true
+enable = false
 beta = true
 downloadsWorkaround = true
 
@@ -80,16 +80,16 @@ deviceId = "901524a4_c7c0_407e_9903_431abce54131"
 animation = false # Hides linux kernel logs and displays a loading interface based on OEM
 
 [icedos.bootloader.grub]
-enable = false
+enable = true
 device = "/dev/sda"
 
 [icedos.bootloader.systemd-boot]
-enable = true
+enable = false
 mountPoint = "/boot"
 
 [icedos.desktop.autologin]
 enable = true
-user = "icedborn"
+user = "work"
 
 [icedos.desktop.gdm]
 enable = true
@@ -128,10 +128,10 @@ diskUsageThreshold = 10 # Disk usage to inhibit lock in MB/s
 networkUsageThreshold = 1_000_000 # Network usage to inhibit lock in bytes/s
 
 [icedos.hardware]
-mounts = true # Set to false if hardware/mounts.nix is not correctly configured
+mounts = false # Set to false if hardware/mounts.nix is not correctly configured
 
 [icedos.hardware.btrfs.compression]
-enable = true
+enable = false
 mounts = true # Use btrfs compression for mounted drives
 root = true # Use btrfs compression for / (root)
 
@@ -170,15 +170,15 @@ value = 242
 [icedos.hardware.monitors.a]
 enable = true
 deck = false
-name = "DP-1"
-resolution = "1920x1080"
+name = "HDMI-A-1"
+resolution = "2560x1440"
 refreshRate = 144
 position = "0x0"
 scaling = 1
 rotation = 0
 
 [icedos.hardware.monitors.b]
-enable = true
+enable = false
 deck = false
 name = "DP-2"
 resolution = "1360x768"
@@ -188,7 +188,7 @@ scaling = 1
 rotation = 0
 
 [icedos.hardware.monitors.c]
-enable = true
+enable = false
 deck = false
 name = "DP-3"
 resolution = "1280x1024"
@@ -198,7 +198,7 @@ scaling = 1
 rotation = 0
 
 [icedos.hardware.monitors.d]
-enable = true
+enable = false
 deck = false
 name = "HDMI-A-1"
 resolution = "3840x2160"
@@ -208,8 +208,8 @@ scaling = 1
 rotation = 0
 
 [icedos.hardware.networking]
-hostname = "desktop"
-hosts = false
+hostname = "desktop-dtek"
+hosts = true
 ipv6 = false
 
 [icedos.system]
@@ -228,7 +228,7 @@ days = 0 # Number of days before a generation can be deleted
 generations = 10 # Number of generations that will always be kept
 
 [icedos.system.users.main]
-enable = true
+enable = false
 username = "icedborn"
 description = "IceDBorn"
 
@@ -271,7 +271,7 @@ enable = true
 seconds = 900
 
 [icedos.system.users.work]
-enable = false
+enable = true
 username = "work"
 description = "Work"
 
