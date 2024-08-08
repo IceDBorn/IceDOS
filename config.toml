@@ -63,10 +63,10 @@ downloadsWorkaround = true
 
 [icedos.applications.steam.session]
 enable = true
-useValveKernel = false
+useValveKernel = true
 
 [icedos.applications.steam.session.autoStart]
-enable = false
+enable = true
 desktopSession = "hyprland"
 
 [icedos.applications.tailscale]
@@ -88,7 +88,7 @@ enable = true
 mountPoint = "/boot"
 
 [icedos.desktop.autologin]
-enable = true
+enable = false
 user = "icedborn"
 
 [icedos.desktop.gdm]
@@ -128,7 +128,7 @@ diskUsageThreshold = 10 # Disk usage to inhibit lock in MB/s
 networkUsageThreshold = 1_000_000 # Network usage to inhibit lock in bytes/s
 
 [icedos.hardware]
-mounts = true # Set to false if hardware/mounts.nix is not correctly configured
+mounts = false # Set to false if hardware/mounts.nix is not correctly configured
 
 [icedos.hardware.btrfs.compression]
 enable = true
@@ -142,12 +142,12 @@ intel = false
 enable = true
 
 [icedos.hardware.cpus.amd.undervolt]
-enable = true
+enable = false
 value = "-p 0 -v 3C -f A0" # Pstate 0, 1.175 voltage, 4000 clock speed
 
 [icedos.hardware.devices]
-laptop = false
-steamdeck = false
+laptop = true
+steamdeck = true
 
 [icedos.hardware.devices.server]
 enable = false
@@ -170,15 +170,15 @@ value = 242
 [icedos.hardware.monitors.a]
 enable = true
 deck = false
-name = "DP-1"
-resolution = "1920x1080"
-refreshRate = 144
+name = "eDP-1"
+resolution = "800x1280"
+refreshRate = 60
 position = "0x0"
 scaling = 1
 rotation = 0
 
 [icedos.hardware.monitors.b]
-enable = true
+enable = false
 deck = false
 name = "DP-2"
 resolution = "1360x768"
@@ -188,7 +188,7 @@ scaling = 1
 rotation = 0
 
 [icedos.hardware.monitors.c]
-enable = true
+enable = false
 deck = false
 name = "DP-3"
 resolution = "1280x1024"
@@ -198,7 +198,7 @@ scaling = 1
 rotation = 0
 
 [icedos.hardware.monitors.d]
-enable = true
+enable = false
 deck = false
 name = "HDMI-A-1"
 resolution = "3840x2160"
@@ -208,7 +208,7 @@ scaling = 1
 rotation = 0
 
 [icedos.hardware.networking]
-hostname = "desktop"
+hostname = "deck"
 hosts = false
 ipv6 = false
 
@@ -229,8 +229,8 @@ generations = 10 # Number of generations that will always be kept
 
 [icedos.system.users.main]
 enable = true
-username = "icedborn"
-description = "IceDBorn"
+username = "deck"
+description = "Deck"
 
 [icedos.system.users.main.applications.codium]
 autoSave = "off" # off, afterDelay, onFocusChange, onWindowChange
