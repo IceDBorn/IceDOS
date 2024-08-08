@@ -18,8 +18,8 @@ let
 
   mapAttrsAndKeys = callback: list: (foldl' (acc: value: acc // (callback value)) { } list);
 in
-mkIf (cfg.applications.steam.enable) {
-  jovian = mkIf (session.enable) {
+mkIf (cfg.applications.steam.enable && session.enable) {
+  jovian = {
     devices.steamdeck = mkIf (cfg.hardware.devices.steamdeck) {
       enable = true;
       enableGyroDsuService = true;
