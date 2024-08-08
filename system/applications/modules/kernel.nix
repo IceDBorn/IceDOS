@@ -26,20 +26,20 @@ in
 
     kernelPackages =
       # Use CachyOS optimized linux kernel
-      if (cfg.applications.steam.session.enable && cfg.applications.steam.session.useValveKernel) then
-        pkgs.linuxPackages_jovian
+      if (!builtins.pathExists /etc/icedos-version) then
+        pkgs.linuxPackages_zen
       else if
         (
-          !cfg.hardware.devices.steamdeck
-          && !cfg.hardware.devices.server.enable
-          && builtins.pathExists /etc/icedos-version
+          cfg.applications.steam.enable
+          && cfg.applications.steam.session.enable
+          && cfg.applications.steam.session.useValveKernel
         )
       then
-        pkgs.linuxPackages_cachyos
-      else if (cfg.hardware.devices.server.enable && builtins.pathExists /etc/icedos-version) then
+        pkgs.linuxPackages_jovian
+      else if (!cfg.hardware.devices.steamdeck && cfg.hardware.devices.server.enable) then
         pkgs.linuxPackages_cachyos-server
       else
-        pkgs.linuxPackages_zen;
+        pkgs.linuxPackages_cachyos;
 
     kernelParams =
       [
