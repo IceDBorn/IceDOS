@@ -1,14 +1,14 @@
 [icedos.applications]
-android-tools = true
-brave = true
-celluloid = true
+android-tools = false
+brave = false
+celluloid = false
 clamav = false
-mangohud = true
+mangohud = false
 nvchad = true
-sunshine = true
+sunshine = false
 
 [icedos.applications.codium]
-enable = true
+enable = false
 extensions = [
   "codezombiech.gitignore",
   "dbaeumer.vscode-eslint",
@@ -38,11 +38,11 @@ switch = false
 wiiu = false
 
 [icedos.applications.kitty]
-enable = true
+enable = false
 hideDecorations = false # Hide top bar
 
 [icedos.applications.librewolf]
-enable = true
+enable = false
 overrides = true
 privacy = true
 
@@ -57,7 +57,7 @@ sites = [
 ]
 
 [icedos.applications.steam]
-enable = true
+enable = false
 beta = true
 downloadsWorkaround = true
 
@@ -71,7 +71,7 @@ desktopSession = "hyprland"
 
 [icedos.applications.tailscale]
 enable = true
-enableTrayscale = true
+enableTrayscale = false
 
 [icedos.applications.valent]
 deviceId = "901524a4_c7c0_407e_9903_431abce54131"
@@ -88,11 +88,11 @@ enable = true
 mountPoint = "/boot"
 
 [icedos.desktop.autologin]
-enable = true
+enable = false
 user = "icedborn"
 
 [icedos.desktop.gdm]
-enable = true
+enable = false
 autoSuspend = true
 
 [icedos.desktop.gnome]
@@ -118,7 +118,7 @@ dynamicWorkspaces = true
 maxWorkspaces = 1 # Determines the maximum number of workspaces when dynamic workspaces are disabled
 
 [icedos.desktop.hyprland]
-enable = true
+enable = false
 backlight = "amdgpu_bl0" # Find backlight unit using brightnessctl
 
 [icedos.desktop.hyprland.lock]
@@ -128,7 +128,7 @@ diskUsageThreshold = 10 # Disk usage to inhibit lock in MB/s
 networkUsageThreshold = 1_000_000 # Network usage to inhibit lock in bytes/s
 
 [icedos.hardware]
-mounts = true # Set to false if hardware/mounts.nix is not correctly configured
+mounts = false # Set to false if hardware/mounts.nix is not correctly configured
 
 [icedos.hardware.btrfs.compression]
 enable = true
@@ -136,10 +136,10 @@ mounts = true # Use btrfs compression for mounted drives
 root = true # Use btrfs compression for / (root)
 
 [icedos.hardware.cpus]
-intel = false
+intel = true
 
 [icedos.hardware.cpus.amd]
-enable = true
+enable = false
 
 [icedos.hardware.cpus.amd.undervolt]
 enable = true
@@ -150,14 +150,14 @@ laptop = false
 steamdeck = false
 
 [icedos.hardware.devices.server]
-enable = false
+enable = true
 dns = "9.9.9.9"
 gateway = "192.168.1.1"
 interface = "eno1"
 ip = "192.168.1.3"
 
 [icedos.hardware.gpus]
-amd = true
+amd = false
 
 [icedos.hardware.gpus.nvidia]
 enable = false
@@ -168,7 +168,7 @@ enable = true
 value = 242
 
 [icedos.hardware.monitors.a]
-enable = true
+enable = false
 deck = false
 name = "DP-1"
 resolution = "1920x1080"
@@ -178,7 +178,7 @@ scaling = 1
 rotation = 0
 
 [icedos.hardware.monitors.b]
-enable = true
+enable = false
 deck = false
 name = "DP-2"
 resolution = "1360x768"
@@ -188,7 +188,7 @@ scaling = 1
 rotation = 0
 
 [icedos.hardware.monitors.c]
-enable = true
+enable = false
 deck = false
 name = "DP-3"
 resolution = "1280x1024"
@@ -198,7 +198,7 @@ scaling = 1
 rotation = 0
 
 [icedos.hardware.monitors.d]
-enable = true
+enable = false
 deck = false
 name = "HDMI-A-1"
 resolution = "3840x2160"
@@ -208,7 +208,7 @@ scaling = 1
 rotation = 0
 
 [icedos.hardware.networking]
-hostname = "desktop"
+hostname = "server"
 hosts = false
 ipv6 = false
 
@@ -228,7 +228,7 @@ days = 0 # Number of days before a generation can be deleted
 generations = 10 # Number of generations that will always be kept
 
 [icedos.system.users.main]
-enable = true
+enable = false
 username = "icedborn"
 description = "IceDBorn"
 
@@ -314,7 +314,7 @@ enable = true
 seconds = 900
 
 [icedos.system.users.server]
-enable = false
+enable = true
 username = "server"
 description = "Server"
 
@@ -362,4 +362,4 @@ waydroid = true # Android container
 
 [icedos.system.virtualisation.containerManager]
 enable = true
-usePodman = true
+usePodman = false
