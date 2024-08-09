@@ -412,6 +412,7 @@
           containerManager = {
             enable = mkOption { type = types.bool; };
             usePodman = mkOption { type = types.bool; };
+            requireSudoForDocker = mkOption { type = types.bool; };
           };
 
           libvirtd = mkOption { type = types.bool; };

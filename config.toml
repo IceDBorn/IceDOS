@@ -363,3 +363,4 @@ waydroid = true # Android container
 [icedos.system.virtualisation.containerManager]
 enable = true
 usePodman = true
+requireSudoForDocker = true # CAUTION: Disabling this gives every user root priviledges!
