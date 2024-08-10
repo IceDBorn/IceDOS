@@ -243,8 +243,10 @@
           bootEntries = mkOption { type = types.number; };
 
           garbageCollect = {
+            automatic = mkOption { type = types.bool; };
             days = mkOption { type = types.number; };
             generations = mkOption { type = types.number; };
+            interval = mkOption { type = types.str; };
           };
         };
 

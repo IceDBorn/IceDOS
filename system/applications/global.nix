@@ -24,9 +24,6 @@ let
     pkill -KILL -u $USER
   '';
 
-  # Garbage collect the nix store
-  nix-gc = import modules/nix-gc.nix { inherit config lib pkgs; };
-
   rebuild = import modules/rebuild.nix {
     inherit pkgs config;
     command = "rebuild";
@@ -48,7 +45,6 @@ let
   shellScripts = [
     inputs.shell-in-netns.packages.${pkgs.system}.default
     lout
-    nix-gc
     rebuild
     toggle-services
     trim-generations
@@ -66,6 +62,7 @@ in
     ./modules/codium
     ./modules/container-manager.nix
     ./modules/gamemode.nix
+    ./modules/garbage-collect
     ./modules/gdm.nix
     ./modules/git.nix
     ./modules/kernel.nix

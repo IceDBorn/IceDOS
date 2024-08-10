@@ -13,12 +13,6 @@ in
   imports = [ ./global.nix ];
 
   nix = {
-    # Automatic garbage collection
-    gc = {
-      automatic = true;
-      dates = "weekly";
-    };
-
     # Use flake's nixpkgs input for nix-shell
     nixPath = mapAttrsToList (key: _: "${key}=flake:${key}") config.nix.registry;
     registry = mapAttrs (_: v: { flake = v; }) inputs;

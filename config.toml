@@ -224,8 +224,10 @@ version = "1.0.0"
 bootEntries = 10
 
 [icedos.system.generations.garbageCollect]
+automatic = true
 days = 0 # Number of days before a generation can be deleted
 generations = 10 # Number of generations that will always be kept
+interval = "7d" # Format(https://www.freedesktop.org/software/systemd/man/latest/systemd.time.html)
 
 [icedos.system.users.main]
 enable = true
