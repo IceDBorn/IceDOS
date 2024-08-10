@@ -37,11 +37,6 @@ let
     builtins.readFile ../../scripts/trim-generations.sh
   );
 
-  packageWraps = with pkgs; [
-    # Pipewire audio plugin for OBS Studio
-    (pkgs.wrapOBS { plugins = with pkgs.obs-studio-plugins; [ obs-pipewire-audio-capture ]; })
-  ];
-
   shellScripts = [
     inputs.shell-in-netns.packages.${pkgs.system}.default
     lout
@@ -80,7 +75,7 @@ in
   ];
 
   environment.systemPackages =
-    (pkgMapper pkgFile.packages) ++ myPackages ++ codingDeps ++ packageWraps ++ shellScripts;
+    (pkgMapper pkgFile.packages) ++ myPackages ++ codingDeps ++ shellScripts;
 
   programs = {
     direnv.enable = true;
