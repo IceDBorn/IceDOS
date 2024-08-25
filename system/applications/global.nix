@@ -14,9 +14,6 @@ let
 
   pkgFile = lib.importTOML ./packages.toml;
   myPackages = (pkgMapper pkgFile.myPackages);
-
-  cfg = config.icedos;
-
   codingDeps = (pkgMapper pkgFile.codingDeps);
 
   # Logout from any shell
@@ -71,6 +68,7 @@ in
     ./modules/tailscale.nix
     ./modules/tmux
     ./modules/waydroid.nix
+    ./modules/zed
     ./modules/zsh
   ];
 

@@ -65,6 +65,7 @@
         };
 
         valent.deviceId = mkOption { type = types.str; };
+        zed = mkOption { type = types.bool; };
       };
 
       bootloader = {

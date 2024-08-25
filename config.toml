@@ -6,6 +6,7 @@ clamav = false
 mangohud = true
 nvchad = true
 sunshine = true
+zed = true
 
 [icedos.applications.codium]
 enable = true
