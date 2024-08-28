@@ -10,13 +10,14 @@ let
 
   cfg = config.icedos.hardware.gpus.amd;
 in
-mkIf (cfg) {
+mkIf (cfg.enable) {
   boot = {
     initrd.kernelModules = [ "amdgpu" ]; # Use the amdgpu drivers upon boot
     kernelParams = [ "amdgpu.ppfeaturemask=0xffffffff" ]; # Unlock all gpu controls
   };
 
   environment.systemPackages = with pkgs; [ lact ]; # GPU overclocking tool
+  nixpkgs.config.rocmSupport = cfg.rocm;
 
   # We are creating the lact daemon service manually because the provided one hangs
   systemd.services.lactd = {

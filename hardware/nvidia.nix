@@ -50,6 +50,7 @@ mkIf (cfg.hardware.gpus.nvidia.enable) {
   );
 
   environment.systemPackages = [ ] ++ optional (cfg.hardware.devices.laptop) nvidia-offload; # Use nvidia-offload to launch programs using the nvidia GPU
+  nixpkgs.config.cudaSupport = cfg.hardware.gpus.nvidia.cuda;
 
   # Set nvidia gpu power limit
   systemd.services.nv-power-limit = mkIf (powerLimit.enable) {

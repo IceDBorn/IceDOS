@@ -157,12 +157,14 @@ gateway = "192.168.1.1"
 interface = "eno1"
 ip = "192.168.1.3"
 
-[icedos.hardware.gpus]
-amd = true
+[icedos.hardware.gpus.amd]
+enable = true
+rocm = true
 
 [icedos.hardware.gpus.nvidia]
 enable = false
 beta = false
+cuda = false
 
 [icedos.hardware.gpus.nvidia.powerLimit]
 enable = true

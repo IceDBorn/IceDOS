@@ -169,11 +169,15 @@
         };
 
         gpus = {
-          amd = mkOption { type = types.bool; };
+          amd = {
+            enable = mkOption { type = types.bool; };
+            rocm = mkOption { type = types.bool; };
+          };
 
           nvidia = {
             enable = mkOption { type = types.bool; };
             beta = mkOption { type = types.bool; };
+            cuda = mkOption { type = types.bool; };
 
             powerLimit = {
               enable = mkOption { type = types.bool; };

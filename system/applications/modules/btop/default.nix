@@ -12,10 +12,7 @@ let
 in
 {
   environment.systemPackages = [
-    (pkgs.btop.override {
-      cudaSupport = cfg.hardware.gpus.nvidia.enable;
-      rocmSupport = cfg.hardware.gpus.amd;
-    })
+    pkgs.btop
   ];
 
   home-manager.users =

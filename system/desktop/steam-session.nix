@@ -33,7 +33,7 @@ mkIf (cfg.applications.steam.enable && session.enable) {
       user = cfg.system.users.main.username;
     };
 
-    hardware.has.amd.gpu = cfg.hardware.gpus.amd;
+    hardware.has.amd.gpu = cfg.hardware.gpus.amd.enable;
 
     steamos.useSteamOSConfig = true;
   };
