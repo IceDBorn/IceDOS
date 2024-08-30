@@ -59,7 +59,7 @@ in
         gnome-keyring # Keyring daemon
         gnome-online-accounts # Nextcloud integration
         gnome-themes-extra # Adwaita GTK theme
-        gnome.gnome-clocks # Clock
+        gnome-clocks # Clock
         gnome.gnome-control-center # Gnome settings
         grim # Screenshot tool
         grimblast # Screenshot tool

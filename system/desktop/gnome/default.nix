@@ -48,14 +48,14 @@ in
       epiphany # Web browser
       evince # Document viewer
       geary # Email
+      gnome-characters # Emojis
       gnome-console # Terminal
       gnome-font-viewer # Font viewer
+      gnome-maps # Maps
+      gnome-software # Software center
       gnome-system-monitor # System monitoring tool
       gnome-text-editor # Text editor
       gnome-tour # Greeter
-      gnome.gnome-characters # Emojis
-      gnome.gnome-maps # Maps
-      gnome.gnome-software # Software center
       simple-scan # Scanner
       yelp # Help
     ];
