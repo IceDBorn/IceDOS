@@ -14,8 +14,8 @@
       };
 
       custom = {
-        start = "${pkgs.libnotify}/bin/notify-send 'Gamemode started'";
-        end = "${pkgs.libnotify}/bin/notify-send 'Gamemode ended'";
+        start = "${pkgs.libnotify}/bin/notify-send 'Gamemode enabled'";
+        end = "${pkgs.libnotify}/bin/notify-send 'Gamemode disabled'";
       };
     };
   };
