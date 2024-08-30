@@ -18,4 +18,6 @@ in
       nixd
       zed-editor
     ];
+
+  services.ollama.enable = true;
 }

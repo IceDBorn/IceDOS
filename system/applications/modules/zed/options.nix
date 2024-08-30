@@ -26,7 +26,14 @@ mkIf (cfg.applications.zed) {
           ".config/zed/settings.json" = {
             text = ''
               {
-                "assistant": { "button": false },
+                "assistant": {
+                  "default_model": {
+                    "provider": "ollama",
+                    "model": "llama3.1:latest"
+                  },
+                  "version": "2",
+                  "provider": null
+                },
                 "auto_update": false,
                 "autosave": "off",
                 "buffer_font_family": "JetBrainsMono Nerd Font",
@@ -34,6 +41,11 @@ mkIf (cfg.applications.zed) {
                 "chat_panel": { "button": false },
                 "collaboration_panel": { "button": false },
                 "features": { "inline_completion_provider": "none" },
+                "language_models": {
+                  "ollama": {
+                    "api_url": "http://localhost:11434",
+                  },
+                },
                 "notification_panel": { "button": false },
                 "terminal": {
                   "blinking": "on",
@@ -46,7 +58,13 @@ mkIf (cfg.applications.zed) {
                   "light": "One Light",
                   "mode": "system",
                 },
+                "indent_guides": {
+                  "enabled": true,
+                  "coloring": "indent_aware",
+                },
+                "inlay_hints": { "enabled": true },
                 "journal": { "hour_format": "hour24" },
+                "relative_line_numbers": true,
                 "show_whitespaces": "boundary",
                 "tabs": { "git_status": true },
                 "ui_font_size": 16,
