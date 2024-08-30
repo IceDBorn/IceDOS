@@ -9,6 +9,7 @@ let
   hyprland = cfg.desktop.hyprland.enable;
   switch-emulators = cfg.applications.emulators.switch;
   server = cfg.hardware.devices.server.enable;
+  zen-browser = cfg.applications.zen-browser.enable;
 in
 {
   flake.nix = ''
@@ -87,10 +88,17 @@ in
             ""
         }
 
-        zen-browser = {
-          url = "github:MarceColl/zen-browser-flake";
-          inputs.nixpkgs.follows = "nixpkgs";
-        };
+        ${
+          if (zen-browser) then
+            ''
+              zen-browser = {
+                url = "github:MarceColl/zen-browser-flake";
+                inputs.nixpkgs.follows = "nixpkgs";
+              };
+            ''
+          else
+            ""
+        }
       };
 
       outputs =
@@ -106,7 +114,7 @@ in
           ${if (steam-session) then ''steam-session,'' else ""}
           ${if (hyprland) then ''hyprland,hyprland-plugins,'' else ""}
           ${if (switch-emulators) then ''switch-emulators,'' else ""}
-          zen-browser,
+          ${if (zen-browser) then ''zen-browser,'' else ""}
         }@inputs:
         {
           nixosConfigurations.''${nixpkgs.lib.fileContents "/etc/hostname"} = nixpkgs.lib.nixosSystem {
