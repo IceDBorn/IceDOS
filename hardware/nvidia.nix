@@ -23,19 +23,20 @@ mkIf (cfg.hardware.gpus.nvidia.enable) {
   services.xserver.videoDrivers = [ "nvidia" ]; # Install the nvidia drivers
 
   hardware.nvidia = {
-    prime = mkIf (cfg.hardware.devices.laptop) {
-      offload.enable = true;
-      intelBusId = "PCI:0:2:0";
-      nvidiaBusId = "PCI:1:0:0";
-    };
-
     modesetting.enable = true;
+    open = true;
 
     package =
       if (cfg.hardware.gpus.nvidia.beta) then
         config.boot.kernelPackages.nvidiaPackages.beta
       else
         config.boot.kernelPackages.nvidiaPackages.stable;
+
+    prime = mkIf (cfg.hardware.devices.laptop) {
+      offload.enable = true;
+      intelBusId = "PCI:0:2:0";
+      nvidiaBusId = "PCI:1:0:0";
+    };
   };
 
   # Enable nvidia gpu acceleration for containers
