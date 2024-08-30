@@ -39,6 +39,7 @@
         };
 
         nvchad = mkOption { type = types.bool; };
+        solaar = mkOption { type = types.bool; };
 
         steam = {
           enable = mkOption { type = types.bool; };

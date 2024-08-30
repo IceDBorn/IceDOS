@@ -63,6 +63,7 @@ in
     ./modules/libvirtd.nix
     ./modules/mangohud.nix
     ./modules/nvchad
+    ./modules/solaar.nix
     ./modules/steam.nix
     ./modules/sunshine.nix
     ./modules/tailscale.nix
@@ -82,8 +83,5 @@ in
   services = {
     openssh.enable = true;
     fwupd.enable = true;
-    udev.packages = with pkgs; [
-      logitech-udev-rules # Needed for solaar to work
-    ];
   };
 }
