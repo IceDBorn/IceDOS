@@ -86,6 +86,11 @@ in
           else
             ""
         }
+
+        zen-browser = {
+          url = "github:MarceColl/zen-browser-flake";
+          inputs.nixpkgs.follows = "nixpkgs";
+        };
       };
 
       outputs =
@@ -101,6 +106,7 @@ in
           ${if (steam-session) then ''steam-session,'' else ""}
           ${if (hyprland) then ''hyprland,hyprland-plugins,'' else ""}
           ${if (switch-emulators) then ''switch-emulators,'' else ""}
+          zen-browser,
         }@inputs:
         {
           nixosConfigurations.''${nixpkgs.lib.fileContents "/etc/hostname"} = nixpkgs.lib.nixosSystem {

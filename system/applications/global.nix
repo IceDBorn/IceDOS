@@ -70,6 +70,7 @@ in
     ./modules/tmux
     ./modules/waydroid.nix
     ./modules/zed
+    ./modules/zen-browser
     ./modules/zsh
   ];
 

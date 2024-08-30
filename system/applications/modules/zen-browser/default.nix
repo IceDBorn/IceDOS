@@ -17,13 +17,9 @@ let
 
   cfg = config.icedos;
 
-  package = (
-    pkgs.librewolf.override {
-      nativeMessagingHosts = [ inputs.pipewire-screenaudio.packages.${pkgs.system}.default ];
-    }
-  );
+  package = (inputs.zen-browser.packages."${pkgs.system}".default);
 
-  librewolf-pwas = import ./pwas-wrapper.nix { inherit config pkgs; };
+  zen-pwas = import ./pwas-wrapper.nix { inherit config pkgs; };
   mapAttrsAndKeys = callback: list: (foldl' (acc: value: acc // (callback value)) { } list);
 in
 {
@@ -32,9 +28,11 @@ in
   # Set as default browser for electron apps
   environment = {
     sessionVariables.DEFAULT_BROWSER = mkIf (
-      cfg.applications.librewolf.enable && cfg.applications.librewolf.default
-    ) "${package}/bin/librewolf";
-    systemPackages = [ package ] ++ optional (cfg.applications.librewolf.pwas.enable) librewolf-pwas;
+      cfg.applications.zen-browser.enable && cfg.applications.zen-browser.default
+    ) "${package}/bin/zen";
+    systemPackages = [
+      package
+    ] ++ optional (cfg.applications.zen-browser.pwas.enable) zen-pwas;
   };
 
   home-manager.users =
@@ -47,19 +45,19 @@ in
         username = cfg.system.users.${user}.username;
       in
       {
-        ${username} = mkIf (cfg.applications.librewolf.enable) {
+        ${username} = mkIf (cfg.applications.zen-browser.enable) {
           home.file = {
             # Set profiles
-            ".librewolf/profiles.ini" = {
+            ".zen/profiles.ini" = {
               source = ./profiles.ini;
               force = true;
             };
           };
 
-          xdg.desktopEntries.librewolf-pwas = mkIf (cfg.applications.librewolf.pwas.enable) {
-            exec = "librewolf-pwas";
-            icon = "librewolf";
-            name = "Librewolf PWAs";
+          xdg.desktopEntries.zen-pwas = mkIf (cfg.applications.zen-browser.pwas.enable) {
+            exec = "zen-pwas";
+            icon = "zen";
+            name = "Zen PWAs";
             terminal = false;
             type = "Application";
           };
