@@ -34,7 +34,12 @@ in
     sessionVariables.DEFAULT_BROWSER = mkIf (
       cfg.applications.librewolf.enable && cfg.applications.librewolf.default
     ) "${package}/bin/librewolf";
-    systemPackages = [ package ] ++ optional (cfg.applications.librewolf.pwas.enable) librewolf-pwas;
+
+    systemPackages =
+      if (cfg.applications.librewolf.enable) then
+        [ package ] ++ optional (cfg.applications.librewolf.pwas.enable) librewolf-pwas
+      else
+        [ ];
   };
 
   home-manager.users =

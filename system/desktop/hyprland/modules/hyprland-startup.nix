@@ -1,6 +1,35 @@
 { pkgs, config }:
 let
-  monitor = config.icedos.hardware.monitors.a.name;
+  cfg = config.icedos;
+  browser =
+    if (cfg.applications.librewolf.enable && cfg.applications.librewolf.default) then
+      "run librewolf"
+    else if (cfg.applications.zen-browser.enable && cfg.applications.zen-browser.default) then
+      "run zen"
+    else
+      "";
+
+  monitor = cfg.hardware.monitors.a.name;
+
+  pwas =
+    if
+      (
+        cfg.applications.librewolf.enable
+        && cfg.applications.librewolf.default
+        && cfg.applications.librewolf.pwas.enable
+      )
+    then
+      "run librewolf-pwas"
+    else if
+      (
+        cfg.applications.zen-browser.enable
+        && cfg.applications.zen-browser.default
+        && cfg.applications.zen-browser.pwas.enable
+      )
+    then
+      "run zen-pwas"
+    else
+      "";
 in
 pkgs.writeShellScriptBin "hyprland-startup" ''
   run () {
@@ -26,8 +55,8 @@ pkgs.writeShellScriptBin "hyprland-startup" ''
   nm-applet --indicator &
 
   # Standard applications
-  librewolf &
-  librewolf-pwas &
+  ${browser}
+  ${pwas}
   nautilus -w &
   nautilus -w &
   run steam

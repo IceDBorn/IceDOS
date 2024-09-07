@@ -9,12 +9,20 @@ let
     attrNames
     filter
     foldl'
-    mkIf
     ;
 
   cfg = config.icedos;
 
+  browser =
+    if (cfg.applications.librewolf.enable && cfg.applications.librewolf.default) then
+      "librewolf.desktop"
+    else if (cfg.applications.zen-browser.enable && cfg.applications.zen-browser.default) then
+      "zen.desktop"
+    else
+      "";
+
   mapAttrsAndKeys = callback: list: (foldl' (acc: value: acc // (callback value)) { } list);
+
 in
 {
   home-manager.users =
@@ -62,7 +70,7 @@ in
               enable = true;
 
               defaultApplications = {
-                "application/pdf" = "librewolf.desktop";
+                "application/pdf" = browser;
                 "application/x-bittorrent" = "de.haeckerfelix.Fragments.desktop";
                 "application/x-ms-dos-executable" = "wine.desktop";
                 "application/x-shellscript" = "codium.desktop";
@@ -72,14 +80,14 @@ in
                 "image/jpeg" = "org.gnome.gThumb.desktop";
                 "image/png" = "org.gnome.gThumb.desktop";
                 "image/svg+xml" = "org.gnome.gThumb.desktop";
-                "text/html" = "librewolf.desktop";
+                "text/html" = browser;
                 "text/plain" = "codium.desktop";
                 "video/mp4" = "io.github.celluloid_player.Celluloid.desktop";
                 "video/x-matroska" = "io.github.celluloid_player.Celluloid.desktop";
-                "x-scheme-handler/about" = "librewolf.desktop";
-                "x-scheme-handler/http" = "librewolf.desktop";
-                "x-scheme-handler/https" = "librewolf.desktop";
-                "x-scheme-handler/unknown" = "librewolf.desktop";
+                "x-scheme-handler/about" = browser;
+                "x-scheme-handler/http" = browser;
+                "x-scheme-handler/https" = browser;
+                "x-scheme-handler/unknown" = browser;
               };
             };
           };

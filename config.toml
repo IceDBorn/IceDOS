@@ -44,7 +44,7 @@ enable = true
 hideDecorations = false # Hide top bar
 
 [icedos.applications.librewolf]
-enable = true
+enable = false
 default = false
 overrides = true
 privacy = true
