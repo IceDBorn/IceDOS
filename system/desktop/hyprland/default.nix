@@ -55,12 +55,12 @@ in
         file-roller # Archive file manager
         gnome-calculator # Calculator
         gnome-calendar # Calendar
+        gnome-clocks # Clock
+        gnome-control-center # Gnome settings
         gnome-disk-utility # Disks manager
         gnome-keyring # Keyring daemon
         gnome-online-accounts # Nextcloud integration
         gnome-themes-extra # Adwaita GTK theme
-        gnome-clocks # Clock
-        gnome.gnome-control-center # Gnome settings
         grim # Screenshot tool
         grimblast # Screenshot tool
         hyprfreeze # Script to freeze active hyprland window
