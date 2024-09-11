@@ -7,14 +7,14 @@
 
 let
   inherit (lib) mkIf;
-  cfg = config.icedos.applications;
+  cfg = config.icedos.applications.zed;
 in
 {
   imports = [ ./options.nix ];
 
   environment.systemPackages =
     with pkgs;
-    mkIf (cfg.zed) [
+    mkIf (cfg.enable) [
       nixd
       zed-editor
     ];

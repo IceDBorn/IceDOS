@@ -11,7 +11,7 @@ let
   cfg = config.icedos;
   mapAttrsAndKeys = callback: list: (foldl' (acc: value: acc // (callback value)) { } list);
 in
-mkIf (cfg.applications.zed) {
+mkIf (cfg.applications.zed.enable) {
   home-manager.users =
     let
       users = filter (user: cfg.system.users.${user}.enable == true) (attrNames cfg.system.users);
@@ -54,9 +54,9 @@ mkIf (cfg.applications.zed) {
                   "font_size": 14,
                 },
                 "theme": {
-                  "dark": "One Dark",
-                  "light": "One Light",
-                  "mode": "system",
+                  "dark": "${cfg.applications.zed.theme.dark}",
+                  "light": "${cfg.applications.zed.theme.light}",
+                  "mode": "${cfg.applications.zed.theme.mode}",
                 },
                 "indent_guides": {
                   "enabled": true,

@@ -7,7 +7,6 @@ mangohud = true
 nvchad = true
 solaar = true
 sunshine = true
-zed = true
 
 [icedos.applications.codium]
 enable = true
@@ -78,6 +77,14 @@ enableTrayscale = true
 
 [icedos.applications.valent]
 deviceId = "901524a4_c7c0_407e_9903_431abce54131"
+
+[icedos.applications.zed]
+enable = true
+
+[icedos.applications.zed.theme]
+dark = "One Dark"
+light = "One Light"
+mode = "system" # system, dark, light
 
 [icedos.applications.zen-browser]
 enable = true

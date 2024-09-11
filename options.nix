@@ -67,7 +67,16 @@
         };
 
         valent.deviceId = mkOption { type = types.str; };
-        zed = mkOption { type = types.bool; };
+
+        zed = {
+          enable = mkOption { type = types.bool; };
+
+          theme = {
+            dark = mkOption { type = types.str; };
+            light = mkOption { type = types.str; };
+            mode = mkOption { type = types.str; };
+          };
+        };
 
         zen-browser = {
           enable = mkOption { type = types.bool; };
