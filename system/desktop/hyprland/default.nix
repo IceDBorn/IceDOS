@@ -1,7 +1,5 @@
 {
   config,
-  inputs,
-  lib,
   pkgs,
   ...
 }:
@@ -19,6 +17,7 @@ let
     disk-watcher # Script to check if any disk has a read/write usage above given numbers
     hyprland-startup # Startup script
     hyprlock-wrapper # Wrap hyprlock
+    network-watcher # Script to check if network has a usage above given number
     pipewire-watcher # Script to check if pipewire has active links
   ];
 in
@@ -66,7 +65,6 @@ in
         hyprpaper # Wallpaper daemon
         hyprpicker # Color picker
         hyprshade # Shader config tool
-        network-watcher # Script to check if network has a usage above given number
         networkmanagerapplet # Network manager tray icon
         polkit_gnome # Polkit manager
         poweralertd # Battery level alerts

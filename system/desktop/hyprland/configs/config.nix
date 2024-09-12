@@ -208,30 +208,31 @@ in
                 windowrulev2 = workspace 7 silent, class:^(terminals)$ # Terminal
               ''
           }
+
           # Hide maximized window borders
           windowrulev2 = noborder, fullscreen:1
 
-          # Inhibit idle for apps
-          windowrulev2 = idleinhibit focus, class:^(org\.gnome\.clocks|Steam|steam|steam_app_.*)$
-
-          # Tile apps
+          # Tile windows
           windowrulev2 = tile, class:^(Godot.*|Steam|steam_app_.*|photoshop\.exe|DesktopEditors)$
           windowrulev2 = tile, title:^(.*Steam[A-Za-z0-9\s]*)$
 
-          # Float apps
-          windowrulev2 = float, class:^(feh)$
+          # Pin floating windows
+          windowrulev2 = pin, class:(gcr-prompter)
 
-          # Pin floating apps
-          windowrulev2 = pin, class:^(feh)$
+          # Center windows
+          windowrulev2 = center, class:(gcr-prompter)
+
+          # Size windows
+          windowrulev2 = size 40% 30%, class:(gcr-prompter)
+
+          # Force focus on windows
+          windowrulev2 = stayfocused, class:(gcr-prompter)
+
+          # Dim around windows
+          windowrulev2 = dimaround, class:(gcr-prompter)
 
           # Remove initial focus from apps
           windowrulev2 = noinitialfocus, class:^(steam)$, title:^(notificationtoasts.*)$, floating:1
-
-          # Pin floating apps
-          windowrulev2 = pin, class:(gcr-prompter)
-
-          # Center apps
-          windowrulev2 = center, class:(gcr-prompter)
 
           exec-once = hyprland-startup
 
