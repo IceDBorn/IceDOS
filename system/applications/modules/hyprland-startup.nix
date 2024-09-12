@@ -1,4 +1,5 @@
 { pkgs, config }:
+
 let
   cfg = config.icedos;
   browser =
@@ -48,6 +49,7 @@ pkgs.writeShellScriptBin "hyprland-startup" ''
   wl-paste --type text --watch cliphist store &
   xrandr --output "${monitor}" --primary
   run poweralertd
+  run hyprlux
   sleep 1 && hyprctl reload
   sleep 1 && run waybar
 

@@ -56,6 +56,11 @@ in
                 url = "github:hyprwm/hyprland-plugins";
                 inputs.hyprland.follows = "hyprland";
               };
+
+              hyprlux = {
+                url = "github:amadejkastelic/Hyprlux";
+                inputs.nixpkgs.follows = "hyprland/nixpkgs";
+              };
             ''
           else
             ""
@@ -112,7 +117,7 @@ in
           pipewire-screenaudio,
           shell-in-netns,
           ${if (steam-session) then ''steam-session,'' else ""}
-          ${if (hyprland) then ''hyprland,hyprland-plugins,'' else ""}
+          ${if (hyprland) then ''hyprland,hyprland-plugins,hyprlux,'' else ""}
           ${if (switch-emulators) then ''switch-emulators,'' else ""}
           ${if (zen-browser) then ''zen-browser,'' else ""}
         }@inputs:
@@ -161,7 +166,9 @@ in
                 if (!server && hyprland) then
                   ''
                     hyprland.nixosModules.default
+                    hyprlux.nixosModules.default
                     ./system/desktop/hyprland
+                    ./system/applications/modules/hyprlux.nix
                   ''
                 else
                   ""

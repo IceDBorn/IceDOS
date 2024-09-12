@@ -1,17 +1,15 @@
 {
-  pkgs,
   config,
+  inputs,
   lib,
+  pkgs,
   ...
 }:
 
 let
-  inherit (lib) mkIf;
-  cfg = config.icedos;
-
   cpu-watcher = import modules/cpu-watcher.nix { inherit pkgs config; };
   disk-watcher = import modules/disk-watcher.nix { inherit pkgs config; };
-  hyprland-startup = import modules/hyprland-startup.nix { inherit pkgs config; };
+  hyprland-startup = import ../../applications/modules/hyprland-startup.nix { inherit pkgs config; };
   hyprlock-wrapper = import modules/hyprlock-wrapper.nix { inherit pkgs; };
   network-watcher = import modules/network-watcher.nix { inherit pkgs config; };
   pipewire-watcher = import modules/pipewire-watcher.nix { inherit pkgs; };
@@ -70,6 +68,7 @@ in
         hyprpaper # Wallpaper daemon
         hyprpicker # Color picker
         hyprshade # Shader config tool
+        # inputs.ashell.packages.${pkgs.system}.default
         network-watcher # Script to check if network has a usage above given number
         networkmanagerapplet # Network manager tray icon
         polkit_gnome # Polkit manager

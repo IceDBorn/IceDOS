@@ -32,6 +32,11 @@
       inputs.hyprland.follows = "hyprland";
     };
 
+    hyprlux = {
+      url = "github:amadejkastelic/Hyprlux";
+      inputs.nixpkgs.follows = "hyprland/nixpkgs";
+    };
+
     phps = {
       url = "github:fossar/nix-phps/5c2a9bf0246b7f38b7ca737f0f1f36d5b45ae15a";
       inputs.nixpkgs.url = "github:NixOS/nixpkgs/b73c2221a46c13557b1b3be9c2070cc42cf01eb3";
@@ -67,6 +72,7 @@
       steam-session,
       hyprland,
       hyprland-plugins,
+      hyprlux,
 
       zen-browser,
     }@inputs:
@@ -105,7 +111,9 @@
           ./system/desktop/steam-session.nix
 
           hyprland.nixosModules.default
+          hyprlux.nixosModules.default
           ./system/desktop/hyprland
+          ./system/applications/modules/hyprlux.nix
 
           ./system/desktop
           ./system/desktop/gnome
