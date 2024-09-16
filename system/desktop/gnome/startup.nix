@@ -53,7 +53,7 @@ in
           ".config/autostart/slack.desktop" = mkIf (user == "work") {
             text = ''
               [Desktop Entry]
-              Exec=slack --enable-features=WaylandWindowDecorations
+              Exec=slack
               Icon=slack
               Name=Slack
               StartupWMClass=slack
