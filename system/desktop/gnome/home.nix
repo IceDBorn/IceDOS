@@ -123,7 +123,6 @@ in
               enabled-extensions =
                 [
                   "appindicatorsupport@rgcjonas.gmail.com"
-                  "pano@elhan.io"
                   "quick-settings-tweaks@qwreey"
                   "user-theme@gnome-shell-extensions.gcampax.github.com"
                 ]
@@ -223,15 +222,6 @@ in
                     s
                   ])
                 ]) cfg.system.users.${user}.desktop.gnome.pinnedApps.arcmenu.list);
-            };
-
-            "org/gnome/shell/extensions/pano" = {
-              history-length = 100;
-              paste-on-select = false;
-              play-audio-on-copy = false;
-              send-notification-on-copy = false;
-              show-indicator = false;
-              wiggle-indicator = false;
             };
           };
         };

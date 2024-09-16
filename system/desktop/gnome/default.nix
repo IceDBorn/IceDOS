@@ -30,7 +30,6 @@ in
           gnome-extension-manager # Gnome extensions manager and downloader
           gnome-tweaks # Tweaks missing from pure gnome
           gnomeExtensions.appindicator # Tray icons for gnome
-          gnomeExtensions.pano # Next-gen Clipboard manager
           gnomeExtensions.quick-settings-tweaker
         ]
         ++ optional (cfg.extensions.arcmenu) gnomeExtensions.arcmenu # Start menu
