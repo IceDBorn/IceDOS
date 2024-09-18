@@ -11,21 +11,16 @@ let
     attrNames
     filter
     foldl'
-    lists
+    length
     mkIf
     ;
 
   cfg = config.icedos;
-
-  enabledMonitors = lists.naturalSort (
-    filter (monitor: monitors.${monitor}.enable == true) (attrNames monitors)
-  );
-
-  l = lib.lists.length (enabledMonitors);
+  browsers = "librewolf|zen-alpha";
+  monitorsLength = length (monitors);
   mapAttrsAndKeys = callback: list: (foldl' (acc: value: acc // (callback value)) { } list);
   monitors = cfg.hardware.monitors;
   users = filter (user: cfg.system.users.${user}.enable == true) (attrNames cfg.system.users);
-  browsers = "librewolf|zen-alpha";
 in
 {
   home-manager.users = mapAttrsAndKeys (
@@ -40,12 +35,12 @@ in
           ${lib.concatImapStrings (
             i: m:
             let
-              name = monitors.${m}.name;
-              resolution = monitors.${m}.resolution;
-              refreshRate = builtins.toString (monitors.${m}.refreshRate);
-              position = builtins.toString (monitors.${m}.position);
-              scaling = builtins.toString (monitors.${m}.scaling);
-              deckRotation = if (monitors.${m}.deck) then ",transform,3" else "";
+              name = m.name;
+              resolution = m.resolution;
+              refreshRate = builtins.toString (m.refreshRate);
+              position = builtins.toString (m.position);
+              scaling = builtins.toString (m.scaling);
+              deckRotation = if (m.name == "eDP-1" && cfg.hardware.devices.steamdeck) then ",transform,3" else "";
 
               extraBind =
                 if (i == 4) then
@@ -69,7 +64,7 @@ in
                 "workspace = ${cw},monitor:${name}${default}\nbind = $mainMod ${extraBind},${cb},workspace,${cw}\nbind = $mainMod SHIFT ${extraBind},${cb},movetoworkspace,${cw}"
               ) 10
             )
-          ) enabledMonitors}
+          ) monitors}
           env = WLR_DRM_NO_ATOMIC,1
 
           general {
@@ -160,7 +155,7 @@ in
               pavucontrol = "org.pulseaudio.pavucontrol";
               blueberry = "blueberry.py";
             in
-            if (l >= 3) then
+            if (monitorsLength >= 3) then
               ''
                 windowrulev2 = workspace 1 silent, class:^(${browsers})$
                 windowrulev2 = workspace 2 silent, class:^(dev.zed.Zed)$
@@ -173,7 +168,7 @@ in
                 windowrulev2 = workspace 21 silent, title:^(.*Steam[A-Za-z0-9\s]*)$
                 windowrulev2 = workspace 22 silent, class:^(${blueberry}|${pavucontrol}|valent)$
               ''
-            else if (l == 2) then
+            else if (monitorsLength == 2) then
               ''
                 windowrulev2 = workspace 1 silent, class:^(${browsers})$
                 windowrulev2 = workspace 2 silent, class:^(dev.zed.Zed)$

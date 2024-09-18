@@ -1,6 +1,5 @@
 {
   config,
-  pkgs,
   lib,
   ...
 }:
@@ -14,10 +13,9 @@ let
     ;
 
   cfg = config.icedos;
-
   mapAttrsAndKeys = callback: list: (foldl' (acc: value: acc // (callback value)) { } list);
 in
-mkIf (cfg.applications.mangohud) {
+mkIf (cfg.applications.mangohud.enable) {
   home-manager.users =
     let
       users = filter (user: cfg.system.users.${user}.enable == true) (attrNames cfg.system.users);
@@ -44,7 +42,7 @@ mkIf (cfg.applications.mangohud) {
               engine_short_names = true;
               font_size = 18;
               fps_color = "FFFFFF";
-              fps_limit = "${builtins.toString (cfg.hardware.monitors.a.refreshRate)},60,0";
+              fps_limit = "${builtins.toString (cfg.applications.mangohud.maxFpsLimit)},60,0";
               frame_timing = false;
               frametime = false;
               gl_vsync = 0;

@@ -1,15 +1,18 @@
-{ config, lib, ... }:
+{
+  config,
+  lib,
+  pkgs,
+  ...
+}:
 let
   inherit (lib) attrNames filter foldl';
 
   cfg = config.icedos;
 
   mapAttrsAndKeys = callback: list: (foldl' (acc: value: acc // (callback value)) { } list);
-
-  workspace =
-    if (cfg.hardware.monitors.a.enable && cfg.hardware.monitors.b.enable) then "11" else "3";
 in
 {
+  environment.systemPackages = [ pkgs.swaynotificationcenter ];
   home-manager.users =
     let
       users = filter (user: cfg.system.users.${user}.enable == true) (attrNames cfg.system.users);
@@ -23,14 +26,6 @@ in
         ${username}.home.file = {
           ".config/swaync/cfg.json".text = ''
             {
-              "scripts": {
-                "messengers": {
-                  "exec": "hyprctl dispatch workspace ${workspace}",
-                  "app-name": "((^|, )(WebCord|Signal|pwas))+$",
-                  "run-on": "action"
-                }
-              },
-
               "$schema": "/etc/xdg/swaync/configSchema.json",
 
               "positionX": "right",

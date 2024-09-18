@@ -1,13 +1,23 @@
-{ lib, config, ... }:
+{
+  config,
+  lib,
+  pkgs,
+  ...
+}:
 
 let
-  inherit (lib) attrNames filter foldl';
+  inherit (lib)
+    attrNames
+    filter
+    foldl'
+    ;
 
   cfg = config.icedos;
   mapAttrsAndKeys = callback: list: (foldl' (acc: value: acc // (callback value)) { } list);
-  monitor = cfg.hardware.monitors.a.name;
 in
 {
+  environment.systemPackages = [ pkgs.hypridle ];
+
   home-manager.users =
     let
       users = filter (user: cfg.system.users.${user}.enable == true) (attrNames cfg.system.users);
@@ -23,7 +33,7 @@ in
           general {
               lock_cmd = pidof hyprlock || hyprlock
               before_sleep_cmd = loginctl lock-session
-              after_sleep_cmd = hyprctl dispatch dpms on && xrandr --output "${monitor}" --primary
+              after_sleep_cmd = hyprctl dispatch dpms on && xrandr --output "${cfg.desktop.hyprland.mainMonitor}" --primary
           }
 
           # Lower brightness

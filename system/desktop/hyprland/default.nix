@@ -7,7 +7,11 @@
 let
   cpu-watcher = import modules/cpu-watcher.nix { inherit pkgs config; };
   disk-watcher = import modules/disk-watcher.nix { inherit pkgs config; };
-  hyprland-startup = import ../../applications/modules/hyprland-startup.nix { inherit pkgs config; };
+
+  hyprland-startup = import ../../applications/modules/hyprland-startup.nix {
+    inherit config pkgs;
+  };
+
   hyprlock-wrapper = import modules/hyprlock-wrapper.nix { inherit pkgs; };
   network-watcher = import modules/network-watcher.nix { inherit pkgs config; };
   pipewire-watcher = import modules/pipewire-watcher.nix { inherit pkgs; };
@@ -23,10 +27,10 @@ let
 in
 {
   imports = [
+    ../../applications/modules/hypridle.nix
+    ../../applications/modules/swaync
     ../../applications/modules/valent.nix
     ./configs/config.nix
-    ./configs/hypridle.nix
-    ./configs/swaync/config.nix
     ./configs/waybar/config.nix
     ./configs/wleave/style.nix
     ./home.nix
@@ -59,7 +63,6 @@ in
         grim # Screenshot tool
         grimblast # Screenshot tool
         hyprfreeze # Script to freeze active hyprland window
-        hypridle # Idle inhibitor
         hyprland-per-window-layout # Per window layout
         hyprlock # Lock
         hyprpaper # Wallpaper daemon
@@ -71,7 +74,6 @@ in
         rofi-wayland # App launcher
         slurp # Monitor selector
         swappy # Edit screenshots
-        swaynotificationcenter # Notification daemon
         swayosd # Notifications for volume, caps lock etc.
         sysstat # Needed for disk-watcher
         waybar # Status bar

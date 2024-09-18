@@ -7,17 +7,14 @@
 
 let
   inherit (lib)
-    attrNames
     concatMapStrings
-    filter
     length
     optionals
     ;
 
   cfg = config.icedos;
-  enabledMonitors = filter (monitor: monitors.${monitor}.enable == true) (attrNames monitors);
   monitors = cfg.hardware.monitors;
-  noMonitors = length (enabledMonitors) == 0;
+  noMonitors = length (monitors) == 0;
 in
 {
   boot = {
@@ -51,13 +48,13 @@ in
         (concatMapStrings (
           m:
           let
-            name = monitors.${m}.name;
-            resolution = monitors.${m}.resolution;
-            refreshRate = builtins.toString (monitors.${m}.refreshRate);
-            rotation = builtins.toString (monitors.${m}.rotation);
+            name = m.name;
+            resolution = m.resolution;
+            refreshRate = builtins.toString (m.refreshRate);
+            rotation = builtins.toString (m.rotation);
           in
           "video=${name}:${resolution}@${refreshRate},rotate=${rotation}"
-        ) enabledMonitors)
+        ) monitors)
       ];
 
     kernel.sysctl = {

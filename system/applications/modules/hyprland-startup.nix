@@ -1,7 +1,9 @@
-{ pkgs, config }:
+{
+  config,
+  pkgs,
+}:
 
 let
-  cfg = config.icedos;
   browser =
     if (cfg.applications.librewolf.enable && cfg.applications.librewolf.default) then
       "run librewolf"
@@ -10,7 +12,7 @@ let
     else
       "";
 
-  monitor = cfg.hardware.monitors.a.name;
+  cfg = config.icedos;
 
   pwas =
     if
@@ -47,7 +49,7 @@ pkgs.writeShellScriptBin "hyprland-startup" ''
   run swayosd
   wl-paste --type image --watch cliphist store &
   wl-paste --type text --watch cliphist store &
-  xrandr --output "${monitor}" --primary
+  xrandr --output "${cfg.desktop.hyprland.mainMonitor}" --primary
   run poweralertd
   run hyprlux
   sleep 1 && hyprctl reload
