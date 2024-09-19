@@ -148,6 +148,12 @@
           enable = mkOption { type = types.bool; };
           backlight = mkOption { type = types.str; };
 
+          cs2fix = {
+            enable = mkOption { type = types.bool; };
+            width = mkOption { type = types.number; };
+            height = mkOption { type = types.number; };
+          };
+
           lock = {
             secondsToLowerBrightness = mkOption { type = types.number; };
             cpuUsageThreshold = mkOption { type = types.number; };

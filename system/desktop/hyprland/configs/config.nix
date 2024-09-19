@@ -245,6 +245,24 @@ in
           		gesture_positive = true
           	}
           }
+
+          ${
+            if (cfg.desktop.hyprland.cs2fix.enable) then
+              ''
+                plugin = ${
+                  inputs.hyprland-plugins.packages.${pkgs.system}.csgo-vulkan-fix
+                }/lib/libcsgo-vulkan-fix.so
+                plugin {
+                    csgo-vulkan-fix {
+                        res_w = ${builtins.toString (cfg.desktop.hyprland.cs2fix.width)}
+                        res_h = ${builtins.toString (cfg.desktop.hyprland.cs2fix.height)}
+                        class = SDL Application
+                    }
+                }
+              ''
+            else
+              ""
+          }
         '';
       };
     }

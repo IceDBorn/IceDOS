@@ -151,6 +151,11 @@ enable = true
 backlight = "amdgpu_bl0" # Find backlight unit using brightnessctl
 mainMonitor = "DP-1"
 
+[icedos.desktop.hyprland.cs2fix]
+enable = true
+width = 1440
+height = 1080
+
 [icedos.desktop.hyprland.lock]
 secondsToLowerBrightness = 60
 cpuUsageThreshold = 60 # CPU usage to inhibit lock in percentage
