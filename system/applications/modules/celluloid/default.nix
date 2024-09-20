@@ -30,12 +30,12 @@ mkIf (cfg.applications.celluloid) {
       in
       {
         ${username} = {
-          home.file.".config/celluloid" = mkIf (!cfg.hardware.devices.server.enable) {
+          home.file.".config/celluloid" = {
             source = ./config;
             recursive = true;
           };
 
-          dconf.settings = mkIf (!cfg.hardware.devices.server.enable) {
+          dconf.settings = {
             "io/github/celluloid-player/celluloid" = {
               mpv-config-file = "file:///home/${username}/.config/celluloid/celluloid.conf";
             };
