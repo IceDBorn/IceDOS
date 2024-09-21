@@ -38,7 +38,7 @@ mkIf (cfg.applications.kitty.enable) {
             };
             font.name = "JetBrainsMono Nerd Font";
             font.size = 10;
-            theme = "Catppuccin-Mocha";
+            themeFile = "OneDark-Pro";
           };
         };
       }
