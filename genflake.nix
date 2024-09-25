@@ -184,6 +184,8 @@ in
                   ""
               }
 
+              ${if (zen-browser) then ''./system/applications/modules/zen-browser'' else ""}
+
               ${concatImapStrings (i: user: "./system/applications/users/${user}\n") users}
             ];
           };
