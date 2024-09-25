@@ -26,14 +26,26 @@ mkIf (cfg.applications.zed.enable) {
           ".config/zed/settings.json" = {
             text = ''
               {
-                "assistant": {
-                  "default_model": {
-                    "provider": "ollama",
-                    "model": "llama3.1:latest"
-                  },
-                  "version": "2",
-                  "provider": null
-                },
+                ${
+                  if (cfg.applications.zed.ollamaSupport) then
+                    ''
+                      "assistant": {
+                        "default_model": {
+                          "provider": "ollama",
+                          "model": "llama3.1:latest"
+                        },
+                        "version": "2",
+                        "provider": null
+                      },
+                      "language_models": {
+                        "ollama": {
+                          "api_url": "http://localhost:11434",
+                        },
+                      },
+                    ''
+                  else
+                    ""
+                }
                 "auto_update": false,
                 "autosave": "off",
                 "buffer_font_family": "JetBrainsMono Nerd Font",
@@ -41,11 +53,6 @@ mkIf (cfg.applications.zed.enable) {
                 "chat_panel": { "button": false },
                 "collaboration_panel": { "button": false },
                 "features": { "inline_completion_provider": "none" },
-                "language_models": {
-                  "ollama": {
-                    "api_url": "http://localhost:11434",
-                  },
-                },
                 "notification_panel": { "button": false },
                 "terminal": {
                   "blinking": "on",

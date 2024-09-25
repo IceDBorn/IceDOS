@@ -19,5 +19,5 @@ in
       zed-editor
     ];
 
-  services.ollama.enable = true;
+  services.ollama.enable = cfg.ollamaSupport;
 }
