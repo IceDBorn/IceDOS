@@ -276,6 +276,11 @@ email = "git.outsider841@simplelogin.fr"
 [icedos.system.users.main.applications.nvchad]
 formatOnSave = true
 
+[icedos.system.users.main.desktop.gnome.autostart]
+signal = true
+slack = false
+steam = true
+
 [icedos.system.users.main.desktop.gnome.pinnedApps.arcmenu]
 enable = false
 list = ["codiumIDE.desktop", "codium.desktop", "mullvad-vpn.desktop"]
@@ -319,6 +324,11 @@ email = "git.outsider841@simplelogin.fr"
 [icedos.system.users.work.applications.nvchad]
 formatOnSave = false
 
+[icedos.system.users.work.desktop.gnome.autostart]
+signal = false
+slack = true
+steam = false
+
 [icedos.system.users.work.desktop.gnome.pinnedApps.arcmenu]
 enable = false
 list = ["codiumIDE.desktop", "codium.desktop", "mullvad-vpn.desktop"]
@@ -361,6 +371,11 @@ email = "git.outsider841@simplelogin.fr"
 
 [icedos.system.users.server.applications.nvchad]
 formatOnSave = true
+
+[icedos.system.users.server.desktop.gnome.autostart]
+signal = false
+slack = false
+steam = false
 
 [icedos.system.users.server.desktop.gnome.pinnedApps.arcmenu]
 enable = false

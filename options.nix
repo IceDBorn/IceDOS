@@ -287,15 +287,23 @@
             };
 
             desktop = {
-              gnome.pinnedApps = {
-                arcmenu = {
-                  enable = mkOption { type = types.bool; };
-                  list = mkOption { type = with types; listOf str; };
+              gnome = {
+                autostart = {
+                  signal = mkOption { type = types.bool; };
+                  slack = mkOption { type = types.bool; };
+                  steam = mkOption { type = types.bool; };
                 };
 
-                shell = {
-                  enable = mkOption { type = types.bool; };
-                  list = mkOption { type = with types; listOf str; };
+                pinnedApps = {
+                  arcmenu = {
+                    enable = mkOption { type = types.bool; };
+                    list = mkOption { type = with types; listOf str; };
+                  };
+
+                  shell = {
+                    enable = mkOption { type = types.bool; };
+                    list = mkOption { type = with types; listOf str; };
+                  };
                 };
               };
 
@@ -339,14 +347,22 @@
             };
 
             desktop = {
-              gnome.pinnedApps = {
-                arcmenu = {
-                  enable = mkOption { type = types.bool; };
-                  list = mkOption { type = with types; listOf str; };
+              gnome = {
+                autostart = {
+                  signal = mkOption { type = types.bool; };
+                  slack = mkOption { type = types.bool; };
+                  steam = mkOption { type = types.bool; };
                 };
-                shell = {
-                  enable = mkOption { type = types.bool; };
-                  list = mkOption { type = with types; listOf str; };
+
+                pinnedApps = {
+                  arcmenu = {
+                    enable = mkOption { type = types.bool; };
+                    list = mkOption { type = with types; listOf str; };
+                  };
+                  shell = {
+                    enable = mkOption { type = types.bool; };
+                    list = mkOption { type = with types; listOf str; };
+                  };
                 };
               };
 
@@ -390,14 +406,22 @@
             };
 
             desktop = {
-              gnome.pinnedApps = {
-                arcmenu = {
-                  enable = mkOption { type = types.bool; };
-                  list = mkOption { type = with types; listOf str; };
+              gnome = {
+                autostart = {
+                  signal = mkOption { type = types.bool; };
+                  slack = mkOption { type = types.bool; };
+                  steam = mkOption { type = types.bool; };
                 };
-                shell = {
-                  enable = mkOption { type = types.bool; };
-                  list = mkOption { type = with types; listOf str; };
+
+                pinnedApps = {
+                  arcmenu = {
+                    enable = mkOption { type = types.bool; };
+                    list = mkOption { type = with types; listOf str; };
+                  };
+                  shell = {
+                    enable = mkOption { type = types.bool; };
+                    list = mkOption { type = with types; listOf str; };
+                  };
                 };
               };
 

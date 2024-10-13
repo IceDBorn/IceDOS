@@ -24,21 +24,23 @@ in
       in
       {
         ${username}.home.file = mkIf (cfg.desktop.gnome.enable && cfg.desktop.gnome.startupItems) {
-          # Add signal to startup
-          ".config/autostart/signal-desktop.desktop" = mkIf (user != "work") {
-            text = ''
-              [Desktop Entry]
-              Exec=signal-desktop
-              Icon=signal
-              Name=Signal
-              StartupWMClass=signal
-              Terminal=false
-              Type=Application
-            '';
-          };
+          # Add Signal to startup
+          ".config/autostart/signal-desktop.desktop" =
+            mkIf (cfg.system.users.${user}.desktop.gnome.autostart.signal)
+              {
+                text = ''
+                  [Desktop Entry]
+                  Exec=signal-desktop
+                  Icon=signal
+                  Name=Signal
+                  StartupWMClass=signal
+                  Terminal=false
+                  Type=Application
+                '';
+              };
 
-          # Add steam to startup
-          ".config/autostart/steam.desktop" = mkIf (user != "work") {
+          # Add Steam to startup
+          ".config/autostart/steam.desktop" = mkIf (cfg.system.users.${user}.desktop.gnome.autostart.steam) {
             text = ''
               [Desktop Entry]
               Exec=steam
@@ -50,7 +52,8 @@ in
             '';
           };
 
-          ".config/autostart/slack.desktop" = mkIf (user == "work") {
+          # Add Slack to startup
+          ".config/autostart/slack.desktop" = mkIf (cfg.system.users.${user}.desktop.gnome.autostart.slack) {
             text = ''
               [Desktop Entry]
               Exec=slack
