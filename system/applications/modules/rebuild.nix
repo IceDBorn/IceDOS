@@ -37,7 +37,6 @@ pkgs.writeShellScriptBin "${command}" ''
   	sudo nix-shell scripts/build.sh
 
   	runCommand update-proton-ge
-  	runCommand update-wine-ge
   	runCommand update-codium-extensions
   else
   	sudo bash scripts/build.sh

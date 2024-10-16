@@ -34,15 +34,6 @@ let
     type = "Proton";
   };
 
-  install-wine-ge = import ../../modules/wine-build-updater.nix {
-    inherit pkgs;
-    name = "wine-ge";
-    buildPath = "${pkgs.wine-ge}/bin";
-    installPath = "/home/${username}/.local/share/bottles/runners";
-    message = "wine ge";
-    type = "Wine";
-  };
-
   # Update the system configuration
   update = import ../../modules/rebuild.nix {
     inherit pkgs config;
@@ -60,7 +51,6 @@ let
 
   shellScripts = [
     update
-    install-wine-ge
     install-proton-ge
   ];
 in
