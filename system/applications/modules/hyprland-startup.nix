@@ -67,7 +67,7 @@ pkgs.writeShellScriptBin "hyprland-startup" ''
   run blueberry
   run pavucontrol
   run signal-desktop
-  run zed
+  run zeditor
 
   # Terminals/Task managers
   kitty --class task-managers btop &
