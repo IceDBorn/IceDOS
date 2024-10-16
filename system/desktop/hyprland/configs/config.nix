@@ -31,6 +31,12 @@ in
     {
       ${username} = mkIf (cfg.desktop.hyprland.enable) {
         home.file.".config/hypr/hyprland.conf".text = ''
+          env = XDG_CURRENT_DESKTOP,Hyprland
+          env = XDG_SESSION_TYPE,wayland
+          env = XDG_SESSION_DESKTOP,Hyprland
+          env = QT_AUTO_SCREEN_SCALE_FACTOR,1
+          env = QT_QPA_PLATFORM,wayland;xcb
+
           $mainMod = SUPER
           ${lib.concatImapStrings (
             i: m:
@@ -160,7 +166,7 @@ in
                 windowrulev2 = workspace 1 silent, class:^(${browsers})$
                 windowrulev2 = workspace 2 silent, class:^(dev.zed.Zed)$
                 windowrulev2 = workspace 3 silent, class:^(steam_app_.*)$, title:^((?!notificationtoasts.*).)*$
-                windowrulev2 = workspace 11 silent, class:^(WebCord|Signal|pwas)$
+                windowrulev2 = workspace 11 silent, class:^(WebCord|Signal|pwas|signal)$
                 windowrulev2 = workspace 12 silent, class:^(org\.gnome\.Nautilus)$
                 windowrulev2 = workspace 13 silent, class:^(task-managers)$ # Task manager
                 windowrulev2 = workspace 14 silent, class:^(terminals)$ # Terminal
