@@ -49,6 +49,11 @@ in
       libnotify # Send desktop notifications
       tela-icon-theme # Icon theme
     ];
+
+    # Suggest electron apps to use wayland
+    sessionVariables = {
+      NIXOS_OZONE_WL = 1;
+    };
   };
 
   fonts.packages = with pkgs; [
