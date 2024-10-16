@@ -49,7 +49,6 @@ in
         blueberry # Bluetooth manager
         brightnessctl # Brightness control
         cliphist # Clipboard manager for wayland
-        cliphist-rofi-img # Image support for cliphist with rofi
         feh # Minimal image viewer
         file-roller # Archive file manager
         gnome-calculator # Calculator

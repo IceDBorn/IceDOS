@@ -100,7 +100,7 @@ in
 
           # Desktop usage
           bind = $mainMod, R, exec, rofi -show drun
-          bind = $mainMod, V, exec, rofi -modi clipboard:cliphist-rofi-img -show clipboard -show-icons
+          bind = $mainMod, V, exec, rofi -modi clipboard:${pkgs.cliphist}/bin/cliphist-rofi-img -show clipboard -show-icons
           bind = , Print, exec, grimblast copy output
           bind = SHIFT, Print, exec, grimblast edit output
           bind = $mainMod, Print, exec, grimblast --freeze copy area
