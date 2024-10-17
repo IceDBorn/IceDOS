@@ -42,7 +42,7 @@ let
     update
   ];
 
-  gitLocation = "${cfg.home}/${username}/git/";
+  gitLocation = "${cfg.home}/${username}/.code/";
 
   storeAliases = {
     burkani = {
