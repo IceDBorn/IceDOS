@@ -21,6 +21,7 @@ let
   userJs = ''
     // Global settings
     user_pref("app.update.auto", false);
+    user_pref("browser.download.useDownloadDir", true);
     user_pref("browser.ml.chat.enabled", true);
     user_pref("browser.ml.chat.provider", "https://huggingface.co/chat");
     user_pref("browser.newtabpage.enabled", false);
