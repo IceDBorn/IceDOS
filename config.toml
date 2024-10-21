@@ -1,11 +1,11 @@
 [icedos.applications]
-android-tools = true
+android-tools = false
 brave = true
 celluloid = true
 clamav = false
 nvchad = true
 solaar = true
-sunshine = true
+sunshine = false
 
 [icedos.applications.codium]
 enable = true
@@ -34,7 +34,7 @@ extensions = [
 zoomLevel = 0
 
 [icedos.applications.mangohud]
-enable = true
+enable = false
 maxFpsLimit = 144 # Use 0 for unlimited
 
 [icedos.applications.emulators]
@@ -62,12 +62,12 @@ sites = [
 ]
 
 [icedos.applications.steam]
-enable = true
+enable = false
 beta = true
 downloadsWorkaround = true
 
 [icedos.applications.steam.session]
-enable = true
+enable = false
 useValveKernel = false
 
 [icedos.applications.steam.session.autoStart]
@@ -88,7 +88,7 @@ ollamaSupport = false
 [icedos.applications.zed.theme]
 dark = "One Dark Pro"
 light = "One Light"
-mode = "system" # system, dark, light
+mode = "dark" # system, dark, light
 
 [icedos.applications.zen-browser]
 enable = true
@@ -119,7 +119,7 @@ mountPoint = "/boot"
 
 [icedos.desktop.autologin]
 enable = true
-user = "icedborn"
+user = "work"
 
 [icedos.desktop.gdm]
 enable = true
@@ -150,10 +150,10 @@ maxWorkspaces = 1 # Determines the maximum number of workspaces when dynamic wor
 [icedos.desktop.hyprland]
 enable = true
 backlight = "amdgpu_bl0" # Find backlight unit using brightnessctl
-mainMonitor = "DP-1"
+mainMonitor = "HDMI-A-1"
 
 [icedos.desktop.hyprland.cs2fix]
-enable = true
+enable = false
 width = 1440
 height = 1080
 
@@ -164,7 +164,7 @@ diskUsageThreshold = 10 # Disk usage to inhibit lock in MB/s
 networkUsageThreshold = 1_000_000 # Network usage to inhibit lock in bytes/s
 
 [icedos.hardware]
-mounts = true # Set to false if hardware/mounts.nix is not correctly configured
+mounts = false # Set to false if hardware/mounts.nix is not correctly configured
 
 [icedos.hardware.btrfs.compression]
 enable = true
@@ -206,40 +206,16 @@ enable = true
 value = 242
 
 [[icedos.hardware.monitors]]
-name = "DP-1"
+name = "HDMI-A-1"
 resolution = "1920x1080"
-refreshRate = 144
+refreshRate = 75
 position = "0x0"
 scaling = 1
 rotation = 0
 
-[[icedos.hardware.monitors]]
-name = "DP-2"
-resolution = "1360x768"
-refreshRate = 60
-position = "-1360x0"
-scaling = 1
-rotation = 0
-
-[[icedos.hardware.monitors]]
-name = "DP-3"
-resolution = "1280x1024"
-refreshRate = 75
-position = "1920x0"
-scaling = 1
-rotation = 0
-
-[[icedos.hardware.monitors]]
-name = "HDMI-A-1"
-resolution = "3840x2160"
-refreshRate = 60
-position = "-5200x0"
-scaling = 1
-rotation = 0
-
 [icedos.hardware.networking]
-hostname = "desktop"
-hosts = false
+hostname = "desktop-dtek"
+hosts = true
 ipv6 = false
 
 [icedos.system]
@@ -260,7 +236,7 @@ generations = 10 # Number of generations that will always be kept
 interval = "7d" # Format(https://www.freedesktop.org/software/systemd/man/latest/systemd.time.html)
 
 [icedos.system.users.main]
-enable = true
+enable = false
 username = "icedborn"
 description = "IceDBorn"
 
@@ -303,7 +279,7 @@ enable = true
 seconds = 900
 
 [icedos.system.users.work]
-enable = false
+enable = true
 username = "work"
 description = "Work"
 
@@ -394,5 +370,5 @@ waydroid = true # Android container
 
 [icedos.system.virtualisation.containerManager]
 enable = true
-usePodman = true
-requireSudoForDocker = true # CAUTION: Disabling this gives every user root priviledges!
+usePodman = false
+requireSudoForDocker = false # CAUTION: Disabling this gives every user root priviledges!
