@@ -36,7 +36,6 @@ pkgs.writeShellScriptBin "${command}" ''
   	nix flake update && cache "flake.lock" || true
   	sudo nix-shell scripts/build.sh
 
-  	runCommand update-proton-ge
   	runCommand update-codium-extensions
   else
   	sudo bash scripts/build.sh

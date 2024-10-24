@@ -25,15 +25,6 @@ let
   cfg = config.icedos;
   username = cfg.system.users.main.username;
 
-  install-proton-ge = import ../../modules/wine-build-updater.nix {
-    inherit pkgs;
-    name = "proton-ge";
-    buildPath = "${pkgs.proton-ge-custom}/bin";
-    installPath = "/home/${username}/.local/share/Steam/compatibilitytools.d";
-    message = "proton ge";
-    type = "Proton";
-  };
-
   # Update the system configuration
   update = import ../../modules/rebuild.nix {
     inherit pkgs config;
@@ -49,10 +40,7 @@ let
 
   gaming = (pkgMapper pkgFile.gaming);
 
-  shellScripts = [
-    update
-    install-proton-ge
-  ];
+  shellScripts = [ update ];
 in
 mkIf (cfg.system.users.main.enable) {
   users.users.${username}.packages =
