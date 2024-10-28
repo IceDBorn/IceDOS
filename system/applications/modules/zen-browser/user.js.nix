@@ -46,6 +46,7 @@ let
     user_pref("svg.context-properties.content.enabled", true);
     user_pref("toolkit.legacyUserProfileCustomizations.stylesheets", true);
     user_pref("zen.theme.accent-color", "#d4bbff");
+    user_pref("zen.theme.color-prefs.amoled", true);
 
     ${
       if (!cfg.applications.zen-browser.privacy) then
