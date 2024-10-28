@@ -148,6 +148,7 @@
         hyprland = {
           enable = mkOption { type = types.bool; };
           backlight = mkOption { type = types.str; };
+          hyprexpo = mkOption { type = types.bool; };
 
           cs2fix = {
             enable = mkOption { type = types.bool; };

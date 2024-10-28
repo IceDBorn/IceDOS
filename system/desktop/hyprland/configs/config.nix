@@ -74,34 +74,34 @@ in
           env = WLR_DRM_NO_ATOMIC,1
 
           general {
-          	allow_tearing = true
-          	col.active_border = rgb(505050)
-          	col.inactive_border = rgb(000000)
-          	gaps_in = 0
-          	gaps_out = 0
-          	resize_on_border = true
+            allow_tearing = true
+            col.active_border = rgb(505050)
+            col.inactive_border = rgb(000000)
+            gaps_in = 0
+            gaps_out = 0
+            resize_on_border = true
           }
 
           decoration {
-          	drop_shadow = false
-          	rounding = 5
+            drop_shadow = false
+            rounding = 5
           }
 
           input {
-          	accel_profile = flat
-          	follow_mouse = 2
-          	kb_layout = us,gr
-          	kb_options = grp:win_space_toggle
+            accel_profile = flat
+            follow_mouse = 2
+            kb_layout = us,gr
+            kb_options = grp:win_space_toggle
           }
 
           misc {
-          	col.splash = rgb(000000)
-          	disable_hyprland_logo = true
-          	disable_splash_rendering = true
-          	key_press_enables_dpms = true
-          	mouse_move_enables_dpms = true
-          	new_window_takes_over_fullscreen = 1
-          	vrr = 2
+            col.splash = rgb(000000)
+            disable_hyprland_logo = true
+            disable_splash_rendering = true
+            key_press_enables_dpms = true
+            mouse_move_enables_dpms = true
+            new_window_takes_over_fullscreen = 1
+            vrr = 2
           }
 
           # Desktop usage
@@ -237,19 +237,25 @@ in
 
           exec-once = hyprland-startup
 
-          plugin = ${inputs.hyprland-plugins.packages.${pkgs.system}.hyprexpo}/lib/libhyprexpo.so
-          bind = $mainMod, TAB, hyprexpo:expo, toggle
-          plugin {
-          	hyprexpo {
-          		columns = 3
-          		gap_size = 5
-          		bg_col = rgb(000000)
-          		workspace_method = center current
-
-          		enable_gesture = true
-          		gesture_distance = 300
-          		gesture_positive = true
-          	}
+          ${
+            if (cfg.desktop.hyprland.hyprexpo) then
+              ''
+                plugin = ${inputs.hyprland-plugins.packages.${pkgs.system}.hyprexpo}/lib/libhyprexpo.so
+                bind = $mainMod, TAB, hyprexpo:expo, toggle
+                plugin {
+                  hyprexpo {
+                    columns = 3
+                    gap_size = 5
+                    bg_col = rgb(000000)
+                    workspace_method = center current
+                    enable_gesture = true
+                    gesture_distance = 300
+                    gesture_positive = true
+                  }
+                }
+              ''
+            else
+              ""
           }
 
           ${
@@ -259,11 +265,11 @@ in
                   inputs.hyprland-plugins.packages.${pkgs.system}.csgo-vulkan-fix
                 }/lib/libcsgo-vulkan-fix.so
                 plugin {
-                    csgo-vulkan-fix {
-                        res_w = ${builtins.toString (cfg.desktop.hyprland.cs2fix.width)}
-                        res_h = ${builtins.toString (cfg.desktop.hyprland.cs2fix.height)}
-                        class = SDL Application
-                    }
+                  csgo-vulkan-fix {
+                    res_w = ${builtins.toString (cfg.desktop.hyprland.cs2fix.width)}
+                    res_h = ${builtins.toString (cfg.desktop.hyprland.cs2fix.height)}
+                    class = SDL Application
+                  }
                 }
               ''
             else
