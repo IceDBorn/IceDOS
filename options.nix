@@ -69,7 +69,10 @@
           enableTrayscale = mkOption { type = types.bool; };
         };
 
-        valent.deviceId = mkOption { type = types.str; };
+        valent = {
+          enable = mkOption { type = types.bool; };
+          deviceId = mkOption { type = types.str; };
+        };
 
         zed = {
           enable = mkOption { type = types.bool; };

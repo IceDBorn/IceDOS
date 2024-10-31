@@ -19,6 +19,7 @@ let
 
   deviceId = cfg.applications.valent.deviceId;
 in
+mkIf (cfg.applications.valent.enable)
 {
   environment.systemPackages = [ pkgs.valent ];
 
