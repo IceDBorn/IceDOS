@@ -12,7 +12,7 @@ in
       enable32Bit = true; # Support Direct Rendering for 32-bit applications (such as Wine) on 64-bit systems
     };
 
-    xpadneo.enable = true; # Enable XBOX Gamepad bluetooth driver
+    xpadneo.enable = cfg.hardware.drivers.xpadneo;
     bluetooth.enable = true;
     uinput.enable = true; # Enable uinput support
   };

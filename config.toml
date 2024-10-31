@@ -187,6 +187,9 @@ value = "-p 0 -v 3C -f A0" # Pstate 0, 1.175 voltage, 4000 clock speed
 laptop = false
 steamdeck = false
 
+[icedos.hardware.drivers]
+xpadneo = true # Xbox gamepad bluetooth driver (supports various xinput controllers)
+
 [icedos.hardware.devices.server]
 enable = false
 dns = "9.9.9.9"

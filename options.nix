@@ -207,6 +207,8 @@
           steamdeck = mkOption { type = types.bool; };
         };
 
+        drivers.xpadneo = mkOption { type = types.bool; };
+
         gpus = {
           amd = {
             enable = mkOption { type = types.bool; };
