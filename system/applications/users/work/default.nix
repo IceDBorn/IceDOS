@@ -101,7 +101,7 @@ mkIf (cfg.users.work.enable) {
 
     mysql = {
       enable = true;
-      package = pkgs.mysql;
+      package = pkgs.mariadb;
     };
   };
 }
