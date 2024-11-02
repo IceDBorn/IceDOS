@@ -44,15 +44,6 @@ in
       in
       {
         ${username} = mkIf (cfg.applications.codium.enable) {
-          # Codium profile used as a multi-purpose text editor
-          xdg.desktopEntries.codium = {
-            exec = "codium";
-            icon = "codium";
-            name = "VSCodium";
-            terminal = false;
-            type = "Application";
-          };
-
           # Codium profile used as an IDE
           xdg.desktopEntries.codiumIDE = {
             exec = "codium --user-data-dir ${cfg.system.home}/${username}/.config/VSCodiumIDE";
