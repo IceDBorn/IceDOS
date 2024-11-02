@@ -44,18 +44,9 @@ in
       in
       {
         ${username} = mkIf (cfg.applications.codium.enable) {
-          # Enable wayland support for codium
-          xdg.desktopEntries.codium = {
-            exec = "codium --enable-features=UseOzonePlatform --ozone-platform=wayland";
-            icon = "codium";
-            name = "VSCodium";
-            terminal = false;
-            type = "Application";
-          };
-
-          # Codium profile used a an IDE
+          # Codium profile used as an IDE
           xdg.desktopEntries.codiumIDE = {
-            exec = "codium --user-data-dir ${cfg.system.home}/${username}/.config/VSCodiumIDE --enable-features=UseOzonePlatform --ozone-platform=wayland";
+            exec = "codium --user-data-dir ${cfg.system.home}/${username}/.config/VSCodiumIDE";
             icon = "codium";
             name = "VSCodium IDE";
             terminal = false;
