@@ -5,10 +5,11 @@ let
   cfg = (import ./options.nix { inherit lib; }).config.icedos;
   users = filter (user: cfg.system.users.${user}.enable == true) (attrNames cfg.system.users);
 
-  steam-session = cfg.applications.steam.session.enable;
   hyprland = cfg.desktop.hyprland.enable;
-  switch-emulators = cfg.applications.emulators.switch;
+  php = cfg.applications.php;
   server = cfg.hardware.devices.server.enable;
+  steam-session = cfg.applications.steam.session.enable;
+  switch-emulators = cfg.applications.emulators.switch;
   zen-browser = cfg.applications.zen-browser.enable;
 in
 {
@@ -66,10 +67,17 @@ in
             ""
         }
 
-        phps = {
-          url = "github:fossar/nix-phps/5c2a9bf0246b7f38b7ca737f0f1f36d5b45ae15a";
-          inputs.nixpkgs.url = "github:NixOS/nixpkgs/b73c2221a46c13557b1b3be9c2070cc42cf01eb3";
-        };
+        ${
+          if (php) then
+            ''
+              phps = {
+                url = "github:fossar/nix-phps/5c2a9bf0246b7f38b7ca737f0f1f36d5b45ae15a";
+                inputs.nixpkgs.url = "github:NixOS/nixpkgs/b73c2221a46c13557b1b3be9c2070cc42cf01eb3";
+              };
+            ''
+          else
+            ""
+        }
 
         pipewire-screenaudio = {
           url = "github:IceDBorn/pipewire-screenaudio";
@@ -108,16 +116,16 @@ in
 
       outputs =
         {
-          self,
           chaotic,
-          nixpkgs,
           home-manager,
           nerivations,
-          phps,
+          nixpkgs,
           pipewire-screenaudio,
+          self,
           shell-in-netns,
-          ${if (steam-session) then ''steam-session,'' else ""}
           ${if (hyprland) then ''hyprland,hyprland-plugins,hyprlux,'' else ""}
+          ${if (php) then ''phps,'' else ""}
+          ${if (steam-session) then ''steam-session,'' else ""}
           ${if (switch-emulators) then ''switch-emulators,'' else ""}
           ${if (zen-browser) then ''zen-browser,'' else ""}
         }@inputs:

@@ -4,6 +4,7 @@ brave = true
 celluloid = true
 clamav = false
 nvchad = true
+php = false
 pitivi = false
 solaar = true
 sunshine = true
@@ -81,7 +82,7 @@ enable = true
 enableTrayscale = true
 
 [icedos.applications.valent]
-enable = true
+enable = false
 deviceId = "901524a4_c7c0_407e_9903_431abce54131"
 
 [icedos.applications.zed]
