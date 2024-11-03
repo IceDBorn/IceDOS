@@ -69,6 +69,7 @@ in
     ./modules/tailscale.nix
     ./modules/tmux
     ./modules/waydroid.nix
+    ./modules/yazi.nix
     ./modules/zed
     ./modules/zsh
   ];

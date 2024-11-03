@@ -6,6 +6,7 @@ clamav = false
 nvchad = true
 solaar = true
 sunshine = true
+yazi = false
 
 [icedos.applications.codium]
 enable = true
