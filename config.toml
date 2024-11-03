@@ -4,6 +4,7 @@ brave = true
 celluloid = true
 clamav = false
 nvchad = true
+pitivi = false
 solaar = true
 sunshine = true
 yazi = false

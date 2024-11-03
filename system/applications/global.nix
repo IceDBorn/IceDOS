@@ -63,6 +63,7 @@ in
     ./modules/libvirtd.nix
     ./modules/mangohud.nix
     ./modules/nvchad
+    ./modules/pitivi.nix
     ./modules/solaar.nix
     ./modules/steam.nix
     ./modules/sunshine.nix
