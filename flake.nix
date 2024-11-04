@@ -115,7 +115,7 @@
 
           ./system/applications/modules/zen-browser
 
-          ./system/applications/users/main
+          ./system/users/icedborn.nix
 
         ];
       };

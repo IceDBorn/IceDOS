@@ -1,15 +1,13 @@
 let
   lib = import <nixpkgs/lib>;
-  inherit (lib) attrNames concatImapStrings filter;
-
+  inherit (lib) attrNames concatImapStrings;
   cfg = (import ./options.nix { inherit lib; }).config.icedos;
-  users = filter (user: cfg.system.users.${user}.enable == true) (attrNames cfg.system.users);
-
+  users = attrNames cfg.system.users;
   hyprland = cfg.desktop.hyprland.enable;
   php = cfg.applications.php;
   server = cfg.hardware.devices.server.enable;
   steam-session = cfg.applications.steam.session.enable;
-  switch-emulators = cfg.applications.emulators.switch;
+  suyu = cfg.applications.suyu;
   zen-browser = cfg.applications.zen-browser.enable;
 in
 {
@@ -90,9 +88,9 @@ in
         };
 
         ${
-          if (switch-emulators) then
+          if (suyu) then
             ''
-              switch-emulators = {
+              suyu = {
                 url = "git+https:///codeberg.org/K900/yuzu-flake";
                 inputs.nixpkgs.follows = "nixpkgs";
               };
@@ -126,7 +124,7 @@ in
           ${if (hyprland) then ''hyprland,hyprland-plugins,hyprlux,'' else ""}
           ${if (php) then ''phps,'' else ""}
           ${if (steam-session) then ''steam-session,'' else ""}
-          ${if (switch-emulators) then ''switch-emulators,'' else ""}
+          ${if (suyu) then ''suyu,'' else ""}
           ${if (zen-browser) then ''zen-browser,'' else ""}
         }@inputs:
         {
@@ -194,7 +192,7 @@ in
 
               ${if (zen-browser) then ''./system/applications/modules/zen-browser'' else ""}
 
-              ${concatImapStrings (i: user: "./system/applications/users/${user}\n") users}
+              ${concatImapStrings (i: user: "./system/users/${user}.nix\n") users}
             ];
           };
         };

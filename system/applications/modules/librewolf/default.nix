@@ -7,14 +7,7 @@
 }:
 
 let
-  inherit (lib)
-    attrNames
-    filter
-    foldl'
-    mkIf
-    optional
-    ;
-
+  inherit (lib) mapAttrs mkIf optional;
   cfg = config.icedos;
 
   package = (
@@ -24,7 +17,6 @@ let
   );
 
   librewolf-pwas = import ./pwas-wrapper.nix { inherit config pkgs; };
-  mapAttrsAndKeys = callback: list: (foldl' (acc: value: acc // (callback value)) { } list);
 in
 {
   imports = [ ./user.js.nix ];
@@ -42,33 +34,23 @@ in
         [ ];
   };
 
-  home-manager.users =
-    let
-      users = filter (user: cfg.system.users.${user}.enable == true) (attrNames cfg.system.users);
-    in
-    mapAttrsAndKeys (
-      user:
-      let
-        username = cfg.system.users.${user}.username;
-      in
-      {
-        ${username} = mkIf (cfg.applications.librewolf.enable) {
-          home.file = {
-            # Set profiles
-            ".librewolf/profiles.ini" = {
-              source = ./profiles.ini;
-              force = true;
-            };
-          };
+  home-manager.users = mapAttrs (user: _: {
+    home.file = mkIf (cfg.applications.librewolf.enable) {
+      # Set profiles
+      ".librewolf/profiles.ini" = {
+        source = ./profiles.ini;
+        force = true;
+      };
+    };
 
-          xdg.desktopEntries.librewolf-pwas = mkIf (cfg.applications.librewolf.pwas.enable) {
-            exec = "librewolf-pwas";
-            icon = "librewolf";
-            name = "Librewolf PWAs";
-            terminal = false;
-            type = "Application";
-          };
+    xdg.desktopEntries.librewolf-pwas =
+      mkIf (cfg.applications.librewolf.enable && cfg.applications.librewolf.pwas.enable)
+        {
+          exec = "librewolf-pwas";
+          icon = "librewolf";
+          name = "Librewolf PWAs";
+          terminal = false;
+          type = "Application";
         };
-      }
-    ) users;
+  }) cfg.system.users;
 }

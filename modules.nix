@@ -22,7 +22,7 @@ in
     ./hardware/server.nix
     ./options.nix
     ./system/applications
-    ./system/users.nix
+    ./system/users
   ];
 
   config.system.stateVersion = cfg.version;

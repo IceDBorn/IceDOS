@@ -2,21 +2,12 @@
   pkgs,
   lib,
   config,
-  inputs,
   ...
 }:
 
 let
-  inherit (lib)
-    attrNames
-    filter
-    foldl'
-    mkIf
-    ;
-
+  inherit (lib) mapAttrs mkIf;
   cfg = config.icedos;
-
-  mapAttrsAndKeys = callback: list: (foldl' (acc: value: acc // (callback value)) { } list);
 in
 {
   imports = [ ./init.nix ];
@@ -58,31 +49,21 @@ in
     zsh.shellAliases.n = "tmux a -t nvchad || tmux new -s nvchad nvim";
   };
 
-  home-manager.users =
-    let
-      users = filter (user: cfg.system.users.${user}.enable == true) (attrNames cfg.system.users);
-    in
-    mapAttrsAndKeys (
-      user:
-      let
-        username = cfg.system.users.${user}.username;
-      in
-      {
-        ${username}.home.file = mkIf (cfg.applications.nvchad) {
-          ".config/nvim" = {
-            source = pkgs.nvchad;
-            recursive = true;
-          };
+  home-manager.users = mapAttrs (user: _: {
+    home.file = mkIf (cfg.applications.nvchad) {
+      ".config/nvim" = {
+        source = pkgs.nvchad;
+        recursive = true;
+      };
 
-          ".config/nvim/lua/custom/configs" = {
-            source = ./configs;
-            recursive = true;
-          };
+      ".config/nvim/lua/custom/configs" = {
+        source = ./configs;
+        recursive = true;
+      };
 
-          ".config/nvim/lua/custom/chadrc.lua".source = ./chadrc.lua;
-          ".config/nvim/lua/custom/mappings.lua".source = ./mappings.lua;
-          ".config/nvim/lua/custom/plugins.lua".source = ./plugins.lua;
-        };
-      }
-    ) users;
+      ".config/nvim/lua/custom/chadrc.lua".source = ./chadrc.lua;
+      ".config/nvim/lua/custom/mappings.lua".source = ./mappings.lua;
+      ".config/nvim/lua/custom/plugins.lua".source = ./plugins.lua;
+    };
+  }) cfg.system.users;
 }

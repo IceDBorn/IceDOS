@@ -6,30 +6,22 @@
 }:
 
 let
-  inherit (lib)
-    attrNames
-    filter
-    foldl'
-    ;
-
+  inherit (lib) mapAttrs;
   cfg = config.icedos;
-  mapAttrsAndKeys = callback: list: (foldl' (acc: value: acc // (callback value)) { } list);
 in
 {
   environment.systemPackages = [ pkgs.hypridle ];
 
   home-manager.users =
     let
-      users = filter (user: cfg.system.users.${user}.enable == true) (attrNames cfg.system.users);
     in
-    mapAttrsAndKeys (
-      user:
+    mapAttrs (
+      user: _:
       let
         idle = cfg.system.users.${user}.desktop.idle;
-        username = cfg.system.users.${user}.username;
       in
       {
-        ${username}.home.file.".config/hypr/hypridle.conf".text = ''
+        home.file.".config/hypr/hypridle.conf".text = ''
           general {
               lock_cmd = pidof hyprlock || hyprlock
               before_sleep_cmd = loginctl lock-session
@@ -81,5 +73,5 @@ in
           }
         '';
       }
-    ) users;
+    ) cfg.system.users;
 }

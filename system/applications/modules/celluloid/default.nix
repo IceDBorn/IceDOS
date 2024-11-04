@@ -6,49 +6,29 @@
 }:
 
 let
-  inherit (lib)
-    attrNames
-    filter
-    foldl'
-    mkIf
-    ;
-
+  inherit (lib) mapAttrs mkIf;
   cfg = config.icedos;
-
-  mapAttrsAndKeys = callback: list: (foldl' (acc: value: acc // (callback value)) { } list);
 in
 mkIf (cfg.applications.celluloid) {
   environment.systemPackages = [ pkgs.celluloid ];
-  home-manager.users =
-    let
-      users = filter (user: cfg.system.users.${user}.enable == true) (attrNames cfg.system.users);
-    in
-    mapAttrsAndKeys (
-      user:
-      let
-        username = cfg.system.users.${user}.username;
-      in
-      {
-        ${username} = {
-          home.file.".config/celluloid" = {
-            source = ./config;
-            recursive = true;
-          };
+  home-manager.users = mapAttrs (user: _: {
+    home.file.".config/celluloid" = {
+      source = ./config;
+      recursive = true;
+    };
 
-          dconf.settings = {
-            "io/github/celluloid-player/celluloid" = {
-              mpv-config-file = "file:///home/${username}/.config/celluloid/celluloid.conf";
-            };
+    dconf.settings = {
+      "io/github/celluloid-player/celluloid" = {
+        mpv-config-file = "file:///home/${user}/.config/celluloid/celluloid.conf";
+      };
 
-            "io/github/celluloid-player/celluloid" = {
-              mpv-config-enable = true;
-            };
+      "io/github/celluloid-player/celluloid" = {
+        mpv-config-enable = true;
+      };
 
-            "io/github/celluloid-player/celluloid" = {
-              always-append-to-playlist = true;
-            };
-          };
-        };
-      }
-    ) users;
+      "io/github/celluloid-player/celluloid" = {
+        always-append-to-playlist = true;
+      };
+    };
+  }) cfg.system.users;
 }

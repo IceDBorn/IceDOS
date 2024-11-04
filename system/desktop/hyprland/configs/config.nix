@@ -19,16 +19,14 @@ let
   monitorsLength = length (monitors);
   mapAttrsAndKeys = callback: list: (foldl' (acc: value: acc // (callback value)) { } list);
   monitors = cfg.hardware.monitors;
-  users = filter (user: cfg.system.users.${user}.enable == true) (attrNames cfg.system.users);
+  users = attrNames cfg.system.users;
 in
 {
   home-manager.users = mapAttrsAndKeys (
     user:
-    let
-      username = cfg.system.users.${user}.username;
-    in
+    let type = cfg.system.users.${user}.type; in
     {
-      ${username} = mkIf (cfg.desktop.hyprland.enable) {
+      ${user} = mkIf (cfg.desktop.hyprland.enable) {
         home.file.".config/hypr/hyprland.conf".text = ''
           env = XDG_CURRENT_DESKTOP,Hyprland
           env = XDG_SESSION_TYPE,wayland
@@ -186,7 +184,7 @@ in
                 windowrulev2 = workspace 14 silent, class:^(task-managers)$ # Task manager
                 windowrulev2 = workspace 15 silent, class:^(terminals)$ # Terminal
               ''
-            else if (user != "work") then
+            else if (type != "work") then
               ''
                 windowrulev2 = workspace 1 silent, class:^(${browsers})$
                 windowrulev2 = workspace 2 silent, class:^(dev.zed.Zed)$

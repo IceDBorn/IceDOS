@@ -15,11 +15,6 @@
           zoomLevel = mkOption { type = types.number; };
         };
 
-        emulators = {
-          switch = mkOption { type = types.bool; };
-          wiiu = mkOption { type = types.bool; };
-        };
-
         kitty = {
           enable = mkOption { type = types.bool; };
           hideDecorations = mkOption { type = types.bool; };
@@ -61,10 +56,12 @@
             };
 
             useValveKernel = mkOption { type = types.bool; };
+            user = mkOption { type = types.str; };
           };
         };
 
         sunshine = mkOption { type = types.bool; };
+        suyu = mkOption { type = types.bool; };
 
         tailscale = {
           enable = mkOption { type = types.bool; };
@@ -277,160 +274,61 @@
 
         swappiness = mkOption { type = types.number; };
 
-        users = {
-          main = {
-            enable = mkOption { type = types.bool; };
-            username = mkOption { type = types.str; };
-            description = mkOption { type = types.str; };
+        users = mkOption {
+          type = types.attrsOf (
+            types.submodule (_: {
+              options = {
+                description = mkOption { type = types.str; };
+                type = mkOption { type = types.str; };
 
-            applications = {
-              codium = {
-                autoSave = mkOption { type = types.str; };
-                formatOnSave = mkOption { type = types.bool; };
-                formatOnPaste = mkOption { type = types.bool; };
-              };
+                applications = {
+                  codium = {
+                    autoSave = mkOption { type = types.str; };
+                    formatOnSave = mkOption { type = types.bool; };
+                    formatOnPaste = mkOption { type = types.bool; };
+                  };
 
-              git = {
-                username = mkOption { type = types.str; };
-                email = mkOption { type = types.str; };
-              };
+                  git = {
+                    username = mkOption { type = types.str; };
+                    email = mkOption { type = types.str; };
+                  };
 
-              nvchad.formatOnSave = mkOption { type = types.bool; };
-            };
-
-            desktop = {
-              gnome.pinnedApps = {
-                arcmenu = {
-                  enable = mkOption { type = types.bool; };
-                  list = mkOption { type = with types; listOf str; };
+                  nvchad.formatOnSave = mkOption { type = types.bool; };
                 };
 
-                shell = {
-                  enable = mkOption { type = types.bool; };
-                  list = mkOption { type = with types; listOf str; };
-                };
-              };
+                desktop = {
+                  gnome.pinnedApps = {
+                    arcmenu = {
+                      enable = mkOption { type = types.bool; };
+                      list = mkOption { type = with types; listOf str; };
+                    };
 
-              idle = {
-                lock = {
-                  enable = mkOption { type = types.bool; };
-                  seconds = mkOption { type = types.number; };
-                };
+                    shell = {
+                      enable = mkOption { type = types.bool; };
+                      list = mkOption { type = with types; listOf str; };
+                    };
+                  };
 
-                disableMonitors = {
-                  enable = mkOption { type = types.bool; };
-                  seconds = mkOption { type = types.number; };
-                };
+                  idle = {
+                    lock = {
+                      enable = mkOption { type = types.bool; };
+                      seconds = mkOption { type = types.number; };
+                    };
 
-                suspend = {
-                  enable = mkOption { type = types.bool; };
-                  seconds = mkOption { type = types.number; };
-                };
-              };
-            };
-          };
+                    disableMonitors = {
+                      enable = mkOption { type = types.bool; };
+                      seconds = mkOption { type = types.number; };
+                    };
 
-          server = {
-            enable = mkOption { type = types.bool; };
-            username = mkOption { type = types.str; };
-            description = mkOption { type = types.str; };
-
-            applications = {
-              codium = {
-                autoSave = mkOption { type = types.str; };
-                formatOnSave = mkOption { type = types.bool; };
-                formatOnPaste = mkOption { type = types.bool; };
-              };
-
-              git = {
-                username = mkOption { type = types.str; };
-                email = mkOption { type = types.str; };
-              };
-
-              nvchad.formatOnSave = mkOption { type = types.bool; };
-            };
-
-            desktop = {
-              gnome.pinnedApps = {
-                arcmenu = {
-                  enable = mkOption { type = types.bool; };
-                  list = mkOption { type = with types; listOf str; };
-                };
-                shell = {
-                  enable = mkOption { type = types.bool; };
-                  list = mkOption { type = with types; listOf str; };
+                    suspend = {
+                      enable = mkOption { type = types.bool; };
+                      seconds = mkOption { type = types.number; };
+                    };
+                  };
                 };
               };
-
-              idle = {
-                lock = {
-                  enable = mkOption { type = types.bool; };
-                  seconds = mkOption { type = types.number; };
-                };
-
-                disableMonitors = {
-                  enable = mkOption { type = types.bool; };
-                  seconds = mkOption { type = types.number; };
-                };
-
-                suspend = {
-                  enable = mkOption { type = types.bool; };
-                  seconds = mkOption { type = types.number; };
-                };
-              };
-            };
-          };
-
-          work = {
-            enable = mkOption { type = types.bool; };
-            username = mkOption { type = types.str; };
-            description = mkOption { type = types.str; };
-
-            applications = {
-              codium = {
-                autoSave = mkOption { type = types.str; };
-                formatOnSave = mkOption { type = types.bool; };
-                formatOnPaste = mkOption { type = types.bool; };
-              };
-
-              git = {
-                username = mkOption { type = types.str; };
-                email = mkOption { type = types.str; };
-              };
-
-              nvchad.formatOnSave = mkOption { type = types.bool; };
-            };
-
-            desktop = {
-              gnome.pinnedApps = {
-                arcmenu = {
-                  enable = mkOption { type = types.bool; };
-                  list = mkOption { type = with types; listOf str; };
-                };
-                shell = {
-                  enable = mkOption { type = types.bool; };
-                  list = mkOption { type = with types; listOf str; };
-                };
-              };
-
-              idle = {
-                lock = {
-                  enable = mkOption { type = types.bool; };
-                  seconds = mkOption { type = types.number; };
-                };
-
-                disableMonitors = {
-                  enable = mkOption { type = types.bool; };
-                  seconds = mkOption { type = types.number; };
-                };
-
-                suspend = {
-                  enable = mkOption { type = types.bool; };
-                  seconds = mkOption { type = types.number; };
-                };
-              };
-            };
-          };
+            })
+          );
         };
 
         virtualisation = {

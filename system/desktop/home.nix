@@ -27,15 +27,12 @@ in
 {
   home-manager.users =
     let
-      users = filter (user: cfg.system.users.${user}.enable == true) (attrNames cfg.system.users);
+      users = attrNames cfg.system.users;
     in
     mapAttrsAndKeys (
       user:
-      let
-        username = cfg.system.users.${user}.username;
-      in
       {
-        ${username} = {
+        ${user} = {
           gtk = {
             enable = true;
 

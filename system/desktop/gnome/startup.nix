@@ -15,17 +15,17 @@ in
 {
   home-manager.users =
     let
-      users = filter (user: cfg.system.users.${user}.enable == true) (attrNames cfg.system.users);
+      users = attrNames cfg.system.users;
     in
     mapAttrsAndKeys (
       user:
       let
-        username = cfg.system.users.${user}.username;
+        type = cfg.system.users.${user}.type;
       in
       {
-        ${username}.home.file = mkIf (cfg.desktop.gnome.enable && cfg.desktop.gnome.startupItems) {
+        ${user}.home.file = mkIf (cfg.desktop.gnome.enable && cfg.desktop.gnome.startupItems) {
           # Add signal to startup
-          ".config/autostart/signal-desktop.desktop" = mkIf (user != "work") {
+          ".config/autostart/signal-desktop.desktop" = mkIf (type != "work") {
             text = ''
               [Desktop Entry]
               Exec=signal-desktop
@@ -38,7 +38,7 @@ in
           };
 
           # Add steam to startup
-          ".config/autostart/steam.desktop" = mkIf (user != "work") {
+          ".config/autostart/steam.desktop" = mkIf (type != "work") {
             text = ''
               [Desktop Entry]
               Exec=steam
@@ -50,7 +50,7 @@ in
             '';
           };
 
-          ".config/autostart/slack.desktop" = mkIf (user == "work") {
+          ".config/autostart/slack.desktop" = mkIf (type == "work") {
             text = ''
               [Desktop Entry]
               Exec=slack

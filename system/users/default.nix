@@ -3,31 +3,22 @@
 let
   inherit (lib)
     attrNames
-    filter
+    mapAttrs
     foldl'
     optional
     ;
 
   cfg = config.icedos.system;
-
-  mapAttrsAndKeys = callback: list: (foldl' (acc: value: acc // (callback value)) { } list);
-  users = filter (user: cfg.users.${user}.enable == true) (attrNames cfg.users);
 in
 {
   nix.settings.trusted-users = [
     "root"
-  ] ++ (foldl' (acc: user: acc ++ [ cfg.users.${user}.username ]) [ ] users);
+  ] ++ (foldl' (acc: user: acc ++ [ user ]) [ ] (attrNames cfg.users));
 
-  users.users = mapAttrsAndKeys (
-    user:
-    let
-      username = cfg.users.${user}.username;
-      description = cfg.users.${user}.description;
-    in
+  users.users = mapAttrs ( user: _: let description = cfg.users.${user}.description; in
     {
-      ${username} = {
         createHome = true;
-        home = "${cfg.home}/${username}";
+        home = "${cfg.home}/${user}";
         useDefaultShell = true;
         # Default password used for first login, change later using passwd
         password = "1";
@@ -44,17 +35,8 @@ in
             !cfg.virtualisation.containerManager.usePodman
             && !cfg.virtualisation.containerManager.requireSudoForDocker
           ) "docker";
-      };
     }
-  ) users;
+  ) cfg.users;
 
-  home-manager.users = mapAttrsAndKeys (
-    user:
-    let
-      username = cfg.users.${user}.username;
-    in
-    {
-      ${username}.home.stateVersion = cfg.version;
-    }
-  ) users;
+  home-manager.users = mapAttrs (user: _: { home.stateVersion = cfg.version; }) cfg.users;
 }

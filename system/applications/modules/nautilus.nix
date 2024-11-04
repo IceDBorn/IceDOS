@@ -6,17 +6,8 @@
 }:
 
 let
-  inherit (lib)
-    attrNames
-    filter
-    foldl'
-    makeSearchPathOutput
-    mkIf
-    ;
-
+  inherit (lib) mapAttrs makeSearchPathOutput;
   cfg = config.icedos;
-
-  mapAttrsAndKeys = callback: list: (foldl' (acc: value: acc // (callback value)) { } list);
 in
 {
   environment = {
@@ -38,38 +29,26 @@ in
 
   services.gvfs.enable = true;
 
-  home-manager.users =
-    let
-      users = filter (user: cfg.system.users.${user}.enable == true) (attrNames cfg.system.users);
-    in
-    mapAttrsAndKeys (
-      user:
-      let
-        username = cfg.system.users.${user}.username;
-      in
-      {
-        ${username} = {
-          dconf.settings = {
-            "org/gnome/nautilus/preferences" = {
-              always-use-location-entry = true;
-              show-create-link = true;
-              show-delete-permanently = true;
-            };
+  home-manager.users = mapAttrs (user: _: {
+    dconf.settings = {
+      "org/gnome/nautilus/preferences" = {
+        always-use-location-entry = true;
+        show-create-link = true;
+        show-delete-permanently = true;
+      };
 
-            "org/gtk/gtk4/settings/file-chooser" = {
-              sort-directories-first = true;
-              show-hidden = true;
-            };
-          };
+      "org/gtk/gtk4/settings/file-chooser" = {
+        sort-directories-first = true;
+        show-hidden = true;
+      };
+    };
 
-          home.file = {
-            "Templates/new".text = "";
-            "Templates/new.cfg".text = "";
-            "Templates/new.ini".text = "";
-            "Templates/new.sh".text = "";
-            "Templates/new.txt".text = "";
-          };
-        };
-      }
-    ) users;
+    home.file = {
+      "Templates/new".text = "";
+      "Templates/new.cfg".text = "";
+      "Templates/new.ini".text = "";
+      "Templates/new.sh".text = "";
+      "Templates/new.txt".text = "";
+    };
+  }) cfg.system.users;
 }

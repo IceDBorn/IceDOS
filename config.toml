@@ -8,6 +8,7 @@ php = false
 pitivi = false
 solaar = true
 sunshine = true
+suyu = false
 yazi = false
 
 [icedos.applications.codium]
@@ -40,10 +41,6 @@ zoomLevel = 0
 enable = true
 maxFpsLimit = 144 # Use 0 for unlimited
 
-[icedos.applications.emulators]
-switch = false
-wiiu = false
-
 [icedos.applications.kitty]
 enable = true
 hideDecorations = false # Hide top bar
@@ -72,6 +69,7 @@ downloadsWorkaround = true
 [icedos.applications.steam.session]
 enable = true
 useValveKernel = false
+user = "icedborn"
 
 [icedos.applications.steam.session.autoStart]
 enable = false
@@ -268,29 +266,28 @@ days = 0 # Number of days before a generation can be deleted
 generations = 10 # Number of generations that will always be kept
 interval = "7d" # Format(https://www.freedesktop.org/software/systemd/man/latest/systemd.time.html)
 
-[icedos.system.users.main]
-enable = true
-username = "icedborn"
+[icedos.system.users.icedborn]
 description = "IceDBorn"
+type = "main" # (main, work, server)
 
-[icedos.system.users.main.applications.codium]
+[icedos.system.users.icedborn.applications.codium]
 autoSave = "off" # off, afterDelay, onFocusChange, onWindowChange
 formatOnSave = true
 formatOnPaste = true
 
-[icedos.system.users.main.applications.git]
+[icedos.system.users.icedborn.applications.git]
 username = "IceDBorn"
 email = "git.outsider841@simplelogin.fr"
 
-[icedos.system.users.main.applications.nvchad]
+[icedos.system.users.icedborn.applications.nvchad]
 formatOnSave = true
 
-[icedos.system.users.main.desktop.gnome.pinnedApps.arcmenu]
+[icedos.system.users.icedborn.desktop.gnome.pinnedApps.arcmenu]
 enable = false
 list = ["codiumIDE.desktop", "codium.desktop", "mullvad-vpn.desktop"]
 
 # Set pinned apps for gnome shell (will be used by dash-to-panel if enabled)
-[icedos.system.users.main.desktop.gnome.pinnedApps.shell]
+[icedos.system.users.icedborn.desktop.gnome.pinnedApps.shell]
 enable = false
 list = [
   "steam.desktop",
@@ -299,101 +296,15 @@ list = [
   "librewolf.desktop",
 ]
 
-[icedos.system.users.main.desktop.idle.lock]
+[icedos.system.users.icedborn.desktop.idle.lock]
 enable = true
 seconds = 180
 
-[icedos.system.users.main.desktop.idle.disableMonitors]
+[icedos.system.users.icedborn.desktop.idle.disableMonitors]
 enable = true
 seconds = 300
 
-[icedos.system.users.main.desktop.idle.suspend]
-enable = true
-seconds = 900
-
-[icedos.system.users.work]
-enable = false
-username = "work"
-description = "Work"
-
-[icedos.system.users.work.applications.codium]
-autoSave = "off" # off, afterDelay, onFocusChange, onWindowChange
-formatOnSave = false
-formatOnPaste = false
-
-[icedos.system.users.work.applications.git]
-username = "IceDBorn"
-email = "git.outsider841@simplelogin.fr"
-
-[icedos.system.users.work.applications.nvchad]
-formatOnSave = false
-
-[icedos.system.users.work.desktop.gnome.pinnedApps.arcmenu]
-enable = false
-list = ["codiumIDE.desktop", "codium.desktop", "mullvad-vpn.desktop"]
-
-# Set pinned apps for gnome shell (will be used by dash-to-panel if enabled)
-[icedos.system.users.work.desktop.gnome.pinnedApps.shell]
-enable = false
-list = [
-  "steam.desktop",
-  "webcord.desktop",
-  "signal-desktop.desktop",
-  "librewolf.desktop",
-]
-
-[icedos.system.users.work.desktop.idle.lock]
-enable = true
-seconds = 180
-
-[icedos.system.users.work.desktop.idle.disableMonitors]
-enable = true
-seconds = 300
-
-[icedos.system.users.work.desktop.idle.suspend]
-enable = true
-seconds = 900
-
-[icedos.system.users.server]
-enable = false
-username = "server"
-description = "Server"
-
-[icedos.system.users.server.applications.codium]
-autoSave = "off" # off, afterDelay, onFocusChange, onWindowChange
-formatOnSave = true
-formatOnPaste = true
-
-[icedos.system.users.server.applications.git]
-username = "IceDBorn"
-email = "git.outsider841@simplelogin.fr"
-
-[icedos.system.users.server.applications.nvchad]
-formatOnSave = true
-
-[icedos.system.users.server.desktop.gnome.pinnedApps.arcmenu]
-enable = false
-list = ["codiumIDE.desktop", "codium.desktop", "mullvad-vpn.desktop"]
-
-# Set pinned apps for gnome shell (will be used by dash-to-panel if enabled)
-[icedos.system.users.server.desktop.gnome.pinnedApps.shell]
-enable = false
-list = [
-  "steam.desktop",
-  "webcord.desktop",
-  "signal-desktop.desktop",
-  "librewolf.desktop",
-]
-
-[icedos.system.users.server.desktop.idle.lock]
-enable = true
-seconds = 180
-
-[icedos.system.users.server.desktop.idle.disableMonitors]
-enable = true
-seconds = 300
-
-[icedos.system.users.server.desktop.idle.suspend]
+[icedos.system.users.icedborn.desktop.idle.suspend]
 enable = true
 seconds = 900
 

@@ -6,15 +6,7 @@
 }:
 
 let
-  inherit (lib)
-    attrNames
-    filter
-    foldl'
-    mkIf
-    ;
-
-  mapAttrsAndKeys = callback: list: (foldl' (acc: value: acc // (callback value)) { } list);
-
+  inherit (lib) mapAttrs mkIf;
   cfg = config.icedos;
   firefoxVersion = builtins.substring 0 5 pkgs.firefox.version;
 
@@ -73,24 +65,12 @@ let
   '';
 in
 mkIf (cfg.applications.zen-browser.enable) {
-  home-manager.users =
-    let
-      users = filter (user: cfg.system.users.${user}.enable == true) (attrNames cfg.system.users);
-    in
-    mapAttrsAndKeys (
-      user:
-      let
-        username = cfg.system.users.${user}.username;
-      in
-      {
-        ${username} = {
-          home.file.".zen/default/user.js".text = userJs;
-          home.file.".zen/pwas/user.js".text =
-            if (cfg.applications.zen-browser.pwas.enable) then
-              userJs + ''user_pref("browser.toolbars.bookmarks.visibility", "never");''
-            else
-              "";
-        };
-      }
-    ) users;
+  home-manager.users = mapAttrs (user: _: {
+    home.file.".zen/default/user.js".text = userJs;
+    home.file.".zen/pwas/user.js".text =
+      if (cfg.applications.zen-browser.pwas.enable) then
+        userJs + ''user_pref("browser.toolbars.bookmarks.visibility", "never");''
+      else
+        "";
+  }) cfg.system.users;
 }

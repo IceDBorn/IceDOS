@@ -15,15 +15,12 @@ in
 {
   home-manager.users =
     let
-      users = filter (user: cfg.system.users.${user}.enable == true) (attrNames cfg.system.users);
+      users = attrNames cfg.system.users;
     in
     mapAttrsAndKeys (
       user:
-      let
-        username = cfg.system.users.${user}.username;
-      in
       {
-        ${username} = {
+        ${user} = {
           # Gnome control center running in Hypr WMs
           xdg.desktopEntries.gnome-control-center = {
             exec = "env XDG_CURRENT_DESKTOP=GNOME gnome-control-center";
