@@ -52,6 +52,8 @@ in
           dconf.settings = {
             "org/gnome/nautilus/preferences" = {
               always-use-location-entry = true;
+              show-create-link = true;
+              show-delete-permanently = true;
             };
 
             "org/gtk/gtk4/settings/file-chooser" = {
