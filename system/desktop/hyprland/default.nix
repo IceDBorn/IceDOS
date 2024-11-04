@@ -66,9 +66,9 @@ in
         hyprlock # Lock
         hyprpaper # Wallpaper daemon
         hyprpicker # Color picker
+        hyprpolkitagent # Polkit manager
         hyprshade # Shader config tool
         networkmanagerapplet # Network manager tray icon
-        polkit_gnome # Polkit manager
         poweralertd # Battery level alerts
         rofi-wayland # App launcher
         slurp # Monitor selector

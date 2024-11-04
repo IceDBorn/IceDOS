@@ -40,7 +40,7 @@ pkgs.writeShellScriptBin "hyprland-startup" ''
   }
 
   # Basic functionalities
-  run "${pkgs.polkit_gnome}/libexec/polkit-gnome-authentication-agent-1"
+  systemctl --user start hyprpolkitagent
   run valent
   cliphist wipe
   run hyprland-per-window-layout
