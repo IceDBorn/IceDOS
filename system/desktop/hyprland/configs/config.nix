@@ -16,7 +16,6 @@ let
     ;
 
   cfg = config.icedos;
-  browsers = "librewolf|zen-alpha";
   monitorsLength = length (monitors);
   mapAttrsAndKeys = callback: list: (foldl' (acc: value: acc // (callback value)) { } list);
   monitors = cfg.hardware.monitors;
@@ -158,21 +157,22 @@ in
 
           ${
             let
-              pavucontrol = "org.pulseaudio.pavucontrol";
-              blueberry = "blueberry.py";
+              browsers = "librewolf|zen-alpha";
+              media-tools = "blueberry.py|org.pulseaudio.pavucontrol|valent";
+              messengers = "WebCord|Signal|pwas|signal";
             in
             if (monitorsLength >= 3) then
               ''
                 windowrulev2 = workspace 1 silent, class:^(${browsers})$
                 windowrulev2 = workspace 2 silent, class:^(dev.zed.Zed)$
                 windowrulev2 = workspace 3 silent, class:^(steam_app_.*)$, title:^((?!notificationtoasts.*).)*$
-                windowrulev2 = workspace 11 silent, class:^(WebCord|Signal|pwas|signal)$
+                windowrulev2 = workspace 11 silent, class:^(${messengers})$
                 windowrulev2 = workspace 12 silent, class:^(org\.gnome\.Nautilus)$
                 windowrulev2 = workspace 13 silent, class:^(task-managers)$ # Task manager
                 windowrulev2 = workspace 14 silent, class:^(terminals)$ # Terminal
                 windowrulev2 = workspace 21 silent, class:^(Steam|steam)$, title:^((?!notificationtoasts.*).)*$
                 windowrulev2 = workspace 21 silent, title:^(.*Steam[A-Za-z0-9\s]*)$
-                windowrulev2 = workspace 22 silent, class:^(${blueberry}|${pavucontrol}|valent)$
+                windowrulev2 = workspace 22 silent, class:^(${media-tools})$
               ''
             else if (monitorsLength == 2) then
               ''
@@ -180,9 +180,9 @@ in
                 windowrulev2 = workspace 2 silent, class:^(dev.zed.Zed)$
                 windowrulev2 = workspace 3 silent, class:^(Steam|steam|steam_app_.*)$, title:^((?!notificationtoasts.*).)*$
                 windowrulev2 = workspace 3 silent, title:^(.*Steam[A-Za-z0-9\s]*)$
-                windowrulev2 = workspace 11 silent, class:^(WebCord|Signal|pwas)$
+                windowrulev2 = workspace 11 silent, class:^(${messengers})$
                 windowrulev2 = workspace 12 silent, class:^(org\.gnome\.Nautilus)$
-                windowrulev2 = workspace 13 silent, class:^(${blueberry}|${pavucontrol}|valent)$
+                windowrulev2 = workspace 13 silent, class:^(${media-tools})$
                 windowrulev2 = workspace 14 silent, class:^(task-managers)$ # Task manager
                 windowrulev2 = workspace 15 silent, class:^(terminals)$ # Terminal
               ''
@@ -190,11 +190,11 @@ in
               ''
                 windowrulev2 = workspace 1 silent, class:^(${browsers})$
                 windowrulev2 = workspace 2 silent, class:^(dev.zed.Zed)$
-                windowrulev2 = workspace 3 silent, class:^(WebCord|Signal|pwas)$
+                windowrulev2 = workspace 3 silent, class:^(${messengers})$
                 windowrulev2 = workspace 4 silent, class:^(Steam|steam|steam_app_.*)$, title:^((?!notificationtoasts.*).)*$
                 windowrulev2 = workspace 4 silent, title:^(.*Steam[A-Za-z0-9\s]*)$
                 windowrulev2 = workspace 5 silent, class:^(org\.gnome\.Nautilus)$
-                windowrulev2 = workspace 6 silent, class:^(${blueberry}|${pavucontrol}|valent)$
+                windowrulev2 = workspace 6 silent, class:^(${media-tools})$
                 windowrulev2 = workspace 7 silent, class:^(task-managers)$ # Task Manager
                 windowrulev2 = workspace 8 silent, class:^(terminals)$ # Terminal
               ''
@@ -202,9 +202,9 @@ in
               ''
                 windowrulev2 = workspace 1 silent, class:^(${browsers})$
                 windowrulev2 = workspace 2 silent, class:^(dev.zed.Zed)$
-                windowrulev2 = workspace 3 silent, class:^(WebCord|Signal|pwas)$
+                windowrulev2 = workspace 3 silent, class:^(${messengers})$
                 windowrulev2 = workspace 4 silent, class:^(org\.gnome\.Nautilus)$
-                windowrulev2 = workspace 5 silent, class:^(${blueberry}|${pavucontrol}|valent)$
+                windowrulev2 = workspace 5 silent, class:^(${media-tools})$
                 windowrulev2 = workspace 6 silent, class:^(task-managers)$ # Task Manager
                 windowrulev2 = workspace 7 silent, class:^(terminals)$ # Terminal
               ''
