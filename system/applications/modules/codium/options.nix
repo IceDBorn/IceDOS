@@ -56,6 +56,8 @@ mkIf (cfg.applications.codium.enable) {
             "gitlens.defaultDateShortFormat": "YYYY-M-D",
             "gitlens.defaultTimeFormat": "HH:mm",
             "gitlens.statusBar.enabled": false,
+            "intelephense.environment.phpVersion": "7.4.3",
+            "intelephense.format.braces": "k&r",
             "nix.formatterPath": "nixfmt",
             "terminal.integrated.cursorBlinking": true,
             "terminal.integrated.cursorStyle": "line",
