@@ -11,8 +11,8 @@ let
 
   mapAttrsAndKeys = callback: list: (foldl' (acc: value: acc // (callback value)) { } list);
 
-  vpn-toggle = import modules/vpn-watcher.nix { inherit pkgs; };
-  vpn-watcher = import modules/vpn-toggle.nix { inherit config pkgs; };
+  vpn-toggle = import ../vpn-watcher.nix { inherit pkgs; };
+  vpn-watcher = import ../vpn-toggle.nix { inherit config pkgs; };
 in
 {
   home-manager.users =
@@ -27,9 +27,10 @@ in
       {
         ${username}.home = {
           packages = with pkgs; [
+            psmisc
             vpn-toggle
             vpn-watcher
-            psmisc
+            waybar
           ];
 
           file = {
@@ -43,8 +44,15 @@ in
                   "custom/vpn",
                   "idle_inhibitor",
                   "custom/separator",
-                  "bluetooth",
-                  "custom/separator",
+                  ${
+                    if (cfg.hardware.bluetooth) then
+                      ''
+                        "custom/separator",
+                        "bluetooth",
+                      ''
+                    else
+                      ""
+                  }
                   "hyprland/language",
                   "custom/separator",
                   "wireplumber",

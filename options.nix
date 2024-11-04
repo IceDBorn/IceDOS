@@ -175,6 +175,8 @@
       };
 
       hardware = {
+        bluetooth = mkOption { type = types.bool; };
+
         btrfs.compression = {
           enable = mkOption { type = types.bool; };
           mounts = mkOption { type = types.bool; };

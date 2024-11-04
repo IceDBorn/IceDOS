@@ -30,8 +30,8 @@ in
     ../../applications/modules/hypridle.nix
     ../../applications/modules/swaync
     ../../applications/modules/valent.nix
+    ../../applications/modules/waybar
     ./configs/config.nix
-    ./configs/waybar/config.nix
     ./configs/wleave/style.nix
     ./home.nix
   ];
@@ -46,7 +46,6 @@ in
       with pkgs;
       [
         baobab # Disk usage analyser
-        blueberry # Bluetooth manager
         brightnessctl # Brightness control
         cliphist # Clipboard manager for wayland
         feh # Minimal image viewer
@@ -75,7 +74,6 @@ in
         swappy # Edit screenshots
         swayosd # Notifications for volume, caps lock etc.
         sysstat # Needed for disk-watcher
-        waybar # Status bar
         wdisplays # Displays manager
         wl-clipboard # Clipboard daemon
         wleave # Logout screen
