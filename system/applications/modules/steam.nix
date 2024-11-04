@@ -67,7 +67,4 @@ mkIf (cfg.applications.steam.enable) {
       extest.enable = cfg.hardware.devices.steamdeck;
     };
   };
-
-  # Needed for steam's file picker
-  xdg.portal.extraPortals = mkIf (!cfg.desktop.gnome.enable) [ pkgs.xdg-desktop-portal-gtk ];
 }
