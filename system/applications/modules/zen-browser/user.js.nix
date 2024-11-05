@@ -48,6 +48,7 @@ let
         ''
       else
         ''
+          user_pref("browser.startup.page", 1);
           user_pref("privacy.clearOnShutdown_v2.historyFormDataAndDownloads", true);
           user_pref("signon.rememberSignons", false);
         ''
