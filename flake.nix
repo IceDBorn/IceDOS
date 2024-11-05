@@ -103,6 +103,8 @@
           home-manager.nixosModules.home-manager
           nerivations.nixosModules.default
 
+          ./system/desktop
+
           steam-session.nixosModules.default
           ./system/desktop/steam-session.nix
 
@@ -110,9 +112,6 @@
           hyprlux.nixosModules.default
           ./system/desktop/hyprland
           ./system/applications/modules/hyprlux.nix
-
-          ./system/desktop
-          ./system/desktop/gnome
 
           ./system/applications/modules/zen-browser
 

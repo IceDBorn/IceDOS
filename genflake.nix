@@ -2,6 +2,7 @@ let
   inherit (lib) attrNames concatImapStrings filter;
   cfg = (import ./options.nix { inherit lib; }).config.icedos;
   channels = filter (channel: cfg.system.channels.${channel} == true) (attrNames cfg.system.channels);
+  gnome = cfg.desktop.gnome.enable;
   hyprland = cfg.desktop.hyprland.enable;
   lib = import <nixpkgs/lib>;
   php = cfg.applications.php;
@@ -23,7 +24,9 @@ in
           follows = "chaotic/nixpkgs";
         };
 
-        ${concatImapStrings (i: channel: ''${channel}.url = github:NixOS/nixpkgs/${channel};''\n'') channels}
+        ${
+          concatImapStrings (i: channel: ''${channel}.url = github:NixOS/nixpkgs/${channel};''\n'') channels
+        }
 
         # Modules
         home-manager = {
@@ -162,10 +165,24 @@ in
               home-manager.nixosModules.home-manager
               nerivations.nixosModules.default
 
-              ${concatImapStrings (i: channel: ''({config, ...}: { nixpkgs.config.packageOverrides.${channel} = import ${channel} { config = config.nixpkgs.config; }; })'') channels}
+              ${
+                concatImapStrings (
+                  i: channel:
+                  ''({config, ...}: { nixpkgs.config.packageOverrides.${channel} = import ${channel} { config = config.nixpkgs.config; }; })''
+                ) channels
+              }
 
               ${
-                if (!server && steam-session) then
+                if (!server) then
+                  ''
+                    ./system/desktop
+                  ''
+                else
+                  ""
+              }
+
+              ${
+                if (steam-session) then
                   ''
                     steam-session.nixosModules.default
                     ./system/desktop/steam-session.nix
@@ -175,7 +192,7 @@ in
               }
 
               ${
-                if (!server && hyprland) then
+                if (hyprland) then
                   ''
                     hyprland.nixosModules.default
                     hyprlux.nixosModules.default
@@ -187,9 +204,8 @@ in
               }
 
               ${
-                if (!server) then
+                if (gnome) then
                   ''
-                    ./system/desktop
                     ./system/desktop/gnome
                   ''
                 else

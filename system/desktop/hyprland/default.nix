@@ -31,8 +31,8 @@ in
     ../../applications/modules/swaync
     ../../applications/modules/valent.nix
     ../../applications/modules/waybar
+    ../../applications/modules/wleave
     ./configs/config.nix
-    ./configs/wleave/style.nix
     ./home.nix
   ];
 
@@ -76,7 +76,6 @@ in
         sysstat # Needed for disk-watcher
         wdisplays # Displays manager
         wl-clipboard # Clipboard daemon
-        wleave # Logout screen
       ]
       ++ shellScripts;
   };
