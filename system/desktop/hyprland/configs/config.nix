@@ -72,7 +72,6 @@ in
         }
 
         decoration {
-          drop_shadow = false
           rounding = 5
         }
 
@@ -96,12 +95,7 @@ in
         # Desktop usage
         bind = $mainMod, R, exec, rofi -show drun
         bind = $mainMod, V, exec, rofi -modi clipboard:${pkgs.cliphist}/bin/cliphist-rofi-img -show clipboard -show-icons
-        bind = , Print, exec, grimblast copy output
-        bind = SHIFT, Print, exec, grimblast edit output
-        bind = $mainMod, Print, exec, grimblast --freeze copy area
-        bind = $mainMod SHIFT, Print, exec, grimblast --freeze edit area
-        bind = ALT, Print, exec, grimblast copy
-        bind = $mainMod ALT, Print, exec, grimblast edit
+        bind = $mainMod, P, exec, grimblast --freeze copy area
         bind = $mainMod, L, exec, hyprlock-wrapper lock force
         bind = $mainMod SHIFT, L, exec, wleave
         bind = $mainMod, N, exec, swaync-client -t -sw
@@ -112,7 +106,6 @@ in
         # Window control
         bind = $mainMod, Q, killactive
         bind = $mainMod, T, togglefloating,
-        bind = $mainMod, P, pseudo
         bind = $mainMod, S, togglesplit
         bind = $mainMod, F, fullscreen, 0
         bind = $mainMod, M, fullscreen, 1
