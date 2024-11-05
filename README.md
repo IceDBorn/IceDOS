@@ -13,7 +13,7 @@ This is a NixOS configuration project that aims to create a highly opinionated g
 ```bash
 git clone https://github.com/IceDBorn/IceDOS
 cd IceDOS
-bash scripts/install.sh
+sudo nix-shell scripts/install.sh
 ```
 
 ## Preview
