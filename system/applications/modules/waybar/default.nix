@@ -36,7 +36,6 @@ in
               ${
                 if (cfg.hardware.bluetooth) then
                   ''
-                    "custom/separator",
                     "bluetooth",
                     "custom/separator",
                   ''
