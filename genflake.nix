@@ -1,13 +1,14 @@
 let
-  lib = import <nixpkgs/lib>;
-  inherit (lib) attrNames concatImapStrings;
+  inherit (lib) attrNames concatImapStrings filter;
   cfg = (import ./options.nix { inherit lib; }).config.icedos;
-  users = attrNames cfg.system.users;
+  channels = filter (channel: cfg.system.channels.${channel} == true) (attrNames cfg.system.channels);
   hyprland = cfg.desktop.hyprland.enable;
+  lib = import <nixpkgs/lib>;
   php = cfg.applications.php;
   server = cfg.hardware.devices.server.enable;
   steam-session = cfg.applications.steam.session.enable;
   suyu = cfg.applications.suyu;
+  users = attrNames cfg.system.users;
   zen-browser = cfg.applications.zen-browser.enable;
 in
 {
@@ -21,6 +22,8 @@ in
           url = "github:NixOS/nixpkgs/nixos-unstable";
           follows = "chaotic/nixpkgs";
         };
+
+        ${concatImapStrings (i: channel: ''${channel}.url = github:NixOS/nixpkgs/${channel};''\n'') channels}
 
         # Modules
         home-manager = {
@@ -126,6 +129,7 @@ in
           ${if (steam-session) then ''steam-session,'' else ""}
           ${if (suyu) then ''suyu,'' else ""}
           ${if (zen-browser) then ''zen-browser,'' else ""}
+          ${concatImapStrings (i: channel: ''${channel},'') channels}
         }@inputs:
         {
           nixosConfigurations.''${nixpkgs.lib.fileContents "/etc/hostname"} = nixpkgs.lib.nixosSystem {
@@ -157,6 +161,8 @@ in
               chaotic.nixosModules.default
               home-manager.nixosModules.home-manager
               nerivations.nixosModules.default
+
+              ${concatImapStrings (i: channel: ''({config, ...}: { nixpkgs.config.packageOverrides.${channel} = import ${channel} { config = config.nixpkgs.config; }; })'') channels}
 
               ${
                 if (!server && steam-session) then

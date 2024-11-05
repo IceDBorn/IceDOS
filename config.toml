@@ -254,6 +254,12 @@ home = "/home"
 swappiness = 1
 version = "23.05" # Do not change without checking the docs (config.system.stateVersion)
 
+[icedos.system.channels]
+master = false
+nixos-unstable-small = false
+staging = false
+staging-next = false
+
 [icedos.system.config]
 version = "1.0.0"
 

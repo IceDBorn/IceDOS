@@ -257,6 +257,13 @@
       };
 
       system = {
+        channels = {
+          master = mkOption { type = types.bool; };
+          nixos-unstable-small = mkOption { type = types.bool; };
+          staging = mkOption { type = types.bool; };
+          staging-next = mkOption { type = types.bool; };
+        };
+
         config.version = mkOption { type = types.str; };
 
         generations = {

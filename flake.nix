@@ -70,6 +70,7 @@
       steam-session,
 
       zen-browser,
+
     }@inputs:
     {
       nixosConfigurations.${nixpkgs.lib.fileContents "/etc/hostname"} = nixpkgs.lib.nixosSystem {
