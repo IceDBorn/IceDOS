@@ -30,7 +30,6 @@ in
 
       ".config/hypr/hyprpaper.jpg".source = configs/hyprpaper.jpg;
       ".config/hypr/hyprlock.conf".source = configs/hyprlock.conf;
-      ".config/hypr/vibrance.glsl".source = configs/vibrance.glsl;
     };
   }) cfg.system.users;
 }
