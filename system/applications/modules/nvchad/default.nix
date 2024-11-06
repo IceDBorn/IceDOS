@@ -18,7 +18,6 @@ in
       beautysh # Bash formatter
       black # Python formatter
       eslint # An AST-based pattern checker for JavaScript
-      lazygit # Git CLI UI
       libclang # C language server and formatter
       lua-language-server # Lua language server
       marksman # Markdown language server

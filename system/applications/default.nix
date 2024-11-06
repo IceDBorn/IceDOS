@@ -66,6 +66,7 @@ in
     ./modules/git.nix
     ./modules/kernel.nix
     ./modules/kitty.nix
+    ./modules/lazygit.nix
     ./modules/librewolf
     ./modules/libvirtd.nix
     ./modules/mangohud.nix
