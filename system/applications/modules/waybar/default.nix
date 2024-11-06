@@ -6,21 +6,22 @@
 }:
 
 let
-  inherit (lib) mapAttrs;
+  inherit (lib) mapAttrs optionals;
   cfg = config.icedos;
-
-  vpn-toggle = import ../vpn-watcher.nix { inherit pkgs; };
-  vpn-watcher = import ../vpn-toggle.nix { inherit config pkgs; };
+  vpn-toggle = import ./vpn-toggle.nix { inherit config pkgs; };
+  vpn-watcher = import ./vpn-watcher.nix { inherit pkgs; };
 in
 {
   home-manager.users = mapAttrs (user: _: {
     home = {
-      packages = with pkgs; [
-        psmisc
-        vpn-toggle
-        vpn-watcher
-        waybar
-      ];
+      packages =
+        with pkgs;
+        [ waybar ]
+        ++ optionals (cfg.desktop.hyprland.gatewayVpn) [
+          psmisc
+          vpn-toggle
+          vpn-watcher
+        ];
 
       file = {
         ".config/waybar/config".text = ''
@@ -30,7 +31,14 @@ in
             "modules-center": ["hyprland/workspaces"] ,
             "modules-right": [
               "tray",
-              "custom/vpn",
+              ${
+                if (cfg.desktop.hyprland.gatewayVpn) then
+                  ''
+                    "custom/vpn",
+                  ''
+                else
+                  ""
+              }
               "idle_inhibitor",
               "custom/separator",
               ${
