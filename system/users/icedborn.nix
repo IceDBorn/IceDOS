@@ -35,18 +35,8 @@ in
     [
       bottles # Wine manager
       godot_4 # Game engine
-      input-remapper # Remap input device controls
-      scanmem # Cheat engine like tool for linux
       stremio # Media streaming platform
-
     ]
     ++ emulators
     ++ gaming;
-
-  services = {
-    input-remapper = {
-      enable = true;
-      enableUdevRules = true;
-    };
-  };
 }
