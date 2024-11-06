@@ -149,6 +149,8 @@
           };
         };
 
+        gtkAccentColor = mkOption { type = types.str; };
+
         hyprland = {
           enable = mkOption { type = types.bool; };
           backlight = mkOption { type = types.str; };

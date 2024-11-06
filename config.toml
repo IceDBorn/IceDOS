@@ -119,6 +119,9 @@ device = "/dev/sda"
 enable = true
 mountPoint = "/boot"
 
+[icedos.desktop]
+gtkAccentColor = "#913A8B"
+
 [icedos.desktop.autologin]
 enable = true
 user = "icedborn"

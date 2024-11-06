@@ -16,6 +16,11 @@ let
       "zen.desktop"
     else
       "";
+
+  gtkCss = ''
+    @define-color accent_bg_color ${cfg.desktop.gtkAccentColor};
+    @define-color accent_color @accent_bg_color;
+  '';
 in
 {
   home-manager.users = mapAttrs (user: _: {
@@ -29,7 +34,9 @@ in
 
       cursorTheme.name = "Bibata-Modern-Classic";
       iconTheme.name = "Tela-black-dark";
-    }; # Change GTK themes
+
+      gtk3.extraCss = gtkCss;
+    };
 
     dconf.settings = {
       # Enable dark mode
@@ -45,8 +52,10 @@ in
     };
 
     xdg = {
-      # Force creation of mimeapps
-      configFile."mimeapps.list".force = true;
+      configFile = {
+        "gtk-4.0/gtk.css".enable = false;
+        "mimeapps.list".force = true;
+      };
 
       # Default apps
       mimeApps = {
@@ -75,9 +84,13 @@ in
       };
     };
 
-    home.file.".icons/default" = {
-      source = "${pkgs.bibata-cursors}/share/icons/Bibata-Modern-Classic";
-      recursive = true;
-    }; # Set icon theme fot QT apps and Hyprland
+    home.file = {
+      ".icons/default" = {
+        source = "${pkgs.bibata-cursors}/share/icons/Bibata-Modern-Classic";
+        recursive = true;
+      };
+
+      ".config/gtk-4.0/gtk.css".text = gtkCss;
+    };
   }) cfg.system.users;
 }
