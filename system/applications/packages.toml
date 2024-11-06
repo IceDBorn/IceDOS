@@ -41,7 +41,6 @@ packages = [
   "onlyoffice-bin", # Microsoft Office alternative for Linux
   "p7zip", # 7zip
   "pavucontrol", # Sound manager
-  "rnnoise-plugin", # A real-time noise suppression plugin
   "scrcpy", # Remotely use android
   "signal-desktop", # Encrypted messaging platform
   "tree", # Display folder content at a tree format
