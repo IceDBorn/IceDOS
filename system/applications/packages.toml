@@ -53,5 +53,4 @@ packages = [
   "winetricks", # Wine prefix settings manager
   "woeusb", # Windows ISO Burner
   "xorg.xhost", # Use x.org server with containers
-  "zenstates", # Ryzen CPU controller
 ]

@@ -25,6 +25,8 @@ mkIf (cfg.enable) {
     extraModulePackages = with config.boot.kernelPackages; [ zenpower ];
   };
 
+  environment.systemPackages = [ pkgs.zenstates ];
+
   hardware.cpu.amd.updateMicrocode = true;
 
   # Ryzen cpu control
