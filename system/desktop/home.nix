@@ -67,6 +67,8 @@ in
           "application/x-ms-dos-executable" = "wine.desktop";
           "application/x-shellscript" = "codium.desktop";
           "application/x-wine-extension-ini" = "codium.desktop";
+          "application/xhtml_xml" = browser;
+          "application/xhtml+xml" = browser;
           "application/zip" = "org.gnome.FileRoller.desktop";
           "image/avif" = "org.gnome.gThumb.desktop";
           "image/jpeg" = "org.gnome.gThumb.desktop";
@@ -80,6 +82,7 @@ in
           "x-scheme-handler/http" = browser;
           "x-scheme-handler/https" = browser;
           "x-scheme-handler/unknown" = browser;
+          "x-www-browser" = browser;
         };
       };
     };
