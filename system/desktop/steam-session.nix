@@ -13,13 +13,16 @@ mkIf (session.enable) {
       autoUpdate = true;
     };
 
+    hardware.has.amd.gpu = cfg.hardware.gpus.amd.enable;
+
     steam = {
       enable = true;
       autoStart = session.autoStart.enable;
       desktopSession = session.autoStart.desktopSession;
+      updater.splash = "jovian";
       user = session.user;
     };
 
-    steamos.useSteamOSConfig = cfg.hardware.devices.steamdeck;
+    steamos.useSteamOSConfig = true;
   };
 }
