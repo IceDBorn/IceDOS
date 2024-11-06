@@ -40,6 +40,7 @@
         nvchad = mkOption { type = types.bool; };
         php = mkOption { type = types.bool; };
         pitivi = mkOption { type = types.bool; };
+        rust = mkOption { type = types.bool; };
         solaar = mkOption { type = types.bool; };
 
         steam = {

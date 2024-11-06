@@ -6,6 +6,7 @@ clamav = false
 nvchad = true
 php = false
 pitivi = false
+rust = false
 solaar = true
 sunshine = true
 suyu = false

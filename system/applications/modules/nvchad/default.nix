@@ -29,8 +29,6 @@ in
       nodePackages.vscode-langservers-extracted # HTML, CSS, Eslint, Json language servers
       python3Packages.jedi-language-server # Python language server
       ripgrep # Silver searcher grep
-      rust-analyzer # Rust language server
-      rustfmt # Rust formatter
       shellcheck # Shell script analysis tool
       stylua # Lua formatter
       tailwindcss-language-server # Tailwind language server

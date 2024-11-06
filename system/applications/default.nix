@@ -73,6 +73,7 @@ in
     ./modules/nvchad
     ./modules/php.nix
     ./modules/pitivi.nix
+    ./modules/rust.nix
     ./modules/solaar.nix
     ./modules/steam.nix
     ./modules/store.nix
