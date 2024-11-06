@@ -37,8 +37,11 @@ let
     user_pref("privacy.sanitize.sanitizeOnShutdown", true);
     user_pref("svg.context-properties.content.enabled", true);
     user_pref("toolkit.legacyUserProfileCustomizations.stylesheets", true);
+    user_pref("zen.tabs.show-newtab-under", false);
     user_pref("zen.theme.accent-color", "#d4bbff");
     user_pref("zen.theme.color-prefs.amoled", true);
+    user_pref("zen.view.sidebar-expanded", false);
+    user_pref("zen.view.sidebar-expanded.on-hover", true);
 
     ${
       if (!cfg.applications.zen-browser.privacy) then
@@ -70,7 +73,11 @@ mkIf (cfg.applications.zen-browser.enable) {
     home.file.".zen/default/user.js".text = userJs;
     home.file.".zen/pwas/user.js".text =
       if (cfg.applications.zen-browser.pwas.enable) then
-        userJs + ''user_pref("browser.toolbars.bookmarks.visibility", "never");''
+        userJs
+        + ''
+          user_pref("zen.view.sidebar-expanded.on-hover", false);
+          user_pref("browser.toolbars.bookmarks.visibility", "never");
+        ''
       else
         "";
   }) cfg.system.users;
