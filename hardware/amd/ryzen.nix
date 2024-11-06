@@ -7,7 +7,6 @@
 
 let
   inherit (lib) mkIf;
-
   cfg = config.icedos.hardware.cpus.amd;
 in
 mkIf (cfg.enable) {
@@ -25,7 +24,9 @@ mkIf (cfg.enable) {
     extraModulePackages = with config.boot.kernelPackages; [ zenpower ];
   };
 
-  environment.systemPackages = [ pkgs.zenstates ];
+  environment.systemPackages = mkIf (cfg.undervolt.enable) [
+    pkgs.zenstates
+  ];
 
   hardware.cpu.amd.updateMicrocode = true;
 
