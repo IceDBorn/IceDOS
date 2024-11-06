@@ -2,6 +2,7 @@ let
   inherit (lib) attrNames concatImapStrings filter;
   cfg = (import ./options.nix { inherit lib; }).config.icedos;
   channels = filter (channel: cfg.system.channels.${channel} == true) (attrNames cfg.system.channels);
+  aagl = cfg.applications.aagl;
   gnome = cfg.desktop.gnome.enable;
   hyprland = cfg.desktop.hyprland.enable;
   lib = import <nixpkgs/lib>;
@@ -52,6 +53,18 @@ in
         }
 
         # Apps
+        ${
+          if (aagl) then
+            ''
+              aagl = {
+                url = "github:ezKEa/aagl-gtk-on-nix";
+                inputs.nixpkgs.follows = "nixpkgs";
+              };
+            ''
+          else
+            ""
+        }
+
         ${
           if (hyprland) then
             ''
@@ -127,6 +140,7 @@ in
           pipewire-screenaudio,
           self,
           shell-in-netns,
+          ${if (aagl) then ''aagl,'' else ""}
           ${if (hyprland) then ''hyprland,hyprland-plugins,hyprlux,'' else ""}
           ${if (php) then ''phps,'' else ""}
           ${if (steam-session) then ''steam-session,'' else ""}
@@ -186,6 +200,19 @@ in
                   ''
                     steam-session.nixosModules.default
                     ./system/desktop/steam-session.nix
+                  ''
+                else
+                  ""
+              }
+
+              ${
+                if (aagl) then
+                  ''
+                    aagl.nixosModules.default
+                    {
+                      nix.settings = aagl.nixConfig; # Set up Cachix
+                      programs.anime-game-launcher.enable = true; # Adds launcher and /etc/hosts rules
+                    }
                   ''
                 else
                   ""

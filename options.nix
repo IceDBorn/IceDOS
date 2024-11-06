@@ -4,6 +4,7 @@
   options = with lib; {
     icedos = {
       applications = {
+        aagl = mkOption { type = types.bool; };
         android-tools = mkOption { type = types.bool; };
         brave = mkOption { type = types.bool; };
         celluloid = mkOption { type = types.bool; };
