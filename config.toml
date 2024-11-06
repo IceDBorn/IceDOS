@@ -62,6 +62,10 @@ sites = [
   "https://web.skype.com/",
 ]
 
+[icedos.applications.mullvad]
+enable = true
+gui = false
+
 [icedos.applications.steam]
 enable = true
 beta = true
