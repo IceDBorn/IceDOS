@@ -12,7 +12,6 @@ let
     inherit config pkgs;
   };
 
-  hyprlock-wrapper = import modules/hyprlock-wrapper.nix { inherit pkgs; };
   network-watcher = import modules/network-watcher.nix { inherit pkgs config; };
   pipewire-watcher = import modules/pipewire-watcher.nix { inherit pkgs; };
 
@@ -20,7 +19,6 @@ let
     cpu-watcher # Script to check if cpu has a usage above given number
     disk-watcher # Script to check if any disk has a read/write usage above given numbers
     hyprland-startup # Startup script
-    hyprlock-wrapper # Wrap hyprlock
     network-watcher # Script to check if network has a usage above given number
     pipewire-watcher # Script to check if pipewire has active links
   ];
@@ -28,6 +26,7 @@ in
 {
   imports = [
     ../../applications/modules/hypridle.nix
+    ../../applications/modules/hyprlock
     ../../applications/modules/swaync
     ../../applications/modules/valent.nix
     ../../applications/modules/waybar
@@ -62,7 +61,6 @@ in
         grimblast # Screenshot tool
         hyprfreeze # Script to freeze active hyprland window
         hyprland-per-window-layout # Per window layout
-        hyprlock # Lock
         hyprpaper # Wallpaper daemon
         hyprpicker # Color picker
         hyprpolkitagent # Polkit manager

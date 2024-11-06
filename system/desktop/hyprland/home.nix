@@ -29,7 +29,6 @@ in
       '';
 
       ".config/hypr/hyprpaper.jpg".source = configs/hyprpaper.jpg;
-      ".config/hypr/hyprlock.conf".source = configs/hyprlock.conf;
     };
   }) cfg.system.users;
 }
