@@ -16,6 +16,7 @@ in
     with pkgs;
     mkIf (cfg.enable) [
       nixd
+      package-version-server
       pkgs.lazygit
       zed-editor
     ];
