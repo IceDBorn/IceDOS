@@ -66,6 +66,7 @@ in
         hyprpolkitagent # Polkit manager
         hyprshade # Shader config tool
         networkmanagerapplet # Network manager tray icon
+        playerctl # MPRIS cli
         poweralertd # Battery level alerts
         rofi-wayland # App launcher
         slurp # Monitor selector
