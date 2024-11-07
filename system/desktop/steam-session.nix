@@ -19,7 +19,7 @@ mkIf (session.enable) {
       enable = true;
       autoStart = session.autoStart.enable;
       desktopSession = session.autoStart.desktopSession;
-      updater.splash = "jovian";
+      updater.splash = if (cfg.hardware.devices.steamdeck) then "jovian" else "vendor";
       user = session.user;
     };
 
