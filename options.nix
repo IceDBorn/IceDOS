@@ -43,7 +43,6 @@
           gui = mkOption { type = types.bool; };
         };
 
-        nvchad = mkOption { type = types.bool; };
         php = mkOption { type = types.bool; };
         pitivi = mkOption { type = types.bool; };
         rust = mkOption { type = types.bool; };
@@ -310,8 +309,6 @@
                     username = mkOption { type = types.str; };
                     email = mkOption { type = types.str; };
                   };
-
-                  nvchad.formatOnSave = mkOption { type = types.bool; };
                 };
 
                 desktop = {

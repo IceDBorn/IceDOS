@@ -4,7 +4,6 @@ android-tools = true
 brave = true
 celluloid = true
 clamav = false
-nvchad = true
 php = false
 pitivi = false
 rust = false
@@ -294,9 +293,6 @@ formatOnPaste = true
 [icedos.system.users.icedborn.applications.git]
 username = "IceDBorn"
 email = "git.outsider841@simplelogin.fr"
-
-[icedos.system.users.icedborn.applications.nvchad]
-formatOnSave = true
 
 [icedos.system.users.icedborn.desktop.gnome.pinnedApps.arcmenu]
 enable = false

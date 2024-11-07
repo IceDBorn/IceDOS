@@ -16,6 +16,7 @@ in
     with pkgs;
     mkIf (cfg.enable) [
       nixd
+      pkgs.lazygit
       zed-editor
     ];
 

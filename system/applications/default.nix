@@ -66,12 +66,10 @@ in
     ./modules/git.nix
     ./modules/kernel.nix
     ./modules/kitty.nix
-    ./modules/lazygit.nix
     ./modules/librewolf
     ./modules/libvirtd.nix
     ./modules/mangohud.nix
     ./modules/mullvad.nix
-    ./modules/nvchad
     ./modules/php.nix
     ./modules/pitivi.nix
     ./modules/rust.nix
