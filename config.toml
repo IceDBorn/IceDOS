@@ -63,7 +63,7 @@ sites = [
 ]
 
 [icedos.applications.mullvad]
-enable = true
+enable = false
 gui = false
 
 [icedos.applications.steam]
