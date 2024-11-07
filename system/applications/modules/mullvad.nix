@@ -11,7 +11,7 @@ let
   cfg = config.icedos.applications;
 in
 mkIf (cfg.mullvad.enable) {
-  environment.systemPackages = [ ] ++ optional (cfg.mullvad.gui) pkgs.mullvad-vpn;
+  environment.systemPackages = mkIf (cfg.mullvad.gui) [ pkgs.mullvad-vpn ];
 
   services.mullvad-vpn.enable = true;
 }
