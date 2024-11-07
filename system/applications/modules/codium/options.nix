@@ -10,12 +10,10 @@ mkIf (cfg.applications.codium.enable) {
     let
       settings = ''
         {
-          "[css]": {
-            "editor.defaultFormatter": "esbenp.prettier-vscode"
-          },
-          "[javascript]": {
-            "editor.defaultFormatter": "esbenp.prettier-vscode"
-          },
+          "[css]": {"editor.defaultFormatter": "esbenp.prettier-vscode" },
+          "[javascript]": { "editor.defaultFormatter": "esbenp.prettier-vscode" },
+          "[typescript]": { "editor.defaultFormatter": "esbenp.prettier-vscode" },
+          "[typescriptreact]": { "editor.defaultFormatter": "esbenp.prettier-vscode" },
           "diffEditor.ignoreTrimWhitespace": false,
           "editor.fontFamily": "'JetBrainsMono Nerd Font', 'Droid Sans Mono', 'monospace', monospace",
           "editor.fontLigatures": true,
@@ -34,6 +32,7 @@ mkIf (cfg.applications.codium.enable) {
           "files.insertFinalNewline": true,
           "files.trimFinalNewlines": true,
           "files.trimTrailingWhitespace": true,
+          "files.associations": { "*.css": "tailwindcss" },
           "git.autofetch": true,
           "git.confirmSync": false,
           "gitlens.codeLens.enabled": false,
@@ -45,6 +44,7 @@ mkIf (cfg.applications.codium.enable) {
           "intelephense.environment.phpVersion": "7.4.3",
           "intelephense.format.braces": "k&r",
           "nix.formatterPath": "nixfmt",
+          "scm.showHistoryGraph": false,
           "terminal.integrated.cursorBlinking": true,
           "terminal.integrated.cursorStyle": "line",
           "terminal.integrated.smoothScrolling": true,
