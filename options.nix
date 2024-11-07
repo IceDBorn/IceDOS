@@ -120,6 +120,8 @@
       };
 
       desktop = {
+        accentColor = mkOption { type = types.str; };
+
         autologin = {
           enable = mkOption { type = types.bool; };
           user = mkOption { type = types.str; };
@@ -154,8 +156,6 @@
             maxWorkspaces = mkOption { type = types.number; };
           };
         };
-
-        gtkAccentColor = mkOption { type = types.str; };
 
         hyprland = {
           enable = mkOption { type = types.bool; };

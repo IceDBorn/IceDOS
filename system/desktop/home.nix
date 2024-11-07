@@ -18,7 +18,7 @@ let
       "";
 
   gtkCss = ''
-    @define-color accent_bg_color ${cfg.desktop.gtkAccentColor};
+    @define-color accent_bg_color ${cfg.desktop.accentColor};
     @define-color accent_color @accent_bg_color;
   '';
 in
