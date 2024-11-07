@@ -5,23 +5,9 @@
 }:
 
 let
-  cpu-watcher = import modules/cpu-watcher.nix { inherit pkgs config; };
-  disk-watcher = import modules/disk-watcher.nix { inherit pkgs config; };
-
   hyprland-startup = import ../../applications/modules/hyprland-startup.nix {
     inherit config pkgs;
   };
-
-  network-watcher = import modules/network-watcher.nix { inherit pkgs config; };
-  pipewire-watcher = import modules/pipewire-watcher.nix { inherit pkgs; };
-
-  shellScripts = [
-    cpu-watcher # Script to check if cpu has a usage above given number
-    disk-watcher # Script to check if any disk has a read/write usage above given numbers
-    hyprland-startup # Startup script
-    network-watcher # Script to check if network has a usage above given number
-    pipewire-watcher # Script to check if pipewire has active links
-  ];
 in
 {
   imports = [
@@ -42,41 +28,38 @@ in
   };
 
   environment = {
-    systemPackages =
-      with pkgs;
-      [
-        baobab # Disk usage analyser
-        brightnessctl # Brightness control
-        cliphist # Clipboard manager for wayland
-        feh # Minimal image viewer
-        file-roller # Archive file manager
-        gnome-calculator # Calculator
-        gnome-calendar # Calendar
-        gnome-clocks # Clock
-        gnome-control-center # Gnome settings
-        gnome-disk-utility # Disks manager
-        gnome-keyring # Keyring daemon
-        gnome-online-accounts # Nextcloud integration
-        gnome-themes-extra # Adwaita GTK theme
-        grim # Screenshot tool
-        grimblast # Screenshot tool
-        hyprfreeze # Script to freeze active hyprland window
-        hyprland-per-window-layout # Per window layout
-        hyprpaper # Wallpaper daemon
-        hyprpicker # Color picker
-        hyprpolkitagent # Polkit manager
-        hyprshade # Shader config tool
-        networkmanagerapplet # Network manager tray icon
-        playerctl # MPRIS cli
-        poweralertd # Battery level alerts
-        slurp # Monitor selector
-        swappy # Edit screenshots
-        swayosd # Notifications for volume, caps lock etc.
-        sysstat # Needed for disk-watcher
-        wdisplays # Displays manager
-        wl-clipboard # Clipboard daemon
-      ]
-      ++ shellScripts;
+    systemPackages = with pkgs; [
+      baobab # Disk usage analyser
+      brightnessctl # Brightness control
+      cliphist # Clipboard manager for wayland
+      feh # Minimal image viewer
+      file-roller # Archive file manager
+      gnome-calculator # Calculator
+      gnome-calendar # Calendar
+      gnome-clocks # Clock
+      gnome-control-center # Gnome settings
+      gnome-disk-utility # Disks manager
+      gnome-keyring # Keyring daemon
+      gnome-online-accounts # Nextcloud integration
+      gnome-themes-extra # Adwaita GTK theme
+      grim # Screenshot tool
+      grimblast # Screenshot tool
+      hyprfreeze # Script to freeze active hyprland window
+      hyprland-per-window-layout # Per window layout
+      hyprland-startup # Startup script
+      hyprpaper # Wallpaper daemon
+      hyprpicker # Color picker
+      hyprpolkitagent # Polkit manager
+      hyprshade # Shader config tool
+      playerctl # MPRIS cli
+      poweralertd # Battery level alerts
+      slurp # Monitor selector
+      swappy # Edit screenshots
+      swayosd # Notifications for volume, caps lock etc.
+      sysstat # Needed for disk-watcher
+      wdisplays # Displays manager
+      wl-clipboard # Clipboard daemon
+    ];
   };
 
   services = {

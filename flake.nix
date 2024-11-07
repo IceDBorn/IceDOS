@@ -25,6 +25,7 @@
     };
 
     # Apps
+
     hyprland.url = "git+https://github.com/hyprwm/Hyprland?submodules=1";
 
     hyprland-plugins = {
@@ -63,6 +64,7 @@
       pipewire-screenaudio,
       self,
       shell-in-netns,
+
       hyprland,
       hyprland-plugins,
       hyprlux,
