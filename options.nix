@@ -38,6 +38,11 @@
           };
         };
 
+        mullvad = {
+          enable = mkOption { type = types.bool; };
+          gui = mkOption { type = types.bool; };
+        };
+
         nvchad = mkOption { type = types.bool; };
         php = mkOption { type = types.bool; };
         pitivi = mkOption { type = types.bool; };

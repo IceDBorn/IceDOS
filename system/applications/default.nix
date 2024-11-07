@@ -70,6 +70,7 @@ in
     ./modules/librewolf
     ./modules/libvirtd.nix
     ./modules/mangohud.nix
+    ./modules/mullvad.nix
     ./modules/nvchad
     ./modules/php.nix
     ./modules/pitivi.nix
