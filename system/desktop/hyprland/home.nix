@@ -17,11 +17,6 @@ in
     dconf.settings."org/gnome/control-center".last-panel = "online-accounts";
 
     home.file = {
-      ".config/rofi" = {
-        source = configs/rofi;
-        recursive = true;
-      };
-
       ".config/hypr/hyprpaper.conf".text = ''
         preload = ~/.config/hypr/hyprpaper.jpg
         wallpaper = , ~/.config/hypr/hyprpaper.jpg

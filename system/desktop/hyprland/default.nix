@@ -27,6 +27,7 @@ in
   imports = [
     ../../applications/modules/hypridle.nix
     ../../applications/modules/hyprlock
+    ../../applications/modules/rofi
     ../../applications/modules/swaync
     ../../applications/modules/valent.nix
     ../../applications/modules/waybar
@@ -68,7 +69,6 @@ in
         networkmanagerapplet # Network manager tray icon
         playerctl # MPRIS cli
         poweralertd # Battery level alerts
-        rofi-wayland # App launcher
         slurp # Monitor selector
         swappy # Edit screenshots
         swayosd # Notifications for volume, caps lock etc.
