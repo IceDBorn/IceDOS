@@ -1,4 +1,5 @@
 [icedos.applications]
+aagl = false
 android-tools = true
 brave = true
 celluloid = true
