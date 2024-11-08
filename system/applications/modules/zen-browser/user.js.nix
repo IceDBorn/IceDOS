@@ -8,6 +8,31 @@
 let
   inherit (lib) mapAttrs mkIf;
   cfg = config.icedos;
+
+  accentColor =
+    if (!cfg.desktop.gnome.enable) then
+      cfg.desktop.accentColor
+    else if (cfg.desktop.gnome.accentColor == "blue") then
+      "#3584e4"
+    else if (cfg.desktop.gnome.accentColor == "teal") then
+      "#2190a4"
+    else if (cfg.desktop.gnome.accentColor == "green") then
+      "#3a944a"
+    else if (cfg.desktop.gnome.accentColor == "yellow") then
+      "#c88800"
+    else if (cfg.desktop.gnome.accentColor == "orange") then
+      "#ed5b00"
+    else if (cfg.desktop.gnome.accentColor == "red") then
+      "#e62d42"
+    else if (cfg.desktop.gnome.accentColor == "pink") then
+      "#d56199"
+    else if (cfg.desktop.gnome.accentColor == "purple") then
+      "#9141ac"
+    else if (cfg.desktop.gnome.accentColor == "slate") then
+      "#6f8396"
+    else
+      "";
+
   firefoxVersion = builtins.substring 0 5 pkgs.firefox.version;
 
   userJs = ''
@@ -38,7 +63,7 @@ let
     user_pref("svg.context-properties.content.enabled", true);
     user_pref("toolkit.legacyUserProfileCustomizations.stylesheets", true);
     user_pref("zen.tabs.show-newtab-under", false);
-    user_pref("zen.theme.accent-color", "${cfg.desktop.accentColor}");
+    user_pref("zen.theme.accent-color", "${accentColor}");
     user_pref("zen.theme.color-prefs.amoled", true);
     user_pref("zen.view.sidebar-expanded", false);
     user_pref("zen.view.sidebar-expanded.on-hover", true);
