@@ -7,7 +7,7 @@ let
 in
 {
   hardware = {
-    enableAllFilmware = true;
+    enableAllFirmware = true;
 
     graphics = {
       enable = true;
