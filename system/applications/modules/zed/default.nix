@@ -11,6 +11,7 @@ let
 in
 {
   imports = [ ./options.nix ];
+  environment.variables.EDITOR = mkIf (cfg.enable && cfg.defaultEditor) "zeditor -n -w";
 
   environment.systemPackages =
     with pkgs;

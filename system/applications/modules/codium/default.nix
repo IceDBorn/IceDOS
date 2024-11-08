@@ -20,7 +20,9 @@ in
       update-codium-extensions
     ];
 
-  environment.variables.EDITOR = mkIf (cfg.applications.codium.enable) "codium -w";
+  environment.variables.EDITOR = mkIf (
+    cfg.applications.codium.enable && cfg.applications.codium.defaultEditor
+  ) "codium -n -w";
 
   home-manager.users = mapAttrs (user: _: {
     # Codium profile used as an IDE
