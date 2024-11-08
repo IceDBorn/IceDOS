@@ -11,6 +11,7 @@ let
 in
 {
   imports = [
+    ../../applications/modules/gnome-control-center.nix
     ../../applications/modules/hypridle.nix
     ../../applications/modules/hyprlock
     ../../applications/modules/hyprpaper
@@ -21,7 +22,6 @@ in
     ../../applications/modules/waybar
     ../../applications/modules/wleave
     ./config.nix
-    ./home.nix
   ];
 
   programs = {
@@ -39,7 +39,6 @@ in
       gnome-calculator # Calculator
       gnome-calendar # Calendar
       gnome-clocks # Clock
-      gnome-control-center # Gnome settings
       gnome-disk-utility # Disks manager
       gnome-keyring # Keyring daemon
       gnome-online-accounts # Nextcloud integration

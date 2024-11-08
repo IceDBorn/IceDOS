@@ -1,10 +1,17 @@
-{ config, lib, ... }:
+{
+  lib,
+  config,
+  pkgs,
+  ...
+}:
 
 let
   inherit (lib) mapAttrs;
   cfg = config.icedos;
 in
 {
+  environment.systemPackages = [ pkgs.gnome-control-center ];
+
   home-manager.users = mapAttrs (user: _: {
     xdg.desktopEntries.gnome-control-center = {
       exec = "env XDG_CURRENT_DESKTOP=GNOME gnome-control-center";
