@@ -7,6 +7,8 @@ let
 in
 {
   hardware = {
+    enableAllFilmware = true;
+
     graphics = {
       enable = true;
       enable32Bit = true; # Support Direct Rendering for 32-bit applications (such as Wine) on 64-bit systems
