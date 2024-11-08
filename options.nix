@@ -84,6 +84,7 @@
         zed = {
           enable = mkOption { type = types.bool; };
           ollamaSupport = mkOption { type = types.bool; };
+          vim = mkOption { type = types.bool; };
 
           theme = {
             dark = mkOption { type = types.str; };
