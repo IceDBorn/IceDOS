@@ -13,13 +13,14 @@ in
   imports = [
     ../../applications/modules/hypridle.nix
     ../../applications/modules/hyprlock
+    ../../applications/modules/hyprpaper
     ../../applications/modules/rofi
     ../../applications/modules/swaync
     ../../applications/modules/swayosd.nix
     ../../applications/modules/valent.nix
     ../../applications/modules/waybar
     ../../applications/modules/wleave
-    ./configs/config.nix
+    ./config.nix
     ./home.nix
   ];
 
@@ -48,7 +49,6 @@ in
       hyprfreeze # Script to freeze active hyprland window
       hyprland-per-window-layout # Per window layout
       hyprland-startup # Startup script
-      hyprpaper # Wallpaper daemon
       hyprpicker # Color picker
       hyprpolkitagent # Polkit manager
       hyprshade # Shader config tool
