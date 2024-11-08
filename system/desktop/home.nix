@@ -17,8 +17,32 @@ let
     else
       "";
 
+  accentColor =
+    if (!cfg.desktop.gnome.enable) then
+      cfg.desktop.accentColor
+    else if (cfg.desktop.gnome.accentColor == "blue") then
+      "#3584e4"
+    else if (cfg.desktop.gnome.accentColor == "teal") then
+      "#2190a4"
+    else if (cfg.desktop.gnome.accentColor == "green") then
+      "#3a944a"
+    else if (cfg.desktop.gnome.accentColor == "yellow") then
+      "#c88800"
+    else if (cfg.desktop.gnome.accentColor == "orange") then
+      "#ed5b00"
+    else if (cfg.desktop.gnome.accentColor == "red") then
+      "#e62d42"
+    else if (cfg.desktop.gnome.accentColor == "pink") then
+      "#d56199"
+    else if (cfg.desktop.gnome.accentColor == "purple") then
+      "#9141ac"
+    else if (cfg.desktop.gnome.accentColor == "slate") then
+      "#6f8396"
+    else
+      "";
+
   gtkCss = ''
-    @define-color accent_bg_color ${cfg.desktop.accentColor};
+    @define-color accent_bg_color ${accentColor};
     @define-color accent_color @accent_bg_color;
   '';
 in

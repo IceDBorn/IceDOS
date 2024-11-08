@@ -134,6 +134,7 @@
 
         gnome = {
           enable = mkOption { type = types.bool; };
+          accentColor = mkOption { type = types.str; };
 
           extensions = {
             arcmenu = mkOption { type = types.bool; };

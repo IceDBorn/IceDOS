@@ -95,7 +95,7 @@ ollamaSupport = false
 [icedos.applications.zed.theme]
 dark = "One Dark Pro"
 light = "One Light"
-mode = "system" # system, dark, light
+mode = "system" # Options: 'system', 'dark', 'light'
 
 [icedos.applications.zen-browser]
 enable = true
@@ -125,7 +125,7 @@ enable = true
 mountPoint = "/boot"
 
 [icedos.desktop]
-accentColor = "#7E57C2"
+accentColor = "#7E57C2" # With gnome enabled this is getting overriden by gnome's selected accent color hex code
 
 [icedos.desktop.autologin]
 enable = true
@@ -137,6 +137,7 @@ autoSuspend = true
 
 [icedos.desktop.gnome]
 enable = false
+accentColor = "purple" # Options: 'blue', 'teal', 'green', 'yellow', 'orange', 'red', 'pink', 'purple', 'slate'
 hotCorners = false
 powerButtonAction = "interactive"
 startupItems = false
@@ -283,10 +284,10 @@ interval = "7d" # Format(https://www.freedesktop.org/software/systemd/man/latest
 
 [icedos.system.users.icedborn]
 description = "IceDBorn"
-type = "main" # (main, work, server)
+type = "main" # Options: 'main', 'work', 'server'
 
 [icedos.system.users.icedborn.applications.codium]
-autoSave = "off" # off, afterDelay, onFocusChange, onWindowChange
+autoSave = "off" # Options: 'off', 'afterDelay', 'onFocusChange', 'onWindowChange'
 formatOnSave = true
 formatOnPaste = true
 

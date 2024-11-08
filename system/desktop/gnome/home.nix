@@ -18,19 +18,12 @@ in
       };
 
       "org/gnome/desktop/interface" = {
-        # Enable dark mode
+        accent-color = cfg.desktop.gnome.accentColor;
         color-scheme = "prefer-dark";
-
-        # Enable clock seconds
         clock-show-seconds = true;
-
-        # Disable date
         clock-show-date = cfg.desktop.gnome.clock.date;
         clock-show-weekday = cfg.desktop.gnome.clock.weekday;
-
         show-battery-percentage = cfg.hardware.devices.laptop;
-
-        # Access the activity overview by moving the mouse to the top-left corner
         enable-hot-corners = cfg.desktop.gnome.hotCorners;
       };
 
