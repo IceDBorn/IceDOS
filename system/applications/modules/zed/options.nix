@@ -1,7 +1,7 @@
 { config, lib, ... }:
 
 let
-  inherit (lib) mapAttrs mkIf;
+  inherit (lib) boolToString mapAttrs mkIf;
   cfg = config.icedos;
 in
 mkIf (cfg.applications.zed.enable) {
@@ -59,7 +59,7 @@ mkIf (cfg.applications.zed.enable) {
             "show_whitespaces": "boundary",
             "tabs": { "git_status": true },
             "ui_font_size": 16,
-            "vim_mode": true
+            "vim_mode": ${boolToString cfg.applications.zed.vim}
           }
         '';
 

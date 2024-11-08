@@ -91,6 +91,7 @@ deviceId = "901524a4_c7c0_407e_9903_431abce54131"
 [icedos.applications.zed]
 enable = true
 ollamaSupport = false
+vim = true
 
 [icedos.applications.zed.theme]
 dark = "One Dark Pro"
