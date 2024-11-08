@@ -74,7 +74,9 @@ in
               "device": "${cfg.desktop.hyprland.backlight}",
               "format": "{icon}",
               "format-icons": ["󰃞", "󰃝", "󰃟", "󰃠"],
-              "tooltip-format": "{percent}%"
+              "tooltip-format": "{percent}%",
+              "on-scroll-up": "swayosd-client --brightness raise",
+              "on-scroll-down": "swayosd-client --brightness lower"
             },
 
             "battery": {
@@ -117,9 +119,9 @@ in
               "format": "{icon} {volume}",
               "format-muted": "󰝟",
               "format-icons":  ["󰕿", "󰖀", "󰕾"],
-              "reverse-scrolling": 1,
-              "scroll-step": 5,
-              "on-click": "pavucontrol"
+              "on-click": "pavucontrol",
+              "on-scroll-up": "swayosd-client --output-volume raise",
+              "on-scroll-down": "swayosd-client --output-volume lower"
             },
 
             "hyprland/workspaces": {
