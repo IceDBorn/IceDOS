@@ -60,6 +60,7 @@ in
     ./modules/clamav.nix
     ./modules/codium
     ./modules/container-manager.nix
+    ./modules/deckbd-wrapper.nix
     ./modules/gamemode.nix
     ./modules/garbage-collect
     ./modules/gdm.nix
