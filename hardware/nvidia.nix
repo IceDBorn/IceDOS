@@ -24,7 +24,7 @@ mkIf (cfg.hardware.gpus.nvidia.enable) {
 
   hardware.nvidia = {
     modesetting.enable = true;
-    open = true;
+    open = cfg.hardware.gpus.nvidia.openDrivers;
 
     package =
       if (cfg.hardware.gpus.nvidia.beta) then

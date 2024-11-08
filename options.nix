@@ -233,6 +233,7 @@
             enable = mkOption { type = types.bool; };
             beta = mkOption { type = types.bool; };
             cuda = mkOption { type = types.bool; };
+            openDrivers = mkOption { type = types.bool; };
 
             powerLimit = {
               enable = mkOption { type = types.bool; };
