@@ -46,7 +46,7 @@ pkgs.writeShellScriptBin "hyprland-startup" ''
   run hyprland-per-window-layout
   run hyprpaper
   run swaync
-  run swayosd
+  run swayosd-server
   wl-paste --type image --watch cliphist store &
   wl-paste --type text --watch cliphist store &
   xrandr --output "${cfg.desktop.hyprland.mainMonitor}" --primary

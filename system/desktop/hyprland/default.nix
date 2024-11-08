@@ -15,6 +15,7 @@ in
     ../../applications/modules/hyprlock
     ../../applications/modules/rofi
     ../../applications/modules/swaync
+    ../../applications/modules/swayosd.nix
     ../../applications/modules/valent.nix
     ../../applications/modules/waybar
     ../../applications/modules/wleave
@@ -55,7 +56,6 @@ in
       poweralertd # Battery level alerts
       slurp # Monitor selector
       swappy # Edit screenshots
-      swayosd # Notifications for volume, caps lock etc.
       sysstat # Needed for disk-watcher
       wdisplays # Displays manager
       wl-clipboard # Clipboard daemon
@@ -74,27 +74,6 @@ in
   security = {
     polkit.enable = true;
     pam.services.login.enableGnomeKeyring = true;
-  };
-
-  systemd.services.swayosd-input = {
-    enable = true;
-    description = "SwayOSD LibInput backend for listening to certain keys like CapsLock, ScrollLock, VolumeUp, etc...";
-    after = [ "graphical.target" ];
-
-    unitConfig = {
-      ConditionPathExists = "${pkgs.swayosd}/bin/swayosd-libinput-backend";
-      PartOf = [ "graphical.target" ];
-    };
-
-    serviceConfig = {
-      User = "root";
-      Type = "dbus";
-      BusName = "org.erikreider.swayosd";
-      ExecStart = "${pkgs.swayosd}/bin/swayosd-libinput-backend";
-      Restart = "on-failure";
-    };
-
-    wantedBy = [ "graphical.target" ];
   };
 
   nix.settings = {
