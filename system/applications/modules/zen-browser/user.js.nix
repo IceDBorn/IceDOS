@@ -12,26 +12,19 @@ let
   accentColor =
     if (!cfg.desktop.gnome.enable) then
       cfg.desktop.accentColor
-    else if (cfg.desktop.gnome.accentColor == "blue") then
-      "#3584e4"
-    else if (cfg.desktop.gnome.accentColor == "teal") then
-      "#2190a4"
-    else if (cfg.desktop.gnome.accentColor == "green") then
-      "#3a944a"
-    else if (cfg.desktop.gnome.accentColor == "yellow") then
-      "#c88800"
-    else if (cfg.desktop.gnome.accentColor == "orange") then
-      "#ed5b00"
-    else if (cfg.desktop.gnome.accentColor == "red") then
-      "#e62d42"
-    else if (cfg.desktop.gnome.accentColor == "pink") then
-      "#d56199"
-    else if (cfg.desktop.gnome.accentColor == "purple") then
-      "#9141ac"
-    else if (cfg.desktop.gnome.accentColor == "slate") then
-      "#6f8396"
     else
-      "";
+      {
+        blue = "#3584e4";
+        green = "#3a944a";
+        orange = "#ed5b00";
+        pink = "#d56199";
+        purple = "#9141ac";
+        red = "#e62d42";
+        slate = "#6f8396";
+        teal = "#2190a4";
+        yellow = "#c88800";
+      }
+      .${cfg.desktop.gnome.accentColor};
 
   firefoxVersion = builtins.substring 0 5 pkgs.firefox.version;
 
