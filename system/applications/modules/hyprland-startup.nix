@@ -64,7 +64,7 @@ pkgs.writeShellScriptBin "hyprland-startup" ''
   nautilus -w &
   nautilus -w &
   run steam
-  run blueberry
+  run overskride
   run pavucontrol
   run signal-desktop
   run zeditor

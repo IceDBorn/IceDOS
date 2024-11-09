@@ -151,7 +151,7 @@ in
         ${
           let
             browsers = "librewolf|zen-alpha";
-            media-tools = "blueberry.py|org.pulseaudio.pavucontrol|valent";
+            media-tools = "io.github.kaii_lb.Overskride|org.pulseaudio.pavucontrol|valent";
             messengers = "WebCord|Signal|pwas|signal";
           in
           if (monitorsLength >= 3) then
