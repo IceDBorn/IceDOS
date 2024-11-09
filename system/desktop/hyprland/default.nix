@@ -24,10 +24,7 @@ in
     ./config.nix
   ];
 
-  programs = {
-    nm-applet.enable = true; # Network manager tray icon
-    hyprland.enable = true;
-  };
+  programs.hyprland.enable = true;
 
   environment = {
     systemPackages = with pkgs; [
@@ -51,6 +48,7 @@ in
       hyprpicker # Color picker
       hyprpolkitagent # Polkit manager
       hyprshade # Shader config tool
+      networkmanagerapplet # Network manager app and tray icon
       playerctl # MPRIS cli
       poweralertd # Battery level alerts
       slurp # Monitor selector
