@@ -12,12 +12,9 @@ let
 in
 {
   imports = [
-    # Setup home manager for gnome
-    ./home.nix
-    # Startup programs
-    ./startup.nix
-
     ../../applications/modules/arcmenu.nix
+    ./home.nix
+    ./startup.nix
   ];
 
   services.xserver.desktopManager.gnome.enable = cfg.enable; # Install gnome

@@ -1,7 +1,16 @@
-{ pkgs, lib, config, inputs, ... }:
+{
+  pkgs,
+  lib,
+  config,
+  inputs,
+  ...
+}:
 let
+  inherit (lib) map mapAttrs mkIf;
+
   cfg = config.icedos;
-in with lib; mkIf cfg.desktop.gnome.extensions.arcmenu {
+in
+mkIf cfg.desktop.gnome.extensions.arcmenu {
   environment.systemPackages = [ pkgs.gnomeExtensions.arcmenu ];
 
   home-manager.users = mapAttrs (user: _: {
@@ -19,7 +28,7 @@ in with lib; mkIf cfg.desktop.gnome.extensions.arcmenu {
         windows-disable-pinned-apps = !cfg.system.users.${user}.desktop.gnome.pinnedApps.arcmenu.enable;
         pinned-apps =
           with inputs.home-manager.lib.hm.gvariant;
-          (lib.map (s: [
+          (map (s: [
             (mkDictionaryEntry [
               "id"
               s
