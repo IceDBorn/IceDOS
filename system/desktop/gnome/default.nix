@@ -16,6 +16,8 @@ in
     ./home.nix
     # Startup programs
     ./startup.nix
+
+    ../../applications/modules/arcmenu.nix
   ];
 
   services.xserver.desktopManager.gnome.enable = cfg.enable; # Install gnome
@@ -32,7 +34,6 @@ in
           gnomeExtensions.appindicator # Tray icons for gnome
           gnomeExtensions.quick-settings-tweaker
         ]
-        ++ optional (cfg.extensions.arcmenu) gnomeExtensions.arcmenu # Start menu
         ++ optional (cfg.extensions.dashToPanel) gnomeExtensions.dash-to-panel # An icon taskbar for gnome
         ++ optional (cfg.extensions.gsconnect) gnomeExtensions.gsconnect # KDE Connect implementation for gnome
       else
