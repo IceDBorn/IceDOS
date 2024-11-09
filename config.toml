@@ -117,7 +117,7 @@ sites = [
 ]
 
 [icedos.bootloader]
-animation = false # Hides linux kernel logs and displays a loading interface based on OEM
+animation = true # Hides console and displays a loading interface based on OEM on boot
 
 [icedos.bootloader.grub]
 enable = false
