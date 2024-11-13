@@ -62,7 +62,6 @@
               desktopSession = mkOption { type = types.str; };
             };
 
-            useValveKernel = mkOption { type = types.bool; };
             user = mkOption { type = types.str; };
           };
         };
@@ -293,7 +292,7 @@
         };
 
         home = mkOption { type = types.str; };
-
+        kernel = mkOption { type = types.str; };
         swappiness = mkOption { type = types.number; };
 
         users = mkOption {

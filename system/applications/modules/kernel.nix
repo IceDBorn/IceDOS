@@ -22,21 +22,22 @@ in
     kernelModules = [ "v4l2loopback" ]; # Virtual camera
 
     kernelPackages =
-      # Use CachyOS optimized linux kernel
+      with pkgs;
       if (!builtins.pathExists /etc/icedos-version) then
-        pkgs.linuxPackages_zen
-      else if
-        (
-          cfg.applications.steam.enable
-          && cfg.applications.steam.session.enable
-          && cfg.applications.steam.session.useValveKernel
-        )
-      then
-        pkgs.linuxPackages_jovian
-      else if (!cfg.hardware.devices.steamdeck && cfg.hardware.devices.server.enable) then
-        pkgs.linuxPackages_cachyos-server
+        linuxPackages_stable
       else
-        pkgs.linuxPackages_cachyos;
+        {
+          cachyos =
+            if (cfg.hardware.devices.server.enable) then
+              linuxPackages_cachyos-server
+            else
+              linuxPackages_cachyos;
+
+          jovian = linuxPackages_jovian;
+          latest = linuxPackages_latest;
+          stable = linuxPackages_stable;
+        }
+        .${cfg.system.kernel};
 
     kernelParams =
       [
