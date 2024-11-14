@@ -75,4 +75,5 @@ pkgs.writeShellScriptBin "hyprland-startup" ''
 
   # Idle manager
   run hypridle
+  systemctl restart --user walker.service
 ''

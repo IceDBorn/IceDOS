@@ -79,6 +79,7 @@
           deviceId = mkOption { type = types.str; };
         };
 
+        walker = mkOption { type = types.bool; };
         yazi = mkOption { type = types.bool; };
 
         zed = {
