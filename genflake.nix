@@ -5,6 +5,7 @@ let
   channels = filter (channel: cfg.system.channels.${channel} == true) (attrNames cfg.system.channels);
   gnome = cfg.desktop.gnome.enable;
   hyprland = cfg.desktop.hyprland.enable;
+  kernel = cfg.system.kernel == "jovian";
   lib = import <nixpkgs/lib>;
   php = cfg.applications.php;
   server = cfg.hardware.devices.server.enable;
@@ -18,11 +19,25 @@ in
     {
       inputs = {
         # Update channels
-        chaotic.url = "github:chaotic-cx/nyx/nyxpkgs-unstable";
+        ${
+          if (kernel || steam-session) then
+            ''
+              chaotic.url = "github:chaotic-cx/nyx/nyxpkgs-unstable";
+            ''
+          else
+            ""
+        }
 
         nixpkgs = {
           url = "github:NixOS/nixpkgs/nixos-unstable";
-          follows = "chaotic/nixpkgs";
+          ${
+            if (kernel || steam-session) then
+              ''
+                follows = "chaotic/nixpkgs";
+              ''
+            else
+              ""
+          }
         };
 
         ${
@@ -41,7 +56,7 @@ in
         };
 
         ${
-          if (steam-session) then
+          if (kernel || steam-session) then
             ''
               steam-session = {
                 url = "github:Jovian-Experiments/Jovian-NixOS";

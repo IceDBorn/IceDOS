@@ -6,6 +6,7 @@
     nixpkgs = {
       url = "github:NixOS/nixpkgs/nixos-unstable";
       follows = "chaotic/nixpkgs";
+
     };
 
     # Modules

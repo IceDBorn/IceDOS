@@ -13,6 +13,7 @@ let
     ;
 
   cfg = config.icedos;
+  kernel = cfg.system.kernel == "jovian";
   monitors = cfg.hardware.monitors;
   noMonitors = length (monitors) == 0;
 in
@@ -23,19 +24,14 @@ in
 
     kernelPackages =
       with pkgs;
-      if (!builtins.pathExists /etc/icedos-version) then
+      if (!builtins.pathExists /etc/icedos-version && kernel) then
         linuxPackages_stable
       else
         {
-          cachyos =
-            if (cfg.hardware.devices.server.enable) then
-              linuxPackages_cachyos-server
-            else
-              linuxPackages_cachyos;
-
           jovian = linuxPackages_jovian;
           latest = linuxPackages_latest;
           stable = linuxPackages_stable;
+          zen = linuxPackages_zen;
         }
         .${cfg.system.kernel};
 
