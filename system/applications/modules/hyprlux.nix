@@ -14,7 +14,7 @@
 
     vibrance_configs = [
       {
-        window_class = "SDL Application";
+        window_class = "cs2";
         window_title = "";
         strength = 100;
       }

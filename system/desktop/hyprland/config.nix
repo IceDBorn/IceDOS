@@ -262,7 +262,7 @@ in
                 csgo-vulkan-fix {
                   res_w = ${builtins.toString (cfg.desktop.hyprland.cs2fix.width)}
                   res_h = ${builtins.toString (cfg.desktop.hyprland.cs2fix.height)}
-                  class = SDL Application
+                  class = cs2
                 }
               }
             ''
