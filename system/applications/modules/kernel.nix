@@ -68,13 +68,6 @@ in
     };
   };
 
-  chaotic.scx = {
-    enable = false;
-    # enable = (config.boot.kernelPackages.kernel.passthru.config.CONFIG_SCHED_CLASS_EXT or null) == "y";
-    package = pkgs.scx.rustland;
-    scheduler = "scx_rustland";
-  };
-
   # More sysctl params to set
   system.activationScripts.sysfs.text = ''
     echo advise > /sys/kernel/mm/transparent_hugepage/shmem_enabled
