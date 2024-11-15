@@ -23,7 +23,7 @@ mkIf (cfg.applications.walker) {
       Install.WantedBy = [ "graphical-session.target" ];
 
       Service = {
-        ExecStart = "${pkgs.walker}/bin/walker -s theme --gapplication-service";
+        ExecStart = "${pkgs.walker}/bin/walker --gapplication-service";
         Restart = "on-failure";
       };
     };

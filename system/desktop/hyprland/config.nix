@@ -93,9 +93,9 @@ in
         }
 
         # Desktop usage
-        bind = $mainMod, R, exec, walker -m applications
-        bind = $mainMod, V, exec, walker -m clipboard
-        bind = $mainMod, E, exec, walker -m emojis
+        bind = $mainMod, R, exec, walker -s theme -m applications
+        bind = $mainMod, V, exec, walker -s theme -m clipboard
+        bind = $mainMod, E, exec, walker -s theme -m emojis
         bind = $mainMod, P, exec, grimblast --freeze copy area
         bind = $mainMod, L, exec, hyprlock-wrapper lock force
         bind = $mainMod SHIFT, L, exec, wleave
