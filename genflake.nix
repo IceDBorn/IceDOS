@@ -30,6 +30,7 @@ in
 
         nixpkgs = {
           url = "github:NixOS/nixpkgs/nixos-unstable";
+
           ${
             if (kernel || steam-session) then
               ''
@@ -47,7 +48,17 @@ in
         # Modules
         home-manager = {
           url = "github:nix-community/home-manager";
-          inputs.nixpkgs.follows = "nixpkgs";
+
+          ${
+            if (kernel || steam-session) then
+              ''
+                follows = "chaotic/home-manager";
+              ''
+            else
+              ''
+                inputs.nixpkgs.follows = "nixpkgs";
+              ''
+          }
         };
 
         nerivations = {

@@ -5,6 +5,7 @@
 
     nixpkgs = {
       url = "github:NixOS/nixpkgs/nixos-unstable";
+
       follows = "chaotic/nixpkgs";
 
     };
@@ -12,7 +13,9 @@
     # Modules
     home-manager = {
       url = "github:nix-community/home-manager";
-      inputs.nixpkgs.follows = "nixpkgs";
+
+      follows = "chaotic/home-manager";
+
     };
 
     nerivations = {
