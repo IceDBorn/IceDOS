@@ -148,20 +148,20 @@ in
 
       outputs =
         {
-          chaotic,
           home-manager,
           nerivations,
           nixpkgs,
           pipewire-screenaudio,
           self,
           shell-in-netns,
+          ${concatImapStrings (i: channel: ''${channel},'') channels}
           ${if (aagl) then ''aagl,'' else ""}
           ${if (hyprland) then ''hyprland,hyprland-plugins,hyprlux,'' else ""}
+          ${if (kernel || steam-session) then ''chaotic,'' else ""}
           ${if (php) then ''phps,'' else ""}
           ${if (steam-session) then ''steam-session,'' else ""}
           ${if (suyu) then ''suyu,'' else ""}
           ${if (zen-browser) then ''zen-browser,'' else ""}
-          ${concatImapStrings (i: channel: ''${channel},'') channels}
         }@inputs:
         {
           nixosConfigurations.''${nixpkgs.lib.fileContents "/etc/hostname"} = nixpkgs.lib.nixosSystem {
@@ -190,7 +190,15 @@ in
               ./modules.nix
 
               # External modules
-              chaotic.nixosModules.default
+              ${
+                if (kernel || steam-session) then
+                  ''
+                    chaotic.nixosModules.default
+                  ''
+                else
+                  ""
+              }
+
               home-manager.nixosModules.home-manager
               nerivations.nixosModules.default
 

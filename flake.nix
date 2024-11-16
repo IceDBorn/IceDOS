@@ -58,7 +58,6 @@
 
   outputs =
     {
-      chaotic,
       home-manager,
       nerivations,
       nixpkgs,
@@ -69,11 +68,11 @@
       hyprland,
       hyprland-plugins,
       hyprlux,
+      chaotic,
 
       steam-session,
 
       zen-browser,
-
     }@inputs:
     {
       nixosConfigurations.${nixpkgs.lib.fileContents "/etc/hostname"} = nixpkgs.lib.nixosSystem {
@@ -103,6 +102,7 @@
 
           # External modules
           chaotic.nixosModules.default
+
           home-manager.nixosModules.home-manager
           nerivations.nixosModules.default
 
