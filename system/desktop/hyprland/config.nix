@@ -96,7 +96,6 @@ in
         bind = $mainMod, R, exec, walker -s theme -m applications
         bind = $mainMod, V, exec, walker -s theme -m clipboard
         bind = $mainMod, E, exec, walker -s theme -m emojis
-        bind = $mainMod, P, exec, grimblast --freeze copy area
         bind = $mainMod, L, exec, hyprlock-wrapper lock force
         bind = $mainMod SHIFT, L, exec, wleave
         bind = $mainMod, N, exec, swaync-client -t -sw
@@ -104,6 +103,14 @@ in
         bind = $mainMod, C, exec, hyprpicker --autocopy
         bind = $mainMod SHIFT, P, exec, hyprfreeze -a
         bind = $mainMod, SPACE, exec, pkill -f -35 nwg-panel
+        bind = $mainMod ALT, Print, exec, grimblast edit
+        bind = , Print, exec, grimblast copy output
+        bind = $mainMod, Print, exec, grimblast --freeze copy area
+        bind = $mainMod SHIFT, Print, exec, grimblast --freeze edit area
+        bind = $mainMod, P, exec, grimblast --freeze copy area
+        bind = $mainMod SHIFT, P, exec, grimblast copy output
+        bind = ALT, Print, exec, grimblast copy
+        bind = SHIFT, Print, exec, grimblast edit output
 
         # Window control
         bind = $mainMod, Q, killactive
