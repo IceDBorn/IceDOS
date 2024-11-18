@@ -103,6 +103,7 @@ in
         bind = $mainMod SHIFT, N, exec, swaync-client -d -sw
         bind = $mainMod, C, exec, hyprpicker --autocopy
         bind = $mainMod SHIFT, P, exec, hyprfreeze -a
+        bind = $mainMod, SPACE, exec, pkill -f -35 nwg-panel
 
         # Window control
         bind = $mainMod, Q, killactive

@@ -15,13 +15,14 @@ let
   pipewire-watcher = import ./pipewire-watcher.nix { inherit pkgs; };
 in
 {
-  environment.systemPackages = [
+  environment.systemPackages = with pkgs; [
     cpu-watcher
     disk-watcher
+    hyprlock
     hyprlock-wrapper
     network-watcher
     pipewire-watcher
-    pkgs.hyprlock
+    sysstat
   ];
 
   home-manager.users = mapAttrs (user: _: {

@@ -52,8 +52,7 @@ pkgs.writeShellScriptBin "hyprland-startup" ''
   xrandr --output "${cfg.desktop.hyprland.mainMonitor}" --primary
   run poweralertd
   run hyprlux
-  sleep 1 && hyprctl reload
-  sleep 1 && run waybar
+  run nwg-panel
 
   # Tray applications
   nm-applet --indicator &

@@ -16,10 +16,10 @@ in
     ../../applications/modules/hyprlock
     ../../applications/modules/hyprpaper
     ../../applications/modules/swaync
+    ../../applications/modules/nwg
     ../../applications/modules/swayosd.nix
     ../../applications/modules/valent.nix
     ../../applications/modules/walker
-    ../../applications/modules/waybar
     ../../applications/modules/wleave
     ./config.nix
   ];
@@ -29,13 +29,9 @@ in
   environment = {
     systemPackages = with pkgs; [
       baobab # Disk usage analyser
-      brightnessctl # Brightness control
-      cliphist # Clipboard manager for wayland
       feh # Minimal image viewer
       file-roller # Archive file manager
       gnome-calculator # Calculator
-      gnome-calendar # Calendar
-      gnome-clocks # Clock
       gnome-disk-utility # Disks manager
       gnome-keyring # Keyring daemon
       gnome-online-accounts # Nextcloud integration
@@ -53,7 +49,6 @@ in
       poweralertd # Battery level alerts
       slurp # Monitor selector
       swappy # Edit screenshots
-      sysstat # Needed for disk-watcher
       wdisplays # Displays manager
       wl-clipboard # Clipboard daemon
     ];

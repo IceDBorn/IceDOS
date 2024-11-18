@@ -28,7 +28,6 @@ in
           "control-center-width": 500,
           "control-center-height": 500,
           "fit-to-screen": true,
-
           "layer": "overlay",
           "cssPriority": "user",
           "notification-icon-size": 64,
@@ -45,7 +44,7 @@ in
           "hide-on-action": true,
           "script-fail-notify": true,
 
-          "widgets": ["inhibitors", "title", "dnd", "mpris", "notifications"],
+          "widgets": ["inhibitors", "title", "dnd", "notifications"],
           "widget-config": {
             "inhibitors": {
               "text": "Inhibitors",
@@ -63,16 +62,11 @@ in
             "label": {
               "max-lines": 5,
               "text": "Label Text"
-            },
-            "mpris": {
-              "image-size": 96,
-              "image-radius": 12
             }
           }
         }
       '';
 
-      # Add swaync styles file
       ".config/swaync/style.css".source = ./style.css;
     };
   }) cfg.system.users;

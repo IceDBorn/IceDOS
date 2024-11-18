@@ -13,4 +13,5 @@ pkgs.writeShellScriptBin "vpn-toggle" ''
 
   nmcli con up "$interfaceName"
   pstree -A -p "`cat /tmp/vpn-watcher.pid`" | grep -Eow '\w+.[0-9]+.' | grep -e curl -e sleep | grep -Eow '[0-9]+' | xargs kill -9
+  pkill -f -34 nwg-panel
 ''

@@ -17,7 +17,7 @@
   transition: all 200ms ease;
   outline: none;
   margin-bottom: 4px;
-  border-radius: 12px;
+  border-radius: 20px;
 }
 
 .control-center .notification-row:focus,
@@ -42,7 +42,7 @@
 
 .notification {
   transition: all 200ms ease;
-  border-radius: 12px;
+  border-radius: 20px;
   margin: 6px 6px;
   box-shadow: 0 1px 3px 1px rgba(0, 0, 0, 0.5);
   padding: 0;
@@ -71,7 +71,7 @@
 .notification-content {
   background: transparent;
   padding: 6px;
-  border-radius: 12px;
+  border-radius: 20px;
 }
 
 .close-button {
@@ -113,7 +113,7 @@
 }
 
 .notification-default-action {
-  border-radius: 12px;
+  border-radius: 20px;
 }
 
 /* When alternative actions are visible */
@@ -123,29 +123,29 @@
 }
 
 .notification-action {
-  border-radius: 0px;
+  border-radius: 20px;
   border-top: none;
   border-right: none;
 }
 
 /* add bottom border radius to eliminate clipping */
 .notification-action:first-child {
-  border-bottom-left-radius: 10px;
+  border-bottom-left-radius: 20px;
 }
 
 .notification-action:last-child {
-  border-bottom-right-radius: 10px;
+  border-bottom-right-radius: 20px;
   border-right: 1px solid @noti-border-color;
 }
 
 .body-image {
   margin-top: 6px;
   background-color: white;
-  border-radius: 12px;
+  border-radius: 20px;
 }
 
 .summary {
-  font-size: 16px;
+  font-size: 14px;
   font-weight: bold;
   background: transparent;
   color: white;
@@ -153,7 +153,7 @@
 }
 
 .time {
-  font-size: 16px;
+  font-size: 14px;
   font-weight: bold;
   background: transparent;
   color: white;
@@ -162,7 +162,7 @@
 }
 
 .body {
-  font-size: 15px;
+  font-size: 14px;
   font-weight: normal;
   background: transparent;
   color: white;
@@ -171,10 +171,12 @@
 
 .control-center {
   background: @cc-bg;
-  border-radius: 12px;
+  border-radius: 20px;
   background-clip: border-box;
   padding: 4px;
-  box-shadow: 0 0 0 1px rgba(0, 0, 0, 0.3), 0 1px 3px 1px rgba(0, 0, 0, 0.7),
+  box-shadow:
+    0 0 0 1px rgba(0, 0, 0, 0.3),
+    0 1px 3px 1px rgba(0, 0, 0, 0.7),
     0 2px 6px 2px rgba(0, 0, 0, 0.3);
 }
 
@@ -210,7 +212,7 @@
   background: @noti-bg;
   border: 1px solid @noti-border-color;
   box-shadow: none;
-  border-radius: 12px;
+  border-radius: 20px;
 }
 
 .widget-title > button:hover {
@@ -225,7 +227,7 @@
 
 .widget-dnd > switch {
   font-size: initial;
-  border-radius: 12px;
+  border-radius: 20px;
   background: @noti-bg;
   border: 1px solid @noti-border-color;
   box-shadow: none;
@@ -237,7 +239,7 @@
 
 .widget-dnd > switch slider {
   background: @noti-bg-hover;
-  border-radius: 12px;
+  border-radius: 20px;
 }
 
 /* Label widget */
@@ -254,33 +256,17 @@
   /* The parent to all players */
 }
 
-.widget-mpris-player {
-  padding: 8px;
-  margin: 8px;
-  background-color: @noti-bg;
-  border-radius: 12px;
-}
-
-.widget-mpris-title {
-  font-weight: bold;
-  font-size: 1.25rem;
-}
-
-.widget-mpris-subtitle {
-  font-size: 1.1rem;
-}
-
 /* Buttons widget */
 .widget-buttons-grid {
   padding: 8px;
   margin: 8px;
-  border-radius: 12px;
+  border-radius: 20px;
   background-color: @noti-bg;
 }
 
 .widget-buttons-grid > flowbox > flowboxchild > button {
   background: @noti-bg;
-  border-radius: 12px;
+  border-radius: 20px;
 }
 
 .widget-buttons-grid > flowbox > flowboxchild > button:hover {
@@ -321,7 +307,7 @@
   background-color: @noti-bg;
   padding: 8px;
   margin: 8px;
-  border-radius: 12px;
+  border-radius: 20px;
 }
 
 /* Backlight widget */
@@ -329,7 +315,7 @@
   background-color: @noti-bg;
   padding: 8px;
   margin: 8px;
-  border-radius: 12px;
+  border-radius: 20px;
 }
 
 /* Title widget */
@@ -345,7 +331,7 @@
   background: @noti-bg;
   border: 1px solid @noti-border-color;
   box-shadow: none;
-  border-radius: 12px;
+  border-radius: 20px;
 }
 
 .widget-inhibitors > button:hover {
