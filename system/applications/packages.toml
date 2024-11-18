@@ -29,7 +29,7 @@ packages = [
   "jq", # JSON parser
   "killall", # Tool to kill all programs matching process name
   "lsd", # Better ls command
-  "mission-center", # Task manager
+  # "mission-center", # Task manager
   "moonlight-qt", # Remote streaming client
   "mousai", # Song recognizer
   "ncdu", # Terminal disk analyzer
