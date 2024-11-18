@@ -16,9 +16,10 @@ in
   environment.systemPackages =
     with pkgs;
     mkIf (cfg.enable) [
+      lazygit
+      nil
       nixd
       package-version-server
-      pkgs.lazygit
       zed-editor
     ];
 
