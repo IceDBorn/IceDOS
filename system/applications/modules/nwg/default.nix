@@ -270,5 +270,16 @@ in
 
       ".config/nwg-panel/style.css".source = ./style.css;
     };
+
+    systemd.user.services.nwg-panel = {
+      Unit.Description = "Nwg Panel - Hyprland panel";
+      Install.WantedBy = [ "graphical-session.target" ];
+
+      Service = {
+        ExecStart = "${pkgs.nwg-panel}/bin/nwg-panel";
+        Restart = "always";
+        Nice = "-20";
+      };
+    };
   }) cfg.system.users;
 }

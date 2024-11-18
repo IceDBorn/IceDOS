@@ -27,6 +27,7 @@ mkIf (cfg.applications.walker) {
 
       Service = {
         ExecStart = "${pkgs.walker}/bin/walker --gapplication-service";
+        Nice = "-20";
         Restart = "on-failure";
       };
     };

@@ -52,7 +52,6 @@ pkgs.writeShellScriptBin "hyprland-startup" ''
   xrandr --output "${cfg.desktop.hyprland.mainMonitor}" --primary
   run poweralertd
   run hyprlux
-  run nwg-panel
 
   # Tray applications
   nm-applet --indicator &
@@ -74,5 +73,6 @@ pkgs.writeShellScriptBin "hyprland-startup" ''
 
   # Idle manager
   run hypridle
+  systemctl restart --user nwg-panel.service
   systemctl restart --user walker.service
 ''

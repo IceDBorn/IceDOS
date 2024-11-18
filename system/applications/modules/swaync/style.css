@@ -17,7 +17,7 @@
   transition: all 200ms ease;
   outline: none;
   margin-bottom: 4px;
-  border-radius: 20px;
+  border-radius: 10px;
 }
 
 .control-center .notification-row:focus,
@@ -42,7 +42,7 @@
 
 .notification {
   transition: all 200ms ease;
-  border-radius: 20px;
+  border-radius: 10px;
   margin: 6px 6px;
   box-shadow: 0 1px 3px 1px rgba(0, 0, 0, 0.5);
   padding: 0;
@@ -71,7 +71,7 @@
 .notification-content {
   background: transparent;
   padding: 6px;
-  border-radius: 20px;
+  border-radius: 10px;
 }
 
 .close-button {
@@ -113,7 +113,7 @@
 }
 
 .notification-default-action {
-  border-radius: 20px;
+  border-radius: 10px;
 }
 
 /* When alternative actions are visible */
@@ -123,7 +123,7 @@
 }
 
 .notification-action {
-  border-radius: 20px;
+  border-radius: 10px;
   border-top: none;
   border-right: none;
 }
@@ -141,7 +141,7 @@
 .body-image {
   margin-top: 6px;
   background-color: white;
-  border-radius: 20px;
+  border-radius: 10px;
 }
 
 .summary {
@@ -171,7 +171,7 @@
 
 .control-center {
   background: @cc-bg;
-  border-radius: 20px;
+  border-radius: 10px;
   background-clip: border-box;
   padding: 4px;
   box-shadow:
@@ -212,7 +212,7 @@
   background: @noti-bg;
   border: 1px solid @noti-border-color;
   box-shadow: none;
-  border-radius: 20px;
+  border-radius: 10px;
 }
 
 .widget-title > button:hover {
@@ -227,7 +227,7 @@
 
 .widget-dnd > switch {
   font-size: initial;
-  border-radius: 20px;
+  border-radius: 10px;
   background: @noti-bg;
   border: 1px solid @noti-border-color;
   box-shadow: none;
@@ -239,7 +239,7 @@
 
 .widget-dnd > switch slider {
   background: @noti-bg-hover;
-  border-radius: 20px;
+  border-radius: 10px;
 }
 
 /* Label widget */
@@ -260,13 +260,13 @@
 .widget-buttons-grid {
   padding: 8px;
   margin: 8px;
-  border-radius: 20px;
+  border-radius: 10px;
   background-color: @noti-bg;
 }
 
 .widget-buttons-grid > flowbox > flowboxchild > button {
   background: @noti-bg;
-  border-radius: 20px;
+  border-radius: 10px;
 }
 
 .widget-buttons-grid > flowbox > flowboxchild > button:hover {
@@ -307,7 +307,7 @@
   background-color: @noti-bg;
   padding: 8px;
   margin: 8px;
-  border-radius: 20px;
+  border-radius: 10px;
 }
 
 /* Backlight widget */
@@ -315,7 +315,7 @@
   background-color: @noti-bg;
   padding: 8px;
   margin: 8px;
-  border-radius: 20px;
+  border-radius: 10px;
 }
 
 /* Title widget */
@@ -331,7 +331,7 @@
   background: @noti-bg;
   border: 1px solid @noti-border-color;
   box-shadow: none;
-  border-radius: 20px;
+  border-radius: 10px;
 }
 
 .widget-inhibitors > button:hover {
