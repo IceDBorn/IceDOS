@@ -10,7 +10,10 @@ let
   cfg = config.icedos;
 in
 mkIf (cfg.applications.walker) {
-  environment.systemPackages = [ pkgs.walker ];
+  environment.systemPackages = with pkgs; [
+    walker
+    wl-clipboard
+  ];
 
   home-manager.users = mapAttrs (user: _: {
     home.file = {

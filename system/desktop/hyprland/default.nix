@@ -29,14 +29,12 @@ in
   environment = {
     systemPackages = with pkgs; [
       baobab # Disk usage analyser
-      feh # Minimal image viewer
       file-roller # Archive file manager
       gnome-calculator # Calculator
       gnome-disk-utility # Disks manager
       gnome-keyring # Keyring daemon
       gnome-online-accounts # Nextcloud integration
       gnome-themes-extra # Adwaita GTK theme
-      grim # Screenshot tool
       grimblast # Screenshot tool
       hyprfreeze # Script to freeze active hyprland window
       hyprland-per-window-layout # Per window layout
@@ -45,12 +43,10 @@ in
       hyprpolkitagent # Polkit manager
       hyprshade # Shader config tool
       networkmanagerapplet # Network manager app and tray icon
-      playerctl # MPRIS cli
       poweralertd # Battery level alerts
       slurp # Monitor selector
       swappy # Edit screenshots
       wdisplays # Displays manager
-      wl-clipboard # Clipboard daemon
     ];
   };
 
