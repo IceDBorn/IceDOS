@@ -38,6 +38,7 @@
 
 #controls-window,
 #calendar-window {
-  background: #1e1e1e;
-  border-radius: 10px;
+  background: #242424;
+  border-radius: 0;
+  border-bottom-left-radius: 10px;
 }

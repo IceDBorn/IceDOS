@@ -15,8 +15,8 @@ in
     ../../applications/modules/hypridle.nix
     ../../applications/modules/hyprlock
     ../../applications/modules/hyprpaper
-    ../../applications/modules/swaync
     ../../applications/modules/nwg
+    ../../applications/modules/swaync.nix
     ../../applications/modules/swayosd.nix
     ../../applications/modules/valent.nix
     ../../applications/modules/walker
