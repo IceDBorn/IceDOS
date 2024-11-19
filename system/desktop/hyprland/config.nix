@@ -24,7 +24,6 @@ in
         env = XDG_SESSION_TYPE,wayland
         env = XDG_SESSION_DESKTOP,Hyprland
         env = QT_AUTO_SCREEN_SCALE_FACTOR,1
-        env = QT_QPA_PLATFORM,wayland;xcb
 
         $mainMod = SUPER
         ${lib.concatImapStrings (
