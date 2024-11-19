@@ -242,7 +242,7 @@ in
               "css-name": "vpn",
               "icon-placement": "right",
               "icon-size": 14,
-              "interval": 10,
+              "interval": 60,
               "angle": 0.0,
               "sigrt": 34,
               "use-sigrt": true
