@@ -169,7 +169,7 @@ hyprexpo = true # Activity viewer
 mainMonitor = "DP-1"
 
 [icedos.desktop.hyprland.cs2fix]
-enable = true
+enable = false
 width = 1440
 height = 1080
 
