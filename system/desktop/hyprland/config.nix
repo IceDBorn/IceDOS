@@ -111,6 +111,7 @@ in
         bind = $mainMod SHIFT, P, exec, grimblast copy output
         bind = ALT, Print, exec, grimblast copy
         bind = SHIFT, Print, exec, grimblast edit output
+        bind = CTRL ALT, DELETE, exec, systemctl restart --user nwg-panel walker
 
         # Window control
         bind = $mainMod, Q, killactive
