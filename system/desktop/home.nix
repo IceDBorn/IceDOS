@@ -49,8 +49,15 @@ in
         package = pkgs.adw-gtk3;
       };
 
-      cursorTheme.name = "Bibata-Modern-Classic";
-      iconTheme.name = "Tela-black-dark";
+      cursorTheme = {
+        name = "Bibata-Modern-Classic";
+        package = pkgs.bibata-cursors;
+      };
+
+      iconTheme = {
+        name = "Tela-black-dark";
+        package = pkgs.tela-icon-theme;
+      };
 
       gtk3.extraCss = gtkCss;
     };
@@ -104,13 +111,16 @@ in
       };
     };
 
-    home.file = {
-      ".icons/default" = {
-        source = "${pkgs.bibata-cursors}/share/icons/Bibata-Modern-Classic";
-        recursive = true;
+    home = {
+      pointerCursor = {
+        gtk.enable = true;
+        x11.enable = true;
+        package = pkgs.bibata-cursors;
+        name = "Bibata-Modern-Classic";
+        size = 24;
       };
 
-      ".config/gtk-4.0/gtk.css".text = gtkCss;
+      file.".config/gtk-4.0/gtk.css".text = gtkCss;
     };
   }) cfg.system.users;
 }
