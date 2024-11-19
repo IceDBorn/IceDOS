@@ -31,7 +31,7 @@ in
             "output": "All",
             "layer": "top",
             "position": "top",
-            "height": 16,
+            "height": 24,
             "width": "auto",
             "margin-top": 0,
             "margin-bottom": 0,
