@@ -31,7 +31,7 @@ in
             "output": "All",
             "layer": "top",
             "position": "top",
-            "height": 24,
+            "height": 26,
             "width": "auto",
             "margin-top": 0,
             "margin-bottom": 0,
@@ -189,8 +189,8 @@ in
               "on-right-click": "",
               "on-scroll-up": "",
               "on-scroll-down": "",
-              "root-css-name": "root-executor",
-              "css-name": "executor",
+              "root-css-name": "root-swaync",
+              "css-name": "swaync",
               "icon-placement": "left",
               "icon-size": 14,
               "interval": 1,
@@ -256,7 +256,7 @@ in
               "on-scroll-up": "",
               "on-scroll-down": "",
               "root-css-name": "",
-              "css-name": "",
+              "css-name": "keyboard-layout",
               "icon-placement": "left",
               "icon-size": 14,
               "interval": 0,
@@ -268,7 +268,59 @@ in
         ]
       '';
 
-      ".config/nwg-panel/style.css".source = ./style.css;
+      ".config/nwg-panel/style.css".text =''
+        * {
+          color: #dfdfdf;
+          font-family: JetBrainsMono Nerd Font;
+          font-size: 14px;
+          font-weight: bold;
+        }
+
+        #hyprpanel {
+          background: #000000;
+        }
+
+        *:selected {
+          background: #2b2b2b;
+          border-radius: 20px;
+          box-shadow: 0 0 1px #2b2b2b inset;
+        }
+
+        #vpn {
+          padding: 0 6px 0 5px;
+        }
+
+        #button-playerctl {
+          background: #000000;
+          padding: 0;
+          border-radius: 20px;
+        }
+
+        #button-playerctl:hover {
+          background: #2b2b2b;
+        }
+
+        #task-box-icon {
+          padding: 0 3px;
+        }
+
+        #task-box-focused {
+          background: #474747;
+          border-radius: 20px;
+        }
+
+        #controls-window,
+        #calendar-window {
+          background: #242424;
+          border-radius: 0;
+          border-bottom-left-radius: 10px;
+        }
+
+        #controls-window *:selected,
+        #calendar-window *:selected {
+          background: #515151;
+        }
+      '';
     };
 
     systemd.user.services.nwg-panel = {
