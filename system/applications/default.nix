@@ -73,6 +73,7 @@ in
     ./modules/mullvad.nix
     ./modules/php.nix
     ./modules/pitivi.nix
+    ./modules/rtl8821ce.nix
     ./modules/rust.nix
     ./modules/solaar.nix
     ./modules/steam.nix

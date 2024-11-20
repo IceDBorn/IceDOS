@@ -203,6 +203,7 @@ laptop = false
 steamdeck = false
 
 [icedos.hardware.drivers]
+rtl8821ce = false # Use the unofficial RTL8821CE driver
 xpadneo = true # Xbox gamepad bluetooth driver (supports various xinput controllers)
 
 [icedos.hardware.devices.server]
