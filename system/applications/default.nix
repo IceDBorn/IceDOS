@@ -15,11 +15,7 @@ let
   pkgFile = lib.importTOML ./packages.toml;
   myPackages = (pkgMapper pkgFile.myPackages);
   codingDeps = (pkgMapper pkgFile.codingDeps);
-
-  # Logout from any shell
-  lout = pkgs.writeShellScriptBin "lout" ''
-    pkill -KILL -u $USER
-  '';
+  lout = import modules/lout.nix { inherit pkgs; };
 
   rebuild = import modules/rebuild.nix {
     inherit pkgs config;
