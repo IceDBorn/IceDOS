@@ -8,6 +8,7 @@ php = false
 pitivi = false
 rust = false
 solaar = true
+ssh = true
 sunshine = true
 suyu = false
 walker = true

@@ -48,6 +48,7 @@
         pitivi = mkOption { type = types.bool; };
         rust = mkOption { type = types.bool; };
         solaar = mkOption { type = types.bool; };
+        ssh = mkOption { type = types.bool; };
 
         steam = {
           enable = mkOption { type = types.bool; };

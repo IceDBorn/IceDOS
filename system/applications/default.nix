@@ -76,6 +76,7 @@ in
     ./modules/rtl8821ce.nix
     ./modules/rust.nix
     ./modules/solaar.nix
+    ./modules/ssh.nix
     ./modules/steam.nix
     ./modules/store.nix
     ./modules/sunshine.nix
@@ -91,7 +92,6 @@ in
     (pkgMapper pkgFile.packages) ++ myPackages ++ codingDeps ++ shellScripts;
 
   services = {
-    openssh.enable = true;
     fwupd.enable = true;
   };
 
