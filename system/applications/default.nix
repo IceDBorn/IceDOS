@@ -90,10 +90,6 @@ in
   environment.systemPackages =
     (pkgMapper pkgFile.packages) ++ myPackages ++ codingDeps ++ shellScripts;
 
-  programs = {
-    direnv.enable = true;
-  };
-
   services = {
     openssh.enable = true;
     fwupd.enable = true;
