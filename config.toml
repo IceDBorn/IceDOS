@@ -4,6 +4,7 @@ android-tools = true
 brave = true
 celluloid = true
 clamav = false
+fwupd = true
 php = false
 pitivi = false
 rust = false
