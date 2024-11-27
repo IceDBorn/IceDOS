@@ -23,18 +23,14 @@ let
     update = "false";
   };
 
+  toggle-services = import modules/toggle-services.nix { inherit pkgs; };
+  trim-generations = import modules/trim-generations.nix { inherit pkgs; };
+
   update = import modules/rebuild.nix {
     inherit pkgs config;
     command = "update";
     update = "true";
   };
-
-  toggle-services = import modules/toggle-services.nix { inherit pkgs; };
-
-  # Trim NixOS generations
-  trim-generations = pkgs.writeShellScriptBin "trim-generations" (
-    builtins.readFile ../../scripts/trim-generations.sh
-  );
 
   shellScripts = [
     inputs.shell-in-netns.packages.${pkgs.system}.default
