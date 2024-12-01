@@ -10,7 +10,7 @@ let
   cfg = config.icedos;
 in
 {
-  environment.systemPackages = [ pkgs.hypridle ];
+  services.hypridle.enable = true;
 
   home-manager.users =
     let

@@ -94,16 +94,9 @@ in
         ${
           if (hyprland) then
             ''
-              hyprland.url = "git+https://github.com/hyprwm/Hyprland?submodules=1";
-
-              hyprland-plugins = {
-                url = "github:hyprwm/hyprland-plugins";
-                inputs.hyprland.follows = "hyprland";
-              };
-
               hyprlux = {
                 url = "github:amadejkastelic/Hyprlux";
-                inputs.nixpkgs.follows = "hyprland/nixpkgs";
+                inputs.nixpkgs.follows = "nixpkgs";
               };
             ''
           else
@@ -167,7 +160,7 @@ in
           shell-in-netns,
           ${concatImapStrings (i: channel: ''${channel},'') channels}
           ${if (aagl) then ''aagl,'' else ""}
-          ${if (hyprland) then ''hyprland,hyprland-plugins,hyprlux,'' else ""}
+          ${if (hyprland) then ''hyprlux,'' else ""}
           ${if (kernel || steam-session) then ''chaotic,'' else ""}
           ${if (php) then ''phps,'' else ""}
           ${if (steam-session) then ''steam-session,'' else ""}
@@ -261,7 +254,6 @@ in
               ${
                 if (hyprland) then
                   ''
-                    hyprland.nixosModules.default
                     hyprlux.nixosModules.default
                     ./system/desktop/hyprland
                     ./system/applications/modules/hyprlux.nix

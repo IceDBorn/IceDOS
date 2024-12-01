@@ -15,10 +15,11 @@ let
   pipewire-watcher = import ./pipewire-watcher.nix { inherit pkgs; };
 in
 {
+  programs.hyprlock.enable = true;
+
   environment.systemPackages = with pkgs; [
     cpu-watcher
     disk-watcher
-    hyprlock
     hyprlock-wrapper
     network-watcher
     pipewire-watcher

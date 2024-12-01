@@ -70,9 +70,4 @@ pkgs.writeShellScriptBin "hyprland-startup" ''
   # Terminals/Task managers
   kitty --class task-managers btop &
   kitty --class terminals tmux new -s terminals \; split-window -v \; select-pane -U \; split-window -h \; select-pane -D &
-
-  # Idle manager
-  run hypridle
-  systemctl restart --user nwg-panel.service
-  systemctl restart --user walker.service
 ''

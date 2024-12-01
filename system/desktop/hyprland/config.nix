@@ -1,6 +1,5 @@
 {
   config,
-  inputs,
   lib,
   pkgs,
   ...
@@ -242,7 +241,7 @@ in
         ${
           if (cfg.desktop.hyprland.hyprexpo) then
             ''
-              plugin = ${inputs.hyprland-plugins.packages.${pkgs.system}.hyprexpo}/lib/libhyprexpo.so
+              plugin = ${pkgs.hyprlandPlugins.hyprexpo}/lib/libhyprexpo.so
               bind = $mainMod, TAB, hyprexpo:expo, toggle
               plugin {
                 hyprexpo {
@@ -263,9 +262,7 @@ in
         ${
           if (cfg.desktop.hyprland.cs2fix.enable) then
             ''
-              plugin = ${
-                inputs.hyprland-plugins.packages.${pkgs.system}.csgo-vulkan-fix
-              }/lib/libcsgo-vulkan-fix.so
+              plugin = ${pkgs.hyprlandPlugins.csgo-vulkan-fix}/lib/libcsgo-vulkan-fix.so
               plugin {
                 csgo-vulkan-fix {
                   res_w = ${builtins.toString (cfg.desktop.hyprland.cs2fix.width)}

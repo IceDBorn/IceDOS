@@ -30,16 +30,9 @@
 
     # Apps
 
-    hyprland.url = "git+https://github.com/hyprwm/Hyprland?submodules=1";
-
-    hyprland-plugins = {
-      url = "github:hyprwm/hyprland-plugins";
-      inputs.hyprland.follows = "hyprland";
-    };
-
     hyprlux = {
       url = "github:amadejkastelic/Hyprlux";
-      inputs.nixpkgs.follows = "hyprland/nixpkgs";
+      inputs.nixpkgs.follows = "nixpkgs";
     };
 
     pipewire-screenaudio = {
@@ -68,8 +61,6 @@
       self,
       shell-in-netns,
 
-      hyprland,
-      hyprland-plugins,
       hyprlux,
       chaotic,
 
@@ -120,7 +111,6 @@
           steam-session.nixosModules.default
           ./system/desktop/steam-session.nix
 
-          hyprland.nixosModules.default
           hyprlux.nixosModules.default
           ./system/desktop/hyprland
           ./system/applications/modules/hyprlux.nix
