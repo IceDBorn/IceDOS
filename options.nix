@@ -175,7 +175,7 @@
           };
 
           gatewayVpn = mkOption { type = types.bool; };
-          hyprexpo = mkOption { type = types.bool; };
+          hyprspace = mkOption { type = types.bool; };
 
           lock = {
             secondsToLowerBrightness = mkOption { type = types.number; };

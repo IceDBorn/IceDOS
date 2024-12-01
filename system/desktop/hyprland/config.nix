@@ -239,21 +239,22 @@ in
         exec-once = hyprland-startup
 
         ${
-          if (cfg.desktop.hyprland.hyprexpo) then
+          if (cfg.desktop.hyprland.hyprspace) then
             ''
-              plugin = ${pkgs.hyprlandPlugins.hyprexpo}/lib/libhyprexpo.so
-              bind = $mainMod, TAB, hyprexpo:expo, toggle
+              plugin = ${pkgs.hyprlandPlugins.hyprspace}/lib/libhyprspace.so
+
               plugin {
-                hyprexpo {
-                  columns = 3
-                  gap_size = 5
-                  bg_col = rgb(000000)
-                  workspace_method = center current
-                  enable_gesture = true
-                  gesture_distance = 300
-                  gesture_positive = true
+                overview {
+                  gapsIn = 5
+                  gapsOut = 5
+                  panelHeight = 100
+                  showEmptyWorkspace = false
+                  showNewWorkspace = false
                 }
               }
+
+              bind = $mainMod, TAB, overview:toggle
+              bind = $mainMod SHIFT, TAB, overview:toggle, all
             ''
           else
             ""
@@ -263,6 +264,7 @@ in
           if (cfg.desktop.hyprland.cs2fix.enable) then
             ''
               plugin = ${pkgs.hyprlandPlugins.csgo-vulkan-fix}/lib/libcsgo-vulkan-fix.so
+
               plugin {
                 csgo-vulkan-fix {
                   res_w = ${builtins.toString (cfg.desktop.hyprland.cs2fix.width)}
