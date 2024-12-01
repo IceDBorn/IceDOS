@@ -8,15 +8,17 @@
 let
   inherit (lib) mapAttrs mkIf;
   cfg = config.icedos;
+  package = pkgs.walker;
 in
 mkIf (cfg.applications.walker) {
   environment.systemPackages = with pkgs; [
-    walker
+    package
     wl-clipboard
   ];
 
   home-manager.users = mapAttrs (user: _: {
     home.file = {
+      ".config/walker/config.json".source = "${package.src}/internal/config/config.default.json";
       ".config/walker/themes/theme.css".source = ./theme.css;
       ".config/walker/themes/theme.json".source = ./theme.json;
     };
@@ -26,7 +28,7 @@ mkIf (cfg.applications.walker) {
       Install.WantedBy = [ "graphical-session.target" ];
 
       Service = {
-        ExecStart = "${pkgs.walker}/bin/walker --gapplication-service";
+        ExecStart = "${package}/bin/walker --gapplication-service";
         Nice = "-20";
         Restart = "on-failure";
       };
