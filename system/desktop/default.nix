@@ -54,9 +54,9 @@ in
   };
 
   fonts.packages = with pkgs; [
-    meslo-lgs-nf
     cantarell-fonts
-    (nerdfonts.override { fonts = [ "JetBrainsMono" ]; })
+    meslo-lgs-nf
+    nerd-fonts.jetbrains-mono
   ];
 
   xdg.portal.config.common.default = "*";
