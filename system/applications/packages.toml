@@ -2,7 +2,6 @@ myPackages = []
 
 codingDeps = [
   "bruno", # API explorer
-  "dotnet-sdk_7", # SDK for .net
   "gcc", # C++ compiler
   "gdtoolkit_4", # Tools for gdscript
   "gnumake", # A tool to control the generation of non-source files from sources
