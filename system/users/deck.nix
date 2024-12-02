@@ -30,7 +30,7 @@ let
   ];
 in
 {
-  users.users.icedborn.packages =
+  users.users.deck.packages =
     with pkgs;
     [
       bottles # Wine manager
