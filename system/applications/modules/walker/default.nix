@@ -31,6 +31,8 @@ mkIf (cfg.applications.walker) {
         ExecStart = "${package}/bin/walker --gapplication-service";
         Nice = "-20";
         Restart = "on-failure";
+        StartLimitIntervalSec = 60;
+        StartLimitBurst = 60;
       };
     };
   }) cfg.system.users;
