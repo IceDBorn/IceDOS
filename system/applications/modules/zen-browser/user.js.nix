@@ -11,7 +11,7 @@ let
 
   accentColor =
     if (!cfg.desktop.gnome.enable) then
-      cfg.desktop.accentColor
+      "#${cfg.desktop.accentColor}"
     else
       {
         blue = "#3584e4";
