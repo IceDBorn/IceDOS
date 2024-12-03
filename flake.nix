@@ -1,12 +1,9 @@
 {
   inputs = {
     # Update channels
-    chaotic.url = "github:chaotic-cx/nyx/nyxpkgs-unstable";
 
     nixpkgs = {
       url = "github:NixOS/nixpkgs/nixos-unstable";
-
-      follows = "chaotic/nixpkgs";
 
     };
 
@@ -14,7 +11,7 @@
     home-manager = {
       url = "github:nix-community/home-manager";
 
-      follows = "chaotic/home-manager";
+      inputs.nixpkgs.follows = "nixpkgs";
 
     };
 
@@ -23,16 +20,16 @@
       inputs.nixpkgs.follows = "nixpkgs";
     };
 
-    steam-session = {
-      url = "github:Jovian-Experiments/Jovian-NixOS";
-      follows = "chaotic/jovian";
-    };
-
     # Apps
 
     hyprlux = {
       url = "github:amadejkastelic/Hyprlux";
       inputs.nixpkgs.follows = "nixpkgs";
+    };
+
+    phps = {
+      url = "github:fossar/nix-phps/5c2a9bf0246b7f38b7ca737f0f1f36d5b45ae15a";
+      inputs.nixpkgs.url = "github:NixOS/nixpkgs/b73c2221a46c13557b1b3be9c2070cc42cf01eb3";
     };
 
     pipewire-screenaudio = {
@@ -62,9 +59,8 @@
       shell-in-netns,
 
       hyprlux,
-      chaotic,
 
-      steam-session,
+      phps,
 
       zen-browser,
     }@inputs:
@@ -101,15 +97,11 @@
           ./modules.nix
 
           # External modules
-          chaotic.nixosModules.default
 
           home-manager.nixosModules.home-manager
           nerivations.nixosModules.default
 
           ./system/desktop
-
-          steam-session.nixosModules.default
-          ./system/desktop/steam-session.nix
 
           hyprlux.nixosModules.default
           ./system/desktop/hyprland
@@ -117,7 +109,7 @@
 
           ./system/applications/modules/zen-browser
 
-          ./system/users/icedborn.nix
+          ./system/users/dtek.nix
 
         ];
       };
