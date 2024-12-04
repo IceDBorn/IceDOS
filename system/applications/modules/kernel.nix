@@ -25,12 +25,12 @@ in
     kernelPackages =
       with pkgs;
       if (!builtins.pathExists /etc/icedos-version && kernel) then
-        linuxPackages_stable
+        linuxPackages
       else
         {
           jovian = linuxPackages_jovian;
           latest = linuxPackages_latest;
-          stable = linuxPackages_stable;
+          stable = linuxPackages;
           zen = linuxPackages_zen;
         }
         .${cfg.system.kernel};
