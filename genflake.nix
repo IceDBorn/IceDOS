@@ -5,7 +5,12 @@ let
   channels = filter (channel: cfg.system.channels.${channel} == true) (attrNames cfg.system.channels);
   gnome = cfg.desktop.gnome.enable;
   hyprland = cfg.desktop.hyprland.enable;
-  kernel = cfg.system.kernel == "jovian";
+
+  kernel =
+    cfg.system.kernel == "cachyos"
+    || cfg.system.kernel == "cachyos-server"
+    || cfg.system.kernel == "valve";
+
   lib = import <nixpkgs/lib>;
   php = cfg.applications.php;
   server = cfg.hardware.devices.server.enable;

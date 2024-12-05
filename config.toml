@@ -268,7 +268,7 @@ ipv6 = false
 
 [icedos.system]
 home = "/home"
-kernel = "zen" # Options: 'jovian', 'latest', 'stable', 'zen'
+kernel = "cachyos" # Options: 'cachyos', 'cachyos-server', 'latest', 'lts', 'valve', 'zen'
 swappiness = 1
 version = "23.05" # Do not change without checking the docs (config.system.stateVersion)
 
