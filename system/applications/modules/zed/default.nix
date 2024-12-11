@@ -7,15 +7,15 @@
 
 let
   inherit (lib) mkIf;
-  cfg = config.icedos.applications.zed;
+  cfg = config.icedos.applications;
 in
 {
   imports = [ ./options.nix ];
-  environment.variables.EDITOR = mkIf (cfg.enable && cfg.defaultEditor) "zeditor -n -w";
+  environment.variables.EDITOR = mkIf (cfg.zed.enable && cfg.defaultEditor == "zed") "zeditor -n -w";
 
   environment.systemPackages =
     with pkgs;
-    mkIf (cfg.enable) [
+    mkIf (cfg.zed.enable) [
       lazygit
       nil
       nixd
@@ -23,5 +23,5 @@ in
       zed-editor
     ];
 
-  services.ollama.enable = cfg.ollamaSupport;
+  services.ollama.enable = cfg.zed.ollamaSupport;
 }

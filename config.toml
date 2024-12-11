@@ -4,6 +4,7 @@ android-tools = true
 brave = true
 celluloid = true
 clamav = false
+defaultEditor = "zed" # Options: 'codium', 'zed'
 fwupd = true
 php = false
 pitivi = false
@@ -17,7 +18,6 @@ yazi = false
 
 [icedos.applications.codium]
 enable = true
-defaultEditor = false
 extensions = [
   "codezombiech.gitignore",
   "dbaeumer.vscode-eslint",
@@ -93,7 +93,6 @@ deviceId = "901524a4_c7c0_407e_9903_431abce54131"
 
 [icedos.applications.zed]
 enable = true
-defaultEditor = true
 ollamaSupport = false
 vim = true
 

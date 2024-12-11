@@ -21,7 +21,7 @@ in
     ];
 
   environment.variables.EDITOR = mkIf (
-    cfg.applications.codium.enable && cfg.applications.codium.defaultEditor
+    cfg.applications.codium.enable && cfg.applications.defaultEditor == "codium"
   ) "codium -n -w";
 
   home-manager.users = mapAttrs (user: _: {

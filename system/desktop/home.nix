@@ -9,14 +9,6 @@ let
   inherit (lib) mapAttrs;
   cfg = config.icedos;
 
-  browser =
-    if (cfg.applications.librewolf.enable && cfg.applications.librewolf.default) then
-      "librewolf.desktop"
-    else if (cfg.applications.zen-browser.enable && cfg.applications.zen-browser.default) then
-      "zen.desktop"
-    else
-      "";
-
   accentColor =
     if (!cfg.desktop.gnome.enable) then
       "#${cfg.desktop.accentColor}"
@@ -33,6 +25,21 @@ let
         yellow = "#c88800";
       }
       .${cfg.desktop.gnome.accentColor};
+
+  browser =
+    if (cfg.applications.librewolf.enable && cfg.applications.librewolf.default) then
+      "librewolf.desktop"
+    else if (cfg.applications.zen-browser.enable && cfg.applications.zen-browser.default) then
+      "zen.desktop"
+    else
+      "";
+
+  editor =
+    {
+      codium = "codium.desktop";
+      zed = "dev.zed.Zed.desktop";
+    }
+    .${cfg.applications.defaultEditor};
 
   gtkCss = ''
     @define-color accent_bg_color ${accentColor};
@@ -86,12 +93,12 @@ in
         enable = true;
 
         defaultApplications = {
-          "application/json" = "codium.desktop";
+          "application/json" = editor;
           "application/pdf" = browser;
           "application/x-bittorrent" = "de.haeckerfelix.Fragments.desktop";
           "application/x-ms-dos-executable" = "wine.desktop";
-          "application/x-shellscript" = "codium.desktop";
-          "application/x-wine-extension-ini" = "codium.desktop";
+          "application/x-shellscript" = editor;
+          "application/x-wine-extension-ini" = editor;
           "application/xhtml+xml" = browser;
           "application/xhtml_xml" = browser;
           "application/zip" = "org.gnome.FileRoller.desktop";
@@ -100,7 +107,7 @@ in
           "image/png" = "org.gnome.gThumb.desktop";
           "image/svg+xml" = "org.gnome.gThumb.desktop";
           "text/html" = browser;
-          "text/plain" = "codium.desktop";
+          "text/plain" = editor;
           "video/mp4" = "io.github.celluloid_player.Celluloid.desktop";
           "video/x-matroska" = "io.github.celluloid_player.Celluloid.desktop";
           "x-scheme-handler/about" = browser;

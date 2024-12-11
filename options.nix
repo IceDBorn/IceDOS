@@ -12,11 +12,11 @@
 
         codium = {
           enable = mkOption { type = types.bool; };
-          defaultEditor = mkOption { type = types.bool; };
           extensions = mkOption { type = with types; listOf str; };
           zoomLevel = mkOption { type = types.number; };
         };
 
+        defaultEditor = mkOption { type = types.str; };
         fwupd = mkOption { type = types.bool; };
 
         kitty = {
@@ -87,7 +87,6 @@
 
         zed = {
           enable = mkOption { type = types.bool; };
-          defaultEditor = mkOption { type = types.bool; };
           ollamaSupport = mkOption { type = types.bool; };
           vim = mkOption { type = types.bool; };
 
