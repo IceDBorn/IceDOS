@@ -4,35 +4,21 @@
 }:
 
 let
-  browser =
-    if (cfg.applications.librewolf.enable && cfg.applications.librewolf.default) then
-      "run librewolf"
-    else if (cfg.applications.zen-browser.enable && cfg.applications.zen-browser.default) then
-      "run zen"
-    else
-      "";
-
   cfg = config.icedos;
 
-  pwas =
-    if
-      (
-        cfg.applications.librewolf.enable
-        && cfg.applications.librewolf.default
-        && cfg.applications.librewolf.pwas.enable
-      )
-    then
-      "run librewolf-pwas"
-    else if
-      (
-        cfg.applications.zen-browser.enable
-        && cfg.applications.zen-browser.default
-        && cfg.applications.zen-browser.pwas.enable
-      )
-    then
-      "run zen-pwas"
-    else
-      "";
+  browser =
+    {
+      librewolf = ''
+        run librewolf
+        ${if (cfg.applications.librewolf.pwas.enable) then "run librewolf-pwas" else ""}
+      '';
+
+      zen = ''
+        run zen
+        ${if (cfg.applications.zen-browser.pwas.enable) then "run zen-pwas" else ""}
+      '';
+    }
+    .${cfg.applications.defaultBrowser};
 in
 pkgs.writeShellScriptBin "hyprland-startup" ''
   run () {
@@ -58,7 +44,6 @@ pkgs.writeShellScriptBin "hyprland-startup" ''
 
   # Standard applications
   ${browser}
-  ${pwas}
   nautilus -w &
   nautilus -w &
   run steam

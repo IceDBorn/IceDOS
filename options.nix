@@ -16,6 +16,7 @@
           zoomLevel = mkOption { type = types.number; };
         };
 
+        defaultBrowser = mkOption { type = types.str; };
         defaultEditor = mkOption { type = types.str; };
         fwupd = mkOption { type = types.bool; };
 
@@ -31,7 +32,6 @@
 
         librewolf = {
           enable = mkOption { type = types.bool; };
-          default = mkOption { type = types.bool; };
           overrides = mkOption { type = types.bool; };
           privacy = mkOption { type = types.bool; };
 
@@ -99,7 +99,6 @@
 
         zen-browser = {
           enable = mkOption { type = types.bool; };
-          default = mkOption { type = types.bool; };
           overrides = mkOption { type = types.bool; };
           privacy = mkOption { type = types.bool; };
 

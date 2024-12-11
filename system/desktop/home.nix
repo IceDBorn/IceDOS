@@ -27,12 +27,11 @@ let
       .${cfg.desktop.gnome.accentColor};
 
   browser =
-    if (cfg.applications.librewolf.enable && cfg.applications.librewolf.default) then
-      "librewolf.desktop"
-    else if (cfg.applications.zen-browser.enable && cfg.applications.zen-browser.default) then
-      "zen.desktop"
-    else
-      "";
+    {
+      librewolf = "librewolf.desktop";
+      zen = "zen.desktop";
+    }
+    .${cfg.applications.defaultBrowser};
 
   editor =
     {

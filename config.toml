@@ -4,6 +4,7 @@ android-tools = true
 brave = true
 celluloid = true
 clamav = false
+defaultBrowser = "zen" # Options: 'librewolf', 'zen'
 defaultEditor = "zed" # Options: 'codium', 'zed'
 fwupd = true
 php = false
@@ -52,7 +53,6 @@ hideDecorations = false # Hide top bar
 
 [icedos.applications.librewolf]
 enable = false
-default = false
 overrides = true
 privacy = true
 
@@ -103,7 +103,6 @@ mode = "system" # Options: 'system', 'dark', 'light'
 
 [icedos.applications.zen-browser]
 enable = true
-default = true
 overrides = true
 privacy = true
 

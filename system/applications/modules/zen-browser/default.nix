@@ -18,7 +18,7 @@ in
   # Set as default browser for electron apps
   environment = {
     sessionVariables.DEFAULT_BROWSER = mkIf (
-      cfg.applications.zen-browser.enable && cfg.applications.zen-browser.default
+      cfg.applications.zen-browser.enable && cfg.applications.defaultBrowser == "zen"
     ) "${package}/bin/zen";
     systemPackages = [
       package
