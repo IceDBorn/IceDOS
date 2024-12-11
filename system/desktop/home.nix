@@ -86,13 +86,14 @@ in
         enable = true;
 
         defaultApplications = {
+          "application/json" = "codium.desktop";
           "application/pdf" = browser;
           "application/x-bittorrent" = "de.haeckerfelix.Fragments.desktop";
           "application/x-ms-dos-executable" = "wine.desktop";
           "application/x-shellscript" = "codium.desktop";
           "application/x-wine-extension-ini" = "codium.desktop";
-          "application/xhtml_xml" = browser;
           "application/xhtml+xml" = browser;
+          "application/xhtml_xml" = browser;
           "application/zip" = "org.gnome.FileRoller.desktop";
           "image/avif" = "org.gnome.gThumb.desktop";
           "image/jpeg" = "org.gnome.gThumb.desktop";
