@@ -229,7 +229,7 @@ value = 242
 
 [[icedos.hardware.monitors]]
 name = "DP-1"
-resolution = "1920x1080"
+resolution = "3440x1440"
 refreshRate = 144
 position = "0x0"
 scaling = 1
@@ -237,17 +237,9 @@ rotation = 0
 
 [[icedos.hardware.monitors]]
 name = "DP-2"
-resolution = "1360x768"
-refreshRate = 60
-position = "-1360x0"
-scaling = 1
-rotation = 0
-
-[[icedos.hardware.monitors]]
-name = "DP-3"
-resolution = "1280x1024"
-refreshRate = 75
-position = "1920x0"
+resolution = "1920x1080"
+refreshRate = 144
+position = "3440x0"
 scaling = 1
 rotation = 0
 
@@ -255,7 +247,7 @@ rotation = 0
 name = "HDMI-A-1"
 resolution = "3840x2160"
 refreshRate = 60
-position = "-5200x0"
+position = "-3840x0"
 scaling = 1
 rotation = 0
 

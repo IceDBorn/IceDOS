@@ -186,12 +186,12 @@ in
               windowrulev2 = workspace 2 silent, class:^(dev.zed.Zed)$
               windowrulev2 = workspace 3 silent, class:^(steam_app_.*)$, title:^((?!notificationtoasts.*).)*$
               windowrulev2 = workspace 11 silent, class:^(${messengers})$
-              windowrulev2 = workspace 12 silent, class:^(org\.gnome\.Nautilus)$
-              windowrulev2 = workspace 13 silent, class:^(task-managers)$ # Task manager
-              windowrulev2 = workspace 14 silent, class:^(terminals)$ # Terminal
-              windowrulev2 = workspace 21 silent, class:^(Steam|steam)$, title:^((?!notificationtoasts.*).)*$
-              windowrulev2 = workspace 21 silent, title:^(.*Steam[A-Za-z0-9\s]*)$
-              windowrulev2 = workspace 22 silent, class:^(${media-tools})$
+              windowrulev2 = workspace 12 silent, class:^(Steam|steam)$, title:^((?!notificationtoasts.*).)*$
+              windowrulev2 = workspace 12 silent, title:^(.*Steam[A-Za-z0-9\s]*)$
+              windowrulev2 = workspace 13 silent, class:^(org\.gnome\.Nautilus)$
+              windowrulev2 = workspace 14 silent, class:^(${media-tools})$
+              windowrulev2 = workspace 15 silent, class:^(task-managers)$ # Task manager
+              windowrulev2 = workspace 16 silent, class:^(terminals)$ # Terminal
             ''
           else if (monitorsLength == 2) then
             ''
