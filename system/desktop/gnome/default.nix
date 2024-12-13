@@ -31,7 +31,6 @@ in
           gnomeExtensions.appindicator # Tray icons for gnome
           gnomeExtensions.quick-settings-tweaker
         ]
-        ++ optional (cfg.extensions.dashToPanel) gnomeExtensions.dash-to-panel # An icon taskbar for gnome
         ++ optional (cfg.extensions.gsconnect) gnomeExtensions.gsconnect # KDE Connect implementation for gnome
       else
         [ ]

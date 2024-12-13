@@ -96,9 +96,7 @@ in
             "appindicatorsupport@rgcjonas.gmail.com"
             "quick-settings-tweaks@qwreey"
             "user-theme@gnome-shell-extensions.gcampax.github.com"
-          ]
-          ++ optional (cfg.desktop.gnome.extensions.dashToPanel) "dash-to-panel@jderose9.github.com"
-          ++ optional (cfg.desktop.gnome.extensions.gsconnect) "gsconnect@andyholmes.github.io";
+          ] ++ optional (cfg.desktop.gnome.extensions.gsconnect) "gsconnect@andyholmes.github.io";
 
         favorite-apps = mkIf (cfg.system.users.${user}.desktop.gnome.pinnedApps.shell.enable
         ) cfg.system.users.${user}.desktop.gnome.pinnedApps.shell.list;
@@ -139,43 +137,5 @@ in
         # Open the extension with Super + V
         toggle-menu = [ "<Super>v" ];
       };
-
-      "org/gnome/shell/extensions/dash-to-panel" = mkIf (cfg.desktop.gnome.extensions.dashToPanel) {
-        panel-element-positions = ''
-          {
-            "0": [
-              {"element":"showAppsButton","visible":false,"position":"stackedTL"},
-              {"element":"activitiesButton","visible":false,"position":"stackedTL"},
-              {"element":"leftBox","visible":true,"position":"stackedTL"},
-              {"element":"taskbar","visible":true,"position":"stackedTL"},
-              {"element":"centerBox","visible":true,"position":"stackedBR"},
-              {"element":"rightBox","visible":true,"position":"stackedBR"},
-              {"element":"dateMenu","visible":true,"position":"stackedBR"},
-              {"element":"systemMenu","visible":true,"position":"stackedBR"},
-              {"element":"desktopButton","visible":true,"position":"stackedBR"}
-            ],
-            "1": [
-              {"element":"showAppsButton","visible":false,"position":"stackedTL"},
-              {"element":"activitiesButton","visible":false,"position":"stackedTL"},
-              {"element":"leftBox","visible":true,"position":"stackedTL"},
-              {"element":"taskbar","visible":true,"position":"stackedTL"},
-              {"element":"centerBox","visible":true,"position":"stackedBR"},
-              {"element":"rightBox","visible":true,"position":"stackedBR"},
-              {"element":"dateMenu","visible":true,"position":"stackedBR"},
-              {"element":"systemMenu","visible":true,"position":"stackedBR"},
-              {"element":"desktopButton","visible":true,"position":"stackedBR"}
-            ]
-          }
-        ''; # Disable activities button
-        panel-sizes = ''{"0":44}'';
-        appicon-margin = 4;
-        dot-style-focused = "DASHES";
-        dot-style-unfocused = "DOTS";
-        hide-overview-on-startup = true;
-        scroll-icon-action = "NOTHING";
-        scroll-panel-action = "NOTHING";
-        hot-keys = true;
-      };
-    };
   }) cfg.system.users;
 }
