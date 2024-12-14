@@ -91,12 +91,11 @@ in
         # Enable gnome extensions
         disable-user-extensions = false;
         # Set enabled gnome extensions
-        enabled-extensions =
-          [
-            "appindicatorsupport@rgcjonas.gmail.com"
-            "quick-settings-tweaks@qwreey"
-            "user-theme@gnome-shell-extensions.gcampax.github.com"
-          ] ++ optional (cfg.desktop.gnome.extensions.gsconnect) "gsconnect@andyholmes.github.io";
+        enabled-extensions = [
+          "appindicatorsupport@rgcjonas.gmail.com"
+          "quick-settings-tweaks@qwreey"
+          "user-theme@gnome-shell-extensions.gcampax.github.com"
+        ] ++ optional (cfg.desktop.gnome.extensions.gsconnect) "gsconnect@andyholmes.github.io";
 
         favorite-apps = mkIf (cfg.system.users.${user}.desktop.gnome.pinnedApps.shell.enable
         ) cfg.system.users.${user}.desktop.gnome.pinnedApps.shell.list;
@@ -137,5 +136,6 @@ in
         # Open the extension with Super + V
         toggle-menu = [ "<Super>v" ];
       };
+    };
   }) cfg.system.users;
 }

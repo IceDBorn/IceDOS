@@ -10,7 +10,7 @@ let
 
   cfg = config.icedos;
 in
-mkIf cfg.desktop.gnome.extensions.dash-to-panel {
+mkIf cfg.desktop.gnome.extensions.dashToPanel {
   environment.systemPackages = [ pkgs.gnomeExtensions.dash-to-panel ];
 
   home-manager.users = mapAttrs (user: _: {
