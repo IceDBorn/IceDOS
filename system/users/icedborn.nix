@@ -22,20 +22,18 @@ let
     ++ optional (cfg.applications.suyu) inputs.switch-emulators.packages.${pkgs.system}.suyu;
 
   gaming = with pkgs; [
-    heroic # Cross-platform Epic Games Launcher
-    ludusavi # Game saves cloud backup with Nextcloud
-    prismlauncher # Minecraft launcher
+    # heroic # Cross-platform Epic Games Launcher
+    # prismlauncher # Minecraft launcher
     protontricks # Winetricks for proton prefixes
-    rclone # Sync to and from nextcloud
   ];
 in
 {
   users.users.icedborn.packages =
     with pkgs;
     [
-      bottles # Wine manager
-      godot_4 # Game engine
-      stremio # Media streaming platform
+      blanket
+      bottles
+      stremio
     ]
     ++ emulators
     ++ gaming;
