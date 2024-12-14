@@ -151,7 +151,6 @@ titlebarLayout = "appmenu:close"
 [icedos.desktop.gnome.extensions]
 arcmenu = false
 dashToPanel = false
-gsconnect = true
 
 [icedos.desktop.gnome.clock]
 date = false # Show the month and day of the month on the clock

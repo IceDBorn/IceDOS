@@ -25,18 +25,12 @@ in
 
   environment.systemPackages =
     with pkgs;
-    (
-      if (cfg.enable) then
-        [
-          gnome-extension-manager # Gnome extensions manager and downloader
-          gnome-tweaks # Tweaks missing from pure gnome
-          gnomeExtensions.appindicator # Tray icons for gnome
-          gnomeExtensions.quick-settings-tweaker
-        ]
-        ++ optional (cfg.extensions.gsconnect) gnomeExtensions.gsconnect # KDE Connect implementation for gnome
-      else
-        [ ]
-    );
+    mkIf (cfg.enable) [
+      gnome-extension-manager # Gnome extensions manager and downloader
+      gnome-tweaks # Tweaks missing from pure gnome
+      gnomeExtensions.appindicator # Tray icons for gnome
+      gnomeExtensions.quick-settings-tweaker
+    ];
 
   environment.gnome.excludePackages =
     with pkgs;
