@@ -3,6 +3,7 @@ let
   cfg = (import ./options.nix { inherit lib; }).config.icedos;
   aagl = cfg.applications.aagl;
   channels = filter (channel: cfg.system.channels.${channel} == true) (attrNames cfg.system.channels);
+  falkor = cfg.applications.falkor;
   gnome = cfg.desktop.gnome.enable;
   hyprland = cfg.desktop.hyprland.enable;
 
@@ -46,9 +47,9 @@ in
           }
         };
 
-        ${
-          concatImapStrings (i: channel: ''${channel}.url = github:NixOS/nixpkgs/${channel};''\n'') channels
-        }
+        ${concatImapStrings (
+          i: channel: ''${channel}.url = github:NixOS/nixpkgs/${channel};''\n''
+        ) channels}
 
         # Modules
         home-manager = {
@@ -89,6 +90,18 @@ in
             ''
               aagl = {
                 url = "github:ezKEa/aagl-gtk-on-nix";
+                inputs.nixpkgs.follows = "nixpkgs";
+              };
+            ''
+          else
+            ""
+        }
+
+        ${
+          if (falkor) then
+            ''
+              falkor = {
+                url = "github:Team-Falkor/falkor";
                 inputs.nixpkgs.follows = "nixpkgs";
               };
             ''
@@ -165,6 +178,7 @@ in
           shell-in-netns,
           ${concatImapStrings (i: channel: ''${channel},'') channels}
           ${if (aagl) then ''aagl,'' else ""}
+          ${if (falkor) then ''falkor,'' else ""}
           ${if (hyprland) then ''hyprlux,'' else ""}
           ${if (kernel || steam-session) then ''chaotic,'' else ""}
           ${if (php) then ''phps,'' else ""}
@@ -217,12 +231,10 @@ in
               home-manager.nixosModules.home-manager
               nerivations.nixosModules.default
 
-              ${
-                concatImapStrings (
-                  i: channel:
-                  ''({config, ...}: { nixpkgs.config.packageOverrides.${channel} = import ${channel} { config = config.nixpkgs.config; }; })''
-                ) channels
-              }
+              ${concatImapStrings (
+                i: channel:
+                ''({config, ...}: { nixpkgs.config.packageOverrides.${channel} = import ${channel} { config = config.nixpkgs.config; }; })''
+              ) channels}
 
               ${
                 if (!server) then

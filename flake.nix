@@ -30,6 +30,11 @@
 
     # Apps
 
+    falkor = {
+      url = "github:Team-Falkor/falkor";
+      inputs.nixpkgs.follows = "nixpkgs";
+    };
+
     hyprlux = {
       url = "github:amadejkastelic/Hyprlux";
       inputs.nixpkgs.follows = "nixpkgs";
@@ -61,6 +66,7 @@
       self,
       shell-in-netns,
 
+      falkor,
       hyprlux,
       chaotic,
 
