@@ -49,7 +49,7 @@ pkgs.writeShellScriptBin "hyprland-startup" ''
   run steam
   run overskride
   run pavucontrol
-  run signal-desktop
+  run flare
   run zeditor
 
   # Terminals/Task managers
