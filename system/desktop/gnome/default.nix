@@ -13,6 +13,7 @@ in
 {
   imports = [
     ../../applications/modules/arcmenu.nix
+    ../../applications/modules/dash-to-panel.nix
     ./home.nix
     ./startup.nix
   ];
