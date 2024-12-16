@@ -144,7 +144,6 @@
           extensions = {
             arcmenu = mkOption { type = types.bool; };
             dashToPanel = mkOption { type = types.bool; };
-            gsconnect = mkOption { type = types.bool; };
           };
 
           clock = {
