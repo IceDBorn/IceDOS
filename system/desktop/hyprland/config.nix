@@ -178,7 +178,7 @@ in
           let
             browsers = "librewolf|zen-alpha";
             media-tools = "io.github.kaii_lb.Overskride|org.pulseaudio.pavucontrol|valent";
-            messengers = "WebCord|Signal|pwas|signal";
+            messengers = "WebCord|de.schmidhuberj.Flare|pwas";
           in
           if (monitorsLength >= 3) then
             ''

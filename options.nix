@@ -18,6 +18,7 @@
 
         defaultBrowser = mkOption { type = types.str; };
         defaultEditor = mkOption { type = types.str; };
+        falkor = mkOption { type = types.bool; };
         fwupd = mkOption { type = types.bool; };
 
         kitty = {

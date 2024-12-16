@@ -18,6 +18,7 @@ packages = [
   "efibootmgr", # Edit EFI entries
   "endeavour", # Tasks
   "fd", # Find alternative
+  "flare-signal", # GTK client for Signal
   "fragments", # Bittorrent client following Gnome UI standards
   "ghex", # HEX Editor
   "gimp", # Image editor
@@ -39,7 +40,6 @@ packages = [
   "p7zip", # 7zip
   "pavucontrol", # Sound manager
   "scrcpy", # Remotely use android
-  "signal-desktop", # Encrypted messaging platform
   "tree", # Display folder content at a tree format
   "unrar", # Support opening rar files
   "unzip", # An extraction utility
