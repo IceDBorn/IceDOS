@@ -273,7 +273,7 @@ in
                   ''
                     hyprlux.nixosModules.default
                     ./system/desktop/hyprland
-                    ./system/applications/modules/hyprlux.nix
+                    ./system/applications/modules/hyprlux
                   ''
                 else
                   ""

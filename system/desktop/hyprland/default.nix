@@ -5,7 +5,7 @@
 }:
 
 let
-  hyprland-startup = import ../../applications/modules/hyprland-startup.nix {
+  hyprland-startup = import ../../applications/modules/hyprland-startup {
     inherit config pkgs;
   };
 in
