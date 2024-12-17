@@ -73,7 +73,7 @@ in
         };
 
         ${
-          if (kernel || steam-session) then
+          if (cfg.system.kernel == "valve" || steam-session) then
             ''
               steam-session = {
                 url = "github:Jovian-Experiments/Jovian-NixOS";
