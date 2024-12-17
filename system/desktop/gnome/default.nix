@@ -12,8 +12,8 @@ let
 in
 {
   imports = [
-    ../../applications/modules/arcmenu.nix
-    ../../applications/modules/dash-to-panel.nix
+    ../../applications/modules/arcmenu
+    ../../applications/modules/dash-to-panel
     ./home.nix
     ./startup.nix
   ];

@@ -12,8 +12,8 @@ in
 {
   imports = [
     ../applications/modules/adwaita-qt
-    ../applications/modules/nautilus.nix
-    ../applications/modules/pipewire.nix
+    ../applications/modules/nautilus
+    ../applications/modules/pipewire
     ./home.nix
   ];
 

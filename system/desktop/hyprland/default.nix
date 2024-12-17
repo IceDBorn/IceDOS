@@ -11,14 +11,14 @@ let
 in
 {
   imports = [
-    ../../applications/modules/gnome-control-center.nix
-    ../../applications/modules/hypridle.nix
+    ../../applications/modules/gnome-control-center
+    ../../applications/modules/hypridle
     ../../applications/modules/hyprlock
     ../../applications/modules/hyprpaper
     ../../applications/modules/nwg
-    ../../applications/modules/swaync.nix
-    ../../applications/modules/swayosd.nix
-    ../../applications/modules/valent.nix
+    ../../applications/modules/swaync
+    ../../applications/modules/swayosd
+    ../../applications/modules/valent
     ../../applications/modules/walker
     ../../applications/modules/wleave
     ./config.nix

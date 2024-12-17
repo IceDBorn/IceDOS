@@ -27,9 +27,6 @@ in
     };
   };
 
-  # Allow proprietary packages
-  nixpkgs.config.allowUnfree = true;
-
   # Versioning system
   environment.etc."icedos-version".text = cfg.version;
 }
