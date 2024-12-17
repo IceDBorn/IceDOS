@@ -15,18 +15,18 @@ let
   pkgFile = lib.importTOML ./packages.toml;
   myPackages = (pkgMapper pkgFile.myPackages);
   codingDeps = (pkgMapper pkgFile.codingDeps);
-  lout = import modules/lout.nix { inherit pkgs; };
+  lout = import modules/lout { inherit pkgs; };
 
-  rebuild = import modules/rebuild.nix {
+  rebuild = import modules/rebuild {
     inherit pkgs config;
     command = "rebuild";
     update = "false";
   };
 
-  toggle-services = import modules/toggle-services.nix { inherit pkgs; };
-  trim-generations = import modules/trim-generations.nix { inherit pkgs; };
+  toggle-services = import modules/toggle-services { inherit pkgs; };
+  trim-generations = import modules/trim-generations { inherit pkgs; };
 
-  update = import modules/rebuild.nix {
+  update = import modules/rebuild {
     inherit pkgs config;
     command = "update";
     update = "true";
@@ -43,44 +43,47 @@ let
 in
 {
   imports = [
-    ./modules/android-tools.nix
-    ./modules/aria2c.nix
-    ./modules/bash.nix
-    ./modules/brave.nix
+    ./modules/android-tools
+    ./modules/aria2c
+    ./modules/bash
+    ./modules/brave
     ./modules/btop
     ./modules/celluloid
-    ./modules/clamav.nix
+    ./modules/clamav
     ./modules/codium
-    ./modules/container-manager.nix
-    ./modules/deckbd-wrapper.nix
-    ./modules/fwupd.nix
-    ./modules/gamemode.nix
+    ./modules/container-manager
+    ./modules/deckbd-wrapper
+    ./modules/fwupd
+    ./modules/gamemode
     ./modules/garbage-collect
-    ./modules/gdm.nix
-    ./modules/git.nix
-    ./modules/kernel.nix
-    ./modules/kitty.nix
+    ./modules/gdm
+    ./modules/git
+    ./modules/kernel
+    ./modules/kitty
     ./modules/librewolf
-    ./modules/libvirtd.nix
-    ./modules/mangohud.nix
-    ./modules/mullvad.nix
-    ./modules/php.nix
-    ./modules/pitivi.nix
-    ./modules/rtl8821ce.nix
-    ./modules/rust.nix
-    ./modules/solaar.nix
-    ./modules/ssh.nix
-    ./modules/steam.nix
-    ./modules/store.nix
-    ./modules/sunshine.nix
-    ./modules/tailscale.nix
+    ./modules/libvirtd
+    ./modules/mangohud
+    ./modules/mullvad
+    ./modules/php
+    ./modules/pitivi
+    ./modules/rtl8821ce
+    ./modules/rust
+    ./modules/solaar
+    ./modules/ssh
+    ./modules/steam
+    ./modules/store
+    ./modules/sunshine
+    ./modules/tailscale
     ./modules/tmux
-    ./modules/waydroid.nix
-    ./modules/yazi.nix
+    ./modules/waydroid
+    ./modules/yazi
     ./modules/zed
     ./modules/zsh
   ];
 
   environment.systemPackages =
     (pkgMapper pkgFile.packages) ++ myPackages ++ codingDeps ++ shellScripts;
+
+  # Allow proprietary packages
+  nixpkgs.config.allowUnfree = true;
 }
