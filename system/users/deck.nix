@@ -11,7 +11,7 @@ let
   cfg = config.icedos;
 in
 {
-  users.users.icedborn.packages =
+  users.users.deck.packages =
     with pkgs;
     [
       # cemu
