@@ -34,10 +34,10 @@ pkgs.writeShellScriptBin "${command}" ''
 
   if ${update}; then
   	nix flake update && cache "flake.lock" || true
-  	sudo nix-shell scripts/build.sh
+  	sudo nix-shell scripts/build.sh $@
 
   	runCommand update-codium-extensions
   else
-  	sudo bash scripts/build.sh
+  	sudo bash scripts/build.sh $@
   fi
 ''
