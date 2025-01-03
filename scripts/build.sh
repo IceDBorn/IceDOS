@@ -5,6 +5,28 @@ EXTRAS="/etc/nixos/extras.nix"
 CONFIG="/tmp/configuration-location"
 FLAKE="flake.nix"
 
+action="switch"
+extraBuildArgs=()
+
+while [[ $# -gt 0 ]]; do
+  case $1 in
+    --boot)
+      action="boot"
+      shift
+      ;;
+    --builder)
+      extraBuildArgs+=("--build-host")
+      extraBuildArgs+=("$2")
+      shift
+      shift
+      ;;
+    *)
+      echo "Unknown arg $1" >/dev/stderr
+      exit 1
+      ;;
+  esac
+done
+
 [ ! -f "$EXTRAS" ] && echo "{}" | tee "$EXTRAS" > /dev/null
 
 # Save current directory into a file
@@ -17,4 +39,4 @@ nix eval --extra-experimental-features nix-command --write-to "$FLAKE" --file "g
 nixfmt "$FLAKE"
 
 # Build the system configuration
-nixos-rebuild switch --show-trace --impure --flake .#"$(cat /etc/hostname)"
+nixos-rebuild $action --show-trace --impure --flake .#"$(cat /etc/hostname)" ${extraBuildArgs[*]}
