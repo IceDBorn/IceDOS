@@ -38,6 +38,6 @@ pkgs.writeShellScriptBin "${command}" ''
 
   	runCommand update-codium-extensions
   else
-  	sudo bash scripts/build.sh $@
+  	sudo nix-shell scripts/build.sh $@
   fi
 ''
