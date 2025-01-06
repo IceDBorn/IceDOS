@@ -29,7 +29,7 @@ in
 
     kernelPackages =
       with pkgs;
-      if (!builtins.pathExists /etc/icedos-version && kernel) then
+      if (cfg.internals.isFirstBuild && kernel) then
         linuxPackages
       else
         {

@@ -363,6 +363,10 @@
 
         version = mkOption { type = types.str; };
       };
+
+      internals = {
+        isFirstBuild = mkOption { type = types.bool; };
+      };
     };
   };
 
