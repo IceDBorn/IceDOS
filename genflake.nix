@@ -1,5 +1,5 @@
 let
-  inherit (lib) attrNames concatImapStrings filter;
+  inherit (lib) attrNames boolToString concatImapStrings fileContents filter pathExists;
   cfg = (import ./options.nix { inherit lib; }).config.icedos;
   aagl = cfg.applications.aagl;
   channels = filter (channel: cfg.system.channels.${channel} == true) (attrNames cfg.system.channels);
@@ -19,6 +19,15 @@ let
   suyu = cfg.applications.suyu;
   users = attrNames cfg.system.users;
   zen-browser = cfg.applications.zen-browser.enable;
+
+  injectIfExists = file:
+    if (pathExists file)
+    then ''
+      (
+        ${fileContents file}
+      )
+    ''
+    else "{}";
 in
 {
   flake.nix = ''
@@ -187,7 +196,7 @@ in
           ${if (zen-browser) then ''zen-browser,'' else ""}
         }@inputs:
         {
-          nixosConfigurations.''${nixpkgs.lib.fileContents "/etc/hostname"} = nixpkgs.lib.nixosSystem {
+          nixosConfigurations."${fileContents "/etc/hostname"}" = nixpkgs.lib.nixosSystem {
             system = "x86_64-linux";
 
             specialArgs = {
@@ -199,12 +208,12 @@ in
               (
                 { lib, ... }:
                 let
-                  inherit (lib) mkOption types fileContents;
+                  inherit (lib) mkOption types;
                 in
                 {
                   options.icedos.configurationLocation = mkOption {
                     type = types.str;
-                    default = fileContents "/tmp/configuration-location";
+                    default = "${fileContents "/tmp/configuration-location"}";
                   };
                 }
               )
@@ -244,6 +253,9 @@ in
                 else
                   ""
               }
+
+              # Is First Build
+              { icedos.internals.isFirstBuild = ${ boolToString (pathExists "/run/current-system/source") }; }
 
               ${
                 if (steam-session) then
@@ -291,6 +303,10 @@ in
               ${if (zen-browser) then ''./system/applications/modules/zen-browser'' else ""}
 
               ${concatImapStrings (i: user: "./system/users/${user}.nix\n") users}
+
+              ${injectIfExists "/etc/nixos/hardware-configuration.nix"}
+
+              ${injectIfExists "/etc/nixos/extras.nix"}
             ];
           };
         };
