@@ -57,7 +57,7 @@ in
         };
 
         ${concatImapStrings (
-          i: channel: ''${channel}.url = github:NixOS/nixpkgs/${channel};''\n''
+          i: channel: ''"${channel}".url = github:NixOS/nixpkgs/${channel};''\n''
         ) channels}
 
         # Modules
@@ -185,7 +185,6 @@ in
           pipewire-screenaudio,
           self,
           shell-in-netns,
-          ${concatImapStrings (i: channel: ''${channel},'') channels}
           ${if (aagl) then ''aagl,'' else ""}
           ${if (falkor) then ''falkor,'' else ""}
           ${if (hyprland) then ''hyprlux,'' else ""}
@@ -194,9 +193,10 @@ in
           ${if (steam-session) then ''steam-session,'' else ""}
           ${if (suyu) then ''suyu,'' else ""}
           ${if (zen-browser) then ''zen-browser,'' else ""}
+          ...
         }@inputs:
         {
-          nixosConfigurations."${fileContents "/etc/hostname"}" = nixpkgs.lib.nixosSystem {
+          nixosConfigurations."${fileContents "/etc/hostname"}" = nixpkgs.lib.nixosSystem rec {
             system = "x86_64-linux";
 
             specialArgs = {
@@ -242,7 +242,16 @@ in
 
               ${concatImapStrings (
                 i: channel:
-                ''({config, ...}: { nixpkgs.config.packageOverrides.${channel} = import ${channel} { config = config.nixpkgs.config; }; })''
+                ''
+                  (
+                    {config, ...}: {
+                      nixpkgs.config.packageOverrides."${channel}" = import inputs."${channel}" {
+                        inherit system;
+                        config = config.nixpkgs.config;
+                      };
+                    }
+                  )
+                ''
               ) channels}
 
               ${
