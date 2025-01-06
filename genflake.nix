@@ -264,7 +264,7 @@ in
               }
 
               # Is First Build
-              { icedos.internals.isFirstBuild = ${ boolToString (pathExists "/run/current-system/source") }; }
+              { icedos.internals.isFirstBuild = ${ boolToString (!pathExists "/run/current-system/source") }; }
 
               ${
                 if (steam-session) then
