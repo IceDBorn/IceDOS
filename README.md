@@ -11,9 +11,9 @@ This is a NixOS configuration project that aims to create a highly opinionated g
 ## Install
 
 ```bash
-git clone https://github.com/IceDBorn/IceDOS
-cd IceDOS
-sudo nix-shell scripts/install.sh
+git clone https://github.com/icedborn/icedos
+cd icedos
+sudo nix-shell scripts/build.sh
 ```
 
 ## Preview
