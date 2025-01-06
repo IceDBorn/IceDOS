@@ -2,7 +2,7 @@ let
   inherit (lib) attrNames boolToString concatImapStrings fileContents filter pathExists;
   cfg = (import ./options.nix { inherit lib; }).config.icedos;
   aagl = cfg.applications.aagl;
-  channels = filter (channel: cfg.system.channels.${channel} == true) (attrNames cfg.system.channels);
+  channels = cfg.system.channels;
   falkor = cfg.applications.falkor;
   gnome = cfg.desktop.gnome.enable;
   hyprland = cfg.desktop.hyprland.enable;

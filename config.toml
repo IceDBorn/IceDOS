@@ -262,13 +262,10 @@ kernel = "cachyos" # Options: 'cachyos', 'cachyos-server', 'latest', 'lts', 'val
 swappiness = 1
 version = "23.05" # Do not change without checking the docs (config.system.stateVersion)
 
-# Official NixOS channels
-[icedos.system.channels]
-"nixos-24.11" = false
-master = false
-nixos-unstable-small = false
-staging = false
-staging-next = false
+# Official Nix Packages branches
+# https://github.com/NixOS/nixpkgs/branches/active
+channels = [
+]
 
 [icedos.system.config]
 version = "1.0.0"
