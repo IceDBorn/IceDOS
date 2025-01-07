@@ -264,8 +264,7 @@ version = "23.05" # Do not change without checking the docs (config.system.state
 
 # Official Nix Packages branches
 # https://github.com/NixOS/nixpkgs/branches/active
-channels = [
-]
+channels = []
 
 [icedos.system.config]
 version = "1.0.0"
@@ -319,10 +318,10 @@ enable = true
 seconds = 900
 
 [icedos.system.virtualisation]
-libvirtd = true # A daemon that manages virtual machines
-waydroid = true # Android container
+libvirtd = false # A daemon that manages virtual machines
+waydroid = false # Android container
 
 [icedos.system.virtualisation.containerManager]
-enable = true
+enable = false
 usePodman = true
 requireSudoForDocker = true # CAUTION: Disabling this gives every user root priviledges!
