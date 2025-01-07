@@ -1,5 +1,5 @@
 #! /usr/bin/env nix-shell
-#! nix-shell -i bash -p nixfmt-rfc-style git
+#! nix-shell -i bash -p nixfmt-rfc-style git nh
 
 CONFIG="/tmp/configuration-location"
 FLAKE="flake.nix"
@@ -36,4 +36,4 @@ nix eval --extra-experimental-features nix-command --write-to "$FLAKE" --file "g
 nixfmt "$FLAKE"
 
 # Build the system configuration
-nixos-rebuild $action --show-trace --flake .#"$(cat /etc/hostname)" ${extraBuildArgs[*]}
+nh os $action . ${extraBuildArgs[*]}

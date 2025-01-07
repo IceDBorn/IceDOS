@@ -55,7 +55,6 @@ in
     ./modules/deckbd-wrapper
     ./modules/fwupd
     ./modules/gamemode
-    ./modules/garbage-collect
     ./modules/gdm
     ./modules/git
     ./modules/kernel
@@ -64,6 +63,7 @@ in
     ./modules/libvirtd
     ./modules/mangohud
     ./modules/mullvad
+    ./modules/nh
     ./modules/php
     ./modules/pitivi
     ./modules/rtl8821ce

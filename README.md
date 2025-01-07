@@ -13,7 +13,7 @@ This is a NixOS configuration project that aims to create a highly opinionated g
 ```bash
 git clone https://github.com/icedborn/icedos
 cd icedos
-sudo nix-shell scripts/build.sh
+nix-shell scripts/build.sh
 ```
 
 ## Preview
