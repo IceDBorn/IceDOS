@@ -29,8 +29,7 @@ pkgs.writeShellScriptBin "${command}" ''
   cache "flake.nix"
 
   if ${update}; then
-    nix flake update && cache "flake.lock" || true
-    nix-shell ./build.sh $@
+    nix-shell ./build.sh --update $@ && cache "flake.lock" || true
     runCommand update-codium-extensions
   else
     nix-shell ./build.sh $@

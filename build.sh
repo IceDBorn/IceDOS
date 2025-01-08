@@ -13,6 +13,14 @@ while [[ $# -gt 0 ]]; do
       action="boot"
       shift
       ;;
+    --update)
+      update="-u"
+      shift
+      ;;
+    --ask)
+      ask="-a"
+      shift
+      ;;
     --builder)
       extraBuildArgs+=("--build-host")
       extraBuildArgs+=("$2")
@@ -36,4 +44,4 @@ nix eval --extra-experimental-features nix-command --write-to "$FLAKE" --file "g
 nixfmt "$FLAKE"
 
 # Build the system configuration
-nh os $action . ${extraBuildArgs[*]}
+nh os $action . $update $ask ${extraBuildArgs[*]}
