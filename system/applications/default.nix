@@ -24,7 +24,6 @@ let
   };
 
   toggle-services = import modules/toggle-services { inherit pkgs; };
-  trim-generations = import modules/trim-generations { inherit pkgs; };
 
   update = import modules/rebuild {
     inherit pkgs config;
@@ -37,7 +36,6 @@ let
     lout
     rebuild
     toggle-services
-    trim-generations
     update
   ];
 in
