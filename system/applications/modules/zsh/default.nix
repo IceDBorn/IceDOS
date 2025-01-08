@@ -18,11 +18,6 @@ in
         # Install powerlevel10k
         plugins = with pkgs; [
           {
-            name = "powerlevel10k";
-            src = zsh-powerlevel10k;
-            file = "share/zsh-powerlevel10k/powerlevel10k.zsh-theme";
-          }
-          {
             name = "zsh-nix-shell";
             file = "share/zsh-nix-shell/nix-shell.plugin.zsh";
             src = zsh-nix-shell;
@@ -32,8 +27,8 @@ in
     };
 
     home.file = {
-      # Add zsh theme to zsh directory
-      ".config/zsh/zsh-theme.zsh".source = ./theme.zsh;
+      ".config/zsh/p10k.zsh".source = "${pkgs.zsh-powerlevel10k}/share/zsh-powerlevel10k/powerlevel10k.zsh-theme";
+      ".config/zsh/p10k-theme.zsh".source = ./p10k-theme.zsh;
     };
   }) cfg.system.users;
 
@@ -68,7 +63,12 @@ in
     };
 
     interactiveShellInit = ''
-      source ~/.config/zsh/zsh-theme.zsh
+      if [[ -r "''${XDG_CACHE_HOME:-$HOME/.cache}/p10k-instant-prompt-''${(%):-%n}.zsh" ]]; then
+        source "''${XDG_CACHE_HOME:-$HOME/.cache}/p10k-instant-prompt-''${(%):-%n}.zsh"
+      fi
+
+      [[ ! -f ~/.config/zsh/p10k.zsh ]] || source ~/.config/zsh/p10k.zsh
+      [[ ! -f ~/.config/zsh/p10k-theme.zsh ]] || source ~/.config/zsh/p10k-theme.zsh
       unsetopt PROMPT_SP
     '';
   };
