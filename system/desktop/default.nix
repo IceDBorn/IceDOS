@@ -44,6 +44,7 @@ in
       adwaita-icon-theme # Gtk theme
       dconf-editor # Edit gnome's dconf
       libnotify # Send desktop notifications
+      loupe # Image viewer
     ];
 
     sessionVariables = {

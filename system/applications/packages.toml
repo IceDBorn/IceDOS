@@ -13,7 +13,6 @@ codingDeps = [
 packages = [
   "appimage-run", # Appimage runner
   "bat", # Better cat command
-  "curtail", # Image compressor
   "duf", # Disk usage utility
   "efibootmgr", # Edit EFI entries
   "endeavour", # Tasks
@@ -23,7 +22,6 @@ packages = [
   "ghex", # HEX Editor
   "gimp", # Image editor
   "gping", # ping with a graph
-  "gthumb", # Image viewer
   "iotas", # Notes
   "jc", # JSON parser
   "jq", # JSON parser

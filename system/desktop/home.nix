@@ -40,6 +40,8 @@ let
     }
     .${cfg.applications.defaultEditor};
 
+  imageViewer = "org.gnome.Loupe.desktop";
+
   gtkCss = ''
     @define-color accent_bg_color ${accentColor};
     @define-color accent_color @accent_bg_color;
@@ -101,10 +103,10 @@ in
           "application/xhtml+xml" = browser;
           "application/xhtml_xml" = browser;
           "application/zip" = "org.gnome.FileRoller.desktop";
-          "image/avif" = "org.gnome.gThumb.desktop";
-          "image/jpeg" = "org.gnome.gThumb.desktop";
-          "image/png" = "org.gnome.gThumb.desktop";
-          "image/svg+xml" = "org.gnome.gThumb.desktop";
+          "image/avif" = imageViewer;
+          "image/jpeg" = imageViewer;
+          "image/png" = imageViewer;
+          "image/svg+xml" = imageViewer;
           "text/html" = browser;
           "text/plain" = editor;
           "video/mp4" = "io.github.celluloid_player.Celluloid.desktop";
