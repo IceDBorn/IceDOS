@@ -26,6 +26,8 @@ let
       }
       .${cfg.desktop.gnome.accentColor};
 
+  audioPlayer = audioPlayer;
+
   browser =
     {
       librewolf = "librewolf.desktop";
@@ -40,12 +42,13 @@ let
     }
     .${cfg.applications.defaultEditor};
 
-  imageViewer = "org.gnome.Loupe.desktop";
-
   gtkCss = ''
     @define-color accent_bg_color ${accentColor};
     @define-color accent_color @accent_bg_color;
   '';
+
+  imageViewer = "org.gnome.Loupe.desktop";
+  videoPlayer = "io.github.celluloid_player.Celluloid.desktop";
 in
 {
   home-manager.users = mapAttrs (user: _: {
@@ -100,17 +103,25 @@ in
           "application/x-ms-dos-executable" = "wine.desktop";
           "application/x-shellscript" = editor;
           "application/x-wine-extension-ini" = editor;
-          "application/xhtml+xml" = browser;
+          "application/x-zerosize" = editor;
           "application/xhtml_xml" = browser;
+          "application/xhtml+xml" = browser;
           "application/zip" = "org.gnome.FileRoller.desktop";
+          "audio/aac" = audioPlayer;
+          "audio/flac" = audioPlayer;
+          "audio/m4a" = audioPlayer;
+          "audio/mp3" = audioPlayer;
+          "audio/wav" = audioPlayer;
           "image/avif" = imageViewer;
           "image/jpeg" = imageViewer;
           "image/png" = imageViewer;
           "image/svg+xml" = imageViewer;
           "text/html" = browser;
           "text/plain" = editor;
-          "video/mp4" = "io.github.celluloid_player.Celluloid.desktop";
-          "video/x-matroska" = "io.github.celluloid_player.Celluloid.desktop";
+          "video/mp4" = videoPlayer;
+          "video/quicktime" = videoPlayer;
+          "video/x-matroska" = videoPlayer;
+          "video/x-ms-wmv" = videoPlayer;
           "x-scheme-handler/about" = browser;
           "x-scheme-handler/http" = browser;
           "x-scheme-handler/https" = browser;
