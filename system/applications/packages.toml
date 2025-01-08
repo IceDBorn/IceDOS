@@ -1,15 +1,3 @@
-myPackages = []
-
-codingDeps = [
-  "bruno", # API explorer
-  "gcc", # C++ compiler
-  "gdtoolkit_4", # Tools for gdscript
-  "gnumake", # A tool to control the generation of non-source files from sources
-  "nixfmt-rfc-style", # A nix formatter
-  "nodejs", # Node package manager
-  "python3", # Python
-]
-
 packages = [
   "appimage-run", # Appimage runner
   "bat", # Better cat command
@@ -32,6 +20,7 @@ packages = [
   "ncdu", # Terminal disk analyzer
   "newsflash", # RSS reader
   "nix-health", # Check system health
+  "nixfmt-rfc-style", # A nix formatter
   "ntfs3g", # Support NTFS drives
   "obs-studio", # Recording/Livestream
   "onlyoffice-bin", # Microsoft Office alternative for Linux

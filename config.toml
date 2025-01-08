@@ -1,4 +1,5 @@
 [icedos.applications]
+extraPackages = []
 aagl = false
 android-tools = true
 brave = true

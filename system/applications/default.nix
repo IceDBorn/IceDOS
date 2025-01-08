@@ -8,13 +8,12 @@
 
 let
   inherit (lib) foldl' lists splitString;
+  cfg = config.icedos;
 
   pkgMapper =
     pkgList: lists.map (pkgName: foldl' (acc: cur: acc.${cur}) pkgs (splitString "." pkgName)) pkgList;
 
   pkgFile = lib.importTOML ./packages.toml;
-  myPackages = (pkgMapper pkgFile.myPackages);
-  codingDeps = (pkgMapper pkgFile.codingDeps);
   lout = import modules/lout { inherit pkgs; };
 
   rebuild = import modules/rebuild {
@@ -80,7 +79,7 @@ in
   ];
 
   environment.systemPackages =
-    (pkgMapper pkgFile.packages) ++ myPackages ++ codingDeps ++ shellScripts;
+    (pkgMapper pkgFile.packages) ++ (pkgMapper cfg.applications.extraPackages) ++ shellScripts;
 
   # Allow proprietary packages
   nixpkgs.config.allowUnfree = true;
