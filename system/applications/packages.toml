@@ -1,6 +1,5 @@
 packages = [
   "appimage-run", # Appimage runner
-  "bat", # Better cat command
   "duf", # Disk usage utility
   "efibootmgr", # Edit EFI entries
   "endeavour", # Tasks
