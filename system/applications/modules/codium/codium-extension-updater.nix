@@ -4,6 +4,7 @@ let
   cfg = config.icedos.applications.codium;
 in
 pkgs.writeShellScriptBin "update-codium-extensions" ''
+  unset NIXOS_OZONE_WL
   EXTENSIONS=(${builtins.toString cfg.extensions})
   GOAL="''${#EXTENSIONS[@]}"
   JOBS_LOG=$(mktemp --tmpdir jobs.XXXXX)
