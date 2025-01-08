@@ -42,6 +42,7 @@ in
     # Packages to install for all window manager/desktop environments
     systemPackages = with pkgs; [
       adwaita-icon-theme # Gtk theme
+      amberol # Music player
       dconf-editor # Edit gnome's dconf
       libnotify # Send desktop notifications
       loupe # Image viewer
