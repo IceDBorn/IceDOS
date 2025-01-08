@@ -26,7 +26,7 @@ let
       }
       .${cfg.desktop.gnome.accentColor};
 
-  audioPlayer = audioPlayer;
+  audioPlayer = "io.bassi.Amberol.desktop";
 
   browser =
     {
