@@ -10,7 +10,11 @@ let
   cfg = config.icedos;
 in
 mkIf (cfg.applications.celluloid) {
-  environment.systemPackages = [ pkgs.celluloid ];
+  environment.systemPackages = with pkgs; [
+    (writeShellScriptBin "celluloid-hdr" "celluloid --mpv-profile=HDR $@")
+    celluloid
+  ];
+
   home-manager.users = mapAttrs (user: _: {
     home.file.".config/celluloid" = {
       source = ./config;
