@@ -22,8 +22,10 @@ in
   # Enable service which hands out realtime scheduling priority to user processes on demand
   security.rtkit.enable = true;
 
-  # Pipewire patchbay
-  environment.systemPackages = [ pkgs.helvum ];
+  environment.systemPackages = with pkgs; [
+    helvum # Pipewire patchbay
+    pavucontrol # Audio device manager
+  ];
 
   hardware.pulseaudio.enable = false;
 

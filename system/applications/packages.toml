@@ -25,15 +25,12 @@ packages = [
   "obs-studio", # Recording/Livestream
   "onlyoffice-bin", # Microsoft Office alternative for Linux
   "p7zip", # 7zip
-  "pavucontrol", # Sound manager
   "scrcpy", # Remotely use android
-  "tree", # Display folder content at a tree format
   "unrar", # Support opening rar files
   "unzip", # An extraction utility
   "warp", # File sync
   "wget", # Terminal downloader
   "wine", # Compatibility layer capable of running Windows applications
   "winetricks", # Wine prefix settings manager
-  "woeusb", # Windows ISO Burner
   "xorg.xhost", # Use x.org server with containers
 ]
