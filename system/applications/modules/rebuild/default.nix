@@ -23,10 +23,6 @@ pkgs.writeShellScriptBin "${command}" ''
     fi
   }
 
-  # Retain sudo
-  trap "exit" INT TERM; trap "kill 0" EXIT; sudo -v || exit $?; sleep 1; while true; do sleep 60; sudo -nv; done 2>/dev/null &
-
-  # Navigate to configuration directory
   cd ${config.icedos.configurationLocation} 2> /dev/null ||
   (echo 'warning: configuration path is invalid, run build.sh located inside the configuration scripts directory to update the path.' && false) &&
 
@@ -34,10 +30,9 @@ pkgs.writeShellScriptBin "${command}" ''
 
   if ${update}; then
     nix flake update && cache "flake.lock" || true
-    nix-shell scripts/build.sh $@
-
+    nix-shell ./build.sh $@
     runCommand update-codium-extensions
   else
-    nix-shell scripts/build.sh $@
+    nix-shell ./build.sh $@
   fi
 ''
