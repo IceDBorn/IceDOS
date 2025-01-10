@@ -24,6 +24,7 @@ in
       blanket
       bottles
       inputs.falkor.packages.${pkgs.system}.default
+      obs-studio
       protontricks
       stremio
     ]
