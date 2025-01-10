@@ -2,7 +2,6 @@ packages = [
   "appimage-run", # Appimage runner
   "duf", # Disk usage utility
   "efibootmgr", # Edit EFI entries
-  "endeavour", # Tasks
   "fd", # Find alternative
   "flare-signal", # GTK client for Signal
   "fragments", # Bittorrent client following Gnome UI standards
