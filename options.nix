@@ -51,6 +51,12 @@
         php = mkOption { type = types.bool; };
         pitivi = mkOption { type = types.bool; };
         rust = mkOption { type = types.bool; };
+
+        signal = {
+          enable = mkOption { type = types.bool; };
+          package = mkOption { type = types.str; };
+        };
+
         solaar = mkOption { type = types.bool; };
         ssh = mkOption { type = types.bool; };
 

@@ -72,6 +72,10 @@ sites = [
 enable = false
 gui = false
 
+[icedos.applications.signal]
+enable = true
+package = "flare" # Options: 'flare', 'signal'
+
 [icedos.applications.steam]
 enable = true
 beta = true

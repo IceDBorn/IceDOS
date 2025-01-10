@@ -65,6 +65,7 @@ in
     ./modules/pitivi
     ./modules/rtl8821ce
     ./modules/rust
+    ./modules/signal
     ./modules/solaar
     ./modules/ssh
     ./modules/steam
