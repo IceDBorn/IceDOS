@@ -10,11 +10,15 @@ let
   cfg = config.icedos.system;
 in
 {
-  services.pipewire = {
-    enable = true;
-    alsa.enable = true;
-    alsa.support32Bit = true;
-    pulse.enable = true;
+  services = {
+    pipewire = {
+      enable = true;
+      alsa.enable = true;
+      alsa.support32Bit = true;
+      pulse.enable = true;
+    };
+
+    pulseaudio.enable = false;
   };
 
   programs.zsh.shellAliases.restart-pipewire = "systemctl --user restart pipewire";
@@ -26,8 +30,6 @@ in
     helvum # Pipewire patchbay
     pavucontrol # Audio device manager
   ];
-
-  hardware.pulseaudio.enable = false;
 
   home-manager.users = mapAttrs (user: _: {
     home.file.".config/pipewire/pipewire.conf.d/99-input-denoising.conf".text = ''
