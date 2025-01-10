@@ -13,6 +13,8 @@ mkIf (cfg.enable) {
   virtualisation.docker.enable = !cfg.usePodman;
   virtualisation.podman.enable = cfg.usePodman;
 
-  # Wrapper around podman to create and start linux containers
-  environment.systemPackages = [ pkgs.distrobox ];
+  environment.systemPackages = with pkgs; [
+    distrobox
+    xorg.xhost
+  ];
 }

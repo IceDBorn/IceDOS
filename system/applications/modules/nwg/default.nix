@@ -14,7 +14,9 @@ let
 in
 {
   environment.systemPackages = with pkgs; [
-    brightnessctl # Brightness control
+    brightnessctl
+    jc
+    jq
     keyboard-layout-watcher
     nwg-menu
     nwg-panel

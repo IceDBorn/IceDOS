@@ -46,6 +46,7 @@ in
       dconf-editor # Edit gnome's dconf
       libnotify # Send desktop notifications
       loupe # Image viewer
+      onlyoffice-bin # Office tools
     ];
 
     sessionVariables = {
