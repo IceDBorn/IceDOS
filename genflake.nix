@@ -1,8 +1,17 @@
 let
-  inherit (lib) attrNames boolToString concatImapStrings fileContents filter pathExists;
+  inherit (lib)
+    attrNames
+    boolToString
+    concatImapStrings
+    fileContents
+    filter
+    pathExists
+    ;
+
   cfg = (import ./options.nix { inherit lib; }).config.icedos;
   aagl = cfg.applications.aagl;
   channels = cfg.system.channels;
+  configurationLocation = fileContents "/tmp/configuration-location";
   falkor = cfg.applications.falkor;
   gnome = cfg.desktop.gnome.enable;
   hyprland = cfg.desktop.hyprland.enable;
@@ -20,14 +29,16 @@ let
   users = attrNames cfg.system.users;
   zen-browser = cfg.applications.zen-browser.enable;
 
-  injectIfExists = file:
-    if (pathExists file)
-    then ''
-      (
-        ${fileContents file}
-      )
-    ''
-    else "{}";
+  injectIfExists =
+    file:
+    if (pathExists file) then
+      ''
+        (
+          ${fileContents file}
+        )
+      ''
+    else
+      "";
 in
 {
   flake.nix = ''
@@ -213,7 +224,7 @@ in
                 {
                   options.icedos.configurationLocation = mkOption {
                     type = types.str;
-                    default = "${fileContents "/tmp/configuration-location"}";
+                    default = "${configurationLocation}";
                   };
                 }
               )
@@ -240,19 +251,16 @@ in
               home-manager.nixosModules.home-manager
               nerivations.nixosModules.default
 
-              ${concatImapStrings (
-                i: channel:
-                ''
-                  (
-                    {config, ...}: {
-                      nixpkgs.config.packageOverrides."${channel}" = import inputs."${channel}" {
-                        inherit system;
-                        config = config.nixpkgs.config;
-                      };
-                    }
-                  )
-                ''
-              ) channels}
+              ${concatImapStrings (i: channel: ''
+                (
+                  {config, ...}: {
+                    nixpkgs.config.packageOverrides."${channel}" = import inputs."${channel}" {
+                      inherit system;
+                      config = config.nixpkgs.config;
+                    };
+                  }
+                )
+              '') channels}
 
               ${
                 if (!server) then
@@ -264,7 +272,9 @@ in
               }
 
               # Is First Build
-              { icedos.internals.isFirstBuild = ${ boolToString (!pathExists "/run/current-system/source") }; }
+              { icedos.internals.isFirstBuild = ${
+                boolToString (!pathExists "/run/current-system/source")
+              }; }
 
               ${
                 if (steam-session) then
@@ -311,7 +321,13 @@ in
 
               ${if (zen-browser) then ''./system/applications/modules/zen-browser'' else ""}
 
-              ${concatImapStrings (i: user: "./system/users/${user}.nix\n") users}
+              ${concatImapStrings (
+                i: user:
+                if (pathExists "${configurationLocation}/system/users/${user}.nix") then
+                  "./system/users/${user}.nix\n"
+                else
+                  ""
+              ) users}
 
               ${injectIfExists "/etc/nixos/hardware-configuration.nix"}
 
