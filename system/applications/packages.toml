@@ -8,7 +8,6 @@ packages = [
   "ghex", # HEX Editor
   "gimp", # Image editor
   "gping", # ping with a graph
-  "iotas", # Notes
   "jc", # JSON parser
   "jq", # JSON parser
   "killall", # Tool to kill all programs matching process name
