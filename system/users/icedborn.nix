@@ -9,19 +9,21 @@
 let
   inherit (lib) optional;
   cfg = config.icedos;
+
+  emulators = [
+    # cemu
+    # duckstation
+    # heroic
+    # pcsx2
+    # ppsspp
+    # prismlauncher
+    # rpcs3
+  ];
 in
 {
   users.users.icedborn.packages =
     with pkgs;
     [
-      # cemu
-      # duckstation
-      # heroic
-      # pcsx2
-      # ppsspp
-      # prismlauncher
-      # rpcs3
-
       appimage-run
       blanket
       bottles
@@ -37,6 +39,7 @@ in
       wine
       winetricks
     ]
+    ++ emulators
     ++ optional (cfg.applications.falkor) inputs.falkor.packages.${pkgs.system}.default
     ++ optional (cfg.applications.suyu) inputs.switch-emulators.packages.${pkgs.system}.suyu;
 }
