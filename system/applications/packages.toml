@@ -17,7 +17,6 @@ packages = [
   "nix-health", # Check system health
   "nixfmt-rfc-style", # A nix formatter
   "ntfs3g", # Support NTFS drives
-  "obs-studio", # Recording/Livestream
   "onlyoffice-bin", # Microsoft Office alternative for Linux
   "p7zip", # 7zip
   "scrcpy", # Remotely use android
