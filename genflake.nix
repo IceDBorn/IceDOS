@@ -158,11 +158,6 @@ in
           inputs.nixpkgs.follows = "nixpkgs";
         };
 
-        shell-in-netns = {
-          url = "github:jim3692/shell-in-netns";
-          inputs.nixpkgs.follows = "nixpkgs";
-        };
-
         ${
           if (suyu) then
             ''
@@ -195,7 +190,6 @@ in
           nixpkgs,
           pipewire-screenaudio,
           self,
-          shell-in-netns,
           ${if (aagl) then ''aagl,'' else ""}
           ${if (falkor) then ''falkor,'' else ""}
           ${if (hyprland) then ''hyprlux,'' else ""}
@@ -330,7 +324,6 @@ in
               ) users}
 
               ${injectIfExists "/etc/nixos/hardware-configuration.nix"}
-
               ${injectIfExists "/etc/nixos/extras.nix"}
             ];
           };

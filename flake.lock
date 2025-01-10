@@ -214,32 +214,11 @@
           "nixpkgs"
         ],
         "pipewire-screenaudio": "pipewire-screenaudio",
-        "shell-in-netns": "shell-in-netns",
         "steam-session": [
           "chaotic",
           "jovian"
         ],
         "zen-browser": "zen-browser"
-      }
-    },
-    "shell-in-netns": {
-      "inputs": {
-        "nixpkgs": [
-          "nixpkgs"
-        ]
-      },
-      "locked": {
-        "lastModified": 1707736399,
-        "narHash": "sha256-se1vKp/vuiBS9IUl+9DTs+LXIT4OuHZ00k/nNv3AXtM=",
-        "owner": "jim3692",
-        "repo": "shell-in-netns",
-        "rev": "b0b85e84f0675ff190929ee11a6c8ed90a9db9e0",
-        "type": "github"
-      },
-      "original": {
-        "owner": "jim3692",
-        "repo": "shell-in-netns",
-        "type": "github"
       }
     },
     "systems": {

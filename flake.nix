@@ -45,11 +45,6 @@
       inputs.nixpkgs.follows = "nixpkgs";
     };
 
-    shell-in-netns = {
-      url = "github:jim3692/shell-in-netns";
-      inputs.nixpkgs.follows = "nixpkgs";
-    };
-
     zen-browser = {
       url = "github:0xc000022070/zen-browser-flake";
       inputs.nixpkgs.follows = "nixpkgs";
@@ -64,7 +59,6 @@
       nixpkgs,
       pipewire-screenaudio,
       self,
-      shell-in-netns,
 
       falkor,
       hyprlux,

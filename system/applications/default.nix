@@ -31,7 +31,6 @@ let
   };
 
   shellScripts = [
-    inputs.shell-in-netns.packages.${pkgs.system}.default
     lout
     rebuild
     toggle-services
