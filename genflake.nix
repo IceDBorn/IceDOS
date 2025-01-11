@@ -4,7 +4,6 @@ let
     boolToString
     concatImapStrings
     fileContents
-    filter
     pathExists
     ;
 
@@ -286,7 +285,7 @@ in
 
               # Is First Build
               { icedos.internals.isFirstBuild = ${
-                boolToString (!pathExists "/run/current-system/source")
+                boolToString (!pathExists "/run/current-system/source" || cfg.system.forceFirstBuild)
               }; }
 
               ${

@@ -262,14 +262,12 @@ hosts = false
 ipv6 = false
 
 [icedos.system]
+channels = [] # https://github.com/NixOS/nixpkgs/branches/active
+forceFirstBuild = false
 home = "/home"
 kernel = "cachyos" # Options: 'cachyos', 'cachyos-server', 'latest', 'lts', 'valve', 'zen'
 swappiness = 1
 version = "23.05" # Do not change without checking the docs (config.system.stateVersion)
-
-# Official Nix Packages branches
-# https://github.com/NixOS/nixpkgs/branches/active
-channels = []
 
 [icedos.system.generations]
 bootEntries = 10

@@ -284,6 +284,7 @@
 
       system = {
         channels = mkOption { type = types.listOf types.str; };
+        forceFirstBuild = mkOption { type = types.bool; };
 
         generations = {
           bootEntries = mkOption { type = types.number; };
