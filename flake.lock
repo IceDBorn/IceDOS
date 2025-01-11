@@ -22,26 +22,6 @@
         "type": "github"
       }
     },
-    "falkor": {
-      "inputs": {
-        "nixpkgs": [
-          "nixpkgs"
-        ]
-      },
-      "locked": {
-        "lastModified": 1732335644,
-        "narHash": "sha256-igZT38+ROGd9NMCiyWd77tdqqYgV52UgBJgCL+PAIHE=",
-        "owner": "Team-Falkor",
-        "repo": "falkor",
-        "rev": "3ff7341cb347de4cdcd43fdf45eab6c3bfcf76a8",
-        "type": "github"
-      },
-      "original": {
-        "owner": "Team-Falkor",
-        "repo": "falkor",
-        "type": "github"
-      }
-    },
     "flake-schemas": {
       "locked": {
         "lastModified": 1721999734,
@@ -202,7 +182,6 @@
     "root": {
       "inputs": {
         "chaotic": "chaotic",
-        "falkor": "falkor",
         "home-manager": [
           "chaotic",
           "home-manager"
@@ -243,11 +222,11 @@
         ]
       },
       "locked": {
-        "lastModified": 1736520301,
-        "narHash": "sha256-yfbnywGJyx1n+xRet1P5T+6gOUVSbR0p9XasU/q7XjY=",
+        "lastModified": 1736565714,
+        "narHash": "sha256-/OyRMWPzV7027/Zvi5Kwb7D8UM0mhRLqPkC0WRHre2I=",
         "owner": "0xc000022070",
         "repo": "zen-browser-flake",
-        "rev": "0c7995b493e72c642766fa7668651a5351299eb8",
+        "rev": "48a7f03cdc23ca81c668d0f09ea4ab2278f61162",
         "type": "github"
       },
       "original": {

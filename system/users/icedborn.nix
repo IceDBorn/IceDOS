@@ -24,17 +24,17 @@ in
   users.users.icedborn.packages =
     with pkgs;
     [
+      adwsteamgtk
       appimage-run
       blanket
       bottles
       fragments
       ghex
       gimp
-      inputs.falkor.packages.${pkgs.system}.default
       newsflash
       obs-studio
       protontricks
-      stremio
+      protonup-qt
       warp
       wine
       winetricks

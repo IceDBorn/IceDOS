@@ -30,11 +30,6 @@
 
     # Apps
 
-    falkor = {
-      url = "github:Team-Falkor/falkor";
-      inputs.nixpkgs.follows = "nixpkgs";
-    };
-
     hyprlux = {
       url = "github:amadejkastelic/Hyprlux";
       inputs.nixpkgs.follows = "nixpkgs";
@@ -60,7 +55,6 @@
       pipewire-screenaudio,
       self,
 
-      falkor,
       hyprlux,
       chaotic,
 
