@@ -11,7 +11,7 @@ let
 in
 mkIf (session.enable) {
   jovian = {
-    devices.steamdeck = mkIf (cfg.hardware.devices.steamdeck) {
+    devices.steamdeck = mkIf (cfg.hardware.devices.steamdeck && !cfg.internals.isFirstBuild) {
       enable = true;
       enableGyroDsuService = true;
       autoUpdate = true;
