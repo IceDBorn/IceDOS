@@ -1,22 +1,22 @@
 {
-  pkgs,
   config,
   lib,
+  pkgs,
   ...
 }:
 
 let
-  inherit (lib) mkIf;
+  inherit (lib) filterAttrs mkIf;
   cfg = config.icedos;
+
+  getModules =
+    path:
+    builtins.map (dir: ./. + ("/modules/" + dir)) (
+      builtins.attrNames (filterAttrs (_: v: v == "directory") (builtins.readDir path))
+    );
 in
 {
-  imports = [
-    ../applications/modules/adwaita-qt
-    ../applications/modules/nautilus
-    ../applications/modules/pipewire
-    ./home.nix
-  ];
-
+  imports = getModules (./modules);
   time.timeZone = "Europe/Bucharest";
 
   i18n = {

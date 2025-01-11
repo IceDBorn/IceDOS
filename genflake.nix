@@ -230,7 +230,26 @@ in
               }
 
               # Internal modules
-              ./modules.nix
+              (
+                { lib, ... }:
+                let
+                    inherit (lib) filterAttrs;
+
+                    getModules =
+                      path:
+                      builtins.map (dir: "/''${path}/''${dir}") (
+                        builtins.attrNames (filterAttrs (n: v: v == "directory" && !(n == "desktop" && path == ./system)) (builtins.readDir path))
+                      );
+                in
+                {
+                  imports = [
+                    ./hardware
+                    ./options.nix
+                  ] ++ getModules (./system) ++ getModules (./hardware);
+
+                  config.system.stateVersion = "${cfg.system.version}";
+                }
+              )
 
               # External modules
               ${
@@ -274,7 +293,7 @@ in
                 if (steam-session) then
                   ''
                     steam-session.nixosModules.default
-                    ./system/desktop/steam-session.nix
+                    ./system/desktop/steam-session
                   ''
                 else
                   ""
@@ -298,7 +317,6 @@ in
                   ''
                     hyprlux.nixosModules.default
                     ./system/desktop/hyprland
-                    ./system/applications/modules/hyprlux
                   ''
                 else
                   ""
@@ -313,12 +331,12 @@ in
                   ""
               }
 
-              ${if (zen-browser) then ''./system/applications/modules/zen-browser'' else ""}
+              ${if (zen-browser) then "./system/applications/modules/zen-browser" else ""}
 
               ${concatImapStrings (
                 i: user:
-                if (pathExists "${configurationLocation}/system/users/${user}.nix") then
-                  "./system/users/${user}.nix\n"
+                if (pathExists "${configurationLocation}/system/users/${user}") then
+                  "./system/users/${user}\n"
                 else
                   ""
               ) users}

@@ -285,8 +285,6 @@
       system = {
         channels = mkOption { type = types.listOf types.str; };
 
-        config.version = mkOption { type = types.str; };
-
         generations = {
           bootEntries = mkOption { type = types.number; };
 

@@ -1,26 +1,25 @@
 {
-  pkgs,
   config,
   lib,
+  pkgs,
   ...
 }:
 
 let
-  inherit (lib) mkIf optional;
+  inherit (lib) filterAttrs mkIf;
 
   cfg = config.icedos.desktop.gnome;
+
+  getModules =
+    path:
+    builtins.map (dir: ./. + ("/modules/" + dir)) (
+      builtins.attrNames (filterAttrs (_: v: v == "directory") (builtins.readDir path))
+    );
 in
 {
-  imports = [
-    ../../applications/modules/arcmenu
-    ../../applications/modules/dash-to-panel
-    ./home.nix
-    ./startup.nix
-  ];
-
-  services.xserver.desktopManager.gnome.enable = cfg.enable; # Install gnome
-
-  programs.dconf.enable = mkIf (cfg.enable) true;
+  imports = getModules (./modules);
+  services.xserver.desktopManager.gnome.enable = cfg.enable;
+  programs.dconf.enable = cfg.enable;
 
   environment.systemPackages =
     with pkgs;

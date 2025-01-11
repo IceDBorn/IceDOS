@@ -1,4 +1,8 @@
-{ config, lib, ... }:
+{
+  config,
+  lib,
+  ...
+}:
 
 let
   inherit (lib)
@@ -15,26 +19,30 @@ in
     "root"
   ] ++ (foldl' (acc: user: acc ++ [ user ]) [ ] (attrNames cfg.users));
 
-  users.users = mapAttrs ( user: _: let description = cfg.users.${user}.description; in
+  users.users = mapAttrs (
+    user: _:
+    let
+      description = cfg.users.${user}.description;
+    in
     {
-        createHome = true;
-        home = "${cfg.home}/${user}";
-        useDefaultShell = true;
-        # Default password used for first login, change later using passwd
-        password = "1";
-        isNormalUser = true;
-        description = "${description}";
-        extraGroups =
-          [
-            "input"
-            "kvm"
-            "networkmanager"
-            "wheel"
-          ]
-          ++ optional (
-            !cfg.virtualisation.containerManager.usePodman
-            && !cfg.virtualisation.containerManager.requireSudoForDocker
-          ) "docker";
+      createHome = true;
+      home = "${cfg.home}/${user}";
+      useDefaultShell = true;
+      # Default password used for first login, change later using passwd
+      password = "1";
+      isNormalUser = true;
+      description = "${description}";
+      extraGroups =
+        [
+          "input"
+          "kvm"
+          "networkmanager"
+          "wheel"
+        ]
+        ++ optional (
+          !cfg.virtualisation.containerManager.usePodman
+          && !cfg.virtualisation.containerManager.requireSudoForDocker
+        ) "docker";
     }
   ) cfg.users;
 

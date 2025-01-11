@@ -271,9 +271,6 @@ version = "23.05" # Do not change without checking the docs (config.system.state
 # https://github.com/NixOS/nixpkgs/branches/active
 channels = []
 
-[icedos.system.config]
-version = "1.0.0"
-
 [icedos.system.generations]
 bootEntries = 10
 

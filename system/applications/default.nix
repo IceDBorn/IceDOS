@@ -7,80 +7,30 @@
 }:
 
 let
-  inherit (lib) foldl' lists splitString;
+  inherit (lib)
+    filterAttrs
+    foldl'
+    lists
+    splitString
+    ;
+
   cfg = config.icedos;
+
+  getModules =
+    path:
+    builtins.map (dir: ./. + ("/modules/" + dir)) (
+      builtins.attrNames (
+        filterAttrs (n: v: v == "directory" && !(n == "zen-browser")) (builtins.readDir path)
+      )
+    );
+
+  pkgFile = lib.importTOML ./packages.toml;
 
   pkgMapper =
     pkgList: lists.map (pkgName: foldl' (acc: cur: acc.${cur}) pkgs (splitString "." pkgName)) pkgList;
-
-  pkgFile = lib.importTOML ./packages.toml;
-  lout = import modules/lout { inherit pkgs; };
-
-  rebuild = import modules/rebuild {
-    inherit pkgs config;
-    command = "rebuild";
-    update = "false";
-  };
-
-  toggle-services = import modules/toggle-services { inherit pkgs; };
-
-  update = import modules/rebuild {
-    inherit pkgs config;
-    command = "update";
-    update = "true";
-  };
-
-  shellScripts = [
-    lout
-    rebuild
-    toggle-services
-    update
-  ];
 in
 {
-  imports = [
-    ./modules/android-tools
-    ./modules/aria2c
-    ./modules/bash
-    ./modules/brave
-    ./modules/btop
-    ./modules/celluloid
-    ./modules/clamav
-    ./modules/codium
-    ./modules/container-manager
-    ./modules/deckbd-wrapper
-    ./modules/fwupd
-    ./modules/gamemode
-    ./modules/gdm
-    ./modules/git
-    ./modules/kernel
-    ./modules/kitty
-    ./modules/librewolf
-    ./modules/libvirtd
-    ./modules/mangohud
-    ./modules/mullvad
-    ./modules/nh
-    ./modules/php
-    ./modules/pitivi
-    ./modules/rtl8821ce
-    ./modules/rust
-    ./modules/signal
-    ./modules/solaar
-    ./modules/ssh
-    ./modules/steam
-    ./modules/store
-    ./modules/sunshine
-    ./modules/tailscale
-    ./modules/tmux
-    ./modules/waydroid
-    ./modules/yazi
-    ./modules/zed
-    ./modules/zsh
-  ];
-
+  imports = getModules (./modules);
   environment.systemPackages =
-    (pkgMapper pkgFile.packages) ++ (pkgMapper cfg.applications.extraPackages) ++ shellScripts;
-
-  # Allow proprietary packages
-  nixpkgs.config.allowUnfree = true;
+    (pkgMapper pkgFile.packages) ++ (pkgMapper cfg.applications.extraPackages);
 }

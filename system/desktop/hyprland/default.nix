@@ -1,28 +1,20 @@
 {
-  config,
+  lib,
   pkgs,
   ...
 }:
 
 let
-  hyprland-startup = import ../../applications/modules/hyprland-startup {
-    inherit config pkgs;
-  };
+  inherit (lib) filterAttrs;
+
+  getModules =
+    path:
+    builtins.map (dir: ./. + ("/modules/" + dir)) (
+      builtins.attrNames (filterAttrs (_: v: v == "directory") (builtins.readDir path))
+    );
 in
 {
-  imports = [
-    ../../applications/modules/gnome-control-center
-    ../../applications/modules/hypridle
-    ../../applications/modules/hyprlock
-    ../../applications/modules/hyprpaper
-    ../../applications/modules/nwg
-    ../../applications/modules/swaync
-    ../../applications/modules/swayosd
-    ../../applications/modules/valent
-    ../../applications/modules/walker
-    ../../applications/modules/wleave
-    ./config.nix
-  ];
+  imports = getModules (./modules);
 
   programs.hyprland = {
     enable = true;
@@ -41,7 +33,6 @@ in
       grimblast # Screenshot tool
       hyprfreeze # Script to freeze active hyprland window
       hyprland-per-window-layout # Per window layout
-      hyprland-startup # Startup script
       hyprpicker # Color picker
       hyprpolkitagent # Polkit manager
       hyprshade # Shader config tool
