@@ -18,7 +18,7 @@ nix-shell ./build.sh
 
 ## Preview
 
-![image](https://github.com/IceDBorn/IceDOS/assets/51162078/c1f2e730-a7d7-4b8d-abce-2757551ce196)
+![Untitled](https://github.com/user-attachments/assets/6ee3dba5-0dbb-47e3-8a6c-1c9620940dcc)
 
 ## Contributing
 
