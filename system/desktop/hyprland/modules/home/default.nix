@@ -125,6 +125,7 @@ in
         bind = $mainMod SHIFT, Print, exec, grimblast --freeze edit area
         bind = $mainMod, P, exec, grimblast --freeze copy area
         bind = $mainMod SHIFT, P, exec, grimblast copy output
+        bind = $mainMod CTRL SHIFT, P, exec, grimblast copy
         bind = ALT, Print, exec, grimblast copy
         bind = SHIFT, Print, exec, grimblast edit output
         bind = CTRL ALT, DELETE, exec, killall -9 .nwg-panel-wrapped
