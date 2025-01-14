@@ -93,7 +93,7 @@ in
 
         input {
           accel_profile = flat
-          follow_mouse = 2
+          follow_mouse = 1
           kb_layout = us,gr
           kb_options = grp:win_space_toggle
         }
