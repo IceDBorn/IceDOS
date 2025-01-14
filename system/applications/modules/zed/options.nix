@@ -58,6 +58,15 @@ mkIf (cfg.applications.zed.enable) {
               "coloring": "indent_aware",
             },
             "inlay_hints": { "enabled": true },
+            "lsp": {
+              "nil": {
+                "initialization_options": {
+                  "formatting": {
+                    "command": ["nixfmt"]
+                  }
+                }
+              }
+            },
             "journal": { "hour_format": "hour24" },
             "relative_line_numbers": true,
             "show_whitespaces": "boundary",
