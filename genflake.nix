@@ -243,6 +243,7 @@ in
                 {
                   imports = [
                     ./hardware
+                    ./internals.nix
                     ./options.nix
                   ] ++ getModules (./system) ++ getModules (./hardware);
 
