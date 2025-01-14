@@ -4,6 +4,7 @@
   pkgs,
   ...
 }:
+
 let
   cfg = config.icedos.applications.sunshine;
   package = pkgs.sunshine;

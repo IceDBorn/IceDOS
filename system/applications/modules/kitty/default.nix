@@ -1,8 +1,11 @@
-{ config, lib, ... }:
+{
+  config,
+  lib,
+  ...
+}:
 
 let
   inherit (lib) mapAttrs mkIf;
-
   cfg = config.icedos;
 in
 mkIf (cfg.applications.kitty.enable) {
@@ -19,6 +22,7 @@ mkIf (cfg.applications.kitty.enable) {
         copy_on_select = "no";
         wayland_titlebar_color = "background";
       };
+
       font.name = "JetBrainsMono Nerd Font";
       font.size = 10;
       themeFile = "OneDark-Pro";

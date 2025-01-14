@@ -6,10 +6,7 @@
 }:
 
 let
-  inherit (lib)
-    mkIf
-    ;
-
+  inherit (lib) mkIf;
   cfg = config.icedos;
 in
 mkIf (cfg.applications.brave) {

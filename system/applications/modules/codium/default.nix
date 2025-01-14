@@ -6,19 +6,25 @@
 }:
 
 let
-  inherit (lib) mapAttrs mkIf;
+  inherit (lib)
+    filterAttrs
+    mapAttrs
+    mkIf
+    ;
+
   cfg = config.icedos;
-  update-codium-extensions = import ./codium-extension-updater.nix { inherit config pkgs; };
+
+  getModules =
+    path:
+    builtins.map (dir: ./. + ("/modules/" + dir)) (
+      builtins.attrNames (
+        filterAttrs (n: v: v == "directory" && !(n == "zen-browser")) (builtins.readDir path)
+      )
+    );
 in
 {
-  imports = [ ./options.nix ];
-
-  environment.systemPackages =
-    with pkgs;
-    mkIf (cfg.applications.codium.enable) [
-      vscodium
-      update-codium-extensions
-    ];
+  imports = getModules (./modules);
+  environment.systemPackages = with pkgs; mkIf (cfg.applications.codium.enable) [ vscodium ];
 
   environment.variables.EDITOR = mkIf (
     cfg.applications.codium.enable && cfg.applications.defaultEditor == "codium"

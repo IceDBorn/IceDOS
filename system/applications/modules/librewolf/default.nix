@@ -7,7 +7,12 @@
 }:
 
 let
-  inherit (lib) mapAttrs mkIf optional;
+  inherit (lib)
+    filterAttrs
+    mapAttrs
+    mkIf
+    ;
+
   cfg = config.icedos;
 
   package = (
@@ -16,10 +21,16 @@ let
     }
   );
 
-  librewolf-pwas = import ./pwas-wrapper.nix { inherit config pkgs; };
+  getModules =
+    path:
+    builtins.map (dir: ./. + ("/modules/" + dir)) (
+      builtins.attrNames (
+        filterAttrs (n: v: v == "directory" && !(n == "zen-browser")) (builtins.readDir path)
+      )
+    );
 in
 {
-  imports = [ ./user.js.nix ];
+  imports = getModules (./modules);
 
   # Set as default browser for electron apps
   environment = {
@@ -27,16 +38,11 @@ in
       cfg.applications.librewolf.enable && cfg.applications.defaultBrowser == "librewolf"
     ) "${package}/bin/librewolf";
 
-    systemPackages =
-      if (cfg.applications.librewolf.enable) then
-        [ package ] ++ optional (cfg.applications.librewolf.pwas.enable) librewolf-pwas
-      else
-        [ ];
+    systemPackages = if (cfg.applications.librewolf.enable) then [ package ] else [ ];
   };
 
   home-manager.users = mapAttrs (user: _: {
     home.file = mkIf (cfg.applications.librewolf.enable) {
-      # Set profiles
       ".librewolf/profiles.ini" = {
         source = ./profiles.ini;
         force = true;
