@@ -31,7 +31,6 @@ in
       gnome-online-accounts # Nextcloud integration
       gnome-themes-extra # Adwaita GTK theme
       grimblast # Screenshot tool
-      hyprfreeze # Script to freeze active hyprland window
       hyprland-per-window-layout # Per window layout
       hyprpicker # Color picker
       hyprpolkitagent # Polkit manager

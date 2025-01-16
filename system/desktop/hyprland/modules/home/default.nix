@@ -114,7 +114,6 @@ in
         bind = $mainMod, E, exec, walker -s theme -m emojis
         bind = $mainMod, L, exec, hyprlock-wrapper lock force
         bind = $mainMod, C, exec, hyprpicker --autocopy
-        bind = $mainMod SHIFT, P, exec, hyprfreeze -a
         bind = $mainMod ALT, Print, exec, grimblast edit
         bind = , Print, exec, grimblast copy output
         bind = $mainMod, Print, exec, grimblast --freeze copy area
