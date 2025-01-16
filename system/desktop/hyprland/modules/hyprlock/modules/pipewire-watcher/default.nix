@@ -12,13 +12,12 @@
       local OUTPUTS_TO_IGNORE = {
         'Discord',
         'Element',
-        'Noise Canceling source',
-        'Peak detect',
       }
 
       local INPUTS_TO_IGNORE = {
         'Noise Canceling source',
         'Peak detect',
+        'cava',
       }
 
       local INHIBIT_LOCK = false
@@ -59,11 +58,15 @@
         for node in nodeManager:iterate() do
           local mediaName = node.properties["media.name"]
           local mediaClass = node.properties["media.class"]
-          if not hasValue(mediaName, OUTPUTS_TO_IGNORE) or (mediaClass == INPUT and not hasValue(mediaName, INPUTS_TO_IGNORE)) then
-            if hasActiveLinks(node.bound_id, "link.input.node") or hasActiveLinks(node.bound_id, "link.output.node") then
-              INHIBIT_LOCK = true
-              break
-            end
+          local skip = false
+
+          if ((mediaClass == INPUT and hasValue(mediaName, INPUTS_TO_IGNORE)) or (mediaClass == OUTPUT and hasValue(mediaName, OUTPUTS_TO_IGNORE))) then
+            skip = true
+          end
+
+          if (hasActiveLinks(node.bound_id, "link.input.node") or hasActiveLinks(node.bound_id, "link.output.node")) and skip == false then
+            INHIBIT_LOCK = true
+            break
           end
         end
 

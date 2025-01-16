@@ -168,7 +168,6 @@ in
         ${
           let
             browsers = "librewolf|zen-alpha";
-            media-tools = "io.github.kaii_lb.Overskride|org.pulseaudio.pavucontrol|valent";
             messengers = "WebCord|de.schmidhuberj.Flare|pwas";
           in
           if (monitorsLength >= 3) then
@@ -180,9 +179,8 @@ in
               windowrulev2 = workspace 12 silent, class:^(Steam|steam)$, title:^((?!notificationtoasts.*).)*$
               windowrulev2 = workspace 12 silent, title:^(.*Steam[A-Za-z0-9\s]*)$
               windowrulev2 = workspace 13 silent, class:^(org\.gnome\.Nautilus)$
-              windowrulev2 = workspace 14 silent, class:^(${media-tools})$
-              windowrulev2 = workspace 15 silent, class:^(task-managers)$ # Task manager
-              windowrulev2 = workspace 16 silent, class:^(terminals)$ # Terminal
+              windowrulev2 = workspace 14 silent, class:^(task-managers)$ # Task manager
+              windowrulev2 = workspace 15 silent, class:^(terminals)$ # Terminal
             ''
           else if (monitorsLength == 2) then
             ''
@@ -192,9 +190,8 @@ in
               windowrulev2 = workspace 3 silent, title:^(.*Steam[A-Za-z0-9\s]*)$
               windowrulev2 = workspace 11 silent, class:^(${messengers})$
               windowrulev2 = workspace 12 silent, class:^(org\.gnome\.Nautilus)$
-              windowrulev2 = workspace 13 silent, class:^(${media-tools})$
-              windowrulev2 = workspace 14 silent, class:^(task-managers)$ # Task manager
-              windowrulev2 = workspace 15 silent, class:^(terminals)$ # Terminal
+              windowrulev2 = workspace 13 silent, class:^(task-managers)$ # Task manager
+              windowrulev2 = workspace 14 silent, class:^(terminals)$ # Terminal
             ''
           else if (type != "work") then
             ''
@@ -204,9 +201,8 @@ in
               windowrulev2 = workspace 4 silent, class:^(Steam|steam|steam_app_.*)$, title:^((?!notificationtoasts.*).)*$
               windowrulev2 = workspace 4 silent, title:^(.*Steam[A-Za-z0-9\s]*)$
               windowrulev2 = workspace 5 silent, class:^(org\.gnome\.Nautilus)$
-              windowrulev2 = workspace 6 silent, class:^(${media-tools})$
-              windowrulev2 = workspace 7 silent, class:^(task-managers)$ # Task Manager
-              windowrulev2 = workspace 8 silent, class:^(terminals)$ # Terminal
+              windowrulev2 = workspace 6 silent, class:^(task-managers)$ # Task Manager
+              windowrulev2 = workspace 7 silent, class:^(terminals)$ # Terminal
             ''
           else
             ''
@@ -214,9 +210,8 @@ in
               windowrulev2 = workspace 2 silent, class:^(dev.zed.Zed)$
               windowrulev2 = workspace 3 silent, class:^(${messengers})$
               windowrulev2 = workspace 4 silent, class:^(org\.gnome\.Nautilus)$
-              windowrulev2 = workspace 5 silent, class:^(${media-tools})$
-              windowrulev2 = workspace 6 silent, class:^(task-managers)$ # Task Manager
-              windowrulev2 = workspace 7 silent, class:^(terminals)$ # Terminal
+              windowrulev2 = workspace 5 silent, class:^(task-managers)$ # Task Manager
+              windowrulev2 = workspace 6 silent, class:^(terminals)$ # Terminal
             ''
         }
 

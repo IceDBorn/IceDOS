@@ -17,7 +17,10 @@ let
 in
 {
   imports = getModules (./modules);
-  environment.systemPackages = with pkgs; [ sysstat ];
+  environment.systemPackages = with pkgs; [
+    jq
+    sysstat
+  ];
   programs.hyprlock.enable = true;
 
   home-manager.users = mapAttrs (user: _: {

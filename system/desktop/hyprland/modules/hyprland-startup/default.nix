@@ -30,7 +30,6 @@ in
 
       # Basic functionalities
       systemctl --user start hyprpolkitagent
-      run valent
       cliphist wipe
       run hyprland-per-window-layout
       run hyprpaper
@@ -40,16 +39,11 @@ in
       run poweralertd
       run hyprlux
 
-      # Tray applications
-      nm-applet --indicator &
-
       # Standard applications
       ${browser}
       nautilus -w &
       nautilus -w &
       run steam
-      run overskride
-      run pavucontrol
       run flare
       run zeditor
 
