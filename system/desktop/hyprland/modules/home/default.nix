@@ -113,12 +113,8 @@ in
         bind = $mainMod, V, exec, walker -s theme -m clipboard
         bind = $mainMod, E, exec, walker -s theme -m emojis
         bind = $mainMod, L, exec, hyprlock-wrapper lock force
-        bind = $mainMod SHIFT, L, exec, wleave
-        bind = $mainMod, N, exec, swaync-client -t -sw
-        bind = $mainMod SHIFT, N, exec, swaync-client -d -sw
         bind = $mainMod, C, exec, hyprpicker --autocopy
         bind = $mainMod SHIFT, P, exec, hyprfreeze -a
-        bind = $mainMod, SPACE, exec, pkill -f -35 nwg-panel
         bind = $mainMod ALT, Print, exec, grimblast edit
         bind = , Print, exec, grimblast copy output
         bind = $mainMod, Print, exec, grimblast --freeze copy area
@@ -128,7 +124,6 @@ in
         bind = $mainMod CTRL SHIFT, P, exec, grimblast copy
         bind = ALT, Print, exec, grimblast copy
         bind = SHIFT, Print, exec, grimblast edit output
-        bind = CTRL ALT, DELETE, exec, killall -9 .nwg-panel-wrapped
 
         # Window control
         bind = $mainMod, Q, killactive
@@ -166,14 +161,10 @@ in
         bindm = $mainMod, mouse:273, resizewindow
 
         # Keyboard media buttons
-        bindel = , XF86AudioLowerVolume, exec, swayosd-client --output-volume lower
-        bindel = , XF86AudioRaiseVolume, exec, swayosd-client --output-volume raise
-        bindel = , XF86MonBrightnessDown, exec, swayosd-client --brightness lower
-        bindel = , XF86MonBrightnessUp, exec, swayosd-client --brightness raise
-        bindl = , XF86AudioMute, exec, swayosd-client --output-volume mute-toggle
-        bindl = , XF86AudioNext, exec, playerctl next
-        bindl = , XF86AudioPlay, exec, playerctl play-pause
-        bindl = , XF86AudioPrev, exec, playerctl previous
+        bindel = , XF86AudioLowerVolume, exec, hyprpanel vol -5
+        bindel = , XF86AudioRaiseVolume, exec, hyprpanel vol +5
+        # bindel = , XF86MonBrightnessDown, exec, swayosd-client --brightness lower
+        # bindel = , XF86MonBrightnessUp, exec, swayosd-client --brightness raise
 
         ${
           let

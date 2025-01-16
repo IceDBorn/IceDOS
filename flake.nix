@@ -35,6 +35,11 @@
       inputs.nixpkgs.follows = "nixpkgs";
     };
 
+    hyprpanel = {
+      url = "github:Jas-SinghFSU/HyprPanel";
+      inputs.nixpkgs.follows = "nixpkgs";
+    };
+
     pipewire-screenaudio = {
       url = "github:IceDBorn/pipewire-screenaudio";
       inputs.nixpkgs.follows = "nixpkgs";
@@ -56,6 +61,7 @@
       self,
 
       hyprlux,
+      hyprpanel,
       chaotic,
 
       steam-session,
@@ -136,8 +142,9 @@
           steam-session.nixosModules.default
           ./system/desktop/steam-session
 
-          hyprlux.nixosModules.default
           ./system/desktop/hyprland
+          hyprlux.nixosModules.default
+          { nixpkgs.overlays = [ hyprpanel.overlay ]; }
 
           ./system/applications/modules/zen-browser
 
