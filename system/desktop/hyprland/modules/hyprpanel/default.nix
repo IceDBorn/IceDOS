@@ -13,6 +13,7 @@ let
 in
 {
   environment.systemPackages = [ package ];
+  services.power-profiles-daemon.enable = true;
 
   home-manager.users = mapAttrs (user: _: {
     home.file = {
