@@ -29,12 +29,8 @@ in
       }
 
       # Basic functionalities
-      systemctl --user start hyprpolkitagent
-      cliphist wipe
       run hyprland-per-window-layout
       run hyprpaper
-      wl-paste --type image --watch cliphist store &
-      wl-paste --type text --watch cliphist store &
       xrandr --output "${cfg.desktop.hyprland.mainMonitor}" --primary
       run poweralertd
       run hyprlux

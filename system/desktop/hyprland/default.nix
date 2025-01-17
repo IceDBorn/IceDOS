@@ -33,7 +33,6 @@ in
       grimblast # Screenshot tool
       hyprland-per-window-layout # Per window layout
       hyprpicker # Color picker
-      hyprpolkitagent # Polkit manager
       hyprshade # Shader config tool
       networkmanagerapplet # Network manager app and tray icon
       poweralertd # Battery level alerts
