@@ -167,7 +167,7 @@ in
 
         ${
           let
-            browsers = "librewolf|zen-alpha";
+            browsers = "librewolf|zen";
             messengers = "WebCord|de.schmidhuberj.Flare|pwas";
           in
           if (monitorsLength >= 3) then
