@@ -30,7 +30,6 @@ in
 
       # Basic functionalities
       xrandr --output "${cfg.desktop.hyprland.mainMonitor}" --primary
-      run poweralertd
       run hyprlux
 
       # Standard applications
