@@ -1,7 +1,16 @@
-{ ... }:
-
 {
+  config,
+  inputs,
+  lib,
+  pkgs,
+  ...
+}:
 
+let
+  inherit (lib) mapAttrs;
+  cfg = config.icedos;
+in
+{
   programs.hyprlux = {
     enable = true;
 
@@ -20,4 +29,19 @@
       }
     ];
   };
+
+  home-manager.users = mapAttrs (user: _: {
+    systemd.user.services.hyprlux = {
+      Unit.Description = "Hyprlux - Automates vibrance and night light control";
+      Install.WantedBy = [ "graphical-session.target" ];
+
+      Service = {
+        ExecStart = "${inputs.hyprlux.packages.${pkgs.system}.default}/bin/hyprlux";
+        Nice = "-20";
+        Restart = "on-failure";
+        StartLimitIntervalSec = 60;
+        StartLimitBurst = 60;
+      };
+    };
+  }) cfg.system.users;
 }

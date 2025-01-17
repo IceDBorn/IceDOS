@@ -28,10 +28,6 @@ in
         pidof $1 || $1 $2 &
       }
 
-      # Basic functionalities
-      xrandr --output "${cfg.desktop.hyprland.mainMonitor}" --primary
-      run hyprlux
-
       # Standard applications
       ${browser}
       nautilus -w &
