@@ -29,7 +29,6 @@ in
       }
 
       # Basic functionalities
-      run hyprland-per-window-layout
       run hyprpaper
       xrandr --output "${cfg.desktop.hyprland.mainMonitor}" --primary
       run poweralertd

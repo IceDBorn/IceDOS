@@ -31,7 +31,6 @@ in
       gnome-online-accounts # Nextcloud integration
       gnome-themes-extra # Adwaita GTK theme
       grimblast # Screenshot tool
-      hyprland-per-window-layout # Per window layout
       hyprpicker # Color picker
       hyprshade # Shader config tool
       networkmanagerapplet # Network manager app and tray icon
