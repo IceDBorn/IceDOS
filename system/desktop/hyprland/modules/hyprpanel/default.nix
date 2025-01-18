@@ -342,7 +342,7 @@ in
           "bar.network.label": true,
           "bar.network.showWifiInfo": true,
           "bar.battery.label": true,
-          "bar.clock.format": "%I:%M:%S",
+          "bar.clock.format": "%H:%M:%S",
           "bar.clock.showIcon": false,
           "bar.clock.showTime": true,
           "theme.bar.buttons.clock.spacing": "0em",
