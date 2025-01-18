@@ -33,7 +33,6 @@ in
       grimblast # Screenshot tool
       hyprpicker # Color picker
       hyprshade # Shader config tool
-      networkmanagerapplet # Network manager app and tray icon
       slurp # Monitor selector
       swappy # Edit screenshots
       wdisplays # Displays manager
