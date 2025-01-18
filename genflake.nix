@@ -8,19 +8,21 @@ let
     ;
 
   cfg = (import ./options.nix { inherit lib; }).config.icedos;
+  lib = import <nixpkgs/lib>;
+
   aagl = cfg.applications.aagl;
   channels = cfg.system.channels;
   configurationLocation = fileContents "/tmp/configuration-location";
   falkor = cfg.applications.falkor;
   gnome = cfg.desktop.gnome.enable;
   hyprland = cfg.desktop.hyprland.enable;
+  isFirstBuild = !pathExists "/run/current-system/source" || cfg.system.forceFirstBuild;
 
   kernel =
     cfg.system.kernel == "cachyos"
     || cfg.system.kernel == "cachyos-server"
     || cfg.system.kernel == "valve";
 
-  lib = import <nixpkgs/lib>;
   php = cfg.applications.php;
   server = cfg.hardware.devices.server.enable;
   steam-session = cfg.applications.steam.session.enable;
@@ -290,12 +292,10 @@ in
               }
 
               # Is First Build
-              { icedos.internals.isFirstBuild = ${
-                boolToString (!pathExists "/run/current-system/source" || cfg.system.forceFirstBuild)
-              }; }
+              { icedos.internals.isFirstBuild = ${boolToString (isFirstBuild)}; }
 
               ${
-                if (steam-session) then
+                if (steam-session && !isFirstBuild) then
                   ''
                     steam-session.nixosModules.default
                     ./system/desktop/steam-session
