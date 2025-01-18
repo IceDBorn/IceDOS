@@ -16,7 +16,6 @@ in
   environment.systemPackages =
     with pkgs;
     mkIf (cfg.zed.enable) [
-      lazygit
       nil
       nixd
       package-version-server
