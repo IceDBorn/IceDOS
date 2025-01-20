@@ -9,7 +9,7 @@
       if [ `pipewire-watcher` = "true" ] && [ -z $2 ]; then exit; fi
 
       if [[ "$1" == "lock" ]]; then
-        loginctl lock-session
+        hyprlock
         exit
       elif [[ "$1" == "off" ]]; then
         hyprctl dispatch dpms off
