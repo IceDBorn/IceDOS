@@ -66,26 +66,25 @@ in
           valign = "center";
         };
 
-        label = {
-          color = "rgba(200, 200, 200, 1.0)";
-          font_size = 24;
-          halign = "center";
-          position = "0, 50";
-          text = ''cmd[update:1000] echo "$(date +%H:%M:%S)"'';
-          valign = "center";
-        };
+        label = [
+          {
+            color = "rgba(200, 200, 200, 1.0)";
+            font_size = 24;
+            halign = "center";
+            position = "0, 50";
+            text = ''cmd[update:1000] echo "$(date +%H:%M:%S)"'';
+            valign = "center";
+          }
+          {
+            color = "rgba(200, 200, 200, 1.0)";
+            font_size = 14;
+            halign = "center";
+            position = "0, -45";
+            text = ''cmd[update:500] echo $(hyprctl devices -j | jq -r '.'keyboards' | .[] | select(.main==true) | .'active_keymap''')'';
+            valign = "center";
+          }
+        ];
       };
-
-      extraConfig = ''
-        label {
-            color = rgba(200, 200, 200, 1.0)
-            font_size = 14
-            halign = center
-            position = 0, -45
-            text = cmd[update:500] echo $(hyprctl devices -j | jq -r '.'keyboards' | .[] | select(.main==true) | .'active_keymap''')
-            valign = center
-        }
-      '';
     };
   }) cfg.system.users;
 }
