@@ -12,7 +12,6 @@
 
         codium = {
           enable = mkOption { type = types.bool; };
-          extensions = mkOption { type = with types; listOf str; };
           zoomLevel = mkOption { type = types.number; };
         };
 
