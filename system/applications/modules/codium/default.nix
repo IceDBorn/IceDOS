@@ -43,34 +43,54 @@ mkIf (cfg.applications.codium.enable) {
         "[typescript]".editor.defaultFormatter = "esbenp.prettier-vscode";
         "[typescriptreact]".editor.defaultFormatter = "esbenp.prettier-vscode";
         diffEditor.ignoreTrimWhitespace = false;
-        editor.fontFamily = "'JetBrainsMono Nerd Font', 'Droid Sans Mono', 'monospace', monospace";
-        editor.fontLigatures = true;
-        editor.formatOnPaste = cfg.system.users.${user}.applications.codium.formatOnPaste;
-        editor.formatOnSave = cfg.system.users.${user}.applications.codium.formatOnSave;
-        editor.minimap.enabled = false;
-        editor.renderWhitespace = "trailing";
-        editor.smoothScrolling = true;
-        editor.tabSize = 2;
+
+        editor = {
+          fontFamily = "'JetBrainsMono Nerd Font', 'Droid Sans Mono', 'monospace', monospace";
+          fontLigatures = true;
+          formatOnPaste = cfg.system.users.${user}.applications.codium.formatOnPaste;
+          formatOnSave = cfg.system.users.${user}.applications.codium.formatOnSave;
+          minimap.enabled = false;
+          renderWhitespace = "trailing";
+          smoothScrolling = true;
+          tabSize = 2;
+        };
+
         evenBetterToml.formatter.alignComments = false;
-        files.associations."*.css" = "tailwindcss";
-        files.autoSave = cfg.system.users.${user}.applications.codium.autoSave;
-        files.insertFinalNewline = true;
-        files.trimFinalNewlines = true;
-        files.trimTrailingWhitespace = true;
-        git.autofetch = true;
-        git.confirmSync = false;
-        gitlens.codeLens.enabled = false;
-        gitlens.defaultDateFormat = "YYYY-MM-DD HH:mm";
-        gitlens.defaultDateLocale = "system";
-        gitlens.defaultDateShortFormat = "YYYY-M-D";
-        gitlens.defaultTimeFormat = "HH:mm";
-        gitlens.statusBar.enabled = false;
-        gitlens.views.repositories.showContributors = false;
-        gitlens.views.repositories.showStashes = true;
-        gitlens.views.repositories.showTags = false;
-        gitlens.views.repositories.showWorktrees = false;
-        intelephense.environment.phpVersion = "7.4.3";
-        intelephense.format.braces = "k&r";
+
+        files = {
+          associations."*.css" = "tailwindcss";
+          autoSave = cfg.system.users.${user}.applications.codium.autoSave;
+          insertFinalNewline = true;
+          trimFinalNewlines = true;
+          trimTrailingWhitespace = true;
+        };
+
+        git = {
+          autofetch = true;
+          confirmSync = false;
+        };
+
+        gitlens = {
+          codeLens.enabled = false;
+          defaultDateFormat = "YYYY-MM-DD HH:mm";
+          defaultDateLocale = "system";
+          defaultDateShortFormat = "YYYY-M-D";
+          defaultTimeFormat = "HH:mm";
+          statusBar.enabled = false;
+
+          views.repositories = {
+            showContributors = false;
+            showStashes = true;
+            showTags = false;
+            showWorktrees = false;
+          };
+        };
+
+        intelephense = {
+          environment.phpVersion = "7.4.3";
+          format.braces = "k&r";
+        };
+
         nix.formatterPath = "nixfmt";
         scm.showHistoryGraph = false;
 
@@ -81,8 +101,11 @@ mkIf (cfg.applications.codium.enable) {
         };
 
         update.mode = "none";
-        window.menuBarVisibility = "toggle";
-        window.zoomLevel = cfg.applications.codium.zoomLevel;
+
+        window = {
+          menuBarVisibility = "toggle";
+          zoomLevel = cfg.applications.codium.zoomLevel;
+        };
 
         workbench = {
           colorTheme = "One Dark Pro Darker";
