@@ -47,6 +47,11 @@
           gui = mkOption { type = types.bool; };
         };
 
+        obs-studio = {
+          enable = mkOption { type = types.bool; };
+          virtualCamera = mkOption { type = types.bool; };
+        };
+
         php = mkOption { type = types.bool; };
         pitivi = mkOption { type = types.bool; };
         rust = mkOption { type = types.bool; };

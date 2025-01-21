@@ -32,7 +32,6 @@ in
       ghex
       gimp
       newsflash
-      obs-studio
       protontricks
       protonup-qt
       warp

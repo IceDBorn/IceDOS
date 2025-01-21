@@ -23,10 +23,6 @@ yazi = false
 enable = true
 zoomLevel = 0
 
-[icedos.applications.mangohud]
-enable = true
-maxFpsLimit = 144 # Use 0 for unlimited
-
 [icedos.applications.kitty]
 enable = true
 hideDecorations = false # Hide top bar
@@ -46,9 +42,17 @@ sites = [
   "https://web.skype.com/",
 ]
 
+[icedos.applications.mangohud]
+enable = true
+maxFpsLimit = 144 # Use 0 for unlimited
+
 [icedos.applications.mullvad]
 enable = false
 gui = false
+
+[icedos.applications.obs-studio]
+enable = true
+virtualCamera = false
 
 [icedos.applications.signal]
 enable = true
