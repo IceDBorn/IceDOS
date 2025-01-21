@@ -185,8 +185,6 @@
             diskUsageThreshold = mkOption { type = types.number; };
             networkUsageThreshold = mkOption { type = types.number; };
           };
-
-          mainMonitor = mkOption { type = types.str; };
         };
       };
 
