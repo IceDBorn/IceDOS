@@ -1,6 +1,7 @@
 {
   config,
   lib,
+  pkgs,
   ...
 }:
 
@@ -9,6 +10,8 @@ let
   cfg = config.icedos;
 in
 {
+  environment.systemPackages = [ pkgs.brightnessctl ];
+
   home-manager.users = mapAttrs (
     user: _:
     let
