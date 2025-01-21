@@ -177,7 +177,6 @@
             height = mkOption { type = types.number; };
           };
 
-          gatewayVpn = mkOption { type = types.bool; };
           hyprspace = mkOption { type = types.bool; };
 
           lock = {
