@@ -25,18 +25,15 @@ in
   environment.systemPackages = [
     (pkgs.writeShellScriptBin "hyprland-startup" ''
       run () {
-        pidof $1 || $1 $2 &
+        pidof $1 || "$@" &
       }
 
-      # Standard applications
       ${browser}
       nautilus -w &
       nautilus -w &
       run steam
       run flare
       run zeditor
-
-      # Terminals/Task managers
       kitty --class task-managers btop &
       kitty --class terminals tmux new -s terminals \; split-window -v \; select-pane -U \; split-window -h \; select-pane -D &
     '')
