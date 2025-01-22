@@ -150,7 +150,18 @@ maxWorkspaces = 1 # Determines the maximum number of workspaces when dynamic wor
 
 [icedos.desktop.hyprland]
 enable = true
-hyprspace = true # Activity viewer
+hyprspace = true
+windowRules = [
+  "workspace 1 silent, class:^(zen)$",
+  "workspace 2 silent, class:^(dev.zed.Zed)$",
+  "workspace 3 silent, class:^(steam_app_.*)$, title:^((?!notificationtoasts.*).)*$",
+  "workspace 11 silent, class:^(de.schmidhuberj.Flare|pwas)$",
+  "workspace 12 silent, class:^(Steam|steam)$, title:^((?!notificationtoasts.*).)*$",
+  "workspace 12 silent, title:^(.*Steam[A-Za-z0-9\\s]*)$",
+  "workspace 13 silent, class:^(org\\.gnome\\.Nautilus)$",
+  "workspace 14 silent, class:^(task-managers)$",
+  "workspace 15 silent, class:^(terminals)$",
+]
 
 [icedos.desktop.hyprland.cs2fix]
 enable = false

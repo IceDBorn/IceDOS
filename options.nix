@@ -190,6 +190,8 @@
             diskUsageThreshold = mkOption { type = types.number; };
             networkUsageThreshold = mkOption { type = types.number; };
           };
+
+          windowRules = mkOption { type = with types; listOf str; };
         };
       };
 
