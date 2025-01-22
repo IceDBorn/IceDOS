@@ -19,10 +19,7 @@ in
     {
       wayland.windowManager.hyprland = {
         enable = true;
-
-        settings = {
-          "$mainMod" = "SUPER";
-        };
+        settings."$mainMod" = "SUPER";
 
         extraConfig = ''
           env = QT_AUTO_SCREEN_SCALE_FACTOR,1
@@ -96,20 +93,7 @@ in
           }
 
           # Desktop usage
-          bind = $mainMod, R, exec, walker -s theme -m applications
-          bind = $mainMod, V, exec, walker -s theme -m clipboard
-          bind = $mainMod, E, exec, walker -s theme -m emojis
-          bind = $mainMod, L, exec, hyprlock-wrapper lock force
           bind = $mainMod, C, exec, hyprpicker --autocopy
-          bind = $mainMod ALT, Print, exec, grimblast edit
-          bind = , Print, exec, grimblast copy output
-          bind = $mainMod, Print, exec, grimblast --freeze copy area
-          bind = $mainMod SHIFT, Print, exec, grimblast --freeze edit area
-          bind = $mainMod, P, exec, grimblast --freeze copy area
-          bind = $mainMod SHIFT, P, exec, grimblast copy output
-          bind = $mainMod CTRL SHIFT, P, exec, grimblast copy
-          bind = ALT, Print, exec, grimblast copy
-          bind = SHIFT, Print, exec, grimblast edit output
 
           # Window control
           bind = $mainMod, Q, killactive

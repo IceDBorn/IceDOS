@@ -1,8 +1,14 @@
 {
+  config,
+  lib,
   pkgs,
   ...
 }:
 
+let
+  inherit (lib) mapAttrs;
+  cfg = config.icedos;
+in
 {
   environment.systemPackages = [
     (pkgs.writeShellScriptBin "hyprlock-wrapper" ''
@@ -25,4 +31,8 @@
       fi
     '')
   ];
+
+  home-manager.users = mapAttrs (user: _: {
+    wayland.windowManager.hyprland.settings.bind = [ "$mainMod, L, exec, hyprlock-wrapper lock force" ];
+  }) cfg.system.users;
 }

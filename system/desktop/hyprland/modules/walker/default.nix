@@ -17,6 +17,12 @@ mkIf (cfg.applications.walker) {
   ];
 
   home-manager.users = mapAttrs (user: _: {
+    wayland.windowManager.hyprland.settings.bind = [
+      "$mainMod, E, exec, walker -s theme -m emojis"
+      "$mainMod, R, exec, walker -s theme -m applications"
+      "$mainMod, V, exec, walker -s theme -m clipboard"
+    ];
+
     home.file = {
       ".config/walker/config.json".source = "${package.src}/internal/config/config.default.json";
 
