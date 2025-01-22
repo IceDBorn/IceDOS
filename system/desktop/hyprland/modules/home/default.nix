@@ -105,6 +105,21 @@ in
         windowrulev2 = [
           "noborder, fullscreen:1" # Hide maximized window borders
         ] ++ cfg.desktop.hyprland.windowRules;
+
+        monitor = (
+          map (
+            m:
+            let
+              name = m.name;
+              resolution = m.resolution;
+              refreshRate = builtins.toString (m.refreshRate);
+              position = builtins.toString (m.position);
+              scaling = builtins.toString (m.scaling);
+              deckRotation = if (m.name == "eDP-1" && cfg.hardware.devices.steamdeck) then ",transform,3" else "";
+            in
+            "${name},${resolution}@${refreshRate},${position},${scaling}${deckRotation}"
+          ) monitors
+        );
       };
 
       extraConfig = ''
@@ -112,11 +127,6 @@ in
           i: m:
           let
             name = m.name;
-            resolution = m.resolution;
-            refreshRate = builtins.toString (m.refreshRate);
-            position = builtins.toString (m.position);
-            scaling = builtins.toString (m.scaling);
-            deckRotation = if (m.name == "eDP-1" && cfg.hardware.devices.steamdeck) then ",transform,3" else "";
 
             extraBind =
               if (i == 4) then
@@ -129,7 +139,7 @@ in
                 "";
           in
           lib.concatLines (
-            [ "monitor = ${name},${resolution}@${refreshRate},${position},${scaling}${deckRotation}" ]
+            [ ]
             ++ builtins.genList (
               w:
               let
