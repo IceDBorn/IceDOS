@@ -191,6 +191,7 @@
             networkUsageThreshold = mkOption { type = types.number; };
           };
 
+          startupScript = mkOption { type = types.str; };
           windowRules = mkOption { type = with types; listOf str; };
         };
       };

@@ -1,11 +1,16 @@
 {
   config,
   lib,
+  pkgs,
   ...
 }:
 
 let
-  inherit (lib) mapAttrs;
+  inherit (lib)
+    makeBinPath
+    mapAttrs
+    ;
+
   cfg = config.icedos;
   monitors = cfg.hardware.monitors;
 in
@@ -55,7 +60,21 @@ in
           "XDG_SESSION_TYPE,wayland"
         ];
 
-        exec-once = [ "hyprland-startup" ];
+        exec-once = [
+          ''
+            ${
+              makeBinPath [
+                (pkgs.writeShellScriptBin "hyprland-startup" ''
+                  run () {
+                    pidof $1 || "$@" &
+                  }
+
+                  ${cfg.desktop.hyprland.startupScript}
+                '')
+              ]
+            }/hyprland-startup
+          ''
+        ];
 
         general = {
           allow_tearing = true;

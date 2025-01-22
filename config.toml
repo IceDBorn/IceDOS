@@ -151,6 +151,19 @@ maxWorkspaces = 1 # Determines the maximum number of workspaces when dynamic wor
 [icedos.desktop.hyprland]
 enable = true
 hyprspace = true
+
+startupScript = """
+run zen
+run zen-pwas
+nautilus -w &
+nautilus -w &
+run steam
+run flare
+run zeditor
+kitty --class task-managers btop &
+kitty --class terminals tmux new -s terminals \\; split-window -v \\; select-pane -U \\; split-window -h \\; select-pane -D &
+"""
+
 windowRules = [
   "workspace 1 silent, class:^(zen)$",
   "workspace 2 silent, class:^(dev.zed.Zed)$",
