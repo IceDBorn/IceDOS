@@ -1,31 +1,12 @@
 {
   config,
   lib,
-  pkgs,
   ...
 }:
 
 let
   inherit (lib) length mapAttrs;
   cfg = config.icedos;
-
-  accentColor =
-    if (!cfg.desktop.gnome.enable) then
-      "0xee${cfg.desktop.accentColor}"
-    else
-      {
-        blue = "0xee3584e4";
-        green = "0xee3a944a";
-        orange = "0xeeed5b00";
-        pink = "0xeed56199";
-        purple = "0xee9141ac";
-        red = "0xeee62d42";
-        slate = "0xee6f8396";
-        teal = "0xee2190a4";
-        yellow = "0xeec88800";
-      }
-      .${cfg.desktop.gnome.accentColor};
-
   monitors = cfg.hardware.monitors;
   monitorsLength = length (monitors);
 in
@@ -247,23 +228,6 @@ in
           windowrulev2 = noinitialfocus, class:^(steam)$, title:^(notificationtoasts.*)$, floating:1
 
           exec-once = hyprland-startup
-
-          ${
-            if (cfg.desktop.hyprland.cs2fix.enable) then
-              ''
-                plugin = ${pkgs.hyprlandPlugins.csgo-vulkan-fix}/lib/libcsgo-vulkan-fix.so
-
-                plugin {
-                  csgo-vulkan-fix {
-                    res_w = ${builtins.toString (cfg.desktop.hyprland.cs2fix.width)}
-                    res_h = ${builtins.toString (cfg.desktop.hyprland.cs2fix.height)}
-                    class = cs2
-                  }
-                }
-              ''
-            else
-              ""
-          }
         '';
       };
     }
