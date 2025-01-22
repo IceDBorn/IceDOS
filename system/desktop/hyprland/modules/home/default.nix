@@ -92,9 +92,6 @@ in
             vrr = 2
           }
 
-          # Desktop usage
-          bind = $mainMod, C, exec, hyprpicker --autocopy
-
           # Window control
           bind = $mainMod, Q, killactive
           bind = $mainMod, T, togglefloating,

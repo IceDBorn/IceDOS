@@ -30,7 +30,6 @@ in
       gnome-keyring # Keyring daemon
       gnome-online-accounts # Nextcloud integration
       gnome-themes-extra # Adwaita GTK theme
-      hyprpicker # Color picker
       hyprshade # Shader config tool
       slurp # Monitor selector
       swappy # Edit screenshots
