@@ -127,12 +127,6 @@ in
           bindm = $mainMod, mouse:272, movewindow
           bindm = $mainMod, mouse:273, resizewindow
 
-          # Keyboard media buttons
-          bindel = , XF86AudioLowerVolume, exec, hyprpanel vol -5
-          bindel = , XF86AudioRaiseVolume, exec, hyprpanel vol +5
-          # bindel = , XF86MonBrightnessDown, exec, swayosd-client --brightness lower
-          # bindel = , XF86MonBrightnessUp, exec, swayosd-client --brightness raise
-
           ${
             let
               browsers = "librewolf|zen";
