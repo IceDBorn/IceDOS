@@ -7,12 +7,40 @@
 
 let
   inherit (lib)
+    concatLists
+    imap
     makeBinPath
     mapAttrs
     ;
 
   cfg = config.icedos;
   monitors = cfg.hardware.monitors;
+
+  workspaceBinds =
+    bind: command:
+    (concatLists (
+      imap (
+        i: _:
+        builtins.genList (
+          w:
+          let
+            cw = builtins.toString ((w + 1) + ((i - 1) * 10));
+            cb = if (w == 9) then "0" else "${toString (w + 1)}";
+
+            extraBind =
+              if (i == 4) then
+                "CTRL ALT"
+              else if (i == 3) then
+                "ALT"
+              else if (i == 2) then
+                "CTRL"
+              else
+                "";
+          in
+          if (i < 5) then "$mainMod ${bind} ${extraBind},${cb},${command},${cw}" else ""
+        ) 10
+      ) monitors
+    ));
 in
 {
   home-manager.users = mapAttrs (user: _: {
@@ -21,27 +49,30 @@ in
       settings = {
         "$mainMod" = "SUPER";
 
-        bind = [
-          "$mainMod, Q, killactive"
-          "$mainMod, T, togglefloating"
-          "$mainMod, S, togglesplit"
-          "$mainMod, F, fullscreen, 0"
-          "$mainMod, M, fullscreen, 1"
-          "$mainMod, left, movefocus, l"
-          "$mainMod, right, movefocus, r"
-          "$mainMod, up, movefocus, u"
-          "$mainMod, down, movefocus, d"
-          "$mainMod SHIFT, left, movewindow, l"
-          "$mainMod SHIFT, right, movewindow, r"
-          "$mainMod SHIFT, up, movewindow, u"
-          "$mainMod SHIFT, down, movewindow, d"
-          "$mainMod ALT, left, workspace, e-1"
-          "$mainMod ALT, right, workspace, e+1"
-          "$mainMod SHIFT ALT, left, movetoworkspace, e-1"
-          "$mainMod SHIFT ALT, right, movetoworkspace, e+1"
-          "$mainMod, mouse_down, workspace, e-1"
-          "$mainMod, mouse_up, workspace, e+1"
-        ];
+        bind =
+          [
+            "$mainMod, Q, killactive"
+            "$mainMod, T, togglefloating"
+            "$mainMod, S, togglesplit"
+            "$mainMod, F, fullscreen, 0"
+            "$mainMod, M, fullscreen, 1"
+            "$mainMod, left, movefocus, l"
+            "$mainMod, right, movefocus, r"
+            "$mainMod, up, movefocus, u"
+            "$mainMod, down, movefocus, d"
+            "$mainMod SHIFT, left, movewindow, l"
+            "$mainMod SHIFT, right, movewindow, r"
+            "$mainMod SHIFT, up, movewindow, u"
+            "$mainMod SHIFT, down, movewindow, d"
+            "$mainMod ALT, left, workspace, e-1"
+            "$mainMod ALT, right, workspace, e+1"
+            "$mainMod SHIFT ALT, left, movetoworkspace, e-1"
+            "$mainMod SHIFT ALT, right, movetoworkspace, e+1"
+            "$mainMod, mouse_down, workspace, e-1"
+            "$mainMod, mouse_up, workspace, e+1"
+          ]
+          ++ workspaceBinds "" "workspace"
+          ++ workspaceBinds "SHIFT" "movetoworkspace";
 
         bindm = [
           "$mainMod, mouse:272, movewindow"
@@ -102,10 +133,6 @@ in
           vrr = 2;
         };
 
-        windowrulev2 = [
-          "noborder, fullscreen:1" # Hide maximized window borders
-        ] ++ cfg.desktop.hyprland.windowRules;
-
         monitor = (
           map (
             m:
@@ -120,38 +147,30 @@ in
             "${name},${resolution}@${refreshRate},${position},${scaling}${deckRotation}"
           ) monitors
         );
-      };
 
-      extraConfig = ''
-        ${lib.concatImapStrings (
-          i: m:
-          let
-            name = m.name;
+        windowrulev2 = [
+          "noborder, fullscreen:1" # Hide maximized window borders
+        ] ++ cfg.desktop.hyprland.windowRules;
 
-            extraBind =
-              if (i == 4) then
-                "CTRL ALT"
-              else if (i == 3) then
-                "ALT"
-              else if (i == 2) then
-                "CTRL"
-              else
-                "";
-          in
-          lib.concatLines (
-            [ ]
-            ++ builtins.genList (
-              w:
+        workspace = (
+          concatLists (
+            imap (
+              i: m:
               let
-                cw = builtins.toString ((w + 1) + ((i - 1) * 10));
-                cb = if (w == 9) then "0" else "${toString (w + 1)}";
-                default = if (w == 0) then ",default:true" else "";
+                name = m.name;
               in
-              "workspace = ${cw},monitor:${name}${default}\nbind = $mainMod ${extraBind},${cb},workspace,${cw}\nbind = $mainMod SHIFT ${extraBind},${cb},movetoworkspace,${cw}"
-            ) 10
+              builtins.genList (
+                w:
+                let
+                  cw = builtins.toString ((w + 1) + ((i - 1) * 10));
+                  default = if (w == 0) then ",default:true" else "";
+                in
+                "${cw},monitor:${name}${default}"
+              ) 10
+            ) monitors
           )
-        ) monitors}
-      '';
+        );
+      };
     };
   }) cfg.system.users;
 }
