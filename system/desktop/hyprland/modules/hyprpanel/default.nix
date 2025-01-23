@@ -9,6 +9,7 @@ let
   inherit (lib) mapAttrs;
   cfg = config.icedos;
   accentColor = cfg.internals.accentColor;
+  killCommand = "killall -9 .hyprpanel-wrapped";
   package = pkgs.hyprpanel;
 in
 {
@@ -20,6 +21,7 @@ in
       bindel = [
         ", XF86AudioLowerVolume, exec, hyprpanel vol -5"
         ", XF86AudioRaiseVolume, exec, hyprpanel vol +5"
+        "CTRL ALT, DELETE, exec, ${killCommand}"
       ];
     };
 
@@ -411,7 +413,7 @@ in
           "bar.customModules.kbLayout.icon": "",
           "theme.bar.buttons.modules.kbLayout.spacing": "0em",
           "bar.launcher.icon": "",
-          "hyprpanel.restartCommand": "systemctel restart --user hyprpanel"
+          "hyprpanel.restartCommand": "${killCommand}"
         }
       '';
 
