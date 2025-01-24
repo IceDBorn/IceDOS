@@ -8,6 +8,7 @@
 let
   inherit (lib) mapAttrs mkIf;
   cfg = config.icedos;
+  accentColor = cfg.internals.accentColor;
   package = pkgs.walker;
 in
 mkIf (cfg.applications.walker) {
@@ -66,7 +67,7 @@ mkIf (cfg.applications.walker) {
           background: #3a3a3a;
           border-radius: 5px;
           margin-bottom: 20px;
-          border: 2px solid #8a78b2;
+          border: 2px solid ${accentColor};
         }
 
         #password,
@@ -115,7 +116,7 @@ mkIf (cfg.applications.walker) {
 
         .activation #activationlabel {
           opacity: 1;
-          color: ${cfg.internals.accentColor};
+          color: ${accentColor};
         }
 
         .activation #text,
@@ -148,7 +149,7 @@ mkIf (cfg.applications.walker) {
                 "scroll": {
                   "list": {
                     "width": 400,
-                    "marker_color": "${cfg.internals.accentColor}",
+                    "marker_color": "${accentColor}",
                     "max_height": 300,
                     "min_width": 400,
                     "max_width": 400,
