@@ -75,6 +75,7 @@ mkIf (cfg.applications.zen-browser.enable) {
         userJs
         + ''
           user_pref("browser.toolbars.bookmarks.visibility", "never");
+          user_pref("zen.tab-unloader.enabled", false);
         ''
       else
         "";
