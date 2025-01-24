@@ -181,6 +181,13 @@ enable = false
 width = 1440
 height = 1080
 
+[icedos.desktop.hyprland.hyproled]
+enable = false
+startWidth = 0
+startHeight = 0
+endWidth = 3440
+endHeight = 1440
+
 [icedos.desktop.hyprland.lock]
 secondsToLowerBrightness = 60
 cpuUsageThreshold = 60 # CPU usage to inhibit lock in percentage

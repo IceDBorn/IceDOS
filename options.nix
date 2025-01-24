@@ -184,6 +184,14 @@
 
           hyprspace = mkOption { type = types.bool; };
 
+          hyproled = {
+            enable = mkOption { type = types.bool; };
+            startWidth = mkOption { type = types.number; };
+            startHeight = mkOption { type = types.number; };
+            endWidth = mkOption { type = types.number; };
+            endHeight = mkOption { type = types.number; };
+          };
+
           lock = {
             secondsToLowerBrightness = mkOption { type = types.number; };
             cpuUsageThreshold = mkOption { type = types.number; };
