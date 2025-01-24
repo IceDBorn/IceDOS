@@ -28,6 +28,10 @@ let
   gtkCss = ''
     @define-color accent_bg_color ${accentColor};
     @define-color accent_color @accent_bg_color;
+
+    :root {
+      --accent-bg-color: @accent_bg_color;
+    }
   '';
 
   imageViewer = "org.gnome.Loupe.desktop";
