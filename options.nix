@@ -33,7 +33,6 @@
 
         librewolf = {
           enable = mkOption { type = types.bool; };
-          overrides = mkOption { type = types.bool; };
           privacy = mkOption { type = types.bool; };
 
           pwas = {
@@ -111,7 +110,6 @@
 
         zen-browser = {
           enable = mkOption { type = types.bool; };
-          overrides = mkOption { type = types.bool; };
           privacy = mkOption { type = types.bool; };
 
           pwas = {

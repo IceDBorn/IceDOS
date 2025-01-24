@@ -29,7 +29,6 @@ hideDecorations = false # Hide top bar
 
 [icedos.applications.librewolf]
 enable = false
-overrides = true
 privacy = true
 
 [icedos.applications.librewolf.pwas]
@@ -91,7 +90,6 @@ mode = "system" # Options: 'system', 'dark', 'light'
 
 [icedos.applications.zen-browser]
 enable = true
-overrides = true
 privacy = true
 
 [icedos.applications.zen-browser.pwas]
