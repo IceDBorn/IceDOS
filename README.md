@@ -17,8 +17,7 @@ nix-shell ./build.sh
 ```
 
 ## Preview
-![Untitled](https://github.com/user-attachments/assets/51de0a32-3843-4ce0-b1ba-5da3394e0a0e)
-
+![Untitled](https://github.com/user-attachments/assets/ac03c7bd-8211-42e7-856c-f6ff03966ce6)
 
 ## Contributing
 
