@@ -17,13 +17,7 @@ in
   services.power-profiles-daemon.enable = true;
 
   home-manager.users = mapAttrs (user: _: {
-    wayland.windowManager.hyprland.settings = {
-      bindel = [
-        ", XF86AudioLowerVolume, exec, hyprpanel vol -5"
-        ", XF86AudioRaiseVolume, exec, hyprpanel vol +5"
-        "CTRL ALT, DELETE, exec, ${killCommand}"
-      ];
-    };
+    wayland.windowManager.hyprland.settings.bind = [ "CTRL ALT, DELETE, exec, ${killCommand}" ];
 
     home.file = {
       ".config/hyprpanel/config.json".text = ''
