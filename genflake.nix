@@ -133,11 +133,6 @@ in
         ${
           if (hyprland) then
             ''
-              hyprlux = {
-                url = "github:amadejkastelic/Hyprlux";
-                inputs.nixpkgs.follows = "nixpkgs";
-              };
-
               hyprpanel = {
                 url = "github:Jas-SinghFSU/HyprPanel";
                 inputs.nixpkgs.follows = "nixpkgs";
@@ -198,7 +193,7 @@ in
           self,
           ${if (aagl) then ''aagl,'' else ""}
           ${if (falkor) then ''falkor,'' else ""}
-          ${if (hyprland) then ''hyprlux,hyprpanel,'' else ""}
+          ${if (hyprland) then ''hyprpanel,'' else ""}
           ${if (kernel || steam-session) then ''chaotic,'' else ""}
           ${if (php) then ''phps,'' else ""}
           ${if (steam-session) then ''steam-session,'' else ""}
@@ -321,7 +316,6 @@ in
                 if (hyprland) then
                   ''
                     ./system/desktop/hyprland
-                    hyprlux.nixosModules.default
                     { nixpkgs.overlays = [ hyprpanel.overlay ]; }
                   ''
                 else
