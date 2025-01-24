@@ -32,8 +32,11 @@ let
     user_pref("zen.theme.color-prefs.use-workspace-colors", false);
     user_pref("zen.urlbar.behavior", "float");
     user_pref("zen.view.compact", true);
+    user_pref("zen.view.compact.hide-tabbar", true);
+    user_pref("zen.view.compact.hide-toolbar", true);
     user_pref("zen.view.show-newtab-button-border-top", false);
     user_pref("zen.view.sidebar-expanded.on-hover", false);
+    user_pref("zen.view.use-single-toolbar", false);
     user_pref("zen.welcome-screen.seen", true);
 
     ${
@@ -56,7 +59,6 @@ let
         ''
     }
 
-    // Overrides
     ${
       if (cfg.applications.zen-browser.overrides) then
         ''
@@ -76,6 +78,8 @@ mkIf (cfg.applications.zen-browser.enable) {
         + ''
           user_pref("browser.toolbars.bookmarks.visibility", "never");
           user_pref("zen.tab-unloader.enabled", false);
+          user_pref("zen.view.sidebar-expanded", false);
+          user_pref("zen.view.compact.hide-tabbar", false);
         ''
       else
         "";
