@@ -277,6 +277,7 @@
                 position = mkOption { type = types.str; };
                 scaling = mkOption { type = types.number; };
                 rotation = mkOption { type = types.number; };
+                tenBit = mkOption { type = types.bool; };
               };
             }
           );
