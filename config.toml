@@ -256,7 +256,7 @@ refreshRate = 144
 position = "3440x0"
 scaling = 1
 rotation = 0
-tenBit = false
+tenBit = true
 
 [[icedos.hardware.monitors]]
 name = "HDMI-A-1"
@@ -265,7 +265,7 @@ refreshRate = 60
 position = "-3840x0"
 scaling = 1
 rotation = 0
-tenBit = false
+tenBit = true
 
 [icedos.hardware.networking]
 hostname = "desktop"
