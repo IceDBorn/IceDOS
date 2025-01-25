@@ -148,6 +148,7 @@ maxWorkspaces = 1 # Determines the maximum number of workspaces when dynamic wor
 
 [icedos.desktop.hyprland]
 enable = true
+followMouse = 1 # Options: https://wiki.hyprland.org/Configuring/Variables/#follow-mouse-cursor
 hyprspace = true
 
 startupScript = """
