@@ -180,6 +180,7 @@
             height = mkOption { type = types.number; };
           };
 
+          followMouse = mkOption { type = types.number; };
           hyprspace = mkOption { type = types.bool; };
 
           hyproled = {
