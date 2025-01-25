@@ -51,10 +51,11 @@ in
           let
             name = m.name;
             resolution = m.resolution;
+            bitDepth = if (m.tenBit) then "-30" else "";
             refreshRate = builtins.toString (m.refreshRate);
             rotation = builtins.toString (m.rotation);
           in
-          "video=${name}:${resolution}@${refreshRate},rotate=${rotation}"
+          "video=${name}:${resolution}${bitDepth}@${refreshRate},rotate=${rotation}"
         ) monitors)
       ];
 

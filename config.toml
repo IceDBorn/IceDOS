@@ -247,6 +247,7 @@ refreshRate = 144
 position = "0x0"
 scaling = 1
 rotation = 0
+tenBit = true
 
 [[icedos.hardware.monitors]]
 name = "DP-2"
@@ -263,6 +264,7 @@ refreshRate = 60
 position = "-3840x0"
 scaling = 1
 rotation = 0
+tenBit = false
 
 [icedos.hardware.networking]
 hostname = "desktop"

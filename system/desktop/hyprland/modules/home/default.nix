@@ -150,8 +150,9 @@ in
               position = builtins.toString (m.position);
               scaling = builtins.toString (m.scaling);
               deckRotation = if (m.name == "eDP-1" && cfg.hardware.devices.steamdeck) then ",transform,3" else "";
+              bitDepth = if (m.tenBit) then ",bitdepth,10" else "";
             in
-            "${name},${resolution}@${refreshRate},${position},${scaling}${deckRotation}"
+            "${name},${resolution}@${refreshRate},${position},${scaling}${deckRotation}${bitDepth}"
           ) monitors
         );
 
