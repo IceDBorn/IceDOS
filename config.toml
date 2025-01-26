@@ -1,7 +1,7 @@
 [icedos.applications]
 extraPackages = []
 aagl = false
-android-tools = true
+android-tools = false
 brave = true
 celluloid = true
 clamav = false
@@ -43,7 +43,7 @@ sites = [
 
 [icedos.applications.mangohud]
 enable = true
-maxFpsLimit = 144 # Use 0 for unlimited
+maxFpsLimit = 60 # Use 0 for unlimited
 
 [icedos.applications.mullvad]
 enable = false
@@ -64,11 +64,11 @@ downloadsWorkaround = true
 
 [icedos.applications.steam.session]
 enable = true
-user = "icedborn"
+user = "deck"
 
 [icedos.applications.steam.session.autoStart]
-enable = false
-desktopSession = "hyprland"
+enable = true
+desktopSession = "gnome"
 
 [icedos.applications.tailscale]
 enable = true
@@ -117,15 +117,15 @@ mountPoint = "/boot"
 accentColor = "7E57C2" # With gnome enabled this is getting overriden by gnome's selected accent color hex code
 
 [icedos.desktop.autologin]
-enable = true
-user = "icedborn"
+enable = false
+user = "deck"
 
 [icedos.desktop.gdm]
-enable = true
+enable = false
 autoSuspend = true
 
 [icedos.desktop.gnome]
-enable = false
+enable = true
 accentColor = "purple" # Options: 'blue', 'teal', 'green', 'yellow', 'orange', 'red', 'pink', 'purple', 'slate'
 hotCorners = false
 powerButtonAction = "interactive"
@@ -147,7 +147,7 @@ dynamicWorkspaces = true
 maxWorkspaces = 1 # Determines the maximum number of workspaces when dynamic workspaces are disabled
 
 [icedos.desktop.hyprland]
-enable = true
+enable = false
 followMouse = 1 # Options: https://wiki.hyprland.org/Configuring/Variables/#follow-mouse-cursor
 hyprspace = true
 
@@ -195,7 +195,7 @@ networkUsageThreshold = 1_000_000 # Network usage to inhibit lock in bytes/s
 
 [icedos.hardware]
 bluetooth = true
-mounts = true # Set to false if hardware/mounts.nix is not correctly configured
+mounts = false # Set to false if hardware/mounts.nix is not correctly configured
 
 [icedos.hardware.btrfs.compression]
 enable = true
@@ -209,12 +209,12 @@ intel = false
 enable = true
 
 [icedos.hardware.cpus.amd.undervolt]
-enable = true
+enable = false
 value = "-p 0 -v 3C -f A0" # Pstate 0, 1.175 voltage, 4000 clock speed
 
 [icedos.hardware.devices]
-laptop = false
-steamdeck = false
+laptop = true
+steamdeck = true
 
 [icedos.hardware.drivers]
 rtl8821ce = false # Use the unofficial RTL8821CE driver
@@ -242,34 +242,16 @@ enable = true
 value = 242
 
 [[icedos.hardware.monitors]]
-name = "DP-1"
-resolution = "3440x1440"
-refreshRate = 144
+name = "eDP-1"
+resolution = "800x1280"
+refreshRate = 60
 position = "0x0"
 scaling = 1
 rotation = 0
-tenBit = true
-
-[[icedos.hardware.monitors]]
-name = "DP-2"
-resolution = "1920x1080"
-refreshRate = 144
-position = "3440x0"
-scaling = 1
-rotation = 0
-tenBit = true
-
-[[icedos.hardware.monitors]]
-name = "HDMI-A-1"
-resolution = "3840x2160"
-refreshRate = 60
-position = "-3840x0"
-scaling = 1
-rotation = 0
-tenBit = true
+tenBit = false
 
 [icedos.hardware.networking]
-hostname = "desktop"
+hostname = "deck"
 hosts = false
 ipv6 = false
 
@@ -277,7 +259,7 @@ ipv6 = false
 channels = [] # https://github.com/NixOS/nixpkgs/branches/active
 forceFirstBuild = false
 home = "/home"
-kernel = "cachyos" # Options: 'cachyos', 'cachyos-server', 'latest', 'lts', 'valve', 'zen'
+kernel = "valve" # Options: 'cachyos', 'cachyos-server', 'latest', 'lts', 'valve', 'zen'
 swappiness = 1
 version = "23.05" # Do not change without checking the docs (config.system.stateVersion)
 
@@ -290,25 +272,25 @@ days = 0 # Number of days before a generation can be deleted
 generations = 10 # Number of generations that will always be kept
 interval = "Mon *-*-* 00:00:00" # Format(https://www.freedesktop.org/software/systemd/man/latest/systemd.time.html)
 
-[icedos.system.users.icedborn]
-description = "IceDBorn"
+[icedos.system.users.deck]
+description = "Deck"
 type = "main" # Options: 'main', 'work', 'server'
 
-[icedos.system.users.icedborn.applications.codium]
+[icedos.system.users.deck.applications.codium]
 autoSave = "off" # Options: 'off', 'afterDelay', 'onFocusChange', 'onWindowChange'
 formatOnSave = true
 formatOnPaste = true
 
-[icedos.system.users.icedborn.applications.git]
+[icedos.system.users.deck.applications.git]
 username = "IceDBorn"
 email = "git.outsider841@simplelogin.fr"
 
-[icedos.system.users.icedborn.desktop.gnome.pinnedApps.arcmenu]
+[icedos.system.users.deck.desktop.gnome.pinnedApps.arcmenu]
 enable = false
 list = ["codiumIDE.desktop", "codium.desktop", "mullvad-vpn.desktop"]
 
 # Set pinned apps for gnome shell (will be used by dash-to-panel if enabled)
-[icedos.system.users.icedborn.desktop.gnome.pinnedApps.shell]
+[icedos.system.users.deck.desktop.gnome.pinnedApps.shell]
 enable = false
 list = [
   "steam.desktop",
@@ -317,15 +299,15 @@ list = [
   "librewolf.desktop",
 ]
 
-[icedos.system.users.icedborn.desktop.idle.lock]
+[icedos.system.users.deck.desktop.idle.lock]
 enable = true
 seconds = 180
 
-[icedos.system.users.icedborn.desktop.idle.disableMonitors]
+[icedos.system.users.deck.desktop.idle.disableMonitors]
 enable = true
 seconds = 300
 
-[icedos.system.users.icedborn.desktop.idle.suspend]
+[icedos.system.users.deck.desktop.idle.suspend]
 enable = true
 seconds = 900
 
