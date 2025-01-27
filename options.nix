@@ -26,11 +26,6 @@
           hideDecorations = mkOption { type = types.bool; };
         };
 
-        mangohud = {
-          enable = mkOption { type = types.bool; };
-          maxFpsLimit = mkOption { type = types.number; };
-        };
-
         librewolf = {
           enable = mkOption { type = types.bool; };
           privacy = mkOption { type = types.bool; };
@@ -41,10 +36,17 @@
           };
         };
 
+        mangohud = {
+          enable = mkOption { type = types.bool; };
+          maxFpsLimit = mkOption { type = types.number; };
+        };
+
         mullvad = {
           enable = mkOption { type = types.bool; };
           gui = mkOption { type = types.bool; };
         };
+
+        mysql = mkOption { type = types.bool; };
 
         obs-studio = {
           enable = mkOption { type = types.bool; };

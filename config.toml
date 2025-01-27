@@ -9,6 +9,7 @@ defaultBrowser = "zen" # Options: 'librewolf', 'zen'
 defaultEditor = "zed" # Options: 'codium', 'zed'
 falkor = false
 fwupd = true
+mysql = false
 php = false
 pitivi = false
 rust = false
@@ -323,11 +324,11 @@ seconds = 180
 
 [icedos.system.users.icedborn.desktop.idle.disableMonitors]
 enable = true
-seconds = 300
+seconds = 900
 
 [icedos.system.users.icedborn.desktop.idle.suspend]
 enable = true
-seconds = 900
+seconds = 1800
 
 [icedos.system.virtualisation]
 libvirtd = false # A daemon that manages virtual machines
