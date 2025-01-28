@@ -21,6 +21,12 @@
         falkor = mkOption { type = types.bool; };
         fwupd = mkOption { type = types.bool; };
 
+        httpd = {
+          enable = mkOption { type = types.bool; };
+          php = mkOption { type = types.bool; };
+          user = mkOption { type = types.str; };
+        };
+
         kitty = {
           enable = mkOption { type = types.bool; };
           hideDecorations = mkOption { type = types.bool; };

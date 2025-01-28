@@ -24,6 +24,11 @@ yazi = false
 enable = true
 zoomLevel = 0
 
+[icedos.applications.httpd]
+enable = false
+php = true
+user = "icedborn"
+
 [icedos.applications.kitty]
 enable = true
 hideDecorations = false # Hide top bar
