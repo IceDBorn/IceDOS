@@ -12,6 +12,7 @@ fwupd = true
 mysql = false
 php = false
 pitivi = false
+protonvpn = true
 rust = false
 solaar = true
 ssh = true
