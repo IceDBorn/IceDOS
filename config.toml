@@ -159,6 +159,7 @@ followMouse = 1 # Options: https://wiki.hyprland.org/Configuring/Variables/#foll
 hyprspace = true
 
 startupScript = """
+run protonvpn-app
 run zen
 run zen-pwas
 nautilus -w &
