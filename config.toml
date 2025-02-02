@@ -102,11 +102,11 @@ privacy = true
 [icedos.applications.zen-browser.pwas]
 enable = true
 sites = [
-  "https://app.tuta.com",
+  "https://mail.proton.me",
   "https://develop.element.io",
   "https://discord.com/app",
-  "https://dtekteam.slack.com/",
-  "https://web.skype.com/",
+  "https://dtekteam.slack.com",
+  "https://web.skype.com",
 ]
 
 [icedos.bootloader]
