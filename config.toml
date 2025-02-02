@@ -156,7 +156,7 @@ maxWorkspaces = 1 # Determines the maximum number of workspaces when dynamic wor
 [icedos.desktop.hyprland]
 enable = true
 followMouse = 1 # Options: https://wiki.hyprland.org/Configuring/Variables/#follow-mouse-cursor
-hyprspace = true
+hyprspace = false
 
 startupScript = """
 run protonvpn-app
@@ -256,7 +256,7 @@ refreshRate = 144
 position = "0x0"
 scaling = 1
 rotation = 0
-tenBit = true
+tenBit = false
 
 [[icedos.hardware.monitors]]
 name = "DP-2"
@@ -265,7 +265,7 @@ refreshRate = 144
 position = "3440x0"
 scaling = 1
 rotation = 0
-tenBit = true
+tenBit = false
 
 [[icedos.hardware.monitors]]
 name = "HDMI-A-1"
@@ -274,7 +274,7 @@ refreshRate = 60
 position = "-3840x0"
 scaling = 1
 rotation = 0
-tenBit = true
+tenBit = false
 
 [icedos.hardware.networking]
 hostname = "desktop"
