@@ -20,7 +20,7 @@ let
     user_pref("browser.toolbars.bookmarks.visibility", "always");
     user_pref("dom.webgpu.enabled", true);
     user_pref("general.autoScroll", true);
-    user_pref("general.useragent.override", "Mozilla/5.0 (X11; Linux x86_64; rv:${firefoxVersion}) Gecko/20100101 Firefox/${firefoxVersion}");
+    user_pref("general.useragent.override", "Mozilla/5.0 (X11; Linux x86_64; rv:${firefoxVersion}) Gecko/${firefoxVersion} Firefox/${firefoxVersion}");
     user_pref("media.videocontrols.picture-in-picture.video-toggle.enabled", false);
     user_pref("middlemouse.paste", false);
     user_pref("mousewheel.default.delta_multiplier_x", 250);
