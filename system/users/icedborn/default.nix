@@ -24,19 +24,14 @@ in
   users.users.icedborn.packages =
     with pkgs;
     [
-      adwsteamgtk
       appimage-run
       blanket
       bottles
       fragments
-      ghex
       gimp
+      harmony-music
       newsflash
-      protontricks
-      protonup-qt
       warp
-      wine
-      winetricks
     ]
     ++ emulators
     ++ optional (cfg.applications.falkor) inputs.falkor.packages.${pkgs.system}.default
