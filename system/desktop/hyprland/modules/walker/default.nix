@@ -6,12 +6,12 @@
 }:
 
 let
-  inherit (lib) mapAttrs mkIf;
+  inherit (lib) mapAttrs;
   cfg = config.icedos;
   accentColor = cfg.internals.accentColor;
   package = pkgs.walker;
 in
-mkIf (cfg.applications.walker) {
+{
   environment.systemPackages = with pkgs; [
     package
     wl-clipboard
