@@ -25,7 +25,6 @@ in
     with pkgs;
     mkIf (cfg.enable) [
       gnome-tweaks # Tweaks missing from pure gnome
-      gnomeExtensions.appindicator # Tray icons for gnome
       gnomeExtensions.quick-settings-tweaker
     ];
 

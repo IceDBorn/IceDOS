@@ -92,7 +92,6 @@ in
         disable-user-extensions = false;
         # Set enabled gnome extensions
         enabled-extensions = [
-          "appindicatorsupport@rgcjonas.gmail.com"
           "quick-settings-tweaks@qwreey"
           "user-theme@gnome-shell-extensions.gcampax.github.com"
         ];
@@ -128,13 +127,6 @@ in
       # Limit app switcher to current workspace
       "org/gnome/shell/app-switcher" = {
         current-workspace-only = true;
-      };
-
-      "org/gnome/shell/extensions/clipboard-indicator" = {
-        # Remove whitespace before and after the text
-        strip-text = true;
-        # Open the extension with Super + V
-        toggle-menu = [ "<Super>v" ];
       };
     };
   }) cfg.system.users;
