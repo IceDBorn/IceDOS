@@ -88,13 +88,8 @@ in
       };
 
       "org/gnome/shell" = {
-        # Enable gnome extensions
         disable-user-extensions = false;
-        # Set enabled gnome extensions
-        enabled-extensions = [
-          "quick-settings-tweaks@qwreey"
-          "user-theme@gnome-shell-extensions.gcampax.github.com"
-        ];
+        enabled-extensions = [ "user-theme@gnome-shell-extensions.gcampax.github.com" ];
 
         favorite-apps = mkIf (cfg.system.users.${user}.desktop.gnome.pinnedApps.shell.enable
         ) cfg.system.users.${user}.desktop.gnome.pinnedApps.shell.list;

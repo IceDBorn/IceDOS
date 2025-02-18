@@ -10,7 +10,7 @@ let
   inherit (lib) optional;
   cfg = config.icedos;
 
-  emulators = [
+  emulators = with pkgs; [
     # cemu
     # duckstation
     # heroic

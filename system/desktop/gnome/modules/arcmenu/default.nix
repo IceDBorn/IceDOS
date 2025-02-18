@@ -9,7 +9,7 @@ let
   inherit (lib) map mapAttrs mkIf;
   cfg = config.icedos;
 in
-mkIf cfg.desktop.gnome.extensions.arcmenu {
+mkIf (cfg.desktop.gnome.extensions.arcmenu) {
   environment.systemPackages = [ pkgs.gnomeExtensions.arcmenu ];
 
   home-manager.users = mapAttrs (user: _: {

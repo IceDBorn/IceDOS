@@ -1,15 +1,14 @@
 {
   config,
-  inputs,
   lib,
   pkgs,
   ...
 }:
 let
-  inherit (lib) map mapAttrs mkIf;
+  inherit (lib) mapAttrs mkIf;
   cfg = config.icedos;
 in
-mkIf cfg.desktop.gnome.extensions.dashToPanel {
+mkIf (cfg.desktop.gnome.extensions.dashToPanel) {
   environment.systemPackages = [ pkgs.gnomeExtensions.dash-to-panel ];
 
   home-manager.users = mapAttrs (user: _: {
