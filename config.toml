@@ -69,7 +69,7 @@ beta = true
 downloadsWorkaround = true
 
 [icedos.applications.steam.session]
-enable = true
+enable = false
 user = "icedborn"
 
 [icedos.applications.steam.session.autoStart]
