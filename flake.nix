@@ -23,11 +23,6 @@
       inputs.nixpkgs.follows = "nixpkgs";
     };
 
-    steam-session = {
-      url = "github:Jovian-Experiments/Jovian-NixOS";
-      follows = "chaotic/jovian";
-    };
-
     # Apps
 
     hyprpanel = {
@@ -57,8 +52,6 @@
 
       hyprpanel,
       chaotic,
-
-      steam-session,
 
       zen-browser,
       ...
@@ -132,9 +125,6 @@
 
           # Is First Build
           { icedos.internals.isFirstBuild = false; }
-
-          steam-session.nixosModules.default
-          ./system/desktop/steam-session
 
           ./system/desktop/hyprland
           { nixpkgs.overlays = [ hyprpanel.overlay ]; }
