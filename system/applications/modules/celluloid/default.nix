@@ -11,7 +11,7 @@ let
 in
 mkIf (cfg.applications.celluloid) {
   environment.systemPackages = with pkgs; [
-    (writeShellScriptBin "celluloid-hdr" "celluloid --mpv-profile=HDR $@")
+    (writeShellScriptBin "celluloid-hdr" "ENABLE_HDR_WSI=1 celluloid --mpv-profile=HDR $@")
     celluloid
   ];
 
