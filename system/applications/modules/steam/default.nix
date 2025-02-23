@@ -38,7 +38,6 @@ mkIf (cfg.applications.steam.enable) {
           with pkgs;
           mkIf (!cfg.hardware.devices.steamdeck) [
             steam
-            steamtinkerlaunch
           ];
       };
     }
