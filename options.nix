@@ -279,6 +279,7 @@
             types.submodule {
               options = {
                 name = mkOption { type = types.str; };
+                disable = mkOption { type = types.bool; default = false; };
                 resolution = mkOption { type = types.str; };
                 refreshRate = mkOption { type = types.number; };
                 position = mkOption { type = types.str; };
