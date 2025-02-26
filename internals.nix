@@ -31,5 +31,15 @@ in
     };
 
     isFirstBuild = mkOption { type = types.bool; };
+
+    xfce4.files = mkOption {
+      type = with types; attrsOf (submodule {
+        options = {
+          source = mkOption { default = null; };
+          text = mkOption { default = null; };
+        };
+      });
+      default = {};
+    };
   };
 }
