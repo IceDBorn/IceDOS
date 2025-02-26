@@ -15,11 +15,11 @@ mkIf (cfg.applications.codium.enable) {
   home-manager.users = mapAttrs (user: _: {
     programs.vscode = {
       enable = true;
-      enableExtensionUpdateCheck = false;
-      enableUpdateCheck = false;
+      profiles.default.enableExtensionUpdateCheck = true;
+      profiles.default.enableUpdateCheck = false;
       package = pkgs.vscodium;
 
-      extensions = with pkgs; [
+      profiles.default.extensions = with pkgs; [
         vscode-extensions.codezombiech.gitignore
         vscode-extensions.dbaeumer.vscode-eslint
         vscode-extensions.donjayamanne.githistory
@@ -37,7 +37,7 @@ mkIf (cfg.applications.codium.enable) {
         vscode-extensions.zhuangtongfa.material-theme
       ];
 
-      userSettings = {
+      profiles.default.userSettings = {
         "[css]".editor.defaultFormatter = "esbenp.prettier-vscode";
         "[javascript]".editor.defaultFormatter = "esbenp.prettier-vscode";
         "[typescript]".editor.defaultFormatter = "esbenp.prettier-vscode";
