@@ -6,7 +6,7 @@
 }:
 
 let
-  inherit (lib) mapAttrs makeSearchPathOutput;
+  inherit (lib) mapAttrs makeSearchPathOutput mkIf;
   cfg = config.icedos;
 in
 {
@@ -45,6 +45,17 @@ in
         sort-directories-first = true;
         show-hidden = true;
       };
+
+      "org/gnome/settings-daemon/plugins/media-keys/custom-keybindings/custom1" =
+        mkIf (cfg.desktop.gnome.enable)
+          {
+            binding = "<Super>e";
+            command = "nautilus .";
+            name = "Nautilus";
+          };
+
+      "org/gnome/settings-daemon/plugins/media-keys".custom-keybindings = mkIf (cfg.desktop.gnome.enable
+      ) [ "/org/gnome/settings-daemon/plugins/media-keys/custom-keybindings/custom1/" ];
     };
 
     home.file = {

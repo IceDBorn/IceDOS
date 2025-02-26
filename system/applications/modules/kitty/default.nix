@@ -27,5 +27,21 @@ mkIf (cfg.applications.kitty.enable) {
       font.size = 10;
       themeFile = "OneDark-Pro";
     };
+
+    wayland.windowManager.hyprland.settings.bind = mkIf (cfg.desktop.hyprland.enable) [
+      "$mainMod, X, exec, kitty"
+    ];
+
+    dconf.settings = mkIf (cfg.desktop.gnome.enable) {
+      "org/gnome/settings-daemon/plugins/media-keys/custom-keybindings/custom0" = {
+        binding = "<Super>x";
+        command = "kitty";
+        name = "Kitty";
+      };
+
+      "org/gnome/settings-daemon/plugins/media-keys".custom-keybindings = [
+        "/org/gnome/settings-daemon/plugins/media-keys/custom-keybindings/custom0/"
+      ];
+    };
   }) cfg.system.users;
 }
