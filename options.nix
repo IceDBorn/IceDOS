@@ -97,6 +97,11 @@
           enableTrayscale = mkOption { type = types.bool; };
         };
 
+        thunar = {
+          enable = mkOption { type = types.bool; };
+          targetServers = mkOption { type = with types; listOf str; };
+        };
+
         valent = {
           enable = mkOption { type = types.bool; };
           deviceId = mkOption { type = types.str; };
