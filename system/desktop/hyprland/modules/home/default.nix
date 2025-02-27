@@ -8,6 +8,7 @@
 let
   inherit (lib)
     concatLists
+    filter
     imap
     makeBinPath
     mapAttrs
@@ -15,6 +16,13 @@ let
 
   cfg = config.icedos;
   monitors = cfg.hardware.monitors;
+
+  getMonitorRotation =
+    m:
+    if (m.name == "eDP-1" && cfg.hardware.devices.steamdeck) then
+      ",transform,3"
+    else
+      ",transform,${builtins.toString m.rotation}";
 
   workspaceBinds =
     bind: command:
@@ -39,7 +47,7 @@ let
           in
           if (i < 5) then "$mainMod ${bind} ${extraBind},${cb},${command},${cw}" else ""
         ) 10
-      ) monitors
+      ) (filter (m: !m.disable) monitors)
     ));
 in
 {
@@ -148,10 +156,13 @@ in
               refreshRate = builtins.toString (m.refreshRate);
               position = builtins.toString (m.position);
               scaling = builtins.toString (m.scaling);
-              deckRotation = if (m.name == "eDP-1" && cfg.hardware.devices.steamdeck) then ",transform,3" else "";
+              rotation = getMonitorRotation m;
               bitDepth = if (m.tenBit) then ",bitdepth,10" else "";
             in
-            "${name},${resolution}@${refreshRate},${position},${scaling}${deckRotation}${bitDepth}"
+            if (m.disable) then
+              "${name},disable"
+            else
+              "${name},${resolution}@${refreshRate},${position},${scaling}${rotation}${bitDepth}"
           ) monitors
         );
 
@@ -174,7 +185,7 @@ in
                 in
                 "${cw},monitor:${name}${default}"
               ) 10
-            ) monitors
+            ) (filter (m: !m.disable) monitors)
           )
         );
       };

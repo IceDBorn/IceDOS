@@ -250,6 +250,7 @@ value = 242
 
 [[icedos.hardware.monitors]]
 name = "DP-1"
+disable = false
 resolution = "3440x1440"
 refreshRate = 144
 position = "0x0"
@@ -259,6 +260,7 @@ tenBit = false
 
 [[icedos.hardware.monitors]]
 name = "DP-2"
+disable = false
 resolution = "1920x1080"
 refreshRate = 144
 position = "3440x0"
@@ -268,6 +270,7 @@ tenBit = false
 
 [[icedos.hardware.monitors]]
 name = "HDMI-A-1"
+disable = false
 resolution = "3840x2160"
 refreshRate = 60
 position = "-3840x0"
