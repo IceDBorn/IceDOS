@@ -132,11 +132,11 @@
         ]
       },
       "locked": {
-        "lastModified": 1740123181,
-        "narHash": "sha256-KuY4zpyzdJMIZbn7qtJQgXGpfHceD0hZN6e+taTOPdE=",
+        "lastModified": 1740730563,
+        "narHash": "sha256-OfTKeEdFGeDTBAQdQESy4Yjrx2Vf+0oCRKju0CfgYIY=",
         "owner": "Jas-SinghFSU",
         "repo": "HyprPanel",
-        "rev": "efdcb7d53bd53b18b707e13363a48646e4be6d61",
+        "rev": "4810d0f502b26469d96de2ea5310a7a84cd4696f",
         "type": "github"
       },
       "original": {
@@ -174,11 +174,11 @@
         ]
       },
       "locked": {
-        "lastModified": 1739906073,
-        "narHash": "sha256-IB6Bs1khaOa8AdnzjKWop8q3Zt2XpB/VcnXoSIOly4M=",
+        "lastModified": 1740755143,
+        "narHash": "sha256-tzOB/0Qwp7txV0113C5eggnPo1ccZTwMMbMm+4LufoM=",
         "owner": "icedborn",
         "repo": "nerivations",
-        "rev": "20647bb3d32a1c794c283e19ac1e5b70b77f344f",
+        "rev": "bac8149d22c6097200d0e1d29a873a101b45decb",
         "type": "github"
       },
       "original": {
