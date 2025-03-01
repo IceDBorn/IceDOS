@@ -1,11 +1,15 @@
 {
   config,
+  lib,
   ...
 }:
 
 let
-  cfg = config.icedos.applications;
+  inherit (lib) mapAttrs mkIf;
+  cfg = config.icedos;
 in
-{
-  services.input-remapper.enable = cfg.input-remapper;
+
+mkIf (cfg.applications.input-remapper) {
+  services.input-remapper.enable = true;
+  users.users = mapAttrs (user: _: { extraGroups = [ "input" ]; }) cfg.system.users;
 }

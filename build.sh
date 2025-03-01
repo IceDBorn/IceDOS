@@ -35,7 +35,7 @@ while [[ $# -gt 0 ]]; do
 done
 
 # Save current directory into a file
-[ -f "$CONFIG" ] && rm -f "$CONFIG"
+[ -f "$CONFIG" ] && rm -f "$CONFIG"  || sudo rm -rf "$CONFIG"
 printf "$PWD" > "$CONFIG"
 
 # Generate flake.nix

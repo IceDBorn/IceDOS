@@ -56,6 +56,11 @@
 
         mysql = mkOption { type = types.bool; };
 
+        network-manager = {
+          enable = mkOption { type = types.bool; };
+          applet = mkOption { type = types.bool; };
+        };
+
         obs-studio = {
           enable = mkOption { type = types.bool; };
           virtualCamera = mkOption { type = types.bool; };

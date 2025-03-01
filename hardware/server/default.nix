@@ -56,8 +56,6 @@ mkIf (cfg.enable) {
       enable = true;
       internalInterfaces = [ cfg.interface ];
     };
-
-    networkmanager.enable = false;
   };
 
   services = {

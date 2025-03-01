@@ -9,7 +9,6 @@ let
     attrNames
     mapAttrs
     foldl'
-    optional
     ;
 
   cfg = config.icedos.system;
@@ -32,17 +31,7 @@ in
       password = "1";
       isNormalUser = true;
       description = "${description}";
-      extraGroups =
-        [
-          "input"
-          "kvm"
-          "networkmanager"
-          "wheel"
-        ]
-        ++ optional (
-          !cfg.virtualisation.containerManager.usePodman
-          && !cfg.virtualisation.containerManager.requireSudoForDocker
-        ) "docker";
+      extraGroups = [ "wheel" ];
     }
   ) cfg.users;
 

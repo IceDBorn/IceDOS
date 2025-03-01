@@ -6,12 +6,20 @@
 }:
 
 let
-  inherit (lib) mapAttrs;
+  inherit (lib) mapAttrs mkIf;
   cfg = config.icedos;
 in
-{
+
+mkIf (cfg.applications.network-manager.enable) {
+  networking = {
+    networkmanager.enable = true;
+    firewall.enable = false;
+  };
+
+  users.users = mapAttrs (user: _: { extraGroups = [ "networkmanager" ]; }) cfg.system.users;
+
   home-manager.users = mapAttrs (user: _: {
-    xdg.desktopEntries = {
+    xdg.desktopEntries = mkIf (cfg.applications.network-manager.applet) {
       nm-connection-editor = {
         exec = "${pkgs.networkmanagerapplet}/bin/nm-connection-editor";
         icon = "epiphany";

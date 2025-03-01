@@ -56,6 +56,10 @@ maxFpsLimit = 144 # Use 0 for unlimited
 enable = false
 gui = false
 
+[icedos.applications.network-manager]
+enable = true
+applet = true
+
 [icedos.applications.obs-studio]
 enable = true
 virtualCamera = false
