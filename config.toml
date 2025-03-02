@@ -11,6 +11,7 @@ falkor = false
 fwupd = true
 input-remapper = true
 mysql = false
+nautilus = true
 php = false
 pitivi = false
 protonvpn = true

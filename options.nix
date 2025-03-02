@@ -55,6 +55,7 @@
         };
 
         mysql = mkOption { type = types.bool; };
+        nautilus = mkOption { type = types.bool; };
 
         network-manager = {
           enable = mkOption { type = types.bool; };
