@@ -288,6 +288,7 @@ tenBit = false
 hostname = "desktop"
 hosts = false
 ipv6 = false
+vpnExcludeIp = "192.168.1.200"
 
 [icedos.system]
 channels = [] # https://github.com/NixOS/nixpkgs/branches/active

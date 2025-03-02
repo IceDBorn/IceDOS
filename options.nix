@@ -303,6 +303,7 @@
           hostname = mkOption { type = types.str; };
           hosts = mkOption { type = types.bool; };
           ipv6 = mkOption { type = types.bool; };
+          vpnExcludeIp = mkOption { type = types.str; };
         };
 
         mounts = mkOption { type = types.bool; };
