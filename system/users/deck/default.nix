@@ -21,17 +21,14 @@ let
   ];
 in
 {
-  users.users.icedborn.packages =
+  users.users.deck.packages =
     with pkgs;
     [
       appimage-run
-      blanket
       bottles
       fragments
-      gimp
       harmony-music
       newsflash
-      warp
     ]
     ++ emulators
     ++ optional (cfg.applications.falkor) inputs.falkor.packages.${pkgs.system}.default
