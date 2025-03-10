@@ -1,7 +1,7 @@
 [icedos.applications]
 extraPackages = []
 aagl = false
-android-tools = true
+android-tools = false
 brave = true
 celluloid = true
 clamav = false
@@ -10,15 +10,15 @@ defaultEditor = "zed" # Options: 'codium', 'zed'
 falkor = false
 fwupd = true
 input-remapper = true
-mysql = false
+mysql = true
 nautilus = true
-php = false
+php = true
 pitivi = false
 protonvpn = true
 rust = false
 solaar = true
 ssh = true
-sunshine = true
+sunshine = false
 suyu = false
 yazi = false
 
@@ -27,9 +27,9 @@ enable = true
 zoomLevel = 0
 
 [icedos.applications.httpd]
-enable = false
+enable = true
 php = true
-user = "icedborn"
+user = "dtek"
 
 [icedos.applications.kitty]
 enable = true
@@ -50,7 +50,7 @@ sites = [
 ]
 
 [icedos.applications.mangohud]
-enable = true
+enable = false
 maxFpsLimit = 144 # Use 0 for unlimited
 
 [icedos.applications.mullvad]
@@ -70,7 +70,7 @@ enable = true
 package = "flare" # Options: 'flare', 'signal'
 
 [icedos.applications.steam]
-enable = true
+enable = false
 beta = true
 downloadsWorkaround = true
 
@@ -130,7 +130,7 @@ accentColor = "7E57C2" # With gnome enabled this is getting overriden by gnome's
 
 [icedos.desktop.autologin]
 enable = true
-user = "icedborn"
+user = "dtek"
 
 [icedos.desktop.gdm]
 enable = true
@@ -164,12 +164,10 @@ followMouse = 1 # Options: https://wiki.hyprland.org/Configuring/Variables/#foll
 hyprspace = false
 
 startupScript = """
-run protonvpn-app
 run zen
 run zen-pwas
 nautilus -w &
 nautilus -w &
-run steam
 run flare
 run zeditor
 kitty --class task-managers btop &
@@ -179,13 +177,10 @@ kitty --class terminals tmux new -s terminals \\; split-window -v \\; select-pan
 windowRules = [
   "workspace 1 silent, class:^(zen)$",
   "workspace 2 silent, class:^(dev.zed.Zed)$",
-  "workspace 3 silent, class:^(steam_app_.*)$, title:^((?!notificationtoasts.*).)*$",
   "workspace 11 silent, class:^(de.schmidhuberj.Flare|pwas)$",
-  "workspace 12 silent, class:^(Steam|steam)$, title:^((?!notificationtoasts.*).)*$",
-  "workspace 12 silent, title:^(.*Steam[A-Za-z0-9\\s]*)$",
-  "workspace 13 silent, class:^(org\\.gnome\\.Nautilus)$",
-  "workspace 14 silent, class:^(task-managers)$",
-  "workspace 15 silent, class:^(terminals)$",
+  "workspace 12 silent, class:^(org\\.gnome\\.Nautilus)$",
+  "workspace 13 silent, class:^(task-managers)$",
+  "workspace 14 silent, class:^(terminals)$",
 ]
 
 [icedos.desktop.hyprland.cs2fix]
@@ -207,8 +202,8 @@ diskUsageThreshold = 10 # Disk usage to inhibit lock in MB/s
 networkUsageThreshold = 1_000_000 # Network usage to inhibit lock in bytes/s
 
 [icedos.hardware]
-bluetooth = true
-mounts = true # Set to false if hardware/mounts.nix is not correctly configured
+bluetooth = false
+mounts = false # Set to false if hardware/mounts.nix is not correctly configured
 
 [icedos.hardware.btrfs.compression]
 enable = true
@@ -231,7 +226,7 @@ steamdeck = false
 
 [icedos.hardware.drivers]
 rtl8821ce = false # Use the unofficial RTL8821CE driver
-xpadneo = true # Xbox gamepad bluetooth driver (supports various xinput controllers)
+xpadneo = false # Xbox gamepad bluetooth driver (supports various xinput controllers)
 
 [icedos.hardware.devices.server]
 enable = false
@@ -255,38 +250,28 @@ enable = true
 value = 242
 
 [[icedos.hardware.monitors]]
-name = "DP-1"
+name = "HDMI-A-1"
 disable = false
-resolution = "3440x1440"
-refreshRate = 144
+resolution = "1920x1080"
+refreshRate = 60
 position = "0x0"
 scaling = 1
 rotation = 0
 tenBit = false
 
 [[icedos.hardware.monitors]]
-name = "DP-2"
+name = "DP-3"
 disable = false
 resolution = "1920x1080"
-refreshRate = 144
-position = "3440x0"
-scaling = 1
-rotation = 0
-tenBit = false
-
-[[icedos.hardware.monitors]]
-name = "HDMI-A-1"
-disable = false
-resolution = "3840x2160"
 refreshRate = 60
-position = "-3840x0"
+position = "-1920x0"
 scaling = 1
 rotation = 0
 tenBit = false
 
 [icedos.hardware.networking]
-hostname = "desktop"
-hosts = false
+hostname = "desktop-dtek"
+hosts = true
 ipv6 = false
 vpnExcludeIp = "192.168.1.200"
 
@@ -307,25 +292,25 @@ days = 0 # Number of days before a generation can be deleted
 generations = 10 # Number of generations that will always be kept
 interval = "Mon *-*-* 00:00:00" # Format(https://www.freedesktop.org/software/systemd/man/latest/systemd.time.html)
 
-[icedos.system.users.icedborn]
-description = "IceDBorn"
-type = "main" # Options: 'main', 'work', 'server'
+[icedos.system.users.dtek]
+description = "Dtek"
+type = "work" # Options: 'main', 'work', 'server'
 
-[icedos.system.users.icedborn.applications.codium]
+[icedos.system.users.dtek.applications.codium]
 autoSave = "off" # Options: 'off', 'afterDelay', 'onFocusChange', 'onWindowChange'
-formatOnSave = true
-formatOnPaste = true
+formatOnSave = false
+formatOnPaste = false
 
-[icedos.system.users.icedborn.applications.git]
+[icedos.system.users.dtek.applications.git]
 username = "IceDBorn"
 email = "git.outsider841@simplelogin.fr"
 
-[icedos.system.users.icedborn.desktop.gnome.pinnedApps.arcmenu]
+[icedos.system.users.dtek.desktop.gnome.pinnedApps.arcmenu]
 enable = false
 list = ["codiumIDE.desktop", "codium.desktop", "mullvad-vpn.desktop"]
 
 # Set pinned apps for gnome shell (will be used by dash-to-panel if enabled)
-[icedos.system.users.icedborn.desktop.gnome.pinnedApps.shell]
+[icedos.system.users.dtek.desktop.gnome.pinnedApps.shell]
 enable = false
 list = [
   "steam.desktop",
@@ -334,15 +319,15 @@ list = [
   "librewolf.desktop",
 ]
 
-[icedos.system.users.icedborn.desktop.idle.lock]
+[icedos.system.users.dtek.desktop.idle.lock]
 enable = true
 seconds = 180
 
-[icedos.system.users.icedborn.desktop.idle.disableMonitors]
+[icedos.system.users.dtek.desktop.idle.disableMonitors]
 enable = true
 seconds = 900
 
-[icedos.system.users.icedborn.desktop.idle.suspend]
+[icedos.system.users.dtek.desktop.idle.suspend]
 enable = true
 seconds = 1800
 
@@ -351,6 +336,6 @@ libvirtd = false # A daemon that manages virtual machines
 waydroid = false # Android container
 
 [icedos.system.virtualisation.containerManager]
-enable = false
-usePodman = true
-requireSudoForDocker = true # CAUTION: Disabling this gives every user root priviledges!
+enable = true
+usePodman = false
+requireSudoForDocker = false # CAUTION: Disabling this gives every user root priviledges!
