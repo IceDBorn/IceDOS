@@ -23,7 +23,12 @@
 
         httpd = {
           enable = mkOption { type = types.bool; };
-          php = mkOption { type = types.bool; };
+
+          php = {
+            enable = mkOption { type = types.bool; };
+            version = mkOption { type = types.str; };
+          };
+
           user = mkOption { type = types.str; };
         };
 

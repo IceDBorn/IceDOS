@@ -23,7 +23,7 @@ let
     || cfg.system.kernel == "cachyos-server"
     || cfg.system.kernel == "valve";
 
-  php = cfg.applications.php;
+  php = cfg.applications.php || (cfg.applications.httpd.enable && cfg.applications.httpd.php.enable);
   server = cfg.hardware.devices.server.enable;
   steam-session = cfg.applications.steam.session.enable;
   suyu = cfg.applications.suyu;

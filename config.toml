@@ -28,8 +28,11 @@ zoomLevel = 0
 
 [icedos.applications.httpd]
 enable = false
-php = true
 user = "icedborn"
+
+[icedos.applications.httpd.php]
+enable = true
+version = "7.4.3"
 
 [icedos.applications.kitty]
 enable = true

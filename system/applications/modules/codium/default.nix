@@ -86,11 +86,6 @@ mkIf (cfg.applications.codium.enable) {
           };
         };
 
-        intelephense = {
-          environment.phpVersion = "7.4.3";
-          format.braces = "k&r";
-        };
-
         nix.formatterPath = "nixfmt";
         scm.showHistoryGraph = false;
 
