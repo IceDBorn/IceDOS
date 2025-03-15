@@ -395,7 +395,7 @@
             requireSudoForDocker = mkOption { type = types.bool; };
           };
 
-          libvirtd = mkOption { type = types.bool; };
+          virtManager = mkOption { type = types.bool; };
           waydroid = mkOption { type = types.bool; };
         };
 
