@@ -350,8 +350,8 @@ enable = true
 seconds = 1800
 
 [icedos.system.virtualisation]
-libvirtd = false # A daemon that manages virtual machines
-waydroid = false # Android container
+virtManager = false
+waydroid = false
 
 [icedos.system.virtualisation.containerManager]
 enable = false
