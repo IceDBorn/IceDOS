@@ -175,7 +175,6 @@
 
           hotCorners = mkOption { type = types.bool; };
           powerButtonAction = mkOption { type = types.str; };
-          startupItems = mkOption { type = types.bool; };
           titlebarLayout = mkOption { type = types.str; };
 
           workspaces = {
@@ -346,16 +345,20 @@
                 };
 
                 desktop = {
-                  gnome.pinnedApps = {
-                    arcmenu = {
-                      enable = mkOption { type = types.bool; };
-                      list = mkOption { type = with types; listOf str; };
+                  gnome = {
+                    pinnedApps = {
+                      arcmenu = {
+                        enable = mkOption { type = types.bool; };
+                        list = mkOption { type = with types; listOf str; };
+                      };
+
+                      shell = {
+                        enable = mkOption { type = types.bool; };
+                        list = mkOption { type = with types; listOf str; };
+                      };
                     };
 
-                    shell = {
-                      enable = mkOption { type = types.bool; };
-                      list = mkOption { type = with types; listOf str; };
-                    };
+                    startupScript = mkOption { type = types.str; };
                   };
 
                   idle = {

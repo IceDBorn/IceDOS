@@ -131,7 +131,6 @@ enable = false
 accentColor = "purple" # Options: 'blue', 'teal', 'green', 'yellow', 'orange', 'red', 'pink', 'purple', 'slate'
 hotCorners = false
 powerButtonAction = "interactive"
-startupItems = false
 
 # Options: 'minimize', 'maximize', 'close', 'spacer'(adds space between buttons), ':'(left-center-right separator)
 titlebarLayout = "appmenu:close"
@@ -309,6 +308,10 @@ formatOnPaste = true
 [icedos.system.users.icedborn.applications.git]
 username = "IceDBorn"
 email = "git.outsider841@simplelogin.fr"
+
+
+[icedos.system.users.icedborn.desktop.gnome]
+startupScript = ""
 
 [icedos.system.users.icedborn.desktop.gnome.pinnedApps.arcmenu]
 enable = false

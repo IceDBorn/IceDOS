@@ -1,54 +1,39 @@
 {
   config,
   lib,
+  pkgs,
   ...
 }:
 
 let
-  inherit (lib) mapAttrs mkIf;
+  inherit (lib) makeBinPath mapAttrs;
   cfg = config.icedos;
 in
 {
   home-manager.users = mapAttrs (
     user: _:
     let
-      type = cfg.system.users.${user}.type;
+      startupScript = cfg.system.users.${user}.desktop.gnome.startupScript;
     in
     {
-      home.file = mkIf (cfg.desktop.gnome.startupItems) {
-        # Add signal to startup
-        ".config/autostart/signal-desktop.desktop" = mkIf (type != "work") {
+      home.file = {
+        ".config/autostart/gnome-startup.desktop" = {
           text = ''
             [Desktop Entry]
-            Exec=signal-desktop
-            Icon=signal
-            Name=Signal
-            StartupWMClass=signal
-            Terminal=false
-            Type=Application
-          '';
-        };
+            Exec=${
+              makeBinPath [
+                (pkgs.writeShellScriptBin "gnome-startup" ''
+                  run () {
+                    pidof $1 || "$@" &
+                  }
 
-        # Add steam to startup
-        ".config/autostart/steam.desktop" = mkIf (type != "work") {
-          text = ''
-            [Desktop Entry]
-            Exec=steam
-            Icon=steam
-            Name=Steam
-            StartupWMClass=steam
-            Terminal=false
-            Type=Application
-          '';
-        };
-
-        ".config/autostart/slack.desktop" = mkIf (type == "work") {
-          text = ''
-            [Desktop Entry]
-            Exec=slack
-            Icon=slack
-            Name=Slack
-            StartupWMClass=slack
+                  ${startupScript}
+                '')
+              ]
+            }/gnome-startup
+            Icon=kitty
+            Name=StartupScript
+            StartupWMClass=startup
             Terminal=false
             Type=Application
           '';
