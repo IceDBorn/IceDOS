@@ -39,15 +39,7 @@
           hideDecorations = mkOption { type = types.bool; };
         };
 
-        librewolf = {
-          enable = mkOption { type = types.bool; };
-          privacy = mkOption { type = types.bool; };
-
-          pwas = {
-            enable = mkOption { type = types.bool; };
-            sites = mkOption { type = with types; listOf str; };
-          };
-        };
+        librewolf = mkOption { type = types.bool; };
 
         mangohud = {
           enable = mkOption { type = types.bool; };

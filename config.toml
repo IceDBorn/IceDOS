@@ -10,6 +10,7 @@ defaultEditor = "zed" # Options: 'codium', 'zed'
 falkor = false
 fwupd = true
 input-remapper = true
+librewolf = false
 mysql = false
 nautilus = true
 php = false
@@ -37,20 +38,6 @@ version = "7.4.3"
 [icedos.applications.kitty]
 enable = true
 hideDecorations = false # Hide top bar
-
-[icedos.applications.librewolf]
-enable = false
-privacy = true
-
-[icedos.applications.librewolf.pwas]
-enable = true
-sites = [
-  "https://app.tuta.com",
-  "https://develop.element.io",
-  "https://discord.com/app",
-  "https://dtekteam.slack.com/",
-  "https://web.skype.com/",
-]
 
 [icedos.applications.mangohud]
 enable = true

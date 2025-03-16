@@ -35,28 +35,18 @@ in
   # Set as default browser for electron apps
   environment = {
     sessionVariables.DEFAULT_BROWSER = mkIf (
-      cfg.applications.librewolf.enable && cfg.applications.defaultBrowser == "librewolf"
+      cfg.applications.librewolf && cfg.applications.defaultBrowser == "librewolf"
     ) "${package}/bin/librewolf";
 
-    systemPackages = if (cfg.applications.librewolf.enable) then [ package ] else [ ];
+    systemPackages = if (cfg.applications.librewolf) then [ package ] else [ ];
   };
 
   home-manager.users = mapAttrs (user: _: {
-    home.file = mkIf (cfg.applications.librewolf.enable) {
+    home.file = mkIf (cfg.applications.librewolf) {
       ".librewolf/profiles.ini" = {
         source = ./profiles.ini;
         force = true;
       };
     };
-
-    xdg.desktopEntries.librewolf-pwas =
-      mkIf (cfg.applications.librewolf.enable && cfg.applications.librewolf.pwas.enable)
-        {
-          exec = "librewolf-pwas";
-          icon = "librewolf";
-          name = "Librewolf PWAs";
-          terminal = false;
-          type = "Application";
-        };
   }) cfg.system.users;
 }
