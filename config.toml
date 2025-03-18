@@ -26,7 +26,7 @@ user = "icedborn"
 
 [icedos.applications.httpd.php]
 enable = true
-version = "7.4.3"
+version = "7.4.33"
 
 [icedos.applications.kitty]
 enable = true
