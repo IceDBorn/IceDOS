@@ -62,7 +62,6 @@
         };
 
         php = mkOption { type = types.bool; };
-        protonvpn = mkOption { type = types.bool; };
         rust = mkOption { type = types.bool; };
 
         signal = {

@@ -31,6 +31,7 @@ in
       gimp
       harmony-music
       newsflash
+      protonvpn-gui
       warp
     ]
     ++ emulators
