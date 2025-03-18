@@ -1,7 +1,7 @@
 [icedos.applications]
 extraPackages = []
 aagl = false
-android-tools = true
+android-tools = false
 celluloid = true
 clamav = false
 defaultBrowser = "zen" # Options: 'librewolf', 'zen'
@@ -14,7 +14,7 @@ php = false
 rust = false
 solaar = true
 ssh = true
-sunshine = true
+sunshine = false
 
 [icedos.applications.codium]
 enable = true
