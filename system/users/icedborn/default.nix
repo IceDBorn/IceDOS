@@ -1,16 +1,10 @@
 {
-  config,
-  inputs,
-  lib,
   pkgs,
   ...
 }:
 
 let
-  inherit (lib) optional;
-  cfg = config.icedos;
-
-  emulators = with pkgs; [
+  launchers = with pkgs; [
     # cemu
     # duckstation
     # heroic
@@ -34,6 +28,5 @@ in
       protonvpn-gui
       warp
     ]
-    ++ emulators
-    ++ optional (cfg.applications.suyu) inputs.switch-emulators.packages.${pkgs.system}.suyu;
+    ++ launchers;
 }

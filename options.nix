@@ -90,7 +90,6 @@
         };
 
         sunshine = mkOption { type = types.bool; };
-        suyu = mkOption { type = types.bool; };
 
         tailscale = {
           enable = mkOption { type = types.bool; };

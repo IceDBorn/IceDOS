@@ -25,7 +25,6 @@ let
   php = cfg.applications.php || (cfg.applications.httpd.enable && cfg.applications.httpd.php.enable);
   server = cfg.hardware.devices.server.enable;
   steam-session = cfg.applications.steam.session.enable;
-  suyu = cfg.applications.suyu;
   users = attrNames cfg.system.users;
   zen-browser = cfg.applications.zen-browser.enable;
 
@@ -147,18 +146,6 @@ in
         };
 
         ${
-          if (suyu) then
-            ''
-              suyu = {
-                url = "git+https:///codeberg.org/K900/yuzu-flake";
-                inputs.nixpkgs.follows = "nixpkgs";
-              };
-            ''
-          else
-            ""
-        }
-
-        ${
           if (zen-browser) then
             ''
               zen-browser = {
@@ -183,7 +170,6 @@ in
           ${if (kernel || steam-session) then ''chaotic,'' else ""}
           ${if (php) then ''phps,'' else ""}
           ${if (steam-session) then ''steam-session,'' else ""}
-          ${if (suyu) then ''suyu,'' else ""}
           ${if (zen-browser) then ''zen-browser,'' else ""}
           ...
         }@inputs:
