@@ -15,7 +15,6 @@ rust = false
 solaar = true
 ssh = true
 sunshine = true
-yazi = false
 
 [icedos.applications.codium]
 enable = true

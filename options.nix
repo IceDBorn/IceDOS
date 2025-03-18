@@ -101,8 +101,6 @@
           deviceId = mkOption { type = types.str; };
         };
 
-        yazi = mkOption { type = types.bool; };
-
         zed = {
           enable = mkOption { type = types.bool; };
           ollamaSupport = mkOption { type = types.bool; };
