@@ -17,7 +17,6 @@
         defaultBrowser = mkOption { type = types.str; };
         defaultEditor = mkOption { type = types.str; };
         extraPackages = mkOption { type = with types; listOf str; };
-        fwupd = mkOption { type = types.bool; };
 
         httpd = {
           enable = mkOption { type = types.bool; };
