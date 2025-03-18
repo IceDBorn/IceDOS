@@ -13,7 +13,6 @@ let
   aagl = cfg.applications.aagl;
   channels = cfg.system.channels;
   configurationLocation = fileContents "/tmp/configuration-location";
-  falkor = cfg.applications.falkor;
   gnome = cfg.desktop.gnome.enable;
   hyprland = cfg.desktop.hyprland.enable;
   isFirstBuild = !pathExists "/run/current-system/source" || cfg.system.forceFirstBuild;
@@ -119,18 +118,6 @@ in
         }
 
         ${
-          if (falkor) then
-            ''
-              falkor = {
-                url = "github:Team-Falkor/falkor";
-                inputs.nixpkgs.follows = "nixpkgs";
-              };
-            ''
-          else
-            ""
-        }
-
-        ${
           if (hyprland) then
             ''
               hyprpanel = {
@@ -192,7 +179,6 @@ in
           pipewire-screenaudio,
           self,
           ${if (aagl) then ''aagl,'' else ""}
-          ${if (falkor) then ''falkor,'' else ""}
           ${if (hyprland) then ''hyprpanel,'' else ""}
           ${if (kernel || steam-session) then ''chaotic,'' else ""}
           ${if (php) then ''phps,'' else ""}

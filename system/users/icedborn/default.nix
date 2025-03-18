@@ -34,6 +34,5 @@ in
       warp
     ]
     ++ emulators
-    ++ optional (cfg.applications.falkor) inputs.falkor.packages.${pkgs.system}.default
     ++ optional (cfg.applications.suyu) inputs.switch-emulators.packages.${pkgs.system}.suyu;
 }
