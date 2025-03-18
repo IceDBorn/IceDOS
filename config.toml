@@ -2,7 +2,6 @@
 extraPackages = []
 aagl = false
 android-tools = true
-brave = true
 celluloid = true
 clamav = false
 defaultBrowser = "zen" # Options: 'librewolf', 'zen'
