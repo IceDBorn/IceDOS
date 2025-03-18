@@ -22,6 +22,7 @@ let
     || cfg.system.kernel == "cachyos-server"
     || cfg.system.kernel == "valve";
 
+  librewolf = cfg.applications.librewolf;
   php = cfg.applications.php || (cfg.applications.httpd.enable && cfg.applications.httpd.php.enable);
   server = cfg.hardware.devices.server.enable;
   steam-session = cfg.applications.steam.session.enable;
@@ -140,10 +141,17 @@ in
             ""
         }
 
-        pipewire-screenaudio = {
-          url = "github:IceDBorn/pipewire-screenaudio";
-          inputs.nixpkgs.follows = "nixpkgs";
-        };
+        ${
+          if (librewolf) then
+            ''
+              pipewire-screenaudio = {
+                url = "github:IceDBorn/pipewire-screenaudio";
+                inputs.nixpkgs.follows = "nixpkgs";
+              };
+            ''
+          else
+            ""
+        }
 
         ${
           if (zen-browser) then
@@ -163,11 +171,11 @@ in
           home-manager,
           nerivations,
           nixpkgs,
-          pipewire-screenaudio,
           self,
           ${if (aagl) then ''aagl,'' else ""}
           ${if (hyprland) then ''hyprpanel,'' else ""}
           ${if (kernel || steam-session) then ''chaotic,'' else ""}
+          ${if (librewolf) then ''pipewire-screenaudio,'' else ""}
           ${if (php) then ''phps,'' else ""}
           ${if (steam-session) then ''steam-session,'' else ""}
           ${if (zen-browser) then ''zen-browser,'' else ""}
