@@ -37,7 +37,7 @@ mkIf (cfg.applications.steam.enable) {
         packages =
           with pkgs;
           mkIf (!cfg.hardware.devices.steamdeck) [
-            steam
+            (steam.override { extraPkgs = pkgs: [ pkgs.gamescope ]; })
           ];
       };
     }
@@ -46,9 +46,8 @@ mkIf (cfg.applications.steam.enable) {
   programs = mkIf (cfg.hardware.devices.steamdeck) {
     steam = {
       enable = true;
-
-      # Needed for steam controller to work on wayland compositors when the steam client is open
-      extest.enable = cfg.hardware.devices.steamdeck;
+      extest.enable = true;
+      extraPkgs = [ pkgs.gamescope ];
     };
   };
 }
