@@ -27,4 +27,6 @@ Examples of what probably will/won't be accepted:
 
 ✅ A PR that adds a new desktop environment option and doesn't break existing functionality.
 
+✅ A PR that adds a package with custom overrides, as a module. It is disabled by default, and can be enabled in `config.toml`.
+
 ❌ A PR that adds a package you want to use.
