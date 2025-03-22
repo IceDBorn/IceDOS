@@ -246,10 +246,7 @@
           steamdeck = mkOption { type = types.bool; };
         };
 
-        drivers = {
-          rtl8821ce = mkOption { type = types.bool; };
-          xpadneo = mkOption { type = types.bool; };
-        };
+        drivers.rtl8821ce = mkOption { type = types.bool; };
 
         gpus = {
           amd = {
