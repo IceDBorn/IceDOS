@@ -43,11 +43,9 @@ mkIf (cfg.applications.steam.enable) {
     }
   ) cfg.system.users;
 
-  programs = mkIf (cfg.hardware.devices.steamdeck) {
-    steam = {
-      enable = true;
-      extest.enable = true;
-      extraPackages = [ pkgs.gamescope ];
-    };
+  programs.steam = mkIf (cfg.hardware.devices.steamdeck) {
+    enable = true;
+    extest.enable = true;
+    extraPackages = [ pkgs.gamescope ];
   };
 }
