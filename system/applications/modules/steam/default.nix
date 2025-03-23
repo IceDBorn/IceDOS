@@ -47,7 +47,7 @@ mkIf (cfg.applications.steam.enable) {
     steam = {
       enable = true;
       extest.enable = true;
-      extraPkgs = [ pkgs.gamescope ];
+      extraPackages = [ pkgs.gamescope ];
     };
   };
 }
