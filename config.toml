@@ -144,7 +144,6 @@ followMouse = 1 # Options: https://wiki.hyprland.org/Configuring/Variables/#foll
 hyprspace = false
 
 startupScript = """
-run protonvpn-app
 run zen
 run zen-pwas
 nautilus -w &
@@ -268,6 +267,15 @@ hostname = "desktop"
 hosts = false
 ipv6 = false
 vpnExcludeIp = "192.168.1.200"
+
+[icedos.hardware.networking.wg-quick]
+enable = true
+
+interfaces = [
+  "protonvpn-moderate-nat",
+  "protonvpn-port-forward",
+  "protonvpn"
+]
 
 [icedos.system]
 channels = [] # https://github.com/NixOS/nixpkgs/branches/active

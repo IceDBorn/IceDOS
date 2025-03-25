@@ -289,6 +289,11 @@
           hosts = mkOption { type = types.bool; };
           ipv6 = mkOption { type = types.bool; };
           vpnExcludeIp = mkOption { type = types.str; };
+
+          wg-quick = {
+            enable = mkOption { type = types.bool; };
+            interfaces = mkOption { type = with types; listOf str; };
+          };
         };
 
         mounts = mkOption { type = types.bool; };
