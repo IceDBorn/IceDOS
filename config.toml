@@ -233,7 +233,7 @@ enable = true
 value = 242
 
 [[icedos.hardware.monitors]]
-name = "DP-1"
+name = "DP-2"
 disable = false
 resolution = "3440x1440"
 refreshRate = 144
@@ -243,7 +243,7 @@ rotation = 0
 tenBit = false
 
 [[icedos.hardware.monitors]]
-name = "DP-2"
+name = "DP-1"
 disable = false
 resolution = "1920x1080"
 refreshRate = 144
