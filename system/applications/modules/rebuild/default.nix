@@ -11,7 +11,7 @@ let
       function cache() {
         FILE="$1"
 
-        [ ! -f "$FILE" ] && exit 1
+        [ ! -f "$FILE" ] && return 1
         mkdir -p .cache
 
         LASTFILE=$(ls -lt ".cache" | grep "$FILE" | head -2 | tail -1 | awk '{print $9}')
