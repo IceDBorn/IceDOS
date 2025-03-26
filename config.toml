@@ -155,7 +155,7 @@ hyprspace = false
 
 startupScript = """
 run zen
-run zen-pwas
+run zen-social
 nautilus -w &
 nautilus -w &
 run steam
