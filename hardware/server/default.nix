@@ -8,26 +8,9 @@
 let
   inherit (lib) mkForce mkIf;
   cfg = config.icedos.hardware.devices.server;
-
-  post-login = pkgs.writeShellScriptBin "post-install" ''
-    mullvad auto-connect set on
-    mullvad lan set allow
-    mullvad relay set tunnel-protocol wireguard
-    mullvad relay set location bg sof
-    mullvad connect
-    tailscale up
-  '';
 in
 mkIf (cfg.enable) {
-  environment.etc."resolv.conf" = mkForce {
-    source = builtins.toFile "resolv.conf" "nameserver ${cfg.dns}";
-    mode = "0644";
-  };
-
-  environment.systemPackages = [
-    pkgs.dnsmasq
-    post-login
-  ];
+  environment.systemPackages = [ pkgs.dnsmasq ];
 
   networking = {
     defaultGateway = {
@@ -58,16 +41,13 @@ mkIf (cfg.enable) {
     };
   };
 
-  services = {
-    dnsmasq = {
-      enable = true;
-      settings = {
-        resolv-file = "/etc/resolv.conf";
-        listen-address = cfg.ip;
-      };
-    };
+  services.dnsmasq = {
+    enable = true;
 
-    mullvad-vpn.enable = true;
+    settings = {
+      resolv-file = "/etc/resolv.conf";
+      listen-address = cfg.ip;
+    };
   };
 
   systemd.network.enable = false;
