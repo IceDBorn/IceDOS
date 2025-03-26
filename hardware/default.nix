@@ -42,10 +42,6 @@ in
     hostName = "${cfg.hardware.networking.hostname}";
   };
 
-  fileSystems = mkIf (cfg.hardware.btrfs.compression.enable && cfg.hardware.btrfs.compression.root) {
-    "/".options = [ "compress=zstd" ];
-  };
-
   services = {
     fstrim.enable = true; # Enable SSD TRIM
     upower.enable = true; # Enable power management

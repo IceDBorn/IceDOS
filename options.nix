@@ -210,12 +210,6 @@
       hardware = {
         bluetooth = mkOption { type = types.bool; };
 
-        btrfs.compression = {
-          enable = mkOption { type = types.bool; };
-          mounts = mkOption { type = types.bool; };
-          root = mkOption { type = types.bool; };
-        };
-
         cpus = {
           amd = {
             enable = mkOption { type = types.bool; };
@@ -298,7 +292,18 @@
           };
         };
 
-        mounts = mkOption { type = types.bool; };
+        mounts = mkOption {
+          type = types.listOf (
+            types.submodule {
+              options = {
+                path = mkOption { type = types.str; };
+                device = mkOption { type = types.str; };
+                fsType = mkOption { type = types.str; };
+                flags = mkOption { type = with types; listOf str; };
+              };
+            }
+          );
+        };
       };
 
       system = {
