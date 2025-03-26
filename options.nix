@@ -224,6 +224,8 @@
               enable = mkOption { type = types.bool; };
               value = mkOption { type = types.str; };
             };
+
+            zenpower = mkOption { type = types.bool; };
           };
 
           intel = mkOption {

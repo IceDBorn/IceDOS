@@ -6,7 +6,7 @@
 }:
 
 let
-  inherit (lib) mkIf;
+  inherit (lib) mkIf optional;
   cfg = config.icedos.hardware.cpus.amd;
 in
 mkIf (cfg.enable) {
@@ -19,9 +19,9 @@ mkIf (cfg.enable) {
     kernelModules = [
       "amd-pstate"
       "msr"
-      "zenpower"
-    ];
-    extraModulePackages = with config.boot.kernelPackages; [ zenpower ];
+    ] ++ optional cfg.zenpower "zenpower";
+
+    extraModulePackages = with config.boot.kernelPackages; mkIf (cfg.zenpower) [ zenpower ];
   };
 
   environment.systemPackages = mkIf (cfg.undervolt.enable) [

@@ -199,6 +199,7 @@ intel = false
 
 [icedos.hardware.cpus.amd]
 enable = true
+zenpower = true # Report watt usage for apps e.g. mangohud
 
 [icedos.hardware.cpus.amd.undervolt]
 enable = true
