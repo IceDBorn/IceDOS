@@ -62,17 +62,24 @@ let
 in
 mkIf (cfg.applications.zen-browser.enable) {
   home-manager.users = mapAttrs (user: _: {
-    home.file.".zen/default/user.js".text = userJs;
-    home.file.".zen/pwas/user.js".text =
-      if (cfg.applications.zen-browser.pwas.enable) then
-        userJs
-        + ''
-          user_pref("browser.toolbars.bookmarks.visibility", "never");
-          user_pref("zen.tab-unloader.enabled", false);
-          user_pref("zen.view.sidebar-expanded", false);
-          user_pref("zen.view.compact.hide-tabbar", false);
-        ''
-      else
-        "";
+    home.file = builtins.listToAttrs (
+      map (profile: {
+        name = ".zen/${profile.exec}/user.js";
+
+        value = {
+          text =
+            if (!profile.pwa) then
+              userJs
+            else
+              userJs
+              + ''
+                user_pref("browser.toolbars.bookmarks.visibility", "never");
+                user_pref("zen.tab-unloader.enabled", false);
+                user_pref("zen.view.sidebar-expanded", false);
+                user_pref("zen.view.compact.hide-tabbar", false);
+              '';
+        };
+      }) cfg.applications.zen-browser.profiles
+    );
   }) cfg.system.users;
 }

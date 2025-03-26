@@ -87,8 +87,18 @@ mode = "system" # Options: 'system', 'dark', 'light'
 enable = true
 privacy = true
 
-[icedos.applications.zen-browser.pwas]
-enable = true
+[[icedos.applications.zen-browser.profiles]]
+default = true
+exec = "default"
+pwa = false
+
+[[icedos.applications.zen-browser.profiles]]
+default = false
+exec = "zen-social"
+pwa = true
+icon = "zen"
+name = "Zen Social"
+
 sites = [
   "https://mail.proton.me",
   "https://develop.element.io",
@@ -159,7 +169,7 @@ windowRules = [
   "workspace 1 silent, class:^(zen)$",
   "workspace 2 silent, class:^(dev.zed.Zed)$",
   "workspace 3 silent, class:^(steam_app_.*)$, title:^((?!notificationtoasts.*).)*$",
-  "workspace 11 silent, class:^(de.schmidhuberj.Flare|pwas)$",
+  "workspace 11 silent, class:^(de.schmidhuberj.Flare|zen-social)$",
   "workspace 12 silent, class:^(Steam|steam)$, title:^((?!notificationtoasts.*).)*$",
   "workspace 12 silent, title:^(.*Steam[A-Za-z0-9\\s]*)$",
   "workspace 13 silent, class:^(org\\.gnome\\.Nautilus)$",

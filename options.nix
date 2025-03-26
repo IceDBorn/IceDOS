@@ -117,9 +117,19 @@
           enable = mkOption { type = types.bool; };
           privacy = mkOption { type = types.bool; };
 
-          pwas = {
-            enable = mkOption { type = types.bool; };
-            sites = mkOption { type = with types; listOf str; };
+          profiles = mkOption {
+            type = types.listOf (
+              types.submodule {
+                options = {
+                  default = mkOption { type = types.bool; };
+                  exec = mkOption { type = types.str; };
+                  icon = mkOption { type = types.str; };
+                  name = mkOption { type = types.str; };
+                  pwa = mkOption { type = types.bool; };
+                  sites = mkOption { type = with types; listOf str; };
+                };
+              }
+            );
           };
         };
       };

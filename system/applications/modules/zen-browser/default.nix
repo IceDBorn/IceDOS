@@ -7,12 +7,7 @@
 }:
 
 let
-  inherit (lib)
-    filterAttrs
-    mapAttrs
-    mkIf
-    optional
-    ;
+  inherit (lib) filterAttrs mkIf;
 
   cfg = config.icedos;
   package = (inputs.zen-browser.packages."${pkgs.system}".default);
@@ -36,23 +31,4 @@ in
 
     systemPackages = [ package ];
   };
-
-  home-manager.users = mapAttrs (user: _: {
-    home.file = mkIf (cfg.applications.zen-browser.enable) {
-      ".zen/profiles.ini" = {
-        source = ./profiles.ini;
-        force = true;
-      };
-    };
-
-    xdg.desktopEntries.zen-pwas =
-      mkIf (cfg.applications.zen-browser.enable && cfg.applications.zen-browser.pwas.enable)
-        {
-          exec = "zen-pwas";
-          icon = "zen";
-          name = "Zen PWAs";
-          terminal = false;
-          type = "Application";
-        };
-  }) cfg.system.users;
 }
