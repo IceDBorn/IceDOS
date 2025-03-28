@@ -5,7 +5,7 @@
 }:
 
 let
-  inherit (lib) mapAttrs mkIf;
+  inherit (lib) mapAttrs mkIf optional;
   inherit (config.icedos.hardware) cpus;
   cfg = config.icedos.system;
 in
@@ -25,12 +25,7 @@ mkIf (cfg.virtualisation.virtManager) {
     # Allows passthrough of independent devices, that are members of larger IOMMU groups
     # It only affects kernels with ACS Override support. Ex: CachyOS, Liquorix, Zen
     "pcie_acs_override=downstream,multifunction"
-  ] ++ (
-      # Enable PCIe passthrough
-      if (cpus.amd.enable)
-      then [ "amd_iommu=on" ]
-      else if (cpus.intel)
-      then [ "intel_iommu=on" ]
-      else []
-  );
+  ]
+    ++ optional cpus.amd.enable "amd_iommu=on"
+    ++ optional cpus.intel "intel_iommu=on";
 }
