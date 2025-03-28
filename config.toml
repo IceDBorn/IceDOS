@@ -124,7 +124,7 @@ enable = true
 user = "icedborn"
 
 [icedos.desktop.gdm]
-enable = true
+enable = false
 autoSuspend = true
 
 [icedos.desktop.gnome]
