@@ -18,11 +18,21 @@ in
   ];
 
   home-manager.users = mapAttrs (user: _: {
-    wayland.windowManager.hyprland.settings.bind = [
-      "$mainMod, E, exec, walker -s theme -m emojis"
-      "$mainMod, R, exec, walker -s theme -m applications"
-      "$mainMod, V, exec, walker -s theme -m clipboard"
-    ];
+    wayland.windowManager.hyprland.settings = {
+      bind = [
+        "$mainMod, E, exec, walker -s theme -m emojis"
+        "$mainMod, R, exec, walker -s theme -m applications"
+        "$mainMod, V, exec, walker -s theme -m clipboard"
+      ];
+
+      exec-once = [
+        (pkgs.writeShellScript "walker-service" ''
+          while true; do
+            ${package}/bin/walker --gapplication-service
+          done
+        '')
+      ];
+    };
 
     home.file = {
       ".config/walker/config.json".source = "${package.src}/internal/config/config.default.json";
@@ -170,19 +180,6 @@ in
           }
         }
       '';
-    };
-
-    systemd.user.services.walker = {
-      Unit.Description = "Walker - Application Runner";
-      Install.WantedBy = [ "graphical-session.target" ];
-
-      Service = {
-        ExecStart = "${package}/bin/walker --gapplication-service";
-        Nice = "-20";
-        Restart = "on-failure";
-        StartLimitIntervalSec = 60;
-        StartLimitBurst = 60;
-      };
     };
   }) cfg.system.users;
 }
