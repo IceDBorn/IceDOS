@@ -202,45 +202,25 @@ bluetooth = true
 path = "/"
 device = "/dev/disk/by-uuid/e2a8d4bf-b1fc-446f-b347-c3671eda1ccb"
 fsType = "btrfs"
-
-flags = [
-  "compress=zstd",
-  "nofail",
-  "x-gvfs-show",
-]
+flags = ["compress=zstd", "nofail", "x-gvfs-show"]
 
 [[icedos.hardware.mounts]]
 path = "/mnt/games"
 device = "/dev/disk/by-uuid/040329ae-685d-4ba6-8bdd-e0a9785f9672"
 fsType = "btrfs"
-
-flags = [
-  "compress=zstd",
-  "nofail",
-  "x-gvfs-show",
-]
+flags = ["compress=zstd", "nofail", "x-gvfs-show"]
 
 [[icedos.hardware.mounts]]
 path = "/mnt/games2"
 device = "/dev/disk/by-uuid/60876d91-f863-45db-88c5-4c707879588f"
 fsType = "btrfs"
-
-flags = [
-  "compress=zstd",
-  "nofail",
-  "x-gvfs-show",
-]
+flags = ["compress=zstd", "nofail", "x-gvfs-show"]
 
 [[icedos.hardware.mounts]]
 path = "/mnt/storage"
 device = "/dev/disk/by-uuid/89730200-942d-4a5c-893f-0196c87435d2"
 fsType = "btrfs"
-
-flags = [
-  "compress=zstd",
-  "nofail",
-  "x-gvfs-show",
-]
+flags = ["compress=zstd", "nofail", "x-gvfs-show"]
 
 [icedos.hardware.cpus]
 intel = false
@@ -319,12 +299,7 @@ vpnExcludeIp = "192.168.1.200"
 
 [icedos.hardware.networking.wg-quick]
 enable = true
-
-interfaces = [
-  "protonvpn-moderate-nat",
-  "protonvpn-port-forward",
-  "protonvpn",
-]
+interfaces = ["protonvpn-moderate-nat", "protonvpn-port-forward", "protonvpn"]
 
 [icedos.system]
 channels = [] # https://github.com/NixOS/nixpkgs/branches/active
