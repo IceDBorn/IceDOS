@@ -299,7 +299,8 @@ vpnExcludeIp = "192.168.1.200"
 
 [icedos.hardware.networking.wg-quick]
 enable = true
-interfaces = ["protonvpn-moderate-nat", "protonvpn-port-forward", "protonvpn"]
+defaultInterface = "protonvpn"
+interfaces = ["protonvpn-mn", "protonvpn-pf", "protonvpn"]
 
 [icedos.system]
 channels = [] # https://github.com/NixOS/nixpkgs/branches/active
