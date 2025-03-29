@@ -299,7 +299,6 @@ vpnExcludeIp = "192.168.1.200"
 
 [icedos.hardware.networking.wg-quick]
 enable = true
-defaultInterface = "protonvpn"
 interfaces = ["protonvpn-mn", "protonvpn-pf", "protonvpn"]
 
 [icedos.system]
