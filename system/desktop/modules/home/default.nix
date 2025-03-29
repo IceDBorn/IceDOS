@@ -116,6 +116,11 @@ in
           "x-www-browser" = browser;
         };
       };
+
+      userDirs = {
+        enable = true;
+        createDirectories = true;
+      };
     };
 
     home = {
