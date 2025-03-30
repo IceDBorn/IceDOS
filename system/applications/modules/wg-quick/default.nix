@@ -6,11 +6,11 @@
 }:
 
 let
-  inherit (lib) mapAttrs mkIf;
+  inherit (lib) listToAttrs mkIf;
   cfg = config.icedos.hardware.networking.wg-quick;
 in
 mkIf (cfg.enable) {
-  networking.wg-quick.interfaces = builtins.listToAttrs (
+  networking.wg-quick.interfaces = listToAttrs (
     map (name: {
       inherit name;
 

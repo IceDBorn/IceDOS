@@ -6,7 +6,7 @@
 
 let
   cfg = config.icedos;
-  threshold = builtins.toString (cfg.desktop.hyprland.lock.diskUsageThreshold);
+  threshold = toString (cfg.desktop.hyprland.lock.diskUsageThreshold);
 in
 {
   environment.systemPackages = [

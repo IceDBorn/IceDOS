@@ -5,11 +5,11 @@
 }:
 
 let
-  inherit (lib) mkIf;
+  inherit (lib) listToAttrs;
   cfg = config.icedos.hardware;
 in
 {
-  fileSystems = builtins.listToAttrs (
+  fileSystems = listToAttrs (
     map (mount: {
       name = mount.path;
 

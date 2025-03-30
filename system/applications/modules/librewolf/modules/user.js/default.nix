@@ -6,9 +6,14 @@
 }:
 
 let
-  inherit (lib) mapAttrs mkIf;
+  inherit (lib)
+    mapAttrs
+    mkIf
+    substring
+    ;
+
   cfg = config.icedos;
-  firefoxVersion = builtins.substring 0 5 pkgs.firefox.version;
+  firefoxVersion = substring 0 5 pkgs.firefox.version;
 in
 mkIf (cfg.applications.librewolf) {
   home-manager.users = mapAttrs (user: _: {

@@ -34,7 +34,7 @@ in
       "org/gnome/desktop/wm/preferences" = {
         # Buttons to show in titlebars
         button-layout = cfg.desktop.gnome.titlebarLayout;
-        num-workspaces = builtins.toString (cfg.desktop.gnome.workspaces.maxWorkspaces);
+        num-workspaces = toString (cfg.desktop.gnome.workspaces.maxWorkspaces);
       };
 
       # Disable mouse acceleration
@@ -51,7 +51,7 @@ in
       "org/gnome/desktop/session" = {
         idle-delay =
           if (cfg.system.users.${user}.desktop.idle.disableMonitors.enable) then
-            builtins.toString (cfg.system.users.${user}.desktop.idle.disableMonitors.seconds)
+            toString (cfg.system.users.${user}.desktop.idle.disableMonitors.seconds)
           else
             0;
       };
@@ -59,7 +59,7 @@ in
       # Set screen lock
       "org/gnome/desktop/screensaver" = {
         lock-enabled = cfg.system.users.${user}.desktop.idle.lock.enable;
-        lock-delay = builtins.toString (cfg.system.users.${user}.desktop.idle.lock.seconds);
+        lock-delay = toString (cfg.system.users.${user}.desktop.idle.lock.seconds);
       };
 
       # Disable system sounds
@@ -80,9 +80,7 @@ in
         sleep-inactive-ac-type =
           if (cfg.system.users.${user}.desktop.idle.suspend.enable) then "suspend" else "nothing";
         # Auto suspend timeout
-        sleep-inactive-ac-timeout = builtins.toString (
-          cfg.system.users.${user}.desktop.idle.suspend.seconds
-        );
+        sleep-inactive-ac-timeout = toString (cfg.system.users.${user}.desktop.idle.suspend.seconds);
         # Power button shutdown
         power-button-action = cfg.desktop.gnome.powerButtonAction;
       };

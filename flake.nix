@@ -87,8 +87,11 @@
 
               getModules =
                 path:
-                builtins.map (dir: "/${path}/${dir}") (
-                  builtins.attrNames (
+                map (dir: "/${path}/${dir}") (
+                  let
+                    inherit (lib) attrNames;
+                  in
+                  attrNames (
                     filterAttrs (n: v: v == "directory" && !(n == "desktop" && path == ./system)) (
                       builtins.readDir path
                     )

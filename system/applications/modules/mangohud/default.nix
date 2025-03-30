@@ -30,7 +30,7 @@ mkIf (cfg.applications.mangohud.enable) {
           engine_short_names = true;
           font_size = 18;
           fps_color = "FFFFFF";
-          fps_limit = "${builtins.toString (cfg.applications.mangohud.maxFpsLimit)},60,0";
+          fps_limit = "${toString (cfg.applications.mangohud.maxFpsLimit)},60,0";
           frame_timing = false;
           frametime = false;
           gl_vsync = 0;

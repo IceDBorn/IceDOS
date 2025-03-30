@@ -9,6 +9,7 @@ let
   inherit (lib)
     concatLists
     filter
+    genList
     imap
     makeBinPath
     mapAttrs
@@ -22,17 +23,17 @@ let
     if (m.name == "eDP-1" && cfg.hardware.devices.steamdeck) then
       ",transform,3"
     else
-      ",transform,${builtins.toString m.rotation}";
+      ",transform,${toString m.rotation}";
 
   workspaceBinds =
     bind: command:
     (concatLists (
       imap (
         i: _:
-        builtins.genList (
+        genList (
           w:
           let
-            cw = builtins.toString ((w + 1) + ((i - 1) * 10));
+            cw = toString ((w + 1) + ((i - 1) * 10));
             cb = if (w == 9) then "0" else "${toString (w + 1)}";
 
             extraBind =
@@ -153,9 +154,9 @@ in
             let
               name = m.name;
               resolution = m.resolution;
-              refreshRate = builtins.toString (m.refreshRate);
-              position = builtins.toString (m.position);
-              scaling = builtins.toString (m.scaling);
+              refreshRate = toString (m.refreshRate);
+              position = toString (m.position);
+              scaling = toString (m.scaling);
               rotation = getMonitorRotation m;
               bitDepth = if (m.tenBit) then ",bitdepth,10" else "";
             in
@@ -177,10 +178,10 @@ in
               let
                 name = m.name;
               in
-              builtins.genList (
+              genList (
                 w:
                 let
-                  cw = builtins.toString ((w + 1) + ((i - 1) * 10));
+                  cw = toString ((w + 1) + ((i - 1) * 10));
                   default = if (w == 0) then ",default:true" else "";
                 in
                 "${cw},monitor:${name}${default}"

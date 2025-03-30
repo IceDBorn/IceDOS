@@ -31,22 +31,22 @@ in
           listener =
             [
               {
-                timeout = builtins.toString (cfg.desktop.hyprland.lock.secondsToLowerBrightness);
+                timeout = toString (cfg.desktop.hyprland.lock.secondsToLowerBrightness);
                 on-timeout = "brightnessctl -s set 10 && brightnessctl -sd rgb:kbd_backlight set 0";
                 on-resume = "brightnessctl -r && brightnessctl -rd rgb:kbd_backlight";
               }
             ]
             ++ optional (idle.lock.enable) {
-              timeout = builtins.toString (idle.lock.seconds);
+              timeout = toString (idle.lock.seconds);
               on-timeout = "hyprlock-wrapper lock";
             }
             ++ optional (idle.disableMonitors.enable) {
-              timeout = builtins.toString (idle.disableMonitors.seconds);
+              timeout = toString (idle.disableMonitors.seconds);
               on-timeout = "hyprlock-wrapper off";
               on-resume = "hyprctl dispatch dpms on";
             }
             ++ optional (idle.suspend.enable) {
-              timeout = builtins.toString (idle.suspend.seconds);
+              timeout = toString (idle.suspend.seconds);
               on-timeout = "hyprlock-wrapper suspend";
             };
         };

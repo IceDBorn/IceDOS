@@ -6,7 +6,7 @@
 
 let
   cfg = config.icedos;
-  threshold = builtins.toString (cfg.desktop.hyprland.lock.cpuUsageThreshold);
+  threshold = toString (cfg.desktop.hyprland.lock.cpuUsageThreshold);
 in
 {
   environment.systemPackages = [

@@ -6,8 +6,8 @@
 
 let
   cfg = config.icedos.system.generations.garbageCollect;
-  days = "${builtins.toString (cfg.days)}d";
-  generations = builtins.toString (cfg.generations);
+  days = "${toString (cfg.days)}d";
+  generations = toString (cfg.generations);
 in
 {
   environment.systemPackages = [
@@ -19,7 +19,7 @@ in
 
     clean = {
       enable = cfg.automatic;
-      extraArgs = "-k ${builtins.toString (cfg.generations)} -K ${days}";
+      extraArgs = "-k ${toString (cfg.generations)} -K ${days}";
       dates = cfg.interval;
     };
   };

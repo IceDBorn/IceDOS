@@ -68,7 +68,7 @@ mkIf (cfg.hardware.gpus.nvidia.enable) {
 
     serviceConfig = {
       User = "root";
-      ExecStart = "${nvidia_x11}/bin/nvidia-smi --power-limit=${builtins.toString (powerLimit.value)}";
+      ExecStart = "${nvidia_x11}/bin/nvidia-smi --power-limit=${toString (powerLimit.value)}";
     };
 
     wantedBy = [ "multi-user.target" ];

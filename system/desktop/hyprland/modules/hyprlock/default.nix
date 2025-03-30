@@ -6,13 +6,13 @@
 }:
 
 let
-  inherit (lib) filterAttrs mapAttrs;
+  inherit (lib) attrNames filterAttrs mapAttrs;
   cfg = config.icedos;
 
   getModules =
     path:
-    builtins.map (dir: ./. + ("/modules/" + dir)) (
-      builtins.attrNames (filterAttrs (_: v: v == "directory") (builtins.readDir path))
+    map (dir: ./. + ("/modules/" + dir)) (
+      attrNames (filterAttrs (_: v: v == "directory") (builtins.readDir path))
     );
 in
 {

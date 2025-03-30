@@ -1,5 +1,11 @@
-{ lib, ... }:
+{
+  lib,
+  ...
+}:
 
+let
+  inherit (lib) fileContents;
+in
 {
   options = with lib; {
     icedos = {
@@ -410,5 +416,5 @@
     };
   };
 
-  config = builtins.fromTOML (lib.fileContents ./config.toml);
+  config = fromTOML (fileContents ./config.toml);
 }

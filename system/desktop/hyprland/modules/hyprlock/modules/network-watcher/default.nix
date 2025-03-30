@@ -6,7 +6,7 @@
 
 let
   cfg = config.icedos;
-  threshold = builtins.toString (cfg.desktop.hyprland.lock.networkUsageThreshold);
+  threshold = toString (cfg.desktop.hyprland.lock.networkUsageThreshold);
 in
 {
   environment.systemPackages = [

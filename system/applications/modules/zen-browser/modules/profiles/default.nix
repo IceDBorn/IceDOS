@@ -6,7 +6,13 @@
 }:
 
 let
-  inherit (lib) filter mapAttrs;
+  inherit (lib)
+    concatImapStrings
+    filter
+    listToAttrs
+    mapAttrs
+    ;
+
   cfg = config.icedos;
   profiles = filter (profile: profile.pwa) cfg.applications.zen-browser.profiles;
 in
@@ -14,12 +20,12 @@ in
   environment.systemPackages = map (
     profile:
     pkgs.writeShellScriptBin profile.exec ''
-      zen --no-remote -P ${profile.exec} --name "${profile.exec}" ${builtins.toString profile.sites}
+      zen --no-remote -P ${profile.exec} --name "${profile.exec}" ${toString profile.sites}
     ''
   ) profiles;
 
   home-manager.users = mapAttrs (user: _: {
-    xdg.desktopEntries = builtins.listToAttrs (
+    xdg.desktopEntries = listToAttrs (
       map (profile: {
         name = profile.exec;
 
@@ -35,7 +41,7 @@ in
 
     home.file.".zen/profiles.ini" = {
       text = ''
-        ${lib.concatImapStrings (i: profile: ''
+        ${concatImapStrings (i: profile: ''
           [Profile${toString (i - 1)}]
           Name=${profile.exec}
           IsRelative=1

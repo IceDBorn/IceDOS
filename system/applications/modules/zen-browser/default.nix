@@ -7,17 +7,15 @@
 }:
 
 let
-  inherit (lib) filterAttrs mkIf;
+  inherit (lib) attrNames filterAttrs mkIf;
 
   cfg = config.icedos;
   package = (inputs.zen-browser.packages."${pkgs.system}".default);
 
   getModules =
     path:
-    builtins.map (dir: ./. + ("/modules/" + dir)) (
-      builtins.attrNames (
-        filterAttrs (n: v: v == "directory" && !(n == "zen-browser")) (builtins.readDir path)
-      )
+    map (dir: ./. + ("/modules/" + dir)) (
+      attrNames (filterAttrs (n: v: v == "directory" && !(n == "zen-browser")) (builtins.readDir path))
     );
 in
 {

@@ -8,6 +8,7 @@
 
 let
   inherit (lib)
+    attrNames
     filterAttrs
     mapAttrs
     mkIf
@@ -23,10 +24,8 @@ let
 
   getModules =
     path:
-    builtins.map (dir: ./. + ("/modules/" + dir)) (
-      builtins.attrNames (
-        filterAttrs (n: v: v == "directory" && !(n == "zen-browser")) (builtins.readDir path)
-      )
+    map (dir: ./. + ("/modules/" + dir)) (
+      attrNames (filterAttrs (n: v: v == "directory" && !(n == "zen-browser")) (builtins.readDir path))
     );
 in
 {

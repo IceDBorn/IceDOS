@@ -6,10 +6,16 @@
 }:
 
 let
-  inherit (lib) mapAttrs mkIf;
+  inherit (lib)
+    listToAttrs
+    mapAttrs
+    mkIf
+    substring
+    ;
+
   cfg = config.icedos;
   accentColor = cfg.internals.accentColor;
-  firefoxVersion = builtins.substring 0 5 pkgs.firefox.version;
+  firefoxVersion = substring 0 5 pkgs.firefox.version;
 
   userJs = ''
     user_pref("browser.download.always_ask_before_handling_new_types", false);
@@ -62,7 +68,7 @@ let
 in
 mkIf (cfg.applications.zen-browser.enable) {
   home-manager.users = mapAttrs (user: _: {
-    home.file = builtins.listToAttrs (
+    home.file = listToAttrs (
       map (profile: {
         name = ".zen/${profile.exec}/user.js";
 

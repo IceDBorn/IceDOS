@@ -52,8 +52,8 @@ in
             name = m.name;
             resolution = m.resolution;
             bitDepth = if (m.tenBit) then "-30" else "";
-            refreshRate = builtins.toString (m.refreshRate);
-            rotation = builtins.toString (m.rotation);
+            refreshRate = toString (m.refreshRate);
+            rotation = toString (m.rotation);
           in
           "video=${name}:${resolution}${bitDepth}@${refreshRate},rotate=${rotation}"
         ) monitors)
@@ -65,7 +65,7 @@ in
       "vm.compaction_proactiveness" = 0;
       "vm.max_map_count" = 1048576; # Fixes crashes or start-up issues for games
       "vm.page_lock_unfairness" = 1;
-      "vm.swappiness" = builtins.toString (cfg.system.swappiness); # Set agressiveness of swap usage
+      "vm.swappiness" = toString (cfg.system.swappiness); # Set agressiveness of swap usage
     };
   };
 

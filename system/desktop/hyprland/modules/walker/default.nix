@@ -6,7 +6,12 @@
 }:
 
 let
-  inherit (lib) mapAttrs replaceStrings;
+  inherit (lib)
+    mapAttrs
+    readFile
+    replaceStrings
+    ;
+
   cfg = config.icedos;
   accentColor = cfg.internals.accentColor;
   package = pkgs.walker;
@@ -30,7 +35,7 @@ in
           replaceStrings
             [ ''app_launch_prefix = ""'' ]
             [ ''app_launch_prefix = "${pkgs.uwsm}/bin/uwsm app -- "'' ]
-            (builtins.readFile ("${package.src}/internal/config/config.default.toml"));
+            (readFile ("${package.src}/internal/config/config.default.toml"));
 
         force = true;
       };
