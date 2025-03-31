@@ -36,7 +36,6 @@ in
       lazygit # Git TUI
       ncdu # Terminal disk analyzer
       nix-health # Check system health
-      nixfmt-rfc-style # A nix formatter
       ntfs3g # Support NTFS drives
       p7zip # 7zip
       unrar # Support opening rar files

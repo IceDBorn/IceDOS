@@ -13,7 +13,9 @@ in
   environment = mkIf (cfg.applications.nautilus) {
     systemPackages = [ pkgs.nautilus ];
 
-    gnome.excludePackages = mkIf (!cfg.applications.nautilus && cfg.desktop.gnome.enable) [ pkgs.nautilus ];
+    gnome.excludePackages = mkIf (!cfg.applications.nautilus && cfg.desktop.gnome.enable) [
+      pkgs.nautilus
+    ];
 
     sessionVariables = {
       # Fix for missing audio/video information in properties https://github.com/NixOS/nixpkgs/issues/53631
