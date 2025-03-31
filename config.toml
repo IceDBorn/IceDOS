@@ -293,7 +293,7 @@ tenBit = false
 
 [icedos.hardware.networking]
 hostname = "desktop"
-hosts = false
+hosts = ""
 ipv6 = false
 vpnExcludeIp = "192.168.1.200"
 

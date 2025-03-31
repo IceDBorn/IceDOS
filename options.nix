@@ -298,7 +298,7 @@ in
 
         networking = {
           hostname = mkOption { type = types.str; };
-          hosts = mkOption { type = types.bool; };
+          hosts = mkOption { type = types.lines; };
           ipv6 = mkOption { type = types.bool; };
           vpnExcludeIp = mkOption { type = types.str; };
 

@@ -1,11 +1,9 @@
 {
   config,
-  lib,
   ...
 }:
 
 let
-  inherit (lib) mkIf;
   cfg = config.icedos;
 in
 {
@@ -38,7 +36,7 @@ in
   ];
 
   networking = {
-    extraHosts = mkIf (cfg.hardware.networking.hosts) "192.168.2.99 git.dtek.gr";
+    extraHosts = cfg.hardware.networking.hosts;
     hostName = "${cfg.hardware.networking.hostname}";
   };
 
