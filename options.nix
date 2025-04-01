@@ -24,17 +24,6 @@ in
         defaultEditor = mkOption { type = types.str; };
         extraPackages = mkOption { type = with types; listOf str; };
 
-        httpd = {
-          enable = mkOption { type = types.bool; };
-
-          php = {
-            enable = mkOption { type = types.bool; };
-            version = mkOption { type = types.str; };
-          };
-
-          user = mkOption { type = types.str; };
-        };
-
         input-remapper = mkOption { type = types.bool; };
 
         kitty = {

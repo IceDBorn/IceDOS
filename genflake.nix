@@ -23,7 +23,6 @@ let
     || cfg.system.kernel == "valve";
 
   librewolf = cfg.applications.librewolf;
-  php = cfg.applications.php || (cfg.applications.httpd.enable && cfg.applications.httpd.php.enable);
   server = cfg.hardware.devices.server.enable;
   steam-session = cfg.applications.steam.session.enable;
   users = attrNames cfg.system.users;
@@ -130,18 +129,6 @@ in
         }
 
         ${
-          if (php) then
-            ''
-              phps = {
-                url = "github:fossar/nix-phps/5c2a9bf0246b7f38b7ca737f0f1f36d5b45ae15a";
-                inputs.nixpkgs.url = "github:NixOS/nixpkgs/b73c2221a46c13557b1b3be9c2070cc42cf01eb3";
-              };
-            ''
-          else
-            ""
-        }
-
-        ${
           if (librewolf) then
             ''
               pipewire-screenaudio = {
@@ -176,7 +163,6 @@ in
           ${if (hyprland) then ''hyprpanel,'' else ""}
           ${if (kernel || steam-session) then ''chaotic,'' else ""}
           ${if (librewolf) then ''pipewire-screenaudio,'' else ""}
-          ${if (php) then ''phps,'' else ""}
           ${if (steam-session) then ''steam-session,'' else ""}
           ${if (zen-browser) then ''zen-browser,'' else ""}
           ...
