@@ -38,11 +38,6 @@ in
           maxFpsLimit = mkOption { type = types.number; };
         };
 
-        mullvad = {
-          enable = mkOption { type = types.bool; };
-          gui = mkOption { type = types.bool; };
-        };
-
         nautilus = mkOption { type = types.bool; };
 
         network-manager = {

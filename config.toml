@@ -27,10 +27,6 @@ hideDecorations = false # Hide top bar
 enable = true
 maxFpsLimit = 144 # Use 0 for unlimited
 
-[icedos.applications.mullvad]
-enable = false
-gui = false
-
 [icedos.applications.network-manager]
 enable = true
 applet = true
@@ -328,7 +324,7 @@ startupScript = ""
 
 [icedos.system.users.icedborn.desktop.gnome.pinnedApps.arcmenu]
 enable = false
-list = ["codiumIDE.desktop", "codium.desktop", "mullvad-vpn.desktop"]
+list = ["codiumIDE.desktop", "codium.desktop"]
 
 # Set pinned apps for gnome shell (will be used by dash-to-panel if enabled)
 [icedos.system.users.icedborn.desktop.gnome.pinnedApps.shell]
