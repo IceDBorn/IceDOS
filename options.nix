@@ -4,397 +4,394 @@
 }:
 
 let
-  inherit (lib) fileContents;
+  inherit (lib) fileContents mkOption types;
+  mkBoolOption = mkOption { type = types.bool; };
+  mkLinesOption = mkOption { type = types.lines; };
+  mkNumberOption = mkOption { type = types.number; };
+  mkStrListOption = mkOption { type = with types; listOf str; };
+  mkStrOption = mkOption { type = types.str; };
+
+  mkSubmoduleAttrsOption =
+    options:
+    mkOption {
+      type = types.attrsOf (
+        types.submodule {
+          options = options;
+        }
+      );
+    };
+
+  mkSubmoduleListOption =
+    options:
+    mkOption {
+      type = types.listOf (
+        types.submodule {
+          options = options;
+        }
+      );
+    };
 in
 {
-  options = with lib; {
+  options = {
     icedos = {
       applications = {
-        aagl = mkOption { type = types.bool; };
-        android-tools = mkOption { type = types.bool; };
-        celluloid = mkOption { type = types.bool; };
-        clamav = mkOption { type = types.bool; };
+        aagl = mkBoolOption;
+        android-tools = mkBoolOption;
+        celluloid = mkBoolOption;
+        clamav = mkBoolOption;
 
         codium = {
-          enable = mkOption { type = types.bool; };
-          zoomLevel = mkOption { type = types.number; };
+          enable = mkBoolOption;
+          zoomLevel = mkNumberOption;
         };
 
-        defaultBrowser = mkOption { type = types.str; };
-        defaultEditor = mkOption { type = types.str; };
-        extraPackages = mkOption { type = with types; listOf str; };
-
-        input-remapper = mkOption { type = types.bool; };
+        defaultBrowser = mkStrOption;
+        defaultEditor = mkStrOption;
+        extraPackages = mkStrListOption;
+        input-remapper = mkBoolOption;
 
         kitty = {
-          enable = mkOption { type = types.bool; };
-          hideDecorations = mkOption { type = types.bool; };
+          enable = mkBoolOption;
+          hideDecorations = mkBoolOption;
         };
 
-        librewolf = mkOption { type = types.bool; };
+        librewolf = mkBoolOption;
 
         mangohud = {
-          enable = mkOption { type = types.bool; };
-          maxFpsLimit = mkOption { type = types.number; };
+          enable = mkBoolOption;
+          maxFpsLimit = mkNumberOption;
         };
 
-        nautilus = mkOption { type = types.bool; };
+        nautilus = mkBoolOption;
 
         network-manager = {
-          enable = mkOption { type = types.bool; };
-          applet = mkOption { type = types.bool; };
+          enable = mkBoolOption;
+          applet = mkBoolOption;
         };
 
         obs-studio = {
-          enable = mkOption { type = types.bool; };
-          virtualCamera = mkOption { type = types.bool; };
+          enable = mkBoolOption;
+          virtualCamera = mkBoolOption;
         };
 
-        php = mkOption { type = types.bool; };
-        rust = mkOption { type = types.bool; };
+        php = mkBoolOption;
+        rust = mkBoolOption;
 
         signal = {
-          enable = mkOption { type = types.bool; };
-          package = mkOption { type = types.str; };
+          enable = mkBoolOption;
+          package = mkStrOption;
         };
 
-        solaar = mkOption { type = types.bool; };
-        ssh = mkOption { type = types.bool; };
+        solaar = mkBoolOption;
+        ssh = mkBoolOption;
 
         steam = {
-          enable = mkOption { type = types.bool; };
-          beta = mkOption { type = types.bool; };
-          downloadsWorkaround = mkOption { type = types.bool; };
+          enable = mkBoolOption;
+          beta = mkBoolOption;
+          downloadsWorkaround = mkBoolOption;
 
           session = {
-            enable = mkOption { type = types.bool; };
+            enable = mkBoolOption;
 
             autoStart = {
-              enable = mkOption { type = types.bool; };
-              desktopSession = mkOption { type = types.str; };
+              enable = mkBoolOption;
+              desktopSession = mkStrOption;
             };
 
-            user = mkOption { type = types.str; };
+            user = mkStrOption;
           };
         };
 
-        sunshine = mkOption { type = types.bool; };
+        sunshine = mkBoolOption;
 
         tailscale = {
-          enable = mkOption { type = types.bool; };
-          enableTrayscale = mkOption { type = types.bool; };
+          enable = mkBoolOption;
+          enableTrayscale = mkBoolOption;
         };
 
         valent = {
-          enable = mkOption { type = types.bool; };
-          deviceId = mkOption { type = types.str; };
+          enable = mkBoolOption;
+          deviceId = mkStrOption;
         };
 
         zed = {
-          enable = mkOption { type = types.bool; };
-          ollamaSupport = mkOption { type = types.bool; };
-          vim = mkOption { type = types.bool; };
+          enable = mkBoolOption;
+          ollamaSupport = mkBoolOption;
+          vim = mkBoolOption;
 
           theme = {
-            dark = mkOption { type = types.str; };
-            light = mkOption { type = types.str; };
-            mode = mkOption { type = types.str; };
+            dark = mkStrOption;
+            light = mkStrOption;
+            mode = mkStrOption;
           };
         };
 
         zen-browser = {
-          enable = mkOption { type = types.bool; };
-          privacy = mkOption { type = types.bool; };
+          enable = mkBoolOption;
+          privacy = mkBoolOption;
 
-          profiles = mkOption {
-            type = types.listOf (
-              types.submodule {
-                options = {
-                  default = mkOption { type = types.bool; };
-                  exec = mkOption { type = types.str; };
-                  icon = mkOption { type = types.str; };
-                  name = mkOption { type = types.str; };
-                  pwa = mkOption { type = types.bool; };
-                  sites = mkOption { type = with types; listOf str; };
-                };
-              }
-            );
+          profiles = mkSubmoduleListOption {
+            default = mkBoolOption;
+            exec = mkStrOption;
+            icon = mkStrOption;
+            name = mkStrOption;
+            pwa = mkBoolOption;
+            sites = mkStrListOption;
           };
         };
       };
 
       bootloader = {
-        animation = mkOption { type = types.bool; };
+        animation = mkBoolOption;
 
         grub = {
-          enable = mkOption { type = types.bool; };
-          device = mkOption { type = types.str; };
+          enable = mkBoolOption;
+          device = mkStrOption;
         };
 
         systemd-boot = {
-          enable = mkOption { type = types.bool; };
-          mountPoint = mkOption { type = types.str; };
+          enable = mkBoolOption;
+          mountPoint = mkStrOption;
         };
       };
 
       desktop = {
-        accentColor = mkOption { type = types.str; };
+        accentColor = mkStrOption;
 
         autologin = {
-          enable = mkOption { type = types.bool; };
-          user = mkOption { type = types.str; };
+          enable = mkBoolOption;
+          user = mkStrOption;
         };
 
         gdm = {
-          enable = mkOption { type = types.bool; };
-          autoSuspend = mkOption { type = types.bool; };
+          enable = mkBoolOption;
+          autoSuspend = mkBoolOption;
         };
 
         gnome = {
-          enable = mkOption { type = types.bool; };
-          accentColor = mkOption { type = types.str; };
+          enable = mkBoolOption;
+          accentColor = mkStrOption;
 
           extensions = {
-            arcmenu = mkOption { type = types.bool; };
-            dashToPanel = mkOption { type = types.bool; };
+            arcmenu = mkBoolOption;
+            dashToPanel = mkBoolOption;
           };
 
           clock = {
-            date = mkOption { type = types.bool; };
-            weekday = mkOption { type = types.bool; };
+            date = mkBoolOption;
+            weekday = mkBoolOption;
           };
 
-          hotCorners = mkOption { type = types.bool; };
-          powerButtonAction = mkOption { type = types.str; };
-          titlebarLayout = mkOption { type = types.str; };
+          hotCorners = mkBoolOption;
+          powerButtonAction = mkStrOption;
+          titlebarLayout = mkStrOption;
 
           workspaces = {
-            dynamicWorkspaces = mkOption { type = types.bool; };
-            maxWorkspaces = mkOption { type = types.number; };
+            dynamicWorkspaces = mkBoolOption;
+            maxWorkspaces = mkNumberOption;
           };
         };
 
         hyprland = {
-          enable = mkOption { type = types.bool; };
+          enable = mkBoolOption;
 
           cs2fix = {
-            enable = mkOption { type = types.bool; };
-            width = mkOption { type = types.number; };
-            height = mkOption { type = types.number; };
+            enable = mkBoolOption;
+            width = mkNumberOption;
+            height = mkNumberOption;
           };
 
-          followMouse = mkOption { type = types.number; };
-          hyprspace = mkOption { type = types.bool; };
+          followMouse = mkNumberOption;
+          hyprspace = mkBoolOption;
 
           hyproled = {
-            enable = mkOption { type = types.bool; };
-            startWidth = mkOption { type = types.number; };
-            startHeight = mkOption { type = types.number; };
-            endWidth = mkOption { type = types.number; };
-            endHeight = mkOption { type = types.number; };
+            enable = mkBoolOption;
+            startWidth = mkNumberOption;
+            startHeight = mkNumberOption;
+            endWidth = mkNumberOption;
+            endHeight = mkNumberOption;
           };
 
           lock = {
-            secondsToLowerBrightness = mkOption { type = types.number; };
-            cpuUsageThreshold = mkOption { type = types.number; };
-            diskUsageThreshold = mkOption { type = types.number; };
-            networkUsageThreshold = mkOption { type = types.number; };
+            secondsToLowerBrightness = mkNumberOption;
+            cpuUsageThreshold = mkNumberOption;
+            diskUsageThreshold = mkNumberOption;
+            networkUsageThreshold = mkNumberOption;
           };
 
-          startupScript = mkOption { type = types.str; };
-          windowRules = mkOption { type = with types; listOf str; };
+          startupScript = mkStrOption;
+          windowRules = mkStrListOption;
         };
       };
 
       hardware = {
-        bluetooth = mkOption { type = types.bool; };
+        bluetooth = mkBoolOption;
 
         cpus = {
           amd = {
-            enable = mkOption { type = types.bool; };
+            enable = mkBoolOption;
 
             undervolt = {
-              enable = mkOption { type = types.bool; };
-              value = mkOption { type = types.str; };
+              enable = mkBoolOption;
+              value = mkStrOption;
             };
 
-            zenpower = mkOption { type = types.bool; };
+            zenpower = mkBoolOption;
           };
 
-          intel = mkOption {
-            type = types.bool;
-            default = false;
-          };
+          intel = mkBoolOption;
         };
 
         devices = {
-          laptop = mkOption { type = types.bool; };
+          laptop = mkBoolOption;
 
           server = {
-            enable = mkOption { type = types.bool; };
-            dns = mkOption { type = types.str; };
-            gateway = mkOption { type = types.str; };
-            interface = mkOption { type = types.str; };
-            ip = mkOption { type = types.str; };
+            enable = mkBoolOption;
+            dns = mkStrOption;
+            gateway = mkStrOption;
+            interface = mkStrOption;
+            ip = mkStrOption;
           };
 
-          steamdeck = mkOption { type = types.bool; };
+          steamdeck = mkBoolOption;
         };
 
-        drivers.rtl8821ce = mkOption { type = types.bool; };
+        drivers.rtl8821ce = mkBoolOption;
 
         gpus = {
           amd = {
-            enable = mkOption { type = types.bool; };
-            rocm = mkOption { type = types.bool; };
+            enable = mkBoolOption;
+            rocm = mkBoolOption;
           };
 
           nvidia = {
-            enable = mkOption { type = types.bool; };
-            beta = mkOption { type = types.bool; };
-            cuda = mkOption { type = types.bool; };
-            openDrivers = mkOption { type = types.bool; };
+            enable = mkBoolOption;
+            beta = mkBoolOption;
+            cuda = mkBoolOption;
+            openDrivers = mkBoolOption;
 
             powerLimit = {
-              enable = mkOption { type = types.bool; };
-              value = mkOption { type = types.number; };
+              enable = mkBoolOption;
+              value = mkNumberOption;
             };
           };
         };
 
-        monitors = mkOption {
-          type = types.listOf (
-            types.submodule {
-              options = {
-                name = mkOption { type = types.str; };
-                disable = mkOption { type = types.bool; };
-                resolution = mkOption { type = types.str; };
-                refreshRate = mkOption { type = types.number; };
-                position = mkOption { type = types.str; };
-                scaling = mkOption { type = types.number; };
-                rotation = mkOption { type = types.number; };
-                tenBit = mkOption { type = types.bool; };
-              };
-            }
-          );
+        monitors = mkSubmoduleListOption {
+          name = mkStrOption;
+          disable = mkBoolOption;
+          resolution = mkStrOption;
+          refreshRate = mkNumberOption;
+          position = mkStrOption;
+          scaling = mkNumberOption;
+          rotation = mkNumberOption;
+          tenBit = mkBoolOption;
         };
 
         networking = {
-          hostname = mkOption { type = types.str; };
-          hosts = mkOption { type = types.lines; };
-          ipv6 = mkOption { type = types.bool; };
-          vpnExcludeIp = mkOption { type = types.str; };
+          hostname = mkStrOption;
+          hosts = mkLinesOption;
+          ipv6 = mkBoolOption;
+          vpnExcludeIp = mkStrOption;
 
           wg-quick = {
-            enable = mkOption { type = types.bool; };
-            interfaces = mkOption { type = with types; listOf str; };
+            enable = mkBoolOption;
+            interfaces = mkStrListOption;
           };
         };
 
-        mounts = mkOption {
-          type = types.listOf (
-            types.submodule {
-              options = {
-                path = mkOption { type = types.str; };
-                device = mkOption { type = types.str; };
-                fsType = mkOption { type = types.str; };
-                flags = mkOption { type = with types; listOf str; };
-              };
-            }
-          );
+        mounts = mkSubmoduleListOption {
+          path = mkStrOption;
+          device = mkStrOption;
+          fsType = mkStrOption;
+          flags = mkStrListOption;
         };
       };
 
       system = {
-        channels = mkOption { type = types.listOf types.str; };
-        forceFirstBuild = mkOption { type = types.bool; };
+        channels = mkStrListOption;
+        forceFirstBuild = mkBoolOption;
 
         generations = {
-          bootEntries = mkOption { type = types.number; };
+          bootEntries = mkNumberOption;
 
           garbageCollect = {
-            automatic = mkOption { type = types.bool; };
-            days = mkOption { type = types.number; };
-            generations = mkOption { type = types.number; };
-            interval = mkOption { type = types.str; };
+            automatic = mkBoolOption;
+            days = mkNumberOption;
+            generations = mkNumberOption;
+            interval = mkStrOption;
           };
         };
 
-        home = mkOption { type = types.str; };
-        kernel = mkOption { type = types.str; };
-        swappiness = mkOption { type = types.number; };
+        home = mkStrOption;
+        kernel = mkStrOption;
+        swappiness = mkNumberOption;
 
-        users = mkOption {
-          type = types.attrsOf (
-            types.submodule (_: {
-              options = {
-                description = mkOption { type = types.str; };
-                type = mkOption { type = types.str; };
+        users = mkSubmoduleAttrsOption {
+          description = mkStrOption;
+          type = mkStrOption;
 
-                applications = {
-                  codium = {
-                    autoSave = mkOption { type = types.str; };
-                    formatOnSave = mkOption { type = types.bool; };
-                    formatOnPaste = mkOption { type = types.bool; };
-                  };
+          applications = {
+            codium = {
+              autoSave = mkStrOption;
+              formatOnSave = mkBoolOption;
+              formatOnPaste = mkBoolOption;
+            };
 
-                  git = {
-                    username = mkOption { type = types.str; };
-                    email = mkOption { type = types.str; };
-                  };
+            git = {
+              username = mkStrOption;
+              email = mkStrOption;
+            };
+          };
+
+          desktop = {
+            gnome = {
+              pinnedApps = {
+                arcmenu = {
+                  enable = mkBoolOption;
+                  list = mkStrListOption;
                 };
 
-                desktop = {
-                  gnome = {
-                    pinnedApps = {
-                      arcmenu = {
-                        enable = mkOption { type = types.bool; };
-                        list = mkOption { type = with types; listOf str; };
-                      };
-
-                      shell = {
-                        enable = mkOption { type = types.bool; };
-                        list = mkOption { type = with types; listOf str; };
-                      };
-                    };
-
-                    startupScript = mkOption { type = types.str; };
-                  };
-
-                  idle = {
-                    lock = {
-                      enable = mkOption { type = types.bool; };
-                      seconds = mkOption { type = types.number; };
-                    };
-
-                    disableMonitors = {
-                      enable = mkOption { type = types.bool; };
-                      seconds = mkOption { type = types.number; };
-                    };
-
-                    suspend = {
-                      enable = mkOption { type = types.bool; };
-                      seconds = mkOption { type = types.number; };
-                    };
-                  };
+                shell = {
+                  enable = mkBoolOption;
+                  list = mkStrListOption;
                 };
               };
-            })
-          );
+
+              startupScript = mkStrOption;
+            };
+
+            idle = {
+              lock = {
+                enable = mkBoolOption;
+                seconds = mkNumberOption;
+              };
+
+              disableMonitors = {
+                enable = mkBoolOption;
+                seconds = mkNumberOption;
+              };
+
+              suspend = {
+                enable = mkBoolOption;
+                seconds = mkNumberOption;
+              };
+            };
+          };
         };
 
         virtualisation = {
           containerManager = {
-            enable = mkOption { type = types.bool; };
-            usePodman = mkOption { type = types.bool; };
-            requireSudoForDocker = mkOption { type = types.bool; };
+            enable = mkBoolOption;
+            usePodman = mkBoolOption;
+            requireSudoForDocker = mkBoolOption;
           };
 
-          virtManager = mkOption { type = types.bool; };
-          waydroid = mkOption { type = types.bool; };
+          virtManager = mkBoolOption;
+          waydroid = mkBoolOption;
         };
 
-        version = mkOption { type = types.str; };
+        version = mkStrOption;
       };
     };
   };
