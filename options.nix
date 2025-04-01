@@ -49,6 +49,7 @@ in
         defaultEditor = mkStrOption;
         extraPackages = mkStrListOption;
         input-remapper = mkBoolOption;
+        insecurePackages = mkStrListOption;
 
         kitty = {
           enable = mkBoolOption;

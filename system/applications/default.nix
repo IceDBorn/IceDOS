@@ -43,4 +43,6 @@ in
       wget # Terminal downloader
     ]
     ++ (pkgMapper cfg.applications.extraPackages);
+
+  nixpkgs.config.permittedInsecurePackages = cfg.applications.insecurePackages;
 }

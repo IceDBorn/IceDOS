@@ -1,5 +1,6 @@
 [icedos.applications]
 extraPackages = []
+insecurePackages = []
 aagl = false
 android-tools = false
 celluloid = true
