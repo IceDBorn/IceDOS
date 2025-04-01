@@ -8,7 +8,6 @@ defaultBrowser = "zen" # Options: 'librewolf', 'zen'
 defaultEditor = "zed" # Options: 'codium', 'zed'
 input-remapper = true
 librewolf = false
-mysql = false
 nautilus = true
 php = false
 rust = false

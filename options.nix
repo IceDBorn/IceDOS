@@ -43,7 +43,6 @@ in
           gui = mkOption { type = types.bool; };
         };
 
-        mysql = mkOption { type = types.bool; };
         nautilus = mkOption { type = types.bool; };
 
         network-manager = {
