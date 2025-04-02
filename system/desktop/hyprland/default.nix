@@ -25,7 +25,6 @@ in
     systemPackages = with pkgs; [
       baobab # Disk usage analyser
       file-roller # Archive file manager
-      gnome-calculator # Calculator
       gnome-disk-utility # Disks manager
       gnome-keyring # Keyring daemon
       gnome-online-accounts # Nextcloud integration
