@@ -31,7 +31,6 @@ in
       gnome-themes-extra # Adwaita GTK theme
       hyprshade # Shader config tool
       slurp # Monitor selector
-      swappy # Edit screenshots
       wdisplays # Displays manager
     ];
   };
