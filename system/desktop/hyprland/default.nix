@@ -30,7 +30,6 @@ in
       gnome-online-accounts # Nextcloud integration
       gnome-themes-extra # Adwaita GTK theme
       hyprshade # Shader config tool
-      slurp # Monitor selector
       wdisplays # Displays manager
     ];
   };
