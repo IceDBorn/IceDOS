@@ -23,7 +23,7 @@ let
     || cfg.system.kernel == "valve";
 
   librewolf = cfg.applications.librewolf;
-  server = cfg.hardware.devices.server.enable;
+  server = cfg.hardware.devices.server;
   steam-session = cfg.applications.steam.session.enable;
   users = attrNames cfg.system.users;
   zen-browser = cfg.applications.zen-browser.enable;

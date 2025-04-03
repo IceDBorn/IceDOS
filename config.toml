@@ -223,17 +223,11 @@ value = "-p 0 -v 3C -f A0" # Pstate 0, 1.175 voltage, 4000 clock speed
 
 [icedos.hardware.devices]
 laptop = false
+server = false
 steamdeck = false
 
 [icedos.hardware.drivers]
 rtl8821ce = false # Use the unofficial RTL8821CE driver
-
-[icedos.hardware.devices.server]
-enable = false
-dns = "9.9.9.9"
-gateway = "192.168.1.1"
-interface = "eno1"
-ip = "192.168.1.3"
 
 [icedos.hardware.gpus.amd]
 enable = true
@@ -264,7 +258,7 @@ name = "DP-1"
 disable = false
 resolution = "1920x1080"
 refreshRate = 144
-position = "7280x360"
+position = "7280x300"
 scaling = 1
 rotation = 0
 tenBit = false
@@ -308,7 +302,7 @@ interval = "Mon *-*-* 00:00:00" # Format(https://www.freedesktop.org/software/sy
 
 [icedos.system.users.icedborn]
 description = "IceDBorn"
-type = "main" # Options: 'main', 'work', 'server'
+type = "main" # Options: 'main', 'work'
 
 [icedos.system.users.icedborn.applications.codium]
 autoSave = "off" # Options: 'off', 'afterDelay', 'onFocusChange', 'onWindowChange'

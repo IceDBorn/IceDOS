@@ -245,15 +245,7 @@ in
 
         devices = {
           laptop = mkBoolOption;
-
-          server = {
-            enable = mkBoolOption;
-            dns = mkStrOption;
-            gateway = mkStrOption;
-            interface = mkStrOption;
-            ip = mkStrOption;
-          };
-
+          server = mkBoolOption;
           steamdeck = mkBoolOption;
         };
 

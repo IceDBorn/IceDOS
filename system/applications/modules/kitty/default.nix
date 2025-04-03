@@ -11,7 +11,7 @@ in
 mkIf (cfg.applications.kitty.enable) {
   home-manager.users = mapAttrs (user: _: {
     programs.kitty = {
-      enable = (cfg.system.users.${user}.type != "server");
+      enable = true;
       settings = {
         background_opacity = "0.8";
         confirm_os_window_close = "0";

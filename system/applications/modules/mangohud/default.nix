@@ -16,7 +16,7 @@ mkIf (cfg.applications.mangohud.enable) {
     in
     {
       programs.mangohud = {
-        enable = (type != "server" && type != "work");
+        enable = (type != "work");
 
         settings = {
           background_alpha = 0;
