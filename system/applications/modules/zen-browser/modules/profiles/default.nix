@@ -1,5 +1,6 @@
 {
   config,
+  inputs,
   lib,
   pkgs,
   ...
@@ -20,7 +21,9 @@ in
   environment.systemPackages = map (
     profile:
     pkgs.writeShellScriptBin profile.exec ''
-      zen --no-remote -P ${profile.exec} --name "${profile.exec}" ${toString profile.sites}
+      ${
+        inputs.zen-browser.packages."${pkgs.system}".default
+      }/bin/zen-beta --no-remote -P ${profile.exec} --name "${profile.exec}" ${toString profile.sites}
     ''
   ) profiles;
 

@@ -25,7 +25,7 @@ in
   environment = {
     sessionVariables.DEFAULT_BROWSER = mkIf (
       cfg.applications.zen-browser.enable && cfg.applications.defaultBrowser == "zen"
-    ) "${package}/bin/zen";
+    ) "${package}/bin/zen-beta";
 
     systemPackages = [ package ];
   };
