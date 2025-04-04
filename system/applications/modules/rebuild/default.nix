@@ -7,7 +7,7 @@
 let
   builder =
     c: u:
-    pkgs.writeShellScriptBin "${c}" ''
+    "${pkgs.writeShellScript "${c}" ''
       function cache() {
         FILE="$1"
 
@@ -37,12 +37,19 @@ let
       else
         nix-shell ./build.sh $@
       fi
-    '';
-
+    ''}";
 in
 {
-  environment.systemPackages = [
-    (builder "rebuild" "false")
-    (builder "update" "true")
+  config.icedos.internals.icedos-toolset.commands = [
+    {
+      bin = toString (builder "rebuild" "false");
+      command = "rebuild";
+      help = "rebuilds the system";
+    }
+    {
+      bin = toString (builder "update" "true");
+      command = "update";
+      help = "updates flake.lock and rebuilds the system";
+    }
   ];
 }

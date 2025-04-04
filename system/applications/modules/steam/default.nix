@@ -81,7 +81,7 @@ let
             break
             ;;
           -*|--*)
-            echo "Unknown option: $1" >&2
+            echo "Unknown arg: $1" >&2
             exit 1
             ;;
         esac
