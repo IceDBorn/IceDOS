@@ -15,7 +15,7 @@ in
       if [[ "$1" == "" || "$1" == "help" ]]; then
         ${concatMapStrings (tool: ''
           echo "${tool.command}: ${tool.help}"
-        '') cfg.internals.icedos-toolset.commands}
+        '') cfg.internals.toolset.commands}
         exit 0
       fi
 
@@ -25,7 +25,7 @@ in
             shift
             exec ${tool.bin} "$@"
             ;;
-        '') cfg.internals.icedos-toolset.commands}
+        '') cfg.internals.toolset.commands}
         *|-*|--*)
           echo "Unknown arg: $1" >&2
           exit 1

@@ -49,7 +49,7 @@ in
 
     isFirstBuild = mkBoolOption (false);
 
-    icedos-toolset.commands = mkSubmoduleListOption ({
+    toolset.commands = mkSubmoduleListOption ({
       bin = mkStrOption ("");
       command = mkStrOption ("");
       help = mkStrOption ("");

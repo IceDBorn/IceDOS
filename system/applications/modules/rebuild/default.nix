@@ -40,7 +40,7 @@ let
     ''}";
 in
 {
-  config.icedos.internals.icedos-toolset.commands = [
+  config.icedos.internals.toolset.commands = [
     {
       bin = toString (builder "rebuild" "false");
       command = "rebuild";
