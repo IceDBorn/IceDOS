@@ -13,7 +13,7 @@ let
     ;
 
   cfg = config.icedos;
-  hyproled = cfg.desktop.hyprland.hyproled;
+  hyproled = cfg.desktop.hyprland.plugins.hyproled;
   startWidth = toString (hyproled.startWidth);
   startHeight = toString (hyproled.startHeight);
   endWidth = toString (hyproled.endWidth);

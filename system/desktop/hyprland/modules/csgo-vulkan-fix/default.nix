@@ -13,7 +13,7 @@ let
 
   cfg = config.icedos;
 in
-mkIf (cfg.desktop.hyprland.cs2fix.enable) {
+mkIf (cfg.desktop.hyprland.plugins.cs2fix.enable) {
   home-manager.users = mapAttrs (user: _: {
     wayland.windowManager.hyprland = {
       plugins = [ pkgs.hyprlandPlugins.csgo-vulkan-fix ];

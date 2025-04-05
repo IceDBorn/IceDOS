@@ -116,7 +116,7 @@ in
                     pidof $1 || "$@" &
                   }
 
-                  ${cfg.desktop.hyprland.startupScript}
+                  ${cfg.desktop.hyprland.settings.startupScript}
                 '')
               ]
             }/hyprland-startup
@@ -134,7 +134,7 @@ in
 
         input = {
           accel_profile = "flat";
-          follow_mouse = cfg.desktop.hyprland.followMouse;
+          follow_mouse = cfg.desktop.hyprland.settings.followMouse;
           kb_layout = "us,gr";
           kb_options = "grp:win_space_toggle";
         };
@@ -169,7 +169,7 @@ in
 
         windowrulev2 = [
           "noborder, fullscreen:1" # Hide maximized window borders
-        ] ++ cfg.desktop.hyprland.windowRules;
+        ] ++ cfg.desktop.hyprland.settings.windowRules;
 
         workspace = (
           concatLists (

@@ -196,32 +196,30 @@ in
         hyprland = {
           enable = mkBoolOption;
 
-          cs2fix = {
-            enable = mkBoolOption;
-            width = mkNumberOption;
-            height = mkNumberOption;
+          plugins = {
+            cs2fix = {
+              enable = mkBoolOption;
+              width = mkNumberOption;
+              height = mkNumberOption;
+            };
+
+            hyprspace = mkBoolOption;
+
+            hyproled = {
+              enable = mkBoolOption;
+              startWidth = mkNumberOption;
+              startHeight = mkNumberOption;
+              endWidth = mkNumberOption;
+              endHeight = mkNumberOption;
+            };
           };
 
-          followMouse = mkNumberOption;
-          hyprspace = mkBoolOption;
-
-          hyproled = {
-            enable = mkBoolOption;
-            startWidth = mkNumberOption;
-            startHeight = mkNumberOption;
-            endWidth = mkNumberOption;
-            endHeight = mkNumberOption;
-          };
-
-          lock = {
+          settings = {
+            followMouse = mkNumberOption;
             secondsToLowerBrightness = mkNumberOption;
-            cpuUsageThreshold = mkNumberOption;
-            diskUsageThreshold = mkNumberOption;
-            networkUsageThreshold = mkNumberOption;
+            startupScript = mkStrOption;
+            windowRules = mkStrListOption;
           };
-
-          startupScript = mkStrOption;
-          windowRules = mkStrListOption;
         };
       };
 
@@ -355,6 +353,33 @@ in
             };
 
             idle = {
+              sd-inhibitor = {
+                enable = mkBoolOption;
+
+                watchers = {
+                  cpu = {
+                    enable = mkBoolOption;
+                    threshold = mkNumberOption;
+                  };
+
+                  disk = {
+                    enable = mkBoolOption;
+                    threshold = mkNumberOption;
+                  };
+
+                  network = {
+                    enable = mkBoolOption;
+                    threshold = mkNumberOption;
+                  };
+
+                  pipewire = {
+                    enable = mkBoolOption;
+                    inputsToIgnore = mkStrListOption;
+                    outputsToIgnore = mkStrListOption;
+                  };
+                };
+              };
+
               lock = {
                 enable = mkBoolOption;
                 seconds = mkNumberOption;

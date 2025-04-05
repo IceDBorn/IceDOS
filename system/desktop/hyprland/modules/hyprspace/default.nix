@@ -30,7 +30,7 @@ let
       }
       .${cfg.desktop.gnome.accentColor};
 in
-mkIf (cfg.desktop.hyprland.hyprspace) {
+mkIf (cfg.desktop.hyprland.plugins.hyprspace) {
   home-manager.users = mapAttrs (user: _: {
     wayland.windowManager.hyprland = {
       plugins = [ pkgs.hyprlandPlugins.hyprspace ];

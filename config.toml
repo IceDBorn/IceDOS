@@ -86,7 +86,6 @@ exec = "zen-social"
 pwa = true
 icon = "zen"
 name = "Zen Social"
-
 sites = [
   "https://mail.proton.me",
   "https://develop.element.io",
@@ -138,9 +137,10 @@ maxWorkspaces = 1 # Determines the maximum number of workspaces when dynamic wor
 
 [icedos.desktop.hyprland]
 enable = true
-followMouse = 1 # Options: https://wiki.hyprland.org/Configuring/Variables/#follow-mouse-cursor
-hyprspace = false
 
+[icedos.desktop.hyprland.settings]
+followMouse = 1 # Options: https://wiki.hyprland.org/Configuring/Variables/#follow-mouse-cursor
+secondsToLowerBrightness = 60
 startupScript = """
 run zen
 run zen-social
@@ -152,7 +152,6 @@ run zeditor
 kitty --class task-managers btop &
 kitty --class terminals tmux new -s terminals \\; split-window -v \\; select-pane -U \\; split-window -h \\; select-pane -D &
 """
-
 windowRules = [
   "workspace 1 silent, class:^(zen)$",
   "workspace 2 silent, class:^(dev.zed.Zed)$",
@@ -165,23 +164,20 @@ windowRules = [
   "workspace 15 silent, class:^(terminals)$",
 ]
 
-[icedos.desktop.hyprland.cs2fix]
+[icedos.desktop.hyprland.plugins]
+hyprspace = true
+
+[icedos.desktop.hyprland.plugins.cs2fix]
 enable = false
 width = 1440
 height = 1080
 
-[icedos.desktop.hyprland.hyproled]
+[icedos.desktop.hyprland.plugins.hyproled]
 enable = false
 startWidth = 0
 startHeight = 0
 endWidth = 3440
 endHeight = 1440
-
-[icedos.desktop.hyprland.lock]
-secondsToLowerBrightness = 60
-cpuUsageThreshold = 60 # CPU usage to inhibit lock in percentage
-diskUsageThreshold = 10 # Disk usage to inhibit lock in MB/s
-networkUsageThreshold = 1_000_000 # Network usage to inhibit lock in bytes/s
 
 [icedos.hardware]
 bluetooth = true
@@ -330,6 +326,26 @@ list = [
   "signal-desktop.desktop",
   "librewolf.desktop",
 ]
+
+[icedos.system.users.icedborn.desktop.idle.sd-inhibitor]
+enable = true
+
+[icedos.system.users.icedborn.desktop.idle.sd-inhibitor.watchers.cpu]
+enable = true
+threshold = 60 # CPU usage to inhibit lock in percentage
+
+[icedos.system.users.icedborn.desktop.idle.sd-inhibitor.watchers.disk]
+enable = true
+threshold = 10 # Disk usage to inhibit lock in MB/s
+
+[icedos.system.users.icedborn.desktop.idle.sd-inhibitor.watchers.network]
+enable = true
+threshold = 1_000_000 # Network usage to inhibit lock in bytes/s
+
+[icedos.system.users.icedborn.desktop.idle.sd-inhibitor.watchers.pipewire]
+enable = true
+inputsToIgnore = ["Noise Canceling source", "Peak detect", "cava"]
+outputsToIgnore = ["Discord", "Element"]
 
 [icedos.system.users.icedborn.desktop.idle.lock]
 enable = true

@@ -6,26 +6,25 @@
 }:
 
 let
-  inherit (lib) attrNames filterAttrs mapAttrs;
+  inherit (lib) mapAttrs;
   cfg = config.icedos;
-
-  getModules =
-    path:
-    map (dir: ./. + ("/modules/" + dir)) (
-      attrNames (filterAttrs (_: v: v == "directory") (builtins.readDir path))
-    );
 in
 {
-  imports = getModules (./modules);
-
-  environment.systemPackages = with pkgs; [
-    jq
-    sysstat
-  ];
-
+  environment.systemPackages = [ pkgs.jq ];
   security.pam.services.hyprlock = { };
 
   home-manager.users = mapAttrs (user: _: {
+    wayland.windowManager.hyprland.settings.bind = [
+      "$mainMod, L, exec, ${pkgs.writeShellScript "lock" ''
+        lock="/tmp/icedos/lock"
+
+        if [ -f "$lock" ]; then
+          kill -9 "$(cat "$lock")"
+          loginctl lock-session
+        fi
+      ''}"
+    ];
+
     programs.hyprlock = {
       enable = true;
 
