@@ -10,9 +10,28 @@ let
   inherit (lib) mapAttrs mapAttrsToList;
 in
 {
-  environment.systemPackages = [
-    (pkgs.writeShellScriptBin "list-pkgs" "nix-store --query --requisites /run/current-system | cut -d- -f2- | sort | uniq")
-    (pkgs.writeShellScriptBin "repair-store" "nix-store --verify --check-contents --repair")
+  icedos.internals.toolset.commands = [
+    (
+      let
+        command = "pkgs";
+      in
+      {
+        bin = "${pkgs.writeShellScript command "nix-store --query --requisites /run/current-system | cut -d- -f2- | sort | uniq"}";
+        command = command;
+        help = "list all installed packages";
+      }
+    )
+
+    (
+      let
+        command = "repair";
+      in
+      {
+        bin = "${pkgs.writeShellScript command "nix-store --verify --check-contents --repair"}";
+        command = command;
+        help = "repair nix store";
+      }
+    )
   ];
 
   nix = {
