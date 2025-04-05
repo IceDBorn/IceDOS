@@ -10,14 +10,6 @@ let
   cfg = config.icedos;
   powerLimit = cfg.hardware.gpus.nvidia.powerLimit;
   nvidia_x11 = config.boot.kernelPackages.nvidia_x11.bin;
-
-  nvidia-offload = pkgs.writeShellScriptBin "nvidia-offload" ''
-    export __NV_PRIME_RENDER_OFFLOAD=1
-    export __NV_PRIME_RENDER_OFFLOAD_PROVIDER=NVIDIA-G0
-    export __GLX_VENDOR_LIBRARY_NAME=nvidia
-    export __VK_LAYER_NV_optimus=NVIDIA_only
-    exec "$@"
-  '';
 in
 mkIf (cfg.hardware.gpus.nvidia.enable) {
   services.xserver.videoDrivers = [ "nvidia" ]; # Install the nvidia drivers
@@ -50,7 +42,26 @@ mkIf (cfg.hardware.gpus.nvidia.enable) {
     && cfg.system.virtualisation.containerManager.usePodman
   );
 
-  environment.systemPackages = [ ] ++ optional (cfg.hardware.devices.laptop) nvidia-offload; # Use nvidia-offload to launch programs using the nvidia GPU
+  icedos.internals.toolset.commands = mkIf (cfg.hardware.devices.laptop) [
+    (
+      let
+        command = "force-nvidia";
+      in
+      {
+        bin = "${pkgs.writeShellScript command ''
+          export __NV_PRIME_RENDER_OFFLOAD=1
+          export __NV_PRIME_RENDER_OFFLOAD_PROVIDER=NVIDIA-G0
+          export __GLX_VENDOR_LIBRARY_NAME=nvidia
+          export __VK_LAYER_NV_optimus=NVIDIA_only
+          exec "$@"
+        ''}";
+
+        command = command;
+        help = "forces command to use nvidia gpu";
+      }
+    )
+  ];
+
   nixpkgs.config.cudaSupport = cfg.hardware.gpus.nvidia.cuda;
 
   # Set nvidia gpu power limit
