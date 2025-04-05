@@ -153,7 +153,7 @@ kitty --class task-managers btop &
 kitty --class terminals tmux new -s terminals \\; split-window -v \\; select-pane -U \\; split-window -h \\; select-pane -D &
 """
 windowRules = [
-  "workspace 1 silent, class:^(zen)$",
+  "workspace 1 silent, class:^(zen-beta)$",
   "workspace 2 silent, class:^(dev.zed.Zed)$",
   "workspace 3 silent, class:^(steam_app_.*)$, title:^((?!notificationtoasts.*).)*$",
   "workspace 11 silent, class:^(de.schmidhuberj.Flare|zen-social)$",
