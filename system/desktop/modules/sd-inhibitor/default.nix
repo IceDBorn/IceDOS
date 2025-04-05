@@ -11,6 +11,7 @@ let
     filterAttrs
     mapAttrs
     mkIf
+    optional
     readFile
     ;
 
@@ -38,8 +39,16 @@ in
           )
         )
         {
-          Unit.Description = "Service to";
-          Install.WantedBy = [ "graphical-session.target" ];
+          Unit = {
+            Description = "service to inhibit idle, sleep and shutdown based on device usage limits";
+            After = "graphical-session.target";
+            PartOf = "graphical-session.target";
+          };
+
+          Install.WantedBy =
+            [ ]
+            ++ optional (cfg.desktop.hyprland.enable) "hyprland-session.target"
+            ++ optional (cfg.desktop.gnome.enable) "gnome-session.target";
 
           Service = {
             ExecStart = with pkgs; "${writeShellScript "sd-inhibitor" (readFile ./sd-inhibitor.sh)}";
