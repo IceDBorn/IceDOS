@@ -13,7 +13,7 @@ in
 {
   icedos.internals.toolset.commands = [
     {
-      bin = "${pkgs.writeShellScript command "nh clean all -k ${generations} -K ${days}"}";
+      bin = "${pkgs.writeShellScript command ''"${pkgs.nh}/bin/nh" clean all -k "${generations}" -K "${days}"''}";
       command = command;
       help = "garbage collect nix, plus home manager store and profiles";
     }
