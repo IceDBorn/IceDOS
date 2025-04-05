@@ -4,10 +4,10 @@
 }:
 
 let
-  command = "clear-xdg-portals";
+  command = "clear-portals";
 in
 {
-  config.icedos.internals.toolset.commands = [
+  icedos.internals.toolset.commands = [
     {
       bin = "${pkgs.writeShellScript command ''
         PORTAL="xdg-desktop-portal"
@@ -19,7 +19,7 @@ in
       ''}";
 
       command = command;
-      help = "removes all xdg portal files";
+      help = "remove all xdg portal files";
     }
   ];
 }

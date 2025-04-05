@@ -40,16 +40,27 @@ let
     ''}";
 in
 {
-  config.icedos.internals.toolset.commands = [
-    {
-      bin = toString (builder "rebuild" "false");
-      command = "rebuild";
-      help = "rebuilds the system";
-    }
-    {
-      bin = toString (builder "update" "true");
-      command = "update";
-      help = "updates flake.lock and rebuilds the system";
-    }
+  icedos.internals.toolset.commands = [
+    (
+      let
+        command = "rebuild";
+      in
+      {
+        bin = toString (builder command "false");
+        command = command;
+        help = "rebuild the system";
+      }
+    )
+
+    (
+      let
+        command = "update";
+      in
+      {
+        bin = toString (builder command "true");
+        command = command;
+        help = "update flake.lock and rebuild the system";
+      }
+    )
   ];
 }

@@ -6,12 +6,17 @@
 
 let
   cfg = config.icedos.system.generations.garbageCollect;
+  command = "gc";
   days = "${toString (cfg.days)}d";
   generations = toString (cfg.generations);
 in
 {
-  environment.systemPackages = [
-    (pkgs.writeShellScriptBin "nix-gc" "nh clean all -k ${generations} -K ${days}")
+  icedos.internals.toolset.commands = [
+    {
+      bin = "${pkgs.writeShellScript command "nh clean all -k ${generations} -K ${days}"}";
+      command = command;
+      help = "garbage collect nix, plus home manager store and profiles";
+    }
   ];
 
   programs.nh = {

@@ -7,11 +7,11 @@ let
   command = "logout";
 in
 {
-  config.icedos.internals.toolset.commands = [
+  icedos.internals.toolset.commands = [
     {
       bin = "${pkgs.writeShellScript command "pkill -KILL -u $USER"}";
       command = command;
-      help = "force kills all current user processes";
+      help = "force kill all current user processes";
     }
   ];
 }
