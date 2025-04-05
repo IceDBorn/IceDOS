@@ -19,7 +19,7 @@ in
       ''}";
 
       command = command;
-      help = "remove all xdg portal files";
+      help = "remove all xdg portal files, useful if portals are malfunctioning";
     }
   ];
 }

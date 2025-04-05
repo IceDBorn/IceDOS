@@ -21,7 +21,7 @@
           "${pkgs.aria}/bin/aria2c" -j 16 -s 16 "$@"
         ''}";
         command = command;
-        help = "download file from url with aria2c using 16 connections";
+        help = "download provided url using aria2c utizing 16 connections";
       }
     )
   ];

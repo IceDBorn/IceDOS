@@ -11,7 +11,7 @@ in
     {
       bin = "${pkgs.writeShellScript command "pkill -KILL -u $USER"}";
       command = command;
-      help = "force kill all current user processes";
+      help = "force kill all current user processes, resulting in a logout";
     }
   ];
 }

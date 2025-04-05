@@ -18,7 +18,7 @@ in
       {
         bin = "${pkgs.writeShellScript command "nix-store --query --requisites /run/current-system | cut -d- -f2- | sort | uniq"}";
         command = command;
-        help = "list all installed packages";
+        help = "list installed packages";
       }
     )
 

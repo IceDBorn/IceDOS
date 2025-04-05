@@ -15,7 +15,7 @@ in
     {
       bin = "${pkgs.writeShellScript command ''"${pkgs.nh}/bin/nh" clean all -k "${generations}" -K "${days}"''}";
       command = command;
-      help = "garbage collect nix, plus home manager store and profiles";
+      help = "clean nix plus home manager, store and profiles";
     }
   ];
 
