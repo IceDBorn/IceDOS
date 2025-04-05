@@ -34,7 +34,6 @@ in
       efibootmgr # Edit EFI entries
       killall # Tool to kill all programs matching process name
       lazygit # Git TUI
-      ncdu # Terminal disk analyzer
       ntfs3g # Support NTFS drives
       p7zip # 7zip
       unrar # Support opening rar files
