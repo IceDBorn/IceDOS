@@ -6,10 +6,24 @@
 }:
 
 let
-  inherit (lib) concatMapStrings;
+  inherit (lib)
+    attrNames
+    concatMapStrings
+    filterAttrs
+    sort
+    ;
+
   cfg = config.icedos;
+
+  getModules =
+    path:
+    map (dir: ./. + ("/modules/" + dir)) (
+      attrNames (filterAttrs (_: v: v == "directory") (builtins.readDir path))
+    );
 in
 {
+  imports = getModules (./modules);
+
   environment.systemPackages = [
     (
       let
@@ -24,7 +38,7 @@ in
 
           ${concatMapStrings (tool: ''
             echo -e "> ${purpleString tool.command}: ${tool.help} "
-          '') cfg.internals.toolset.commands}
+          '') (sort (a: b: a.command < b.command) (cfg.internals.toolset.commands))}
 
           exit 0
         fi
