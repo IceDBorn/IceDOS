@@ -54,7 +54,7 @@ in
                 echo "Select a display:"
 
                 select monitor in "''${ACTIVE_MONITORS[@]}"; do
-                  [ "$monitor" != "" ] && xrandr --output "$monitor" --primary && echo "Set active monitor to $monitor" && exit 0
+                  [ "$monitor" != "" ] && xrandr --output "$monitor" --primary && echo "Set primary monitor to $monitor" && exit 0
                   echo "error: not a valid selection, try again"
                 done
               ''}";
