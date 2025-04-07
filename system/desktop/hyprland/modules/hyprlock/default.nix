@@ -15,14 +15,7 @@ in
 
   home-manager.users = mapAttrs (user: _: {
     wayland.windowManager.hyprland.settings.bind = [
-      "$mainMod, L, exec, ${pkgs.writeShellScript "lock" ''
-        lock="/tmp/icedos/lock"
-
-        if [ -f "$lock" ]; then
-          kill -9 "$(cat "$lock")"
-          loginctl lock-session
-        fi
-      ''}"
+      "$mainMod, L, exec, ${pkgs.writeShellScript "lock" "loginctl lock-session"}"
     ];
 
     programs.hyprlock = {
