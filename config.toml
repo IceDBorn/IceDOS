@@ -227,6 +227,7 @@ rtl8821ce = false # Use the unofficial RTL8821CE driver
 
 [icedos.hardware.gpus.amd]
 enable = true
+lact = true # GPU overclocking tool
 rocm = true
 
 [icedos.hardware.gpus.nvidia]
