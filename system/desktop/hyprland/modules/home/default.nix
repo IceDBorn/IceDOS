@@ -13,8 +13,10 @@ let
     imap
     makeBinPath
     mapAttrs
+    mkIf
     ;
 
+  animations = cfg.desktop.hyprland.settings.animations;
   cfg = config.icedos;
   monitors = cfg.hardware.monitors;
 
@@ -57,6 +59,11 @@ in
       enable = true;
       settings = {
         "$mainMod" = "SUPER";
+
+        animation =
+          if (animations.enable) then "global, 1, ${toString (animations.speed)}, bezier" else "global, 0";
+
+        bezier = mkIf (animations.enable) "bezier, ${animations.bezierCurve}";
 
         bind =
           [

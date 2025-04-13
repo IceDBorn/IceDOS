@@ -164,8 +164,13 @@ windowRules = [
   "workspace 15 silent, class:^(terminals)$",
 ]
 
+[icedos.desktop.hyprland.settings.animations]
+enable = true
+bezierCurve = "0.83, 0, 0.17, 1" # Presets: https://easings.net
+speed = 2 # Function: (x * 100)ms
+
 [icedos.desktop.hyprland.plugins]
-hyprspace = true
+hyprspace = false
 
 [icedos.desktop.hyprland.plugins.cs2fix]
 enable = false

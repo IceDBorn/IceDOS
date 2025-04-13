@@ -215,6 +215,12 @@ in
           };
 
           settings = {
+            animations = {
+              enable = mkBoolOption;
+              bezierCurve = mkStrOption;
+              speed = mkNumberOption;
+            };
+
             followMouse = mkNumberOption;
             secondsToLowerBrightness = mkNumberOption;
             startupScript = mkStrOption;
