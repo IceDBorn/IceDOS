@@ -258,6 +258,7 @@ in
         gpus = {
           amd = {
             enable = mkBoolOption;
+            lact = mkBoolOption;
             rocm = mkBoolOption;
           };
 

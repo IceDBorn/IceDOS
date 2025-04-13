@@ -15,11 +15,11 @@ mkIf (cfg.enable) {
     kernelParams = [ "amdgpu.ppfeaturemask=0xffffffff" ]; # Unlock all gpu controls
   };
 
-  environment.systemPackages = with pkgs; [ lact ]; # GPU overclocking tool
+  environment.systemPackages = mkIf (cfg.lact) [ pkgs.lact ];
   nixpkgs.config.rocmSupport = cfg.rocm;
 
   # We are creating the lact daemon service manually because the provided one hangs
-  systemd.services.lactd = {
+  systemd.services.lactd = mkIf (cfg.lact) {
     enable = true;
     description = "Radeon GPU monitor";
     after = [
