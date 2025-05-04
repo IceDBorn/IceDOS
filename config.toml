@@ -54,7 +54,7 @@ enable = false
 desktopSession = "hyprland"
 
 [icedos.applications.tailscale]
-enable = true
+enable = false
 enableTrayscale = true
 
 [icedos.applications.valent]
@@ -93,7 +93,7 @@ sites = [
 ]
 
 [icedos.bootloader]
-animation = true # Hides console and displays a loading interface based on OEM on boot
+animation = false # Hides console and displays a loading interface based on OEM on boot
 
 [icedos.bootloader.grub]
 enable = false

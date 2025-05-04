@@ -6,11 +6,20 @@
 }:
 
 let
-  inherit (lib) concatMapStrings mkIf sort;
+  inherit (lib)
+    concatMapStrings
+    head
+    mapAttrs
+    mkIf
+    sort
+    ;
+
   cfg = config.icedos;
   command = "displays";
   gnome = cfg.desktop.gnome.enable;
   hyprland = cfg.desktop.hyprland.enable;
+  tempConfigPath = "/tmp/icedos";
+  primaryDisplayPath = "${tempConfigPath}/primary-display";
 in
 {
   icedos.internals.toolset.commands = mkIf (gnome || hyprland) [
@@ -50,11 +59,14 @@ in
             {
               bin = "${pkgs.writeShellScript command ''
                 ACTIVE_MONITORS=($(xrandr --listactivemonitors | grep '+0' | awk '{ print $4 }' | sort))
+                TEMP_CONFIG_PATH="${tempConfigPath}"
+                PRIMARY_DISPLAY_PATH="${primaryDisplayPath}"
 
+                mkdir -p "$TEMP_CONFIG_PATH"
                 echo "Select a display:"
 
                 select monitor in "''${ACTIVE_MONITORS[@]}"; do
-                  [ "$monitor" != "" ] && xrandr --output "$monitor" --primary && echo "Set primary monitor to $monitor" && exit 0
+                  [ "$monitor" != "" ] && echo "$monitor" > "$PRIMARY_DISPLAY_PATH" && exit 0
                   echo "error: not a valid selection, try again"
                 done
               ''}";
@@ -102,4 +114,53 @@ in
       }
     )
   ];
+
+  home-manager.users = mapAttrs (user: _: {
+    systemd.user.services.xprimary = {
+      Unit.Description = "X11 primary display watcher";
+      Install.WantedBy = [ "graphical-session.target" ];
+
+      Service = {
+        ExecStart =
+          let
+            coreutils = pkgs.coreutils-full;
+            echo = "${coreutils}/bin/echo";
+            xrandr = "${pkgs.xorg.xrandr}/bin/xrandr";
+          in
+          "${pkgs.writeShellScript "xprimary" ''
+            TEMP_CONFIG_PATH="${tempConfigPath}"
+            PRIMARY_DISPLAY_PATH="${primaryDisplayPath}"
+            PRIMARY_DISPLAY="${(head (cfg.hardware.monitors)).name}"
+
+            function setPrimaryMonitor () {
+              ${echo} "$1" > "$PRIMARY_DISPLAY_PATH"
+              ${xrandr} --output "$1" --primary || exit 1
+              ${pkgs.libnotify}/bin/notify-send "System" "Set X11 primary display to $1"
+              ${echo} "Set X11 primary display to $PRIMARY_DISPLAY"
+            }
+
+            setPrimaryMonitor "$PRIMARY_DISPLAY"
+
+            while :; do
+              ${coreutils}/bin/mkdir -p "$TEMP_CONFIG_PATH"
+
+              CURRENT_PRIMARY_DISPLAY="$PRIMARY_DISPLAY"
+              [ -f "$PRIMARY_DISPLAY_PATH" ] && CURRENT_PRIMARY_DISPLAY=$(${coreutils}/bin/cat "$PRIMARY_DISPLAY_PATH")
+
+              [[ "$CURRENT_PRIMARY_DISPLAY" == "$PRIMARY_DISPLAY" && "$(${xrandr} --current | ${pkgs.gnugrep}/bin/grep primary | ${pkgs.gawk}/bin/awk '{print $1}')" == "$CURRENT_PRIMARY_DISPLAY" ]] && continue
+
+              PRIMARY_DISPLAY="$CURRENT_PRIMARY_DISPLAY"
+              setPrimaryMonitor "$PRIMARY_DISPLAY"
+
+              ${coreutils}/bin/sleep 1
+            done
+          ''}";
+
+        Nice = "-20";
+        Restart = "on-failure";
+        StartLimitIntervalSec = 60;
+        StartLimitBurst = 60;
+      };
+    };
+  }) cfg.system.users;
 }
