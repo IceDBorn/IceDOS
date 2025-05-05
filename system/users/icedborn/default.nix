@@ -20,11 +20,11 @@ in
     [
       appimage-run
       blanket
-      bottles
       fragments
       gimp
       harmony-music
       newsflash
+      umu-launcher
       warp
     ]
     ++ launchers;
