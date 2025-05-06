@@ -36,6 +36,11 @@ applet = true
 enable = true
 virtualCamera = false
 
+[icedos.applications.ollama]
+enable = true
+models = ["qwen2.5-coder"] # https://ollama.com/library
+rocmOverrideGfx = "10.3.0" # https://github.com/ollama/ollama/blob/main/docs/gpu.md#amd-radeon
+
 [icedos.applications.signal]
 enable = true
 package = "flare" # Options: 'flare', 'signal'
@@ -63,7 +68,6 @@ deviceId = "901524a4_c7c0_407e_9903_431abce54131"
 
 [icedos.applications.zed]
 enable = true
-ollamaSupport = false
 vim = true
 
 [icedos.applications.zed.theme]

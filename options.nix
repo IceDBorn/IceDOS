@@ -75,6 +75,12 @@ in
           virtualCamera = mkBoolOption;
         };
 
+        ollama = {
+          enable = mkBoolOption;
+          models = mkStrListOption;
+          rocmOverrideGfx = mkStrOption;
+        };
+
         php = mkBoolOption;
         rust = mkBoolOption;
 
@@ -117,7 +123,6 @@ in
 
         zed = {
           enable = mkBoolOption;
-          ollamaSupport = mkBoolOption;
           vim = mkBoolOption;
 
           theme = {
