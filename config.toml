@@ -43,7 +43,7 @@ rocmOverrideGfx = "10.3.0" # https://github.com/ollama/ollama/blob/main/docs/gpu
 
 [icedos.applications.signal]
 enable = true
-package = "flare" # Options: 'flare', 'signal'
+package = "signal" # Options: 'flare', 'signal'
 
 [icedos.applications.steam]
 enable = true
@@ -151,7 +151,7 @@ run zen-social
 nautilus -w &
 nautilus -w &
 run steam
-run flare
+run signal-desktop
 run zeditor
 kitty --class task-managers btop &
 kitty --class terminals tmux new -s terminals \\; split-window -v \\; select-pane -U \\; split-window -h \\; select-pane -D &
@@ -160,7 +160,7 @@ windowRules = [
   "workspace 1 silent, class:^(zen-beta)$",
   "workspace 2 silent, class:^(dev.zed.Zed)$",
   "workspace 3 silent, class:^(steam_app_.*)$, title:^((?!notificationtoasts.*).)*$",
-  "workspace 11 silent, class:^(de.schmidhuberj.Flare|zen-social)$",
+  "workspace 11 silent, class:^(signal|zen-social)$",
   "workspace 12 silent, class:^(Steam|steam)$, title:^((?!notificationtoasts.*).)*$",
   "workspace 12 silent, title:^(.*Steam[A-Za-z0-9\\s]*)$",
   "workspace 13 silent, class:^(org\\.gnome\\.Nautilus)$",
