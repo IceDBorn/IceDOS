@@ -43,7 +43,7 @@ in
   flake.nix = ''
     {
       inputs = {
-        # Update channels
+        # Package repositories
         ${
           if (kernel || steam-session) then
             ''
@@ -53,18 +53,12 @@ in
             ""
         }
 
-        nixpkgs = {
-          url = "github:NixOS/nixpkgs/nixos-unstable";
-
-          ${
-            if (kernel || steam-session) then
-              ''
-                follows = "chaotic/nixpkgs";
-              ''
-            else
-              ""
-          }
-        };
+        nixpkgs.${
+          if (kernel || steam-session) then
+            ''follows = "chaotic/nixpkgs";''
+          else
+            ''url = "github:NixOS/nixpkgs/nixos-unstable";''
+        }
 
         ${concatImapStrings (
           i: channel: ''"${channel}".url = github:NixOS/nixpkgs/${channel};''\n''
@@ -94,10 +88,7 @@ in
         ${
           if (cfg.system.kernel == "valve" || steam-session) then
             ''
-              steam-session = {
-                url = "github:Jovian-Experiments/Jovian-NixOS";
-                follows = "chaotic/jovian";
-              };
+              steam-session.follows = "chaotic/jovian";
             ''
           else
             ""

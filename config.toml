@@ -44,9 +44,14 @@ applet = true
 enable = true
 virtualCamera = false
 
+[icedos.applications.ollama]
+enable = false
+models = ["qwen2.5-coder"] # https://ollama.com/library
+rocmOverrideGfx = "10.3.0" # https://github.com/ollama/ollama/blob/main/docs/gpu.md#amd-radeon
+
 [icedos.applications.signal]
 enable = false
-package = "flare" # Options: 'flare', 'signal'
+package = "signal" # Options: 'flare', 'signal'
 
 [icedos.applications.steam]
 enable = false
@@ -71,7 +76,6 @@ deviceId = "901524a4_c7c0_407e_9903_431abce54131"
 
 [icedos.applications.zed]
 enable = true
-ollamaSupport = false
 vim = true
 
 [icedos.applications.zed.theme]
@@ -95,15 +99,13 @@ pwa = true
 icon = "zen"
 name = "Zen Social"
 sites = [
-  "https://mail.proton.me",
-  "https://develop.element.io",
-  "https://discord.com/app",
   "https://dtekteam.slack.com",
-  "https://teams.microsoft.com/v2/",
+  "https://teams.microsoft.com/v2",
+  "https://gmail.com",
 ]
 
 [icedos.bootloader]
-animation = true # Hides console and displays a loading interface based on OEM on boot
+animation = false # Hides console and displays a loading interface based on OEM on boot
 
 [icedos.bootloader.grub]
 enable = false
@@ -152,22 +154,17 @@ enable = true
 followMouse = 1 # Options: https://wiki.hyprland.org/Configuring/Variables/#follow-mouse-cursor
 secondsToLowerBrightness = 60
 startupScript = """
+run zeditor
 run zen
 run zen-social
 nautilus -w &
 nautilus -w &
-run flare
-run zeditor
-kitty --class task-managers btop &
-kitty --class terminals tmux new -s terminals \\; split-window -v \\; select-pane -U \\; split-window -h \\; select-pane -D &
 """
 windowRules = [
   "workspace 1 silent, class:^(zen-beta)$",
   "workspace 2 silent, class:^(dev.zed.Zed)$",
   "workspace 11 silent, class:^(zen-social)$",
   "workspace 12 silent, class:^(org\\.gnome\\.Nautilus)$",
-  "workspace 13 silent, class:^(task-managers)$",
-  "workspace 14 silent, class:^(terminals)$",
 ]
 
 [icedos.desktop.hyprland.settings.animations]

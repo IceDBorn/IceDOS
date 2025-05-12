@@ -8,8 +8,9 @@
 let
   inherit (lib) mapAttrs mkIf;
   cfg = config.icedos;
+  zed = cfg.applications.zed;
 in
-mkIf (cfg.applications.zed.enable) {
+mkIf (zed.enable) {
   environment.variables.EDITOR = mkIf (cfg.applications.defaultEditor == "zed") "zeditor -n -w";
 
   environment.systemPackages = with pkgs; [
@@ -17,8 +18,6 @@ mkIf (cfg.applications.zed.enable) {
     nixd
     package-version-server
   ];
-
-  services.ollama.enable = cfg.applications.zed.ollamaSupport;
 
   home-manager.users = mapAttrs (user: _: {
     programs.zed-editor = {
@@ -36,16 +35,6 @@ mkIf (cfg.applications.zed.enable) {
       ];
 
       userSettings = {
-        assistant = mkIf (cfg.applications.zed.ollamaSupport) {
-          default_model = {
-            provider = "ollama";
-            model = "llama3.1:latest";
-          };
-
-          version = 2;
-          provider = "null";
-        };
-
         auto_update = false;
         autosave = "off";
         buffer_font_family = "JetBrainsMono Nerd Font";
@@ -61,7 +50,6 @@ mkIf (cfg.applications.zed.enable) {
 
         inlay_hints.enabled = true;
         journal.hour_format = "hour24";
-        language_models.ollama.api_url = "http://localhost:11434";
         lsp.nil.initialization_options.formatting.command = [ "nixfmt" ];
         notification_panel.button = false;
         relative_line_numbers = true;
@@ -76,13 +64,13 @@ mkIf (cfg.applications.zed.enable) {
         };
 
         theme = {
-          dark = cfg.applications.zed.theme.dark;
-          light = cfg.applications.zed.theme.light;
-          mode = cfg.applications.zed.theme.mode;
+          dark = zed.theme.dark;
+          light = zed.theme.light;
+          mode = zed.theme.mode;
         };
 
         ui_font_size = 16;
-        vim_mode = cfg.applications.zed.vim;
+        vim_mode = zed.vim;
       };
     };
   }) cfg.system.users;
