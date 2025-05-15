@@ -64,6 +64,7 @@ in
           maxFpsLimit = mkNumberOption;
         };
 
+        mission-center = mkBoolOption;
         nautilus = mkBoolOption;
 
         network-manager = {

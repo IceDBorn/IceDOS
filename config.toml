@@ -10,6 +10,7 @@ defaultEditor = "zed" # Options: 'codium', 'zed'
 input-remapper = true
 lact = true
 librewolf = false
+mission-center = true
 nautilus = true
 php = false
 rust = false
