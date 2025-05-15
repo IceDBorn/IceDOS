@@ -147,18 +147,17 @@ enable = true
 followMouse = 1 # Options: https://wiki.hyprland.org/Configuring/Variables/#follow-mouse-cursor
 secondsToLowerBrightness = 60
 startupScript = """
-run zen
-run zen-social
 nautilus -w &
 nautilus -w &
-run steam
-run signal-desktop
-run zeditor
+signal-desktop &
+steam &
+zeditor &
+zen-beta --no-remote -P default --name zen-startup &
+zen-social &
 """
 windowRules = [
-  "workspace 1 silent, class:^(zen-beta)$",
+  "workspace 1 silent, class:^(zen-startup)$",
   "workspace 2 silent, class:^(dev.zed.Zed)$",
-  "workspace 3 silent, class:^(steam_app_.*)$, title:^((?!notificationtoasts.*).)*$",
   "workspace 11 silent, class:^(signal|zen-social)$",
   "workspace 12 silent, class:^(Steam|steam)$, title:^((?!notificationtoasts.*).)*$",
   "workspace 12 silent, title:^(.*Steam[A-Za-z0-9\\s]*)$",

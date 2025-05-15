@@ -118,13 +118,7 @@ in
           ''
             ${
               makeBinPath [
-                (pkgs.writeShellScriptBin "hyprland-startup" ''
-                  run () {
-                    pidof $1 || "$@" &
-                  }
-
-                  ${cfg.desktop.hyprland.settings.startupScript}
-                '')
+                (pkgs.writeShellScriptBin "hyprland-startup" cfg.desktop.hyprland.settings.startupScript)
               ]
             }/hyprland-startup
           ''
