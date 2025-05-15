@@ -154,8 +154,6 @@ nautilus -w &
 run steam
 run signal-desktop
 run zeditor
-kitty --class task-managers btop &
-kitty --class terminals tmux new -s terminals \\; split-window -v \\; select-pane -U \\; split-window -h \\; select-pane -D &
 """
 windowRules = [
   "workspace 1 silent, class:^(zen-beta)$",
@@ -165,8 +163,6 @@ windowRules = [
   "workspace 12 silent, class:^(Steam|steam)$, title:^((?!notificationtoasts.*).)*$",
   "workspace 12 silent, title:^(.*Steam[A-Za-z0-9\\s]*)$",
   "workspace 13 silent, class:^(org\\.gnome\\.Nautilus)$",
-  "workspace 14 silent, class:^(task-managers)$",
-  "workspace 15 silent, class:^(terminals)$",
 ]
 
 [icedos.desktop.hyprland.settings.animations]
