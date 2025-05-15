@@ -8,6 +8,7 @@ clamav = false
 defaultBrowser = "zen" # Options: 'librewolf', 'zen'
 defaultEditor = "zed" # Options: 'codium', 'zed'
 input-remapper = true
+lact = true
 librewolf = false
 nautilus = true
 php = false

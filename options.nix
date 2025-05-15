@@ -56,6 +56,7 @@ in
           hideDecorations = mkBoolOption;
         };
 
+        lact = mkBoolOption;
         librewolf = mkBoolOption;
 
         mangohud = {
