@@ -231,6 +231,9 @@ steamdeck = false
 [icedos.hardware.drivers]
 rtl8821ce = false # Use the unofficial RTL8821CE driver
 
+[icedos.hardware.drivers.mesa]
+unstable = true
+
 [icedos.hardware.gpus.amd]
 enable = true
 rocm = true

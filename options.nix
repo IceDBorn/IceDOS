@@ -260,7 +260,10 @@ in
           steamdeck = mkBoolOption;
         };
 
-        drivers.rtl8821ce = mkBoolOption;
+        drivers = {
+          mesa.unstable = mkBoolOption;
+          rtl8821ce = mkBoolOption;
+        };
 
         gpus = {
           amd = {
