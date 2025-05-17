@@ -38,7 +38,6 @@ in
     syntaxHighlighting.enable = true;
 
     shellAliases = {
-      btrfs-compress = "sudo btrfs filesystem defrag -czstd -r -v";
       reboot-uefi = "sudo systemctl reboot --firmware-setup";
       ssh = "TERM=xterm-256color ssh";
     };
