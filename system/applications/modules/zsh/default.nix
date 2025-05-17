@@ -38,7 +38,6 @@ in
     syntaxHighlighting.enable = true;
 
     shellAliases = {
-      reboot-uefi = "sudo systemctl reboot --firmware-setup";
       ssh = "TERM=xterm-256color ssh";
     };
 
