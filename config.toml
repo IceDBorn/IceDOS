@@ -270,7 +270,7 @@ tenBit = false
 
 [[icedos.hardware.monitors]]
 name = "HDMI-A-1"
-disable = false
+disable = true
 resolution = "3840x2160"
 refreshRate = 60
 position = "0x0"
