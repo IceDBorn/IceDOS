@@ -10,4 +10,5 @@ let
 in
 mkIf (cfg.ssh) {
   services.openssh.enable = true;
+  programs.zsh.shellAliases.ssh = "TERM=xterm-256color ssh";
 }

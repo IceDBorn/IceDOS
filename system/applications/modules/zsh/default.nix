@@ -37,10 +37,6 @@ in
     autosuggestions.enable = true;
     syntaxHighlighting.enable = true;
 
-    shellAliases = {
-      ssh = "TERM=xterm-256color ssh";
-    };
-
     interactiveShellInit = ''
       if [[ -r "''${XDG_CACHE_HOME:-$HOME/.cache}/p10k-instant-prompt-''${(%):-%n}.zsh" ]]; then
         source "''${XDG_CACHE_HOME:-$HOME/.cache}/p10k-instant-prompt-''${(%):-%n}.zsh"
