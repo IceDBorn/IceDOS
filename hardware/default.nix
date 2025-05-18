@@ -9,12 +9,6 @@ in
 {
   hardware = {
     enableAllFirmware = true;
-
-    graphics = {
-      enable = true;
-      enable32Bit = true; # Support Direct Rendering for 32-bit applications (such as Wine) on 64-bit systems
-    };
-
     uinput.enable = true; # Enable uinput support
   };
 

@@ -261,15 +261,18 @@ in
         };
 
         drivers = {
-          mesa.unstable = mkBoolOption;
           rtl8821ce = mkBoolOption;
         };
 
-        gpus = {
+        graphics = {
+          enable = mkBoolOption;
+
           amd = {
             enable = mkBoolOption;
             rocm = mkBoolOption;
           };
+
+          mesa.unstable = mkBoolOption;
 
           nvidia = {
             enable = mkBoolOption;

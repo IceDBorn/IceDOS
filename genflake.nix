@@ -18,7 +18,7 @@ let
   isFirstBuild = !pathExists "/run/current-system/source" || cfg.system.forceFirstBuild;
 
   chaotic = (
-    cfg.hardware.drivers.mesa.unstable
+    cfg.hardware.graphics.mesa.unstable
     || cfg.system.kernel == "cachyos"
     || cfg.system.kernel == "cachyos-server"
     || cfg.system.kernel == "valve"

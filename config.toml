@@ -231,20 +231,23 @@ steamdeck = false
 [icedos.hardware.drivers]
 rtl8821ce = false # Use the unofficial RTL8821CE driver
 
-[icedos.hardware.drivers.mesa]
-unstable = true
+[icedos.hardware.graphics]
+enable = true
 
-[icedos.hardware.gpus.amd]
+[icedos.hardware.graphics.amd]
 enable = true
 rocm = true
 
-[icedos.hardware.gpus.nvidia]
+[icedos.hardware.graphics.mesa]
+unstable = true
+
+[icedos.hardware.graphics.nvidia]
 enable = false
 beta = false
 cuda = false
 openDrivers = true
 
-[icedos.hardware.gpus.nvidia.powerLimit]
+[icedos.hardware.graphics.nvidia.powerLimit]
 enable = true
 value = 242
 
