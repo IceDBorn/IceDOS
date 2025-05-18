@@ -39,8 +39,8 @@ enable = true
 virtualCamera = false
 
 [icedos.applications.ollama]
-enable = true
-models = ["qwen2.5-coder"] # https://ollama.com/library
+enable = false
+models = ["qwen2.5-coder:latest"] # https://ollama.com/library
 rocmOverrideGfx = "10.3.0" # https://github.com/ollama/ollama/blob/main/docs/gpu.md#amd-radeon
 
 [icedos.applications.signal]
