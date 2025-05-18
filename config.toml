@@ -98,9 +98,6 @@ sites = [
   "https://discord.com/app",
 ]
 
-[icedos.bootloader]
-animation = false # Hides console and displays a loading interface based on OEM on boot
-
 [icedos.bootloader.grub]
 enable = false
 device = "/dev/sda"

@@ -150,8 +150,6 @@ in
       };
 
       bootloader = {
-        animation = mkBoolOption;
-
         grub = {
           enable = mkBoolOption;
           device = mkStrOption;
