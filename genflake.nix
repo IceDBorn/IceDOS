@@ -17,10 +17,13 @@ let
   hyprland = cfg.desktop.hyprland.enable;
   isFirstBuild = !pathExists "/run/current-system/source" || cfg.system.forceFirstBuild;
 
-  kernel =
-    cfg.system.kernel == "cachyos"
+  chaotic = (
+    cfg.hardware.graphics.mesa.unstable
+    || cfg.system.kernel == "cachyos"
     || cfg.system.kernel == "cachyos-server"
-    || cfg.system.kernel == "valve";
+    || cfg.system.kernel == "valve"
+    || steam-session
+  );
 
   librewolf = cfg.applications.librewolf;
   server = cfg.hardware.devices.server;
@@ -45,7 +48,7 @@ in
       inputs = {
         # Package repositories
         ${
-          if (kernel || steam-session) then
+          if (chaotic) then
             ''
               chaotic.url = "github:chaotic-cx/nyx/nyxpkgs-unstable";
             ''
@@ -54,7 +57,7 @@ in
         }
 
         nixpkgs.${
-          if (kernel || steam-session) then
+          if (chaotic) then
             ''follows = "chaotic/nixpkgs";''
           else
             ''url = "github:NixOS/nixpkgs/nixos-unstable";''
@@ -69,7 +72,7 @@ in
           url = "github:nix-community/home-manager";
 
           ${
-            if (kernel || steam-session) then
+            if (chaotic) then
               ''
                 follows = "chaotic/home-manager";
               ''
@@ -152,7 +155,7 @@ in
           self,
           ${if (aagl) then ''aagl,'' else ""}
           ${if (hyprland) then ''hyprpanel,'' else ""}
-          ${if (kernel || steam-session) then ''chaotic,'' else ""}
+          ${if (chaotic) then ''chaotic,'' else ""}
           ${if (librewolf) then ''pipewire-screenaudio,'' else ""}
           ${if (steam-session) then ''steam-session,'' else ""}
           ${if (zen-browser) then ''zen-browser,'' else ""}
@@ -214,7 +217,7 @@ in
 
               # External modules
               ${
-                if (kernel || steam-session) then
+                if (chaotic) then
                   ''
                     chaotic.nixosModules.default
                   ''

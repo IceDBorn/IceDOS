@@ -6,20 +6,21 @@
 }:
 
 let
-  inherit (lib) mkIf optional;
+  inherit (lib) mkIf;
   cfg = config.icedos;
-  powerLimit = cfg.hardware.gpus.nvidia.powerLimit;
+  graphics = cfg.hardware.graphics;
+  powerLimit = graphics.nvidia.powerLimit;
   nvidia_x11 = config.boot.kernelPackages.nvidia_x11.bin;
 in
-mkIf (cfg.hardware.gpus.nvidia.enable) {
+mkIf (graphics.enable && graphics.nvidia.enable) {
   services.xserver.videoDrivers = [ "nvidia" ]; # Install the nvidia drivers
 
   hardware.nvidia = {
     modesetting.enable = true;
-    open = cfg.hardware.gpus.nvidia.openDrivers;
+    open = graphics.nvidia.openDrivers;
 
     package =
-      if (cfg.hardware.gpus.nvidia.beta) then
+      if (graphics.nvidia.beta) then
         config.boot.kernelPackages.nvidiaPackages.beta
       else
         config.boot.kernelPackages.nvidiaPackages.stable;
@@ -62,7 +63,7 @@ mkIf (cfg.hardware.gpus.nvidia.enable) {
     )
   ];
 
-  nixpkgs.config.cudaSupport = cfg.hardware.gpus.nvidia.cuda;
+  nixpkgs.config.cudaSupport = graphics.nvidia.cuda;
 
   # Set nvidia gpu power limit
   systemd.services.nv-power-limit = mkIf (powerLimit.enable) {

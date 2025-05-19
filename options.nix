@@ -64,6 +64,7 @@ in
           maxFpsLimit = mkNumberOption;
         };
 
+        mission-center = mkBoolOption;
         nautilus = mkBoolOption;
 
         network-manager = {
@@ -149,8 +150,6 @@ in
       };
 
       bootloader = {
-        animation = mkBoolOption;
-
         grub = {
           enable = mkBoolOption;
           device = mkStrOption;
@@ -259,13 +258,19 @@ in
           steamdeck = mkBoolOption;
         };
 
-        drivers.rtl8821ce = mkBoolOption;
+        drivers = {
+          rtl8821ce = mkBoolOption;
+        };
 
-        gpus = {
+        graphics = {
+          enable = mkBoolOption;
+
           amd = {
             enable = mkBoolOption;
             rocm = mkBoolOption;
           };
+
+          mesa.unstable = mkBoolOption;
 
           nvidia = {
             enable = mkBoolOption;

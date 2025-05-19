@@ -18,6 +18,7 @@ defaultEditor = "zed" # Options: 'codium', 'zed'
 input-remapper = true
 lact = true
 librewolf = false
+mission-center = true
 nautilus = true
 php = true
 rust = false
@@ -47,7 +48,7 @@ virtualCamera = false
 
 [icedos.applications.ollama]
 enable = false
-models = ["qwen2.5-coder"] # https://ollama.com/library
+models = ["qwen2.5-coder:latest"] # https://ollama.com/library
 rocmOverrideGfx = "10.3.0" # https://github.com/ollama/ollama/blob/main/docs/gpu.md#amd-radeon
 
 [icedos.applications.signal]
@@ -105,9 +106,6 @@ sites = [
   "https://gmail.com",
 ]
 
-[icedos.bootloader]
-animation = false # Hides console and displays a loading interface based on OEM on boot
-
 [icedos.bootloader.grub]
 enable = false
 device = "/dev/sda"
@@ -162,7 +160,7 @@ nautilus -w &
 nautilus -w &
 """
 windowRules = [
-  "workspace 1 silent, class:^(zen-beta)$",
+  "workspace 1 silent, class:^(zen-startup)$",
   "workspace 2 silent, class:^(dev.zed.Zed)$",
   "workspace 11 silent, class:^(zen-social)$",
   "workspace 12 silent, class:^(org\\.gnome\\.Nautilus)$",
@@ -216,17 +214,23 @@ steamdeck = false
 [icedos.hardware.drivers]
 rtl8821ce = false # Use the unofficial RTL8821CE driver
 
-[icedos.hardware.gpus.amd]
+[icedos.hardware.graphics]
+enable = true
+
+[icedos.hardware.graphics.amd]
 enable = true
 rocm = false
 
-[icedos.hardware.gpus.nvidia]
+[icedos.hardware.graphics.mesa]
+unstable = true
+
+[icedos.hardware.graphics.nvidia]
 enable = false
 beta = false
 cuda = false
 openDrivers = true
 
-[icedos.hardware.gpus.nvidia.powerLimit]
+[icedos.hardware.graphics.nvidia.powerLimit]
 enable = true
 value = 242
 

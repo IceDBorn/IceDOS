@@ -36,7 +36,5 @@ in
     };
 
     initrd.secrets = mkIf (cfg.bootloader.grub.enable) { "/crypto_keyfile.bin" = null; };
-
-    plymouth.enable = cfg.bootloader.animation;
   };
 }
