@@ -20,8 +20,8 @@ in
   time.timeZone = "Europe/Bucharest";
 
   i18n = {
-    defaultLocale = "en_US.utf8";
-    extraLocaleSettings.LC_MEASUREMENT = "es_ES.utf8";
+    defaultLocale = "en_US.UTF-8";
+    extraLocaleSettings.LC_MEASUREMENT = "es_ES.UTF-8";
   };
 
   services = {
