@@ -5,10 +5,11 @@ extraPackages = [
   "brave",
   "ddev",
   "epiphany",
+  "firefox",
   "google-chrome",
   "teamviewer",
 ]
-insecurePackages = ["beekeeper-studio-5.1.5"]
+insecurePackages = ["beekeeper-studio-5.2.9"]
 aagl = false
 android-tools = false
 celluloid = true
@@ -153,11 +154,11 @@ enable = true
 followMouse = 1 # Options: https://wiki.hyprland.org/Configuring/Variables/#follow-mouse-cursor
 secondsToLowerBrightness = 60
 startupScript = """
-run zeditor
-run zen
-run zen-social
 nautilus -w &
 nautilus -w &
+zeditor &
+zen-beta --no-remote -P default --name zen-startup &
+zen-social &
 """
 windowRules = [
   "workspace 1 silent, class:^(zen-startup)$",
