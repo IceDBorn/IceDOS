@@ -16,7 +16,6 @@ php = false
 rust = false
 solaar = true
 ssh = true
-sunshine = false
 
 [icedos.applications.codium]
 enable = true
@@ -59,6 +58,10 @@ user = "icedborn"
 [icedos.applications.steam.session.autoStart]
 enable = false
 desktopSession = "hyprland"
+
+[icedos.applications.sunshine]
+enable = false
+autostart = false
 
 [icedos.applications.tailscale]
 enable = false
