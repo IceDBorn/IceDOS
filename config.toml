@@ -1,24 +1,30 @@
 [icedos.applications]
-extraPackages = []
+extraPackages = [
+  "stremio",
+  "spotify",
+  "protonvpn-gui",
+  "vesktop",
+  "umu-launcher",
+]
 insecurePackages = []
 aagl = false
 android-tools = false
 celluloid = true
 clamav = false
-defaultBrowser = "zen" # Options: 'librewolf', 'zen'
+defaultBrowser = "librewolf" # Options: 'librewolf', 'zen'
 defaultEditor = "zed" # Options: 'codium', 'zed'
-input-remapper = true
+input-remapper = false
 lact = true
-librewolf = false
-mission-center = true
+librewolf = true
+mission-center = false
 nautilus = true
 php = false
 rust = false
-solaar = true
+solaar = false
 ssh = true
 
 [icedos.applications.codium]
-enable = true
+enable = false
 zoomLevel = 0
 
 [icedos.applications.kitty]
@@ -31,10 +37,10 @@ maxFpsLimit = 144 # Use 0 for unlimited
 
 [icedos.applications.network-manager]
 enable = true
-applet = true
+applet = false
 
 [icedos.applications.obs-studio]
-enable = true
+enable = false
 virtualCamera = false
 
 [icedos.applications.ollama]
@@ -52,16 +58,16 @@ beta = true
 downloadsWorkaround = true
 
 [icedos.applications.steam.session]
-enable = false
-user = "icedborn"
+enable = true
+user = "l"
 
 [icedos.applications.steam.session.autoStart]
 enable = false
 desktopSession = "hyprland"
 
 [icedos.applications.sunshine]
-enable = false
-autostart = false
+enable = true
+autostart = true
 
 [icedos.applications.tailscale]
 enable = false
@@ -73,7 +79,7 @@ deviceId = "901524a4_c7c0_407e_9903_431abce54131"
 
 [icedos.applications.zed]
 enable = true
-vim = true
+vim = false
 
 [icedos.applications.zed.theme]
 dark = "One Dark Pro"
@@ -81,7 +87,7 @@ light = "One Light"
 mode = "system" # Options: 'system', 'dark', 'light'
 
 [icedos.applications.zen-browser]
-enable = true
+enable = false
 privacy = true
 
 [[icedos.applications.zen-browser.profiles]]
@@ -114,14 +120,14 @@ accentColor = "7E57C2" # With gnome enabled this is getting overriden by gnome's
 
 [icedos.desktop.autologin]
 enable = true
-user = "icedborn"
+user = "l"
 
 [icedos.desktop.gdm]
 enable = true
 autoSuspend = true
 
 [icedos.desktop.gnome]
-enable = false
+enable = true
 accentColor = "purple" # Options: 'blue', 'teal', 'green', 'yellow', 'orange', 'red', 'pink', 'purple', 'slate'
 hotCorners = false
 powerButtonAction = "interactive"
@@ -142,7 +148,7 @@ dynamicWorkspaces = true
 maxWorkspaces = 1 # Determines the maximum number of workspaces when dynamic workspaces are disabled
 
 [icedos.desktop.hyprland]
-enable = true
+enable = false
 
 [icedos.desktop.hyprland.settings]
 followMouse = 1 # Options: https://wiki.hyprland.org/Configuring/Variables/#follow-mouse-cursor
@@ -190,27 +196,21 @@ bluetooth = true
 
 [[icedos.hardware.mounts]]
 path = "/"
-device = "/dev/disk/by-uuid/e2a8d4bf-b1fc-446f-b347-c3671eda1ccb"
+device = "/dev/disk/by-uuid/dd50df32-9a89-47a3-abac-a2a4a0285f74"
 fsType = "btrfs"
 flags = ["compress=zstd", "nofail", "x-gvfs-show"]
 
 [[icedos.hardware.mounts]]
 path = "/mnt/games"
-device = "/dev/disk/by-uuid/040329ae-685d-4ba6-8bdd-e0a9785f9672"
+device = "/dev/disk/by-uuid/d1f56fdc-38d1-4b43-8757-01ab7cb85add"
 fsType = "btrfs"
 flags = ["compress=zstd", "nofail", "x-gvfs-show"]
 
 [[icedos.hardware.mounts]]
-path = "/mnt/games2"
-device = "/dev/disk/by-uuid/60876d91-f863-45db-88c5-4c707879588f"
-fsType = "btrfs"
-flags = ["compress=zstd", "nofail", "x-gvfs-show"]
-
-[[icedos.hardware.mounts]]
-path = "/mnt/storage"
-device = "/dev/disk/by-uuid/89730200-942d-4a5c-893f-0196c87435d2"
-fsType = "btrfs"
-flags = ["compress=zstd", "nofail", "x-gvfs-show"]
+path = "/mnt/windows"
+device = "/dev/disk/by-uuid/2A06BC7406BC429D"
+fsType = "ntfs"
+flags = ["nofail", "x-gvfs-show"]
 
 [icedos.hardware.cpus]
 intel = false
@@ -239,7 +239,7 @@ enable = true
 rocm = true
 
 [icedos.hardware.graphics.mesa]
-unstable = true
+unstable = false
 
 [icedos.hardware.graphics.nvidia]
 enable = false
@@ -254,41 +254,21 @@ value = 242
 [[icedos.hardware.monitors]]
 name = "DP-2"
 disable = false
-resolution = "3440x1440"
+resolution = "2560x1440"
 refreshRate = 144
-position = "3840x0"
-scaling = 1
-rotation = 0
-tenBit = false
-
-[[icedos.hardware.monitors]]
-name = "DP-1"
-disable = false
-resolution = "1920x1080"
-refreshRate = 144
-position = "7280x200"
-scaling = 1
-rotation = 0
-tenBit = false
-
-[[icedos.hardware.monitors]]
-name = "HDMI-A-1"
-disable = true
-resolution = "3840x2160"
-refreshRate = 60
 position = "0x0"
 scaling = 1
 rotation = 0
 tenBit = false
 
 [icedos.hardware.networking]
-hostname = "desktop"
+hostname = "l"
 hosts = ""
 ipv6 = false
 vpnExcludeIp = "192.168.1.200"
 
 [icedos.hardware.networking.wg-quick]
-enable = true
+enable = false
 interfaces = ["protonvpn"]
 
 [icedos.system]
@@ -297,7 +277,7 @@ forceFirstBuild = false
 home = "/home"
 kernel = "cachyos" # Options: 'cachyos', 'cachyos-server', 'latest', 'lts', 'valve', 'zen'
 swappiness = 1
-version = "23.05" # Do not change without checking the docs (config.system.stateVersion)
+version = "24.11"
 
 [icedos.system.generations]
 bootEntries = 10
@@ -308,29 +288,29 @@ days = 0 # Number of days before a generation can be deleted
 generations = 10 # Number of generations that will always be kept
 interval = "Mon *-*-* 00:00:00" # Format(https://www.freedesktop.org/software/systemd/man/latest/systemd.time.html)
 
-[icedos.system.users.icedborn]
-description = "IceDBorn"
+[icedos.system.users.l]
+description = "l"
 type = "main" # Options: 'main', 'work'
 
-[icedos.system.users.icedborn.applications.codium]
+[icedos.system.users.l.applications.codium]
 autoSave = "off" # Options: 'off', 'afterDelay', 'onFocusChange', 'onWindowChange'
 formatOnSave = true
 formatOnPaste = true
 
-[icedos.system.users.icedborn.applications.git]
-username = "IceDBorn"
-email = "git.outsider841@simplelogin.fr"
+[icedos.system.users.l.applications.git]
+username = "l"
+email = "l@l.l"
 
 
-[icedos.system.users.icedborn.desktop.gnome]
-startupScript = ""
+[icedos.system.users.l.desktop.gnome]
+startupScript = "protonvpn-app"
 
-[icedos.system.users.icedborn.desktop.gnome.pinnedApps.arcmenu]
+[icedos.system.users.l.desktop.gnome.pinnedApps.arcmenu]
 enable = false
 list = ["codiumIDE.desktop", "codium.desktop"]
 
 # Set pinned apps for gnome shell (will be used by dash-to-panel if enabled)
-[icedos.system.users.icedborn.desktop.gnome.pinnedApps.shell]
+[icedos.system.users.l.desktop.gnome.pinnedApps.shell]
 enable = false
 list = [
   "steam.desktop",
@@ -339,35 +319,35 @@ list = [
   "librewolf.desktop",
 ]
 
-[icedos.system.users.icedborn.desktop.idle.sd-inhibitor]
+[icedos.system.users.l.desktop.idle.sd-inhibitor]
 enable = true
 
-[icedos.system.users.icedborn.desktop.idle.sd-inhibitor.watchers.cpu]
+[icedos.system.users.l.desktop.idle.sd-inhibitor.watchers.cpu]
 enable = true
 threshold = 60 # CPU usage to inhibit lock in percentage
 
-[icedos.system.users.icedborn.desktop.idle.sd-inhibitor.watchers.disk]
+[icedos.system.users.l.desktop.idle.sd-inhibitor.watchers.disk]
 enable = true
 threshold = 10 # Disk usage to inhibit lock in MB/s
 
-[icedos.system.users.icedborn.desktop.idle.sd-inhibitor.watchers.network]
+[icedos.system.users.l.desktop.idle.sd-inhibitor.watchers.network]
 enable = true
 threshold = 1_000_000 # Network usage to inhibit lock in bytes/s
 
-[icedos.system.users.icedborn.desktop.idle.sd-inhibitor.watchers.pipewire]
+[icedos.system.users.l.desktop.idle.sd-inhibitor.watchers.pipewire]
 enable = true
 inputsToIgnore = ["Noise Canceling source", "Peak detect", "cava"]
 outputsToIgnore = ["Discord", "Element"]
 
-[icedos.system.users.icedborn.desktop.idle.lock]
+[icedos.system.users.l.desktop.idle.lock]
 enable = true
 seconds = 180
 
-[icedos.system.users.icedborn.desktop.idle.disableMonitors]
+[icedos.system.users.l.desktop.idle.disableMonitors]
 enable = true
 seconds = 900
 
-[icedos.system.users.icedborn.desktop.idle.suspend]
+[icedos.system.users.l.desktop.idle.suspend]
 enable = true
 seconds = 1800
 
