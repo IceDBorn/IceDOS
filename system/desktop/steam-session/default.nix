@@ -17,7 +17,7 @@ mkIf (session.enable) {
       autoUpdate = true;
     };
 
-    hardware.has.amd.gpu = cfg.hardware.gpus.amd.enable;
+    hardware.has.amd.gpu = cfg.hardware.graphics.amd.enable;
 
     steam = {
       enable = true;

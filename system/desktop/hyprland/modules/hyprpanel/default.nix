@@ -407,7 +407,10 @@ in
           "bar.customModules.kbLayout.icon": "",
           "theme.bar.buttons.modules.kbLayout.spacing": "0em",
           "bar.launcher.icon": "",
-          "hyprpanel.restartCommand": "${killCommand}"
+          "hyprpanel.restartCommand": "${killCommand}",
+          "menus.power.shutdown": "systemctl poweroff -i",
+          "menus.power.reboot": "systemctl reboot -i",
+          "menus.power.sleep": "systemctl suspend -i"
         }
       '';
 

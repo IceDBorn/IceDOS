@@ -10,6 +10,8 @@ This is a NixOS configuration project that aims to create a highly opinionated g
 ## Install
 
 ```bash
+mkdir -p ~/.config/nix
+echo "experimental-features = flakes nix-command" > ~/.config/nix/nix.conf
 git clone https://github.com/icedborn/icedos
 cd icedos
 nix-shell ./build.sh
