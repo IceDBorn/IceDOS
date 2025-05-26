@@ -9,7 +9,7 @@ extraPackages = [
   "google-chrome",
   "teamviewer",
 ]
-insecurePackages = ["beekeeper-studio-5.2.9"]
+insecurePackages = ["beekeeper-studio-5.2.12"]
 aagl = false
 android-tools = false
 celluloid = true
@@ -25,7 +25,6 @@ php = true
 rust = false
 solaar = true
 ssh = true
-sunshine = false
 
 [icedos.applications.codium]
 enable = true
@@ -68,6 +67,10 @@ user = "dtek"
 [icedos.applications.steam.session.autoStart]
 enable = false
 desktopSession = "hyprland"
+
+[icedos.applications.sunshine]
+enable = false
+autostart = false
 
 [icedos.applications.tailscale]
 enable = false
@@ -223,7 +226,7 @@ enable = true
 rocm = false
 
 [icedos.hardware.graphics.mesa]
-unstable = true
+unstable = false
 
 [icedos.hardware.graphics.nvidia]
 enable = false

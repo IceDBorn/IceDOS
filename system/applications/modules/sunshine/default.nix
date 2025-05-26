@@ -1,32 +1,17 @@
 {
   config,
   lib,
-  pkgs,
   ...
 }:
 
 let
   inherit (lib) mkIf;
   cfg = config.icedos.applications.sunshine;
-  package = pkgs.sunshine;
 in
-mkIf (cfg) {
-  environment.systemPackages = [ package ];
-
-  security.wrappers.sunshine = {
-    owner = "root";
-    group = "root";
-    source = "${package}/bin/sunshine";
-    capabilities = "cap_sys_admin+p";
+mkIf (cfg.enable) {
+  services.sunshine = {
+    enable = true;
+    capSysAdmin = true;
+    autoStart = cfg.autostart;
   };
-
-  services.udev.packages = [
-    (pkgs.writeTextFile {
-      name = "sunshine_udev";
-      text = ''
-        KERNEL=="uinput", SUBSYSTEM=="misc", OPTIONS+="static_node=uinput", TAG+="uaccess"
-      '';
-      destination = "/etc/udev/rules.d/85-sunshine.rules";
-    })
-  ];
 }

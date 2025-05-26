@@ -111,7 +111,10 @@ in
           };
         };
 
-        sunshine = mkBoolOption;
+        sunshine = {
+          enable = mkBoolOption;
+          autostart = mkBoolOption;
+        };
 
         tailscale = {
           enable = mkBoolOption;
