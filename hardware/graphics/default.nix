@@ -11,7 +11,7 @@ let
   getModules =
     path:
     map (dir: ./. + ("/modules/" + dir)) (
-      attrNames (filterAttrs (n: v: v == "directory") (builtins.readDir path))
+      attrNames (filterAttrs (n: v: v == "directory" && !(n == "mesa")) (builtins.readDir path))
     );
 in
 {
