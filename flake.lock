@@ -1,49 +1,5 @@
 {
   "nodes": {
-    "ags": {
-      "inputs": {
-        "astal": "astal",
-        "nixpkgs": [
-          "hyprpanel",
-          "nixpkgs"
-        ]
-      },
-      "locked": {
-        "lastModified": 1736090999,
-        "narHash": "sha256-B5CJuHqfJrzPa7tObK0H9669/EClSHpa/P7B9EuvElU=",
-        "owner": "aylur",
-        "repo": "ags",
-        "rev": "5527c3c07d92c11e04e7fd99d58429493dba7e3c",
-        "type": "github"
-      },
-      "original": {
-        "owner": "aylur",
-        "repo": "ags",
-        "type": "github"
-      }
-    },
-    "astal": {
-      "inputs": {
-        "nixpkgs": [
-          "hyprpanel",
-          "ags",
-          "nixpkgs"
-        ]
-      },
-      "locked": {
-        "lastModified": 1735172721,
-        "narHash": "sha256-rtEAwGsHSppnkR3Qg3eRJ6Xh/F84IY9CrBBLzYabalY=",
-        "owner": "aylur",
-        "repo": "astal",
-        "rev": "6c84b64efc736e039a8a10774a4a1bf772c37aa2",
-        "type": "github"
-      },
-      "original": {
-        "owner": "aylur",
-        "repo": "astal",
-        "type": "github"
-      }
-    },
     "chaotic": {
       "inputs": {
         "fenix": "fenix",
@@ -145,27 +101,6 @@
         "type": "github"
       }
     },
-    "hyprpanel": {
-      "inputs": {
-        "ags": "ags",
-        "nixpkgs": [
-          "nixpkgs"
-        ]
-      },
-      "locked": {
-        "lastModified": 1748443200,
-        "narHash": "sha256-2ga8+CO/guhtNKh2bloGG94hJyvJGo0KBLAYBWrByhE=",
-        "owner": "Jas-SinghFSU",
-        "repo": "HyprPanel",
-        "rev": "49dbce17307b2f32a71864b16692ce75ffc8fa8d",
-        "type": "github"
-      },
-      "original": {
-        "owner": "Jas-SinghFSU",
-        "repo": "HyprPanel",
-        "type": "github"
-      }
-    },
     "jovian": {
       "inputs": {
         "nix-github-actions": "nix-github-actions",
@@ -254,11 +189,14 @@
           "chaotic",
           "home-manager"
         ],
-        "hyprpanel": "hyprpanel",
         "nerivations": "nerivations",
         "nixpkgs": [
           "chaotic",
           "nixpkgs"
+        ],
+        "steam-session": [
+          "chaotic",
+          "jovian"
         ],
         "zen-browser": "zen-browser"
       }
