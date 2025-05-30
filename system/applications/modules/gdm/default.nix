@@ -9,14 +9,16 @@ let
   cfg = config.icedos;
 in
 mkIf (cfg.desktop.gdm.enable && !cfg.applications.steam.session.autoStart.enable) {
-  services.xserver = {
-    enable = true;
+  services = {
     displayManager.gdm = {
       enable = true;
       autoSuspend = cfg.desktop.gdm.autoSuspend;
     };
 
-    xkb.layout = "us,gr";
+    xserver = {
+      enable = true;
+      xkb.layout = "us,gr";
+    };
   };
 
   # Workaround for autologin
