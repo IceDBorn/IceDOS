@@ -20,6 +20,7 @@ in
     [
       appimage-run
       blanket
+      faugus-launcher
       fragments
       gimp
       harmony-music
