@@ -42,8 +42,7 @@ in
     kernelParams =
       [
         "transparent_hugepage=always"
-        # Disables UMIP which fixes certain games from crashing on launch
-        "clearcpuid=514"
+        "clearcpuid=514" # Disables UMIP which fixes certain games from crashing on launch
       ]
       ++ optionals (!noMonitors) [
         (concatMapStrings (
@@ -60,6 +59,7 @@ in
       ];
 
     kernel.sysctl = {
+      "kernel.split_lock_mitigate" = 0; # Fixes some games from stuttering
       "net.ipv6.conf.all.disable_ipv6" = !cfg.hardware.networking.ipv6; # Disable ipv6 for all interfaces
       "page-cluster" = 1;
       "vm.compaction_proactiveness" = 0;
