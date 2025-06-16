@@ -230,6 +230,7 @@ steamdeck = false
 
 [icedos.hardware.drivers]
 rtl8821ce = false # Use the unofficial RTL8821CE driver
+xpadneo = true # Xinput bluetooth controller driver
 
 [icedos.hardware.graphics]
 enable = true

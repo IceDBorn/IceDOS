@@ -263,6 +263,7 @@ in
 
         drivers = {
           rtl8821ce = mkBoolOption;
+          xpadneo = mkBoolOption;
         };
 
         graphics = {
