@@ -25,9 +25,7 @@ let
 
   gamescope-launch = (
     pkgs.writeShellScriptBin "gamescope-launch" ''
-      OG_LD_PRELOAD="$LD_PRELOAD"
-      LD_PRELOAD=""
-      GAMESCOPE="${pkgs.gamescope}/bin/gamescope"
+      GAMESCOPE="${pkgs.scopebuddy}/bin/scopebuddy"
       GAMEMODE="${pkgs.gamemode}/bin/gamemoderun"
       SDL="--backend sdl"
 
@@ -100,9 +98,11 @@ let
         esac
       done
 
-      DEFAULT_GAMESCOPE_ARGS="$DEFAULT_WIDTH $DEFAULT_HEIGHT $DEFAULT_REFRESH_RATE $SDL"
+      SCB_GAMESCOPE_ARGS="$DEFAULT_WIDTH $DEFAULT_HEIGHT $DEFAULT_REFRESH_RATE $SDL $MANGOHUD $GAMESCOPE_ARGS"
 
-      $GAMEMODE $GAMESCOPE $MANGOHUD $DEFAULT_GAMESCOPE_ARGS $GAMESCOPE_ARGS -- env LD_PRELOAD="$OG_LD_PRELOAD" "''${COMMAND[@]}"
+      export SCB_GAMESCOPE_ARGS
+
+      $GAMEMODE $GAMESCOPE -- "''${COMMAND[@]}"
     ''
   );
 
@@ -112,6 +112,19 @@ in
   environment.systemPackages = [
     gamescope-launch
     package
+  ];
+
+  icedos.internals.toolset.commands = [
+    (
+      let
+        command = "gamescope-launch";
+      in
+      {
+        bin = "${gamescope-launch}/bin/${command}";
+        command = command;
+        help = "launch exec using gamescope with optimal usage flags";
+      }
+    )
   ];
 
   programs.steam.extraPackages = mkIf (ifSteam (cfg.hardware.devices.steamdeck)) extraPackages;

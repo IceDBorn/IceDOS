@@ -220,6 +220,7 @@ in
                 if (chaotic) then
                   ''
                     chaotic.nixosModules.default
+                    ./hardware/graphics/modules/mesa
                   ''
                 else
                   ""

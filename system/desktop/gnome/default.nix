@@ -15,7 +15,7 @@ let
 in
 {
   imports = getModules (./modules);
-  services.xserver.desktopManager.gnome.enable = true;
+  services.desktopManager.gnome.enable = true;
   programs.dconf.enable = true;
   environment.systemPackages = [ pkgs.gnome-tweaks ];
 
