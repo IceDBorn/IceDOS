@@ -111,18 +111,6 @@ in
         }
 
         ${
-          if (hyprland) then
-            ''
-              hyprpanel = {
-                url = "github:Jas-SinghFSU/HyprPanel";
-                inputs.nixpkgs.follows = "nixpkgs";
-              };
-            ''
-          else
-            ""
-        }
-
-        ${
           if (librewolf) then
             ''
               pipewire-screenaudio = {
@@ -154,7 +142,6 @@ in
           nixpkgs,
           self,
           ${if (aagl) then ''aagl,'' else ""}
-          ${if (hyprland) then ''hyprpanel,'' else ""}
           ${if (chaotic) then ''chaotic,'' else ""}
           ${if (librewolf) then ''pipewire-screenaudio,'' else ""}
           ${if (steam-session) then ''steam-session,'' else ""}
@@ -279,7 +266,6 @@ in
                 if (hyprland) then
                   ''
                     ./system/desktop/hyprland
-                    { nixpkgs.overlays = [ hyprpanel.overlay ]; }
                   ''
                 else
                   ""

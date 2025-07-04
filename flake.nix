@@ -20,11 +20,6 @@
 
     # Apps
 
-    hyprpanel = {
-      url = "github:Jas-SinghFSU/HyprPanel";
-      inputs.nixpkgs.follows = "nixpkgs";
-    };
-
     zen-browser = {
       url = "github:0xc000022070/zen-browser-flake";
       inputs.nixpkgs.follows = "nixpkgs";
@@ -39,7 +34,6 @@
       nixpkgs,
       self,
 
-      hyprpanel,
       chaotic,
 
       zen-browser,
@@ -120,7 +114,6 @@
           { icedos.internals.isFirstBuild = false; }
 
           ./system/desktop/hyprland
-          { nixpkgs.overlays = [ hyprpanel.overlay ]; }
 
           ./system/applications/modules/zen-browser
 
