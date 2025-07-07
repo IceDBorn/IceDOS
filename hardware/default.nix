@@ -39,6 +39,8 @@ in
     upower.enable = true; # Enable power management
   };
 
+  systemd.services.NetworkManager-wait-online.enable = false;
+
   zramSwap = {
     enable = true;
     memoryPercent = 10;
