@@ -7,6 +7,8 @@ let
   cfg = config.icedos;
 in
 {
+  boot.kernelModules = [ "ntsync" ];
+
   hardware = {
     enableAllFirmware = true;
     uinput.enable = true; # Enable uinput support
