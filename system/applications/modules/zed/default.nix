@@ -39,9 +39,9 @@ mkIf (zed.enable) {
         autosave = "off";
         buffer_font_family = "JetBrainsMono Nerd Font";
         buffer_font_size = 14;
-        chat_panel.button = false;
+        chat_panel.button = "never";
         collaboration_panel.button = false;
-        features.inline_completion_provider = "none";
+        features.edit_prediction_provider = "none";
 
         indent_guides = {
           enabled = true;
