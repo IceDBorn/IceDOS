@@ -108,7 +108,7 @@ let
 
   ifSteam = deck: cfg.applications.steam.enable && deck;
 in
-{
+mkIf (cfg.applications.gamescope) {
   environment.systemPackages = [
     gamescope-launch
     package

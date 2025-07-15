@@ -7,6 +7,7 @@ celluloid = true
 clamav = false
 defaultBrowser = "zen" # Options: 'librewolf', 'zen'
 defaultEditor = "zed" # Options: 'codium', 'zed'
+gamescope = true
 input-remapper = true
 lact = true
 librewolf = false

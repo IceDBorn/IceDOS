@@ -48,6 +48,7 @@ in
         defaultBrowser = mkStrOption;
         defaultEditor = mkStrOption;
         extraPackages = mkStrListOption;
+        gamescope = mkBoolOption;
         input-remapper = mkBoolOption;
         insecurePackages = mkStrListOption;
 
