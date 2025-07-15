@@ -39,7 +39,8 @@ in
 
         Timer = {
           Unit = "eye-wellbeing";
-          OnCalendar = "*:0/20";
+          OnBootSec = "20m";
+          OnUnitActiveSec = "20m";
           AccuracySec = "20m";
         };
 
