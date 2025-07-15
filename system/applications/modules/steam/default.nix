@@ -1,6 +1,7 @@
 {
   config,
   lib,
+  pkgs,
   ...
 }:
 
@@ -11,6 +12,7 @@ let
     ;
 
   cfg = config.icedos;
+  steamdeck = cfg.hardware.devices.steamdeck;
 in
 mkIf (cfg.applications.steam.enable) {
   home-manager.users = mapAttrs (
@@ -36,11 +38,13 @@ mkIf (cfg.applications.steam.enable) {
                 '';
               };
         };
+
+        packages = mkIf (!steamdeck && !cfg.applications.gamescope) [ pkgs.steam ];
       };
     }
   ) cfg.system.users;
 
-  programs.steam = mkIf (cfg.hardware.devices.steamdeck) {
+  programs.steam = mkIf (steamdeck) {
     enable = true;
     extest.enable = true;
   };
