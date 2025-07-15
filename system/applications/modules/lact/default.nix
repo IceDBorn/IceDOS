@@ -7,16 +7,10 @@
 
 let
   inherit (lib) mkIf;
-  cfg = config.icedos.hardware.gpus.amd;
+  cfg = config.icedos;
 in
-mkIf (cfg.enable) {
-  boot = {
-    initrd.kernelModules = [ "amdgpu" ]; # Use the amdgpu drivers upon boot
-    kernelParams = [ "amdgpu.ppfeaturemask=0xffffffff" ]; # Unlock all gpu controls
-  };
-
-  environment.systemPackages = with pkgs; [ lact ]; # GPU overclocking tool
-  nixpkgs.config.rocmSupport = cfg.rocm;
+mkIf (cfg.applications.lact) {
+  environment.systemPackages = [ pkgs.lact ];
 
   # We are creating the lact daemon service manually because the provided one hangs
   systemd.services.lactd = {

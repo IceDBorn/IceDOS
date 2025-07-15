@@ -7,14 +7,10 @@ let
   cfg = config.icedos;
 in
 {
+  boot.kernelModules = [ "ntsync" ];
+
   hardware = {
     enableAllFirmware = true;
-
-    graphics = {
-      enable = true;
-      enable32Bit = true; # Support Direct Rendering for 32-bit applications (such as Wine) on 64-bit systems
-    };
-
     uinput.enable = true; # Enable uinput support
   };
 
@@ -44,6 +40,8 @@ in
     fstrim.enable = true; # Enable SSD TRIM
     upower.enable = true; # Enable power management
   };
+
+  systemd.services.NetworkManager-wait-online.enable = false;
 
   zramSwap = {
     enable = true;

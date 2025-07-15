@@ -11,6 +11,7 @@ let
     head
     mapAttrs
     mkIf
+    optional
     sort
     ;
 
@@ -25,39 +26,42 @@ in
   icedos.internals.toolset.commands = mkIf (gnome || hyprland) [
     (
       let
-        commands = [
-          (
-            let
-              command = "info";
-            in
-            {
-              bin = "${pkgs.writeShellScript command ''
-                ${
-                  if (gnome) then
-                    ''[ "$XDG_CURRENT_DESKTOP" = "Gnome" ] && "${pkgs.gnome-randr}/bin/gnome-randr"''
-                  else
-                    ""
-                }
+        commands =
+          [
+            (
+              let
+                command = "info";
+              in
+              {
+                bin = "${pkgs.writeShellScript command ''
+                  ${
+                    if (gnome) then
+                      ''[ "$XDG_CURRENT_DESKTOP" = "GNOME" ] && "${pkgs.gnome-randr}/bin/gnome-randr"''
+                    else
+                      ""
+                  }
 
-                ${
-                  if (hyprland) then
-                    ''[ "$XDG_CURRENT_DESKTOP" = "Hyprland" ] && "${pkgs.hyprland}/bin/hyprctl" monitors''
-                  else
-                    ""
-                }
-              ''}";
+                  ${
+                    if (hyprland) then
+                      ''[ "$XDG_CURRENT_DESKTOP" = "Hyprland" ] && "${pkgs.hyprland}/bin/hyprctl" monitors''
+                    else
+                      ""
+                  }
+                ''}";
 
-              command = command;
-              help = "print displays information";
-            }
-          )
-
-          (
+                command = command;
+                help = "print displays information";
+              }
+            )
+          ]
+          ++ optional (cfg.desktop.hyprland.enable) (
             let
               command = "xprimary";
             in
             {
               bin = "${pkgs.writeShellScript command ''
+                [ "$XDG_CURRENT_DESKTOP" = "GNOME" ] && echo "error: not supported by gnome" && exit 1
+
                 ACTIVE_MONITORS=($(xrandr --listactivemonitors | grep '+0' | awk '{ print $4 }' | sort))
                 TEMP_CONFIG_PATH="${tempConfigPath}"
                 PRIMARY_DISPLAY_PATH="${primaryDisplayPath}"
@@ -74,8 +78,7 @@ in
               command = command;
               help = "set primary monitor for xwayland";
             }
-          )
-        ];
+          );
 
         purpleString = string: ''''${PURPLE}${string}''${NC}'';
       in
@@ -116,9 +119,12 @@ in
   ];
 
   home-manager.users = mapAttrs (user: _: {
-    systemd.user.services.xprimary = {
+    systemd.user.services.xprimary = mkIf (cfg.desktop.hyprland.enable) {
       Unit.Description = "X11 primary display watcher";
-      Install.WantedBy = [ "graphical-session.target" ];
+      Install.WantedBy = [
+        "graphical-session.target"
+        "hyprland-session.target"
+      ];
 
       Service = {
         ExecStart =

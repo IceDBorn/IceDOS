@@ -21,15 +21,10 @@ in
     pulseaudio.enable = false;
   };
 
-  programs.zsh.shellAliases.restart-pipewire = "systemctl --user restart pipewire";
-
   # Enable service which hands out realtime scheduling priority to user processes on demand
   security.rtkit.enable = true;
 
-  environment.systemPackages = with pkgs; [
-    helvum # Pipewire patchbay
-    pavucontrol # Audio device manager
-  ];
+  environment.systemPackages = with pkgs; [ pwvucontrol ];
 
   home-manager.users = mapAttrs (user: _: {
     home.file.".config/pipewire/pipewire.conf.d/99-input-denoising.conf".text = ''

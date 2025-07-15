@@ -56,6 +56,7 @@ in
           hideDecorations = mkBoolOption;
         };
 
+        lact = mkBoolOption;
         librewolf = mkBoolOption;
 
         mangohud = {
@@ -63,6 +64,7 @@ in
           maxFpsLimit = mkNumberOption;
         };
 
+        mission-center = mkBoolOption;
         nautilus = mkBoolOption;
 
         network-manager = {
@@ -109,7 +111,10 @@ in
           };
         };
 
-        sunshine = mkBoolOption;
+        sunshine = {
+          enable = mkBoolOption;
+          autostart = mkBoolOption;
+        };
 
         tailscale = {
           enable = mkBoolOption;
@@ -148,8 +153,6 @@ in
       };
 
       bootloader = {
-        animation = mkBoolOption;
-
         grub = {
           enable = mkBoolOption;
           device = mkStrOption;
@@ -258,13 +261,20 @@ in
           steamdeck = mkBoolOption;
         };
 
-        drivers.rtl8821ce = mkBoolOption;
+        drivers = {
+          rtl8821ce = mkBoolOption;
+          xpadneo = mkBoolOption;
+        };
 
-        gpus = {
+        graphics = {
+          enable = mkBoolOption;
+
           amd = {
             enable = mkBoolOption;
             rocm = mkBoolOption;
           };
+
+          mesa.unstable = mkBoolOption;
 
           nvidia = {
             enable = mkBoolOption;
