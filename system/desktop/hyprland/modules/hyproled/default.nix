@@ -50,9 +50,10 @@ mkIf (hyproled.enable) {
         Unit.Description = "Timer for hyproled";
 
         Timer = {
-          Unit = "hyproled";
+          Unit = "hyproled.service";
           Persistent = true;
-          OnCalendar = "hourly";
+          OnBootSec = "1h";
+          OnUnitActiveSec = "1h";
           AccuracySec = "1h";
         };
 
