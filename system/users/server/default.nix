@@ -1,5 +1,6 @@
 {
   config,
+  pkgs,
   ...
 }:
 
@@ -81,23 +82,56 @@ in
       wireguard = {
         image = "linuxserver/wireguard";
         extraOptions = [ "--pull=always" ];
-        capabilities = { NET_ADMIN = true; };
-        volumes = [ "/data/wireguard:/config" ];
+        capabilities.NET_ADMIN = true;
+
+        volumes = [
+          "/data/wireguard:/config"
+          "/nix/store:/nix/store:ro"
+          "/run/current-system/sw/bin:/run/current-system/sw/bin:ro"
+        ];
+
         ports = [ "${ip}:51821:51821/udp" ];
       };
 
       nextcloud = {
         image = "nextcloud:29";
-        extraOptions = [ "--pull=always" "--network=container:wireguard" ];
+
+        extraOptions = [
+          "--pull=always"
+          "--network=container:wireguard"
+        ];
+
         dependsOn = [ "wireguard" ];
         volumes = [ "/data/nextcloud:/var/www/html" ];
       };
 
-      # socks5 = {
-      #   image = "serjs/go-socks5-proxy";
-      #   extraOptions = [ "--pull=always" "--network=container:wireguard" ];
-      #   dependsOn = [ "wireguard" ];
-      # };
+      socks5 = {
+        image = "serjs/go-socks5-proxy";
+        extraOptions = [ "--pull=always" "--network=container:wireguard" ];
+        dependsOn = [ "wireguard" ];
+      };
+    };
+  };
+
+  systemd = {
+    services.nextcloud-news-updater = {
+      description = "Fetches nextcloud news feeds";
+      wantedBy = [ "graphical-session.target" ];
+      serviceConfig.ExecStart = "${pkgs.podman}/bin/podman exec -it -u 33:33 nextcloud php -f /var/www/html/cron.php";
+    };
+
+    timers.nextcloud-news-updater = {
+      description = "Timer for nextcloud-news-updater";
+
+      timerConfig = {
+        Unit = "nextcloud-news-updater.service";
+        OnBootSec = "1h";
+        OnUnitActiveSec = "1h";
+        AccuracySec = "1h";
+      };
+
+      after = [ "podman-nextloud.service" ];
+      wantedBy = [ "timers.target" ];
     };
   };
 }

@@ -97,6 +97,7 @@
 
           # External modules
           chaotic.nixosModules.default
+          ./hardware/graphics/modules/mesa
 
           home-manager.nixosModules.home-manager
           nerivations.nixosModules.default
