@@ -38,7 +38,7 @@ in
         Unit.Description = "Timer for eye-wellbeing";
 
         Timer = {
-          Unit = "eye-wellbeing";
+          Unit = "eye-wellbeing.service";
           OnBootSec = "20m";
           OnUnitActiveSec = "20m";
           AccuracySec = "20m";
