@@ -25,9 +25,12 @@ let
 
   gamescope-launch = (
     pkgs.writeShellScriptBin "gamescope-launch" ''
-      GAMESCOPE="${pkgs.scopebuddy}/bin/scopebuddy"
+      GAMESCOPE="${pkgs.scopebuddy}/bin/scopebuddy --"
       GAMEMODE="${pkgs.gamemode}/bin/gamemoderun"
       SDL="--backend sdl"
+      PROTON_ENABLE_WAYLAND=1
+      PROTON_USE_NTSYNC=1
+      PROTON_USE_WOW64=1
 
       ${
         if (cfg.applications.mangohud.enable) then
@@ -82,6 +85,22 @@ let
             SDL=""
             shift
             ;;
+          --no-wayland)
+            PROTON_ENABLE_WAYLAND=0
+            shift
+            ;;
+          --no-ntsync)
+            PROTON_USE_NTSYNC=0
+            shift
+            ;;
+          --no-wow64)
+            PROTON_USE_WOW64=0
+            shift
+            ;;
+          --hdr)
+            PROTON_ENABLE_HDR=1
+            shift
+            ;;
           --)
             shift
             COMMAND=("$@")
@@ -100,9 +119,9 @@ let
 
       SCB_GAMESCOPE_ARGS="$DEFAULT_WIDTH $DEFAULT_HEIGHT $DEFAULT_REFRESH_RATE $SDL $MANGOHUD $GAMESCOPE_ARGS"
 
-      export SCB_GAMESCOPE_ARGS
+      export SCB_GAMESCOPE_ARGS PROTON_ENABLE_WAYLAND PROTON_USE_NTSYNC PROTON_USE_WOW64 PROTON_ENABLE_HDR
 
-      $GAMEMODE $GAMESCOPE -- "''${COMMAND[@]}"
+      $GAMEMODE $GAMESCOPE "''${COMMAND[@]}"
     ''
   );
 
