@@ -34,7 +34,6 @@ mkIf (cfg.applications.steam.enable) {
               {
                 text = ''
                   @nClientDownloadEnableHTTP2PlatformLinux 0
-                  @fDownloadRateImprovementToAddAnotherConnection 1.0
                 '';
               };
         };
