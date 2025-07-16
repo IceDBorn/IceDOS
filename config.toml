@@ -29,7 +29,7 @@ hideDecorations = false # Hide top bar
 
 [icedos.applications.lsfg-vk]
 enable = true
-dllPath = "~/games/lossless-scaling/Lossless.dll"
+dllPath = "/home/icedborn/games/lossless-scaling/Lossless.dll"
 
 [icedos.applications.mangohud]
 enable = true
