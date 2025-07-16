@@ -90,6 +90,7 @@ in
         };
 
         php = mkBoolOption;
+        proton-launch = mkBoolOption;
         rust = mkBoolOption;
 
         signal = {
