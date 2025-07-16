@@ -60,6 +60,11 @@ in
         lact = mkBoolOption;
         librewolf = mkBoolOption;
 
+        lsfg-vk = {
+          enable = mkBoolOption;
+          dllPath = mkStrOption;
+        };
+
         mangohud = {
           enable = mkBoolOption;
           maxFpsLimit = mkNumberOption;
