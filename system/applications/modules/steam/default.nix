@@ -39,7 +39,7 @@ mkIf (cfg.applications.steam.enable) {
               };
         };
 
-        packages = mkIf (!steamdeck && !applications.gamescope && applications.proton-launch) [
+        packages = mkIf (!steamdeck && !applications.gamescope && !applications.proton-launch) [
           pkgs.steam
         ];
       };
