@@ -26,7 +26,7 @@ in
             ${
               makeBinPath [
                 (pkgs.writeShellScriptBin "eye-wellbeign" ''
-                  "${notify-send}" "System" "Take a 20-second break to look at something 6 meters away"
+                  "${pkgs.procps}/bin/pidof" hyprlock || "${notify-send}" "System" "Take a 20-second break to look at something 6 meters away"
                 '')
               ]
             }/eye-wellbeign
