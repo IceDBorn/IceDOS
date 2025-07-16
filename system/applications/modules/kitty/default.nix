@@ -33,14 +33,14 @@ mkIf (cfg.applications.kitty.enable) {
     ];
 
     dconf.settings = mkIf (cfg.desktop.gnome.enable) {
-      "org/gnome/settings-daemon/plugins/media-keys/custom-keybindings/custom0" = {
+      "org/gnome/settings-daemon/plugins/media-keys/custom-keybindings/kitty" = {
         binding = "<Super>x";
         command = "kitty";
         name = "Kitty";
       };
 
       "org/gnome/settings-daemon/plugins/media-keys".custom-keybindings = [
-        "/org/gnome/settings-daemon/plugins/media-keys/custom-keybindings/custom0/"
+        "/org/gnome/settings-daemon/plugins/media-keys/custom-keybindings/kitty/"
       ];
     };
   }) cfg.system.users;

@@ -50,7 +50,7 @@ in
         show-hidden = true;
       };
 
-      "org/gnome/settings-daemon/plugins/media-keys/custom-keybindings/custom1" =
+      "org/gnome/settings-daemon/plugins/media-keys/custom-keybindings/nautilus" =
         mkIf (cfg.desktop.gnome.enable)
           {
             binding = "<Super>e";
@@ -59,7 +59,7 @@ in
           };
 
       "org/gnome/settings-daemon/plugins/media-keys".custom-keybindings = mkIf (cfg.desktop.gnome.enable
-      ) [ "/org/gnome/settings-daemon/plugins/media-keys/custom-keybindings/custom1/" ];
+      ) [ "/org/gnome/settings-daemon/plugins/media-keys/custom-keybindings/nautilus/" ];
     };
 
     home.file = mkIf (cfg.applications.nautilus) {
