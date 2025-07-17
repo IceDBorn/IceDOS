@@ -25,6 +25,7 @@ let
       PROTON_ENABLE_WAYLAND=1
       PROTON_USE_NTSYNC=1
       PROTON_USE_WOW64=1
+      PROTON_FSR4_UPGRADE=1
 
       ${
         if (cfg.applications.mangohud.enable) then
@@ -94,6 +95,10 @@ let
             GAMESCOPE=""
             shift
             ;;
+          --no-fsr4)
+            PROTON_FSR4_UPGRADE=0
+            shift
+            ;;
           --no-lsfg)
             ENABLE_LSFG=0
             shift
@@ -141,7 +146,7 @@ let
 
       SCB_GAMESCOPE_ARGS="$DEFAULT_WIDTH $DEFAULT_HEIGHT $DEFAULT_REFRESH_RATE $SDL $MANGOAPP $GAMESCOPE_ARGS"
 
-      export ENABLE_LSFG SCB_GAMESCOPE_ARGS PROTON_ENABLE_WAYLAND PROTON_USE_NTSYNC PROTON_USE_WOW64 PROTON_ENABLE_HDR
+      export ENABLE_LSFG SCB_GAMESCOPE_ARGS PROTON_FSR4_UPGRADE PROTON_ENABLE_WAYLAND PROTON_USE_NTSYNC PROTON_USE_WOW64 PROTON_ENABLE_HDR
 
       [[ "$MANGOAPP" != "" && "$GAMESCOPE" != "" ]] && MANGOHUD=""
 
