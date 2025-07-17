@@ -22,7 +22,7 @@ in
       blanket
       faugus-launcher
       fragments
-      gimp
+      gimp3
       harmony-music
       newsflash
       umu-launcher
