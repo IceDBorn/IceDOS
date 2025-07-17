@@ -10,10 +10,10 @@ let
   lsfg-vk = cfg.applications.lsfg-vk;
 in
 mkIf (lsfg-vk.enable) {
-  services.lsfg-vk.enable = true;
-
-  environment.variables = {
-    LSFG_DLL_PATH = lsfg-vk.dllPath;
-    LSFG_PERF_MODE = 1;
+  services.lsfg-vk = {
+    enable = true;
+    losslessDLLFile = lsfg-vk.dllPath;
   };
+
+  environment.variables.LSFG_PERF_MODE = 1;
 }
