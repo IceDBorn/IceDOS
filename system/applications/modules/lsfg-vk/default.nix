@@ -14,6 +14,4 @@ mkIf (lsfg-vk.enable) {
     enable = true;
     losslessDLLFile = lsfg-vk.dllPath;
   };
-
-  environment.variables.LSFG_PERF_MODE = 1;
 }
