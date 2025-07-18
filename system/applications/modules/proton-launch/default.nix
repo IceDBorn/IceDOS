@@ -25,7 +25,6 @@ let
       PROTON_ENABLE_WAYLAND=1
       PROTON_USE_NTSYNC=1
       PROTON_USE_WOW64=1
-      PROTON_FSR4_UPGRADE=1
 
       ${
         if (cfg.applications.mangohud.enable) then
@@ -33,15 +32,6 @@ let
             MANGOAPP="--mangoapp"
             MANGOHUD="${pkgs.mangohud}/bin/mangohud"
             MANGOHUD_CONFIGFILE="/home/$USER/.config/MangoHud/MangoHud.conf"
-          ''
-        else
-          ""
-      }
-
-      ${
-        if (cfg.applications.gamescope) then
-          ''
-            GAMESCOPE="${pkgs.scopebuddy}/bin/scopebuddy --"
           ''
         else
           ""
@@ -73,6 +63,25 @@ let
 
       while [[ $# -gt 0 ]]; do
         case "$1" in
+          --fsr4)
+            PROTON_FSR4_UPGRADE=1
+            shift
+            ;;
+          --hdr)
+            PROTON_ENABLE_HDR=1
+            shift
+            ;;
+          --gamescope)
+            ${
+              if (cfg.applications.gamescope) then
+                ''
+                  GAMESCOPE="${pkgs.scopebuddy}/bin/scopebuddy --"
+                ''
+              else
+                ""
+            }
+            shift
+            ;;
           --gamescope-args)
             GAMESCOPE_ARGS="$2"
 
@@ -89,14 +98,6 @@ let
             ;;
           --no-gamemode)
             GAMEMODE=""
-            shift
-            ;;
-          --no-gamescope)
-            GAMESCOPE=""
-            shift
-            ;;
-          --no-fsr4)
-            PROTON_FSR4_UPGRADE=0
             shift
             ;;
           --no-lsfg)
@@ -122,10 +123,6 @@ let
             ;;
           --no-wow64)
             PROTON_USE_WOW64=0
-            shift
-            ;;
-          --hdr)
-            PROTON_ENABLE_HDR=1
             shift
             ;;
           --)
