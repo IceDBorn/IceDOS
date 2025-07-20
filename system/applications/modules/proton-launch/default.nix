@@ -23,7 +23,6 @@ let
       GAMEMODE="${pkgs.gamemode}/bin/gamemoderun"
       SDL="--backend sdl"
       PROTON_ENABLE_WAYLAND=1
-      PROTON_USE_NTSYNC=1
       PROTON_USE_WOW64=1
 
       ${
@@ -40,8 +39,7 @@ let
       ${
         if (cfg.applications.lsfg-vk.enable) then
           ''
-            ENABLE_LSFG=1
-            LSFG_PERF_MODE=1
+            LSFG_PROCESS="lsfg-vk-default"
           ''
         else
           ""
@@ -102,7 +100,7 @@ let
             shift
             ;;
           --no-lsfg)
-            ENABLE_LSFG=0
+            LSFG_PROCESS=""
             shift
             ;;
           --no-mangohud)
@@ -144,7 +142,9 @@ let
 
       SCB_GAMESCOPE_ARGS="$DEFAULT_HEIGHT $DEFAULT_REFRESH_RATE $DEFAULT_WIDTH $GAMESCOPE_ARGS $MANGOAPP $SDL"
 
-      export ENABLE_LSFG LSFG_PERF_MODE PROTON_ENABLE_HDR PROTON_ENABLE_WAYLAND PROTON_FSR4_UPGRADE PROTON_USE_NTSYNC PROTON_USE_WOW64 SCB_GAMESCOPE_ARGS
+      [[ "$LSFG_PROCESS" == "lsfg-vk-default" && "$PROTON_ENABLE_HDR" == "1" ]] && LSFG_PROCESS="lsfg-vk-hdr"
+
+      export LSFG_PROCESS PROTON_ENABLE_HDR PROTON_ENABLE_WAYLAND PROTON_FSR4_UPGRADE PROTON_USE_NTSYNC PROTON_USE_WOW64 SCB_GAMESCOPE_ARGS
 
       [[ "$MANGOAPP" != "" && "$GAMESCOPE" != "" ]] && MANGOHUD=""
 
