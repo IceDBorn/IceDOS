@@ -278,16 +278,6 @@ scaling = 1
 rotation = 0
 tenBit = false
 
-[[icedos.hardware.monitors]]
-name = "HDMI-A-1"
-disable = true
-resolution = "3840x2160"
-refreshRate = 60
-position = "0x0"
-scaling = 1
-rotation = 0
-tenBit = false
-
 [icedos.hardware.networking]
 hostname = "desktop"
 hosts = ""
