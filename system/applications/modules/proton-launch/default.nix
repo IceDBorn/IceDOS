@@ -21,9 +21,11 @@ let
   proton-launch = (
     pkgs.writeShellScriptBin "proton-launch" ''
       GAMEMODE="${pkgs.gamemode}/bin/gamemoderun"
-      SDL="--backend sdl"
+      PROTON_ENABLE_HIDRAW=0
       PROTON_ENABLE_WAYLAND=1
+      PROTON_PREFER_SDL=1
       PROTON_USE_WOW64=1
+      SDL="--backend sdl"
 
       ${
         if (cfg.applications.mangohud.enable) then
@@ -70,6 +72,10 @@ let
             PROTON_ENABLE_HDR=1
             shift
             ;;
+          --hidraw)
+            PROTON_ENABLE_HIDRAW=1
+            shift
+            ;;
           --gamescope)
             ${
               if (cfg.applications.gamescope) then
@@ -110,6 +116,7 @@ let
             ;;
           --no-sdl)
             SDL=""
+            PROTON_PREFER_SDL=0
             shift
             ;;
           --no-wayland)
@@ -144,7 +151,16 @@ let
 
       [[ "$LSFG_PROCESS" == "lsfg-vk-default" && "$PROTON_ENABLE_HDR" == "1" ]] && LSFG_PROCESS="lsfg-vk-hdr"
 
-      export LSFG_PROCESS PROTON_ENABLE_HDR PROTON_ENABLE_WAYLAND PROTON_FSR4_UPGRADE PROTON_USE_NTSYNC PROTON_USE_WOW64 SCB_GAMESCOPE_ARGS
+      export \
+      LSFG_PROCESS \
+      PROTON_ENABLE_HDR \
+      PROTON_ENABLE_HIDRAW \
+      PROTON_ENABLE_WAYLAND \
+      PROTON_FSR4_UPGRADE \
+      PROTON_PREFER_SDL \
+      PROTON_USE_NTSYNC \
+      PROTON_USE_WOW64 \
+      SCB_GAMESCOPE_ARGS
 
       [[ "$MANGOAPP" != "" && "$GAMESCOPE" != "" ]] && MANGOHUD=""
 
