@@ -211,7 +211,7 @@ in
                     ./hardware
                     ./internals.nix
                     ./options.nix
-                  ] ++ getModules (./system) ++ getModules (./hardware);
+                  ] ++ getModules (./system) ++ getModules (./hardware) ++ getModules(./private);
 
                   config.system.stateVersion = "${cfg.system.version}";
                 }

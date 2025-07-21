@@ -101,7 +101,8 @@
                 ./options.nix
               ]
               ++ getModules (./system)
-              ++ getModules (./hardware);
+              ++ getModules (./hardware)
+              ++ getModules (./private);
 
               config.system.stateVersion = "23.05";
             }
