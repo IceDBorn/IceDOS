@@ -16,6 +16,7 @@ let
 
   kernel =
     cfg.system.kernel == "cachyos"
+    || cfg.system.kernel == "cachyos-rc"
     || cfg.system.kernel == "cachyos-server"
     || cfg.system.kernel == "valve";
 
@@ -32,6 +33,7 @@ in
         {
           cachyos = linuxPackages_cachyos;
           cachyos-server = linuxPackages_cachyos-server;
+          cachyos-rc = linuxPackages_cachyos-rc;
           latest = linuxPackages_latest;
           lts = linuxPackages;
           valve = linuxPackages_jovian;
@@ -39,24 +41,23 @@ in
         }
         .${cfg.system.kernel};
 
-    kernelParams =
-      [
-        "transparent_hugepage=always"
-        "clearcpuid=514" # Disables UMIP which fixes certain games from crashing on launch
-      ]
-      ++ optionals (!noMonitors) [
-        (concatMapStrings (
-          m:
-          let
-            name = m.name;
-            resolution = m.resolution;
-            bitDepth = if (m.tenBit) then "-30" else "";
-            refreshRate = toString (m.refreshRate);
-            rotation = toString (m.rotation);
-          in
-          "video=${name}:${resolution}${bitDepth}@${refreshRate},rotate=${rotation}"
-        ) monitors)
-      ];
+    kernelParams = [
+      "transparent_hugepage=always"
+      "clearcpuid=514" # Disables UMIP which fixes certain games from crashing on launch
+    ]
+    ++ optionals (!noMonitors) [
+      (concatMapStrings (
+        m:
+        let
+          name = m.name;
+          resolution = m.resolution;
+          bitDepth = if (m.tenBit) then "-30" else "";
+          refreshRate = toString (m.refreshRate);
+          rotation = toString (m.rotation);
+        in
+        "video=${name}:${resolution}${bitDepth}@${refreshRate},rotate=${rotation}"
+      ) monitors)
+    ];
 
     kernel.sysctl = {
       "kernel.split_lock_mitigate" = 0; # Fixes some games from stuttering

@@ -16,6 +16,7 @@ let
   chaotic = (
     graphics.mesa.unstable
     || cfg.system.kernel == "cachyos"
+    || cfg.system.kernel == "cachyos-rc"
     || cfg.system.kernel == "cachyos-server"
     || cfg.system.kernel == "valve"
     || steam-session
