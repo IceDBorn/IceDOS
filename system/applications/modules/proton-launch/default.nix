@@ -26,6 +26,7 @@ let
       PROTON_PREFER_SDL=1
       PROTON_USE_WOW64=1
       SDL="--backend sdl"
+      SteamDeck=0
 
       ${
         if (cfg.applications.mangohud.enable) then
@@ -64,6 +65,10 @@ let
 
       while [[ $# -gt 0 ]]; do
         case "$1" in
+          --deck)
+            SteamDeck=1
+            shift
+            ;;
           --fsr4)
             PROTON_FSR4_UPGRADE=1
             shift
@@ -160,7 +165,8 @@ let
       PROTON_PREFER_SDL \
       PROTON_USE_NTSYNC \
       PROTON_USE_WOW64 \
-      SCB_GAMESCOPE_ARGS
+      SCB_GAMESCOPE_ARGS \
+      SteamDeck
 
       [[ "$MANGOAPP" != "" && "$GAMESCOPE" != "" ]] && MANGOHUD=""
 
