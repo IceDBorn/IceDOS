@@ -256,7 +256,7 @@ in
               value = mkStrOption;
             };
 
-            zenpower = mkBoolOption;
+            zenergy = mkBoolOption;
           };
 
           intel = mkBoolOption;

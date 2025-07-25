@@ -223,7 +223,7 @@ intel = false
 
 [icedos.hardware.cpus.amd]
 enable = true
-zenpower = true # Report watt usage for apps e.g. mangohud
+zenergy = true # Report watt usage for apps e.g. mangohud
 
 [icedos.hardware.cpus.amd.undervolt]
 enable = true
@@ -292,7 +292,7 @@ interfaces = ["protonvpn"]
 channels = [] # https://github.com/NixOS/nixpkgs/branches/active
 forceFirstBuild = false
 home = "/home"
-kernel = "cachyos" # Options: 'cachyos', 'cachyos-server', 'latest', 'lts', 'valve', 'zen'
+kernel = "cachyos" # Options: 'cachyos', 'cachyos-rc', cachyos-server', 'latest', 'lts', 'valve', 'zen'
 swappiness = 1
 version = "23.05" # Do not change without checking the docs (config.system.stateVersion)
 
