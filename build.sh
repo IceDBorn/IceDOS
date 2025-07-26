@@ -5,7 +5,9 @@ CONFIG="/tmp/configuration-location"
 FLAKE="flake.nix"
 
 action="switch"
-extraBuildArgs=()
+globalBuildArgs=()
+nhBuildArgs=()
+nixBuildArgs=()
 
 while [[ $# -gt 0 ]]; do
   case $1 in
@@ -18,17 +20,22 @@ while [[ $# -gt 0 ]]; do
       shift
       ;;
     --ask)
-      ask="-a"
+      nhBuildArgs+=("-a")
       shift
       ;;
     --builder)
-      extraBuildArgs+=("--build-host")
-      extraBuildArgs+=("$2")
+      nixBuildArgs+=("--build-host")
+      nixBuildArgs+=("$2")
       shift
       shift
       ;;
-    *)
-      echo "Unknown arg $1" >/dev/stderr
+    --build-args)
+      shift
+      globalBuildArgs=("$@")
+      break
+      ;;
+    -*|--*)
+      echo "Unknown arg: $1" >&2
       exit 1
       ;;
   esac
@@ -64,4 +71,9 @@ rsync -a ./ "$TMP_BUILD_FOLDER" \
 echo "Building from path $TMP_BUILD_FOLDER"
 
 # Build the system configuration
-nh os $action "$TMP_BUILD_FOLDER" $ask ${extraBuildArgs[*]}
+if (( ${#nixBuildArgs[@]} != 0 )); then
+  sudo nixos-rebuild $action --flake .#"$(cat /etc/hostname)" ${nixBuildArgs[*]} ${globalBuildArgs[*]}
+  exit 0
+fi
+
+nh os $action "$TMP_BUILD_FOLDER" ${nhBuildArgs[*]} -- ${globalBuildArgs[*]}
