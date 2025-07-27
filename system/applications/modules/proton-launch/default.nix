@@ -40,15 +40,6 @@ let
       }
 
       ${
-        if (cfg.applications.lsfg-vk.enable) then
-          ''
-            LSFG_PROCESS="lsfg-vk-default"
-          ''
-        else
-          ""
-      }
-
-      ${
         let
           monitor = head (cfg.hardware.monitors);
           resolution = splitString "x" (monitor.resolution);
@@ -110,10 +101,6 @@ let
             GAMEMODE=""
             shift
             ;;
-          --no-lsfg)
-            LSFG_PROCESS=""
-            shift
-            ;;
           --no-mangohud)
             MANGOHUD=""
             MANGOAPP=""
@@ -154,10 +141,7 @@ let
 
       SCB_GAMESCOPE_ARGS="$DEFAULT_HEIGHT $DEFAULT_REFRESH_RATE $DEFAULT_WIDTH $GAMESCOPE_ARGS $MANGOAPP $SDL"
 
-      [[ "$LSFG_PROCESS" == "lsfg-vk-default" && "$PROTON_ENABLE_HDR" == "1" ]] && LSFG_PROCESS="lsfg-vk-hdr"
-
       export \
-      LSFG_PROCESS \
       PROTON_ENABLE_HDR \
       PROTON_ENABLE_HIDRAW \
       PROTON_ENABLE_WAYLAND \

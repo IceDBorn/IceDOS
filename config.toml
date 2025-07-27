@@ -11,6 +11,7 @@ gamescope = true
 input-remapper = true
 lact = true
 librewolf = false
+lsfg-vk = true
 mission-center = true
 nautilus = true
 php = false
@@ -26,10 +27,6 @@ zoomLevel = 0
 [icedos.applications.kitty]
 enable = true
 hideDecorations = false # Hide top bar
-
-[icedos.applications.lsfg-vk]
-enable = true
-dllPath = "/home/icedborn/games/lossless-scaling/Lossless.dll"
 
 [icedos.applications.mangohud]
 enable = true

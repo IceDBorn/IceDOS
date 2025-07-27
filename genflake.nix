@@ -28,7 +28,7 @@ let
   hyprland = cfg.desktop.hyprland.enable;
   isFirstBuild = !pathExists "/run/current-system/source" || cfg.system.forceFirstBuild;
   librewolf = cfg.applications.librewolf;
-  lsfg-vk = cfg.applications.lsfg-vk.enable;
+  lsfg-vk = cfg.applications.lsfg-vk;
   server = cfg.hardware.devices.server;
   steam-session = cfg.applications.steam.session.enable;
   users = attrNames cfg.system.users;
