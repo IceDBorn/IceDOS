@@ -19,9 +19,10 @@ mkIf (cfg.enable) {
     kernelModules = [
       "amd-pstate"
       "msr"
-    ] ++ optional cfg.zenpower "zenpower";
+    ]
+    ++ optional cfg.zenergy "zenergy";
 
-    extraModulePackages = with config.boot.kernelPackages; mkIf (cfg.zenpower) [ zenpower ];
+    extraModulePackages = with config.boot.kernelPackages; mkIf (cfg.zenergy) [ zenergy ];
   };
 
   environment.systemPackages = mkIf (cfg.undervolt.enable) [

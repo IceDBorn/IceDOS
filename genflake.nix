@@ -12,20 +12,23 @@ let
 
   aagl = cfg.applications.aagl;
   channels = cfg.system.channels;
-  configurationLocation = fileContents "/tmp/configuration-location";
-  gnome = cfg.desktop.gnome.enable;
-  hyprland = cfg.desktop.hyprland.enable;
-  isFirstBuild = !pathExists "/run/current-system/source" || cfg.system.forceFirstBuild;
 
   chaotic = (
-    cfg.hardware.graphics.mesa.unstable
+    graphics.mesa.unstable
     || cfg.system.kernel == "cachyos"
+    || cfg.system.kernel == "cachyos-rc"
     || cfg.system.kernel == "cachyos-server"
     || cfg.system.kernel == "valve"
     || steam-session
   );
 
+  configurationLocation = fileContents "/tmp/configuration-location";
+  graphics = cfg.hardware.graphics;
+  gnome = cfg.desktop.gnome.enable;
+  hyprland = cfg.desktop.hyprland.enable;
+  isFirstBuild = !pathExists "/run/current-system/source" || cfg.system.forceFirstBuild;
   librewolf = cfg.applications.librewolf;
+  lsfg-vk = cfg.applications.lsfg-vk;
   server = cfg.hardware.devices.server;
   steam-session = cfg.applications.steam.session.enable;
   users = attrNames cfg.system.users;
@@ -111,6 +114,18 @@ in
         }
 
         ${
+          if (lsfg-vk) then
+            ''
+              lsfg-vk = {
+                url = "github:pabloaul/lsfg-vk-flake";
+                inputs.nixpkgs.follows = "nixpkgs";
+              };
+            ''
+          else
+            ""
+        }
+
+        ${
           if (librewolf) then
             ''
               pipewire-screenaudio = {
@@ -144,6 +159,7 @@ in
           ${if (aagl) then ''aagl,'' else ""}
           ${if (chaotic) then ''chaotic,'' else ""}
           ${if (librewolf) then ''pipewire-screenaudio,'' else ""}
+          ${if (lsfg-vk) then ''lsfg-vk,'' else ""}
           ${if (steam-session) then ''steam-session,'' else ""}
           ${if (zen-browser) then ''zen-browser,'' else ""}
           ...
@@ -196,7 +212,7 @@ in
                     ./hardware
                     ./internals.nix
                     ./options.nix
-                  ] ++ getModules (./system) ++ getModules (./hardware);
+                  ] ++ getModules (./system) ++ getModules (./hardware) ++ getModules(./private);
 
                   config.system.stateVersion = "${cfg.system.version}";
                 }
@@ -257,6 +273,15 @@ in
                       nix.settings = aagl.nixConfig; # Set up Cachix
                       programs.anime-game-launcher.enable = true; # Adds launcher and /etc/hosts rules
                     }
+                  ''
+                else
+                  ""
+              }
+
+              ${
+                if (lsfg-vk) then
+                  ''
+                    lsfg-vk.nixosModules.default
                   ''
                 else
                   ""

@@ -1,6 +1,7 @@
 {
   config,
   lib,
+  pkgs,
   ...
 }:
 
@@ -11,6 +12,8 @@ let
     ;
 
   cfg = config.icedos;
+  applications = cfg.applications;
+  steamdeck = cfg.hardware.devices.steamdeck;
 in
 mkIf (cfg.applications.steam.enable) {
   home-manager.users = mapAttrs (
@@ -22,25 +25,28 @@ mkIf (cfg.applications.steam.enable) {
       home = {
         file = {
           # Enable steam beta
-          ".local/share/Steam/package/beta" = mkIf (type != "work" && cfg.applications.steam.beta) {
-            text = if (cfg.applications.steam.session.enable) then "steamdeck_publicbeta" else "publicbeta";
+          ".local/share/Steam/package/beta" = mkIf (type != "work" && applications.steam.beta) {
+            text = if (applications.steam.session.enable) then "steamdeck_publicbeta" else "publicbeta";
           };
 
           # Enable slow steam downloads workaround
           ".local/share/Steam/steam_dev.cfg" =
-            mkIf (type != "work" && cfg.applications.steam.downloadsWorkaround)
+            mkIf (type != "work" && applications.steam.downloadsWorkaround)
               {
                 text = ''
                   @nClientDownloadEnableHTTP2PlatformLinux 0
-                  @fDownloadRateImprovementToAddAnotherConnection 1.0
                 '';
               };
         };
+
+        packages = mkIf (!steamdeck && !applications.gamescope && !applications.proton-launch) [
+          pkgs.steam
+        ];
       };
     }
   ) cfg.system.users;
 
-  programs.steam = mkIf (cfg.hardware.devices.steamdeck) {
+  programs.steam = mkIf (steamdeck) {
     enable = true;
     extest.enable = true;
   };

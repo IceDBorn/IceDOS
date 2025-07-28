@@ -48,6 +48,7 @@ in
         defaultBrowser = mkStrOption;
         defaultEditor = mkStrOption;
         extraPackages = mkStrListOption;
+        gamescope = mkBoolOption;
         input-remapper = mkBoolOption;
         insecurePackages = mkStrListOption;
 
@@ -58,6 +59,7 @@ in
 
         lact = mkBoolOption;
         librewolf = mkBoolOption;
+        lsfg-vk = mkBoolOption;
 
         mangohud = {
           enable = mkBoolOption;
@@ -84,6 +86,7 @@ in
         };
 
         php = mkBoolOption;
+        proton-launch = mkBoolOption;
         rust = mkBoolOption;
 
         signal = {
@@ -249,7 +252,7 @@ in
               value = mkStrOption;
             };
 
-            zenpower = mkBoolOption;
+            zenergy = mkBoolOption;
           };
 
           intel = mkBoolOption;

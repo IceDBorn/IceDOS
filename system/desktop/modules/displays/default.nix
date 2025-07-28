@@ -26,59 +26,58 @@ in
   icedos.internals.toolset.commands = mkIf (gnome || hyprland) [
     (
       let
-        commands =
-          [
-            (
-              let
-                command = "info";
-              in
-              {
-                bin = "${pkgs.writeShellScript command ''
-                  ${
-                    if (gnome) then
-                      ''[ "$XDG_CURRENT_DESKTOP" = "GNOME" ] && "${pkgs.gnome-randr}/bin/gnome-randr"''
-                    else
-                      ""
-                  }
-
-                  ${
-                    if (hyprland) then
-                      ''[ "$XDG_CURRENT_DESKTOP" = "Hyprland" ] && "${pkgs.hyprland}/bin/hyprctl" monitors''
-                    else
-                      ""
-                  }
-                ''}";
-
-                command = command;
-                help = "print displays information";
-              }
-            )
-          ]
-          ++ optional (cfg.desktop.hyprland.enable) (
+        commands = [
+          (
             let
-              command = "xprimary";
+              command = "info";
             in
             {
               bin = "${pkgs.writeShellScript command ''
-                [ "$XDG_CURRENT_DESKTOP" = "GNOME" ] && echo "error: not supported by gnome" && exit 1
+                ${
+                  if (gnome) then
+                    ''[ "$XDG_CURRENT_DESKTOP" = "GNOME" ] && "${pkgs.gnome-randr}/bin/gnome-randr"''
+                  else
+                    ""
+                }
 
-                ACTIVE_MONITORS=($(xrandr --listactivemonitors | grep '+0' | awk '{ print $4 }' | sort))
-                TEMP_CONFIG_PATH="${tempConfigPath}"
-                PRIMARY_DISPLAY_PATH="${primaryDisplayPath}"
-
-                mkdir -p "$TEMP_CONFIG_PATH"
-                echo "Select a display:"
-
-                select monitor in "''${ACTIVE_MONITORS[@]}"; do
-                  [ "$monitor" != "" ] && echo "$monitor" > "$PRIMARY_DISPLAY_PATH" && exit 0
-                  echo "error: not a valid selection, try again"
-                done
+                ${
+                  if (hyprland) then
+                    ''[ "$XDG_CURRENT_DESKTOP" = "Hyprland" ] && "${pkgs.hyprland}/bin/hyprctl" monitors''
+                  else
+                    ""
+                }
               ''}";
 
               command = command;
-              help = "set primary monitor for xwayland";
+              help = "print displays information";
             }
-          );
+          )
+        ]
+        ++ optional (cfg.desktop.hyprland.enable) (
+          let
+            command = "xprimary";
+          in
+          {
+            bin = "${pkgs.writeShellScript command ''
+              [ "$XDG_CURRENT_DESKTOP" = "GNOME" ] && echo "error: not supported by gnome" && exit 1
+
+              ACTIVE_MONITORS=($(xrandr --listactivemonitors | grep '+0' | awk '{ print $4 }' | sort))
+              TEMP_CONFIG_PATH="${tempConfigPath}"
+              PRIMARY_DISPLAY_PATH="${primaryDisplayPath}"
+
+              mkdir -p "$TEMP_CONFIG_PATH"
+              echo "Select a display:"
+
+              select monitor in "''${ACTIVE_MONITORS[@]}"; do
+                [ "$monitor" != "" ] && echo "$monitor" > "$PRIMARY_DISPLAY_PATH" && exit 0
+                echo "error: not a valid selection, try again"
+              done
+            ''}";
+
+            command = command;
+            help = "set primary monitor for xwayland";
+          }
+        );
 
         purpleString = string: ''''${PURPLE}${string}''${NC}'';
       in
@@ -148,6 +147,7 @@ in
             setPrimaryMonitor "$PRIMARY_DISPLAY"
 
             while :; do
+              ${coreutils}/bin/sleep 1
               ${coreutils}/bin/mkdir -p "$TEMP_CONFIG_PATH"
 
               CURRENT_PRIMARY_DISPLAY="$PRIMARY_DISPLAY"
@@ -157,8 +157,6 @@ in
 
               PRIMARY_DISPLAY="$CURRENT_PRIMARY_DISPLAY"
               setPrimaryMonitor "$PRIMARY_DISPLAY"
-
-              ${coreutils}/bin/sleep 1
             done
           ''}";
 
