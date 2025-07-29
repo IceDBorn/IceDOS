@@ -100,6 +100,7 @@ icon = "zen"
 name = "Zen Social"
 sites = [
   "https://mail.proton.me",
+  "https://lumo.proton.me",
   "https://develop.element.io",
   "https://discord.com/app",
 ]
