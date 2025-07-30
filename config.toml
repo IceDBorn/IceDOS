@@ -219,11 +219,11 @@ flags = ["compress=zstd", "nofail", "x-gvfs-show"]
 [icedos.hardware.cpus]
 intel = false
 
-[icedos.hardware.cpus.amd]
+[icedos.hardware.cpus.ryzen]
 enable = true
 zenergy = true # Report watt usage for apps e.g. mangohud
 
-[icedos.hardware.cpus.amd.undervolt]
+[icedos.hardware.cpus.ryzen.undervolt]
 enable = true
 value = "-p 0 -v 3C -f A0" # Pstate 0, 1.175 voltage, 4000 clock speed
 
@@ -239,7 +239,7 @@ xpadneo = true # Xinput bluetooth controller driver
 [icedos.hardware.graphics]
 enable = true
 
-[icedos.hardware.graphics.amd]
+[icedos.hardware.graphics.radeon]
 enable = true
 rocm = true
 
@@ -290,7 +290,7 @@ interfaces = ["protonvpn"]
 channels = [] # https://github.com/NixOS/nixpkgs/branches/active
 forceFirstBuild = false
 home = "/home"
-kernel = "cachyos" # Options: 'cachyos', 'cachyos-rc', cachyos-server', 'latest', 'lts', 'valve', 'zen'
+kernel = "cachyos-rc" # Options: 'cachyos', 'cachyos-rc', cachyos-server', 'latest', 'lts', 'valve', 'zen'
 swappiness = 1
 version = "23.05" # Do not change without checking the docs (config.system.stateVersion)
 

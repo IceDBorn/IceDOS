@@ -1,0 +1,24 @@
+diff --git a/zenergy.c b/zenergy.c
+--- zenergy.c
++++ zenergy.c
+@@ -79,18 +79,18 @@
+ static void get_energy_units(struct zenergy_data *data)
+ {
+ 	u64 rapl_units;
+ 
+-	rdmsrl_safe(ENERGY_PWR_UNIT_MSR, &rapl_units);
++	rdmsrq_safe(ENERGY_PWR_UNIT_MSR, &rapl_units);
+ 	data->energy_units = (rapl_units & zenergy_UNIT_MASK) >> 8;
+ }
+ 
+ static void __accumulate_delta(struct sensor_accumulator *accum,
+ 			       int cpu, u32 reg)
+ {
+ 	u64 input;
+ 
+-	rdmsrl_safe_on_cpu(cpu, reg, &input);
++	rdmsrq_safe_on_cpu(cpu, reg, &input);
+ 	input &= zenergy_MASK;
+ 
+ 	if (input >= accum->prev_value)
+ 		accum->energy_ctr +=
