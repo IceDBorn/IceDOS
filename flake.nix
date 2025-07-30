@@ -103,7 +103,7 @@
               ]
               ++ getModules (./hardware)
               ++ getModules (./system)
-              ++ getModules (./private);
+              ++ getModules (./.private);
 
               config.system.stateVersion = "23.05";
             }
