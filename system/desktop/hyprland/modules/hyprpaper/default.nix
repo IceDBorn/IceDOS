@@ -14,14 +14,12 @@ in
   environment.systemPackages = [ package ];
 
   home-manager.users = mapAttrs (user: _: {
-    home.file.".config/hypr/hyprpaper.jpg".source = ./hyprpaper.jpg;
-
     services.hyprpaper = {
       enable = true;
 
       settings = {
-        preload = "~/.config/hypr/hyprpaper.jpg";
-        wallpaper = ", ~/.config/hypr/hyprpaper.jpg";
+        preload = "~/Pictures/wallpaper.jpg";
+        wallpaper = ", ~/Pictures/wallpaper.jpg";
         ipc = "off";
       };
     };
