@@ -76,6 +76,7 @@ deviceId = "901524a4_c7c0_407e_9903_431abce54131"
 
 [icedos.applications.zed]
 enable = true
+fontSize = 16
 vim = true
 
 [icedos.applications.zed.theme]

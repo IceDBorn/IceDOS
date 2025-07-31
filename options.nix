@@ -131,13 +131,15 @@ in
 
         zed = {
           enable = mkBoolOption;
-          vim = mkBoolOption;
+          fontSize = mkNumberOption;
 
           theme = {
             dark = mkStrOption;
             light = mkStrOption;
             mode = mkStrOption;
           };
+
+          vim = mkBoolOption;
         };
 
         zen-browser = {
