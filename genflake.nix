@@ -294,6 +294,7 @@ in
                 if (lsfg-vk) then
                   ''
                     lsfg-vk.nixosModules.default
+                    ./system/applications/modules/lsfg-vk
                   ''
                 else
                   ""

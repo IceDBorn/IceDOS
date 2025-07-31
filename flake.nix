@@ -122,6 +122,7 @@
           { icedos.internals.isFirstBuild = false; }
 
           lsfg-vk.nixosModules.default
+          ./system/applications/modules/lsfg-vk
 
           ./system/desktop/hyprland
 
