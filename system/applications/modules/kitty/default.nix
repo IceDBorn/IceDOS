@@ -24,7 +24,7 @@ mkIf (cfg.applications.kitty.enable) {
       };
 
       font.name = "JetBrainsMono Nerd Font";
-      font.size = 10;
+      font.size = 12;
       themeFile = "OneDark-Pro";
     };
 

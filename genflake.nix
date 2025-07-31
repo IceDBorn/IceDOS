@@ -23,12 +23,13 @@ let
   );
 
   configurationLocation = fileContents "/tmp/configuration-location";
-  graphics = cfg.hardware.graphics;
   gnome = cfg.desktop.gnome.enable;
+  graphics = cfg.hardware.graphics;
   hyprland = cfg.desktop.hyprland.enable;
   isFirstBuild = !pathExists "/run/current-system/source" || cfg.system.forceFirstBuild;
   librewolf = cfg.applications.librewolf;
   lsfg-vk = cfg.applications.lsfg-vk;
+  ryzen = cfg.hardware.cpus.ryzen.enable;
   server = cfg.hardware.devices.server;
   steam-session = cfg.applications.steam.session.enable;
   users = attrNames cfg.system.users;
@@ -193,26 +194,37 @@ in
                 system.extraSystemBuilderCmds = "ln -s ''${self} $out/source";
               }
 
-              # Internal modules
+              # Internal modules and config
               (
                 { lib, ... }:
                 let
-                    inherit (lib) filterAttrs;
+                  inherit (lib) filterAttrs;
 
-                    getModules =
-                      path:
-                      map (dir: "/''${path}/''${dir}") ( let
+                  getModules =
+                    path:
+                    map (dir: "/''${path}/''${dir}") (
+                      let
                         inherit (lib) attrNames;
                       in
-                        attrNames (filterAttrs (n: v: v == "directory" && !(n == "desktop" && path == ./system)) (builtins.readDir path))
-                      );
+                      attrNames (
+                        filterAttrs (
+                          n: v:
+                          v == "directory" && !(n == "desktop" && path == ./system)) (
+                          builtins.readDir path
+                        )
+                      )
+                    );
                 in
                 {
                   imports = [
                     ./hardware
                     ./internals.nix
                     ./options.nix
-                  ] ++ getModules (./system) ++ getModules (./hardware) ++ getModules(./private);
+                    ${if (ryzen) then "./hardware/cpus/modules/ryzen" else ""}
+                  ]
+                  ++ getModules (./hardware)
+                  ++ getModules (./system)
+                  ++ getModules(./.private);
 
                   config.system.stateVersion = "${cfg.system.version}";
                 }

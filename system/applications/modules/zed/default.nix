@@ -38,7 +38,7 @@ mkIf (zed.enable) {
         auto_update = false;
         autosave = "off";
         buffer_font_family = "JetBrainsMono Nerd Font";
-        buffer_font_size = 14;
+        buffer_font_size = 16;
         chat_panel.button = "never";
         collaboration_panel.button = false;
         features.edit_prediction_provider = "none";
@@ -60,7 +60,7 @@ mkIf (zed.enable) {
           blinking = "on";
           copy_on_select = true;
           font_family = "JetBrainsMono Nerd Font";
-          font_size = 14;
+          font_size = 16;
         };
 
         theme = {
@@ -69,7 +69,7 @@ mkIf (zed.enable) {
           mode = zed.theme.mode;
         };
 
-        ui_font_size = 16;
+        ui_font_size = 18;
         vim_mode = zed.vim;
       };
     };

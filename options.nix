@@ -244,7 +244,7 @@ in
         bluetooth = mkBoolOption;
 
         cpus = {
-          amd = {
+          ryzen = {
             enable = mkBoolOption;
 
             undervolt = {
@@ -272,7 +272,7 @@ in
         graphics = {
           enable = mkBoolOption;
 
-          amd = {
+          radeon = {
             enable = mkBoolOption;
             rocm = mkBoolOption;
           };

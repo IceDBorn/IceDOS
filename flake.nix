@@ -75,7 +75,7 @@
             system.extraSystemBuilderCmds = "ln -s ${self} $out/source";
           }
 
-          # Internal modules
+          # Internal modules and config
           (
             { lib, ... }:
             let
@@ -99,10 +99,11 @@
                 ./hardware
                 ./internals.nix
                 ./options.nix
+                ./hardware/cpus/modules/ryzen
               ]
-              ++ getModules (./system)
               ++ getModules (./hardware)
-              ++ getModules (./private);
+              ++ getModules (./system)
+              ++ getModules (./.private);
 
               config.system.stateVersion = "23.05";
             }
