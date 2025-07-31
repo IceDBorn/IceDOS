@@ -26,6 +26,7 @@ zoomLevel = 0
 
 [icedos.applications.kitty]
 enable = true
+fontSize = 12
 hideDecorations = false # Hide top bar
 
 [icedos.applications.mangohud]

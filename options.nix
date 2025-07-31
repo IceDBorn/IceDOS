@@ -54,6 +54,7 @@ in
 
         kitty = {
           enable = mkBoolOption;
+          fontSize = mkNumberOption;
           hideDecorations = mkBoolOption;
         };
 
