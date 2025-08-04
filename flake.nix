@@ -20,11 +20,6 @@
 
     # Apps
 
-    lsfg-vk = {
-      url = "github:pabloaul/lsfg-vk-flake";
-      inputs.nixpkgs.follows = "nixpkgs";
-    };
-
     zen-browser = {
       url = "github:0xc000022070/zen-browser-flake";
       inputs.nixpkgs.follows = "nixpkgs";
@@ -40,8 +35,6 @@
       self,
 
       chaotic,
-
-      lsfg-vk,
 
       zen-browser,
       ...
@@ -120,8 +113,6 @@
 
           # Is First Build
           { icedos.internals.isFirstBuild = false; }
-
-          lsfg-vk.nixosModules.default
 
           ./system/desktop/hyprland
 
