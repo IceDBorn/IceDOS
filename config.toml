@@ -113,6 +113,7 @@ sites = [
   "https://dtekteam.slack.com",
   "https://teams.microsoft.com/v2",
   "https://gmail.com",
+  "https://lumo.proton.me",
 ]
 
 [icedos.bootloader.grub]
