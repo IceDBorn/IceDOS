@@ -1,3 +1,6 @@
+# ⚠️ ARCHIVED ⚠️
+This repository became a part of [IceDOS](https://github.com/IceDOS)
+
 # IceDOS
 
 This is a NixOS configuration project that aims to create a highly opinionated gaming and general purpose computing experience, while still providing enough config options for my different needs.
